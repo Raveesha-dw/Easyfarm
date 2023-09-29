@@ -1,1 +1,21 @@
-body{ background: blue;}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('components/header.css');
+@import url('components/homepage.css');
+@import url('components/footer.css');
+
+:root{
+    --dark-green: #6a9739;
+    --light-green: #8bc34a;
+    --bg-green: #F8F6F3;
+    --dark-grey: #111111;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    color: var(--dark-grey);
+    background-color: var(--bg-green);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
