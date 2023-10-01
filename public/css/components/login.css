@@ -1,0 +1,132 @@
+/* .wrapperLogin {
+    width :420px;
+    background-color: transparent;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+} */
+/* .wrapperLogin h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapperLogin .input-box-log {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(230, 255, 230);
+    margin: 30px 0;
+}
+
+.wrapperLogin {
+    width :50%;
+    background-color: transparent;
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+} */
+
+
+.wrapperLogin {
+    width :50%;
+    background-color: transparent;
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.wrapperLogin h1 {
+    font-size: 25px;
+    text-align: center;
+}
+.wrapperLogin .startText{
+    font-style: italic;
+}
+.wrapperLogin .type{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.wrapperLogin .input-box-log {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(230, 255, 230);
+    margin-top: 2px;
+    margin-bottom: 30px;
+}
+
+.input-box-log input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius : 40px; 
+    font-size: 16px;
+    color :black;
+    padding:0 0 0 20px;
+
+}
+
+.input-box-log input::placeholder{
+    color: rgba(192, 172, 172, 0.588) ;
+}
+ 
+.input-box-log i {
+    position: absolute;
+    right:20px;
+    top:50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+
+}
+
+.wrapperLogin .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: 15px 0 15px;
+
+}
+
+
+.wrapperLogin .btn{
+    width: 50%;
+    height: 45px;
+    background: #3afbae;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .1);
+    cursor: pointer;
+    font-size: 16px;
+    color:#333;
+    font-weight: 600;
+    margin-left: 25%;
+}
+.wrapperLogin .login-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.register-link p a{
+    color:red;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+}
+.register-link a:hover{
+    text-decoration: underline;
+}

@@ -2,6 +2,9 @@
 @import url('components/header.css');
 @import url('components/homepage.css');
 @import url('components/footer.css');
+@import url('components/role_selection.css');
+@import url('components/registerBuyer.css');
+@import url('components/login.css');
 
 :root{
     --dark-green: #6a9739;

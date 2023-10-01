@@ -11,7 +11,7 @@ class Pages extends Controller{
 
         ];
         
-        $this->view('pages/index', $data);
+        $this->view('pages/home', $data);
     }
 
     public function about(){
@@ -19,6 +19,26 @@ class Pages extends Controller{
             'title' => 'About'
         ];
         $this->view('pages/about', $data);
+    }
+
+    public function registerPage(){
+        $this->view('Users/v_roleselection');
+    }
+
+    public function registerBuyer(){
+        $this->view('Users/v_registerBuyer');
+    }
+
+    public function registerVehicleOwner(){
+        $this->view('Users/v_registerVehicleRenter');
+    }
+
+    public function registerSeller(){
+        $this->view('Users/v_registerSeller');
+    }
+
+    public function loginPage(){
+        $this->view('Users/v_login');
     }
 }
 

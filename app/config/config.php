@@ -1,9 +1,9 @@
 <?php
 // DB params
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'localhost:3306');
 define('DB_USER', 'root');
-define('DB_PASS', 'Papertowns');
-define('DB_NAME', 'test');
+define('DB_PASS', '');
+define('DB_NAME', 'easyfarm');
 
 // App Root
 define('APPROOT', dirname(dirname(__FILE__)));
