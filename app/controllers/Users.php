@@ -134,7 +134,7 @@ class Users extends Controller{
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
 
-                'email_err' => '',
+                'email_err' => 'blabla',
                 'password_err' => '',
 
             ];
