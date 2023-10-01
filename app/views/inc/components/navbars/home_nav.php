@@ -7,8 +7,8 @@
                     <li><a href="#">Repository</a></li>
                     <li><a href="#">Forum</a></li>
                     <li><a href="#">Vehicle Renting</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="<?php echo URLROOT?>/Pages/loginPage">Login</a></li>
+                    <li><a href="<?php echo URLROOT?>/Pages/registerPage">Register</a></li>
                 </ul>
             </div>
         </div>
