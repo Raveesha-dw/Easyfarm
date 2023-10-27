@@ -6,21 +6,21 @@
     <p class="startText"> Register to <b>EasyFarm</b></p>
     <form action="<?php echo URLROOT ?>/Users/register" method="POST">
         
-        <p class="type">Full name *</p>
+        <p class="type">Full name<sup>*</sup></p>
         <div class="input-box" >
             <input type="text" name="fullname" placeholder="Enter first name & last name" required value="<?php echo $data['fullname']; ?>">
             <i class='bx bxs-user-circle' ></i>
             <span class="invalid"><?php echo $data['name_err']; ?></span>
         </div>
 
-        <p class="type">Contact number *</p>
+        <p class="type">Contact number<sup>*</sup></p>
         <div class="input-box">
             <input type="text" name="contactno" placeholder="Enter contact number" required value="<?php echo $data['contactno']; ?>">
             <i class='bx bxs-phone-call' ></i>
             <span class="invalid"><?php echo $data['contactno_err']; ?></span>
         </div>
 
-        <p class="type">Email *</p>
+        <p class="type">Email<sup>*</sup></p>
         <div class="input-box">
             <input type="text" name="email" placeholder="Enter your email" required value="<?php echo $data['email']; ?>">
             <i class='bx bx-mail-send' ></i>

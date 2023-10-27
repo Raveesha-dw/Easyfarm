@@ -4,7 +4,10 @@
 @import url('components/footer.css');
 @import url('components/role_selection.css');
 @import url('components/registerBuyer.css');
+@import url('components/register_Vehicle_Renter.css');
 @import url('components/login.css');
+@import url('components/logged_nav.css');
+
 
 :root{
     --dark-green: #6a9739;
@@ -21,4 +24,3 @@ body{
     margin: 0;
     padding: 0;
 }
-
