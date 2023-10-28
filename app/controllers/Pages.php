@@ -37,9 +37,12 @@ class Pages extends Controller{
         $this->view('Users/v_registerSeller');
     }
 
-    public function loginPage(){
-        $this->view('Users/v_login');
+    public function profile(){
+        //
     }
+
+    
+
 }
 
 // Pages is the default controller
