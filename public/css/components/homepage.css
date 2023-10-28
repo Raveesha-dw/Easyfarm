@@ -210,6 +210,11 @@ footer .copyright{
     transition: 0.2s ease;
 }
 
+.card a{
+    text-decoration: none;
+    color: black;
+}
+
 .card:hover{
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
 }

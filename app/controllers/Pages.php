@@ -41,6 +41,8 @@ class Pages extends Controller{
         //
     }
 
+    
+
 }
 
 // Pages is the default controller

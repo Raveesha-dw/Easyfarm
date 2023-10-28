@@ -67,20 +67,20 @@ class M_users{
     }
 
     public function login($data){
-        echo 'data to login model';
+        // echo 'data to login model';
         $this->db->query('SELECT * FROM user WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
 
         $row=$this->db->single();
         
         if($row){
-            echo '<br>';
-            echo 'row is here';
+            // echo '<br>';
+            // echo 'row is here';
             $hashed_password = $row->Password;
 
-            echo $hashed_password;
+           // echo $hashed_password;
             if(password_verify($data['password'], $hashed_password)){
-                echo "yo";
+              //  echo "yo";
                 return $row;
             }else{
                 return false;

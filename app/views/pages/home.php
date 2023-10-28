@@ -9,27 +9,27 @@
             <div class="menu-container">
                 <div class="card">
                     <i class="fas fa-carrot"></i>
-                    <h3>Vegetables</h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productFruit">Vegetables</a></h3>
                 </div>
                 <div class="card">
                     <i class="fas fa-apple-alt"></i>
-                    <h3>Fruits</h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productFruit">Fruits</a></h3>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-wheat-awn"></i>
-                    <h3>Grains</h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productGrains">Grains</a></h3>
                 </div>
                 <div class="card">
                     <i class="fas fas fa-seedling"></i>
-                    <h3>Plants & Seeds</h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productPlantsSeeds">Plants & Seeds</a></h3>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-sun-plant-wilt"></i>
-                    <h3>Fertilizers</h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productFertilizer"> Fertilizers </a></h3>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-bug-slash"></i>
-                    <h3>Insecticides</h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productInsecticides">Insecticides</a></h3>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-tractor"></i>
@@ -47,8 +47,9 @@
     <section class="product-section container">
         <!-- <h2 class="title">Featured Products</h2> -->
             <div class="product-container">
+                <!-- Hardcode this part -->
                 <?php 
-                for ($i = 1; $i <= 9; $i++) {
+                for ($i = 1; $i <= 12; $i++) {
                 ?>           
                 
                 <div class="product">

@@ -138,7 +138,8 @@ class Users extends Controller{
                     
                     
                     if($this->userModel->register($data)){
-                        $this->login();
+                        // $this->login();
+                        redirect('Users/v_login');
                     }
                     else{
                         die('Something went wrong');
@@ -306,7 +307,7 @@ class Users extends Controller{
     }
 
     public function createUserSession($user){
-        $_SESSION['user_ID'] = $user->U_ID;
+        $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
         $_SESSION['user_type'] = $user->User_type;
 
