@@ -8,7 +8,7 @@
     
         <p class="type">Full name *</p>
         <div class="input-box" >
-            <input type="text" placeholder="Enter first name & last name" name="fname_lname" id="fname_lname" required value="<?php echo $data['fullname']; ?>">
+            <input type="text" placeholder="Enter first name & last name" name="fullname" id="fullname" required value="<?php echo $data['fullname']; ?>">
             <i class='bx bxs-user-circle' ></i>
             <span class="invalid"><?php echo $data['name_err']; ?></span>
         </div>
@@ -46,7 +46,7 @@
             <input type="text" name="address" placeholder="Enter address" required value="<?php echo $data['address']; ?>">
             <i class='fa fa-address-book' ></i>
             <span class="invalid"><?php echo $data['address_err']; ?></span>
-        </div>i class='bx bxs-edit-location'></i>
+            <i class='bx bxs-edit-location'></i>
         </div>
 
         <p class="type">City *</p>
