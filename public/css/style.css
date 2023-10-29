@@ -2,6 +2,7 @@
 @import url('components/header.css');
 @import url('components/homepage.css');
 @import url('components/footer.css');
+@import url('components/product_view.css');
 @import url('components/role_selection.css');
 @import url('components/register_Seller.css');
 @import url('components/registerBuyer.css');
@@ -18,6 +19,10 @@
     --dark-grey: #111111;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: 'Lato', sans-serif;
     color: var(--dark-grey);
@@ -30,3 +35,9 @@ body{
 a{
     text-decoration: none;
 }
+
+hr{
+    margin: 3px;
+    color: var(--light-green);
+}
+

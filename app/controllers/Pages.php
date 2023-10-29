@@ -14,6 +14,13 @@ class Pages extends Controller{
         $this->view('pages/home', $data);
     }
 
+    public function product(){
+        $data = [
+            'title' => 'Product'
+        ];
+        $this->view('pages/product', $data);
+    }
+
     public function about(){
         $data = [
             'title' => 'About'
