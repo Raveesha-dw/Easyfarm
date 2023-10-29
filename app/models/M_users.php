@@ -56,15 +56,22 @@ class M_users{
             $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
             $this->db->execute();
             return true;
-        }else{
-            return false;
         }
 
         if($data['user_type'] == 'Seller'){
+            echo "User Table Values:";
+            echo "Email: " . $data['email'] . "<br>";
+            echo "Password: " . $data['password'] . "<br>";
+            echo "User Type: " . $data['user_type'] . "<br>";
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
             $this->db->bind(':user_type', $data['user_type']);
+
+            
+
+
+
             $this->db->execute();
 
             $this->db->query('SELECT * FROM user WHERE Email= :email');
@@ -86,6 +93,31 @@ class M_users{
             $this->db->bind(':ac_number', $data['ac_number']);
            
                    
+            $this->db->execute();
+            return true;
+        }
+        if($data['user_type'] == 'AgricultureExpert'){
+            $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
+            $this->db->bind(':email', $data['email']);  
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':user_type', $data['user_type']);
+            $this->db->execute();
+
+            $this->db->query('SELECT * FROM user WHERE Email= :email');
+            $this->db->bind(':email',$data['email']);
+
+            $row=$this->db->single();
+            $id = $row->U_Id;
+
+            $this->db->query('INSERT INTO reg_agriexpert(U_Id, Email, Address, City, Occupation, Workplace, NIC, Prof_id) VALUES
+            (:id, :email, :address, :city,:occupation,:workplace,:nic,:pId');
+            $this->db->bind(':id', $id);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':address', $data['address'].','.$data['city']);  
+            $this->db->bind(':occupation', $data['occupation']);
+            $this->db->bind(':workplace', $data['workplace']);
+            $this->db->bind(':nic', $data['nic']);  
+            $this->db->bind(':pId', $data['pId']);       
             $this->db->execute();
             return true;
         }else{

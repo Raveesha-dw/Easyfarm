@@ -235,6 +235,8 @@ class Users extends Controller{
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
+                
+
                 $data=[
 
                     'user_type' => $_POST['user_type'],
@@ -256,7 +258,7 @@ class Users extends Controller{
                     'name_err' => '',
                     'contactno_err' => '',
                     'email_err' => '',
-                    'address_err' => '',
+                    // 'address_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
 
@@ -265,6 +267,7 @@ class Users extends Controller{
 
 
                 ];
+
 
                 if(empty($data['fullname'])){
                     $data['name_err'] = 'Please enter a name';
@@ -286,12 +289,12 @@ class Users extends Controller{
                     }
                 }
 
-                if(empty($data['address'])){
-                    $data['address_err'] = 'Please enter your address';
-                }
-                if(empty($data['city'])){
-                    $data['address_err'] = 'Please enter your address';
-                }
+                // if(empty($data['address'])){
+                //     $data['address_err'] = 'Please enter your address';
+                // }
+                // if(empty($data['city'])){
+                //     $data['address_err'] = 'Please enter your address';
+                // }
 
 
                 if(empty($data['password'])){
@@ -314,12 +317,14 @@ class Users extends Controller{
                     }
                 }
 
-                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err'])  && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
+
+                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err'])   && empty($data['password_err']) && empty($data['confirm-password_err'])){
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     // $this->userModel->register($data);
                     
                     
                     if($this->userModel->register($data)){
+
                         // $this->login();
                         redirect('Users/v_login');
                     }
@@ -368,50 +373,30 @@ class Users extends Controller{
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
+               
+
                 $data=[
-
-
-                    $data=[
-                        'user_type' => $_POST['user_type'],
-                        'fullname' => trim($_POST['fullname']),
-                        'contactno' => trim($_POST['contactno']),
-                        'password' => trim($_POST['password']),
-                        'confirm-password'=>'',
-                        'email' => '',
-                        'address' => '',
-                        'city' => '',
-                        'occupation'=>'',
-                        'workplace'=> '',
-                        'nic'=>'',
-                        'pId'=> '',
-        
-                        'name_err' => '',
-                        'contactno_err' => '',
-                        'email_err' => '',
-                        'address_err' => '',
-                        'password_err'=>'',
-                        'confirm-password_err'=>'',
-        
-                    ];
-
-                    
+                    'user_type' => $_POST['user_type'],
+                    'fullname' => trim($_POST['fullname']),
                     'contactno' => trim($_POST['contactno']),
-                    'email' => trim($_POST['email']),
-                    // 'address' => trim($_POST['address'] . ',' . trim($_POST['city']) . ',' . trim($_POST['postalcode'])),
-                    'address' => trim($_POST['address']),
-                    'city' => trim($_POST['city']),
-                    'postalcode' => trim($_POST['postalcode']),
                     'password' => trim($_POST['password']),
                     'confirm-password' => trim($_POST['confirm-password']),
-                    
-
+                    'email' => trim($_POST['email']),
+                    'address' => trim($_POST['address']),
+                    'city' => trim($_POST['city']),
+                    'occupation'=>trim($_POST['occupation']),
+                    'workplace'=> trim($_POST['workplace']),
+                    'nic'=> trim($_POST['nic']),
+                    'pId'=> trim($_POST['pId']),
+    
                     'name_err' => '',
                     'contactno_err' => '',
                     'email_err' => '',
                     'address_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
-
+    
+                
                 ];
 
                 if(empty($data['fullname'])){
@@ -440,9 +425,7 @@ class Users extends Controller{
                 if(empty($data['city'])){
                     $data['address_err'] = 'Please enter your address';
                 }
-                if(empty($data['postalcode'])){
-                    $data['address_err'] = 'Please enter your address';
-                }
+
 
                 if(empty($data['password'])){
                     $data['password_err'] = 'Please enter a password';
@@ -478,32 +461,37 @@ class Users extends Controller{
                     }
                 }
                 else{
-                    $this->view('Users/v_registerBuyer', $data);
+                    $this->view('Users/v_registerAgriExpert', $data);
                 }
 
 
 
             } else {
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
-                'email' => '',
-                'address' => '',
-                'city' => '',
-                'postalcode' => '',
-                'password'=>'',
-                'confirm-password'=>'',
-
-                'name_err' => '',
-                'contactno_err' => '',
-                'email_err' => '',
-                'address_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+          
+                $data=[
+                    'user_type'=> '',
+                    'fullname'=>'',
+                    'contactno'=>'',
+                    'password'=>'',
+                    'confirm-password'=>'',
+                    'email' => '',
+                    'address' => '',
+                    'city' => '',
+                    'occupation'=>'',
+                    'workplace'=> '',
+                    'nic'=>'',
+                    'pId'=> '',
+    
+                    'name_err' => '',
+                    'contactno_err' => '',
+                    'email_err' => '',
+                    'address_err' => '',
+                    'password_err'=>'',
+                    'confirm-password_err'=>'',
+    
 
             ];
-            $this->view('Users/v_registerBuyer',$data);
+            $this->view('Users/v_registerAgriExpert',$data);
         
         }
         }
