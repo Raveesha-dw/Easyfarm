@@ -59,6 +59,38 @@ class M_users{
         }else{
             return false;
         }
+
+        if($data['user_type'] == 'Seller'){
+            $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
+            $this->db->bind(':email', $data['email']);  
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':user_type', $data['user_type']);
+            $this->db->execute();
+
+            $this->db->query('SELECT * FROM user WHERE Email= :email');
+            $this->db->bind(':email',$data['email']);
+
+            $row=$this->db->single();
+            $id = $row->U_Id;
+
+            $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
+            VALUES(:id, :fullname, :nic, :store_name, :store_address, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
+            $this->db->bind(':id', $id);
+            $this->db->bind(':fullname', $data['fullname']);
+            $this->db->bind(':nic', $data['nic']);
+            $this->db->bind(':store_name', $data['store_name']);
+            $this->db->bind(':store_address', $data['store_address']);
+            $this->db->bind(':ac_Holder_name', $data['ac_Holder_name']);
+            $this->db->bind(':bank_name', $data['bank_name']);
+            $this->db->bind(':branch_name', $data['branch_name']);
+            $this->db->bind(':ac_number', $data['ac_number']);
+           
+                   
+            $this->db->execute();
+            return true;
+        }else{
+            return false;
+        }
         
         // if($data['user_type'] == 'AgriExpert'){
             

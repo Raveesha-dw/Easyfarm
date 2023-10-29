@@ -8,8 +8,8 @@
         <p class="startText"><strong> Register as a ...</strong></p>
         <div class="btnList">
             <a href="<?php echo URLROOT ?>/Users/assignUser/Buyer" class="btn">Buyer</a><br>
-            <a href="<?php echo URLROOT ?>/Pages/registerSeller" class="btn">Seller</a><br>
-            <a href="<?php echo URLROOT ?>/Pages/index" class="btn">Agricultural Expert</a><br>
+            <a href="<?php echo URLROOT ?>/Users/assignUser/Seller" class="btn">Seller</a><br>
+            <a href="<?php echo URLROOT ?>/Users/assignUser/AgricultureExpert" class="btn">Agricultural Expert</a><br>
             <a href="<?php echo URLROOT ?>/Pages/registerVehicleRenter" class="btn">Vehicle Renter</a><br>
     
         </div>

@@ -3,7 +3,9 @@
 @import url('components/homepage.css');
 @import url('components/footer.css');
 @import url('components/role_selection.css');
+@import url('components/register_Seller.css');
 @import url('components/registerBuyer.css');
+@import url('components/register_Agricultural_Expert.css');
 @import url('components/register_Vehicle_Renter.css');
 @import url('components/login.css');
 @import url('components/logged_nav.css');

@@ -11,8 +11,9 @@
     protected $params = [];
 
     public function __construct()
-    {   
-       // print_r($this->getUrl());
+    {  
+        // print "a"; 
+    //    print_r($this->getUrl());
        $url = $this->getUrl();
        
        // Look in controllers for first value
@@ -48,6 +49,7 @@
 
     public function getUrl()
     {
+        // var_dump($_GET) ;
         if(isset($_GET['url'])){
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
