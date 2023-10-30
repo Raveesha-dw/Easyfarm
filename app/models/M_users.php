@@ -36,7 +36,6 @@ class M_users{
     // }
 
     public function register($data){
-        
         if($data['user_type'] == 'Buyer'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
@@ -54,10 +53,39 @@ class M_users{
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
-            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);
+            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
             $this->db->execute();
-
+            return true;
+        }else{
+            return false;
         }
+        
+        // if($data['user_type'] == 'AgriExpert'){
+            
+        // }
 
+    }
+
+    public function login($data){
+        // echo 'data to login model';
+        $this->db->query('SELECT * FROM user WHERE Email= :email');
+        $this->db->bind(':email', $data['email']);
+
+        $row=$this->db->single();
+        
+        if($row){
+            // echo '<br>';
+            // echo 'row is here';
+            $hashed_password = $row->Password;
+
+           // echo $hashed_password;
+            if(password_verify($data['password'], $hashed_password)){
+              //  echo "yo";
+                return $row;
+            }else{
+                return false;
+            }
+        }
+        
     }
 }
