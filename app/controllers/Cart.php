@@ -10,11 +10,6 @@ class Cart extends Controller{
     }
 
 
-    
-
-
-
-
 
 
     public function addToCart() {

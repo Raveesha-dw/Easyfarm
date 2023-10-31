@@ -58,7 +58,6 @@ class M_cart{
 
 
 
-
     public function deleteCartItem($data) {
         // Prepare the SQL statement to delete the cart item by the unique combination of u_id and itm_id
         $this->db->query('DELETE FROM cart WHERE U_Id = :uId AND Item_Id = :itmId');

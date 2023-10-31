@@ -20,6 +20,7 @@ class Pages extends Controller{
         ];
         $this->view('pages/product', $data);
     }
+    
     public function cart(){
         $data = [
             'title' => 'Cart'
