@@ -41,6 +41,8 @@
         $this->view('Buyer/v_viewProducts', $data);
     }
 
+
+
     // public function productSeeds(){
     //     $allseed = $this->productModel->getAllSeeds();
 
@@ -74,5 +76,8 @@
         $productInfo = $this->productModel->getProductInfo($itemID);
         $this->view('Buyer/v_productDetails', $productInfo);
     }
+
+
+
     
  }

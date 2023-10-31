@@ -1,0 +1,120 @@
+
+
+.wrapperCart .column1{
+    float: left;
+    width: 15%;
+    padding: 10px;
+    margin-right: 20px;
+    height: 300px;
+    background-color: #10724b;
+    height: 100%;
+}
+
+.wrapperCart .column1 button{
+    padding: 7px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    min-width: 80%;
+}
+
+.wrapperCart .column1 .sidebar button.active{
+    background-color: #b0b0b0;
+    font-weight: bold;
+}
+.wrapperCart .column2{
+    float: right;
+    width: 80%;
+    padding: 10px;
+    height: 300px;
+    background-color: rgb(11, 0, 11);
+}
+
+.wrapperCart .column1 .sidebar hr{
+    border: 1;
+    height: 2px;
+    width: 50px;
+    background: #ccc;
+    margin-top: 1px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+.wrapperCart .column1 .sidebar{
+    width: 180px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 1px 15px;
+    margin-right: 2px;
+    background: #fff;
+}
+.wrapperCart h3{
+    text-align: center;
+}
+
+.wrapperCart .cart-page{
+    margin: 80px auto;
+    margin-left: 70px;
+}
+.wrapperCart table{
+    width: 80%;
+    border-collapse: collapse;
+    align-content: center;
+}
+
+.wrapperCart .cart-info{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.wrapperCart img{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.wrapperCart th{
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #10724b;
+}
+
+.wrapperCart td{
+    padding: 10px 5px;
+}
+
+.wrapperCart td input{
+    width: 40px;
+    height: 30px;
+    padding: 5px ;
+}
+
+.wrapperCart td a{
+    color: #10724b;
+    font-size: 14px;
+}
+
+.wrapperCart .total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wrapperCart .total-price table{
+    border-top: 3px solid #10724b;
+    width: 80%;
+    max-width: 350px;
+    margin-right: 90px;
+}
+
+.wrapperCart td:last-child{
+    text-align: right;
+}
+
+.wrapperCart th:last-child{
+    text-align: right;
+}
+
+.wrapperCart .total_checkout{
+    text-align: right;
+}
