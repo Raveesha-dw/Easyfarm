@@ -21,6 +21,20 @@ class Pages extends Controller{
         $this->view('pages/product', $data);
     }
 
+    public function qna(){
+        $data = [
+            'title' => 'Q&A'
+        ];
+        $this->view('inc/components/qna_section/qna_section', $data);
+    }
+
+    public function editquestion(){
+        $data = [
+            'title' => 'Edit Question'
+        ];
+        $this->view('inc/components/qna_section/question_edit', $data);
+    }
+
     public function about(){
         $data = [
             'title' => 'About'
