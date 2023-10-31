@@ -4,9 +4,13 @@
 @import url('components/footer.css');
 @import url('components/role_selection.css');
 @import url('components/registerBuyer.css');
+@import url('components/register_Seller.css');
+@import url('components/register_Agricultural_Expert.css');
 @import url('components/register_Vehicle_Renter.css');
 @import url('components/login.css');
 @import url('components/logged_nav.css');
+@import url('components/sidebar.css');
+@import url('components/dashboardOrders.css');
 
 
 :root{
@@ -28,3 +32,46 @@ body{
 a{
     text-decoration: none;
 }
+
+/* for the navbar */
+ 
+#sub-menu {
+    display: none; /* Hide the submenu by default */
+    position: absolute;
+    top: 100%; /* Position it below the greeting element */
+    right: 0; /* Align to the right */
+    background-color: #fff; /* Background color */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    padding: 10px;
+}
+
+#sub-menu.open-menu {
+    display: block; /* Show the submenu when 'open-menu' class is applied */
+  }
+  
+  /* Styles for the submenu links */
+  .user-menu {
+    /* Your styles for the user menu */
+  }
+  
+  .user-info {
+    /* Your styles for user information */
+  }
+
+  .sub-link-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s;
+  }
+  
+  .sub-link-menu:hover {
+    background-color: #f0f0f0;
+  }
+
+  .review-card{
+    margin: 50px;
+  }

@@ -36,6 +36,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding-top: 0;
+    width: fit-content;
 }
 
 .product{
