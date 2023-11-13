@@ -1,50 +1,48 @@
-
+.wrapperCart{
+    height: 100%;
+}
 
 .wrapperCart .column1{
     float: left;
     width: 15%;
-    padding: 10px;
-    margin-right: 20px;
-    height: 300px;
+    /* padding: 5%; */
+    margin-right: 10%;
+    height:fit-content;
     background-color: #10724b;
-    height: 100%;
+    
 }
 
-.wrapperCart .column1 button{
-    padding: 7px;
-    margin-bottom: 25px;
+.wrapperCart .column1 .sidebar button{
+    /* padding: 7%; */
+    margin-bottom: 5%;
     font-size: 15px;
     min-width: 80%;
+    margin-left: 1%;
 }
 
 .wrapperCart .column1 .sidebar button.active{
     background-color: #b0b0b0;
     font-weight: bold;
 }
-.wrapperCart .column2{
-    float: right;
-    width: 80%;
-    padding: 10px;
-    height: 300px;
-    background-color: rgb(11, 0, 11);
-}
+
 
 .wrapperCart .column1 .sidebar hr{
-    border: 1;
+    border: 1%;
     height: 2px;
-    width: 50px;
+    width: 50%;
     background: #ccc;
     margin-top: 1px;
     margin-bottom: 5px;
     margin-left: 30px;
 }
 .wrapperCart .column1 .sidebar{
-    width: 180px;
+   width: 80%;
     height: 100%;
     top: 0;
     left: 0;
-    padding: 1px 15px;
-    margin-right: 2px;
+    bottom: 0;
+    /* padding: 2%; */
+    margin-right: 2%;
     background: #fff;
 }
 .wrapperCart h3{
@@ -53,7 +51,7 @@
 
 .wrapperCart .cart-page{
     margin: 80px auto;
-    margin-left: 70px;
+    margin-left: 5%;
 }
 .wrapperCart table{
     width: 80%;
