@@ -11,7 +11,9 @@
 @import url('components/login.css');
 @import url('components/logged_nav.css');
 @import url('components/cart.css');
-
+@import url('components/forgotPassword.css');
+@import url('components/resetPassword.css');
+@import url('components/verifyEmail.css');
 
 :root{
     --dark-green: #6a9739;

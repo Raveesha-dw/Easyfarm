@@ -1,0 +1,61 @@
+
+.wrapper_Verify_Email {
+    width :420px;
+    background-color: transparent;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.wrapper_Verify_Email h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.wrapper_Verify_Email .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(230, 255, 230);
+    margin-top: 2px;
+    margin-bottom: 30px;
+}
+
+.wrapper_Verify_Email .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius : 40px; 
+    font-size: 16px;
+    color :black;
+    padding: 20px 45px 20px 20px;
+
+}
+
+.wrapper_Verify_Email .input-box input::placeholder{
+    color: rgba(192, 172, 172, 0.588) ;
+}
+.wrapper_Verify_Email .start{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.wrapper_Verify_Email .btn{
+    width: 50%;
+    height: 45px;
+    background: #3afbae;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .1);
+    cursor: pointer;
+    font-size: 16px;
+    color:#333;
+    font-weight: 600;
+    margin-left: 25%;
+}
