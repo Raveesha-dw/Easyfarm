@@ -55,7 +55,12 @@ class Pages extends Controller{
         //
     }
 
-    
+    public function forgotPassword(){
+        $this->view('Users/v_forgotPassword');
+    }
+    public function resetPassword(){
+        $this->view('Users/v_resetPassword');
+    }
 
 }
 

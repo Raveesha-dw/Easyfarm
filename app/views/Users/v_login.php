@@ -23,7 +23,7 @@
                 <label>
                     <input type="checkbox"> Remember me 
                 </label>
-                <a href="#"> Forgot password? </a>     
+                <a href="<?php echo URLROOT ?>/Users/forgotPassword"> Forgot password? </a>     
             </div>
 
             <button type="submit" class="btn" >Login</button>

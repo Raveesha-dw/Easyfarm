@@ -625,9 +625,146 @@ class Users extends Controller{
         }
     }
 
+
+
+
+
+
+    public function forgotPassword(){
+
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+            
+            
+            $data = [
+                'email' => trim($_POST['email']),
+                'otp' =>trim($_POST['OTP']),
+
+                'email_err' => '',
+                'otp_err'=> '',
+            ];
+
+            if(empty($data['email'])){
+                $data['email_err'] = 'Please enter an email';
+            }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                $data['email_err'] = 'Invalid email format';
+            }else{
+                if(!$this->userModel->findUserByEmail($data['email'])){
+                    $data['email_err'] = 'User account does not exist';
+                }
+            }
+
+           
+            if ( $this->userModel->findUserByEmail($data)) {
+
+                // generate otp
+                $characters = '0123456789';
+                $length = 6;
+                $otp = '';
+
+                for ($i = 0; $i < $length; $i++) {
+                    $otp .= $characters[rand(0, strlen($characters) - 1)];
+                }
+                $data['otp'] = $otp;
+
+
+                // Save OTP and email in the database
+                $this->userModel->createToken($data);
+
+                // TODO:
+                // Send OTP to the user's email (you can use a library like PHPMailer for this)
+                // sendOTPByEmail($email, $otp); // Implement this function to send OTP via email
+
+            }
+
+            $this->view('Users/v_verifyEmail', $data);
+            // redirect('Users/v_login');
+
+
+        }else{
+            $data = [
+                'email' => '',
+                'otp' => '',
+
+                'email_err' => '',
+                'otp_err'=> '',
+            ];
+            $this->view('Users/v_forgotPassword', $data);
+
+
+        }
+    }
+
+
+
+
+
     public function resetPassword(){
 
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+
+            $data = [
+                'email'=> trim($_POST['email']),
+                'otp' => $_POST('otp'),
+                'password' => trim($_POST['password']),
+                'confirm-password' => trim($_POST['confirm-password']),
+
+                'otp_err'=> '',
+                'password_err'=>'',
+                'confirm-password_err'=>'',
+
+            ];
+
+
+            if(empty($data['password'])){
+                $data['password_err'] = 'Please enter a password';
+            }
+            else if(strlen($data['password'])>8){
+                $data['password_err'] = 'Password should not contain more than 8 characters';
+            }
+            else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
+                $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
+            }
+            // else if(ctype_alnum($data['password'])){
+            //     $data['password_err'] = 'Password should contain one or more non-alphabetic characters';
+            // }
+            else if(empty($data['confirm-password'])){
+                $data['confirm-password_err'] = 'Please re-enter your password';
+            }else{
+                if($data['password'] != $data['confirm-password']){
+                    $data['confirm-password_err'] = 'Does not match with the password';
+                }
+            }
+
+            if(!$this->userModel->verifyToken($data)){
+                $data['otp_err'] = 'Invalid OTP';
+
+            }
+            
+            
+            
+            
+            else{
+            
+                // Reset the user's password
+                $this->userModel->PasswordReset($data);
+
+                 // Clear the password reset token from the database
+                 $this->userModel->clearToken($data);
+
+                 $this->view('pages/home', $data);
+
+            }
+
+        }
+
     }
+
+
+
+
 
     public function createUserSession($user){
         $_SESSION['user_ID'] = $user->U_Id;
