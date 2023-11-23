@@ -36,9 +36,9 @@
                 <a href="<?php echo URLROOT?>/Pages/index">Repositary</a>
             </div>
 
-            <div class="nav-parts">
+            <!-- <div class="nav-parts">
                 <a href="<?php echo URLROOT?>/Pages/index">Forum</a>
-            </div>
+            </div> -->
 
             <div class="nav-parts">
                 <a href="<?php echo URLROOT?>/Pages/index">Vehicle Renting</a>

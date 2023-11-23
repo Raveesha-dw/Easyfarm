@@ -1,0 +1,47 @@
+.flex-container {
+    display: flex;
+}
+
+.left-content {
+    flex: 1;
+    width: 15%;
+    background-color: var(--bg-green);
+}
+
+.right-content {
+    flex: 3;
+    width: 85%;
+}
+
+.sidebar-menu{
+    width: 250px;
+    background-color: #F8F6F3;
+    padding: 20px;
+
+}
+
+.sidebar-menu a {
+    color: var(--dark-green);
+    text-decoration: none;
+    line-height: 10px;
+    font-size: 25px;
+    font-style: oblique;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a:hover {
+    color: darkblue;
+}
+
+.items-order {
+    display: flex;
+}
+
+.item-name, .review-button {
+    flex: 1;
+}
+
+.review-button{
+    margin-left: 10px;
+  }
