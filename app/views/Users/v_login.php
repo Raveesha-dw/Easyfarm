@@ -30,7 +30,12 @@
 
 
             <div class="register-link">
-                <p>Don't have an account?<a href="<?php echo URLROOT ?>/Pages/registerPage"> Register</a></p>
+                <p style="align-content: center;">Don't have an account?<a href="<?php echo URLROOT ?>/Pages/registerPage"> Register</a></p>
+                
+            </div>
+
+            <div class="register-link">
+                <h3>Log in a Service Provider<a href="<?php echo URLROOT ?>/Pages/"> Here</a></h3>
                 
             </div>
         </form>

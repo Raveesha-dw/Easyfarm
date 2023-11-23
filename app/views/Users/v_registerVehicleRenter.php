@@ -14,7 +14,7 @@
 
             <p class="type">Contact number *</p>
             <div class="input-box-v">
-                <input type="text" name="contactNo" placeholder="Enter contact number" required value="<?php echo $data['contactNo'] ?>">
+                <input type="text" name="contactno" placeholder="Enter contact number" required value="<?php echo $data['contactno'] ?>">
                 <i class='bx bxs-phone-call' ></i>
             </div>
 
@@ -44,11 +44,11 @@
 
             <p class="type">Confirm Password *</p>
             <div class="input-box-v">
-                <input type="password" name="confirm_password" placeholder="Reenter Password" required value="<?php echo $data['confirm_password'] ?>">
+                <input type="password" name="confirm_password" placeholder="Reenter Password" required value="<?php echo $data['confirm-password'] ?>">
                 <i class='bx bxs-lock-open-alt'></i>
             </div>
             
-            <p class="type">Vehicle Number(s) (If any)</p>
+            <!-- <p class="type">Vehicle Number(s) (If any)</p>
             <div class="input-box-v" id="inputContainer">
                 <input type="text" name="values[]" placeholder="Enter Vehicle Number" value="<?php echo $data['values'] ?>">
                 <i class="fa-solid fa-truck-monster"></i>
@@ -56,7 +56,7 @@
             </div>
             <div>
             <input type="hidden" name="user_type" value="Buyer">
-            </div>
+            </div> -->
             <!-- <button type="button" id="addInput">+</button> -->
 
 
@@ -64,11 +64,11 @@
 
 
             <div class="login-link">
-                <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
+                <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="<?php echo URLROOT?>/Pages/termsOfUse"> Terms of use</a> and <a href="<?php echo URLROOT?>/Pages/privacyPolicy">Privacy Policy</a></p>     
             </div>
         </form>
     </div>
-
+<!-- 
     <script>
         // JavaScript to add input fields dynamically
         document.getElementById('addInput').addEventListener('click', function () {
@@ -78,6 +78,6 @@
             newInput.name = 'values[]'; // Use an array for the input names
             inputContainer.appendChild(newInput);
         });
-    </script>
+    </script> -->
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>   

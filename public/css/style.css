@@ -11,6 +11,12 @@
 @import url('components/logged_nav.css');
 @import url('components/sidebar.css');
 @import url('components/dashboardOrders.css');
+@import url('components/product_details_page.css');
+/* Seller styles */
+/* @import url('components/seller_home_style.css');
+@import url('components/create_post_style.css');
+@import url('components/createdpost.css');
+@import url('components/myplan.css'); */
 
 
 :root{
