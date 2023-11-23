@@ -18,6 +18,11 @@
     height: 100%;
 }
 
+.greeting:hover{
+    cursor: pointer;
+    color: var(--dark-green)
+}
+
 
 .navbar ul{
     display: flex; 
@@ -52,9 +57,19 @@
     bottom: -4px;
     left: 20px;
 }
+
+.nav-parts a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    text-decoration: none;
+    color: var(--dark-green);
+    position: relative;
+}
 /* starts here */
 
-.sub-menu-link{
+/* .sub-menu-link{
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -81,5 +96,5 @@
 }
 .sub-menu-link:hover p{
     font-weight: 600;
-}
+} */
 

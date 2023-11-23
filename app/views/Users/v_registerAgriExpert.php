@@ -3,7 +3,11 @@
 
 <div class="wrapperAgriExpert">
     <h1>Register as a Agricultural expert</h1>
+<<<<<<< HEAD
     <p class="startText"> Regeister to <b>EasyFarm</b></p>
+=======
+    <p class="startText"> Register to <b>EasyFarm</b></p>
+>>>>>>> d915dae3e3fbf8c706cade15917a6d2dffe2fde2
     <form action="<?php echo URLROOT ?>/Users/register" method="POST">
     
         <p class="type">Full name *</p>
@@ -61,7 +65,11 @@
             <input type="text" placeholder="Enter occupation" name="occupation" id="occupation"  required value="<?php echo $data['occupation']; ?>">
             <i class='bx bx-user-pin' ></i>
         </div>
+<<<<<<< HEAD
         <p class="type">Worlplace *</p>
+=======
+        <p class="type">Workplace *</p>
+>>>>>>> d915dae3e3fbf8c706cade15917a6d2dffe2fde2
         <div class="input-box">
             <input type="text" placeholder="Enter workplace" name="workplace" id="workplace"  required value="<?php echo $data['workplace']; ?>">
             <i class='bx bx-current-location' ></i>

@@ -31,10 +31,10 @@
                     <i class="fa-solid fa-bug-slash"></i>
                     <h3><a href="<?php echo URLROOT?>/Product/productInsecticides">Insecticides</a></h3>
                 </div>
-                <div class="card">
+                <!-- <div class="card">
                     <i class="fa-solid fa-tractor"></i>
                     <h3>Farming Vehicles</h3>
-                </div>
+                </div> -->
                 <div class="card">
                     <i class="fa-solid fa-trowel"></i>
                     <h3>Tools & Machinery</h3>
