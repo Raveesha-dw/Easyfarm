@@ -24,7 +24,6 @@
            
 
             <input type="hidden" name="otp" value="<?php echo $data['otp']; ?>">
-            <input type="hidden" name="email" value="<?php echo $data['email']; ?>">
 
             <button type="submit" class="btn" >Submit</button>
 
