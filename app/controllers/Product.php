@@ -1,6 +1,8 @@
 <?php
  class Product extends Controller{
     private $productModel;
+    private $reviewModel;
+    
     public function __construct(){
         $this->productModel=$this->model('M_Product');
         $this->reviewModel=$this->model('M_Review');

@@ -174,4 +174,50 @@ class M_users{
         }
         
     }
+
+
+
+
+    public function PasswordReset($data){
+        $this->db->query('UPDATE user SET Password= :password WHERE Email= :email');
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->execute();
+
+    }
+
+    public function createToken($data){
+
+        $this->db->query('UPDATE user SET User_OTP= :otp WHERE Email= :email');
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':otp', $data['otp']);
+        $this->db->execute();
+    
+    }
+
+    public function verifyToken($data){
+        $this->db->query('SELECT * FROM user WHERE (Email= :email) && (User_OTP= :otp)');
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':otp', $data['otp']);
+
+        $row=$this->db->single();
+
+        if($row){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
+    public function clearToken($data){
+
+        $this->db->query('UPDATE user SET User_OTP= NULL WHERE Email= :email');
+        $this->db->bind(':email', $data['email']);
+        $this->db->execute();
+    
+    }
+
+
 }

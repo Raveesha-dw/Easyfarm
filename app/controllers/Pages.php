@@ -43,6 +43,13 @@ class Pages extends Controller{
     //     $this->view('Users/v_login');
     // }
 
+    public function forgotPassword(){
+        $this->view('Users/v_forgotPassword');
+    }
+    public function resetPassword(){
+        $this->view('Users/v_resetPassword');
+    }
+
     public function registerBuyer(){
         $this->view('Users/v_registerBuyer');
     }
