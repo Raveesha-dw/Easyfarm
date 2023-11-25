@@ -3,6 +3,9 @@
 
 class Cart extends Controller{
     private $cartModel;
+    private $productModel;
+    private $reviewModel;
+
     public function __construct()
     {
         $this->cartModel = $this->model('M_cart');
@@ -15,14 +18,16 @@ class Cart extends Controller{
 
     public function addToCart() {
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+
+        if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_SESSION['user_ID']))) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
             $data = [
-                'unitPrice' => $_POST['unitPrice'], 
                 'quantity' => $_POST['quantity'], 
                 'itemId' => $_POST['itemId'], 
                 'uId' => $_POST['uId'], 
+                
             ];
 
             // error_log(print_r($data, TRUE)); 
@@ -38,7 +43,8 @@ class Cart extends Controller{
                     die('Something went wrong while updating the cart item.');
                 }
             } 
-            else {
+            else 
+            {
                 if ($this->cartModel->addToCart($data)) {
                     
                     $Mitems =$this->cartModel->getAllcartItems($data);
@@ -60,7 +66,17 @@ class Cart extends Controller{
                     die('Something went wrong while adding the cart item.');
                 }
             }
-        } else {
+        }elseif(empty($_SESSION['user_ID'])){  
+            $data=[
+                'email' => '',
+                'password' => '',
+
+                'email_err' => '',
+                'password_err' => ''
+            ];
+            $this->view('Users/v_login', $data);
+
+        }else {
             $data = [
                 'unitPrice' => '',
                 'quantity' => '',

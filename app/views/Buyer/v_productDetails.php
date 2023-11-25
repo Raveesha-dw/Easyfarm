@@ -26,8 +26,8 @@ $productReviews = $data['itemReviews'];
         <hr>
             <div class="price-tag">
                 <h3>Unit Price:<?php echo $productDetails->Unit_price?> LKR / <?php echo $productDetails->Unit_type?> </h3>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <!-- <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1"> -->
             </div>
         <hr>
 
@@ -76,13 +76,30 @@ $productReviews = $data['itemReviews'];
             <?php
             }
             ?> -->
+            
+                <div class="button-area">
+                <a href=""> <Button >BUY NOW</Button> </a>
 
-            <div class="button-area">
-               <a href=""> <Button >BUY NOW</Button> </a>
-           <a href=""> <Button >
-                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
-                ADD TO CART
-            </Button></a>
+                    <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
+
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+
+                        <?php if (!empty($_SESSION['user_ID'])) : ?>
+
+                            <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
+                            <button type="submit" >ADD TO CART</button>
+                                                        
+                        <?php else : ?>                       
+                            <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button>
+                           
+                        <?php endif; ?>   
+                    </form>
+            
+
+
+           
+
             </div>
             </div>
 </section>
@@ -184,6 +201,13 @@ $productReviews = $data['itemReviews'];
         </div>
     </section>
 
+    <script>
+        
+        function showRegisterConfirmation() {
 
+             var result = window.confirm("You have to login to the easyFarm .");
+        }
+        
+    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  

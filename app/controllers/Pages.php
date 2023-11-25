@@ -120,7 +120,7 @@ class Pages extends Controller{
     public function updateProduct(){
         $this->view('seller/v_update_post');
     }
-    
+
 
 }
 

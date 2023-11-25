@@ -60,7 +60,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="number" min=0 class="quantity-input" name="quantitiesTo[]" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>"  value="<?php echo $item['quantity']; ?>">      
+                                    <input type="number" min=1 class="quantity-input" name="quantitiesTo[]" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>"  value="<?php echo $item['quantity']; ?>">      
                                     <input type="hidden" name="itemIds[]" value="<?php echo $item['itemId']; ?>">                                   
                                 </td>
                                 <td class="subtotal" data-item-id="<?php echo $item['itemId']; ?>">LKR <span class="subtotal-value"><?php echo number_format($item['unitPrice'] * $item['quantity'], 2); ?></span></td>                                
@@ -82,7 +82,7 @@
                             </div>
                   
                             <div class="checkout-button">                            
-                                <input type="hidden" name="uId" value="47">
+                                <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
                                 <button type="submit" class="btn">Checkout</button>
                             </div>                        
                         </div>
