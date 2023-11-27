@@ -83,16 +83,14 @@
 
             <form method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
                 <input type="hidden" name="Item_Id" value="<?php echo $product['Item_Id']; ?>">
-             <button type="submit" id="btn3" name="delete_item">Delete</button>
+             <button onclick="showRemoveConfirmation('<?php echo $product['Item_Id']; ?>' )" type="submit" id="btn3" name="delete_item">Delete</button>
             </form>
             </div>
 
         </div>
         <?php endforeach ?>
             
-         
-            
-    
+       
 
         
         
@@ -101,6 +99,32 @@
             function toggleMenu(){
                 subMenu.classList.toggle("open-menu");
             }
+
+       
+
+            let quantityInputs = document.querySelectorAll('.quantity-input');
+            let subtotalsubtotalElements = document.querySelectorAll('.subtotal .subtotal-value');
+            let cartTotalElement = document.querySelector('.cart-total-value');
+
+
+            // Function to show the remove confirmation popup
+            function showRemoveConfirmation(Item_Id) {
+                if (confirm('Are you sure you want to delete this item?')) {
+                    // Handle item removal here, e.g., by making an AJAX request
+                          
+                    }
+                }
+            
+
+   
+
+
+
+
+
+
+
+            
             
         </script>
 </div>

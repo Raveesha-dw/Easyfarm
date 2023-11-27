@@ -32,6 +32,20 @@ class Pages extends Controller{
         $this->view('seller/v_createdpost');
     }
 
+    public function product(){
+        $data = [
+            'title' => 'Product'
+        ];
+        $this->view('pages/product', $data);
+    }
+    
+    public function cart(){
+        $data = [
+            'title' => 'Cart'
+        ];
+        $this->view('pages/cart', $data);
+    }
+
     public function about(){
         $data = [
             'title' => 'About'
@@ -46,6 +60,13 @@ class Pages extends Controller{
     // public function loginPage(){
     //     $this->view('Users/v_login');
     // }
+
+    public function forgotPassword(){
+        $this->view('Users/v_forgotPassword');
+    }
+    public function resetPassword(){
+        $this->view('Users/v_resetPassword');
+    }
 
     public function registerBuyer(){
         $this->view('Users/v_registerBuyer');
@@ -102,31 +123,31 @@ class Pages extends Controller{
     }
 
     // Seller functions
-    public function seller_home(){
-        $data = [
-            'title' => 'Seller Dashboard'
-        ];
-        $this->view('seller/v_seller_home');
-    }
-    public function create_post(){
-        $this->view('seller/v_create_post');
-    }
-    public function myplan(){
-        $this->view('seller/v_myplan');
+    // public function seller_home(){
+    //     $data = [
+    //         'title' => 'Seller Dashboard'
+    //     ];
+    //     $this->view('seller/v_seller_home');
+    // }
+    // public function create_post(){
+    //     $this->view('seller/v_create_post');
+    // }
+    // public function myplan(){
+    //     $this->view('seller/v_myplan');
     
-    }
-    public function created_post(){
-        $this->view('seller/v_createdpost');
-    }
+    // }
+    // public function created_post(){
+    //     $this->view('seller/v_createdpost');
+    // }
 
-    public function registedSeller(){
-        $this->view('Users/v_registerSeller');
-    }
+    // public function registedSeller(){
+    //     $this->view('Users/v_registerSeller');
+    // }
 
-    public function updateProduct(){
-        $this->view('seller/v_update_post');
-    }
-    
+    // public function updateProduct(){
+    //     $this->view('seller/v_update_post');
+    // }
+
 
 }
 

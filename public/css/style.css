@@ -2,6 +2,7 @@
 @import url('components/header.css');
 @import url('components/homepage.css');
 @import url('components/footer.css');
+@import url('components/product_view.css');
 @import url('components/role_selection.css');
 @import url('components/register_Seller.css');
 @import url('components/registerBuyer.css');
@@ -14,6 +15,10 @@
 @import url('components/create_post_style.css');
 @import url('components/createdpost.css');
 @import url('components/myplan.css');
+@import url('components/cart.css');
+@import url('components/forgotPassword.css');
+@import url('components/resetPassword.css');
+@import url('components/verifyEmail.css');
 @import url('components/sidebar.css');
 @import url('components/dashboardOrders.css');
 @import url('components/product_details_page.css');
@@ -31,6 +36,10 @@
     --dark-grey: #111111;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: 'Lato', sans-serif;
     color: var(--dark-grey);
@@ -42,6 +51,11 @@ body{
 
 a{
     text-decoration: none;
+}
+
+hr{
+    margin: 3px;
+    color: var(--light-green);
 }
 
 /* for the navbar */

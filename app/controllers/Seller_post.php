@@ -19,7 +19,7 @@ public static function create_post(){
     $controller = self::$controller;
    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+        $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
     
         $data = [
             // 'Item_Id'=> trim($_POST['Item_Id']),
@@ -160,10 +160,10 @@ public static function create_post(){
                 // var_dump($products);
                 // header('Location: '.URLROOT.'/Pages/created_post');
                 // exit;
-                 return $controller->view('seller/v_createdpost',$products);
+                 $controller->view('seller/v_createdpost',$products);
 
             }}
-            return $controller->view('seller/v_create_post',$data);
+            $controller->view('seller/v_create_post',$data);
 
             
             // $errors = [
@@ -225,6 +225,7 @@ public static function create_post(){
                 'Description_err' => '',
                 'Unit_type_err' => '',
                 'Image_err' => '',
+                'Invalid_date_err' => '',
             ];
             
             // print_r($data);

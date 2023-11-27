@@ -19,7 +19,8 @@ public function create_post($data){
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Unit_type', $data['Unit_type']); 
     $this->db->bind(':Image', $data['Image']); 
-     return $this->db->execute();
+    $this->db->execute();
+    return true;
 
 }
 

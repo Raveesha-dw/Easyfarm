@@ -1,113 +1,70 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<br>
+<?php //include URLROOT . '/public/css/components/product_view.css';?>
+<?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
 
-<?php
-$productDetails = $data['productInfo'];
-// print_r($productDetails);
-
-$sellerDetails = $data['sellerInfo'];
-// print_r($sellerDetails);
-
-$productReviews = $data['itemReviews'];
-?>
 
 <section id="productDetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+            <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" width="100%" id="MainImg" alt=""> 
         </div>
 
         <div class="single-pro-details">
-            <h6>Home / Plants and Seeds </h6>
-            <h2><?php echo $productDetails->Item_name?></h2>
+            <h6>Home / Fertilizer / Coconut Fertilizer</h6>
+            <h2>Hayleys's Coconut APM(D) Fertilizer</h2>
             <div class="flex-seller-name">
-            <span>Seller: <?php echo $sellerDetails->Store_Name?> , <?php echo $sellerDetails->Store_Adress?></span>
-            </div> 
-        <hr>
-            <div class="price-tag">
-                <h3>Unit Price:<?php echo $productDetails->Unit_price?> LKR / <?php echo $productDetails->Unit_type?> </h3>
-                <!-- <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1"> -->
-            </div>
-        <hr>
-
-        <h4>Delivery Method:</h4>
-
-        <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery</label>
-            </div>
-
-            <div>
-            <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-            <label for="instorepick">In-Store-Pickup</label>
-            </div>
-
-        <!-- <?php
-            $delivery = $sellerDetails->DeliveryMethod; 
-
-            if($delivery == 'In-store Pickup'){
-                ?>
-                <div>
-                <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-                <label for="instorepick">In-Store-Pickup</label>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <?php
-            }
-            elseif($delivery == 'Home Delivery'){
-                ?>
-                <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery </label>
+                <span>Wijitha Fertilizer, Elpitiya, Matara</span>
             </div>
-            <?php
-            }
-            else{
-                ?>
-                 <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery</label>
+            <hr>
+            <div class="price-tag">
+                <h3> 430.00 LKR / 1KG </h3>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
             </div>
+            <hr>
 
-            <div>
-            <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-            <label for="instorepick">In-Store-Pickup</label>
-            </div>
-            <?php
-            }
-            ?> -->
-            
-                <div class="button-area">
-                <a href=""> <Button >BUY NOW</Button> </a>
-
-                    <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
-
-                            <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
-
-                        <?php if (!empty($_SESSION['user_ID'])) : ?>
-
-                            <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
-                            <button type="submit" >ADD TO CART</button>
-                                                        
-                        <?php else : ?>                       
-                            <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button>
-                           
-                        <?php endif; ?>   
-                    </form>
-            
-
-
+            <h4>Delivery Method:</h4>
            
+                <div>
+                  <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
+                  <label for="homedelivery">Home Delivery (+500LKR delivery charges may apply)</label>
+                </div>
+              
+                <div>
+                  <input type="radio" id="instorepick" name="delivery" value="instorepick" />
+                  <label for="instorepick">In-Store-Pickup</label>
+                </div>
+       
+
+            <div class="button-area">
+                <Button >BUY NOW</Button>
+                <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
+                    <input type="hidden" name="unitPrice" value="430.00">
+                    <input type="hidden" name="quantity" value="2">
+                    <input type="hidden" name="itemId" value="12">
+                    <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
+                    <button type="submit">ADD TO CART</button>
+                </form>
+
 
             </div>
-            </div>
-</section>
+            
 
-<section id="productDescription" class="section-p2">
+        </div>
+    </section>
+
+    <section id="productDescription" class="section-p2">
         <h3>Product Details</h3>
         <hr>
-            <p> <?php echo $productDetails->Description ?>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
             </p>
 
             <ul class="custom-list2">
@@ -119,7 +76,6 @@ $productReviews = $data['itemReviews'];
             </ul>
     </section>
 
-    <!-- Change from here onwards -->
     <section id="reviewSection" class="section-p3">
         <div class="no-container">
             <h3>Product Ratings</h3>
@@ -200,14 +156,5 @@ $productReviews = $data['itemReviews'];
             <span class="page-number">3</span>
         </div>
     </section>
-
-    <script>
-        
-        function showRegisterConfirmation() {
-
-             var result = window.confirm("You have to login to the easyFarm .");
-        }
-        
-    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  
