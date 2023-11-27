@@ -326,14 +326,19 @@ class Users extends Controller{
                     if($this->userModel->register($data)){
 
                         // $this->login();
-                        redirect('Users/v_login');
+                        // redirect('Users/v_login');
+                         header("Location:http://localhost/Easyfarm/Pages/seller_home");
                     }
+                    // if($this->userModel->register($data)){
+                    //     // $this->login();
+                    //     redirect('Users/v_login');
+                    // }
                     else{
                         die('Something went wrong');
                     }
                 }
                 else{
-                    $this->view('Users/v_registerSeller', $data);
+                    $this->view('Pages/seller_home');
                 }
 
 

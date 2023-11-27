@@ -4,7 +4,7 @@
 <div class="wrapperBuyer">
     <h1>Register as a Buyer</h1>
     <p class="startText"> Register to <b>EasyFarm</b></p>
-    <form action="<?php echo URLROOT ?>/Users/register" method="POST">
+    <form action="<?php echo URLROOT ?>/Users/register" method="POST">   
         
         <p class="type">Full name<sup>*</sup></p>
         <div class="input-box" >
