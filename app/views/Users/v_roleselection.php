@@ -9,17 +9,18 @@
         <div class="btnList">
             <a href="<?php echo URLROOT ?>/Users/assignUser/Buyer" class="btn">Buyer</a><br>
             <a href="<?php echo URLROOT ?>/Users/assignUser/Seller" class="btn">Seller</a><br>
-            <a href="<?php echo URLROOT ?>/Users/assignUser/AgricultureExpert" class="btn">Agricultural Expert</a><br>
-            <a href="<?php echo URLROOT ?>/Pages/registerVehicleRenter" class="btn">Vehicle Renter</a><br>
+            <a href="<?php echo URLROOT ?>/Users/assignUser/AgriExpert" class="btn">Agricultural Expert</a><br>
+            <a href="<?php echo URLROOT ?>/Users/assignUser/VehicleRenter" class="btn">Vehicle Renter</a><br>
     
         </div>
         
 
 
         <div class="login-link">
-            <p>Already a member? <a href="<?php echo URLROOT ?>/Pages/loginPage"> Login</a></p>
+            <p>Already a member? <a href="<?php echo URLROOT ?>/Users/v_login"> Login</a></p>
             
         </div>
+
     <!-- </form> -->
     </div>
 

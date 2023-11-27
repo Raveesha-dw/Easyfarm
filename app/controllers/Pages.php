@@ -43,6 +43,10 @@ class Pages extends Controller{
         $this->view('Users/v_roleselection');
     }
 
+    // public function loginPage(){
+    //     $this->view('Users/v_login');
+    // }
+
     public function registerBuyer(){
         $this->view('Users/v_registerBuyer');
     }
@@ -53,6 +57,18 @@ class Pages extends Controller{
 
     public function registerSeller(){
         $this->view('Users/v_registerSeller');
+    }
+
+    public function loginPage(){
+        $this->view('Users/v_login');
+    }
+
+    public function privacyPolicy(){
+
+    }
+
+    public function termsOfUse(){
+        
     }
 
     public function profile(){
@@ -68,6 +84,48 @@ class Pages extends Controller{
 
 
 
+    public function dashboard(){
+        if($_SESSION['user_type'] == 'Buyer'){
+            $this->view('Buyer/v_dashboardCart');
+        }
+        if($_SESSION['user_type'] == 'Seller'){
+            $this->view('seller/v_seller_home');
+        }
+    }
+
+    public function dashOrders(){
+        $this->view('Buyer/v_dashboardOrders');
+    }
+
+    public function dashReviews(){
+        $this->view('Buyer/v_dashboardReviews');
+    }
+
+    // Seller functions
+    public function seller_home(){
+        $data = [
+            'title' => 'Seller Dashboard'
+        ];
+        $this->view('seller/v_seller_home');
+    }
+    public function create_post(){
+        $this->view('seller/v_create_post');
+    }
+    public function myplan(){
+        $this->view('seller/v_myplan');
+    
+    }
+    public function created_post(){
+        $this->view('seller/v_createdpost');
+    }
+
+    public function registedSeller(){
+        $this->view('Users/v_registerSeller');
+    }
+
+    public function updateProduct(){
+        $this->view('seller/v_update_post');
+    }
     
 
 }

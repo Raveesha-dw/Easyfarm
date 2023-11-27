@@ -1,0 +1,29 @@
+.buyer-sidebar{
+    background-color: #f3fdf3;
+}
+
+.side{
+    display: flex;
+
+}
+
+.sidebar{
+    width: 250px;
+    background-color: #F8F6F3;
+    padding: 20px;
+
+}
+
+.sidebar a {
+    color: var(--dark-green);
+    text-decoration: none;
+    line-height: 10px;
+    font-size: 25px;
+    font-style: oblique;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.sidebar a:hover {
+    color: darkblue;
+}

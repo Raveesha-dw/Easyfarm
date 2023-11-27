@@ -70,4 +70,12 @@ class M_product{
 
         return $productInfo;
     }
+
+    public function getSellerInfo($sellerID){
+        $this->db->query('SELECT * from reg_seller WHERE U_Id= :sellerID');
+        $this->db->bind(':sellerID', $sellerID);
+        $sellerInfo = $this->db->single();
+
+        return $sellerInfo;
+    }
 }
