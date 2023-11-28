@@ -32,14 +32,15 @@ nav{
     height: 300px;
     background-color: rgb(255, 254, 254);
     height: 0%;
+    display: flex;
 }
-/* .column21{
-    float: right;
-    width: 80%;
+ .cardp{
+    height: 50px;
+    width: 30px;
     padding: 10px;
-    height: 300px;
     background-color: rgb(96, 14, 96);
-} */
+    display: flex;
+}
 .user-pic{
     width: 40px;
     border-radius: 50%;
@@ -111,21 +112,37 @@ nav{
 .sub-menu-link:hover p{
     font-weight: 600;
 }
-.sidebar hr{
+.sidebar-post hr{
     border: 1;
     height: 2px;
     width: 100px;
     background: #ccc;
     margin: 15px 0 10px;
 }
-.sidebar{
-    width: 250px;
+.sidebar-post{
+    width: 20%;
     height: 100%;
+    float: left;
     top: 0;
     left: 0;
     padding: 1px 15px;
     background: #fff;
     
+}
+
+.posts{
+    display: grid;
+    grid-template-columns: (3, 1fr);
+    width: fit-content;
+}
+
+#product-seller-container{
+    grid-template-columns: (3, 1fr);
+    width: auto;   
+}
+
+#product-seller{
+    width: 280px;
 }
 
 ul{
@@ -208,7 +225,7 @@ ul button img{
 } */
 #name1{
     margin-left: 70px;
-     color: rgb(255, 8, 8);
+     color: rgb(246, 5, 5);
 }
 /* #name2{
     margin-left: 80px;
@@ -237,29 +254,39 @@ ul button img{
     background-color: rgb(206, 53, 25);
     border-radius: 10px;
 } */
-.button {
-    display: flex;
+.buttonn {
+    display:flex;
 }
 #btn2{
     margin-left: 70px;
     cursor: pointer;
-    width:80px;
+    /* width:2px; */
+    /* width: 40px !important; */
+    
     height: 30px;
+    width: 40px;
+    
+    
     border: none;
-    background-color: rgb(82, 247, 22);
+    background-color: rgb(30, 195, 30);
     border-radius: 10px;
     margin-right: 10px;
     
-    
+    /* Add these two lines to fix the width problem */
+    /* box-sizing: border-box; This makes the width include the padding and border
+    flex-shrink: 0; This prevents the button from shrinking in a flex container */
 }
-#btn3{
+
+   
+
+#btnv3{
     margin-left: 120px;
     color: rgb(27, 24, 24);
     cursor: pointer;
-    width:80px;
+    width:10px;
     height: 30px;
     border: none;
-    background-color: rgb(230, 21, 21);
+    background-color: rgb(202, 36, 36);
     border-radius: 10px;
     margin-bottom: 30px;
    

@@ -1,13 +1,17 @@
-<?php require APPROOT . '/views/inc/csslinking.php'; ?>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- <?php require APPROOT . '/views/inc/csslinking.php'; ?> -->
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
+
+        
         
         
 
-        <link rel="stylesheet" href="myplan.css">
-    </head>
-    <body>
+       
+    
+    
         <div class="hero">
-            <nav>
+            <!-- <nav>
                 <img src="<?php echo URLROOT?>/public/images/seller/logo.png" alt="" class="logo">
                 <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt="" class="user-pic" onclick="toggleMenu()">
 
@@ -34,8 +38,8 @@
 
                     </div>
                 </div>
-            </nav>
-            <div class ="sidebar">
+            </nav> -->
+            <!-- <div class ="sidebar">
                 <hr>
                 <header>MENU</header>
                 <ul>
@@ -45,7 +49,7 @@
                     <button id ="plan"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">My Plan </button>
                     <button id ="created"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">Created Post</button>
 
-                </ul>
+                </ul> -->
 
             </div>
             <section class="pricing">
@@ -187,5 +191,6 @@
                 subMenu.classList.toggle("open-menu");
             }
         </script>
-        <?php require APPROOT . '/views/inc/footer.php'; ?>  
+
+  <?php require APPROOT . '/views/inc/footer.php'; ?>  
     

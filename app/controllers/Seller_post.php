@@ -15,6 +15,7 @@ class Seller_post extends Controller{
         $this->sellerModel = $this->model('M_seller_post');
         
     }
+   
 public static function create_post(){
     $controller = self::$controller;
    
@@ -23,6 +24,7 @@ public static function create_post(){
     
         $data = [
             // 'Item_Id'=> trim($_POST['Item_Id']),
+            'seller_ID'=> 59,
             'Item_name'=> trim($_POST['Item_name']),
             'Category'=> trim($_POST['Category']),
             'Expiry_date'=> trim($_POST['Expiry_date']),
@@ -46,7 +48,7 @@ public static function create_post(){
             'Image_err' => '',
             
         ];
-        
+        // echo("ksks");
         
 
             if (empty($data['Item_name'])){
@@ -142,6 +144,7 @@ public static function create_post(){
             if(($data['Category'] == 7) && ($data['Unit_type'] == 3)){
                 $data['Unit_type_err'] = 'Please choose the Valid unit type';
             }
+            
             // print_r($data['Unit_type']);
             
             
@@ -150,41 +153,48 @@ public static function create_post(){
             // if (empty($data['Image'])){
             //     $data['Image_err'] = 'Please attach images';
             // }
-            $result = $controller->sellerModel->create_post($data);
+            // $result = $controller->sellerModel->create_post($data);
 
             if(empty($data['Item_name_err'])&&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) && empty($data['Image_err'])){
             
-            if($result == 1  ){
-                $products = $controller->sellerModel->get_data("0");
-                // print($products);
-                // var_dump($products);
-                // header('Location: '.URLROOT.'/Pages/created_post');
-                // exit;
-                 $controller->view('seller/v_createdpost',$products);
+            // if (($result == 1  )){
+            //     $products = $controller->sellerModel->get_data("0");
+            //     // print($products);
+            //     // var_dump($products);
+            //     header('Location: '.URLROOT.'/Pages/created_post');
+            //     // exit;
+            //      $controller->view('seller/v_createdpost',$products);
 
-            }}
-            $controller->view('seller/v_create_post',$data);
+            // }
+            if ($controller->sellerModel->create_post($data)){
+                
+                $data = $controller->sellerModel->get_data($data['seller_ID']);
+                // print_r($data);
+
+                
+                // header("Location:http://localhost/Easyfarm/Pages/created_post");
+                $controller->view('seller/v_createdpost',$data);
+               
+                
+                
+            }
+            else{die('something went wrong');}
+            }
+            else ($controller->view('seller/v_create_post',$data));
+            
 
             
-            // $errors = [
-            //     'Item_name_err' => $data['Item_name_err'],
-            //     'Category_err' => $data['Category_err'],
-            //     'Expiry_date_err' => $data['Expiry_date_err'],
-            //     'Unit_price_err' => $data['Unit_price_err'],
-            //     'Stock_size_err' => $data['Stock_size_err'],
-            //     'DeliveryMethod_err' => $data['DeliveryMethod_err'],
-            //     'Description_err' => $data['Description_err'],
-            //     'Unit_type_err' => $data['Unit_type_err'],
-            //     'Image_err' => $data['Image_err'],
-            // ];
-            // if($errors){
-            //     print_r($errors);
-               
-            // }
             
             
         }
             
+    }
+     
+    
+
+    public static function created_post($data){
+        $controller = self::$controller;
+        $controller->view('seller/v_createdpost', $data);
     }
 
     public static function getposts(){

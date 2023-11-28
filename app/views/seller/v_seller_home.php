@@ -1,8 +1,10 @@
-<?php require APPROOT . '/views/inc/csslinking.php'; ?>
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
  
         <div class="hero">
         
-            <nav>
+            <!-- <nav>
                 <img src="<?php echo URLROOT?>/public/images/seller/logo.png" alt=""  class="logo">
                 <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt="" class="user-pic" onclick="toggleMenu()">
 
@@ -29,15 +31,15 @@
 
                     </div>
                 </div>
-            </nav>
-            <div class ="sidebar">
+            </nav> -->
+            <!-- <div class ="sidebar">
                 <hr>
                 <header>MENU</header>
                 
                 <ul>
                 
                     <button id ="order"><img src="<?php echo URLROOT?>/public/images/seller/order.png" alt="">Order </button>
-                    <!-- <button id ="post"><img src="<?php echo URLROOT?>/public/images/seller/post.png" alt="">Create Post </button> -->
+                    <button id ="post"><img src="<?php echo URLROOT?>/public/images/seller/post.png" alt="">Create Post </button>
                     <button id="post"><img src="<?php echo URLROOT?>/public/images/seller/post.png" alt="">Create Post</button>
 
                     <script>
@@ -53,13 +55,14 @@
                              window.location.href = "http://localhost/Easyfarm/Pages/myplan";
                             });
                     </script>
-                    <button id ="created"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">Created Post</button>
+                    <button  id ="created"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">Created Post</button>
 
                 </ul>
 
-            </div>
-            <?php require APPROOT . '/views/inc/footer.php'; ?> 
+            </div> -->
+           
         </div>
+        <?php require APPROOT . '/views/inc/footer.php'; ?> 
         
         
         <script>

@@ -269,13 +269,13 @@ class Users extends Controller{
                     'password_err'=>'',
                     'confirm-password_err'=>'',
 
-<<<<<<<<< Temporary merge branch 1
+// <<<<<<<<< Temporary merge branch 1
 
 
 
 
-=========
->>>>>>>>> Temporary merge branch 2
+// =========
+// >>>>>>>>> Temporary merge branch 2
                 ];
 
 

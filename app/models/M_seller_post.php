@@ -29,7 +29,7 @@ public function get_data($seller_ID){
     $this->db->bind(':seller_ID', $seller_ID);
     $result=$this->db->resultSet();
     // print_r($result);
-    return $this->db->resultSet();
+    return $result;
     
     // exit();
 
