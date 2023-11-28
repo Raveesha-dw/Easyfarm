@@ -37,35 +37,34 @@ class Cart extends Controller{
                 // If the cart item already exists, update the quantity
                 $data['quantity'] += $existingCartItem->Quantity;
 
-                if ($this->cartModel->updateCartItem(['uId'=>$existingCartItem->U_Id,'quantity' => $data['quantity']])) {
-                    $this->view('pages/cart', $data);                  
+                if ($this->cartModel->updateCartItem(['uId'=>$existingCartItem->U_Id,'quantity' => $data['quantity'] , 'itemId' => $data['itemId']])) {
+                    // $this->view('pages/cart', $data);                  
                 } else {
                     die('Something went wrong while updating the cart item.');
                 }
             } 
             else 
             {
-                if ($this->cartModel->addToCart($data)) {
-                    
-                    $Mitems =$this->cartModel->getAllcartItems($data);
-                    $items = (array) $Mitems;
-                    $data = array();
-                    foreach ($items as $Mitem) {
-                        $viewItem = array();
-                        $item = (array) $Mitem;
-                        $viewItem['quantity'] = $item ['Quantity'];
-                        $viewItem['itemId'] = $item['Item_Id'];
-                        $viewItem['uId'] = $item['U_Id'];
-                        $viewItem['unitPrice'] = $item['Unit_price'];
-                        $viewItem['itemName'] = $item['Item_name'];
-                        array_push($data, $viewItem);
-
-                    }
-                    $this->view('pages/cart', $data);
-                } else {
-                    die('Something went wrong while adding the cart item.');
-                }
+                $this->cartModel->addToCart($data);
+      
             }
+
+            $Mitems =$this->cartModel->getAllcartItems($data);
+            $items = (array) $Mitems;
+            $data = array();
+            foreach ($items as $Mitem) {
+                $viewItem = array();
+                $item = (array) $Mitem;
+                $viewItem['quantity'] = $item ['Quantity'];
+                $viewItem['itemId'] = $item['Item_Id'];
+                $viewItem['uId'] = $item['U_Id'];
+                $viewItem['unitPrice'] = $item['Unit_price'];
+                $viewItem['itemName'] = $item['Item_name'];
+                array_push($data, $viewItem);
+
+            }
+            $this->view('pages/cart', $data);
+            
         }elseif(empty($_SESSION['user_ID'])){  
             $data=[
                 'email' => '',
