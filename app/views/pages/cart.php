@@ -38,7 +38,7 @@
                         
                         if (!empty($cartItems)) {
                             foreach ($cartItems as $cartItem) {
-                                $cartTotal += ($cartItem['quantity'] * $cartItem['unitPrice']);
+                                $cartTotal += ($cartItem->quantity * $cartItem->unitPrice);
                             }
                         }
                     ?>

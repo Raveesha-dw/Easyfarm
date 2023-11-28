@@ -17,7 +17,7 @@
 
 
         <div class="login-link">
-            <p>Already a member? <a href="<?php echo URLROOT ?>/Users/v_login"> Login</a></p>
+            <p>Already a member? <a href="<?php echo URLROOT ?>/Users/login"> Login</a></p>
             
         </div>
 

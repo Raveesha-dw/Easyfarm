@@ -200,10 +200,10 @@ class M_users{
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':otp', $data['otp']);
 
-        $row=$this->db->single();
+        
 
-        if($row){
-            return true;
+        if($row=$this->db->single()){
+            return $row;
         }else{
             return false;
         }
@@ -218,6 +218,7 @@ class M_users{
         $this->db->execute();
     
     }
+
 
 
 }

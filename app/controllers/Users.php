@@ -1,4 +1,16 @@
 <?php
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require APPROOT . '\vendor\autoload.php';
+
+
+
+
 class Users extends Controller{
     private $userModel;
     public function __construct()
@@ -697,50 +709,135 @@ class Users extends Controller{
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
             
-            
-            $data = [
-                'email' => trim($_POST['email']),
-                'otp' =>trim($_POST['OTP']),
+            if(empty($_POST['otp'])){
 
-                'email_err' => '',
-                'otp_err'=> '',
-            ];
-
-            if(empty($data['email'])){
-                $data['email_err'] = 'Please enter an email';
-            }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-                $data['email_err'] = 'Invalid email format';
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'otp' =>'',
+    
+                    'email_err' => '',
+                    'otp_err'=> '',
+                ];
+    
+                if(empty($data['email'])){
+                    $data['email_err'] = 'Please enter an email';
+                }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                    $data['email_err'] = 'Invalid email format';
+                }else{
+                    if(!$this->userModel->findUserByEmail($data['email'])){
+                        $data['email_err'] = 'User account does not exist';
+                    }
+                }
+    
+               
+                if ( empty($data['email_err'])) {
+                    
+                    // generate otp
+                    $characters = '0123456789';
+                    $length = 6;
+                    $otp = '';
+    
+                    for ($i = 0; $i < $length; $i++) {
+                        $otp .= $characters[rand(0, strlen($characters) - 1)];
+                    }
+                    $data['otp'] = $otp;
+    
+                    print_r($data['otp']);
+    
+                    // Save OTP and email in the database
+                    $this->userModel->createToken($data);
+    
+                    // TODO:
+                    // Send OTP to the user's email (you can use a library like PHPMailer for this)
+                    // sendOTPByEmail($email, $otp); // Implement this function to send OTP via email
+                    
+                    $mail = new PHPMailer;      
+                    // Create a new PHPMailer instance
+                    $mail = new PHPMailer(true);
+    
+                    try {
+                        // Server settings
+                        $mail->isSMTP();
+                        $mail->Host       = 'smtp.elasticemail.com';
+                        $mail->SMTPAuth   = true;
+                        $mail->Username   = 'easyfarm123@mail.com'; // Your Elastic Email username
+                        $mail->Password   = '2B780F58D47E2A5866CC1DC9DECA11454EE0';     // Your Elastic Email API key
+                        $mail->SMTPSecure = 'tls';
+                        $mail->Port       = 2525;
+    
+                        // Recipients
+                        $mail->setFrom('easyfarm123@mail.com', 'EasyFarm'); // Sender's email address and name
+                        $mail->addAddress($data['email'], 'Customer'); // Recipient's email address and name
+    
+                        // Content
+                        $mail->isHTML(true);                                  // Set email format to HTML
+                        $mail->Subject = 'Easyfarm - Verifying the Email for reset password';
+                        $mail->Body = 'Your OTP: ' . $data['otp'];
+    
+    
+                        $mail->send();
+                        echo 'Message has been sent';
+                    } catch (Exception $e) {
+                        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                     }
+    
+                }else{
+                    $this->view('Users/v_forgotPassword', $data);
+                }
+    
+    
+                $this->view('Users/v_verifyEmail', $data);
+              
+    
             }else{
-                if(!$this->userModel->findUserByEmail($data['email'])){
-                    $data['email_err'] = 'User account does not exist';
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'otp' =>trim($_POST['otp']),
+
+    
+                    'email_err' => '',
+                    'otp_err'=> '',
+                    'password_err'=>'',
+                    'confirm-password_err'=>'',
+                ];
+
+                // print_r($this->userModel->verifyToken($data));
+
+                // $Mitems =$this->userModel->verifyToken($data);
+                // $items = (array) $Mitems;
+                // $data = array();
+                // foreach ($items as $Mitem) {
+                //     $viewItem = array();
+                //     $item = (array) $Mitem;
+                //     $viewItem['quantity'] = $item ['Quantity'];
+                //     $viewItem['itemId'] = $item['Item_Id'];
+                //     $viewItem['uId'] = $item['U_Id'];
+                //     $viewItem['unitPrice'] = $item['Unit_price'];
+                //     $viewItem['itemName'] = $item['Item_name'];
+                //     array_push($data, $viewItem);
+
+
+                $sendOtp = array() ;
+                if(($sendOtp =$this->userModel->verifyToken($data)) ){
+                    print_r($sendOtp);
+
+                    if(($sendOtp->User_OTP == $data['otp'] )){
+
+                        $this->view('Users/v_resetPassword', $data);
+
+                    }
+
+                   
+
+
+                }else{
+                    $data['otp_err'] = 'Your OTP is invalid';
+
+                    $this->view('Users/v_verifyEmail', $data);
+
                 }
             }
-
-           
-            if ( $this->userModel->findUserByEmail($data)) {
-
-                // generate otp
-                $characters = '0123456789';
-                $length = 6;
-                $otp = '';
-
-                for ($i = 0; $i < $length; $i++) {
-                    $otp .= $characters[rand(0, strlen($characters) - 1)];
-                }
-                $data['otp'] = $otp;
-
-
-                // Save OTP and email in the database
-                $this->userModel->createToken($data);
-
-                // TODO:
-                // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                // sendOTPByEmail($email, $otp); // Implement this function to send OTP via email
-
-            }
-
-            $this->view('Users/v_verifyEmail', $data);
-            // redirect('Users/v_login');
 
 
         }else{
@@ -752,12 +849,11 @@ class Users extends Controller{
                 'otp_err'=> '',
             ];
             $this->view('Users/v_forgotPassword', $data);
-
+    
+    
+            }
 
         }
-    }
-
-
 
 
 
@@ -773,7 +869,7 @@ class Users extends Controller{
 
             $data = [
                 'email'=> trim($_POST['email']),
-                'otp' => $_POST('otp'),
+                'otp' => $_POST['otp'],
                 'password' => trim($_POST['password']),
                 'confirm-password' => trim($_POST['confirm-password']),
 
@@ -804,29 +900,41 @@ class Users extends Controller{
                 }
             }
 
-            if(!$this->userModel->verifyToken($data)){
-                $data['otp_err'] = 'Invalid OTP';
-
-            }
             
             
             
             
-            else{
-            
+            if(empty($data['password_err']) && (empty($data['confirm-password_err'])) ){
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            print_r("kjbaux");
+                print_r($data);
                 // Reset the user's password
                 $this->userModel->PasswordReset($data);
 
                  // Clear the password reset token from the database
                  $this->userModel->clearToken($data);
+                 print_r($data);
 
                  $this->view('pages/home', $data);
 
-            }
+            
+
+        }else{
+            $data = [
+                'email'=> '',
+                'otp' => '',
+                'password' => '',
+                'confirm-password' => '',
+
+                'otp_err'=> '',
+                'password_err'=>'',
+                'confirm-password_err'=>'',
+            ];
+            $this->view('Uses/v_resetPassword', $data);
 
         }
 
-    }
+    }}
 
     public function createUserSession($user){
         $_SESSION['user_ID'] = $user->U_Id;
