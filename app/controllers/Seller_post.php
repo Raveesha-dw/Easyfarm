@@ -8,16 +8,17 @@
 
 class Seller_post extends Controller{
     private $sellerModel;
-    private static $controller;
+    // private static $this;
     public function __construct()
     {
-        self::$controller = $this;
+        // self::$this = $this;
         $this->sellerModel = $this->model('M_seller_post');
         
     }
    
-public static function create_post(){
-    $controller = self::$controller;
+public  function create_post(){
+    // $this = self::$this;
+    
    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -153,34 +154,39 @@ public static function create_post(){
             // if (empty($data['Image'])){
             //     $data['Image_err'] = 'Please attach images';
             // }
-            // $result = $controller->sellerModel->create_post($data);
+            // $result = $this->sellerModel->create_post($data);
 
             if(empty($data['Item_name_err'])&&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) && empty($data['Image_err'])){
             
             // if (($result == 1  )){
-            //     $products = $controller->sellerModel->get_data("0");
+            //     $products = $this->sellerModel->get_data("0");
             //     // print($products);
             //     // var_dump($products);
             //     header('Location: '.URLROOT.'/Pages/created_post');
             //     // exit;
-            //      $controller->view('seller/v_createdpost',$products);
+            //      $this->view('seller/v_createdpost',$products);
 
             // }
-            if ($controller->sellerModel->create_post($data)){
+            if ($this->sellerModel->create_post($data)){
                 
-                $data = $controller->sellerModel->get_data($data['seller_ID']);
+                $data = $this->sellerModel->get_data($data['seller_ID']);
                 // print_r($data);
+                
 
                 
-                // header("Location:http://localhost/Easyfarm/Pages/created_post");
-                $controller->view('seller/v_createdpost',$data);
+                // header("Location:http://localhost/Easyfarm/Seller_post/created_post");
+                // $this->view('seller/v_createdpost',$data);
                
-                
+            //   $this-> created_post($data);
+            // $this->view('seller/v_createdpost', $data);
+            redirect("Seller_post/created_post");
+           
+            print_r("ddf");
                 
             }
             else{die('something went wrong');}
             }
-            else ($controller->view('seller/v_create_post',$data));
+            else ($this->view('seller/v_create_post',$data));
             
 
             
@@ -189,26 +195,31 @@ public static function create_post(){
         }
             
     }
+
+
      
     
 
-    public static function created_post($data){
-        $controller = self::$controller;
-        $controller->view('seller/v_createdpost', $data);
+    public  function created_post(){
+        
+        
+        $data = $this->sellerModel->get_data(('59'));
+        $this->view('seller/v_createdpost', $data);
+       
     }
 
-    public static function getposts(){
-        $controller = self::$controller;
-        $data = $controller->sellerModel->get_data('59');
-        // print_r($data);
-        return $data;
+    // public  function getposts(){
+    //     // $this = self::$this;
+    //     $data = $this->sellerModel->get_data('59');
+    //     // print_r($data);
+    //     return $data;
 
-    }
+    // }
 
-    public static function updatepost(){
+    public  function updatepost(){
         // print_r("Hi");
         // print_r($_GET('id'));
-        $controller = self::$controller;
+        // $this = self::$this;
        
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -276,21 +287,21 @@ public static function create_post(){
                 if (empty($data['Image'])){
                     $data['Image_err'] = 'Please attach images';
                 }
-                $result = $controller->sellerModel->update_data($data);
+                $result = $this->sellerModel->update_data($data);
                 // var_dump($result);
     
                 if(empty($data['Item_name_err'])&&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) && empty($data['Image_err'])){
               
                 if($result == null){
-                    $products = $controller->sellerModel->get_data("0");
+                    $products = $this->sellerModel->get_data("59");
                     // print($products);
                     // var_dump($products);
                     // header('Location: '.URLROOT.'/Pages/created_post');
                     // exit;
-                     $controller->view('seller/v_createdpost',$products);
+                     $this->view('seller/v_createdpost',$products);
     
                 }}
-                return $controller->view('seller/v_create_post',$data);
+                else return $this->view('seller/v_create_post',$data);
     
                 
                 // $errors = [
@@ -318,16 +329,17 @@ public static function create_post(){
         }
         public function delete_product()
         {
-            $controller = self::$controller;
+            // print_r("djd");
+            // $this = self::$this;
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $itemId = $_POST['Item_Id'];
-                $controller->sellerModel->delete_data($itemId);
-                $products = $controller->sellerModel->get_data("0");
+                $this->sellerModel->delete_data($itemId);
+                $products = $this->sellerModel->get_data("59");
                     // print($products);
                     // var_dump($products);
                     // header('Location: '.URLROOT.'/Pages/created_post');
                     // exit;
-                     $controller->view('seller/v_createdpost',$products);
+                     $this->view('seller/v_createdpost',$products);
 
                 // print_r($itemId);
                 // header('Location: ' . URLROOT . '/Pages/created_post');

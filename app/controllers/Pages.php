@@ -28,12 +28,12 @@ class Pages extends Controller{
         $this->view('seller/v_myplan');
     
     }
-    public function createdpost(){
-        $data =[
-            'title' =>'createdpost'
-        ];
-        $this->view('seller/v_createdpost',$data);
-    }
+    // public function createdpost($data){
+    //     $data =[
+    //         'title' =>'createdpost'
+    //     ];
+    //     $this->view('seller/v_createdpost',$data);
+    // }
 
     public function product(){
         $data = [

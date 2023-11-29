@@ -85,9 +85,9 @@
                     
 
                         <div>
-                        <form method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
+                        <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
                             <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
-                            <button onclick="showRemoveConfirmation('<?php echo $product->Item_Id; ?>' )" type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
+                            <button  type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
                         </form>
                         </div>
                     
@@ -101,22 +101,23 @@
         
         
 <script>
-    let subMenu = document.getElementById("subMenu");
-    function toggleMenu(){
-        subMenu.classList.toggle("open-menu");
-    }
+    // let subMenu = document.getElementById("subMenu");
+    // function toggleMenu(){
+    //     subMenu.classList.toggle("open-menu");
+    // }
    
 
     
 
 
     // Function to show the remove confirmation popup
-    function showRemoveConfirmation(Item_Id) {
-        if(confirm('Are you sure you want to delete this item?')) {
+    function showRemoveConfirmation() {
+        return confirm('Are you sure you want to delete this item?'); 
             // Handle item removal here, e.g., by making an AJAX request
                     
             }
-        }
+
+        
 
 </script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>   
