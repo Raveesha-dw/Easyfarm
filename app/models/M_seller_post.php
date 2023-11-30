@@ -18,7 +18,7 @@ public function create_post($data){
     $this->db->bind(':DeliveryMethod', $data['DeliveryMethod']); 
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Unit_type', $data['Unit_type']); 
-    $this->db->bind(':Image', $data['Image']); 
+    $this->db->bind(':Image', $data['Image_name']); 
     $this->db->execute();
     return true;
 

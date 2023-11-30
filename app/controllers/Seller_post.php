@@ -1,11 +1,14 @@
 <!-- use EasyFarm\controllers\Controller; -->
 
 <?php
+include_once APPROOT . '/helpers/image_helper.php';
+
 // namespace MyNamespace;
 // namespace EasyFarm\Controllers;
 // namespace xampp\htdocs\Easyfarm\app\controllers;
 // use EasyFarm\libraries\Controller;
-
+//$fileExtension = strtolower(pathinfo($_FILES["Image"]["name"], PATHINFO_EXTENSION));
+// $foldername ="$URLROOT ./public/images/seller/";
 class Seller_post extends Controller{
     private $sellerModel;
     // private static $this;
@@ -22,7 +25,7 @@ public  function create_post(){
    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-    
+       
         $data = [
             // 'Item_Id'=> trim($_POST['Item_Id']),
             'seller_ID'=> 59,
@@ -35,7 +38,13 @@ public  function create_post(){
             'DeliveryMethod'=>trim($_POST['DeliveryMethod']),
             'Description'=> trim($_POST['Description']),
             'Unit_type'=> trim($_POST['Unit_type']),
-            'Image'=> trim($_POST['Image']),
+            'Image'=> ($_FILES['Image']),
+            'Image_name'=>time().'_'.$_FILES['Image']['name'],
+            
+             
+
+            
+            
 
             'Item_name_err' => '',
             'Category_err' => '',
@@ -49,6 +58,7 @@ public  function create_post(){
             'Image_err' => '',
             
         ];
+        
         // echo("ksks");
         
 
@@ -151,13 +161,15 @@ public  function create_post(){
             
             
             
-            // if (empty($data['Image'])){
+            // if (){
             //     $data['Image_err'] = 'Please attach images';
+
             // }
             // $result = $this->sellerModel->create_post($data);
 
             if(empty($data['Item_name_err'])&&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) && empty($data['Image_err'])){
-            
+                
+                uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/');
             // if (($result == 1  )){
             //     $products = $this->sellerModel->get_data("0");
             //     // print($products);
@@ -172,6 +184,7 @@ public  function create_post(){
                 $data = $this->sellerModel->get_data($data['seller_ID']);
                 // print_r($data);
                 
+                // move_uploaded_file($_FILES[$data["image"]]["tmp_name"],$foldername);
 
                 
                 // header("Location:http://localhost/Easyfarm/Seller_post/created_post");
@@ -181,14 +194,14 @@ public  function create_post(){
             // $this->view('seller/v_createdpost', $data);
             redirect("Seller_post/created_post");
            
-            print_r("ddf");
+            // print_r("ddf");
                 
             }
             else{die('something went wrong');}
             }
             else ($this->view('seller/v_create_post',$data));
             
-
+           
             
             
             

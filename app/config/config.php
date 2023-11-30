@@ -13,3 +13,5 @@ define('URLROOT', 'http://localhost/Easyfarm');
 
 //Site name
 define('SITENAME', 'Easyfarm');
+
+define('PUBROOT', dirname(dirname(dirname(__FILE__))).'\public');

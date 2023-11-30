@@ -4,7 +4,7 @@
 
 
     <div class="shero">
-    <form action="<?php echo URLROOT ?>/Seller_post/create_post" method="POST">
+    <form action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
         <nav>
         <img src="<?php echo URLROOT?>/public/images/seller/logo.png" alt=""  class="logo">
         </nav>

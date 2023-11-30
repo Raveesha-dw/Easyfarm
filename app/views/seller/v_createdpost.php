@@ -58,7 +58,9 @@
                     <div class="product" id="product-seller">
 
                     
-                        <!-- <img src="<?php echo URLROOT?>/public/images/seller/$item['Image']" alt=""class="post1"> -->
+                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo$product->Image;?> " alt=""class="post1">
+                        <!-- <?php echo$product->Image; ?> -->
+                        
                         
 
                         <div class="name">
