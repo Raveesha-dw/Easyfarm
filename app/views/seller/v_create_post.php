@@ -14,7 +14,7 @@
                     <div class ="sitem">
                     <label for="Item"><b>Item</b></label>
                     <br>
-                    <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name"><br/>
+                    <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" required value="<?php echo $data['Item_name'];?>" ><br/>
                     <span class="invalid"><?php if($data){echo $data['Item_name_err'];} ?></span>
                    
                     </div>
@@ -40,7 +40,7 @@
                 <div class ="sdate">
                     <b>Exp</b>
                     <br>
-                    <input id="se_date"  name="Expiry_date"  type="date" placeholder="Enter expire date">
+                    <input id="se_date"  name="Expiry_date"  type="date" placeholder="Enter expire date" >
                     
                     <script>
                         var date =new Date();
@@ -65,7 +65,7 @@
                 <div class="saddress">
                     <b>Address</b>
                     <br>
-                    <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address">
+                    <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address" >
                     
                 </div>
                 <br>
@@ -96,7 +96,7 @@
                 <div class="sprice">
                     <b>Price</b>
                     <br>
-                    <input id="sprice" name="Unit_price" type="number" placeholder="Enter the Price">
+                    <input id="sprice" name="Unit_price" type="number" min=0 Mplaceholder="Enter the Price" required value="<?php echo $data['Unit_price'];?>">
                     <span class="invalid"><?php if($data){echo $data['Unit_price_err'];}  ?></span>
                     
                 </div>
@@ -104,14 +104,14 @@
                 <div class="sstock_size">
                     <b>size</b>
                     <br>
-                    <input id="price" name="Stock_size" type="number" placeholder="Enter stock size">
+                    <input id="price" name="Stock_size" type="number" placeholder="Enter stock size" min=o required value="<?php echo $data['Stock_size'];?>">
                     <span class="invalid"><?php if($data){echo $data['Stock_size_err'];}  ?></span>
                 </div>
                 <br>
                 <div class="sDescription">
                     <b>Descripition</b>
                     <br>
-                    <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion">
+                    <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php echo $data['Description'];?>">
                     <span class="invalid"><?php if($data){echo $data['Description_err'];}  ?></span>
                 </div>
                 <div class="dropdown3">

@@ -17,7 +17,7 @@
                     </div>
                     <script>
                         document.getElementById("post").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Pages/create_post";
+                             window.location.href = "http://localhost/Easyfarm/Seller_post/creating";
                             });
                     </script>
                     <script>
@@ -27,7 +27,7 @@
                     </script>
                     <script>
                         document.getElementById("inventory").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Pages/create_post";
+                             window.location.href = "http://localhost/Easyfarm/Pages/inventory";
                             });
                     </script>
                     <script>

@@ -13,7 +13,6 @@
 } -->
 
 
-
         <div class="hero">
             <!-- <nav>
             <img src="<?php echo URLROOT?>/public/images/seller/logo.png" alt=""  class="logo">
@@ -58,7 +57,7 @@
                     <div class="product" id="product-seller">
 
                     
-                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo$product->Image;?> " alt=""class="post1">
+                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?> " alt=""class="post1">
                         <!-- <?php echo$product->Image; ?> -->
                         
                         
@@ -77,9 +76,9 @@
                             </a>-->
 
                         <div class="buttonn" id="btn2">
-                       
+                        <input  type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
 
-                            <a href="http://localhost/Easyfarm/Pages/updateProduct?id=<?php echo $product->Item_Id;?>">
+                            <a href="http://localhost/Easyfarm/Seller_post/update_Product?id=<?php echo $product->Item_Id;?>">
                             <p>Update</p>
                             </a>
                             

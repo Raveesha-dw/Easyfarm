@@ -28,6 +28,10 @@ class Pages extends Controller{
         $this->view('seller/v_myplan');
     
     }
+    public function inventory(){
+        $this->view('seller/v_inventory');
+    
+    }
     // public function createdpost($data){
     //     $data =[
     //         'title' =>'createdpost'
