@@ -27,7 +27,7 @@
                     </script>
                     <script>
                         document.getElementById("inventory").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Pages/inventory";
+                             window.location.href = "http://localhost/Easyfarm/Inventory/get_inventory_details";
                             });
                     </script>
                     <script>
