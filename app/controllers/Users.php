@@ -673,6 +673,13 @@ class Users extends Controller{
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter your password';
             }
+            
+
+
+            
+
+
+
 
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
@@ -742,7 +749,7 @@ class Users extends Controller{
                     }
                     $data['otp'] = $otp;
     
-                    print_r($data['otp']);
+                    // print_r($data['otp']);
     
                     // Save OTP and email in the database
                     $this->userModel->createToken($data);
@@ -776,8 +783,9 @@ class Users extends Controller{
     
     
                         $mail->send();
-                        echo 'Message has been sent';
-                    } catch (Exception $e) {
+                        // echo 'Message has been sent';
+                    } 
+                    catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                      }
     

@@ -40,7 +40,8 @@ class M_cart{
         $this->db->query('SELECT * FROM cart, item WHERE (U_Id = :uId) and cart.Item_Id = item.Item_Id') ;
         $this->db->bind(':uId', $data['uId']);
             
-        $this->db->execute();
+        $this->db->execute();        $this->db->bind(':itemId', $data['itemId']);   
+
         $rows=$this->db->resultSet();     
         return $rows;
     }
@@ -51,7 +52,6 @@ class M_cart{
     public function updateCartItem($data){
 
         $this->db->query('UPDATE cart SET  Quantity = :quantity WHERE U_Id = :uId AND Item_Id = :itemId');
-        $this->db->bind(':itemId', $data['itemId']);   
         $this->db->bind(':quantity', $data['quantity']);
         $this->db->bind(':uId', $data['uId']);
 

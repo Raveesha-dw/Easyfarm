@@ -64,7 +64,7 @@ class Cart extends Controller{
 
             }
             $this->view('pages/cart', $data);
-            
+            // redirect('Cart/checkout');
         }elseif(empty($_SESSION['user_ID'])){  
             $data=[
                 'email' => '',
@@ -75,7 +75,10 @@ class Cart extends Controller{
             ];
             $this->view('Users/v_login', $data);
 
+            // redirect('Users/v_login');
+
         }else {
+            // redirect('pages/cart');
             $data = [
                 'unitPrice' => '',
                 'quantity' => '',

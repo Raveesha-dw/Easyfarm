@@ -91,7 +91,9 @@ $productReviews = $data['itemReviews'];
                             <button type="submit" >ADD TO CART</button>
                                                         
                         <?php else : ?>                       
-                            <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button>
+                            <!-- <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button> -->
+                            <button type="submit">ADD TO CART</button>
+                            
                            
                         <?php endif; ?>   
                     </form>
@@ -206,6 +208,13 @@ $productReviews = $data['itemReviews'];
         function showRegisterConfirmation() {
 
              var result = window.confirm("You have to login to the easyFarm .");
+            //  if (result){
+            //     redirect();
+            //     window.location.href = "<?php echo URLROOT; ?>/Users/login";
+            //  }
+            //  else{
+            //     return false;
+            //  }
         }
         
     </script>
