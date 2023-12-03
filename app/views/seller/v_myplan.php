@@ -184,6 +184,7 @@
           
           </select>
         </div>
+            </section>
         
         <script>
             let subMenu = document.getElementById("subMenu");
