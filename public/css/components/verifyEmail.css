@@ -14,6 +14,11 @@
     text-align: center;
 }
 
+.wrapper_Verify_Email .resendOtp{
+    display: inline;
+    color: brown;
+}
+
 .wrapper_Verify_Email .input-box {
     position: relative;
     width: 100%;

@@ -751,43 +751,44 @@ class Users extends Controller{
     
                     // print_r($data['otp']);
     
-                    // Save OTP and email in the database
-                    $this->userModel->createToken($data);
+                    // Save OTP, email, and expiration time in the database
+                    $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
+                    $this->userModel->createToken($data, $expirationTime);
     
                     // TODO:
                     // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                    // sendOTPByEmail($email, $otp); // Implement this function to send OTP via email
+                    $this->sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
                     
-                    $mail = new PHPMailer;      
-                    // Create a new PHPMailer instance
-                    $mail = new PHPMailer(true);
+                    // $mail = new PHPMailer;      
+                    // // Create a new PHPMailer instance
+                    // $mail = new PHPMailer(true);
     
-                    try {
-                        // Server settings
-                        $mail->isSMTP();
-                        $mail->Host       = 'smtp.elasticemail.com';
-                        $mail->SMTPAuth   = true;
-                        $mail->Username   = 'easyfarm123@mail.com'; // Your Elastic Email username
-                        $mail->Password   = '2B780F58D47E2A5866CC1DC9DECA11454EE0';     // Your Elastic Email API key
-                        $mail->SMTPSecure = 'tls';
-                        $mail->Port       = 2525;
+                    // try {
+                    //     // Server settings
+                    //     $mail->isSMTP();
+                    //     $mail->Host       = 'smtp.elasticemail.com';
+                    //     $mail->SMTPAuth   = true;
+                    //     $mail->Username   = 'easyfarm123@mail.com'; // Your Elastic Email username
+                    //     $mail->Password   = '2B780F58D47E2A5866CC1DC9DECA11454EE0';     // Your Elastic Email API key
+                    //     $mail->SMTPSecure = 'tls';
+                    //     $mail->Port       = 2525;
     
-                        // Recipients
-                        $mail->setFrom('easyfarm123@mail.com', 'EasyFarm'); // Sender's email address and name
-                        $mail->addAddress($data['email'], 'Customer'); // Recipient's email address and name
+                    //     // Recipients
+                    //     $mail->setFrom('easyfarm123@mail.com', 'EasyFarm'); // Sender's email address and name
+                    //     $mail->addAddress($data['email'], 'Customer'); // Recipient's email address and name
     
-                        // Content
-                        $mail->isHTML(true);                                  // Set email format to HTML
-                        $mail->Subject = 'Easyfarm - Verifying the Email for reset password';
-                        $mail->Body = 'Your OTP: ' . $data['otp'];
+                    //     // Content
+                    //     $mail->isHTML(true);                                  // Set email format to HTML
+                    //     $mail->Subject = 'Easyfarm - Verifying the Email for reset password';
+                    //     $mail->Body = 'Your OTP: ' . $data['otp'];
     
     
-                        $mail->send();
-                        // echo 'Message has been sent';
-                    } 
-                    catch (Exception $e) {
-                        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                     }
+                    //     $mail->send();
+                    //     // echo 'Message has been sent';
+                    // } 
+                    // catch (Exception $e) {
+                    //     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                    //  }
     
                 }else{
                     $this->view('Users/v_forgotPassword', $data);
@@ -810,6 +811,7 @@ class Users extends Controller{
                     'confirm-password_err'=>'',
                 ];
 
+
                 // print_r($this->userModel->verifyToken($data));
 
                 // $Mitems =$this->userModel->verifyToken($data);
@@ -826,25 +828,42 @@ class Users extends Controller{
                 //     array_push($data, $viewItem);
 
 
-                $sendOtp = array() ;
-                if(($sendOtp =$this->userModel->verifyToken($data)) ){
-                    print_r($sendOtp);
 
-                    if(($sendOtp->User_OTP == $data['otp'] )){
 
-                        $this->view('Users/v_resetPassword', $data);
+                $tokenData = $this->userModel->verifyToken($data);
+                print_r($tokenData );
 
-                    }
+                if ($tokenData && $tokenData->User_OTP == $data['otp'] && time() <= $tokenData->ExpirationTime) {
+                    // Token is valid and not expired
+                    $this->view('Users/v_resetPassword', $data);
+                } else {
+                    // Token is invalid or expired
+                    $data['otp_err'] = 'Your OTP is invalid or expired';
+                    $this->view('Users/v_verifyEmail', $data);
+                }
+
+
+
+
+                // $sendOtp = array() ;
+                // if(($sendOtp =$this->userModel->verifyToken($data)) ){
+                //     print_r($sendOtp);
+
+                //     if(($sendOtp->User_OTP == $data['otp'] )){
+
+                //         $this->view('Users/v_resetPassword', $data);
+
+                //     }
 
                    
 
 
-                }else{
-                    $data['otp_err'] = 'Your OTP is invalid';
+                // }else{
+                //     $data['otp_err'] = 'Your OTP is invalid';
 
-                    $this->view('Users/v_verifyEmail', $data);
+                //     $this->view('Users/v_verifyEmail', $data);
 
-                }
+                // }
             }
 
 
@@ -862,6 +881,39 @@ class Users extends Controller{
             }
 
         }
+     private function sendOTPByEmail($email, $otp){
+        $mail = new PHPMailer;      
+        // Create a new PHPMailer instance
+        $mail = new PHPMailer(true);
+
+        try {
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.elasticemail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'easyfarm123@mail.com'; // Your Elastic Email username
+            $mail->Password   = '2B780F58D47E2A5866CC1DC9DECA11454EE0';     // Your Elastic Email API key
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 2525;
+
+            // Recipients
+            $mail->setFrom('easyfarm123@mail.com', 'EasyFarm'); // Sender's email address and name
+            $mail->addAddress($email, 'Customer'); // Recipient's email address and name
+
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Easyfarm - Verifying the Email for reset password';
+            $mail->Body = 'Your OTP: ' . $otp;
+
+
+            $mail->send();
+            // echo 'Message has been sent';
+        } 
+        catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+         }
+
+     }
 
 
 

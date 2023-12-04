@@ -186,11 +186,13 @@ class M_users{
 
     }
 
-    public function createToken($data){
+    public function createToken($data, $expirationTime){
 
-        $this->db->query('UPDATE user SET User_OTP= :otp WHERE Email= :email');
+        $this->db->query('UPDATE user SET User_OTP= :otp, expirationTime=:expirationTime  WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':otp', $data['otp']);
+        $this->db->bind(':expirationTime', $expirationTime);
+
         $this->db->execute();
     
     }
