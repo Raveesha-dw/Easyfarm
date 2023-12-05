@@ -1,30 +1,5 @@
-*{
-    margin:0;
-    padding: 0;
-    font-family: 'Poppins',sans-serif;
-    box-sizing: border-box;
-}
-.hero{
-    width: 100%;
-    min-height: 100vh;
-    background: #f8f9f3;
-    color: #525252;
-}
 
-nav{
-    background: #ffffff;
-    width: 100%;
-    padding: 10px 2%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    height: 100px;
-}
-.logo{
-    width: 150px;
-    height: 50px;
-}
+
 .column12{
     float: left;
     width: 20%;
@@ -34,84 +9,12 @@ nav{
     height: 0%;
     display: flex;
 }
- .cardp{
-    height: 50px;
-    width: 30px;
-    padding: 10px;
-    background-color: rgb(96, 14, 96);
-    display: flex;
-}
-.user-pic{
-    width: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 30px;
-}
-.sub-menu-wrap{
-    position: absolute;
-    top:100%;
-    right: 10%;
-    width: 320px;
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.5s;
-}
-.sub-menu-wrap.open-menu{
-    max-height: 400px;
-}
-.sub-menu{
-    background: #fff;
-    padding: 20px;
-    margin: 10px;
-}
-.user-info{
-    display: flex;
-    align-items: center;
-}
-.user-info h3{
-    font-weight: 500;
-}
-.user-info img{
-    width: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-.sub-menu hr{
-    border: 1;
-    height: 1px;
-    width: 100%;
-    background: #ccc;
-    margin: 15px 0 10px;
-}
+ 
 
-.sub-menu-link{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #525252;
-    margin: 12px 0;
-}
-.sub-menu-link p{
-    width: 100%;
-} 
-.sub-menu-link img{
-    width: 40px;
-    background: #e5e5e5;
-    border-radius: 50%;
-    padding: 8px;
-    margin-right: 15px;
-} 
-.sub-menu-link span{ 
-    font-size: 22px;
-    transition: transform 0.5s;
-}
-.sub-menu-link:hover span{
 
-    transform: translateX(5px);
-}
-.sub-menu-link:hover p{
-    font-weight: 600;
-}
+
+
+
 .sidebar-post hr{
     border: 1;
     height: 2px;
@@ -130,10 +33,12 @@ nav{
     
 }
 
-.posts{
+.poost1{
     display: grid;
     grid-template-columns: (3, 1fr);
-    width: fit-content;
+    width: 250px;
+    height:200px;
+    border-radius: 4%;
 }
 
 #product-seller-container{
@@ -150,175 +55,67 @@ ul{
     padding: 0 15px;
 }
 
-ul button{
-    margin: 30px 0;
+
+ 
+
+
+.productt{
+    /* width: 23%; */
+    width: fit-content;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    background-color: white;
+    position: relative;
+    align-items: center;
+    
+}
+.button-n{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+    /* height: 30px; */
+    /* width: 50px; */
     cursor: pointer;
-    width: 150px;
-    border-radius: 12px;
-    height: 40px;
-    border: none;
-
 }
 
-ul button img{
-    width: 30px;
-    margin-right: 10px;
-    margin-left: 5px;
+#namee1{
+    /* top:100px; */
+    margin-left: 15px;
+    color: rgb(58, 237, 70);
+    display: flex;
+}
+.name{
+    margin-top: 40px;
+    display: flex;
 }
 
-#order:hover{
-    font-weight: 600;
-    background-color:rgb(185, 245, 190);
-    
-}
-#post:hover{
-    font-weight: 600;
-    background-color:rgb(185, 245, 190);
-    
-}
-#inventory:hover{
-    font-weight: 600;
-    background-color:rgb(185, 245, 190);
-    
-}
-#plan:hover{
-    font-weight: 600;
-    background-color:rgb(185, 245, 190);
-   
-}
-
-#created:hover{
-    font-weight: 600;
-    background-color:rgb(185, 245, 190);
-   
-}
- .post1 img {
-    width: 300px;
-    height:300px;
-    margin-left: 400px;
-    /* margin-top: -300px; */
-    
- } 
- /* .post2 img {
-    width:300px;
-    height:300px;
-    margin-left: 1000px;
-    
-}  */
-.post1{
-    width: 300px;
-    margin-bottom: 30px;
-    margin-left: 70px;
-}
-/* .post2{
-    width: 300px;
-    margin-left: 70px;
-    margin-bottom: 30px;
-} */
-/* .post3{
-    width: 300px;
-    margin-left: 70px;
-    margin-bottom: 30px;
-} */
-#name1{
-    margin-left: 70px;
-     color: rgb(246, 5, 5);
-}
-/* #name2{
-    margin-left: 80px;
-    color: rgb(190, 9, 9);
-}
-#name3{
-    margin-left: 65px;
-    color: rgb(190, 9, 9);
-} */
 #price1{
     margin-left: 180px;
-}
-/* #price2{
-    margin-left: 180px;
-}
-#price3{
-    margin-left: 180px;
-} */
-/* #btn1{
-    margin-left: 70px;
-    color: rgb(10, 10, 10);
-    cursor: pointer;
-    width:80px;
-    height: 30px;
-    border: none;
-    background-color: rgb(206, 53, 25);
-    border-radius: 10px;
-} */
-.buttonn {
-    display:flex;
-}
-#btn2{
-    margin-left: 70px;
-    cursor: pointer;
-    /* width:2px; */
-    /* width: 40px !important; */
-    
-    height: 30px;
-    width: 40px;
-    
-    
-    border: none;
-    background-color: rgb(30, 195, 30);
-    border-radius: 10px;
-    margin-right: 10px;
-    
-    /* Add these two lines to fix the width problem */
-    /* box-sizing: border-box; This makes the width include the padding and border
-    flex-shrink: 0; This prevents the button from shrinking in a flex container */
+    color: rgb(238, 0, 255);
+    display: flex;
 }
 
-   
+
+
+.button-n .btn2{
+    background-color: aquamarine;
+}
+
 
 #btnv3{
-    margin-left: 120px;
     color: rgb(27, 24, 24);
-    cursor: pointer;
-    width:10px;
-    height: 30px;
-    border: none;
-    background-color: rgb(202, 36, 36);
     border-radius: 10px;
-    margin-bottom: 30px;
+    background-color: rgb(202, 36, 36);
+   
    
 }
 
 
-/* #btn4{
-    margin-left: 140px;
-    cursor: pointer;
-    width:80px;
-    height: 30px;
-    border: none;
-    background-color: rgb(25, 206, 43);
-    border-radius: 10px;
-} */
-/* #btn5{
-    margin-left: 80px;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    width:80px;
-    height: 30px;
-    border: none;
-    background-color: rgb(206, 53, 25);
-    border-radius: 10px;
-} */
-/* #btn6{
-    margin-left: 140px;
-    cursor: pointer;
-    width:80px;
-    height: 30px;
-    border: none;
-    background-color: rgb(25, 206, 43);
-    border-radius: 10px;
-}
- */
+
+

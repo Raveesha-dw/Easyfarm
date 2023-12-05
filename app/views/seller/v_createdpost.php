@@ -54,16 +54,17 @@
                 <?php $products =$data; ?>
                 <?php foreach($products as $product) : ?>
                   
-                    <div class="product" id="product-seller">
+                    <div class="productt" id="product-seller">
 
                     
-                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?> " alt=""class="post1">
+                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?> " alt="" class="poost1">
                         <!-- <?php echo$product->Image; ?> -->
                         
                         
 
                         <div class="name">
-                            <b id="name1"> <?php echo $product->Item_Id;?> </b> 
+                            
+                            <b id="namee1"> <?php echo $product->Item_Id;?> </b> 
                              <b id="price1"> <?php echo  $product->Unit_price;?> </b> 
 
                             
@@ -74,24 +75,19 @@
                             <a href="http://localhost/Easyfarm/Pages/updateProduct?id=<?php echo $product->Item_Id;?>">
                             <button id="btn2" >Update</button>
                             </a>-->
+                        
+                            <div class="button-n">
+                                <input  type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
 
-                        <div class="buttonn" id="btn2">
-                        <input  type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
-
-                            <a href="http://localhost/Easyfarm/Seller_post/update_Product?id=<?php echo $product->Item_Id;?>">
-                            <p>Update</p>
-                            </a>
-                            
-                        </div>
-                    
-
-                        <div>
-                        <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
-                            <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
-                            <button  type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
-                        </form>
-                        </div>
-                    
+                                    <button class ="btn2"><a   href="http://localhost/Easyfarm/Seller_post/update_Product?id=<?php echo $product->Item_Id;?>">update</a></button>
+                                    <!-- <p>Update  </p>
+                                    </a> -->
+                                <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
+                                    <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
+                                    <button  type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
+                                </form>
+                            </div>
+                        
                     </div>
                 <?php endforeach ?>  
             </div>
