@@ -32,35 +32,13 @@ nav{
     cursor: pointer;
     margin-left: 30px;
 }
-.sub-menu-wrap{
-    position: absolute;
-    top:100%;
-    right: 10%;
-    width: 320px;
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.5s;
-}
-.sub-menu-wrap.open-menu{
-    max-height: 400px;
-}
+
 .sub-menu{
     background: #fff;
     padding: 20px;
     margin: 10px;
 }
-.user-info{
-    display: flex;
-    align-items: center;
-}
-.user-info h3{
-    font-weight: 500;
-}
-.user-info img{
-    width: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
+
 .sub-menu hr{
     border: 1;
     height: 1px;
@@ -165,9 +143,52 @@ ul button img{
    
 }
 
-
-
-
-m-img{
-    display: flex;
+.msg-box{
+    background-color: aquamarine;
+     width: 1300px;
+     
+    
+     /* left: 200px; */
+     right: 2px;
+    /* height: 200px;  */
+    /* padding-left: 200px; */
+    /* padding-top: 200px; */
 }
+.m-header{
+    background-color: black;
+    color: #ffffff;
+    align-items:center;
+    display: flex;
+    /* justify-content: space-between; */
+    padding-left: 10px;
+   
+}
+.msg-ID{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+/* .msg-date{
+    display: inline-flex;
+
+} */
+.m-img img {
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the image circular */
+}
+.msg-date {
+    margin-top: 5px;
+    padding-left: 15px;
+    
+}
+.button-msg .dd{
+    background-color: rgb(228, 20, 20);
+     margin-left: 800px; 
+    margin-bottom: 12; 
+    /* padding-left: 400px; */
+    /* display: flex; */
+    /* width: 100px; */
+}
+
+
