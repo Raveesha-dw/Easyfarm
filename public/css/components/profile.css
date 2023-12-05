@@ -1,0 +1,53 @@
+
+.wrapperProfile {
+    width: 75%;
+    background-color: transparent;
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.wrapperProfile .wrapperProfile_sub{
+    /* width :max-content; */
+    background-color: transparent;
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+    /* display: flex; */
+    float: left;
+    width: 50%;
+
+  }
+.column2 {
+    /* display: flex; */
+    float: right;
+    width: 50%;
+  
+  }
+  
+  
+  /* Clear floats after the columns */
+  .wrapperProfile .wrapperProfile_sub .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.wrapperProfile h1 {
+    font-size: 20px;
+    text-align: center;
+}
+
+
+

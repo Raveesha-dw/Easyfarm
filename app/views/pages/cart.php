@@ -141,6 +141,9 @@
     // Function to show the remove confirmation popup
     function showRemoveConfirmation(itemId) {
         if (confirm('Are you sure you want to remove this item from your cart?')) {
+            
+            window.location.href = '<?php echo URLROOT ?>/Cart/deleteItem?itemId=' + itemId;
+
             // Handle item removal here, e.g., by making an AJAX request
             let itemRow = document.querySelector(`tr[data-item-id="${itemId}"]`);
             if (itemRow) {

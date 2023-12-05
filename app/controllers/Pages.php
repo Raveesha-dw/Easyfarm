@@ -75,7 +75,7 @@ class Pages extends Controller{
     }
 
     public function profile(){
-        //
+        $this->view('pages/profile');
     }
 
     public function dashboard(){
