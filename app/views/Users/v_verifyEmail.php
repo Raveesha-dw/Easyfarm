@@ -9,18 +9,21 @@
         <p class="start">* Enter verification code </p>
            
         <div class="input-box">
-        <input type="text" name="otp" placeholder="Enter verification code send to the email " required>
+            <input type="text" name="otp" placeholder="Enter verification code send to the email " required>
             <i class='bx bxs-lock-open-alt'></i>
             <span class="invalid"><?php echo $data['otp_err']; ?></span>
         </div>
 
+
         <input type="hidden" name="email" value="<?php echo $data['email']; ?>">
                                               
         <div class="resendOtp">
-             <a href="#">Resend OTP</a>
+        
+             <a href="<?php echo URLROOT ?>/Users/forgotPassword?email=<?php echo $data['email']; ?>" >Resend OTP</a>
         </div>
         
-        <button type="submit" class="btn" >Send</button>
+        <button type="submit" class="btn" >Next</button>
+        
 
     </form>
 </div>

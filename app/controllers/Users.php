@@ -737,7 +737,7 @@ class Users extends Controller{
                     
                     $data['otp'] = generate_Otp();
     
-    
+    print_r($data['otp'] );
                     // Save OTP, email, and expiration time in the database
                     $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
                     $this->userModel->createToken($data, $expirationTime);
@@ -800,7 +800,35 @@ class Users extends Controller{
                 'email_err' => '',
                 'otp_err'=> '',
             ];
-            $this->view('Users/v_forgotPassword', $data);
+
+
+
+            if(!empty($_GET['email'])){
+                $data['email'] = $_GET['email'];
+                
+                $data['otp'] = generate_Otp();
+    
+                print_r($data['otp'] );
+                // Save OTP, email, and expiration time in the database
+                $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
+                $this->userModel->createToken($data, $expirationTime);
+
+             
+                // Send OTP to the user's email (you can use a library like PHPMailer for this)
+                sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
+                
+                $this->view('Users/v_verifyEmail', $data);
+
+
+
+            }else{
+                $this->view('Users/v_forgotPassword', $data);
+
+            }
+
+
+
+    
     
     
             }
