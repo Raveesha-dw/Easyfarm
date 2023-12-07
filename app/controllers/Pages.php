@@ -74,9 +74,9 @@ class Pages extends Controller{
         
     }
 
-    public function profile(){
-        $this->view('pages/profile');
-    }
+    // public function profile(){
+    //     $this->view('pages/profile');
+    // }
 
     public function dashboard(){
         if($_SESSION['user_type'] == 'Buyer'){

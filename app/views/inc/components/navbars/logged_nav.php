@@ -35,10 +35,19 @@
                     <div class="profile-menu-wrap" id="sub-menu">
                         <div class="user-menu">
                             <div class="user-info">
-                                <a href="<?php echo URLROOT?>/Pages/Profile" class="sub-link-menu">
-                                    <h2>View Profile</h2>
-                                    <span>></span>
-                                </a>
+                    
+                                <!-- <form action="<?php echo URLROOT ?>/Profile/viewProfile" method="POST" class="sub-link-menu">> -->
+                                <a href="<?php echo URLROOT?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>" class="sub-link-menu">
+                                    <!-- <input type="hidden" name="user_type" value=<?php echo $_SESSION['user_type']; ?>> -->
+                                    <!-- <input type="hidden" name="email" value=<?php echo $_SESSION['user_email']; ?>> -->
+                                    <!-- <input type="hidden" name="U_Id" value=<?php echo $_SESSION['U_Id']; ?>> -->
+
+
+                                    
+                                        <h2>View Profile</h2>
+                                        <span>></span>
+                                    </a>
+                                <!-- </form> -->
 
                                 <?php
                                 $usertype = $_SESSION['user_type']

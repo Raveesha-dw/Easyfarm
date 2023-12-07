@@ -35,6 +35,12 @@
     width: 50%;
   
   }
+  .column3 {
+    /* display: flex; */
+    float: right;
+    width: 50%;
+  
+  }
   
   
   /* Clear floats after the columns */
