@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <?php $products=$data; ?>
 <?php foreach ($products as $product) : ?>
 
@@ -35,27 +35,31 @@
 
                             </div>
                             <div class="button-msg">
-                                    <button class ="dd"  onclick="changeText()">APPOROVE</button>
+                                    <button class ="dd"  onclick="changeText(this)">APPOROVE</button>
                             </div>
-                            <script>
-                                   function changeText() {
-                                   var button = document.querySelector('.button-msg .dd');
-                                    button.textContent = "APPROVED";
-                                    button.style.backgroundColor = "green";
-                                    }
-                                    
-                            </script>
+                            
        </div>
         
  </div> 
 
  <?php  endforeach;?>
- <!-- <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt=""> -->
+                            <script>
+                                   function changeText(button) {
+                                   // var button = document.querySelector('.button-msg .dd');
+                                    button.textContent = "APPROVED";
+                                    button.style.backgroundColor = "green";
+                                    }
+                                    
+                            </script>
+                           
+ 
 
+ <br></br>
  <br></br>
  
 
 <?php require APPROOT . '/views/inc/footer.php';?>  
+                            
         
         
         
