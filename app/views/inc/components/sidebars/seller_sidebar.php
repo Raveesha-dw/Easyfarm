@@ -22,7 +22,7 @@
                     </script>
                     <script>
                         document.getElementById("order").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Pages/seller_home";
+                             window.location.href = "http://localhost/Easyfarm/Seller_home/get_product_details";
                             });
                     </script>
                     <script>

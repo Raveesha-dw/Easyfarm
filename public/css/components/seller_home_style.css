@@ -30,10 +30,7 @@
     flex-direction: column;
     margin-left: 10px;
 }
-/* .msg-date{
-    display: inline-flex;
 
-} */
 .m-img img {
     width: 50px; /* Adjust width as needed */
     height: 50px; /* Adjust height as needed */
@@ -48,10 +45,7 @@
     background-color: rgb(228, 20, 20);
      margin-left: 800px; 
      cursor: pointer;
-    /* margin-bottom: 1300px;  */
-    /* padding-left: 400px; */
-    /* display: flex; */
-    /* width: 100px; */
+    
 }
 
 /* .button-msg{
