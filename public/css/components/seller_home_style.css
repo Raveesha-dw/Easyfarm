@@ -41,13 +41,18 @@
     padding-left: 15px;
     
 }
-.button-msg.dd{
+/* .button-msg.dd{
     background-color: rgb(193, 35, 35);
-     margin-left: 800px; 
+     margin-left: 8000px; 
      width: 10px;
      cursor: pointer;
-     /* height: 50px; */
     
+    
+} */
+
+.dd{
+    background-color: rgb(193, 35, 35);
+    margin-left: 800px; 
 }
 /* a.dd{
     width: 59px;

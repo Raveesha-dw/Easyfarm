@@ -4,11 +4,11 @@ private $db;
 public function __construct(){
     $this->db=new Database();
 }
-
+// AND  orders.Status='Pending'
 public function get_itemids($seller_ID){
     // colum name=variable
     $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
-                    INNER JOIN reg_buyer ON  orders.User_ID=reg_buyer.U_Id WHERE orders.seller_ID = :seller_ID AND  orders.Status='Pending'");
+                    INNER JOIN reg_buyer ON  orders.User_ID=reg_buyer.U_Id WHERE orders.seller_ID = :seller_ID ");
     $this->db->bind(':seller_ID', $seller_ID);
     $this->db->execute();
     //varibale= parameter

@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <?php $products=$data; ?>
 <?php foreach ($products as $product) : ?>
 
@@ -36,7 +36,7 @@
                             </div>
                             <div class="button-msg">
                             
-                            <button class="dd"> <a href="http://localhost/Easyfarm/Seller_home/update_status?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" >APPROVE  </a> </button>
+                            <button class="dd"> <a href="http://localhost/Easyfarm/Seller_home/update_status?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" ><?php echo $product->Status; ?> </a> </button>
 
                                      <!--   -->
                             </div>
@@ -46,7 +46,7 @@
  </div> 
 
  <?php  endforeach;?>
-                            <script>
+                            <!-- <script>
                                    
                                    console.log(data);
                                    function changeText(button) {
@@ -55,7 +55,7 @@
                                    //  button.style.backgroundColor = "green";
                                     }
                                    
-                            </script>
+                            </script> -->
                            
  
 
