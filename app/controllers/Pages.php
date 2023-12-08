@@ -12,7 +12,32 @@ class Pages extends Controller{
         ];
         
         $this->view('pages/home', $data);
+
     }
+
+    public function seller_home(){
+        $data = [
+            'title' => 'Seller Dashboard'
+        ];
+        $this->view('seller/v_seller_home', $data);
+    }
+    public function create_post(){
+        $this->view('seller/v_create_post');
+    }
+    public function myplan(){
+        $this->view('seller/v_plan');
+    
+    }
+    public function inventory(){
+        $this->view('seller/v_inventory');
+    
+    }
+    // public function createdpost($data){
+    //     $data =[
+    //         'title' =>'createdpost'
+    //     ];
+    //     $this->view('seller/v_createdpost',$data);
+    // }
 
     public function product(){
         $data = [
@@ -21,12 +46,12 @@ class Pages extends Controller{
         $this->view('pages/product', $data);
     }
     
-    public function cart(){
-        $data = [
-            'title' => 'Cart'
-        ];
-        $this->view('pages/cart', $data);
-    }
+    // public function cart(){
+    //     $data = [
+    //         'title' => 'Cart'
+    //     ];
+    //     $this->view('pages/cart', $data);
+    // }
 
     public function about(){
         $data = [
@@ -74,9 +99,18 @@ class Pages extends Controller{
         
     }
 
-    // public function profile(){
-    //     $this->view('pages/profile');
-    // }
+    public function profile(){
+        //
+    }
+    public function registedSeller(){
+        $this->view('Users/v_registerSeller');
+    }
+
+    public function updateProduct(){
+        $this->view('seller/v_update_post');
+    }
+
+
 
     public function dashboard(){
         if($_SESSION['user_type'] == 'Buyer'){
@@ -96,30 +130,30 @@ class Pages extends Controller{
     }
 
     // Seller functions
-    public function seller_home(){
-        $data = [
-            'title' => 'Seller Dashboard'
-        ];
-        $this->view('seller/v_seller_home');
-    }
-    public function create_post(){
-        $this->view('seller/v_create_post');
-    }
-    public function myplan(){
-        $this->view('seller/v_myplan');
+    // public function seller_home(){
+    //     $data = [
+    //         'title' => 'Seller Dashboard'
+    //     ];
+    //     $this->view('seller/v_seller_home');
+    // }
+    // public function create_post(){
+    //     $this->view('seller/v_create_post');
+    // }
+    // public function myplan(){
+    //     $this->view('seller/v_myplan');
     
-    }
-    public function created_post(){
-        $this->view('seller/v_createdpost');
-    }
+    // }
+    // public function created_post(){
+    //     $this->view('seller/v_createdpost');
+    // }
 
-    public function registedSeller(){
-        $this->view('Users/v_registerSeller');
-    }
+    // public function registedSeller(){
+    //     $this->view('Users/v_registerSeller');
+    // }
 
-    public function updateProduct(){
-        $this->view('seller/v_update_post');
-    }
+    // public function updateProduct(){
+    //     $this->view('seller/v_update_post');
+    // }
 
 
 }

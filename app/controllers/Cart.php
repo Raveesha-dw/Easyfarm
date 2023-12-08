@@ -13,14 +13,40 @@ class Cart extends Controller{
     }
 
 
+    public function showCart() {
 
+        $data = [
+            'quantity' => '', 
+            'itemId' => '', 
+            'uId' => $_SESSION['user_ID'], 
+            
+        ];
+
+
+        $Mitems =$this->cartModel->getAllcartItems($data);
+        $items = (array) $Mitems;
+        $data = array();
+        foreach ($items as $Mitem) {
+            $viewItem = array();
+            $item = (array) $Mitem;
+            $viewItem['quantity'] = $item ['Quantity'];
+            $viewItem['itemId'] = $item['Item_Id'];
+            $viewItem['uId'] = $item['U_Id'];
+            $viewItem['unitPrice'] = $item['Unit_price'];
+            $viewItem['itemName'] = $item['Item_name'];
+            array_push($data, $viewItem);
+
+        }
+        $this->view('pages/cart', $data);
+
+    }
 
 
     public function addToCart() {
 
         
 
-        if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_SESSION['user_ID']))) {
+        if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
             $data = [
@@ -65,7 +91,32 @@ class Cart extends Controller{
             }
             $this->view('pages/cart', $data);
             // redirect('Cart/checkout');
-        }elseif(empty($_SESSION['user_ID'])){  
+            
+        }elseif(($_SESSION['user_type'] != 'Buyer')){
+
+            $data=[
+                'user_type'=> '',
+                'fullname'=>'',
+                'contactno'=>'',
+                'email' => '',
+                'address' => '',
+                'city' => '',
+                'postalcode' => '',
+                'password'=>'',
+                'confirm-password'=>'',
+
+                'name_err' => '',
+                'contactno_err' => '',
+                'email_err' => '',
+                'address_err' => '',
+                'password_err'=>'',
+                'confirm-password_err'=>'',
+
+            ];
+            $this->view('Users/v_registerBuyer',$data);
+
+        }
+        elseif(empty($_SESSION['user_ID'])  ){  
             $data=[
                 'email' => '',
                 'password' => '',

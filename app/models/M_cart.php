@@ -13,8 +13,8 @@ class M_cart{
         
         $this->db->query('INSERT INTO cart(Item_Id, U_Id, Quantity) VALUES (:itemId, :uId, :quantity)'); 
         $this->db->bind(':itemId', $data['itemId']);
-        $this->db->bind('uId', $data['uId']);
-        $this->db->bind('quantity', $data['quantity']);
+        $this->db->bind(':uId', $data['uId']);
+        $this->db->bind(':quantity', $data['quantity']);
         $this->db->execute();
         return true;
     
