@@ -41,7 +41,7 @@
             </div> -->
 
             <div class="nav-parts">
-                <a href="<?php echo URLROOT?>/Pages/index">Vehicle Renting</a>
+                <a href="<?php echo URLROOT?>/Pages/ve_home">Vehicle Renting</a>
             </div>
 
            <?php
