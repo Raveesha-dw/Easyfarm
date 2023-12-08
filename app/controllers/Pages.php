@@ -25,7 +25,7 @@ class Pages extends Controller{
         $this->view('seller/v_create_post');
     }
     public function myplan(){
-        $this->view('seller/v_myplan');
+        $this->view('seller/v_plan');
     
     }
     public function inventory(){
