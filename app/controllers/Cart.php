@@ -92,7 +92,7 @@ class Cart extends Controller{
             $this->view('pages/cart', $data);
             // redirect('Cart/checkout');
             
-        }elseif(($_SESSION['user_type'] != 'Buyer')){
+        }elseif(!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] != 'Buyer')  ){
 
             $data=[
                 'user_type'=> '',

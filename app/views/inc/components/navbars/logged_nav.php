@@ -52,7 +52,7 @@
                                 <?php
                                 $usertype = $_SESSION['user_type']
                                 ?>
-                                <a href="<?php echo URLROOT?>/Pages/dashboard/usertype" class="sub-link-menu">
+                                <a href="<?php echo URLROOT?>/Cart/showCart" class="sub-link-menu">
                                     <h2>Dashboard</h2>
                                     <span>></span>
                                 </a>

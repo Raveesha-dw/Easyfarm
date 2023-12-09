@@ -33,6 +33,7 @@
                 <p>Password  </p>
             </div>
             <div class="column2" >
+                <?php  $data['password'] = password_hash($data['Password'], PASSWORD_DEFAULT);?>
                 <p><?php echo $data['Password']; ?></p>
             </div>
         </div>
@@ -248,21 +249,46 @@
 
 
     </div>
-
+    
     <div class="wrapperProfile_sub">
-        <p>Change Passward</p>
+        <p><b>Change Passward</b></p><br>
 
-        <div class="row">
-            <div class="column1" >
-                <p>Password</p>
+        <form action="<?php echo URLROOT ?>/Profile/updateProfile" method="post" >
+            
+        <p class="type">Current passward *</p>
+            <div class="input-box">
+                <input type="password" placeholder="Enter Current Password"  name="current-password" id="current-password" required >
+                <i class='bx bxs-lock-open-alt'></i>
+                <span class="invalid"><?php echo $data['password_err']; ?></span>
             </div>
-            <div class="column2" >
-                <p><?php echo $data['Password']; ?></p>
+
+            <p class="type">New passward *</p>
+            <div class="input-box">
+                <input type="password" placeholder="Enter Password"  name="password" id="password" required >
+                <i class='bx bxs-lock-open-alt'></i>
+                <span class="invalid"><?php echo $data['password_err']; ?></span>
             </div>
-            <div class="column3" >
-                <button>Change</button>
+
+
+
+            <p class="type">Confirm passward *</p>
+            <div class="input-box">
+                <input type="password" placeholder="Again enter Password"  name="confirm-password" id="confirm-password" required >
+                <i class='bx bxs-lock-open-alt'></i>
+                <span class="invalid"><?php echo $data['confirm-password_err']; ?></span>
             </div>
-        </div>
+
+           
+
+            <!-- <input type="hidden" name="otp" value="<?php echo $data['otp']; ?>"> -->
+            <input type="hidden" name="email" value=<?php echo $data['Email']; ?>>
+
+            <!-- <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>> -->
+            
+            
+            <br><button type="submit" class="btn" >Save the changes</button>
+
+        </form>
 
     </div>
 

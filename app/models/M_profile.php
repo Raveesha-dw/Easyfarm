@@ -22,6 +22,20 @@ class M_profile{
 
     }
 
+    public function getUserByEmail($data){
+
+        $this->db->query('SELECT * FROM user WHERE user.Email = :email') ;
+        $this->db->bind(':email', $data['email']); // Assuming $data1['email'] contains the user's email address
+        $this->db->execute();
+            
+        $row=$this->db->single();
+
+
+        return $row;
+
+
+    }
+
     public function getBuyerDetails($U_Id){
         $this->db->query('SELECT * FROM reg_buyer WHERE reg_buyer.U_Id = :U_Id') ;
         $this->db->bind(':U_Id', $U_Id); // Assuming $data1['email'] contains the user's email address
@@ -53,6 +67,15 @@ class M_profile{
         $this->db->execute();
         $row=$this->db->single();
         return $row;
+
+    }
+
+    public function updateProfile($data){
+
+        $this->db->query('UPDATE user SET Password= :password WHERE Email= :email');
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->execute();
 
     }
 

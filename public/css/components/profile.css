@@ -26,13 +26,13 @@
 .column1 {
     /* display: flex; */
     float: left;
-    width: 50%;
+    width: 25%;
 
   }
 .column2 {
     /* display: flex; */
     float: right;
-    width: 50%;
+    width: 75%;
   
   }
   .column3 {

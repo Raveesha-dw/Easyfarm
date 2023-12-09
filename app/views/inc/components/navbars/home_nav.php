@@ -57,7 +57,7 @@
                                     <span>></span>
                                 </a>
 
-                                <a href="<?php echo URLROOT?>/Pages/dashboard" class="sub-link-menu">
+                                <a href="<?php echo URLROOT?>Cart/showCart" class="sub-link-menu">
                                     <h2>Dashboard</h2>
                                     <span>></span>
                                 </a>
