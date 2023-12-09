@@ -33,7 +33,7 @@
             </div>
 
             <div class="nav-parts">
-                <a href="<?php echo URLROOT?>/Pages/index">Repositary</a>
+                <a href="<?php echo URLROOT?>/Pages/re_home">Repositary</a>
             </div>
 
             <!-- <div class="nav-parts">

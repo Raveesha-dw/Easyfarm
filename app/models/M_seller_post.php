@@ -49,7 +49,7 @@ public function getiteamdeatils(){
 // assign the variable mean bind
 
 public function update_data($data){
-    // print_r($data);
+    print_r($data);
     // print_r("kkd");
     $this->db->query('UPDATE item
     SET Item_name = :Item_name,
@@ -59,7 +59,7 @@ public function update_data($data){
         -- column name= variable
         Stock_size = :Stock_size,
         DeliveryMethod = :DeliveryMethod,
-        -- Image = :Image_name
+        Image = :Image_name,
         Description = :Description
         -- Unit_type = :Unit_type
         -- 
@@ -78,9 +78,11 @@ public function update_data($data){
      $this->db->bind(':DeliveryMethod', $data['DeliveryMethod']); 
      $this->db->bind(':Description', $data['Description']); 
      $this->db->bind(':item_id', $data['Item_Id']);
-    //  $this->db->bind(':Image_name', $data['Image_name']);
+     $this->db->bind(':Image_name', $data['Image_name']);
      
      $this->db->execute();
+     return true;
+     print_r("xxxx");
     //  $this->db->bind(':Unit_type', $data['Unit_type']); 
     
     //  if (isset($data['Image']['name']) && !empty($data['Image']['name'])) {

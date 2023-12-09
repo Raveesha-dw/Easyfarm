@@ -335,6 +335,7 @@ public  function create_post(){
                 'Unit_type'=> trim($_POST['Unit_type']),
                 'Image'=> ($_FILES['Image']),
                 'Image_name'=>time().'_'.$_FILES['Image']['name'],
+            
                 // 'Image'=> trim($_POST['Image']),
                
 
@@ -459,24 +460,33 @@ public  function create_post(){
             // $result = $this->sellerModel->create_post($data);
 
             if(empty($data['Item_name_err']) && empty($data['Expiry_date_err']) && empty( $data['Invalid_date_err']) && empty($data['Unit_type_err']) && empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) && empty($data['Image_err'])){
-                
-                $result= $this->sellerModel->update_data($data);
+               
+                updateImage($data['old']['tmp_name'], $data['Image']['tmp_name'], $data['Image_name'],'/images/seller/');
+
+                print_r("ssc");
+                // if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/'));
+                if ($this->sellerModel->update_data($data)){
+                    
+                // $result= $this->sellerModel->update_data($data);
                     // ($this->sellerModel->create_post($data)
+                    // $result= $this->sellerModel->update_data($data);
                    
-                if($result == null){
+                // if($result == null){
                     $products = $this->sellerModel->get_data("59");
                     // print_r("jdj");
                     // print($products);
                     // var_dump($products);
                     // header('Location: '.URLROOT.'/Pages/created_post');
                     // exit;
-                     $this->view('seller/v_createdpost',$products);
+                    redirect("Seller_post/created_post");
+                    //  $this->view('seller/v_createdpost',$products);
     
                 }}
                
                 else{
                     //$data     = get_object_vars($data[0]);
-                 return $this->view('seller/v_update_post',$data);}
+                 return $this->view('seller/v_update_post',$data);
+                }
     
                 
                 // $errors = [
