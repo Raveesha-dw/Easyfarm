@@ -1,109 +1,158 @@
-*{
+/* *{
     margin:0;
     padding: 0;
     font-family: 'Poppins',sans-serif;
     box-sizing: border-box;
-}
-.shero{
+} */
+.shero1{
     width: 100%;
     min-height: 100vh;
-    background: #f8f9f3;
-    color: #525252;
+    margin-left: 400px;
+    margin-top: 15px;
+   
 }
 
+.shero1 .sdropdown1{
+    width: 500px;
+    margin-top: 15px;
+}
+.shero1 .sitem{
+    margin-top: 15px;
+    width: 500px;
+}
+.shero1 .sstock_size{
+    margin-top: 15px;
+    width: 300px;
+    display: flex;
 
-
-
-
-#sCategory{
+}
+.shero1 .sstock_size .sdropdown2{
+    margin-left: 150px;
+    width: 500px;
+}
+.shero1 #stype{
     width:300px;
     height: 40px;
     border-radius: 5px;
-    color: rgb(3, 222, 3);
-    margin-left: 100px;
+    color: rgb(2, 3, 2);
+    /* margin-left: 200px; */
     position: relative;
 }
-#sitem_name{
+
+.shero1 #size{
+    width:300px;
+    height: 40px;
+    border-radius: 5px;
+    /* display: flex; */
+    color: rgb(5, 5, 5);
+
+}
+.shero1 #sCategory{
+    width:300px;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(2, 3, 2);
+    /* margin-left: 200px; */
+    position: relative;
+}
+.shero1 #sitem_name{
     
     width:300px;
     height: 40px;
     border-radius: 5px;
-    color: rgb(7, 143, 7);
-    margin-left: 5px;
+    color: rgb(7, 7, 7);
+    /* margin-left: 5px; */
 }
-.sitem{
-    margin-left:15px ;
-    margin-top: 10px;
+
+.shero1 .sprice{
+    margin-top: 15px;
+    width: 300px;
 }
-#se_date{
+.shero1 #sprice{
+    width:300px;
+    height: 40px;
+    border-radius: 5px;
+    
+    color: rgb(5, 5, 5);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shero1 #se_date{
     
     width:300px;
     height: 40px;
     border-radius: 5px;
-    color: rgb(52, 199, 52);
+    color: rgb(8, 9, 8);
 }
-.sdate{
-    margin-left:15px ;
+.shero1 .saddress{
+    margin-top: 15px;
+    width: 300px;
 }
-#sAddress{
+.shero1 #sAddress{
     
     width:400px;
     height: 40px;
     border-radius: 5px;
     color: rgb(52, 199, 52);
 }
-.saddress{
+/* .saddress{
     margin-left:15px ;
-}
-#type{
+} */
+/* #type{
     width:300px;
     height: 40px;
     border-radius: 5px;
     color: rgb(52, 199, 52);
     margin-left:0px;
-}
-/* .sdropdown2{
-    margin-left:15px ;
-}
-.sdropdown1{
-    margin-left:400px;
-    margin-top: -60px;
-    
 } */
-#sprice{
-    
-    width:300px;
-    height: 40px;
-    border-radius: 5px;
-    color: rgb(52, 199, 52);
-}
-.sprice{
-    margin-left: 400px;
-    margin-top: -92px;
-}
-.sstock_size{
-    margin-left:15px ;
-}
-.sDescription{
+
+
+
+.shero1.sDescription{
     margin-left: 15px;
     
 }
 #sdes{
-    width:1200px;
+    width:60%;
     height:100px;
     border-radius: 5px;
 }
+ .shero1 .image{
+    margin-top: 15px;
+ }
 
-
-#inside_image{
+.shero1 #inside_image{
+    /* margin-top: 15px; */
     border: 1px dashed #999;
     border-radius: 6px;
     height: 200px;
     width: 300px;
     
 }
-#create{
-    margin-top: 350px;
+.shero1 #create{
+    /* margin-top: 350px; */
     margin-left: 280px;
     width: 150px;
     height: 50px;
