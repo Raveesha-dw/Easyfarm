@@ -5,7 +5,7 @@
     box-sizing: border-box;
 } */
 .shero1{
-    width: 100%;
+    /* width: 100%; */
     min-height: 100vh;
     margin-left: 400px;
     margin-top: 15px;
@@ -29,6 +29,33 @@
 .shero1 .sstock_size .sdropdown2{
     margin-left: 150px;
     width: 500px;
+}
+.shero1 .dropdown3{
+    /* margin-left: 150px; */
+    width: 300px;
+}
+.shero1 .image{
+    /* margin-left: 150px; */
+    width: 300px;
+}
+.shero1 .sDescription{
+    /* margin-left: 150px; */
+    width: 300px;
+}
+
+.shero1 .sdate{
+    /* margin-left: 150px; */
+    width: 300px;
+}
+
+
+.shero1 #sdes{
+    width:1000px;
+    height: 120px;
+    border-radius: 5px;
+    /* display: flex; */
+    color: rgb(5, 5, 5);
+
 }
 .shero1 #stype{
     width:300px;
@@ -76,26 +103,16 @@
     color: rgb(5, 5, 5);
 
 }
+.shero1 .s1{
+width: 300px;
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.ddd{
+    background-color: rgb(43, 226, 89);
+    width: 250px;
+}
 
 
 
@@ -117,16 +134,6 @@
     border-radius: 5px;
     color: rgb(52, 199, 52);
 }
-/* .saddress{
-    margin-left:15px ;
-} */
-/* #type{
-    width:300px;
-    height: 40px;
-    border-radius: 5px;
-    color: rgb(52, 199, 52);
-    margin-left:0px;
-} */
 
 
 
@@ -134,14 +141,12 @@
     margin-left: 15px;
     
 }
-#sdes{
+/* #sdes{
     width:60%;
     height:100px;
     border-radius: 5px;
-}
- .shero1 .image{
-    margin-top: 15px;
- }
+} */
+
 
 .shero1 #inside_image{
     /* margin-top: 15px; */
@@ -152,7 +157,7 @@
     
 }
 .shero1 #create{
-    /* margin-top: 350px; */
+    
     margin-left: 280px;
     width: 150px;
     height: 50px;

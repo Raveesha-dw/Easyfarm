@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
 <div class="shero1">
-    <form action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
+    <form class ="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
                     <!-- drop box -->
 
         <!-- <div class="imala"> -->
@@ -187,7 +187,7 @@
 
 
 
-                <div>
+                <div class="s1">
                     <button type="submit" id ="create"><b>create</b> </button>
                 </div>
         
