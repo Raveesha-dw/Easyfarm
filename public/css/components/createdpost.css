@@ -15,7 +15,7 @@
 
 
 
-.sidebar-post hr{
+/* .sidebar-post hr{
     border: 1;
     height: 2px;
     width: 100px;
@@ -24,14 +24,14 @@
 }
 .sidebar-post{
     width: 20%;
-    height: 100%;
+    height: 2000px;
     float: left;
     top: 0;
     left: 0;
     padding: 1px 15px;
     background: #fff;
     
-}
+} */
 
 .poost1{
     display: grid;

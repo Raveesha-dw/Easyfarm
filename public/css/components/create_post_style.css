@@ -11,37 +11,7 @@
     color: #525252;
 }
 
-nav{
-    background: #fdfdfd;
-    width: 100%;
-    padding: 10px 2%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
-.logo{
-    width: 150px;
-    height: 50px;
-}
-.grid-item1{
-    height: 100%;
-    width: 100%;
-}
-.scolumn1{
-    float: left;
-    width: 65%;
-    padding: 10px;
-    height: 300px;
-    background-color: rgb(247, 247, 247);
-}
-.scolumn2{
-    float: right;
-    width: 35%;
-    padding: 10px;
-    height: 300px;
-    background-color: rgb(247, 247, 247);
-}
+
 
 
 
@@ -50,7 +20,7 @@ nav{
     height: 40px;
     border-radius: 5px;
     color: rgb(3, 222, 3);
-    margin-left: 0px;
+    margin-left: 100px;
     position: relative;
 }
 #sitem_name{
@@ -92,14 +62,14 @@ nav{
     color: rgb(52, 199, 52);
     margin-left:0px;
 }
-.sdropdown2{
+/* .sdropdown2{
     margin-left:15px ;
 }
 .sdropdown1{
     margin-left:400px;
     margin-top: -60px;
     
-}
+} */
 #sprice{
     
     width:300px;

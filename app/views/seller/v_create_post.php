@@ -1,15 +1,9 @@
-<?php require APPROOT . '/views/inc/csslinking.php'; ?>
-
-
-
-
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
+<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
     <div class="shero">
     <form action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
-        <nav>
-        <img src="<?php echo URLROOT?>/public/images/seller/logo.png" alt=""  class="logo">
-        </nav>
-        <div class="scolumn1">
-            
+         
                 <div>
                     <div class ="sitem">
                     <label for="Item"><b>Item</b></label>
@@ -129,8 +123,8 @@
                 </div>
             
                 
-        </div>
-            <div class="scolumn2">
+        
+            
                 <b>Upload image</b>
                 <div class="image">
                     
@@ -146,10 +140,12 @@
                 </div>
         
 
-            </div>
+            
 
         </div>
         
 </form>
-    </div>
-    <?php require APPROOT . '/views/inc/footer.php'; ?>   
+    <!-- </div> -->
+
+    
+<?php require APPROOT . '/views/inc/footer.php'; ?>     
