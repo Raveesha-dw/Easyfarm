@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<?php print_r($data);?>
+<!-- <?php print_r($data);?> -->
 <div class="shero1">
     <form class ="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
                     <!-- drop box -->
@@ -12,7 +12,7 @@
                         <label for="Category"  class = "scdropdown1" name="Category"><b>Item Category:</b></label>
                         <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span>
                         <br>
-                        <select name="Category" id="sCategory">
+                        <select name="Category" id="sCategory" >
 
                             <option disabled selected>Select Category</option>
                             

@@ -50,7 +50,7 @@ public function getiteamdeatils(){
 // assign the variable mean bind
 
 public function update_data($data){
-    print_r($data);
+    // print_r($data);
     // print_r("kkd");
     $this->db->query('UPDATE item
     SET Item_name = :Item_name,
