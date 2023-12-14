@@ -78,7 +78,7 @@ $productReviews = $data['itemReviews'];
             ?> -->
             
                 <div class="button-area">
-                <a href=""> <Button >BUY NOW</Button> </a>
+                <a href="<?php echo URLROOT; ?>/pages/buyNow"> <Button >BUY NOW</Button> </a>
 
                     <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
 

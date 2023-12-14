@@ -154,7 +154,14 @@ class Pages extends Controller{
     // public function updateProduct(){
     //     $this->view('seller/v_update_post');
     // }
+    public function new_navbar(){
+        $this->view('inc/components/navbars/new_nav');
+    }
 
+    
+    public function buyNow(){
+        $this->view('pages/buyNow');
+    }
 
 }
 
