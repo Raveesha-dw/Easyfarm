@@ -1,6 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <div class="shero1">
     <form class ="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
                     <!-- drop box -->
@@ -11,6 +13,7 @@
                         <!-- <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span> -->
                         <br>
                         <select name="Category" id="sCategory">
+                             <option>Select Category</option>
                             <option value= "Vegatable" >Vegatable</option>
                             <option value= "Fruits" >Fruits</option>
                             <option value= "Plants">Plants</option>
@@ -45,12 +48,12 @@
                                 <br>
                                 
                                     <select name="Unit_type" id="stype">
-                                    
+                                        <option>Select Unit type</option>
                                         <option value="Kg">Kg</option>
                                         <option value="g">g</option>
                                         <option value="plant">Plant</option>
                                         <option value="ml">ml</option>
-                                        <option value="l">l</option>
+                                        <option value="L">L</option>
                                         
                                     </select>
                                 <span class="invalid"><?php if($data) {echo $data['Unit_type_err'];}  ?></span>
@@ -199,7 +202,87 @@
     </form>
 </div>
 
+<!-- Your other head elements -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#sCategory").on('change', function () {
+            var el = $(this);
+            var typeDropdown = $("#stype");
+
+            // Clear existing options
+            typeDropdown.empty();
+            typeDropdown.val(typeDropdown.find('option:first').val());
+
+            if (el.val() === "Vegatable") {
+                // Add options for Vegatable
+                typeDropdown.append("<option value='Kg'>Kg</option>");
+                typeDropdown.append("<option value='g'>g</option>");
+            } else if (el.val() === "Fruits") {
+                // Add options for Fruits
+                typeDropdown.append("<option value='Kg'>Kg</option>");
+                typeDropdown.append("<option value='g'>g</option>");
+            }
+            else if (el.val() === "Plants") {
+                // Add options for Fruits
+                typeDropdown.append("<option value='Plants'>Plants</option>");
+                
+            }
+            else if (el.val() === "Seeds") {
+                // Add options for Fruits
+                typeDropdown.append("<option value='Kg'>Kg</option>");
+                typeDropdown.append("<option value='g'>g</option>");
+            }
+
+            else if (el.val() === "Grains") {
+                // Add options for Fruits
+                typeDropdown.append("<option value='Kg'>Kg</option>");
+                typeDropdown.append("<option value='g'>g</option>");
+            }
+            else if (el.val() === "Fertilizer") {
+                // Add options for Fruits
+                typeDropdown.append("<option value='Kg'>Kg</option>");
+                typeDropdown.append("<option value='g'>g</option>");
+                typeDropdown.append("<option value='L'>L</option>");
+                typeDropdown.append("<option value='ml'>ml</option>");
+                
+            }
+            else if (el.val() === "Insecticides") {
+                // Add options for Fruits
+                typeDropdown.append("<option value='ml'>ml</option>");
+                typeDropdown.append("<option value='l'>l</option>");
+            }
+            // Add options for other categories if needed
+
+            // Optionally, you can select the first option
+            typeDropdown.val(typeDropdown.find('option:first').val());
+        });
+    });
+</script>
+<!-- Your other head elements -->
+
     <!-- </div> -->
+
+    <!-- <script>
+    function dynamicdropdown(listindex)
+    {
+        switch (listindex)
+        {
+        case "manual" :
+            document.getElementById("status").options[0]=new Option("Select status","");
+            document.getElementById("status").options[1]=new Option("OPEN","open");
+            document.getElementById("status").options[2]=new Option("DELIVERED","delivered");
+            break;
+        case "online" :
+            document.getElementById("status").options[0]=new Option("Select status","");
+            document.getElementById("status").options[1]=new Option("OPEN","open");
+            document.getElementById("status").options[2]=new Option("DELIVERED","delivered");
+            document.getElementById("status").options[3]=new Option("SHIPPED","shipped");
+            break;
+        }
+        return true;
+    }
+</script> -->
 
     
 <?php require APPROOT . '/views/inc/footer.php'; ?>     
