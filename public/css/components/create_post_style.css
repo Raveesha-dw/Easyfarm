@@ -26,10 +26,18 @@
     display: flex;
 
 }
+.shero1 .stocksize #Stock{
+    width:300px;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(2, 3, 2);
+    /* display: flex; */
+}
 .shero1 .sstock_size .sdropdown2{
     margin-left: 150px;
     width: 500px;
 }
+
 .shero1 .dropdown3{
     /* margin-left: 150px; */
     width: 300px;

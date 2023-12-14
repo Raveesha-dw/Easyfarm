@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+<?php print_r($data);?>
 <div class="shero1">
     <form class ="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
                     <!-- drop box -->
@@ -10,10 +10,12 @@
         <!-- <div class="imala"> -->
                      <div class="sdropdown1">
                         <label for="Category"  class = "scdropdown1" name="Category"><b>Item Category:</b></label>
-                        <!-- <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span> -->
+                        <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span>
                         <br>
                         <select name="Category" id="sCategory">
-                             <option>Select Category</option>
+
+                            <option disabled selected>Select Category</option>
+                            
                             <option value= "Vegatable" >Vegatable</option>
                             <option value= "Fruits" >Fruits</option>
                             <option value= "Plants">Plants</option>
@@ -40,15 +42,15 @@
                         <div class="iii">
                         <label for ="stock"> <b>Unit Size</b></label>
                         <br>
-                        <input id="size" name="Stock_size" type="number" placeholder="Enter unit size" min=o required value="<?php echo $data['Stock_size'];?>">
-                        <span class="invalid"><?php if($data){echo $data['Stock_size_err'];}  ?></span>
+                        <input id="size" name="Unit_size" type="number" step="1" min = 0 placeholder="Enter unit size"  required value="<?php echo $data['Unit_size'];?>">
+                        <span class="invalid"><?php if($data){echo $data['Unit_size_err'];}  ?></span>
                         </div>
                         <div class="sdropdown2">
                                 <label for="Category2"><b>Type:</b></label>
                                 <br>
                                 
                                     <select name="Unit_type" id="stype">
-                                        <option>Select Unit type</option>
+                                        <option disabled selected>Select Unit type</option>
                                         <option value="Kg">Kg</option>
                                         <option value="g">g</option>
                                         <option value="plant">Plant</option>
@@ -70,11 +72,12 @@
                     
                     </div>
 
-                    <div class="sprice">
+                    <div class="stocksize">
+                        <br>
                         <b>Stock Size</b>
                         <br>
-                        <input id="sprice" name="Unit_price" type="number" min=0 placeholder="Enter the Stock Size" required value="<?php echo $data['Unit_price'];?>">
-                        <span class="invalid"><?php if($data){echo $data['Unit_price_err'];}  ?></span>
+                        <input id="Stock" name="Stock_size" type="number" step="1" min=0 placeholder="Enter the Stock Size" required value="<?php echo $data['Stock_size'];?>">
+                        <span class="invalid"><?php if($data){echo $data['Stock_size_err'];}  ?></span>
                     
                     </div>
 
@@ -86,6 +89,7 @@
                     <b>Exp</b>
                     <br>
                     <input id="se_date"  name="Expiry_date"  type="date" placeholder="Enter expire date" >
+                    <!-- <span class="invalid"><?php if($data){echo $data['Expiry_date_err'];}  ?></span> -->
                     
                     <script>
                         var date =new Date();
@@ -165,19 +169,14 @@
                     <br>
                     <br>
 
-                    <input type="checkbox" id="Home Delivery" name="Home Delivery" value="Home Deliver">
+                    <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver">
                     <label for="Home Delivery"> <b>Home Delivery</b></label><br>
                     
 
-                    <input type="checkbox" id="Insto Pickup" name="Insto Pickup" value="Insto Pickup">
+                    <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup">
                     <label for="Insto Pickup"> <b>Insto Pickup</b></label><br>
-                        <!-- <select name="DeliveryMethod" id="type1">
-                        <span class="invalid"><?php if($data){echo $data['DeliveryMethod_err'];}  ?></span>
-                            <option value=1>Home Delivery</option>
-                            <option value=2>In-store Pickup</option>
-                          
+                    <span class="invalid"><?php if($data){echo $data['DeliveryMethod_err'];}  ?></span>
                             
-                        </select> -->
 
 
 
@@ -259,30 +258,6 @@
         });
     });
 </script>
-<!-- Your other head elements -->
-
-    <!-- </div> -->
-
-    <!-- <script>
-    function dynamicdropdown(listindex)
-    {
-        switch (listindex)
-        {
-        case "manual" :
-            document.getElementById("status").options[0]=new Option("Select status","");
-            document.getElementById("status").options[1]=new Option("OPEN","open");
-            document.getElementById("status").options[2]=new Option("DELIVERED","delivered");
-            break;
-        case "online" :
-            document.getElementById("status").options[0]=new Option("Select status","");
-            document.getElementById("status").options[1]=new Option("OPEN","open");
-            document.getElementById("status").options[2]=new Option("DELIVERED","delivered");
-            document.getElementById("status").options[3]=new Option("SHIPPED","shipped");
-            break;
-        }
-        return true;
-    }
-</script> -->
 
     
 <?php require APPROOT . '/views/inc/footer.php'; ?>     

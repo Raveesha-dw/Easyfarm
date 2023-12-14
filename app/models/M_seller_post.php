@@ -8,8 +8,9 @@ public function __construct(){
 
 public function create_post($data){
     
-    $this->db->query('INSERT INTO item(seller_ID,Item_name,Category,Expiry_date,Unit_price,Stock_size,DeliveryMethod,Description,Unit_type,Image) VALUES(59,:Item_name,:Category, :Expiry_date, :Unit_price, :Stock_size, :DeliveryMethod, :Description, :Unit_type, :Image)');
+    $this->db->query('INSERT INTO item(seller_ID,Item_name,Category,Expiry_date,Unit_price,Stock_size,DeliveryMethod,Description,Unit_type,Unit_size,Image) VALUES(59,:Item_name,:Category, :Expiry_date, :Unit_price, :Stock_size, :DeliveryMethod, :Description, :Unit_type,:Unit_size, :Image)');
     // print_r($data);
+    $this->db->bind(':Unit_size', $data['Unit_size']); 
     $this->db->bind(':Item_name', $data['Item_name']); 
     $this->db->bind(':Category', $data['Category']); 
     $this->db->bind(':Expiry_date', $data['Expiry_date']); 
