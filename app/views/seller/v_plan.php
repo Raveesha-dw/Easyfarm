@@ -22,8 +22,26 @@
         </div>
 
         <div class="untill__event">Unit 31 Desember 2024</div>
-    </div>
+            </div>
 
+
+            <div class="listing">
+                <h2 class="list__label">REMAING LISTING :</h2>
+                <h2 class="list__value">45</h2>
+            </div>
+        <div class="ee">
+            <div class="wrapperseller1">
+            </div>
+            <div class="wrapperseller2">
+            </div>
+            <div class="wrapperseller3"></div>
+
+        </div>
+        <div class="plan_button">
+                <button class="c">Purchase Now</button>
+                <button class="c">Purchase Now</button>
+                <button class="c">Purchase Now</button>
+        </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
@@ -49,6 +67,15 @@ activateCountdown(document.getElementById("myCountdown"), "2023-12-31");
 
 
 </script>
+
+
+
+
+
+
+
+
+
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  
