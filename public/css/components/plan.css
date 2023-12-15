@@ -1,0 +1,39 @@
+.shero3 .untill{
+    margin-left: 25px;
+    color: rgb(254, 255, 255);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1em;
+    padding: 1em;
+    background: rgb(42, 165, 77);
+    border-radius: 5px;
+    box-shadow: 0 0 5px bisque;
+    color: rgb(0, 0, 0);
+    
+
+}
+
+.shero3 .unitl__component {
+    text-align: center;
+    background: white;
+    border-radius: 5px;
+}
+.shero3 .untill__numeric {
+    color: black;
+    padding: 0.5em 0;
+    font-size: 3em;
+    font-weight: bold;
+    
+}
+.shero3 .untill__event{
+    grid-column: span 4;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.shero3 .untill__unit{
+    font-size: 1.2em;
+    padding-bottom: 1em;
+    font-weight: bold;
+    color: brown;
+}
