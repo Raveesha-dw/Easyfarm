@@ -39,7 +39,7 @@
                             </div>
                             <div class="button-msg">
                             
-                            <button class="dd"> <a href="http://localhost/Easyfarm/Seller_home/update_status1?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" ><?php echo $product->Status; ?> </a> </button>
+                            <button class="dd"> <a href="http://localhost/Easyfarm/Seller_home/update_status2?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" ><?php echo $product->Status; ?> </a> </button>
 
                                      <!--   -->
                             </div>
