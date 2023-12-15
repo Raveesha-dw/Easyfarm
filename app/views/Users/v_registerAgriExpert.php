@@ -61,6 +61,7 @@
             <input type="text" placeholder="Enter occupation" name="occupation" id="occupation"  required value="<?php echo $data['occupation']; ?>">
             <i class='bx bx-user-pin' ></i>
         </div>
+        
         <p class="type">Workplace *</p>
         <div class="input-box">
             <input type="text" placeholder="Enter workplace" name="workplace" id="workplace"  required value="<?php echo $data['workplace']; ?>">

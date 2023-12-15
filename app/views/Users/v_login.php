@@ -23,7 +23,7 @@
                 <label>
                     <input type="checkbox"> Remember me 
                 </label>
-                <a href="#"> Forgot password? </a>     
+                <a href="<?php echo URLROOT ?>/Users/forgotPassword"> Forgot password? </a>      
             </div>
 
             <button type="submit" class="btn" >Login</button>
@@ -41,4 +41,4 @@
         </form>
     </div>
 
-    <?php require APPROOT . '/views/inc/footer.php'; ?>    
+    <?php require APPROOT . '/views/inc/footer.php'; ?> 

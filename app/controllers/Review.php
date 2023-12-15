@@ -1,5 +1,8 @@
 <?php
  class Review extends Controller{
+    private $itemModel;
+    private $orderModel;
+    private $reviewModel;
     public function __construct(){
         $this->itemModel=$this->model('M_item');
         $this->orderModel=$this->model('M_orders');

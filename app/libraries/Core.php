@@ -11,12 +11,13 @@
     protected $params = [];
 
     public function __construct()
-    {   
-       // print_r($this->getUrl());
+    {  
+        // print "a"; 
+    //    print_r($this->getUrl());
        $url = $this->getUrl();
        
        // Look in controllers for first value
-       if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')){
+       if( (!empty($url[0])) && file_exists('../app/controllers/'.ucwords($url[0]).'.php')){
         // If exists, set as controller
         $this->currentController = ucwords($url[0]);
         //unset 0 Index
@@ -48,6 +49,7 @@
 
     public function getUrl()
     {
+        // var_dump($_GET) ;
         if(isset($_GET['url'])){
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);

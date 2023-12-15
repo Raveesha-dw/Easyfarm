@@ -1,5 +1,8 @@
 <?php
  class Product extends Controller{
+    private $productModel;
+    private $reviewModel;
+    
     public function __construct(){
         $this->productModel=$this->model('M_Product');
         $this->reviewModel=$this->model('M_Review');
@@ -40,6 +43,8 @@
         ];
         $this->view('Buyer/v_viewProducts', $data);
     }
+
+
 
     // public function productSeeds(){
     //     $allseed = $this->productModel->getAllSeeds();
@@ -84,5 +89,8 @@
         ];
         $this->view('Buyer/v_productDetails', $data);
     }
+
+
+
     
  }

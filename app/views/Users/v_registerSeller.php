@@ -1,10 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
-
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <div class="wrapperSeller">
     <h1>Register as a Seller</h1>
-    <p class="startText"> Register to <b>EasyFarm</b></p>
+    <p class="startText"> Regeister to <b>EasyFarm</b></p>
     <form action="<?php echo URLROOT ?>/Users/register" method="POST">
 
     <p class="type">Full name<sup>*</sup></p>
@@ -37,7 +36,7 @@
 
         <p class="type">Confirm password *</p>
         <div class="input-box">
-            <input type="password" placeholder="Re enter Password"  name="confirm-password" id="confirm-password" required value="<?php echo $data['confirm-password']; ?>">
+            <input type="password" placeholder="Again enter Password"  name="confirm-password" id="confirm-password" required value="<?php echo $data['confirm-password']; ?>">
             <i class='bx bxs-lock-open-alt'></i>
             <span class="invalid"><?php echo $data['confirm-password_err']; ?></span>
         </div>
@@ -94,5 +93,7 @@
         </div>
     </form>
 </div>
+
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>   
