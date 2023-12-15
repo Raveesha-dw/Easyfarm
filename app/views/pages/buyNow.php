@@ -5,16 +5,16 @@
 
                 <div class="column4" >
 
-                
+
                 <div class="box">
                     <div class="wrapperBuyNow_sub">
                             <p><b> Delivered to :</b></p>
-                            <p> Hasintha</p>
-                            <p> 0715797461 </p>
-                            <p> No 20,Hedaketiya, Angunukolapelassa
+                            <p> <?php echo $data['Name']; ?></p>
+                            <p> <?php echo $data['Contact_num']; ?> </p>
+                            <p> <?php echo $data['Address']; ?>
                                 <a class="open-button" onclick="openForm()" > Change </a>
                             </p>
-                            <p> Email to aashi.chandu5088@gmail.com</p>
+                            <p> Email to <?php echo $data['Email']; ?></p>
                         </div>
 
 
@@ -43,7 +43,7 @@
                                         <p>Name:</p>
                                     </div>
                                     <div class="column2" >
-                                        <p>Seeds....</p>
+                                        <p><?php echo $data['Item_name']; ?></p>
                                     </div>
                                 </div>
 
@@ -52,7 +52,7 @@
                                         <p>Delivery Method:</p>
                                     </div>
                                     <div class="column2" >
-                                        <p>In store pickup</p>
+                                        <p><?php echo $data['DeliveryMethod']; ?></p>
                                     </div>
                                 </div>
 
@@ -61,7 +61,7 @@
                                         <p>Quantity:</p>
                                     </div>
                                     <div class="column2" >
-                                        <p>4</p>
+                                        <p><?php echo $data['quantity']; ?></p>
                                     </div>
                                 </div>
 
@@ -70,7 +70,7 @@
                                         <p>Total :</p>
                                     </div>
                                     <div class="column2" >
-                                        <p> Rs . 400.00</p>
+                                        <p><?php echo $data['total']; ?></p>
                                     </div>
                                 </div>
                         </section>       
@@ -89,7 +89,7 @@
                                 <p>Item Total </p>
                             </div>
                             <div class="column2" >
-                                <p>Rs. 400.00</p>
+                                <p><?php echo $data['total']; ?></p>
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                                 <p>Delivery Fee</p>
                             </div>
                             <div class="column2" >
-                                <p>Rs. 500.00</p>
+                                <p><?php echo $data['deliveryFee']; ?></p>
                             </div>
                         </div>
 
@@ -107,10 +107,13 @@
                                 <p>Total Payment</p>
                             </div>
                             <div class="column2" >
-                                <p>Rs. 900.00</p>
+                                <p><?php echo $data['totalPayment']; ?></p>
                             </div>
                         </div>
-                        <br><button type="submit" class="btn" >Place Order</button>
+
+                        <form action="?php echo URLROOT; ?>Pages/payment">
+                            <br><button type="submit" class="btn" >Place Order</button>
+                        </form>
 
          
                     </div>

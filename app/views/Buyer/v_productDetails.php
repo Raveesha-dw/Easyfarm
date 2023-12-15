@@ -78,7 +78,30 @@ $productReviews = $data['itemReviews'];
             ?> -->
             
                 <div class="button-area">
-                <a href="<?php echo URLROOT; ?>/pages/buyNow"> <Button >BUY NOW</Button> </a>
+
+                    <form action="<?php echo URLROOT; ?>/BuyNow/buyNow" method="POST">
+
+
+
+                        <?php if (!empty($_SESSION['user_ID'])) : ?>
+                            
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+
+                            <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
+                            <button type="submit" >BUY NOW</button>
+                                                    
+                        <?php else : ?>                       
+                        <!-- <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button> -->
+                            <button type="submit">BUY NOW</button>
+
+
+                        <?php endif; ?>   
+                    </form>
+
+
+
+
 
                     <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
 

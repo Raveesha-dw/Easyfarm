@@ -157,11 +157,11 @@ class Pages extends Controller{
     public function new_navbar(){
         $this->view('inc/components/navbars/new_nav');
     }
+    public function payment(){
+        $this->view('pages/payment');
+    }
 
     
-    public function buyNow(){
-        $this->view('pages/buyNow');
-    }
 
 }
 
