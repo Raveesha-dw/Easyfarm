@@ -83,7 +83,7 @@ public function update_data($data){
      
      $this->db->execute();
      return true;
-     print_r("xxxx");
+    //  print_r("xxxx");
     //  $this->db->bind(':Unit_type', $data['Unit_type']); 
     
     //  if (isset($data['Image']['name']) && !empty($data['Image']['name'])) {
