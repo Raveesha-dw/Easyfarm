@@ -29,4 +29,18 @@ public function get_dataplan1(){
 
 }
 
+// public function get_dataplan($plan_id, $seller_id) {
+//     $this->db->query("SELECT * FROM reg_seller WHERE plan_id = :plan_id AND seller_id = :seller_id");
+//     $this->db->bind(':plan_id', $plan_id);
+//     $this->db->bind(':seller_id', $seller_id);
+//     $result = $this->db->resultSet();
+    
+//     return $result;
+// }
+
+
+
+
+
+
 }

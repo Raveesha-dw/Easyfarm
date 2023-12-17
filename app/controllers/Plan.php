@@ -40,7 +40,7 @@
         
 
         print_r( $concatenatedData);
-        // $this->view('seller/v_plan', $data1);
+        $this->view('seller/v_plan',$concatenatedData );
 
     }
 

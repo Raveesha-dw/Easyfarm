@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <div class ="shero3">
     <div class="untill" id="myCountdown">
         <div class="unitl__component">
@@ -27,44 +27,44 @@
 
             <div class="listing">
                 <h2 class="list__label">REMAING LISTING :</h2>
-                <h2 class="list__value"><?php echo $data['listing'] ?></h2>
+                <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
             </div>
         <div class="ee">
             <div class="wrapperseller1">
-            <h2>Normal</h2>
+            <h2><?php echo $data[0]['name'] ?></h2>
     
                 <div class="plan-details">
-                    <p class="highlight">Exclusive 6-Month Plan</p>
+                    <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
                     <ul>
-                        <li>Unlimited access for 6 months!</li>
-                        <li>List up to 50 items!</li>
-                        <li>All for just ₹5000!</li>
+                        <li>Unlimited access for <?php echo $data[0]['duration'] ?> months!</li>
+                        <li>List up to <?php echo $data[0]['listing_limit'] ?> items!</li>
+                        <li>All for just ₹<?php echo $data[0]['price'] ?>!</li>
                     </ul>
                 </div>
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
             <div class="wrapperseller2">
-            <h2>STANDARD</h2>
+            <h2><?php echo $data[1]['name'] ?></h2>
             <div class="plan-details">
-                    <p class="highlight">Exclusive 6-Month Plan</p>
+                    <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
                     <ul>
-                        <li>Unlimited access for 6 months!</li>
-                        <li>List up to 250 items!</li>
-                        <li>All for just ₹15000!</li>
+                        <li>Unlimited access for <?php echo $data[0]['duration'] ?> months!</li>
+                        <li>List up to <?php echo $data[1]['listing_limit'] ?>  items!</li>
+                        <li>All for just ₹<?php echo $data[1]['price'] ?> !</li>
                     </ul>
                 </div>
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
             <div class="wrapperseller3">
-            <h2>PREMIUM</h2>
+            <h2><?php echo $data[2]['name'] ?></h2>
             <div class="plan-details">
-                    <p class="highlight">Exclusive 6-Month Plan</p>
+                    <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
                     <ul>
-                        <li>Unlimited access for 6 months!</li>
-                        <li>List up unlimated items!</li>
-                        <li>All for just ₹25000!</li>
+                        <li>Unlimited access for <?php echo $data[0]['duration'] ?> months!</li>
+                        <li>List up <?php echo $data[2]['listing_limit'] ?>  items!</li>
+                        <li>All for just ₹<?php echo $data[2]['price'] ?>!</li>
                     </ul>
                 </div>
     
