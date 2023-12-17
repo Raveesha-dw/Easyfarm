@@ -73,9 +73,9 @@
 
         </div>
         <div class="plan_button">
-                <button class="c">Purchase Now</button>
-                <button class="c">Purchase Now</button>
-                <button class="c">Purchase Now</button>
+                <button class="c1">Purchase Now</button>
+                <button class="c2">Purchase Now</button>
+                <button class="c3">Purchase Now</button>
         </div>
        <!-- <?php $myVariable = "2024-8-4";?> -->
 </div>

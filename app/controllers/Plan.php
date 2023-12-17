@@ -12,7 +12,7 @@
     public function get_plan_details(){
         // print_r("d");
         
-        $data = $this->planModel->get_dataplan(('1'));
+        $data = $this->planModel->get_dataplan('1','59');
         $data1  = get_object_vars($data[0]);
         $originalDate = $data1['Register_date'];
 

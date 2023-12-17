@@ -89,7 +89,19 @@
     padding: 30px 40px;
 }
 
-.shero3 .plan_button .c{
+.shero3 .plan_button .c1{
+    /* margin-left: 180px; */
+    margin: 25px auto 0 auto;
+    cursor:pointer;
+    background-color:rgb(55, 217, 152);
+}
+.shero3 .plan_button .c2{
+    /* margin-left: 180px; */
+    margin: 25px auto 0 auto;
+    cursor:pointer;
+    background-color: rgb(55, 217, 152);
+}
+.shero3 .plan_button .c3{
     /* margin-left: 180px; */
     margin: 25px auto 0 auto;
     cursor:pointer;
@@ -100,8 +112,14 @@
     display: flex;
     /* margin-left: 50px; */
 }
-.shero3 .plan_button .c:hover{
+.shero3 .plan_button .c1:hover{
 background-color: #45a049}
+
+.shero3 .plan_button .c2:hover{
+    background-color: #45a049}
+
+.shero3 .plan_button .c3:hover{
+        background-color: #45a049}
 
 .shero3 .listing{
     width :35%;
