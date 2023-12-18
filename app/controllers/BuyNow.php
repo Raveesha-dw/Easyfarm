@@ -95,7 +95,7 @@ class BuyNow extends Controller{
                 'itemId' => '',
                 'uId' => '',
             ];
-            $this->view('pages/cart', $data);
+            $this->view('pages/payment', $data);
         }
     
     }

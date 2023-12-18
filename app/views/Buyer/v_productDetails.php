@@ -34,14 +34,14 @@ $productReviews = $data['itemReviews'];
         <h4>Delivery Method:</h4>
 
         <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery</label>
-            </div>
+                <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
+                <label for="homedelivery">Home Delivery</label>
+                </div>
 
-            <div>
-            <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-            <label for="instorepick">In-Store-Pickup</label>
-            </div>
+                <div>
+                <input type="radio" id="instorepick" name="delivery" value="instorepick" />
+                <label for="instorepick">In-Store-Pickup</label>
+                </div>
 
         <!-- <?php
             $delivery = $sellerDetails->DeliveryMethod; 
