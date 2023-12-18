@@ -73,10 +73,24 @@
 
         </div>
         <div class="plan_button">
-                <button class="c1">Purchase Now</button>
-                <button class="c2">Purchase Now</button>
-                <button class="c3">Purchase Now</button>
+            <button class="c1" onclick="showPopup('This is the message for button 1')">Purchase Now</button>
+            <button class="c2" onclick="showPopup('This is the message for button 2')">Purchase Now</button>
+            <button class="c3" onclick="showPopup('This is the message for button 3')">Purchase Now</button>
         </div>
+            <div id="myModal" class="modal-overlay">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" onclick="closePopup()">OK</span>
+                <p id="popupMessage"></p>
+            </div>
+
+
+
+
+
+
+    </div>
        <!-- <?php $myVariable = "2024-8-4";?> -->
 </div>
 
@@ -107,7 +121,16 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
 
 
 
+<script>
+    function showPopup(message) {
+        document.getElementById("popupMessage").innerHTML = message;
+        document.getElementById("myModal").style.display = "flex";
+    }
 
+    function closePopup() {
+        document.getElementById("myModal").style.display = "none";
+    }
+</script>
 
 
 

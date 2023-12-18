@@ -39,7 +39,7 @@
             }
         
 
-        print_r( $concatenatedData);
+        // print_r( $concatenatedData);
         $this->view('seller/v_plan',$concatenatedData );
 
     }
