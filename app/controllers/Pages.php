@@ -137,6 +137,10 @@ class Pages extends Controller{
         $this->view('Buyer/v_dashboardReviews');
     }
 
+    public function choosepkg(){
+        $this->view('seller/v_register_plan');
+    }
+
     // Seller functions
     // public function seller_home(){
     //     $data = [

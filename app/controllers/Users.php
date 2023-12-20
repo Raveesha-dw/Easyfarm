@@ -337,7 +337,7 @@ class Users extends Controller{
                     
                     // print_r($data);
                     if($this->userModel->register($data)){
-                        header("Location:http://localhost/Easyfarm/Users/login");
+                        header("Location:http://localhost/Easyfarm/Users/choosepkg");
                         // print_r('Succefully Registered');
                         // $this->login();
                         // print_r($data);
@@ -839,6 +839,8 @@ class Users extends Controller{
     public function createUserSession($user){
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
+        // change this
+        // $_SESSION['plan_id'] = $user->plan_id;      
         // $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_type'] = $user->User_type;
 
@@ -846,8 +848,8 @@ class Users extends Controller{
             // redirect('Pages/index');
             // $this->view('pages/home');
             header("Location:http://localhost/Easyfarm/Pages/index");
-            
-        }else if($_SESSION['user_type'] == 'Seller'){
+            // change this also&& $_SESSION['plan_id']
+        }else if($_SESSION['user_type']  == 'Seller'){
             // redirect('Pages/Profile');
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
@@ -865,6 +867,10 @@ class Users extends Controller{
         // }
     }
 
+    public function choosepkg(){
+        // $this->view('Pages/choosepkg');
+        header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+    }
     public function logOut(){
         unset($_SESSION['user_ID']); 
         unset($_SESSION['user_email']);

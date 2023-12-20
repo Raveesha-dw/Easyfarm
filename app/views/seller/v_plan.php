@@ -73,15 +73,15 @@
 
         </div>
         <div class="plan_button">
-            <button class="c1" onclick="showPopup('This is the message for button 1')">Purchase Now</button>
-            <button class="c2" onclick="showPopup('This is the message for button 2')">Purchase Now</button>
-            <button class="c3" onclick="showPopup('This is the message for button 3')">Purchase Now</button>
+            <button class="c1" onclick="showPopup(0)">Purchase Now</button>           
+            <button class="c2" onclick="showPopup(1)">Purchase Now</button>
+            <button class="c3" onclick="showPopup(2)">Purchase Now</button>
         </div>
             <div id="myModal" class="modal-overlay">
 
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close" onclick="closePopup()">OK</span>
+                <span class="close" onclick="closePopup()"></span>
                 <p id="popupMessage"></p>
             </div>
 
@@ -122,8 +122,31 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
 
 
 <script>
-    function showPopup(message) {
-        document.getElementById("popupMessage").innerHTML = message;
+    
+    function showPopup(a) {
+        // console.log(a)
+        var pkg = <?php echo json_encode($data); ?>;
+
+        console.log(pkg[a])
+
+        var popupContent = `
+        <h2>${pkg[a].name}</h2>
+        <p><strong>Listing Count:</strong> ${pkg[a].listing_limit
+}</p>
+        <p><strong>Duration:</strong> ${pkg[a].duration} months</p>
+        <p><strong>Price:</strong> ₹${pkg[a].price}</p>
+        <div class="button-container">
+            <button class="cancel-button" onclick="closePopup()">Cancel</button>
+            <button class="ok-button" onclick="handleOkButtonClick()">OK</button>
+        </div>
+    `;
+
+    document.getElementById("popupMessage").innerHTML = popupContent;
+    document.querySelector(".modal-content").classList.add("custom-popup-content");
+    document.getElementById("myModal").style.display = "flex";
+        
+        document.getElementById("popupMessage").innerHTML = popupContent;
+        document.querySelector(".modal-content").classList.add("custom-popup-content");
         document.getElementById("myModal").style.display = "flex";
     }
 

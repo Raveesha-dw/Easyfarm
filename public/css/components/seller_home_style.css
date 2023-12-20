@@ -50,10 +50,26 @@
     
 } */
 
-.dd{
+.shero5 .dd{
     background-color: rgb(193, 35, 35);
     margin-left: 800px; 
+    width: 4000px;
+    height:50px;
+    /* margin-bottom: 40px; */
+    /* margin-top: 20px; */
 }
+
+.shero5 .dd2{
+    background-color: rgb(255, 247, 247);
+    margin-left: -180px; 
+    margin-top: -60px;
+    width: 4000px;
+    height:50px;
+}
+.aa{
+    display: flex;
+}
+
 /* a.dd{
     width: 59px;
 } */
