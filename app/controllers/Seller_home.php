@@ -44,6 +44,13 @@ class Seller_home extends Controller{
 
     }
 
+    public function update_status2(){
+        $item1 =$this->sellerhomeModel->updateiteamdeatils2();
+        $items=$this->sellerhomeModel->get_itemids4('59');
+        $this->view('seller/v_seller_home_completed',$items);
+
+    }
+
     // public function update_status2(){
     //     $item1 =$this->sellerhomeModel->updateiteamdeatils2();
     //     $items=$this->sellerhomeModel->get_itemids('59');
