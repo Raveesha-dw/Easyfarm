@@ -1,0 +1,69 @@
+.sidebar-post hr{
+    border: 1;
+    height: 2px;
+    width: 100px;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+.sidebar-post{
+    width: 20%;
+    /* position: fixed; */
+    height: 100vh;
+    float: left;
+    top: 0;
+    left: 0;
+    padding: 1px 15px;
+    background: #fff;
+    
+}
+
+ul button {
+  /* width: 200px; */
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 12px;
+  height: 40px;
+  border: none;
+}
+ul{
+  list-style: none;
+  padding: 0 15px;
+}
+
+ul button img{
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  
+  #order:hover{
+    /* width: 30px; */
+    font-weight: 600;
+    background-color:rgb(185, 245, 190);
+    
+  }
+  #post:hover{
+    font-weight: 600;
+    background-color:rgb(185, 245, 190);
+    
+  }
+  #inventory:hover{
+    font-weight: 600;
+    background-color:rgb(185, 245, 190);
+    
+  }
+  #plan:hover{
+    font-weight: 600;
+    background-color:rgb(185, 245, 190);
+   
+  }
+  
+  #created:hover{
+    font-weight: 600;
+    background-color:rgb(185, 245, 190);
+   
+  }

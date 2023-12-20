@@ -24,6 +24,10 @@ class Pages extends Controller{
     public function create_post(){
         $this->view('seller/v_create_post');
     }
+
+    public function ve_home(){
+        $this->view('Vechile/v_vechile_renter_home');
+    }
     public function myplan(){
         $this->view('seller/v_plan');
     
@@ -89,6 +93,10 @@ class Pages extends Controller{
 
     public function loginPage(){
         $this->view('Users/v_login');
+    }
+
+    public function re_home(){
+        $this->view('Vechile/v_renterhome');
     }
 
     public function privacyPolicy(){

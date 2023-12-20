@@ -27,8 +27,18 @@
 
 @import url('components/buyNow.css');
 @import url('components/inventory.css');
-@import url('components/payment.css');
+@import url('components/sellersidebar.css');
+@import url('components/sellerhome_nav.css');
+@import url('components/plan.css');
 
+
+@import url('components/payment.css');
+/* @import url('components/re_sidebar.css'); */
+/* Seller styles */
+/* @import url('components/seller_home_style.css');
+@import url('components/create_post_style.css');
+@import url('components/createdpost.css');
+@import url('components/myplan.css'); */
 
 
 :root{

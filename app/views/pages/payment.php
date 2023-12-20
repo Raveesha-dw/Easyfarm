@@ -55,18 +55,6 @@
 
 
 
-<script>
-    function a(){
-        console.log("adscszgvz");
-        alert("asnfhgfy");
-    }
-
-
-
-
-</script>
-
-
 
 
 
@@ -107,6 +95,7 @@
                     "return_url": "http://localhost/Easyfarm/",     // Important
                     "cancel_url": "http://localhost/Easyfarm/",     // Important
                     "notify_url": "http://sample.com/notify",
+                        
                     "order_id": obj["order_id"],
                     "items": obj["items"],
                     "amount":  obj["amount"],

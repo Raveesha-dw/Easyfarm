@@ -2,63 +2,80 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
 
-<?php interface ISellerPackage {
-    public function setListingLimit($limit);
-    public function getListingLimit();
+<div class ="shero3">
+    <div class="untill" id="myCountdown">
+        <div class="unitl__component">
+            <div class="untill__numeric until__numeric--days">00</div>
+            <div class="untill__unit">Days</div>
+        </div>
+        <div class="unitl__component">
+            <div class="untill__numeric until__numeric--hours">00</div>
+            <div class="untill__unit ">Hours</div>
+        </div>
+        <div class="unitl__component">
+            <div class="untill__numeric until__numeric--minutes">00</div>
+            <div class="untill__unit">Minutes</div>
+        </div>
+        <div class="unitl__component">
+            <div class="untill__numeric until__numeric--seconds">00</div>
+            <div class="untill__unit">Seconds</div>
+        </div>
+
+        <div class="untill__event">Unit 31 Desember 2024</div>
+            </div>
+
+
+            <div class="listing">
+                <h2 class="list__label">REMAING LISTING :</h2>
+                <h2 class="list__value">45</h2>
+            </div>
+        <div class="ee">
+            <div class="wrapperseller1">
+            </div>
+            <div class="wrapperseller2">
+            </div>
+            <div class="wrapperseller3"></div>
+
+        </div>
+        <div class="plan_button">
+                <button class="c">Purchase Now</button>
+                <button class="c">Purchase Now</button>
+                <button class="c">Purchase Now</button>
+        </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/duration.min.js"></script>
+<script>
+   dayjs.extend(dayjs_plugin_duration);
+
+function activateCountdown(element, dateString) {
+    const targetDate = dayjs(dateString);
+    element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
+    
+    setInterval(() => {
+        const now = dayjs();
+        const duration = dayjs.duration(targetDate.diff(now));
+        element.querySelector(".until__numeric--seconds").textContent = duration.seconds().toString();
+        element.querySelector(".until__numeric--minutes").textContent = duration.minutes().toString();
+        element.querySelector(".until__numeric--hours").textContent = duration.hours().toString();
+        element.querySelector(".until__numeric--days").textContent = duration.days().toString();
+    }, 250);
 }
 
-class BasicPackage implements ISellerPackage {
-    private $listingLimit = 20;
+activateCountdown(document.getElementById("myCountdown"), "2023-12-31");
 
-    public function setListingLimit($limit) {
-        $this->listingLimit = $limit;
-    }
 
-    public function getListingLimit() {
-        return $this->listingLimit;
-    }
-}
+</script>
 
-class StandardPackage implements ISellerPackage {
-    private $listingLimit = 50;
 
-    public function setListingLimit($limit) {
-        $this->listingLimit = $limit;
-    }
 
-    public function getListingLimit() {
-        return $this->listingLimit;
-    }
-}
 
-class PremiumPackage implements ISellerPackage {
-    private $listingLimit = 100;
 
-    public function setListingLimit($limit) {
-        $this->listingLimit = $limit;
-    }
 
-    public function getListingLimit() {
-        return $this->listingLimit;
-    }
-}
 
-class Seller {
-    private $package;
 
-    public function setPackage(ISellerPackage $package) {
-        $this->package = $package;
-    }
 
-    public function getPackage() {
-        return $this->package;
-    }
-}
 
-// Example usage
-$seller = new Seller();
-$seller->setPackage(new BasicPackage());
-
-echo 'Listing Limit: ' . $seller->getPackage()->getListingLimit();?>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  

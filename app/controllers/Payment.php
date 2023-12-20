@@ -12,8 +12,8 @@ class Payment extends Controller{
 
 
     public function payment() {
-        $amount =3000;
-        $merchant_id =  "1225296";
+        $amount = 3000;
+        $merchant_id =  1225296;
         $order_id = uniqid();
         $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
         $currency = "LKR";
@@ -59,3 +59,8 @@ class Payment extends Controller{
 }
 
 ?>
+
+
+
+
+

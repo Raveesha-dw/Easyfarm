@@ -61,7 +61,9 @@ class Cart extends Controller{
             // Check if the cart item already exists for this combination of itemId and uId
             if ($existingCartItem = $this->cartModel->getCartItem($data)) {            
                 // If the cart item already exists, update the quantity
-                $data['quantity'] += $existingCartItem->Quantity;
+                // $data['quantity'] += $existingCartItem->Quantity;
+                $data['quantity'] += intval($existingCartItem->Quantity);
+
 
                 if ($this->cartModel->updateCartItem(['uId'=>$existingCartItem->U_Id,'quantity' => $data['quantity'] , 'itemId' => $data['itemId']])) {
                     // $this->view('pages/cart', $data);                  

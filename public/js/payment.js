@@ -51,6 +51,6 @@ function paymentGateway() {
                 payhere.startPayment(payment);
         }
     }
-    xhttp.open("GET","<?php echo URLROOT ?>Payment/payment",true);
+    xhttp.open("GET","<?php echo URLROOT ?>/Payment/payment",true);
     xhttp.send();
 }
