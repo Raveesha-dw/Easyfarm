@@ -89,10 +89,10 @@
                                 </div>
                                 <div class="content">
                                         <p>Unlock unparalleled benefits with our PREMIUM plan – your gateway to extraordinary possibilities! 🚀</p>
-                                        <p><strong>Unlimited Access for 6 Months!</strong> Immerse yourself in a world of endless opportunities. Enjoy unrestricted access to our premium features for a full six months! 📈</p>
-                                        <p><strong>List Up Unlimited Items!</strong> Showcase your entire collection without limits. List as many items as your heart desires, and watch your business thrive. 💸</p>
+                                        <p><strong>Unlimited Access for 6 Months!</strong> </p>
+                                        <p><strong>List Up Unlimited Items!</strong> </p>
                                         <p><strong>All for just ₹5000!</strong> Elevate your experience for an unbeatable price of ₹5000. Experience the pinnacle of service without compromise! 🎁</p>
-                                        <p class="limited-offer"><strong>Limited Time Offer!</strong> Act Fast! This  offer is available for a limited time only. Seize the opportunity – grab your PREMIUM plan now and elevate your journey! <a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE🌐</a></p>
+                                        <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE🌐</a></p>
                                 </div>
                         </div>
                 
@@ -107,10 +107,10 @@
                                 </div>
                                 <div class="content">
                                         <p>Discover the extraordinary with our Normal plan – your key to an enhanced digital presence!</p>
-                                        <p><strong>Unlimited Access for 6 Months!</strong> Immerse yourself in endless opportunities. Enjoy unrestricted access to premium features for a full six months! 🚀</p>
-                                        <p><strong>List Up to 50 Items!</strong> Boost your visibility. List up to 50 items on our platform and make your mark in the digital landscape. 📈</p>
+                                        <p><strong>Unlimited Access for 6 Months!</strong> </p>
+                                        <p><strong>List Up to 50 Items!</strong></p>
                                         <p><strong>All for just ₹1500!</strong> Elevate your journey for an incredible ₹1500. Experience the best of Normal without breaking the bank! 💸</p>
-                                        <p class="limited-offer"><strong>Limited Time Offer!</strong> Act Fast! This exclusive offer is available for a limited time only. Seize the opportunity – grab your Normal plan now and transform your digital experience! <a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE 🌐</a></p>
+                                        <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
 
@@ -124,10 +124,10 @@
                                 </div>
                                 <div class="content">
                                         <p>Experience excellence with our STANDARD plan – crafted for those who seek greatness!</p>
-                                        <p><strong>Unlimited Access for 6 Months!</strong> Explore a realm of possibilities. Enjoy unrestricted access to premium features for a complete six months! 🚀</p>
-                                        <p><strong>List Up to 150 Items!</strong> Elevate your visibility. List up to 150 items on our platform and maximize your impact in the digital marketplace. 📈</p>
+                                        <p><strong>Unlimited Access for 6 Months!</strong></p>
+                                        <p><strong>List Up to 150 Items!</strong> </p>
                                         <p><strong>All for just ₹2500!</strong> Elevate your journey for a mere ₹2500. Unleash the power of STANDARD without compromising your budget! 💸</p>
-                                        <p class="limited-offer"><strong>Limited Time Offer!</strong> Act Fast! This exclusive offer is available for a limited time only. Seize the opportunity – grab your STANDARD plan now and level up your experience! <a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE 🌐</a></p>
+                                        <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
 
