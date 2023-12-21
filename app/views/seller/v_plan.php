@@ -77,13 +77,13 @@
             <button class="c2" onclick="showPopup(1)">Purchase Now</button>
             <button class="c3" onclick="showPopup(2)">Purchase Now</button>
         </div>
-            <div id="myModal" class="modal-overlay">
+            <div id="myModal" class="modal-overlay1">
 
             <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close" onclick="closePopup()"></span>
-                <p id="popupMessage"></p>
-            </div>
+                <div class="modal-content">
+                    <span class="close" onclick="closePopup()"></span>
+                    <p id="popupMessage"></p>
+                </div>
 
 
 
@@ -92,7 +92,7 @@
 
     </div>
        <!-- <?php $myVariable = "2024-8-4";?> -->
-</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/duration.min.js"></script>
@@ -131,19 +131,19 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
 
         var popupContent = `
         <h2>${pkg[a].name}</h2>
-        <p><strong>Listing Count:</strong> ${pkg[a].listing_limit
-}</p>
+        <p><strong>Listing Count:</strong> ${pkg[a].listing_limit}</p>
+
         <p><strong>Duration:</strong> ${pkg[a].duration} months</p>
         <p><strong>Price:</strong> ₹${pkg[a].price}</p>
-        <div class="button-container">
-            <button class="cancel-button" onclick="closePopup()">Cancel</button>
-            <button class="ok-button" onclick="handleOkButtonClick()">OK</button>
-        </div>
+            <div class="button-container">
+                <button class="cancel-button" onclick="closePopup()">Cancel</button>
+                <button class="ok-button" onclick="handleOkButtonClick()">OK</button>
+            </div>
     `;
 
-    document.getElementById("popupMessage").innerHTML = popupContent;
-    document.querySelector(".modal-content").classList.add("custom-popup-content");
-    document.getElementById("myModal").style.display = "flex";
+        document.getElementById("popupMessage").innerHTML = popupContent;
+        document.querySelector(".modal-content").classList.add("custom-popup-content");
+        document.getElementById("myModal").style.display = "flex";
         
         document.getElementById("popupMessage").innerHTML = popupContent;
         document.querySelector(".modal-content").classList.add("custom-popup-content");
@@ -158,7 +158,6 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
 
 
 
-
-
+</div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  

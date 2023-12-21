@@ -38,15 +38,7 @@ public function get_itemids3($seller_ID){
     // print_r($result);
     return $result;
 }
-public function updateiteamdeatils1(){
-    
-    $this->db->query("UPDATE orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
-    $this->db->bind(':Order_ID',$_GET['id']);
-    $this->db->execute();
-    $result=$this->db->resultSet();
-    return $result;
-    
-}
+
 
 
 public function get_itemids4($seller_ID){
@@ -61,9 +53,25 @@ public function get_itemids4($seller_ID){
     return $result;
 }
 
+// done
+
+
+
+
 public function updateiteamdeatils2(){
     
     $this->db->query("UPDATE orders SET Status ='Cancelled' WHERE Order_ID = :Order_ID");
+    $this->db->bind(':Order_ID',$_GET['id']);
+    $this->db->execute();
+    $result=$this->db->resultSet();
+    return $result;
+    
+}
+
+
+public function updateiteamdeatils1(){
+    
+    $this->db->query("UPDATE orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
     $this->db->bind(':Order_ID',$_GET['id']);
     $this->db->execute();
     $result=$this->db->resultSet();

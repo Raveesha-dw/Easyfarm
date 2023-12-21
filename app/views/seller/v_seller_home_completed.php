@@ -113,19 +113,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($products as $product) :?>
                     <tr>
-                    <?php foreach ($products as $product) :?>
-                        <td> <?php echo $product->Item_name ?> </td>
-                        <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Zinzu Chan Lee</td>
-                        <td> <?php echo $product->Name ?> </td>
+                    
+                        <td> <?php echo $product->Order_ID ?> </td>
+                        <td> <img src="images/Zinzu Chan Lee.jpg" alt=""><?php echo $product->Name ?></td>
+                        <td> <?php echo $product->Address ?> </td>
                         <td> <?php echo $product->placed_Date ?> </td>
                         <td>
                             <p class="status delivered"><?php echo $product->Status; ?></p>
                         </td>
-                        <td> <strong> <?php echo $product->quantity ?> </strong></td>
+                        <td> <strong> <?php echo $product->Unit_price?> </strong></td>
 
-                     <?php  endforeach;?>
+                   
                     </tr>
+                    <?php  endforeach;?>
                     <!-- <tr>
                         <td> 2 </td>
                         <td><img src="images/Jeet Saru.png" alt=""> Jeet Saru </td>

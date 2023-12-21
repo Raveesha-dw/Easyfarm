@@ -30,12 +30,15 @@ class Seller_home extends Controller{
     }
     public function get_product_details3(){
         // $data=Array();
-        $items=$this->sellerhomeModel->get_itemids3('59');
+        $items=$this->sellerhomeModel->get_itemids4('59');
        
             $this->view('seller/v_seller_home_completed',$items);
 
       
     }
+
+
+// done
 
     public function update_status1(){
         $item1 =$this->sellerhomeModel->updateiteamdeatils1();

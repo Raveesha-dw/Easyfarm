@@ -149,7 +149,7 @@ background-color: #45a049}
     transform: translate(-50%, -50%); 
     background: #333;
 } */
-.list__value {
+.shero3 .list__value {
     color: rgb(0, 0, 0);
     /* top: 5%; */
     /* left: 70%; */
@@ -181,7 +181,7 @@ background-color: #45a049}
 }
 
 
-.modal-overlay {
+/* .shero3 .modal-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -191,7 +191,7 @@ background-color: #45a049}
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-}
+} */
 
 /* Styles for the modal content */
 /* .modal-content {
@@ -226,7 +226,7 @@ background-color: #45a049}
 
 
 
-.modal-overlay {
+.shero3 .modal-overlay1 {
     display: none;
     position: fixed;
     top: 0;
@@ -236,18 +236,22 @@ background-color: #45a049}
     background: rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: center;
+    /* width: 1000px; */
 }
 
-.modal-content {
+.shero3 .modal-content {
     background-color: #fff;
+    width: 300px;
+    height: 300px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    position: relative;
+
+    position: center;
 }
 
-.close {
+.shero3 .close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -255,25 +259,25 @@ background-color: #45a049}
     cursor: pointer;
 }
 
-.custom-popup-content h2 {
+.shero3 .custom-popup-content h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.custom-popup-content p {
+.shero3 .custom-popup-content p {
     margin-bottom: 10px;
 }
 
-.custom-popup-content strong {
+.shero3 .custom-popup-content strong {
     font-weight: bold;
 }
 
-.button-container {
+.shero3 .button-container {
     margin-top: 20px;
 }
 
-.cancel-button,
-.ok-button {
+.shero3 .cancel-button,
+.shero3 .ok-button {
     padding: 10px 20px;
     margin-right: 10px;
     border: none;
@@ -282,12 +286,12 @@ background-color: #45a049}
     font-size: 16px;
 }
 
-.cancel-button {
+.shero3 .cancel-button {
     background-color: #d9534f;
     color: #fff;
 }
 
-.ok-button {
+.shero3 .ok-button {
     background-color: #5bc0de;
     color: #fff;
 }
