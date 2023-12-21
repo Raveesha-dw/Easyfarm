@@ -192,21 +192,21 @@
 
                         <p class="type">Address </p>
                         <div class="input-box">
-                            <input type="hidden" name="address" placeholder="Enter address" required value="<?php echo $data['Address']; ?>">
+                            <input type="text" name="address" placeholder="Enter address" required value="<?php echo $data['Address']; ?>">
                             <i class='bx bxs-edit-location'></i>
                             <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
                         </div>
 
                         <p class="type">City </p>
                         <div class="input-box">
-                            <input type="hidden" name="city" placeholder="Enter the City" required value="">
+                            <input type="text" name="city" placeholder="Enter the City" required value="">
                             <i class='bx bxs-edit-location'></i>
                             <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
                         </div>
                         
                         <p class="type">District </p>
                         <div class="input-box">
-                            <input type="hidden" name="district" placeholder="Enter the District" required value="">
+                            <input type="text" name="district" placeholder="Enter the District" required value="">
                             <i class='bx bxs-edit-location'></i>
                             <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
                         </div>

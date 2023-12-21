@@ -138,7 +138,7 @@ class BuyNow extends Controller{
                 'city' => trim($_POST['city']),
                 'district' => trim($_POST['district']),
                 'quantity' => $_POST['city'], 
-                'Item_Id' => $_POST['city'], 
+                'Item_Id' => $_POST['itemId'], 
                 'selectedDeliveryMethod' => $_POST['selectedDeliveryMethod'], 
                 'total' => $_POST['total'], 
                 'deliveryFee' => $_POST['deliveryFee'], 
@@ -164,6 +164,7 @@ class BuyNow extends Controller{
                 $buyerDetails = get_object_vars($buyerDetails);
 
     
+
                 // Merge arrays and remove duplicates
                 $mergedArray = array_merge($orderdDetails, $buyerDetails);
                 $data1 = array_unique($mergedArray);
