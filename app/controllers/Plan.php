@@ -69,8 +69,11 @@
 
 
     public function payment() {
-        
-    $amount =3000;
+    $data = $this->planModel->get_dataplan1();
+    // print_r(var_dump($data));
+    // print_r($data['price']);
+    
+    $amount =100;
     $merchant_id =  "1225296";
     $order_id = uniqid();
     $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
