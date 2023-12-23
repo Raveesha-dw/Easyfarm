@@ -69,9 +69,10 @@
 
 
     public function payment() {
-    $data = $this->planModel->get_dataplan1();
-    // print_r(var_dump($data));
-    // print_r($data['price']);
+    // $data = $this->planModel->get_dataplan1();
+    // $a =$data[0]['price'];
+    // echo $data;
+    // print_r($data[0]->price);
     
     $amount =100;
     $merchant_id =  "1225296";
