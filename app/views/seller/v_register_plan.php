@@ -5,7 +5,7 @@
 <script>
 
         
-    function paymentGateway() {
+    function paymentGateway(id) {
         console.log("kk");
 
                 var xhttp = new XMLHttpRequest();
@@ -63,7 +63,7 @@
                                 payhere.startPayment(payment);
                         }
                 }
-                xhttp.open("GET","<?php echo URLROOT ?>/Plan/payment",true);
+                xhttp.open("GET","<?php echo URLROOT ?>/Plan/payment?id=" + id,true);
                 xhttp.send();
         }
         
@@ -92,7 +92,7 @@
                                         <p><strong>Unlimited Access for 6 Months!</strong> </p>
                                         <p><strong>List Up Unlimited Items!</strong> </p>
                                         <p><strong>All for just ₹5000!</strong> Elevate your experience for an unbeatable price of ₹5000. Experience the pinnacle of service without compromise! 🎁</p>
-                                        <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE🌐</a></p>
+                                        <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(3);">SUBCRBIE🌐</a></p>
                                 </div>
                         </div>
                 
@@ -110,7 +110,7 @@
                                         <p><strong>Unlimited Access for 6 Months!</strong> </p>
                                         <p><strong>List Up to 50 Items!</strong></p>
                                         <p><strong>All for just ₹1500!</strong> Elevate your journey for an incredible ₹1500. Experience the best of Normal without breaking the bank! 💸</p>
-                                        <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE 🌐</a></p>
+                                        <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(1);">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
 
@@ -127,7 +127,7 @@
                                         <p><strong>Unlimited Access for 6 Months!</strong></p>
                                         <p><strong>List Up to 150 Items!</strong> </p>
                                         <p><strong>All for just ₹2500!</strong> Elevate your journey for a mere ₹2500. Unleash the power of STANDARD without compromising your budget! 💸</p>
-                                        <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway();">SUBCRBIE 🌐</a></p>
+                                        <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
 

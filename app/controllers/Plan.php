@@ -61,7 +61,7 @@
        
        
 
-
+  
         // $this->view('seller/v_plan', $data2);
     }
 
@@ -69,16 +69,17 @@
 
 
     public function payment() {
-    // $data = $this->planModel->get_dataplan1();
+    $data = $this->planModel->get_dataplan1();
     // $a =$data[0]['price'];
     // echo $data;
     // print_r($data[0]->price);
     
-    $amount =100;
+    $amount =$data[0]->price;
     $merchant_id =  "1225296";
     $order_id = uniqid();
     $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
     $currency = "LKR";
+    $name= $data[0]->name;
 
     $hash = strtoupper(
         md5(
@@ -92,7 +93,7 @@
 
     $array =[];
     // $array["return_url"]= "http://localhost/Easyfarm/Users/login";
-    $array["items"] = "Door bell wireles";
+    $array["items"] = $name;
     $array["first_name"] = "imalja";
     $array["last_name"] = "dhananja";
     $array["email"] = "easyfarm123@mail.com";

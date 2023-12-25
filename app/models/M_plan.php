@@ -18,8 +18,9 @@ public function __construct(){
 // }
 
 public function get_dataplan1(){
-    $this->db->query("SELECT * FROM plandetails");
-    // $this->db->bind(':seller_ID', $seller_ID);
+    $this->db->query("SELECT * FROM plandetails WHERE plan_id= :plan_id");
+    $this->db->bind(':plan_id', $_GET['id']);
+    // $this->db->bind(':Item_Id',$_GET['id']);
     $result=$this->db->resultSet();
     // print_r($result);
     return $result;
