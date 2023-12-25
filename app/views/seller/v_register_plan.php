@@ -17,7 +17,8 @@
                                 // Payment completed. It can be a successful failure.
                                 payhere.onCompleted = function onCompleted(orderId) {
                                 console.log("Payment completed. OrderID:" + orderId);
-                                // window.location.href = "<?php echo isset($_SESSION['return_url']) ? $_SESSION['return_url'] : ''; ?>";
+                                window.location.href = "http://localhost/Easyfarm/Users/login";
+                                
                                 // Note: validate the payment and show success or failure page to the customer
                                 };
 
@@ -39,7 +40,7 @@
                                 
                                 "sandbox": true,
                                 "merchant_id": "1225296",    // Replace your Merchant ID
-                                "return_url":"http://localhost/Easyfarm",     // Important   
+                                "return_url":"http://localhost/Easyfarm/Users/login",     // Important   
                                 "cancel_url": "",     // Important
                                 "notify_url": "http://sample.com/notify",
                                 "order_id": obj["order_id"],
