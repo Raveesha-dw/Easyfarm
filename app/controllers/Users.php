@@ -337,10 +337,11 @@ class Users extends Controller{
                     
                     // print_r($data);
                     if(1==1){
-                        // $logged_user = $this->userModel->login($data);
-                         $this->userModel->register($data);
-                        print_r( $data);
-                        if($data){
+                        $r_user = $this->userModel->register($data);
+                        //  $this->userModel->register($data);
+                        // print_r( $data);
+                        // print_r($r_user);
+                        if($r_user){
                             $this->createUserSession2($data);                    
                         } 
                         // header("Location:http://localhost/Easyfarm/Users/choosepkg");
@@ -874,9 +875,11 @@ class Users extends Controller{
 
         // }
     }
-    public function createUserSession2($user){
+    public function createUserSession2($data){
+        // print_r($data);
         // $_SESSION['user_ID'] = $user->U_Id;
-        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_email1'] = $data['email'];
+        // print_r($_SESSION['user_email1']);
         // print_r
         
         // header("Location:http://localhost/Easyfarm/Pages/index");

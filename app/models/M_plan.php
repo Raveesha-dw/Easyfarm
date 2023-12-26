@@ -39,9 +39,15 @@ public function get_dataplan($plan_id, $U_Id) {
     return $result;
 }
 
-
-
-
-
+public function get_userdetails($user_email){
+    $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:user_email");
+    $this->db->bind(':user_email', $user_email);
+    $result = $this->db->resultSet();
+    return $result;
 
 }
+
+
+
+
+} 

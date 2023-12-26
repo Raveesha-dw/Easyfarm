@@ -57,8 +57,8 @@ class M_users{
             $this->db->bind(':contactno', $data['contactno']);
             $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
             $this->db->execute();
-            return $row;
-            // return true;
+            // return $row;
+            return true;
         }
 
         if($data['user_type'] == 'Seller'){

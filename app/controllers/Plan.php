@@ -69,16 +69,22 @@
 
 
     public function payment() {
+        // $user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User Email Not Available';
     $data = $this->planModel->get_dataplan1();
+    // $data1=$this->planModel->get_userdetails($user_email);
     // $a =$data[0]['price'];
     // echo $data;
-    
-    
+    // print_r($data);
+    $mail=$_SESSION['user_email1'];
+    $data2=$this->planModel->get_userdetails($mail);
+    // print_r($data2);
+
 // Start or resume the session
 // session_start();
 // print_r($data);
 // Access the user_email from the session
-$user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User Email Not Available';
+// echo "User Email: $user_email";
+
 
 // Now you can use $user_email as needed in your code
 // echo "User Email: $user_email";
@@ -92,6 +98,11 @@ $user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User E
     $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
     $currency = "LKR";
     $name= $data[0]->name;
+    $f_name= $data2[0]->Name;
+    $address= $data2[0]->Store_Adress;
+    $email= $data2[0]->Email;
+
+
 
     $hash = strtoupper(
         md5(
@@ -103,15 +114,15 @@ $user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User E
         ) 
     );
 
-    $array =[];
+    $array =[$data2];
     // $array["return_url"]= "http://localhost/Easyfarm/Users/login";
     $array["items"] = $name;
-    $array["first_name"] = "imalja";
-    $array["last_name"] = "dhananja";
-    $array["email"] = "easyfarm123@mail.com";
-    $array["phone"] = "0715797461";
-    $array["address"] = "No 20, Headaketiya, Angunukolapalassa";
-    $array["city"] = "Hambanthota";
+    $array["full_name"] = $f_name;
+    // $array["last_name"] = "dhananja";
+    $array["email"] = $email;
+    // $array["phone"] = "0715797461";
+    $array["address"] = $address;
+    // $array["city"] = "Hambanthota";
 
     
 
