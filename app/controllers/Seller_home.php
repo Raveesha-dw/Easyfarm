@@ -13,6 +13,8 @@ class Seller_home extends Controller{
     }
 
     public function get_product_details1(){
+
+        print_r($_SESSION['user_email']);
         // $data=Array();
         $items=$this->sellerhomeModel->get_itemids1('59');
        

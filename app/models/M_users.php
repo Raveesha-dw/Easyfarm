@@ -47,7 +47,9 @@ class M_users{
             $this->db->bind(':email',$data['email']);
 
             $row=$this->db->single();
+            
             $id = $row->U_Id;
+            
 
             $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address) VALUES(:id, :fullname, :contactno, :address)');
             $this->db->bind(':id', $id);
@@ -55,7 +57,8 @@ class M_users{
             $this->db->bind(':contactno', $data['contactno']);
             $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
             $this->db->execute();
-            return true;
+            return $row;
+            // return true;
         }
 
         if($data['user_type'] == 'Seller'){

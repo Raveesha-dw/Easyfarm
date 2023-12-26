@@ -336,8 +336,14 @@ class Users extends Controller{
                     // $this->userModel->register($data);
                     
                     // print_r($data);
-                    if($this->userModel->register($data)){
-                        header("Location:http://localhost/Easyfarm/Users/choosepkg");
+                    if(1==1){
+                        // $logged_user = $this->userModel->login($data);
+                         $this->userModel->register($data);
+                        print_r( $data);
+                        if($data){
+                            $this->createUserSession2($data);                    
+                        } 
+                        // header("Location:http://localhost/Easyfarm/Users/choosepkg");
                         // print_r('Succefully Registered');
                         // $this->login();
                         // print_r($data);
@@ -843,6 +849,7 @@ class Users extends Controller{
         // $_SESSION['plan_id'] = $user->plan_id;      
         // $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_type'] = $user->User_type;
+        print_r($_SESSION['user_type']);
 
         if($_SESSION['user_type'] == 'Buyer'){
             // redirect('Pages/index');
@@ -850,6 +857,7 @@ class Users extends Controller{
             header("Location:http://localhost/Easyfarm/Pages/index");
             // change this also&& $_SESSION['plan_id']
         }else if($_SESSION['user_type']  == 'Seller'){
+            print_r($_SESSION['user_type']);
             // redirect('Pages/Profile');
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
@@ -866,11 +874,23 @@ class Users extends Controller{
 
         // }
     }
+    public function createUserSession2($user){
+        // $_SESSION['user_ID'] = $user->U_Id;
+        $_SESSION['user_email'] = $user['email'];
+        // print_r
+        
+        // header("Location:http://localhost/Easyfarm/Pages/index");
+         header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+        //  print_r("kj");
+        //  
 
-    public function choosepkg(){
-        // $this->view('Pages/choosepkg');
-        header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+
     }
+
+    // public function choosepkg(){
+    //     // $this->view('Pages/choosepkg');
+    //     header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+    // }
     public function logOut(){
         unset($_SESSION['user_ID']); 
         unset($_SESSION['user_email']);

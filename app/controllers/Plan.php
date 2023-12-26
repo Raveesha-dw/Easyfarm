@@ -72,7 +72,19 @@
     $data = $this->planModel->get_dataplan1();
     // $a =$data[0]['price'];
     // echo $data;
-    // print_r($data[0]->price);
+    
+    
+// Start or resume the session
+// session_start();
+// print_r($data);
+// Access the user_email from the session
+$user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User Email Not Available';
+
+// Now you can use $user_email as needed in your code
+// echo "User Email: $user_email";
+
+
+// 4916217501611292
     
     $amount =$data[0]->price;
     $merchant_id =  "1225296";
