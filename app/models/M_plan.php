@@ -47,6 +47,16 @@ public function get_userdetails($user_email){
 
 }
 
+public function update_user_plan(){
+   
+    $this->db->query("UPDATE reg_seller SET list_count = 0, plan_id = :plan_id, Register_date = NOW() WHERE U_Id = (SELECT U_Id FROM user WHERE email = :email)");
+    $this->db->bind(':plan_id', $_GET['id']);
+    $this->db->bind(':email', $_SESSION['user_email1']);
+    $this->db->execute();
+    // print_r("xjx");
+    return true;
+
+}
 
 
 

@@ -71,6 +71,7 @@
     public function payment() {
         // $user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User Email Not Available';
     $data = $this->planModel->get_dataplan1();
+   
     // $data1=$this->planModel->get_userdetails($user_email);
     // $a =$data[0]['price'];
     // echo $data;
@@ -101,6 +102,7 @@
     $f_name= $data2[0]->Name;
     $address= $data2[0]->Store_Adress;
     $email= $data2[0]->Email;
+    $plan_id=$data[0]->plan_id;
 
 
 
@@ -122,6 +124,7 @@
     $array["email"] = $email;
     // $array["phone"] = "0715797461";
     $array["address"] = $address;
+    $array["plan_id"] = $plan_id;
     // $array["city"] = "Hambanthota";
 
     
@@ -140,7 +143,23 @@
 
 }
 
+public function update_details($id = null){
+    if ($id === null) {
+        // If $id is not provided as a parameter, try to get it from $_GET['id']
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+    }
 
+    // Now you can use $id in your function
+     if($this->planModel->update_user_plan()){
+        unset($_SESSION['user_email']);
+        echo '<script>window.location.href = "http://localhost/Easyfarm/Users/login";</script>';
+
+        // redirect('Users/v_login');
+     }
+
+    // print_r($id);
+    // print_r( $_SESSION['user_email1']);
+}
 
 
 

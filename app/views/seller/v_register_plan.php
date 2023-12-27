@@ -14,10 +14,40 @@
                         alert(xhttp.responseText);
                         var obj = JSON.parse(xhttp.responseText);
 
+                        var payment = {
+                                
+                                "sandbox": true,
+                                "merchant_id": "1225296",    // Replace your Merchant ID
+                                "return_url":"http://localhost/Easyfarm/Users/login",     // Important   
+                                "cancel_url": "",     // Important
+                                "notify_url": "http://sample.com/notify",
+                                "order_id": obj["order_id"],
+                                "items": obj["items"],
+                                "amount":  obj["amount"],
+                                "plan_id":obj["plan_id"],
+                                "currency":  obj["currency"],
+                                "hash":  obj["hash"], // *Replace with generated hash retrieved from backend
+                                "first_name": obj["first_name"],
+                                "last_name": obj["last_name"],
+                                "email": obj["email"],
+                                "phone": obj["phone"],
+                                "address": obj["address"],
+                                "city": obj["city"],
+                                "country": "Sri Lanka",
+                                "delivery_address": "",
+                                "delivery_city": "",
+                                "delivery_country": "Sri Lanka",
+                                "custom_1": "",
+                                "custom_2": "",
+                                };
+
                                 // Payment completed. It can be a successful failure.
                                 payhere.onCompleted = function onCompleted(orderId) {
                                 console.log("Payment completed. OrderID:" + orderId);
-                                window.location.href = "http://localhost/Easyfarm/Users/login";
+                                var paymentQueryString = Object.keys(payment).map(key => key + '=' + encodeURIComponent(payment[key])).join('&');
+                                window.location.href = "http://localhost/Easyfarm/Plan/update_details?id=" + payment['plan_id'];
+
+
                                 
                                 // Note: validate the payment and show success or failure page to the customer
                                 };
@@ -36,31 +66,7 @@
 
                         
 
-                                var payment = {
-                                
-                                "sandbox": true,
-                                "merchant_id": "1225296",    // Replace your Merchant ID
-                                "return_url":"http://localhost/Easyfarm/Users/login",     // Important   
-                                "cancel_url": "",     // Important
-                                "notify_url": "http://sample.com/notify",
-                                "order_id": obj["order_id"],
-                                "items": obj["items"],
-                                "amount":  obj["amount"],
-                                "currency":  obj["currency"],
-                                "hash":  obj["hash"], // *Replace with generated hash retrieved from backend
-                                "first_name": obj["first_name"],
-                                "last_name": obj["last_name"],
-                                "email": obj["email"],
-                                "phone": obj["phone"],
-                                "address": obj["address"],
-                                "city": obj["city"],
-                                "country": "Sri Lanka",
-                                "delivery_address": "No. 46, Galle road, Kalutara South",
-                                "delivery_city": "Kalutara",
-                                "delivery_country": "Sri Lanka",
-                                "custom_1": "",
-                                "custom_2": "",
-                                };
+                               
                                 payhere.startPayment(payment);
                         }
                 }
@@ -69,7 +75,7 @@
         }
         
 </script>
-</script>  <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+<script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
 
 
