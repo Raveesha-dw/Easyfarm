@@ -12,7 +12,7 @@
     public function get_plan_details(){
         // print_r("d");
         
-        $data = $this->planModel->get_dataplan('1','59');
+        $data = $this->planModel->get_dataplan('1','135');
         $data1  = get_object_vars($data[0]);
         $originalDate = $data1['Register_date'];
 
@@ -27,7 +27,9 @@
 
 // Update the array with the new date
         $data1['Date'] = $newDate;
+        print_r($data1);
         $data2= $this->get_plan_details2();
+        print_r($data2);
         $concatenatedData = array_merge($data1, $data2);
         if ($concatenatedData['plan_id'] == 1) {
                 $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
@@ -48,6 +50,7 @@
         // print_r("d");
         
         $data = $this->planModel->get_dataplan1();
+        // print_r($data);
         $result = [];
 
         foreach ($data as $row) {
