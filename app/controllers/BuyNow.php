@@ -24,6 +24,9 @@ class BuyNow extends Controller{
             
 
 
+
+
+
             if((!empty($_POST['quantity'])) && (!empty($_POST['delivery'])) ){
                 $data = [
                     'quantity' => $_POST['quantity'], 
@@ -38,8 +41,7 @@ class BuyNow extends Controller{
                     
                 ];
                 // print_r($_POST['delivery']);
-                // print_r($data);
-
+                print_r($data); 
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
                     $data['deliveryFee'] = 500;
@@ -64,8 +66,12 @@ class BuyNow extends Controller{
                 $data = array_merge($data1, $data);
     
                 // $data['total'] = $data['quantity']*$data['Unit_price'] ;
-                $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
+                // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
+                $data['total'] = (floatval($data['quantity'])/$data['Unit_size'] * $data['Unit_price']);
+
                 $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
+                $data2[0] = $data;
+                $data = $data2;
                 print_r($data);
     
                 $this->view('pages/buyNow',$data);
@@ -128,6 +134,91 @@ class BuyNow extends Controller{
     
     }
 
+
+
+
+    public function checkout() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+          
+            $itemIds = $_POST['itemIds'];
+            $quantities =$_POST['quantitiesTo'];
+            $selectedDeliveryMethods =  $_POST['selectedDeliveryMethods'];   
+            $uId = $_POST['uId'];
+
+            // Loop through each item to update the quantity
+            for ($i = 0; $i < count($itemIds); $i++) {
+                $data = [
+                    'quantity' => $quantities[$i], 
+                    'Item_Id' => $itemIds[$i],
+                    'selectedDeliveryMethod' => $selectedDeliveryMethods[$i],
+                    'uId' => $uId,
+                    'total' => 0, 
+                    'deliveryFee' => '',
+                    'totalPayment' => 0,
+
+                ];
+
+                if($data['selectedDeliveryMethod'] == 'Home Delivery'){
+                    $data['deliveryFee'] = 500;
+
+                }else{
+                    $data['deliveryFee'] = 0;
+                }
+
+
+                $orderdDetails = $this->orderModel->getItemDetais($data);
+                $buyerDetails =  $this->orderModel->getUserDetails($data);
+
+                // Convert objects to arrays
+                $orderdDetails = get_object_vars($orderdDetails);
+                $buyerDetails = get_object_vars($buyerDetails);
+
+                // Merge arrays and remove duplicates
+                $mergedArray = array_merge($orderdDetails, $buyerDetails);
+                $data1 = array_unique($mergedArray);
+                $data = array_merge($data1, $data);
+
+                // $data['total'] = $data['quantity']*$data['Unit_price'] ;
+                $data['total'] = (floatval($data['quantity'])/$data['Unit_size'] * $data['Unit_price']);
+                $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
+
+                $data2[$i] = $data;
+
+
+
+
+
+
+               
+            }
+            $data = $data2;
+         
+    
+            $this->view('pages/buyNow',$data);
+        }
+    }   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function updateAddress() {
         if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -183,85 +274,85 @@ class BuyNow extends Controller{
 
 
 
-    public function payment() {
+//     public function payment() {
 
-        // $amount =0;
-
-
+//         // $amount =0;
 
 
-        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //     // Retrieve data from the POST request
-        //     $amount = isset($_POST['total']) ? $_POST['total'] : null;
-        //     // $key2 = isset($_POST['key2']) ? $_POST['key2'] : null;
+
+
+//         // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//         //     // Retrieve data from the POST request
+//         //     $amount = isset($_POST['total']) ? $_POST['total'] : null;
+//         //     // $key2 = isset($_POST['key2']) ? $_POST['key2'] : null;
         
-        //     // Perform some processing with the data (e.g., store it in a database)
-        //     // ...
+//         //     // Perform some processing with the data (e.g., store it in a database)
+//         //     // ...
         
-        //     // Return a response (for demonstration purposes)
-        //     $response = "Data received: key1 = $amount";
-        //     echo $response;
-        // } else {
-        //     // Handle other types of requests or provide an error message
-        //     echo "Invalid request method.";
-        // }
+//         //     // Return a response (for demonstration purposes)
+//         //     $response = "Data received: key1 = $amount";
+//         //     echo $response;
+//         // } else {
+//         //     // Handle other types of requests or provide an error message
+//         //     echo "Invalid request method.";
+//         // }
 
 
 
 
 
 
-print_r($_POST['amount']);
+// print_r($_POST['amount']);
 
 
 
 
-        $amount = 4000;
-        $merchant_id =  1225296;
-        $order_id = uniqid();
-        $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
-        $currency = "LKR";
+//         $amount = 4000;
+//         $merchant_id =  1225296;
+//         $order_id = uniqid();
+//         $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
+//         $currency = "LKR";
 
-        $hash = strtoupper(
-            md5(
-                $merchant_id . 
-                $order_id . 
-                number_format($amount, 2, '.', '') . 
-                $currency .  
-                strtoupper(md5($merchant_secret)) 
-            ) 
-        );
+//         $hash = strtoupper(
+//             md5(
+//                 $merchant_id . 
+//                 $order_id . 
+//                 number_format($amount, 2, '.', '') . 
+//                 $currency .  
+//                 strtoupper(md5($merchant_secret)) 
+//             ) 
+//         );
 
-        $array =[];
+//         $array =[];
 
-        $array["items"] = "Door bell wireles";
-        $array["first_name"] = "Hasintha";
-        $array["last_name"] = "Nirmanie";
-        $array["email"] = "easyfarm123@mail.com";
-        $array["phone"] = "0715797461";
-        $array["address"] = "No 20, Headaketiya, Angunukolapalassa";
-        $array["city"] = "Hambanthota";
+//         $array["items"] = "Door bell wireles";
+//         $array["first_name"] = "Hasintha";
+//         $array["last_name"] = "Nirmanie";
+//         $array["email"] = "easyfarm123@mail.com";
+//         $array["phone"] = "0715797461";
+//         $array["address"] = "No 20, Headaketiya, Angunukolapalassa";
+//         $array["city"] = "Hambanthota";
 
         
    
 
-        $array["amount"] = $amount;
-        $array["merchant_id"] = $merchant_id;
-        $array["order_id"] = $order_id;
-        $array["merchant_secret"] = $merchant_secret;
-        $array["currency"] = $currency;
-        $array["hash"] = $hash;
+//         $array["amount"] = $amount;
+//         $array["merchant_id"] = $merchant_id;
+//         $array["order_id"] = $order_id;
+//         $array["merchant_secret"] = $merchant_secret;
+//         $array["currency"] = $currency;
+//         $array["hash"] = $hash;
 
-        $jsonObj = json_encode($array);
-
-
+//         $jsonObj = json_encode($array);
 
 
-        print_r($jsonObj);
 
-        $this->view('pages/buyNow',$jsonObj);
 
-    }
+//         print_r($jsonObj);
+
+//         $this->view('pages/buyNow',$jsonObj);
+
+//     }
 
 
 }

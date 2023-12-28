@@ -12,6 +12,52 @@ class Payment extends Controller{
 
 
     public function payment() {
+
+print_r("mmmmmmmmmmm");
+
+        if (($_SERVER['REQUEST_METHOD'] == 'GET') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
+            $_GET = filter_input_array(INPUT_GET, FILTER_UNSAFE_RAW);
+
+
+            $data = [
+                'quantity' => '', 
+                'Item_Id' => $_GET['Item_Id'], 
+                'uId' => $_GET['uId'],
+                'selectedDeliveryMethod' => '',
+                'total' => 0, 
+                'deliveryFee' => '',
+                'totalPayment' => 0,
+
+
+                
+            ];
+
+            $orderdDetails = $this->paymentModel->getItemDetais($data);
+            $buyerDetails =  $this->paymentModel->getUserDetails($data);
+
+            // Convert objects to arrays
+            $orderdDetails = get_object_vars($orderdDetails);
+            $buyerDetails = get_object_vars($buyerDetails);
+
+            // Merge arrays and remove duplicates
+            $mergedArray = array_merge($orderdDetails, $buyerDetails);
+            $data1 = array_unique($mergedArray);
+            $data = array_merge($data1, $data);
+
+
+            // $data['total'] = $data['quantity']*$data['Unit_price'] ;
+            $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
+            $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
+
+            print_r( $data['total']);
+
+        }
+
+
+
+
+
+
         $amount = 3000;
         $merchant_id =  1225296;
         $order_id = uniqid();

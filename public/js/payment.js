@@ -1,20 +1,28 @@
 function paymentGateway() {
+    console.log("hhhhh");
     var xhttp = new XMLHttpRequest();
+    
     xhttp.onreadystatechange = ()=>{
+        
         if(xhttp.readyState == 4 && xhttp.status == 200){
+            
             alert(xhttp.responseText);
+            
+            
             var obj = JSON.parse(xhttp.responseText);
+            console.log(",,,,,,,");
+            console.log("...............yy");
 
                 // Payment completed. It can be a successful failure.
                 payhere.onCompleted = function onCompleted(orderId) {
-                    console.log("Payment completed. OrderID:" + orderId);
+                    alert("Payment completed." );
                     // Note: validate the payment and show success or failure page to the customer
                 };
 
                 // Payment window closed
                 payhere.onDismissed = function onDismissed() {
                     // Note: Prompt user to pay again or show an error page
-                    console.log("Payment dismissed");
+                    alert("Payment dismissed");
                 };
 
                 // Error occurred
@@ -51,6 +59,7 @@ function paymentGateway() {
                 payhere.startPayment(payment);
         }
     }
-    xhttp.open("GET","<?php echo URLROOT ?>/Payment/payment",true);
+    xhttp.open("GET", "<?php echo URLROOT ?>/Payment/payment" , true);
+
     xhttp.send();
 }

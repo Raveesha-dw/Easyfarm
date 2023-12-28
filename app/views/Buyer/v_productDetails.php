@@ -29,10 +29,8 @@ $productReviews = $data['itemReviews'];
         <form>
             <div class="price-tag">
                 <h3 id="unit-price" >Unit Price:<?php echo $productDetails->Unit_price?> LKR / <?php echo $productDetails->Unit_size?> <?php echo $productDetails->Unit_type?> </h3>
-                <label for="quantity">Unit Quantity:</label>
-                <!-- <input type="number" id="quantity" name="quantity" min="1" value="1"> -->
-                <!-- <input type="number" id="quantity" name="quantity" min="1"  oninput="calculateTotal()"> -->
-                <input type="number" id="quantity" name="quantity" min="1" oninput="updateHiddenField()">
+                <label for="quantity">Amount:</label>
+                <input type="number" id="quantity" name="quantity" min="<?php echo $productDetails->Unit_size?>" step="<?php echo $productDetails->Unit_size?>" oninput="updateHiddenField()">
                  
                 <!-- <br><br> -->
                 <!-- <label for="total-price">Total Price:</label>
@@ -118,8 +116,8 @@ $productReviews = $data['itemReviews'];
 
                         <?php if (!empty($_SESSION['user_ID'])) : ?>
                             
-                            <input type="hidden" id="hiddenDelivery" name="delivery">
-                            <input type="hidden" id="hiddenQuantity" name="quantity">
+                            <input type="hidden" id="hiddenDelivery1" name="delivery">
+                            <input type="hidden" id="hiddenQuantity1" name="quantity">
                             <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
 
                             <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
@@ -140,11 +138,14 @@ $productReviews = $data['itemReviews'];
                     <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
 
                             <!-- <input type="hidden" id="hiddenQuantity" name="quantity"> -->
-                            <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+
 
                         <?php if (!empty($_SESSION['user_ID'])) : ?>
 
+                            <input type="hidden" id="hiddenDelivery2" name="delivery">
+                            <input type="hidden" id="hiddenQuantity2" name="quantity">
+                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+                            
                             <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
                             <button type="submit" >ADD TO CART</button>
                                                         
@@ -302,13 +303,15 @@ $productReviews = $data['itemReviews'];
 
         function updateHiddenField() {
         var quantity = document.getElementById('quantity').value;
-        document.getElementById('hiddenQuantity').value = quantity;
+        document.getElementById('hiddenQuantity1').value = quantity;
+        document.getElementById('hiddenQuantity2').value = quantity;
         }
 
         function updateHiddenDelivery() {
             
             deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
-            document.getElementById('hiddenDelivery').value = deliveryMethod;
+            document.getElementById('hiddenDelivery1').value = deliveryMethod;
+            document.getElementById('hiddenDelivery2').value = deliveryMethod;
     }
 
 
