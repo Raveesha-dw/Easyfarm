@@ -227,8 +227,8 @@ class BuyNow extends Controller{
                 'uId' => $_POST['uId'], 
                 'address' => trim($_POST['address']),
                 'city' => trim($_POST['city']),
-                'district' => trim($_POST['district']),
-                'quantity' => $_POST['city'], 
+                'Province' => trim($_POST['Province']),
+                'quantity' => $_POST['quantity'], 
                 'Item_Id' => $_POST['itemId'], 
                 'selectedDeliveryMethod' => $_POST['selectedDeliveryMethod'], 
                 'total' => $_POST['total'], 
@@ -262,9 +262,11 @@ class BuyNow extends Controller{
                 $data = array_merge($data1, $data);
     
                 // $data['total'] = $data['quantity']*$data['Unit_price'] ;
-                $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
+                $data['total'] = (floatval($data['quantity'])/$data['Unit_size'] * $data['Unit_price']);
                 $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
                 // print_r($data);
+                $data2[0] = $data;
+                $data = $data2;
     
                 $this->view('pages/buyNow',$data);
 

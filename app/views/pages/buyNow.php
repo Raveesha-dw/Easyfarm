@@ -93,7 +93,7 @@
                                         <p>Delivery Fee</p>
                                     </div>
                                     <div class="column2" >
-                                        <p>LKR <?php echo number_format($data['deliveryFee'],2); ?></p>
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['deliveryFee'],2); ?></p>
                                     </div>
                                 </div>
 
@@ -102,7 +102,7 @@
                                         <p>Unit Price</p>
                                     </div>
                                     <div class="column2" >
-                                        <p>LKR <?php echo number_format($data['Unit_price'],2)?> / <?php echo $data['Unit_size']?> <?php echo $data['Unit_type']?> </p>
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['Unit_price'],2)?> / <?php echo $data['Unit_size']?> <?php echo $data['Unit_type']?> </p>
                                     </div>
                                 </div>
 
@@ -122,7 +122,7 @@
                                         <p>Total Payment for <?php echo $data['Item_name']; ?></p>
                                     </div>
                                     <div class="column2" >
-                                        <p>LKR <?php echo number_format($data['totalPayment'],2); ?></p>
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['totalPayment'],2); ?></p>
                                     </div>
                                 </div>
                         </section>       
@@ -143,7 +143,7 @@
                                 <p>Item Total </p>
                             </div>
                             <div class="column2" >
-                                <p><?php echo $orderTotal; ?></p>
+                                <p><b><small>LKR </small></b> <?php echo number_format($orderTotal,2); ?></p>
                             </div>
                         </div>
 
@@ -152,7 +152,7 @@
                                 <p>Delivery Fee</p>
                             </div>
                             <div class="column2" >
-                                <p><?php echo $orderDeliveryTotal; ?></p>
+                                <p><b><small>LKR </small></b> <?php echo number_format($orderDeliveryTotal,2); ?></p>
                             </div>
                         </div>
 
@@ -161,7 +161,7 @@
                                 <p>Total Payment</p>
                             </div>
                             <div class="column2" >
-                                <p><?php echo $orderPayment; ?></p>
+                                <p><b><small>LKR </small></b> <?php echo number_format($orderPayment,2); ?></p>
                             </div>
                         </div>
 
@@ -205,7 +205,7 @@
                         <div class="input-box">
 
                         <select name="Province">
-                                   <option disabled selected>District</option>
+                                   <option disabled selected>Province</option>
                                    <option value="North">North</option>
                                    <option value="Western">Western</option>
                                    <option value="North Central">North Central</option>

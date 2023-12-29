@@ -168,7 +168,9 @@ class Pages extends Controller{
     public function payment(){
         $this->view('pages/payment');
     }
-
+    public function vehicleRenterCreatePost(){
+        $this->view('VehicleRenter/v_vehicle_create_post');
+    }
     
 
 }

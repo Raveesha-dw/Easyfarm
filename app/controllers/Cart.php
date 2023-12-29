@@ -63,7 +63,7 @@ class Cart extends Controller{
                     
                 ];
     
-                // print_r( $data);
+                
                 // error_log(print_r($data, TRUE)); 
     
                 // Check if the cart item already exists for this combination of itemId and uId
@@ -74,8 +74,7 @@ class Cart extends Controller{
                     $data['quantity'] = intval($data['quantity']) + intval($existingCartItem->Quantity);
     
     
-    
-                    if ($this->cartModel->updateCartItem(['uId'=>$existingCartItem->U_Id,'quantity' => $data['quantity'] , 'itemId' => $data['itemId']])) {
+                    if ($this->cartModel->updateCartItem(['uId'=>$existingCartItem->U_Id,'quantity' => $data['quantity'] , 'itemId' => $data['itemId'] , 'selectedDeliveryMethod' => $data['selectedDeliveryMethod']])) {
                         // $this->view('pages/cart', $data);                  
                     } else {
                         die('Something went wrong while updating the cart item.');
