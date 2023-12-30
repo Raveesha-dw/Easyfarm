@@ -4,69 +4,79 @@
     font-family: 'Poppins',sans-serif;
     box-sizing: border-box;
 } */
-.shero1{
+.Wrapper_Vehicle_Create_Post{
     /* width: 100%; */
     min-height: 100vh;
-    margin-left: 400px;
+    margin-left: 25%;
     margin-top: 15px;
    
 }
 
-.shero1 .sdropdown1{
-    width: 500px;
+.Wrapper_Vehicle_Create_Post .sdropdown1{
+    width: 95%;
     margin-top: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
-.shero1 .sitem{
+.Wrapper_Vehicle_Create_Post .sitem{
+    width: 95%;
     margin-top: 15px;
-    width: 500px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
-.shero1 .sstock_size{
+.Wrapper_Vehicle_Create_Post .sstock_size{
+    width: 98%;
     margin-top: 15px;
-    width: 300px;
+    margin-left: 2%;
     display: flex;
 
 }
-.shero1 .stocksize #Stock{
-    width:300px;
+.Wrapper_Vehicle_Create_Post .stocksize #Stock{
+    width:95%;
     height: 40px;
+    /* margin-left: 2%; */
     border-radius: 5px;
-    color: rgb(2, 3, 2);
+    color: rgb(7, 7, 7);
+    background-color: aliceblue;
     /* display: flex; */
 }
-.shero1 .sstock_size .sdropdown2{
-    margin-left: 150px;
-    width: 500px;
+.Wrapper_Vehicle_Create_Post .sstock_size .sdropdown2{
+    margin-left: 2%;
+    width: 50%;
 }
+.Wrapper_Vehicle_Create_Post .sstock_size .iii{
+   
+    width: 50%;
+}
+.Wrapper_Vehicle_Create_Post .stocksize{
+    width: 100%;
+    margin-left: 2%;
+    }
 
-.shero1 .dropdown3{
-    /* margin-left: 150px; */
-    width: 300px;
-}
-.shero1 .image{
-    /* margin-left: 150px; */
-    width: 300px;
-}
-.shero1 .sDescription{
-    /* margin-left: 150px; */
-    width: 300px;
-}
 
-.shero1 .sdate{
+
+.Wrapper_Vehicle_Create_Post .sDescription{
     /* margin-left: 150px; */
     width: 300px;
 }
 
+.Wrapper_Vehicle_Create_Post .sdate{
+    margin-left: 2%;
+    width: 100%;
+}
 
-.shero1 #sdes{
-    width:1000px;
+
+.Wrapper_Vehicle_Create_Post #sdes{
+    width:97%;
     height: 120px;
     border-radius: 5px;
     /* display: flex; */
     color: rgb(5, 5, 5);
+    background-color: aliceblue;
 
 }
-.shero1 #stype{
-    width:300px;
+.Wrapper_Vehicle_Create_Post #stype{
+    width: 95%;
     height: 40px;
     border-radius: 5px;
     color: rgb(2, 3, 2);
@@ -74,79 +84,88 @@
     position: relative;
 }
 
-.shero1 #size{
-    width:300px;
+.Wrapper_Vehicle_Create_Post #size{
+    width: 100%;
     height: 40px;
     border-radius: 5px;
     /* display: flex; */
     color: rgb(5, 5, 5);
+    background-color: aliceblue;
 
 }
-.shero1 #sCategory{
-    width:300px;
+.Wrapper_Vehicle_Create_Post #sCategory{
+    width:100%;
     height: 40px;
     border-radius: 5px;
     color: rgb(2, 3, 2);
     /* margin-left: 200px; */
     position: relative;
 }
-.shero1 #sitem_name{
+.Wrapper_Vehicle_Create_Post #sitem_name{
     
-    width:300px;
+    width:100%;
     height: 40px;
     border-radius: 5px;
     color: rgb(7, 7, 7);
+    background-color: aliceblue;
     /* margin-left: 5px; */
 }
 
-.shero1 .sprice{
+.Wrapper_Vehicle_Create_Post .sprice{
+    width: 95%;
     margin-top: 15px;
-    width: 300px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
-.shero1 #sprice{
-    width:300px;
+.Wrapper_Vehicle_Create_Post #sprice{
+    width:100%;
     height: 40px;
     border-radius: 5px;
-    
-    color: rgb(5, 5, 5);
+    color: rgb(7, 7, 7);
+    background-color: aliceblue;
 
 }
-.shero1 .s1{
+.Wrapper_Vehicle_Create_Post .s1{
 width: 300px;
 }
 
 
 
-.ddd{
-    background-color: rgb(43, 226, 89);
-    width: 250px;
+.Wrapper_Vehicle_Create_Post .ddd{
+    /* background-color: rgb(228, 255, 235); */
+    background-color: rgb(102 255 141 / 56%);
+    width: 80%;
+    margin: auto;
 }
 
 
 
-.shero1 #se_date{
-    
-    width:300px;
+.Wrapper_Vehicle_Create_Post #se_date{
+    width: 95%;
     height: 40px;
     border-radius: 5px;
     color: rgb(8, 9, 8);
+    background-color: aliceblue;
 }
-.shero1 .saddress{
+.Wrapper_Vehicle_Create_Post .saddress{
     margin-top: 15px;
-    width: 300px;
+    width: 98%;
+    margin-left: 2%;
 }
-.shero1 #sAddress{
-    
-    width:400px;
+.Wrapper_Vehicle_Create_Post #sAddress{
+    width: 97%;
     height: 40px;
     border-radius: 5px;
-    color: rgb(52, 199, 52);
+    color: rgb(0, 0, 0);
+    margin-bottom: 1%;
+    background-color: aliceblue;
 }
 
 
 
-.shero1.sDescription{
-    margin-left: 15px;
+.Wrapper_Vehicle_Create_Post .sDescription{
+    margin-left: 2%;
+    width: 98%;
     
 }
 /* #sdes{
@@ -156,7 +175,7 @@ width: 300px;
 } */
 
 
-.shero1 #inside_image{
+.Wrapper_Vehicle_Create_Post #inside_image{
     /* margin-top: 15px; */
     border: 1px dashed #999;
     border-radius: 6px;
@@ -164,14 +183,27 @@ width: 300px;
     width: 300px;
     
 }
-.shero1 #create{
+.Wrapper_Vehicle_Create_Post #create{
     
-    margin-left: 280px;
+    margin-left: 10%;
     width: 150px;
     height: 50px;
-    border-radius: 6px;
-    background-color: rgb(0, 249, 0);
+    border-radius: 20px;
+    background-color: rgba(255, 10, 10, 0.85);
     font-size: larger;
     cursor: pointer;
     
+}
+.Wrapper_Vehicle_Create_Post .imgdelivery{
+    margin-left: 2%;
+    width: 98%;
+    display: flex;
+}
+.Wrapper_Vehicle_Create_Post .imgdelivery .image{
+    /* margin-left: 150px; */
+    width: 45%;
+}
+.Wrapper_Vehicle_Create_Post .imgdelivery .dropdown3{
+    /* margin-left: 150px; */
+    width: 50%;
 }

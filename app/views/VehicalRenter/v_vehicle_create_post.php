@@ -3,7 +3,7 @@
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- <?php print_r($data);?> -->
-<div class="shero1">
+<div class="Wrapper_Vehicle_Create_Post">
     <form class ="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
                     <!-- drop box -->
 
@@ -16,14 +16,10 @@
 
                             <option disabled selected>Select Category</option>
                             
-                            <option value= "Vegatable" >Vegatable</option>
-                            <option value= "Fruits" >Fruits</option>
-                            <option value= "Plants">Plants</option>
-                            <option value= "Seeds">Seeds</option>
-                            <option value= "Grains">Grains</option>
-                            <option value= "Fertilizer" >Fertilizer</option>
-                            <option value= "Insecticides" >Insecticides</option>
-                            <option value= "Farming Tools">Farming Tools</option>
+                            <option value= "Vegatable" >Lorries $Trucks</option>
+                            <option value= "Fruits" >Heavy Duty</option>
+                            <option value= "Plants">Tractors</option>
+                            <option value= "Seeds">Three Wheelers</option>
                         </select>
                         
                     </div>
@@ -33,8 +29,8 @@
                     <div class ="sitem">
                         <label for="Item"><b>Item Name</b></label>
                     <br>
-                        <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" required value="<?php echo $data['Item_name'];?>" ><br/>
-                        <span class="invalid"><?php if($data){echo $data['Item_name_err'];} ?></span>
+                        <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" required value="" ><br/>
+                        <!-- <span class="invalid"><?php if($data){echo $data['Item_name_err'];} ?></span> -->
                    
                     </div>
 
@@ -42,8 +38,8 @@
                         <div class="iii">
                         <label for ="stock"> <b>Unit Size</b></label>
                         <br>
-                        <input id="size" name="Unit_size" type="number" step="1" min = 0 placeholder="Enter unit size"  required value="<?php echo $data['Unit_size'];?>">
-                        <span class="invalid"><?php if($data){echo $data['Unit_size_err'];}  ?></span>
+                        <input id="size" name="Unit_size" type="number" step="1" min = 0 placeholder="Enter unit size"  required value="">
+                        <!-- <span class="invalid"><?php if($data){echo $data['Unit_size_err'];}  ?></span> -->
                         </div>
                         <div class="sdropdown2">
                                 <label for="Category2"><b>Type:</b></label>
@@ -67,8 +63,8 @@
                     <div class="sprice">
                         <b>Unit Price</b>
                         <br>
-                        <input id="sprice" name="Unit_price" type="number" min=0 placeholder="Enter the Unit Price" required value="<?php echo $data['Unit_price'];?>">
-                        <span class="invalid"><?php if($data){echo $data['Unit_price_err'];}  ?></span>
+                        <input id="sprice" name="Unit_price" type="number" min=0 placeholder="Enter the Unit Price" required value="">
+                        <!-- <span class="invalid"><?php if($data){echo $data['Unit_price_err'];}  ?></span> -->
                     
                     </div>
 
@@ -76,8 +72,8 @@
                         <br>
                         <b>Stock Size</b>
                         <br>
-                        <input id="Stock" name="Stock_size" type="number" step="1" min=0 placeholder="Enter the Stock Size" required value="<?php echo $data['Stock_size'];?>">
-                        <span class="invalid"><?php if($data){echo $data['Stock_size_err'];}  ?></span>
+                        <input id="Stock" name="Stock_size" type="number" step="1" min=0 placeholder="Enter the Stock Size" required value="">
+                        <!-- <span class="invalid"><?php if($data){echo $data['Stock_size_err'];}  ?></span> -->
                     
                     </div>
 
@@ -142,16 +138,16 @@
                 <div class="sDescription">
                     <b>Descripition</b>
                     <br>
-                    <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php echo $data['Description'];?>">
-                    <span class="invalid"><?php if($data){echo $data['Description_err'];}  ?></span>
+                    <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="">
+                    <!-- <span class="invalid"><?php if($data){echo $data['Description_err'];}  ?></span> -->
                 </div>
                 
             
                 
         
-            
-                
-                <div class="image">
+            <div class="imgdelivery">
+              
+            <div class="image">
                 <b>Upload image</b>
                     <br>
                     <br>
@@ -159,7 +155,7 @@
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images"> -->
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                    <span class="invalid"><?php if($data){echo $data['Image_err'];}  ?></span>
+                    <!-- <span class="invalid"><?php if($data){echo $data['Image_err'];}  ?></span> -->
                 </div>
 
 
@@ -175,12 +171,14 @@
 
                     <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup">
                     <label for="Insto Pickup"> <b>Insto Pickup</b></label><br>
-                    <span class="invalid"><?php if($data){echo $data['DeliveryMethod_err'];}  ?></span>
+                    <!-- <span class="invalid"><?php if($data){echo $data['DeliveryMethod_err'];}  ?></span> -->
                             
 
 
 
                 </div>
+            </div>
+  
 
 
 

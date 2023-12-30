@@ -169,7 +169,7 @@ class Pages extends Controller{
         $this->view('pages/payment');
     }
     public function vehicleRenterCreatePost(){
-        $this->view('VehicleRenter/v_vehicle_create_post');
+        $this->view('VehicalRenter/v_vehicle_create_post');
     }
     
 
