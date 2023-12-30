@@ -844,13 +844,15 @@ class Users extends Controller{
     }
 
     public function createUserSession($user){
+        print_r($user);
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
+        $_SESSION['plan_id'] = $user->plan_id;
         // change this
         // $_SESSION['plan_id'] = $user->plan_id;      
         // $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_type'] = $user->User_type;
-        print_r($_SESSION['user_type']);
+        // print_r($_SESSION['user_type']);
 
         if($_SESSION['user_type'] == 'Buyer'){
             // redirect('Pages/index');
@@ -858,8 +860,9 @@ class Users extends Controller{
             header("Location:http://localhost/Easyfarm/Pages/index");
             // change this also&& $_SESSION['plan_id']
         }else if($_SESSION['user_type']  == 'Seller'){
-            print_r($_SESSION['user_type']);
-            // redirect('Pages/Profile');
+            
+            // print_r($user);
+            
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
         }else if($_SESSION['user_type'] == 'AgriExpert'){
@@ -899,6 +902,7 @@ class Users extends Controller{
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_type']);
+        unset($_SESSION['plan_id']);
 
         session_destroy();
         redirect('Pages/index');

@@ -22,8 +22,22 @@ class Seller_post extends Controller{
     //     print_r('hello');
     // }
 
+public function cretesession3(){
+    $data=$this->sellerModel->get_planid();
+    print_r($data);
+    $_SESSION['plan_id']=$data[0]->plan_id;
+    header("Location:http://localhost/Easyfarm/Seller_post/creating");
+
+}
+
 public function creating(){
-    
+    // print_r($_SESSION['user_ID']);
+    // print_r($_SESSION['plan_id']);
+    if ($_SESSION['plan_id']==''){
+        print_r("so");
+        $this->view('seller/v_register_plan1');
+
+    }else{
     $data=[
         
         'Item_name' => '',
@@ -52,7 +66,7 @@ public function creating(){
         'Unit_size_err'=>'',
 
     ];
-    $this->view('seller/v_create_post',$data);
+    $this->view('seller/v_create_post',$data);}
 
 }
 public  function create_post(){

@@ -110,4 +110,10 @@ public function delete_data($data){
     $this->db->execute();
 }
 
+public function get_planid(){
+    $this->db->query("SELECT * FROM reg_seller WHERE reg_seller.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    return $result;
+}
 }

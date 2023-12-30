@@ -10,9 +10,16 @@
 
 
     public function get_plan_details(){
+        if ($_SESSION['plan_id']==''){
+            print_r("so");
+            $this->view('seller/v_register_plan2');
+    
+        }else{
         // print_r("d");
-        
-        $data = $this->planModel->get_dataplan('1','135');
+        // print_r($_SESSION['user_email']);
+        print_r( $_SESSION['user_ID']);
+        // print_r($_SESSION['plan_id']);
+        $data = $this->planModel->get_dataplan( $_SESSION['user_ID']);
         $data1  = get_object_vars($data[0]);
         $originalDate = $data1['Register_date'];
 
@@ -45,11 +52,12 @@
         $this->view('seller/v_plan',$concatenatedData );
 
     }
+}
 
     public function get_plan_details2(){
         // print_r("d");
         
-        $data = $this->planModel->get_dataplan1();
+        $data = $this->planModel->get_dataplan3();
         // print_r($data);
         $result = [];
 
@@ -145,6 +153,155 @@
 
 
 }
+public function payment1() {
+    // $user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User Email Not Available';
+$data = $this->planModel->get_dataplan1();
+
+// $data1=$this->planModel->get_userdetails($user_email);
+// $a =$data[0]['price'];
+// echo $data;
+// print_r($data);
+$mail=$_SESSION['user_email'];
+$data2=$this->planModel->get_userdetails($mail);
+// print_r($data2);
+
+// Start or resume the session
+// session_start();
+// print_r($data);
+// Access the user_email from the session
+// echo "User Email: $user_email";
+
+
+// Now you can use $user_email as needed in your code
+// echo "User Email: $user_email";
+
+
+// 4916217501611292
+
+$amount =$data[0]->price;
+$merchant_id =  "1225296";
+$order_id = uniqid();
+$merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
+$currency = "LKR";
+$name= $data[0]->name;
+$f_name= $data2[0]->Name;
+$address= $data2[0]->Store_Adress;
+$email= $data2[0]->Email;
+$plan_id=$data[0]->plan_id;
+
+
+
+$hash = strtoupper(
+    md5(
+        $merchant_id . 
+        $order_id . 
+        number_format($amount, 2, '.', '') . 
+        $currency .  
+        strtoupper(md5($merchant_secret)) 
+    ) 
+);
+
+$array =[$data2];
+// $array["return_url"]= "http://localhost/Easyfarm/Users/login";
+$array["items"] = $name;
+$array["full_name"] = $f_name;
+// $array["last_name"] = "dhananja";
+$array["email"] = $email;
+// $array["phone"] = "0715797461";
+$array["address"] = $address;
+$array["plan_id"] = $plan_id;
+// $array["city"] = "Hambanthota";
+
+
+
+
+$array["amount"] = $amount;
+$array["merchant_id"] = $merchant_id;
+$array["order_id"] = $order_id;
+$array["merchant_secret"] = $merchant_secret;
+$array["currency"] = $currency;
+$array["hash"] = $hash;
+
+$jsonObj = json_encode($array);
+print_r($jsonObj);
+
+
+}
+
+public function payment2() {
+    // $user_email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : 'User Email Not Available';
+$data = $this->planModel->get_dataplan1();
+
+// $data1=$this->planModel->get_userdetails($user_email);
+// $a =$data[0]['price'];
+// echo $data;
+// print_r($data);
+$mail=$_SESSION['user_email1'];
+$data2=$this->planModel->get_userdetails($mail);
+// print_r($data2);
+
+// Start or resume the session
+// session_start();
+// print_r($data);
+// Access the user_email from the session
+// echo "User Email: $user_email";
+
+
+// Now you can use $user_email as needed in your code
+// echo "User Email: $user_email";
+
+
+// 4916217501611292
+
+$amount =$data[0]->price;
+$merchant_id =  "1225296";
+$order_id = uniqid();
+$merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
+$currency = "LKR";
+$name= $data[0]->name;
+$f_name= $data2[0]->Name;
+$address= $data2[0]->Store_Adress;
+$email= $data2[0]->Email;
+$plan_id=$data[0]->plan_id;
+
+
+
+$hash = strtoupper(
+    md5(
+        $merchant_id . 
+        $order_id . 
+        number_format($amount, 2, '.', '') . 
+        $currency .  
+        strtoupper(md5($merchant_secret)) 
+    ) 
+);
+
+$array =[$data2];
+// $array["return_url"]= "http://localhost/Easyfarm/Users/login";
+$array["items"] = $name;
+$array["full_name"] = $f_name;
+// $array["last_name"] = "dhananja";
+$array["email"] = $email;
+// $array["phone"] = "0715797461";
+$array["address"] = $address;
+$array["plan_id"] = $plan_id;
+// $array["city"] = "Hambanthota";
+
+
+
+
+$array["amount"] = $amount;
+$array["merchant_id"] = $merchant_id;
+$array["order_id"] = $order_id;
+$array["merchant_secret"] = $merchant_secret;
+$array["currency"] = $currency;
+$array["hash"] = $hash;
+
+$jsonObj = json_encode($array);
+print_r($jsonObj);
+
+
+}
 
 public function update_details($id = null){
     if ($id === null) {
@@ -160,10 +317,50 @@ public function update_details($id = null){
         // redirect('Users/v_login');
      }
 
-    // print_r($id);
-    // print_r( $_SESSION['user_email1']);
+    
 }
 
+public function update_details1($id = null){
+    if ($id === null) {
+        // If $id is not provided as a parameter, try to get it from $_GET['id']
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+    }
+
+    // Now you can use $id in your function
+     if($this->planModel->update_user_plan1()){
+        // unset($_SESSION['user_email']);
+        echo '<script>window.location.href = "http://localhost/Easyfarm/Seller_post/cretesession3";</script>';
+
+        // redirect('Users/v_login');
+     }
+
+    
+}
+
+public function update_details2($id = null){
+    if ($id === null) {
+        // If $id is not provided as a parameter, try to get it from $_GET['id']
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+    }
+
+    // Now you can use $id in your function
+     if($this->planModel->update_user_plan2()){
+        // unset($_SESSION['user_email']);
+        echo '<script>window.location.href = "http://localhost/Easyfarm/Plan/cretesession4";</script>';
+
+        // redirect('Users/v_login');
+     }
+
+    
+}
+
+public function cretesession4(){
+    $data=$this->planModel->get_planid1();
+    print_r($data);
+    $_SESSION['plan_id']=$data[0]->plan_id;
+    header("Location:http://localhost/Easyfarm/Plan/get_plan_details");
+
+}
 
 
       

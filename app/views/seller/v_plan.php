@@ -3,6 +3,7 @@
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
 <!-- <?php print_r($data)?> -->
 <div class ="shero3">
+    <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id']-1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
         <div class="unitl__component">
             <div class="untill__numeric until__numeric--months">00</div>

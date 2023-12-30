@@ -13,6 +13,26 @@
 
 }
 
+
+
+.shero3 .current {
+    width: 1000px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    padding: 40px; 
+    box-sizing: border-box; 
+    background-color: #23e4bd;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 400px;
+    border-radius: 10px;
+}
+
+.shero3 .current b {
+    font-size: 32px;
+    color: #0d0d0d;
+}
+
+
 .shero3 .unitl__component {
     text-align: center;
     background: white;
