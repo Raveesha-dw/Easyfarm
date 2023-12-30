@@ -5,17 +5,7 @@ public function __construct(){
     $this->db=new Database();
 }
 
-// public function get_dataplan($plan_id,){
-//     $this->db->query("SELECT * FROM reg_seller WHERE plan_id = :plan_id");
-//     $this->db->bind(':plan_id', $plan_id);
-//     $result=$this->db->resultSet();
-//     // print_r($result);
-//     return $result;
-    
-//     // exit();
 
-
-// }
 
 public function get_dataplan1(){
     $this->db->query("SELECT * FROM plandetails WHERE plandetails.plan_id=:plan_Id ");
@@ -33,9 +23,7 @@ public function get_dataplan1(){
 }
 public function get_dataplan3(){
     $this->db->query("SELECT * FROM plandetails  ");
-    // $this->db->bind(':plan_id', 1);
-    // $this->db->bind(':plan_Id',$_GET['id']);
-    // print_r($_GET['id']);
+  
     $result=$this->db->resultSet();
     // $this->db->execute();
     // print_r($result);

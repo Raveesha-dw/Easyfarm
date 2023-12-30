@@ -6,7 +6,7 @@
 
         
     function paymentGateway(id) {
-        console.log("kk");
+       
 
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = ()=>{

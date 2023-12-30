@@ -24,7 +24,7 @@ class Seller_post extends Controller{
 
 public function cretesession3(){
     $data=$this->sellerModel->get_planid();
-    print_r($data);
+    // print_r($data);
     $_SESSION['plan_id']=$data[0]->plan_id;
     header("Location:http://localhost/Easyfarm/Seller_post/creating");
 
@@ -34,7 +34,7 @@ public function creating(){
     // print_r($_SESSION['user_ID']);
     // print_r($_SESSION['plan_id']);
     if ($_SESSION['plan_id']==''){
-        print_r("so");
+        // print_r("so");
         $this->view('seller/v_register_plan1');
 
     }else{
@@ -200,54 +200,7 @@ public  function create_post(){
                 $data['Description_err'] = 'Please enter the Descriptiion';
             }
             
-            // if (empty($data['Unit_type'])){
-            //     $data['Unit_type_err'] = 'Please choose the unit type';
-            // }
-            // if ( ($data['Category'] == 1) && ($data['Unit_type'] == 4)  ) {
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            //     // print_r($data['Unit_type']);
-            //     // print_r($data['Category']);
-                
-            // }
-            // if(($data['Category'] == 1) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 2) && ($data['Unit_type'] == 1)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 2) && ($data['Unit_type'] == 4)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 3) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 4) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 4) && ($data['Unit_type'] == 4)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 5) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 5) && ($data['Unit_type'] == 4)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 6) && ($data['Unit_type'] == 1)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 6) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 7) && ($data['Unit_type'] == 1)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 7) && ($data['Unit_type'] == 2)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 7) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
+            
             if (empty($data['Stock_size']) || $data['Stock_size'] <= 0) {
                 $data['Stock_size_err'] = 'Please enter a valid stock size';
             }
@@ -434,30 +387,7 @@ public  function create_post(){
                 'Invalid_date_err' => '',
                 'Unit_size_err'=>'',
                 
-                // 'seller_ID' => 59,
-                // 'Item_name' => isset($_POST['Item_name']) ? trim($_POST['Item_name']) : '',
-                // 'Unit_size' => isset($_POST['Unit_size']) ? trim($_POST['Unit_size']) : '',
-                // 'Category' => isset($_POST['Category']) ? trim($_POST['Category']) : '',
-                // 'Expiry_date' => isset($_POST['Expiry_date']) ? trim($_POST['Expiry_date']) : '',
-                // 'Unit_price' => isset($_POST['Unit_price']) ? trim($_POST['Unit_price']) : '',
-                // 'Stock_size' => isset($_POST['Stock_size']) ? trim($_POST['Stock_size']) : '',
-                // 'Description' => isset($_POST['Description']) ? trim($_POST['Description']) : '',
-                // 'Unit_type' => isset($_POST['Unit_type']) ? trim($_POST['Unit_type']) : '',
-                // 'DeliveryMethod' => $data['DeliveryMethod'],
-                // 'Image' => isset($_FILES['Image']) ? $_FILES['Image'] : [],
-                // 'Image_name' => time() . '_' . (isset($_FILES['Image']['name']) ? $_FILES['Image']['name'] : ''),
-                // 'Unit_size_err' => '',
-                // 'Item_name_err' => '',
-                // 'Category_err' => '',
-                // 'Expiry_date_err' => '',
-                // 'Invalid_date_err' => '',
-                // 'Unit_price_err' => '',
-                // 'Stock_size_err' => '',
-                // 'DeliveryMethod_err' => '',
-                // 'Description_err' => '',
-                // 'Unit_type_err' => '',
-                // 'Image_err' => '',
-                // 'stock_err' => '',
+                
             ];
             
             if (empty($data['Unit_size'])){
@@ -512,54 +442,7 @@ public  function create_post(){
                  $data['Description_err'] = 'Please enter the Descriptiion';
              }
             
-            // if (empty($data['Unit_type'])){
-            //     $data['Unit_type_err'] = 'Please choose the unit type';
-            // }
-            // if ( ($data['Category'] == 1) && ($data['Unit_type'] == 4)  ) {
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            //     // print_r($data['Unit_type']);
-            //     // print_r($data['Category']);
-                
-            // }
-            // if(($data['Category'] == 1) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 2) && ($data['Unit_type'] == 1)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 2) && ($data['Unit_type'] == 4)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 3) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 4) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 4) && ($data['Unit_type'] == 4)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 5) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 5) && ($data['Unit_type'] == 4)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 6) && ($data['Unit_type'] == 1)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 6) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 7) && ($data['Unit_type'] == 1)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 7) && ($data['Unit_type'] == 2)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
-            // if(($data['Category'] == 7) && ($data['Unit_type'] == 3)){
-            //     $data['Unit_type_err'] = 'Please choose the Valid unit type';
-            // }
+            
             if (empty($data['Stock_size']) || $data['Stock_size'] <= 0) {
                 $data['Stock_size_err'] = 'Please enter a valid stock size';
             }
@@ -568,16 +451,7 @@ public  function create_post(){
             
             
             
-            
-            // $oldImageData = $this->sellerModel->get_old_image_data($data['Item_Id']); 
-            
-            
-            
-            // if (){
-            //     $data['Image_err'] = 'Please attach images';
 
-            // }
-            // $result = $this->sellerModel->create_post($data);
 
             if(empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err'])&& empty( $data['stock_err']) && empty($data['Expiry_date_err']) && empty( $data['Invalid_date_err']) && empty($data['Unit_type_err']) &&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) &&empty($data['Unit_size_err']) &&empty($data['Image_err'])){
                 
@@ -615,21 +489,15 @@ public  function create_post(){
         }
         public function delete_product()
         {
-            // print_r("djd");
-            // $this = self::$this;
+            
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $itemId = $_POST['Item_Id'];
                 $this->sellerModel->delete_data($itemId);
                 $products = $this->sellerModel->get_data("59");
-                    // print($products);
-                    // var_dump($products);
-                    // header('Location: '.URLROOT.'/Pages/created_post');
-                    // exit;
+                    
                      $this->view('seller/v_createdpost',$products);
 
-                // print_r($itemId);
-                // header('Location: ' . URLROOT . '/Pages/created_post');
-                // exit;
+                
             }
         }
 }

@@ -21,19 +21,7 @@ class M_users{
         }
     }
 
-    // public function findUserByUsername($username){
-    //     $this->db->query('SELECT * FROM user WHERE Username= :username');
-    //     $this->db->bind(':username', $username);
-
-    //     $row=$this->db->single();
-
-    //     if ($this->db->rowCount()>0) {
-    //         return true;
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
+ 
 
     public function register($data){
         if($data['user_type'] == 'Buyer'){
@@ -57,16 +45,11 @@ class M_users{
             $this->db->bind(':contactno', $data['contactno']);
             $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
             $this->db->execute();
-            // return $row;
             return true;
         }
 
         if($data['user_type'] == 'Seller'){
-            // print_r($data);
-            // echo "User Table Values:";
-            // echo "Email: " . $data['email'] . "<br>";
-            // echo "Password: " . $data['password'] . "<br>";
-            // echo "User Type: " . $data['user_type'] . "<br>";
+            
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);

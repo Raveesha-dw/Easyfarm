@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
 
        <div class ="shero5">
