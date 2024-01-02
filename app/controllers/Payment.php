@@ -13,18 +13,35 @@ class Payment extends Controller{
 
     public function payment() {
 
-print_r("mmmmmmmmmmm");
 
-        if (($_SERVER['REQUEST_METHOD'] == 'GET') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
-            $_GET = filter_input_array(INPUT_GET, FILTER_UNSAFE_RAW);
+
+        $hiddenTotalpayment = isset($_POST['hiddenTotalpayment']) ? $_POST['hiddenTotalpayment'] : '';
+        $hiddenItem_Id = isset($_POST['hiddenItem_Id']) ? $_POST['hiddenItem_Id'] : '';
+        $hiddenuId = isset($_POST['hiddenuId']) ? $_POST['hiddenuId'] : '';
+
+
+//         $hiddenTotalpayment = isset($_GET['hiddenTotalpayment']) ? $_GET['hiddenTotalpayment'] : '';
+
+
+
+// print_r($_GET['Item_Id']);
+
+
+
+
+
+
+
+        // if (($_SERVER['REQUEST_METHOD'] == 'GET') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
+        //     $_GET = filter_input_array(INPUT_GET, FILTER_UNSAFE_RAW);
 
 
             $data = [
                 'quantity' => '', 
-                'Item_Id' => $_GET['Item_Id'], 
-                'uId' => $_GET['uId'],
+                'Item_Id' => $hiddenItem_Id, 
+                'uId' => $hiddenuId,
                 'selectedDeliveryMethod' => '',
-                'total' => 0, 
+                'total' => $hiddenTotalpayment, 
                 'deliveryFee' => '',
                 'totalPayment' => 0,
 
@@ -45,20 +62,20 @@ print_r("mmmmmmmmmmm");
             $data = array_merge($data1, $data);
 
 
-            // $data['total'] = $data['quantity']*$data['Unit_price'] ;
-            $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
-            $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
+            // // $data['total'] = $data['quantity']*$data['Unit_price'] ;
+            // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
+            // $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
 
-            print_r( $data['total']);
+            // print_r( $data['total']);
 
-        }
-
-
+        // }
 
 
 
+        
 
-        $amount = 3000;
+
+        $amount = floatval($hiddenTotalpayment);
         $merchant_id =  1225296;
         $order_id = uniqid();
         $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
@@ -76,13 +93,12 @@ print_r("mmmmmmmmmmm");
 
         $array =[];
 
-        $array["items"] = "Door bell wireles";
-        $array["first_name"] = "Hasintha";
-        $array["last_name"] = "Nirmanie";
-        $array["email"] = "easyfarm123@mail.com";
-        $array["phone"] = "0715797461";
-        $array["address"] = "No 20, Headaketiya, Angunukolapalassa";
-        $array["city"] = "Hambanthota";
+        $array["items"] = $data['Item_name'];
+        $array["name"] = $data['Name'];
+        $array["email"] = $data['Email'];
+        $array["phone"] = $data['Contact_num'];
+        $array["address"] = $data['Address'];
+        $array["city"] = $data['Address'];
 
         
    

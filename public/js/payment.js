@@ -1,65 +1,61 @@
 function paymentGateway() {
-    console.log("hhhhh");
+    var hiddenTotalpayment = document.getElementById("hiddenTotalpayment").value;
+    var hiddenItem_Id = document.getElementById("hiddenItem_Id").value;
+    var hiddenuId = document.getElementById("hiddenuId").value;
+
+
     var xhttp = new XMLHttpRequest();
-    
-    xhttp.onreadystatechange = ()=>{
-        
-        if(xhttp.readyState == 4 && xhttp.status == 200){
-            
+    console.log(xhttp);
+
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
             alert(xhttp.responseText);
-            
-            
             var obj = JSON.parse(xhttp.responseText);
-            console.log(",,,,,,,");
-            console.log("...............yy");
+            var payment = {
+                "sandbox": true,
+                "merchant_id": "1225296",
+                // "return_url": "../Pages/index",
+                // "cancel_url": "../Pages/",
+                "return_url": "http://localhost/Easyfarm",
+                "cancel_url": "http://localhost/Easyfarm/BuyNow/buyNow",
+                "notify_url": "http://sample.com/notify",
+                "order_id": obj["order_id"],
+                "items": obj["items"],
+                "amount": obj["amount"],
+                "currency": obj["currency"],
+                "hash": obj["hash"],
+                "first_name": obj["first_name"],
+                "last_name": obj["last_name"],
+                "email": obj["email"],
+                "phone": obj["phone"],
+                "address": obj["address"],
+                "city": obj["city"],
+                "country": "Sri Lanka",
+                "delivery_address": "No. 46, Galle road, Kalutara South",
+                "delivery_city": "Kalutara",
+                "delivery_country": "Sri Lanka",
+                "custom_1": "",
+                "custom_2": ""
+            };
 
-                // Payment completed. It can be a successful failure.
-                payhere.onCompleted = function onCompleted(orderId) {
-                    alert("Payment completed." );
-                    // Note: validate the payment and show success or failure page to the customer
-                };
-
-                // Payment window closed
-                payhere.onDismissed = function onDismissed() {
-                    // Note: Prompt user to pay again or show an error page
-                    alert("Payment dismissed");
-                };
-
-                // Error occurred
-                payhere.onError = function onError(error) {
-                    // Note: show an error page
-                    console.log("Error:"  + error);
-                };
-
-                // Put the payment variables here
-                var payment = {
-                    "sandbox": true,
-                    "merchant_id": "1225296",    // Replace your Merchant ID
-                    "return_url": "http://localhost/Easyfarm/",     // Important
-                    "cancel_url": "http://localhost/Easyfarm/",     // Important
-                    "notify_url": "http://sample.com/notify",
-                    "order_id": obj["order_id"],
-                    "items": obj["items"],
-                    "amount":  obj["amount"],
-                    "currency":  obj["currency"],
-                    "hash":  obj["hash"], // *Replace with generated hash retrieved from backend
-                    "first_name": obj["first_name"],
-                    "last_name": obj["last_name"],
-                    "email": obj["email"],
-                    "phone": obj["phone"],
-                    "address": obj["address"],
-                    "city": obj["city"],
-                    "country": "Sri Lanka",
-                    "delivery_address": "No. 46, Galle road, Kalutara South",
-                    "delivery_city": "Kalutara",
-                    "delivery_country": "Sri Lanka",
-                    "custom_1": "",
-                    "custom_2": ""
-                };
-                payhere.startPayment(payment);
+            payhere.startPayment(payment);
+            console.log("aaaaaaaaaaaa");
+       
         }
-    }
-    xhttp.open("GET", "<?php echo URLROOT ?>/Payment/payment" , true);
+    };
 
-    xhttp.send();
+    // xhttp.open("GET", "../Payment/payment?hiddenTotalpayment=" + encodeURIComponent(hiddenTotalpayment), true);
+    // xhttp.send();
+
+    xhttp.open("POST", "../Payment/payment", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Convert data to a query string
+    var dataToSend =
+        "hiddenTotalpayment=" + encodeURIComponent(hiddenTotalpayment) +
+        "&hiddenItem_Id=" + encodeURIComponent(hiddenItem_Id) +
+        "&hiddenuId=" + encodeURIComponent(hiddenuId);
+
+    xhttp.send(dataToSend);
 }
+

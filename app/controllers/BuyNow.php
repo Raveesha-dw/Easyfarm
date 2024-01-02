@@ -15,6 +15,16 @@ class BuyNow extends Controller{
 
         
     }
+    public function index(){
+        
+        $data = [
+            'title' => 'Easyfarm',
+
+        ];
+        
+        $this->view('pages/home', $data);
+
+    }
 
     public function buyNow() {
      

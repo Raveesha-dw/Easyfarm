@@ -21,7 +21,7 @@
        
                  <?php
                     $orderItems =$data;
-                    
+                    print_r($orderItems);
                     $orderTotal = 0.00;
                     $orderDeliveryTotal = 0.00;
                     $orderPayment = 0.00;
@@ -171,7 +171,9 @@
                            <br><button type="submit" id="btn" class="btn" onclick="paymentGateway();">Place Order</button>
 
                       
-
+                           <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
+                           <input type="hidden" id="hiddenItem_Id" value="<?php echo $data['Item_Id']; ?>">
+                           <input type="hidden" id="hiddenuId" value="<?php echo $data['uId']; ?>">
          
                     </div>
                 </div>
@@ -279,9 +281,9 @@ function closeForm() {
 }
 </script>
 
-  
-<script src="C:\xampp\htdocs\Easyfarm\public\js\payment.js"></script>
-<script type="hidden/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+<script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+
+<script src="<?php echo URLROOT ?>\public\js\payment.js"></script>
 
 
 
