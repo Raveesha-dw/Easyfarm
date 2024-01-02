@@ -442,10 +442,40 @@ public function payment6() {
 
     public function update_plan(){
         // print_r($_SESSION['plan_id']);
-        // if ($_SESSION['plan_id']==3){
+        if ($_SESSION['plan_id']==3){
+            $data3=$this->planModel->getnew_listing_details();
+            $newplan_id = $data3[0]->plan_id;
+            $this->planModel->update_premium_plan($newplan_id);
+            $data4=$this->planModel->get_update_plan_details();
+            // $data5=$this->planModel->get_dataplan3();
+    
+            $data6  = get_object_vars($data4[0]);
+            $originalDate = $data6['Register_date'];
+    
+            $dateTime = new DateTime($originalDate);
+            $dateTime->add(new DateInterval('P180D'));
+            $newDate = $dateTime->format('Y-m-d');
+            $data6['Date'] = $newDate;
+            $data5= $this->get_plan_details2();
+            $concatenatedData = array_merge($data6, $data5);
+    
+    
+            if ($concatenatedData['plan_id'] == 1) {
+                $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
+            } elseif ($concatenatedData['plan_id'] == 2) {
+                $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'] - $concatenatedData['list_count'];
+            } else {
+                // Assuming 'Unlimited' means a large number, you can use PHP_INT_MAX or any other large number
+                $concatenatedData['list_count'] = "Unlimited";
+            }
+        
+    
+        // print_r( $concatenatedData);
+        $this->view('seller/v_update_plan',$concatenatedData );
 
-        // }
-        {
+        }
+        
+       else {
         $data1=$this->planModel->getcurrent_plan_details($_SESSION['plan_id']);
         $data2=$this->planModel->getcurrent_listing_details($_SESSION['user_ID']);
         $data3=$this->planModel->getnew_listing_details();
@@ -459,7 +489,40 @@ public function payment6() {
         // print_r($listingLimitnewPlan);
         // print_r($newplan_id);
 
-        $newlisting_count =  ($listingLimitFirstPlan - $listCountUser)+$listingLimitnewPlan;
+        if($newplan_id==3){
+            $data3=$this->planModel->getnew_listing_details();
+            $newplan_id = $data3[0]->plan_id;
+            $this->planModel->update_premium_plan($newplan_id);
+            $data4=$this->planModel->get_update_plan_details();
+            // $data5=$this->planModel->get_dataplan3();
+    
+            $data6  = get_object_vars($data4[0]);
+            $originalDate = $data6['Register_date'];
+    
+            $dateTime = new DateTime($originalDate);
+            $dateTime->add(new DateInterval('P180D'));
+            $newDate = $dateTime->format('Y-m-d');
+            $data6['Date'] = $newDate;
+            $data5= $this->get_plan_details2();
+            $concatenatedData = array_merge($data6, $data5);
+    
+    
+            if ($concatenatedData['plan_id'] == 1) {
+                $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
+            } elseif ($concatenatedData['plan_id'] == 2) {
+                $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'] - $concatenatedData['list_count'];
+            } else {
+                // Assuming 'Unlimited' means a large number, you can use PHP_INT_MAX or any other large number
+                $concatenatedData['list_count'] = "Unlimited";
+            }
+        
+    
+        // print_r( $concatenatedData);
+        $this->view('seller/v_update_plan',$concatenatedData );
+
+        }
+
+        else{$newlisting_count =  ($listingLimitFirstPlan - $listCountUser)+$listingLimitnewPlan;
         $this->planModel->update_plan($newlisting_count, $newplan_id);
         $data4=$this->planModel->get_update_plan_details();
         // $data5=$this->planModel->get_dataplan3();
@@ -486,7 +549,7 @@ public function payment6() {
     
 
     // print_r( $concatenatedData);
-    $this->view('seller/v_update_plan',$concatenatedData );
+    $this->view('seller/v_update_plan',$concatenatedData );}
 
 
 

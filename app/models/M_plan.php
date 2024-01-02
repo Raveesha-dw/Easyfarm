@@ -152,6 +152,17 @@ public function get_update_plan_details(){
     return $result;
 }
 
+public function update_premium_plan($newplan_id) {
+    $this->db->query("UPDATE reg_seller SET new_list_count = 'Unlimited', plan_id = :newplan_id, Register_date = NOW() WHERE U_Id = :user_ID");
+
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $this->db->bind(':newplan_id', $newplan_id);
+
+    $this->db->execute();
+
+    return $this->db->rowCount();
+}
+
 
 
 } 
