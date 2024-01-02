@@ -21,6 +21,20 @@ public function get_dataplan1(){
 
 
 }
+public function get_dataplan2(){
+    $this->db->query("SELECT * FROM plandetails WHERE plandetails.plan_id=:plan_Id ");
+    // $this->db->bind(':plan_id', 1);
+    $this->db->bind(':plan_Id',$_GET['id']+1);
+    // print_r($_GET['id']);
+    $result=$this->db->resultSet();
+    $this->db->execute();
+    // print_r($result);
+    return $result;
+    
+    // exit();
+
+
+}
 public function get_dataplan3(){
     $this->db->query("SELECT * FROM plandetails  ");
   
@@ -92,6 +106,52 @@ public function get_planid1(){
     $result=$this->db->resultSet();
     return $result;
 }
+
+
+// AFTER CHOSSE A PLAN 
+public function update_plan($newlisting_count, $newplan_id){
+    $this ->db->query("UPDATE reg_seller SET new_list_count = :newlisting_count, plan_id = :newplan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
+
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $this->db->bind(':newlisting_count', $newlisting_count);
+    $this->db->bind(':newplan_id', $newplan_id);
+
+    $result=$this->db->resultSet();
+    return $result;
+}
+
+public function getcurrent_plan_details($id){
+
+    $this->db->query("SELECT * FROM plandetails WHERE plandetails.plan_id=:id");
+    $this->db->bind(':id', $id);
+    $result=$this->db->resultSet();
+    return $result;
+}
+public function getcurrent_listing_details($id){
+    $this->db->query("SELECT * FROM reg_seller WHERE reg_seller.U_Id=:id");
+    $this->db->bind(':id', $id);
+    $result=$this->db->resultSet();
+    return $result;
+}
+
+public function  getnew_listing_details(){
+
+    $this->db->query("SELECT * FROM plandetails WHERE plandetails.plan_id=:plan_id");
+    $this->db->bind(':plan_id', $_GET['id']);
+    $result=$this->db->resultSet();
+    return $result;
+
+}
+
+public function get_update_plan_details(){
+
+     $this->db->query("SELECT * FROM reg_seller WHERE reg_seller.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    
+    $result=$this->db->resultSet();
+    return $result;
+}
+
 
 
 } 
