@@ -345,6 +345,8 @@ public function cretesession4(){
 
 }
 
+public function update_plan(){
 
+}
       
 }

@@ -108,7 +108,9 @@
     border-radius: 10px;
     padding: 30px 40px;
 }
-
+.shero3 .plan_button{
+    margin-left: 300px;
+}
 .shero3 .plan_button .c1{
     /* margin-left: 180px; */
     margin: 25px auto 0 auto;
@@ -261,8 +263,8 @@ background-color: #45a049}
 
 .shero3 .modal-content {
     background-color: #fff;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

@@ -131,7 +131,13 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
         console.log(pkg[a])
 
         var popupContent = `
-        <h2>${pkg[a].name}</h2>
+        <div style="text-align: center;">
+    <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
+    <br></br>
+    <p><strong>Your Current Package: <?php echo $data[$data['plan_id']-1]['name'] ?></strong></p>
+    <p></strong> Are you sure you want to proceed with purchasing this package?</p>
+</div>
+<h2>${pkg[a].name}</h2>
         <p><strong>Listing Count:</strong> ${pkg[a].listing_limit}</p>
 
         <p><strong>Duration:</strong> ${pkg[a].duration} months</p>
