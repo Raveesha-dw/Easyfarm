@@ -48,7 +48,6 @@ class Payment extends Controller{
 
                 
             ];
-
             $orderdDetails = $this->paymentModel->getItemDetais($data);
             $buyerDetails =  $this->paymentModel->getUserDetails($data);
 
@@ -67,6 +66,8 @@ class Payment extends Controller{
             // $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
 
             // print_r( $data['total']);
+
+
 
         // }
 
@@ -118,6 +119,58 @@ class Payment extends Controller{
         print_r($jsonObj);
 
     }
+
+    public function saveOrder() {
+
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $d = new DateTime();
+            $tz = new DateTimeZone("Asia/Colombo");
+            $d->setTimezone($tz);
+            $date = $d->format("Y-m-d H:i:s");
+
+            $data = [
+                'quantity' => $_POST["quantity"], 
+                'Item_Id' => $_POST["Item_Id"], 
+                'uId' => $_POST["uId"], 
+                'placed_Date' => $date,
+                'selectedDeliveryMethod' => '',
+                'orderId' => $_POST["orderId"], 
+                
+                'totalPayment' => 0,
+                
+            ];
+
+            $orderdDetails = $this->paymentModel->getItemDetais($data);
+            $buyerDetails =  $this->paymentModel->getUserDetails($data);
+
+            // Convert objects to arrays
+            $orderdDetails = get_object_vars($orderdDetails);
+            $buyerDetails = get_object_vars($buyerDetails);
+
+            // Merge arrays and remove duplicates
+            $mergedArray = array_merge($orderdDetails, $buyerDetails);
+            $data1 = array_unique($mergedArray);
+            $data = array_merge($data1, $data);
+
+
+            // // $data['total'] = $data['quantity']*$data['Unit_price'] ;
+            // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
+            // $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
+
+            // print_r( $data['total']);
+
+            $this->paymentModel->saveOrder($data);
+            echo("1");
+
+        }
+    }
+
+    
+
+
+
 }
 
 ?>

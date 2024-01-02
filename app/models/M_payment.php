@@ -22,7 +22,7 @@ class M_payment{
     }
     public function getItemDetais($data){
 
-        $this->db->query('SELECT Item_name,DeliveryMethod,Unit_price  FROM item WHERE item.Item_Id = :Item_Id') ;
+        $this->db->query('SELECT Item_name,DeliveryMethod,Unit_price,seller_ID  FROM item WHERE item.Item_Id = :Item_Id') ;
         $this->db->bind(':Item_Id', $data['Item_Id']);
         $this->db->execute();
             
@@ -30,6 +30,21 @@ class M_payment{
 
 
         return $row;
+
+
+    }
+
+    public function saveOrder($data){
+
+        $this->db->query('INSERT INTO orders(Order_ID,Item_ID, User_ID,placed_Date, quantity,seller_ID) VALUES (:orderId,:itemId, :uId, :placed_Date, :quantity , :seller_ID)'); 
+        $this->db->bind(':orderId', $data['orderId']);
+        $this->db->bind(':itemId', $data['Item_Id']);
+        $this->db->bind(':uId', $data['uId']);
+        $this->db->bind(':placed_Date', $data['placed_Date']);
+        $this->db->bind(':quantity', $data['quantity']);
+        $this->db->bind(':seller_ID', $data['seller_ID']);
+        $this->db->execute();
+        return true;
 
 
     }

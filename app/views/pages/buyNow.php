@@ -174,6 +174,7 @@
                            <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
                            <input type="hidden" id="hiddenItem_Id" value="<?php echo $data['Item_Id']; ?>">
                            <input type="hidden" id="hiddenuId" value="<?php echo $data['uId']; ?>">
+                           <input type="hidden" id="hiddenquantity" value="<?php echo $data['quantity']; ?>">
          
                     </div>
                 </div>
