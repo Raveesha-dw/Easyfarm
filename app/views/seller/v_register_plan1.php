@@ -1,12 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<!-- / register without plan and goes to create post function -->
 <!-- <script>function paymentGateway(){console.log("kk")}</script> -->
 <!-- <?php print_r($data)?> -->
 <script>
 
         
     function paymentGateway(id) {
-        
+        console.log("cc")
 
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = ()=>{

@@ -209,7 +209,7 @@ $array["currency"] = $currency;
 $array["hash"] = $hash;
 
 $jsonObj = json_encode($array);
-// print_r($jsonObj);
+print_r($jsonObj);
 
 
 }
@@ -344,6 +344,7 @@ public function cretesession4(){
     header("Location:http://localhost/Easyfarm/Plan/get_plan_details");
 
 }
+
 
 // public function handle_ajax_request()
 
