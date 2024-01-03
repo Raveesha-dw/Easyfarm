@@ -79,9 +79,22 @@
 
 
 <div class ="shero6">
+
     <main class="table" id="customers_table">
+    
         <section class="table__header">
+        
             <h1>Customer's Orders</h1>
+
+            <!-- filter by date -->
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date">
+            
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date">
+            <a href="your_link_here" id="filter_button">Filter</a>
+           
+
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
                 <img src="<?php echo URLROOT?>/public/images/seller/search.png" alt="">
@@ -108,7 +121,7 @@
                         <th> Location <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Order Date <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Amount <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Price <span class="icon-arrow">&UpArrow;</span></th>
                         
                     </tr>
                 </thead>
@@ -128,126 +141,9 @@
                    
                     </tr>
                     <?php  endforeach;?>
-                    <!-- <tr>
-                        <td> 2 </td>
-                        <td><img src="images/Jeet Saru.png" alt=""> Jeet Saru </td>
-                        <td> Kathmandu </td>
-                        <td> 27 Aug, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$5350.50</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 3</td>
-                        <td><img src="images/Sonal Gharti.jpg" alt=""> Sonal Gharti </td>
-                        <td> Tokyo </td>
-                        <td> 14 Mar, 2023 </td>
-                        <td>
-                            <p class="status shipped">Shipped</p>
-                        </td>
-                        <td> <strong>$210.40</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 4</td>
-                        <td><img src="images/Alson GC.jpg" alt=""> Alson GC </td>
-                        <td> New Delhi </td>
-                        <td> 25 May, 2023 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong>$149.70</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 5</td>
-                        <td><img src="images/Sarita Limbu.jpg" alt=""> Sarita Limbu </td>
-                        <td> Paris </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 6</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alex Gonley </td>
-                        <td> London </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 7</td>
-                        <td><img src="images/Alson GC.jpg" alt=""> Jeet Saru </td>
-                        <td> New York </td>
-                        <td> 20 May, 2023 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 8</td>
-                        <td><img src="images/Sarita Limbu.jpg" alt=""> Aayat Ali Khan </td>
-                        <td> Islamabad </td>
-                        <td> 30 Feb, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <strong>$149.70</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 9</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 9</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td> 9</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr> -->
+                    
+                    
+                    
                 </tbody>
             </table>
         </section>
@@ -264,8 +160,63 @@ const search = document.querySelector('.input-group input'),
     table_rows = document.querySelectorAll('tbody tr'),
     table_headings = document.querySelectorAll('thead th');
 
+
+// new part
+
+
+    startDateInput = document.getElementById('start_date'),
+    endDateInput = document.getElementById('end_date'),
+    filterButton = document.getElementById('filter_button');
+
+// Set the max attribute of date inputs to the current date
+const today = new Date().toISOString().split('T')[0];
+startDateInput.setAttribute('max', today);
+endDateInput.setAttribute('max', today);
+
+
+
+
 // 1. Searching for specific data of HTML table
 search.addEventListener('input', searchTable);
+
+
+// new part 
+
+filterButton.addEventListener('click', filterData);
+
+
+
+function filterData(event) {
+    event.preventDefault(); 
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+        // Handle case where dates are not valid
+        console.log('Invalid dates');
+        return;
+    }
+
+    table_rows.forEach((row, i) => {
+        let table_data = row.textContent.toLowerCase(),
+            search_data = search.value.toLowerCase();
+
+        // Additional condition to filter data between two dates
+        const orderDate = new Date(row.querySelector('td:nth-child(4)').textContent);
+        const isDateInRange = orderDate >= startDate && orderDate <= endDate;
+
+        row.classList.toggle('hide', !isDateInRange || !table_data.includes(search_data));
+        row.style.setProperty('--delay', i / 25 + 's');
+    });
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+    });
+}
+
+
+// 
+
 
 function searchTable() {
     table_rows.forEach((row, i) => {

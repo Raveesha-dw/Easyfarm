@@ -49,7 +49,7 @@ main.table {
 }
 
 .table__header .input-group {
-    width: 35%;
+    width: 15%;
     height: 100%;
     background-color: #fff5;
     padding: 0 .8rem;
@@ -316,3 +316,51 @@ thead th.active,tbody td.active {
     width: 2rem;
     height: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style for the date filter section */
+.table__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style for labels */
+.table__header label {
+    font-weight: bold;
+}
+
+/* Style for date inputs */
+.table__header input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Style for the filter button */
+#filter_button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#filter_button:hover {
+    background-color: #45a049;
+}
+
