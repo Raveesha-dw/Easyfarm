@@ -67,7 +67,7 @@ public function get_userdetails($user_email){
 
 public function update_user_plan(){
    
-    $this->db->query("UPDATE reg_seller SET list_count = 0, plan_id = :plan_id, Register_date = NOW() WHERE U_Id = (SELECT U_Id FROM user WHERE email = :email)");
+    $this->db->query("UPDATE reg_seller SET list_count = (SELECT listing_limit FROM plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE U_Id = (SELECT U_Id FROM user WHERE email = :email)");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':email', $_SESSION['user_email1']);
     // print_r($_SESSION['user_email1']);
@@ -78,7 +78,7 @@ public function update_user_plan(){
 }
 public function update_user_plan1(){
    
-    $this->db->query("UPDATE reg_seller SET list_count = 0, plan_id = :plan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
+    $this->db->query("UPDATE reg_seller SET list_count = (SELECT listing_limit FROM plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
     print_r($_SESSION['user_ID']);
@@ -90,7 +90,7 @@ public function update_user_plan1(){
 
 public function update_user_plan2(){
    
-    $this->db->query("UPDATE reg_seller SET list_count = 0, plan_id = :plan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
+    $this->db->query("UPDATE reg_seller SET list_count = (SELECT listing_limit FROM plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
     print_r($_SESSION['user_ID']);
@@ -110,7 +110,7 @@ public function get_planid1(){
 
 // AFTER CHOSSE A PLAN 
 public function update_plan($newlisting_count, $newplan_id){
-    $this ->db->query("UPDATE reg_seller SET new_list_count = :newlisting_count, plan_id = :newplan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
+    $this ->db->query("UPDATE reg_seller SET list_count = :newlisting_count, plan_id = :newplan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
 
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
     $this->db->bind(':newlisting_count', $newlisting_count);
@@ -153,7 +153,7 @@ public function get_update_plan_details(){
 }
 
 public function update_premium_plan($newplan_id) {
-    $this->db->query("UPDATE reg_seller SET new_list_count = 'Unlimited', plan_id = :newplan_id, Register_date = NOW() WHERE U_Id = :user_ID");
+    $this->db->query("UPDATE reg_seller SET list_count = 'Unlimited', plan_id = :newplan_id, Register_date = NOW() WHERE U_Id = :user_ID");
 
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
     $this->db->bind(':newplan_id', $newplan_id);

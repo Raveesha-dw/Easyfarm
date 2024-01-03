@@ -3,12 +3,7 @@
 <?php
 include_once APPROOT . '/helpers/image_helper.php';
 
-// namespace MyNamespace;
-// namespace EasyFarm\Controllers;
-// namespace xampp\htdocs\Easyfarm\app\controllers;
-// use EasyFarm\libraries\Controller;
-//$fileExtension = strtolower(pathinfo($_FILES["Image"]["name"], PATHINFO_EXTENSION));
-// $foldername ="$URLROOT ./public/images/seller/";
+
 class Seller_post extends Controller{
     private $sellerModel;
     // private static $this;

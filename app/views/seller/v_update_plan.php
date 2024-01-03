@@ -1,4 +1,4 @@
-<?php print_r($data) ?>
+<!-- <?php print_r($data) ?> -->
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
@@ -30,7 +30,7 @@
 
             <div class="listing">
                 <h2 class="list__label">REMAING LISTING :</h2>
-                <h2 class="list__value"><?php echo $data['new_list_count'] ?></h2>
+                <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
             </div>
         <div class="ee">
             <div class="wrapperseller1">

@@ -47,10 +47,12 @@
         // print_r($data2);
 
         $concatenatedData = array_merge($data1, $data2);
+        print_r($concatenatedData[0]['listing_limit']);
         if ($concatenatedData['plan_id'] == 1) {
-                $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
+
+                $concatenatedData['list_count'] = $concatenatedData['list_count'];
             } elseif ($concatenatedData['plan_id'] == 2) {
-                $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'] - $concatenatedData['list_count'];
+                $concatenatedData['list_count'] = $concatenatedData['list_count'];
             } else {
                 // Assuming 'Unlimited' means a large number, you can use PHP_INT_MAX or any other large number
                 $concatenatedData['list_count'] = "Unlimited";
@@ -147,7 +149,7 @@
     $array["hash"] = $hash;
 
     $jsonObj = json_encode($array);
-    // print_r($jsonObj);
+    print_r($jsonObj);
 
 
 }
@@ -462,9 +464,9 @@ public function payment6() {
     
     
             if ($concatenatedData['plan_id'] == 1) {
-                $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
+                $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'];
             } elseif ($concatenatedData['plan_id'] == 2) {
-                $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'] - $concatenatedData['list_count'];
+                $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'];
             } else {
                 // Assuming 'Unlimited' means a large number, you can use PHP_INT_MAX or any other large number
                 $concatenatedData['list_count'] = "Unlimited";
@@ -509,9 +511,9 @@ public function payment6() {
     
     
             if ($concatenatedData['plan_id'] == 1) {
-                $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
+                $concatenatedData['list_count'] = $concatenatedData['list_count'];
             } elseif ($concatenatedData['plan_id'] == 2) {
-                $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'] - $concatenatedData['list_count'];
+                $concatenatedData['list_count'] = $concatenatedData['list_count'];
             } else {
                 // Assuming 'Unlimited' means a large number, you can use PHP_INT_MAX or any other large number
                 $concatenatedData['list_count'] = "Unlimited";
@@ -523,7 +525,7 @@ public function payment6() {
 
         }
 
-        else{$newlisting_count =  ($listingLimitFirstPlan - $listCountUser)+$listingLimitnewPlan;
+        else{$newlisting_count =   $listCountUser+$listingLimitnewPlan;
         $this->planModel->update_plan($newlisting_count, $newplan_id);
         $data4=$this->planModel->get_update_plan_details();
         // $data5=$this->planModel->get_dataplan3();
@@ -537,12 +539,12 @@ public function payment6() {
         $data6['Date'] = $newDate;
         $data5= $this->get_plan_details2();
         $concatenatedData = array_merge($data6, $data5);
-
+            print_r( $concatenatedData);
 
         if ($concatenatedData['plan_id'] == 1) {
-            $concatenatedData['list_count'] = $concatenatedData[0]['listing_limit'] - $concatenatedData['list_count'];
+            $concatenatedData['list_count'] = $concatenatedData['list_count'];
         } elseif ($concatenatedData['plan_id'] == 2) {
-            $concatenatedData['list_count'] = $concatenatedData[1]['listing_limit'] - $concatenatedData['list_count'];
+            $concatenatedData['list_count'] = $concatenatedData['list_count'];
         } else {
             // Assuming 'Unlimited' means a large number, you can use PHP_INT_MAX or any other large number
             $concatenatedData['list_count'] = "Unlimited";
@@ -558,11 +560,7 @@ public function payment6() {
 
 
 
-        // $this->view('seller/v_update_plan',$data5);
-    
-        // print_r($data1);
-        // print_r($data2);
-        // print_r($data3);
+        
     
     }
 
