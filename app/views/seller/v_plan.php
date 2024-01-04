@@ -31,9 +31,10 @@
                 <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
             </div>
         <div class="ee">
+                <?php if ($data['plan_id'] != $data[0]['plan_id']): ?>
             <div class="wrapperseller1">
-            <h2><?php echo $data[0]['name'] ?></h2>
-    
+                <h2><?php echo $data[0]['name'] ?></h2>
+
                 <div class="plan-details">
                     <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
                     <ul>
@@ -42,9 +43,12 @@
                         <li>All for just ₹<?php echo $data[0]['price'] ?>!</li>
                     </ul>
                 </div>
-    
-            <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
+
+                <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
+        <?php endif; ?>
+ 
+        <?php if ($data['plan_id'] != $data[1]['plan_id']): ?>
             <div class="wrapperseller2">
             <h2><?php echo $data[1]['name'] ?></h2>
             <div class="plan-details">
@@ -58,6 +62,10 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
+        <?php endif; ?>
+
+
+        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?>
             <div class="wrapperseller3">
             <h2><?php echo $data[2]['name'] ?></h2>
             <div class="plan-details">
@@ -71,12 +79,14 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
+         <?php endif; ?>
 
         </div>
         <div class="plan_button">
-            <button class="c1" onclick="showPopup(0)">Purchase Now</button>           
-            <button class="c2" onclick="showPopup(1)">Purchase Now</button>
-            <button class="c3" onclick="showPopup(2)">Purchase Now</button>
+        
+        <?php if ($data['plan_id'] != $data[0]['plan_id']): ?>  <button class="c1" onclick="showPopup(0)">Purchase Now</button>   <?php endif; ?>         
+        <?php if ($data['plan_id'] != $data[1]['plan_id']): ?>   <button class="c2" onclick="showPopup(1)">Purchase Now</button>     <?php endif; ?> 
+        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?>     <button class="c3" onclick="showPopup(2)">Purchase Now</button>   <?php endif; ?> 
         </div>
             <div id="myModal" class="modal-overlay1">
 

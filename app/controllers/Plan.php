@@ -224,6 +224,8 @@ $data = $this->planModel->get_dataplan1();
 
 
 $mail=$_SESSION['user_email1'];
+
+
 $data2=$this->planModel->get_userdetails($mail);
 
 
