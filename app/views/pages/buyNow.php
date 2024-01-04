@@ -21,7 +21,7 @@
        
                  <?php
                     $orderItems =$data;
-                    print_r($orderItems);
+                    // print_r($orderItems);
                     $orderTotal = 0.00;
                     $orderDeliveryTotal = 0.00;
                     $orderPayment = 0.00;

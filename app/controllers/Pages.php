@@ -169,12 +169,12 @@ class Pages extends Controller{
         $this->view('pages/payment');
     }
     public function vehicleRenterCreatePost(){
-        $this->view('VehicalRenter/v_vehicle_create_post');
+        $this->view('VehicleRenter/v_vehicle_create_post');
     }
     
 
 }
 
-// Pages is the default controller
+// Pages is the default controller                                               
 // Index is the default method
 // That's what runs when we r in the home page

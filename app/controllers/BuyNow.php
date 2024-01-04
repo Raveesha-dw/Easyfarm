@@ -51,7 +51,7 @@ class BuyNow extends Controller{
                     
                 ];
                 // print_r($_POST['delivery']);
-                print_r($data); 
+                // print_r($data); 
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
                     $data['deliveryFee'] = 500;

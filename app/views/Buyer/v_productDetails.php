@@ -4,7 +4,7 @@
 
 <?php
 $productDetails = $data['productInfo'];
-print_r($productDetails);
+// print_r($productDetails);
 
 $sellerDetails = $data['sellerInfo'];
 // print_r($sellerDetails);
