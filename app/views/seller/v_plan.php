@@ -141,9 +141,9 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
         // console.log("jj")
         // console.log(${pkg[a]})
         console.log(a)
-       
+        var dataPlanId = <?php echo json_encode($data['plan_id']); ?>;
 
-                    var popupContent = `
+        if (dataPlanId <= a){   var popupContent = `
                     <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>
@@ -159,7 +159,22 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
                             <button class="cancel-button" onclick="closePopup()">Cancel</button>
                             <button class="ok-button" onclick="paymentGateway(${a})">OK</button>
                         </div>
-                `;
+                     `;}
+                     else{
+            var popupContent = ` <div style="text-align: center;">
+                <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
+                <br></br>
+                <h2><strong>Your Current Package: <?php echo $data[$data['plan_id']-1]['name'] ?></strong></h2>
+                <h3></strong> You can not subcribe this
+            </div>
+            <h2>${pkg[a].name} </h3> <h3>package</h3> </h3>
+            <br>
+                    <h2 style="color: #007bff;"> Untill <?php echo $data['Date'] ?> </h2>
+                        <div class="button-container">
+                            <button class="cancel-button" onclick="closePopup()">ok</button>
+                            
+                        </div>`;
+        }
 
         document.getElementById("popupMessage").innerHTML = popupContent;
         document.querySelector(".modal-content").classList.add("custom-popup-content");
