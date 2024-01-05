@@ -141,6 +141,10 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
         // console.log("jj")
         // console.log(${pkg[a]})
         console.log(a)
+        var ex_date= <?php echo json_encode($data['Date']); ?>;
+        var currentDate = new Date();
+        var formattedCurrentDate = currentDate.toLocaleDateString('en-US');
+        // console.log(date);
         var dataPlanId = <?php echo json_encode($data['plan_id']); ?>;
 
         if (dataPlanId <= a){   var popupContent = `
@@ -160,7 +164,7 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
                             <button class="ok-button" onclick="paymentGateway(${a})">OK</button>
                         </div>
                      `;}
-                     else{
+                     else if (formattedCurrentDate <= ex_date){
             var popupContent = ` <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>
