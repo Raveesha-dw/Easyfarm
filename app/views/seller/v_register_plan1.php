@@ -97,9 +97,9 @@
                                 </div>
                                 <div class="content">
                                         <p>Unlock unparalleled benefits with our PREMIUM plan – your gateway to extraordinary possibilities! 🚀</p>
-                                        <p><strong>Unlimited Access for 6 Months!</strong> </p>
+                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong> </p> -->
                                         <p><strong>List Up Unlimited Items!</strong> </p>
-                                        <p><strong>All for just ₹5000!</strong> Elevate your experience for an unbeatable price of ₹5000. Experience the pinnacle of service without compromise! 🎁</p>
+                                        <p><strong>All for just Rs.5000!</strong> Elevate your experience for an unbeatable price of Rs.5000. Experience the pinnacle of service without compromise! 🎁</p>
                                         <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(3);">SUBCRBIE🌐</a></p>
                                 </div>
                         </div>
@@ -115,9 +115,9 @@
                                 </div>
                                 <div class="content">
                                         <p>Discover the extraordinary with our Normal plan – your key to an enhanced digital presence!</p>
-                                        <p><strong>Unlimited Access for 6 Months!</strong> </p>
+                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong> </p> -->
                                         <p><strong>List Up to 50 Items!</strong></p>
-                                        <p><strong>All for just ₹1500!</strong> Elevate your journey for an incredible ₹1500. Experience the best of Normal without breaking the bank! 💸</p>
+                                        <p><strong>All for just Rs.1500!</strong> Elevate your journey for an incredible Rs.1500. Experience the best of Normal without breaking the bank! 💸</p>
                                         <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(1);">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
@@ -132,9 +132,9 @@
                                 </div>
                                 <div class="content">
                                         <p>Experience excellence with our STANDARD plan – crafted for those who seek greatness!</p>
-                                        <p><strong>Unlimited Access for 6 Months!</strong></p>
+                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong></p> -->
                                         <p><strong>List Up to 150 Items!</strong> </p>
-                                        <p><strong>All for just ₹2500!</strong> Elevate your journey for a mere ₹2500. Unleash the power of STANDARD without compromising your budget! 💸</p>
+                                        <p><strong>All for just Rs.2500!</strong> Elevate your journey for a mere Rs.2500. Unleash the power of STANDARD without compromising your budget! 💸</p>
                                         <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
