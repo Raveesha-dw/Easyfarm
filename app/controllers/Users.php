@@ -931,7 +931,7 @@ class Users extends Controller{
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
         $_SESSION['user_type'] = $user->User_type;
-        $_SESSION['plan_id'] = $user->plan_id;    
+        
        
         // change this
          
@@ -945,14 +945,14 @@ class Users extends Controller{
             header("Location:http://localhost/Easyfarm/Pages/index");
             // change this also&& $_SESSION['plan_id']
         }else if($_SESSION['user_type']  == 'Seller'){
-           
+           $_SESSION['plan_id'] = $user->plan_id;    
             // print_r($user);
             
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
-        }else if($_SESSION['user_type'] == 'AgriExpert'){
+        }else if($_SESSION['user_type'] == 'AgricultureExpert'){
             // redirect('Pages/Profile');
-            $this->view('Pages/index');
+            header("Location:http://localhost/Easyfarm/Pages/vehicleRenterCreatePost");
 
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
