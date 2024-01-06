@@ -60,6 +60,29 @@ for ($i = 0; $i < count($itemIds); $i++) {
 
 
 
+
+
+        $array =[];
+
+        $array["items"] = $data['Item_name'];
+        $array["name"] = $data['Name'];
+        $array["email"] = $data['Email'];
+        $array["phone"] = $data['Contact_num'];
+        $array["address"] = $data['Address'];
+        $array["city"] = $data['Address'];
+
+   
+
+
+
+
+$array1[$i] = $array;
+
+
+
+
+
+}
         $amount = floatval($hiddenTotalpayment);
         $merchant_id =  1225296;
         $order_id = uniqid();
@@ -76,41 +99,23 @@ for ($i = 0; $i < count($itemIds); $i++) {
             ) 
         );
 
-        $array =[];
+                $array1["amount"] = $amount;
+        $array1["merchant_id"] = $merchant_id;
+        $array1["order_id"] = $order_id;
+        $array1["merchant_secret"] = $merchant_secret;
+        $array1["currency"] = $currency;
+        $array1["hash"] = $hash;
+      
 
-        $array["items"] = $data['Item_name'];
-        $array["name"] = $data['Name'];
-        $array["email"] = $data['Email'];
-        $array["phone"] = $data['Contact_num'];
-        $array["address"] = $data['Address'];
-        $array["city"] = $data['Address'];
 
+
+      $jsonObj = json_encode($array1);  
         
-   
-
-        $array["amount"] = $amount;
-        $array["merchant_id"] = $merchant_id;
-        $array["order_id"] = $order_id;
-        $array["merchant_secret"] = $merchant_secret;
-        $array["currency"] = $currency;
-        $array["hash"] = $hash;
-
-        $jsonObj = json_encode($array);
 
 
 
 
         print_r($jsonObj);
-
-
-
-
-
-}
-
-
-
-
 
 
 

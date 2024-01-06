@@ -59,6 +59,7 @@
                                             
                                             <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" alt="<?php echo $item['itemName']; ?>">
                                             <div>
+                                                
                                                 <h4><?php echo $item['itemName']; ?></h4>
                                                 <small>Price: LKR <?php echo number_format($item['unitPrice'], 2); ?> / <?php echo $item['Unit_size']?> <?php echo $item['Unit_type']?> </small><br>
                                                 <!-- Add a "Remove" link with an onclick event to trigger the popup message -->
