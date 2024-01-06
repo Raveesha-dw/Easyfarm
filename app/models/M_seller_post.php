@@ -83,6 +83,7 @@ public function update_data($data){
      
      $this->db->execute();
      return true;
+    //  print_r("xxxx");
     //  $this->db->bind(':Unit_type', $data['Unit_type']); 
     
     //  if (isset($data['Image']['name']) && !empty($data['Image']['name'])) {
@@ -109,4 +110,10 @@ public function delete_data($data){
     $this->db->execute();
 }
 
+public function get_planid(){
+    $this->db->query("SELECT * FROM reg_seller WHERE reg_seller.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    return $result;
+}
 }

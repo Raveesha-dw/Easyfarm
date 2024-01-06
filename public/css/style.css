@@ -35,6 +35,8 @@
 
 
 @import url('components/payment.css');
+@import url('components/register_plan.css');
+@import url('components/completed_order.css');
 /* @import url('components/re_sidebar.css'); */
 /* Seller styles */
 /* @import url('components/seller_home_style.css');

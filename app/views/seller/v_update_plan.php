@@ -1,7 +1,9 @@
+<!-- <?php print_r($data) ?> -->
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <div class ="shero3">
     <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id']-1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
@@ -31,10 +33,11 @@
                 <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
             </div>
         <div class="ee">
-                <?php if ($data['plan_id'] != $data[0]['plan_id']): ?>
-            <div class="wrapperseller1">
-                <h2><?php echo $data[0]['name'] ?></h2>
 
+        <?php if ($data['plan_id'] != $data[0]['plan_id']): ?> 
+            <div class="wrapperseller1">
+            <h2><?php echo $data[0]['name'] ?></h2>
+    
                 <div class="plan-details">
                     <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
                     <ul>
@@ -43,12 +46,11 @@
                         <li>All for just ₹<?php echo $data[0]['price'] ?>!</li>
                     </ul>
                 </div>
-
-                <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
+    
+            <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
-        <?php endif; ?>
- 
-        <?php if ($data['plan_id'] != $data[1]['plan_id']): ?>
+         <?php endif; ?> 
+         <?php if ($data['plan_id'] != $data[1]['plan_id']): ?> 
             <div class="wrapperseller2">
             <h2><?php echo $data[1]['name'] ?></h2>
             <div class="plan-details">
@@ -62,10 +64,8 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
-        <?php endif; ?>
-
-
-        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?>
+        <?php endif; ?> 
+        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?> 
             <div class="wrapperseller3">
             <h2><?php echo $data[2]['name'] ?></h2>
             <div class="plan-details">
@@ -79,14 +79,13 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
-         <?php endif; ?>
+        <?php endif; ?> 
 
         </div>
         <div class="plan_button">
-        
-        <?php if ($data['plan_id'] != $data[0]['plan_id']): ?>  <button class="c1" onclick="showPopup(0)">Purchase Now</button>   <?php endif; ?>         
+        <?php if ($data['plan_id'] != $data[0]['plan_id']): ?> <button class="c1" onclick="showPopup(0)">Purchase Now</button>       <?php endif; ?>          
         <?php if ($data['plan_id'] != $data[1]['plan_id']): ?>   <button class="c2" onclick="showPopup(1)">Purchase Now</button>     <?php endif; ?> 
-        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?>     <button class="c3" onclick="showPopup(2)">Purchase Now</button>   <?php endif; ?> 
+        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?>   <button class="c3" onclick="showPopup(2)">Purchase Now</button>     <?php endif; ?> 
         </div>
             <div id="myModal" class="modal-overlay1">
 
@@ -141,13 +140,20 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
         // console.log("jj")
         // console.log(${pkg[a]})
         console.log(a)
+
         var ex_date= <?php echo json_encode($data['Date']); ?>;
         var currentDate = new Date();
         var formattedCurrentDate = currentDate.toLocaleDateString('en-US');
-        // console.log(date);
-        var dataPlanId = <?php echo json_encode($data['plan_id']); ?>;
-
-        if (dataPlanId <= a){   var popupContent = `
+    //    console.log(ex_date)
+    //    console.log(currentDate)
+    //    console.log(formattedCurrentDate)
+        <?php // Your PHP variables or data ?>
+    var dataPlanId = <?php echo json_encode($data['plan_id']); ?>;
+    // var dataZeroPlanId = <?php echo json_encode($data[0]['plan_id']); ?>;
+    console.log(dataPlanId)
+    // Check the condition in JavaScript
+    if (dataPlanId <= a ) {
+                    var popupContent = `
                     <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>
@@ -163,8 +169,9 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
                             <button class="cancel-button" onclick="closePopup()">Cancel</button>
                             <button class="ok-button" onclick="paymentGateway(${a})">OK</button>
                         </div>
-                     `;}
-                     else if (formattedCurrentDate <= ex_date){
+                `;
+            }
+        else if (formattedCurrentDate <= ex_date){
             var popupContent = ` <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>

@@ -96,7 +96,7 @@ class Pages extends Controller{
     }
 
     public function re_home(){
-        $this->view('Vechile/v_renterhome');
+        $this->view('seller/v_register_plan');
     }
 
     public function privacyPolicy(){
@@ -135,6 +135,10 @@ class Pages extends Controller{
 
     public function dashReviews(){
         $this->view('Buyer/v_dashboardReviews');
+    }
+
+    public function choosepkg(){
+        $this->view('seller/v_register_plan');
     }
 
     // Seller functions

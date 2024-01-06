@@ -13,6 +13,8 @@ class Seller_home extends Controller{
     }
 
     public function get_product_details1(){
+
+        // print_r($_SESSION['user_email']);
         // $data=Array();
         $items=$this->sellerhomeModel->get_itemids1('59');
        
@@ -30,17 +32,27 @@ class Seller_home extends Controller{
     }
     public function get_product_details3(){
         // $data=Array();
-        $items=$this->sellerhomeModel->get_itemids3('59');
+        $items=$this->sellerhomeModel->get_itemids4('59');
        
             $this->view('seller/v_seller_home_completed',$items);
 
       
     }
 
+
+// done
+
     public function update_status1(){
         $item1 =$this->sellerhomeModel->updateiteamdeatils1();
         $items=$this->sellerhomeModel->get_itemids2('59');
         $this->view('seller/v_seller_home_pending',$items);
+
+    }
+
+    public function update_status2(){
+        $item1 =$this->sellerhomeModel->updateiteamdeatils2();
+        $items=$this->sellerhomeModel->get_itemids4('59');
+        $this->view('seller/v_seller_home_completed',$items);
 
     }
 

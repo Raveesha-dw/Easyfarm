@@ -33,7 +33,7 @@
                     </script>
                     <script>
                         document.getElementById("plan").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Pages/myplan";
+                             window.location.href = "http://localhost/Easyfarm/Plan/get_plan_details";
                             });
                     </script>
                     <script>

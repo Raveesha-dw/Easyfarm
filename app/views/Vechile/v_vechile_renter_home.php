@@ -32,6 +32,7 @@
                 
             </div>  
         </div>
+        
     </section>
 
     <!--Product List-->

@@ -21,19 +21,7 @@ class M_users{
         }
     }
 
-    // public function findUserByUsername($username){
-    //     $this->db->query('SELECT * FROM user WHERE Username= :username');
-    //     $this->db->bind(':username', $username);
-
-    //     $row=$this->db->single();
-
-    //     if ($this->db->rowCount()>0) {
-    //         return true;
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
+ 
 
     public function register($data){
         if($data['user_type'] == 'Buyer'){
@@ -47,7 +35,9 @@ class M_users{
             $this->db->bind(':email',$data['email']);
 
             $row=$this->db->single();
+            
             $id = $row->U_Id;
+            
 
             $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address) VALUES(:id, :fullname, :contactno, :address)');
             $this->db->bind(':id', $id);
@@ -59,11 +49,7 @@ class M_users{
         }
 
         if($data['user_type'] == 'Seller'){
-            // print_r($data);
-            // echo "User Table Values:";
-            // echo "Email: " . $data['email'] . "<br>";
-            // echo "Password: " . $data['password'] . "<br>";
-            // echo "User Type: " . $data['user_type'] . "<br>";
+            
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -154,7 +140,7 @@ class M_users{
 
     public function login($data){
         // echo 'data to login model';
-        $this->db->query('SELECT * FROM user WHERE Email= :email');
+        $this->db->query('SELECT * FROM user INNER JOIN reg_seller ON user.U_Id=reg_seller.U_Id  WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
 
         $row=$this->db->single();
