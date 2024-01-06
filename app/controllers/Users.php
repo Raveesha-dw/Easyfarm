@@ -607,17 +607,25 @@ class Users extends Controller{
             if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 // $this->userModel->register($data);
-                
-                
-                if($this->userModel->register($data)){
-                    header("Location:http://localhost/Easyfarm/Users/login");
-                    flash('register_success', 'You have successfully registered with EasyFarm');
-                    // $this->login();
-                    // redirect('Users/v_login');
-                }   
-                else{
-                    die('Something went wrong');
-                }
+                // print_r($data);
+                $data = $this->userModel->register($data);
+                print_r($data);
+
+
+
+                    if($this->userModel->register($data)){
+                        // $this->login();
+                        header("Location:http://localhost/Easyfarm/Users/login");
+                        // redirect('Users/v_login');
+                        flash('register_success', 'You have successfully registered with EasyFarm');
+                        // $this->view('Pages/loginPage');
+                    }
+                    else{
+                        die('Something went wrong');
+                    }
+                    
+
+
             }
             else{
                 $this->view('Users/v_registerVehicleRenter', $data);
