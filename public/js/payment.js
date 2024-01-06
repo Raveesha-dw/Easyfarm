@@ -1,8 +1,52 @@
 function paymentGateway() {
+console.log("2344444");
     var hiddenTotalpayment = document.getElementById("hiddenTotalpayment").value;
-    var hiddenItem_Id = document.getElementById("hiddenItem_Id").value;
     var hiddenuId = document.getElementById("hiddenuId").value;
-    var hiddenquantity = document.getElementById("hiddenquantity").value;
+
+    // Collect values from arrays
+    var hiddenItem_Id = document.querySelectorAll("input[id^='hiddenItem_Id[]']");
+    var hiddenquantity = document.querySelectorAll("input[id^='hiddenquantity[]']");
+    var hiddenSubTotalpayment = document.querySelectorAll("input[id^='hiddenSubTotalpayment[]']");
+
+    // Initialize arrays to store values
+    var itemIds = [];
+    var quantities = [];
+    var subTotalPayments = [];
+
+    // Populate arrays with values from hidden input fields
+    hiddenItem_Id.forEach(function (element) {
+        itemIds.push(element.value);
+    });
+    console.log(itemIds);
+    
+
+    hiddenquantity.forEach(function (element) {
+        quantities.push(element.value);
+    });
+
+    hiddenSubTotalpayment.forEach(function (element) {
+        subTotalPayments.push(element.value);
+    });
+
+
+        // Create data object to send to the server
+    var data = {
+        hiddenTotalpayment: hiddenTotalpayment,
+        hiddenuId: hiddenuId,
+        itemIds: itemIds,
+        quantities: quantities,
+        subTotalPayments: subTotalPayments
+    };
+console.log(data);
+    // Convert data to JSON format
+    var dataToSend = JSON.stringify(data);
+    console.log("sssssssssssssssss");
+console.log(dataToSend);
+
+
+
+
+
 
 
     var xhttp = new XMLHttpRequest();
@@ -39,10 +83,17 @@ function paymentGateway() {
                 "custom_2": ""
             };
 
-            // Payment completed. It can be a successful failure
-            payhere.onCompleted = function onCompleted(orderId) {
-                saveOrder(hiddenItem_Id,hiddenuId,hiddenquantity,orderId);
+            var numOfItems = itemIds.length;
+
+            for (let i = 0; i < numOfItems; i++) {
+                payhere.onCompleted = function onCompleted(orderId) {
+                saveOrder(itemIds[i],hiddenuId,quantities[i],orderId);
                 console.log("Payment completed. OrderID:" + orderId);
+                
+            }
+
+            // Payment completed. It can be a successful failure
+
                 // var paymentQueryString = Object.keys(payment).map(key => key + '=' + encodeURIComponent(payment[key])).join('&');
                 // window.location.href = "http://localhost/Easyfarm/Plan/update_details?id=" + payment['plan_id'];
                 
@@ -76,10 +127,12 @@ function paymentGateway() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     // Convert data to a query string
-    var dataToSend =
-        "hiddenTotalpayment=" + encodeURIComponent(hiddenTotalpayment) +
-        "&hiddenItem_Id=" + encodeURIComponent(hiddenItem_Id) +
-        "&hiddenuId=" + encodeURIComponent(hiddenuId);
+    // var dataToSend =
+    //     "hiddenTotalpayment=" + encodeURIComponent(hiddenTotalpayment) +
+    //     "&hiddenItem_Id=" + encodeURIComponent(hiddenItem_Id) +
+    //     "&hiddenuId=" + encodeURIComponent(hiddenuId) +
+    //     // "&hiddenuId=" + encodeURIComponent(hiddenuId);
+
 
     xhttp.send(dataToSend);
 }

@@ -47,7 +47,7 @@
                         }
                        ?>
               
-                <?php if (!empty($orderItems)) : ?>
+             <?php if (!empty($orderItems)) : ?>
                       
                     <?php foreach ($orderItems as $data) : ?>
                             <?php if (is_array($data)) : ?>
@@ -170,11 +170,28 @@
                         
                            <br><button type="submit" id="btn" class="btn" onclick="paymentGateway();">Place Order</button>
 
-                      
-                           <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
-                           <input type="hidden" id="hiddenItem_Id" value="<?php echo $data['Item_Id']; ?>">
+
                            <input type="hidden" id="hiddenuId" value="<?php echo $data['uId']; ?>">
-                           <input type="hidden" id="hiddenquantity" value="<?php echo $data['quantity']; ?>">
+                           <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
+                           
+                                <?php if (!empty($orderItems)) : ?>                     
+                                    <?php foreach ($orderItems as $data) : ?>
+                                        <?php if (is_array($data)) : ?>
+
+                           
+                                            <input type="hidden" id="hiddenSubTotalpayment[]" value="<?php echo number_format($data['totalPayment'],2); ?>">
+                                            <input type="hidden" id="hiddenItem_Id[]" value="<?php echo $data['Item_Id']; ?>">
+                                            
+                                            <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">                
+                            
+
+
+                                    <?php endif; ?>                        
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+    
+
+                      
          
                     </div>
                 </div>
@@ -207,7 +224,7 @@
                         <p class="type">Province </p>
                         <div class="input-box">
 
-                        <select name="Province">
+                        <select name="Province" required value="">
                                    <option disabled selected>Province</option>
                                    <option value="North">North</option>
                                    <option value="Western">Western</option>
@@ -226,29 +243,33 @@
                             <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
                         </div>
 
+                    <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
 
- 
-             
+                    <?php if (!empty($orderItems)) : ?>                     
+                            <?php foreach ($orderItems as $data) : ?>
+                                <?php if (is_array($data)) : ?>
+
+                                <!-- <input type="hidden" name="user_type" value="Buyer"> -->
+                                
+                                <input type="hidden" name="quantitiesTo[]" value=<?php echo $data['quantity']; ?>>
+                                <input type="hidden" name="itemIds[]" value=<?php echo $data['Item_Id']; ?>>
+                                <input type="hidden" name="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>>
+                                <input type="hidden" name="totals[]" value=<?php echo $data['total']; ?>>
+                                <input type="hidden" name="deliveryFees[]" value=<?php echo $data['deliveryFee']; ?>>
+                                <input type="hidden" name="totalPayments[]" value=<?php echo $data['totalPayment']; ?>>
+                    
+
+
+                            <?php endif; ?>                        
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
 
 
 
 
-
-
-
-
-
-                        <!-- <input type="hidden" name="user_type" value="Buyer"> -->
-                        <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
-                        <input type="hidden" name="quantity" value=<?php echo $data['quantity']; ?>>
-                        <input type="hidden" name="itemId" value=<?php echo $data['Item_Id']; ?>>
-                        <input type="hidden" name="selectedDeliveryMethod" value=<?php echo $data['selectedDeliveryMethod']; ?>>
-                        <input type="hidden" name="total" value=<?php echo $data['total']; ?>>
-                        <input type="hidden" name="deliveryFee" value=<?php echo $data['deliveryFee']; ?>>
-                        <input type="hidden" name="totalPayment" value=<?php echo $data['totalPayment']; ?>>
+                        
                 
-
 
 
                         <br><button type="submit" class="btn" onclick="closeForm()">Save Changes</button>
