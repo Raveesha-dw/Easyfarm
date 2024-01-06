@@ -137,10 +137,32 @@ class M_users{
          }
 
     }
+// this was change because buyer can not login
+    // public function login($data){
+        
+    //     $this->db->query('SELECT * FROM user INNER JOIN reg_seller ON user.U_Id=reg_seller.U_Id  WHERE Email= :email');
+    //     $this->db->bind(':email', $data['email']);
+
+    //     $row=$this->db->single();
+        
+    //     if($row){
+           
+    //         $hashed_password = $row->Password;
+
+           
+    //         if(password_verify($data['password'], $hashed_password)){
+           
+    //             return $row;
+    //         }else{
+    //             return false;
+    //         }
+    //     }
+        
+    // }
 
     public function login($data){
         // echo 'data to login model';
-        $this->db->query('SELECT * FROM user INNER JOIN reg_seller ON user.U_Id=reg_seller.U_Id  WHERE Email= :email');
+        $this->db->query('SELECT * FROM user WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
 
         $row=$this->db->single();
@@ -160,6 +182,7 @@ class M_users{
         }
         
     }
+
 
 
 
