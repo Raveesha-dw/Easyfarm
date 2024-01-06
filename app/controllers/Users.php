@@ -907,6 +907,7 @@ class Users extends Controller{
         unset($_SESSION['user_type']);
         unset($_SESSION['plan_id']);
 
+        
         session_destroy();
         redirect('Pages/index');
     }
