@@ -7,9 +7,9 @@ class V_post extends Controller{
     
     public function __construct()
     {
-       $_SESSION['user_ID']=74;
+       
         $this->v_postModel = $this->model('M_vPost');
-        print_r($_SESSION['user_ID']);
+
     }
   
   
@@ -146,25 +146,9 @@ public  function create_post(){
                 if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/vehicleRentor/'));
             
             if ($this->v_postModel->create_post($data)){
-                // print_r($data);
-               
                 $data = $this->v_postModel->get_data($_SESSION['user_ID']);
-              
-                
-            //    print_r($data);
-                // move_uploaded_file($_FILES[$data["image"]]["tmp_name"],$foldername);
-
-                
-                // header("Location:http://localhost/Easyfarm/Seller_post/created_post");
-                // $this->view('seller/v_createdpost',$data);
-                
-            //   $this-> created_post($data);
-            // $this->view('seller/v_createdpost', $data);
-            redirect("V_post/created_post");
-          
-           
-            // print_r("ddf");
-                
+                redirect("V_post/created_post");
+  
             }
             else{die('something went wrong');}
             }
