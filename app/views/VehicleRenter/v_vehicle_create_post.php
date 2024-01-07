@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
-<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
+<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- <?php print_r($data);?> -->
 <div class="Wrapper_Vehicle_Create_Post">
@@ -18,7 +18,7 @@
 
                      <div class="sdropdown1">
                         <label for="Category"  class = "scdropdown1" name="Category"><b>Vehicle Category:</b></label>
-                        <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span>
+                        <!-- <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span> -->
                         <br>
                         <select name="V_category" id="sCategory" >
 
@@ -35,7 +35,7 @@
 
 
                     <div class ="sitem">
-                        <label for="Item"><b>Vehicle Name</b></label>
+                        <label for="Item"><b>Owner Name</b></label>
                     <br>
                         <input id="sitem_name" name="V_name" type="textbox" placeholder="Enter the Vehicle Name" required value="" ><br/>
                         <!-- <span class="invalid"><?php if($data){echo $data['Item_name_err'];} ?></span> -->
@@ -76,7 +76,7 @@
                                         <option value="ml">Per month</option>
 
                                     </select>
-                                <span class="invalid"><?php if($data) {echo $data['Unit_type_err'];}  ?></span>
+                                <!-- <span class="invalid"><?php if($data) {echo $data['Unit_type_err'];}  ?></span> -->
                                 
                                 
                         </div> 
@@ -105,8 +105,8 @@
                         // console.log(minDate);
                     </script>
                     
-                    <span class="invalid"><?php if($data){echo $data['Expiry_date_err'];}  ?></span>
-                    <span class="invalid"><?php if($data){echo $data['Invalid_date_err'];}  ?></span>
+                    <!-- <span class="invalid"><?php if($data){echo $data['Expiry_date_err'];}  ?></span> -->
+                    <!-- <span class="invalid"><?php if($data){echo $data['Invalid_date_err'];}  ?></span> -->
                 </div>
 
 

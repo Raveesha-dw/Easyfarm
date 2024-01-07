@@ -2,8 +2,7 @@
 <!-- <?php require APPROOT . '/views/inc/csslinking.php'; ?> -->
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-
+<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 <?php $products = json_decode(json_encode($data), true); ?>
 
 
@@ -27,7 +26,7 @@
 
                     
                         <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $product->Image;?> " alt="" class="poost1">
-                        <!-- <?php echo$product->Image; ?> -->
+                        <!-- <?php echo $product->Image; ?> -->
                         
                         
 
