@@ -141,6 +141,14 @@ class Pages extends Controller{
         $this->view('seller/v_register_plan');
     }
 
+
+    public function v_choosepkg(){
+        $this->view('Vechile/v_vechile_register_plan');
+    }
+
+
+
+
     // Seller functions
     // public function seller_home(){
     //     $data = [

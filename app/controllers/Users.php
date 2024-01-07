@@ -611,10 +611,9 @@ class Users extends Controller{
                 
                 if($data){
                     // print("s");
-                    if($this->userModel->register($data)){print_r("Successfully registered");}
                     
-                    header("Location:http://localhost/Easyfarm/Users/login");
-                    flash('register_success', 'You have successfully registered with EasyFarm');
+                        $this->createUserSession3($data);                    
+                    
                     // $this->login();
                     // redirect('Users/v_login');
                 }   
@@ -888,19 +887,26 @@ class Users extends Controller{
         // }
     }
     public function createUserSession2($data){
-        // print_r($data);
-        // $_SESSION['user_ID'] = $user->U_Id;
+       
         $_SESSION['user_email1'] = $data['email'];
-        // print_r($_SESSION['user_email1']);
-        // print_r
+        
         
         // header("Location:http://localhost/Easyfarm/Pages/index");
          header("Location:http://localhost/Easyfarm/Pages/choosepkg");
-        //  print_r("kj");
-        //  
-
-
+        
     }
+
+    public function createUserSession3($data){
+       
+        $_SESSION['user_email1'] = $data['email'];
+        
+        
+        // header("Location:http://localhost/Easyfarm/Pages/index");
+         header("Location:http://localhost/Easyfarm/Pages/v_choosepkg");
+        
+    }
+
+
 
     // public function choosepkg(){
     //     // $this->view('Pages/choosepkg');

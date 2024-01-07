@@ -44,7 +44,7 @@
 
             <p class="type">Confirm Password *</p>
             <div class="input-box-v">
-                <input type="password" name="confirm-password" placeholder="Reenter Password" required value="<?php echo $data['confirm-password'] ?>">
+                <input type="password" name="confirmpassword" placeholder="Reenter Password" required value="<?php echo $data['confirm-password'] ?>">
                 <i class='bx bxs-lock-open-alt'></i>
             </div>
             
