@@ -551,7 +551,7 @@ class Users extends Controller{
                 'password_err'=>'',
                 'confirm-password_err'=>''
             ];
-
+            print_r($data);
             if(empty($data['fullname'])){
                 $data['name_err'] = 'Please enter a name';
             }
@@ -605,10 +605,14 @@ class Users extends Controller{
 
             if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $data = $this->userModel->register($data);
                 // $this->userModel->register($data);
+                print_r($data);
                 
-                
-                if($this->userModel->register($data)){
+                if($data){
+                    // print("s");
+                    if($this->userModel->register($data)){print_r("Successfully registered");}
+                    
                     header("Location:http://localhost/Easyfarm/Users/login");
                     flash('register_success', 'You have successfully registered with EasyFarm');
                     // $this->login();
@@ -645,6 +649,7 @@ class Users extends Controller{
             ];
             $this->view('Users/v_registerVehicleRenter',$data);
         }
+        
     }
     
 }
@@ -875,6 +880,7 @@ class Users extends Controller{
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
             $this->view('Pages/index');
+            header("Location:http://localhost/Easyfarm/Pages/vehicleRenterCreatePost");
 
         }    
         // else  if($_SESSION['user_type'] == 'Admin'){

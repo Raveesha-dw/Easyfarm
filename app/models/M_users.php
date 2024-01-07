@@ -24,6 +24,7 @@ class M_users{
  
 
     public function register($data){
+        // print_r($data);
         if($data['user_type'] == 'Buyer'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
@@ -48,7 +49,7 @@ class M_users{
             return true;
         }
 
-        if($data['user_type'] == 'Seller'){
+        elseif($data['user_type'] == 'Seller'){
             
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
@@ -81,7 +82,7 @@ class M_users{
         }
 
 
-        if($data['user_type'] == 'AgricultureExpert'){
+        elseif($data['user_type'] == 'AgricultureExpert'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -106,11 +107,10 @@ class M_users{
 
             $this->db->execute();
             return true;
-        }else{
-            return false;
         }
         
-         if($data['user_type'] == 'VehicleRenter'){
+         elseif($data['user_type'] == 'VehicleRenter'){
+            // print_r("dd");
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -130,6 +130,7 @@ class M_users{
             $this->db->bind('address', $data['address']);
             $this->db->bind('city', $data['city']);
             $this->db->execute();
+            return true;
          }
 
          else{

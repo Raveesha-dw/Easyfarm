@@ -2,12 +2,12 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <div class="wrapper-vehicle">
-        <form action="<?php echo URLROOT ?>/Users/register" >
-            <h1>Register as a Vehicle owner</h1>
-            <p class="startText"> Register to <b>EasyFarm</b></p>
+        <form action="<?php echo URLROOT ?>/Users/register" method="post">
+                    <h1>Register as a Vehicle owner</h1>
+                    <p class="startText"> Register to <b>EasyFarm</b></p>
 
-            <p class="type">Full name *</p>
-            <div class="input-box-v" >
+                    <p class="type">Full name *</p>
+                    <div class="input-box-v" >
                 <input type="text" name="fullname" placeholder="Enter first name & last name" required value="<?php echo $data['fullname'] ?>">
                 <i class='bx bxs-user-circle' ></i>
             </div>
@@ -44,7 +44,7 @@
 
             <p class="type">Confirm Password *</p>
             <div class="input-box-v">
-                <input type="password" name="confirm_password" placeholder="Reenter Password" required value="<?php echo $data['confirm-password'] ?>">
+                <input type="password" name="confirm-password" placeholder="Reenter Password" required value="<?php echo $data['confirm-password'] ?>">
                 <i class='bx bxs-lock-open-alt'></i>
             </div>
             
@@ -58,6 +58,12 @@
             <input type="hidden" name="user_type" value="Buyer">
             </div> -->
             <!-- <button type="button" id="addInput">+</button> -->
+            <div>
+            <input type="hidden" name="user_type" value="VehicleRenter">
+            </div>
+
+            
+            
 
 
             <button type="submit" class="btn" >Register</button>
