@@ -1,7 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <!-- <script>function paymentGateway(){console.log("kk")}</script> -->
-<!-- <?php print_r($data)?> -->
+<?php print_r( $_SESSION['user_email1']);?>
+
 <script>
 
         
@@ -70,7 +71,7 @@
                                 payhere.startPayment(payment);
                         }
                 }
-                xhttp.open("GET","<?php echo URLROOT ?>/Plan/payment?id=" + id,true);
+                xhttp.open("GET","<?php echo URLROOT ?>/V_plan/payment?id=" + id,true);
                 xhttp.send();
         }
         
@@ -92,13 +93,13 @@
                 <div class="wrapperreplan1">
                         <div class="premium-plan">
                                 <div class="header">
-                                        <h1>🌟 PREMIUM Exclusive 6-Month Plan 🌟</h1>
+                                        <h1>🌟 <?php print($data[2]->name); ?> Exclusive <?php print($data[2]->duration); ?>-Month Plan 🌟</h1>
                                 </div>
                                 <div class="content">
-                                        <p>Unlock unparalleled benefits with our PREMIUM plan – your gateway to extraordinary possibilities! 🚀</p>
+                                        <p>Unlock unparalleled benefits with our <?php print($data[2]->name); ?> plan – your gateway to extraordinary possibilities! 🚀</p>
                                         <!-- <p><strong>Unlimited Access for 6 Months!</strong> </p> -->
-                                        <p><strong>List Up Unlimited Items!</strong> </p>
-                                        <p><strong>All for just Rs.5000!</strong> Elevate your experience for an unbeatable price of Rs.2500. Experience the pinnacle of service without compromise! 🎁</p>
+                                        <p><strong>List Up <?php print($data[2]->listing_limit); ?> Items!</strong> </p>
+                                        <p><strong>All for just Rs.<?php print($data[2]->price); ?>!</strong> Elevate your experience for an unbeatable price of Rs.<?php print($data[2]->price); ?>. Experience the pinnacle of service without compromise! 🎁</p>
                                         <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(3);">SUBCRBIE🌐</a></p>
                                 </div>
                         </div>
@@ -110,13 +111,13 @@
                         
                         <div class="normal-plan">
                                 <div class="header">
-                                        <h1>🌟 Normal Exclusive 6-Month Plan 🌟</h1>
+                                        <h1>🌟 <?php print($data[0]->name); ?> Exclusive <?php print($data[0]->duration); ?>-Month Plan 🌟</h1>
                                 </div>
                                 <div class="content">
-                                        <p>Discover the extraordinary with our Normal plan – your key to an enhanced digital presence!</p>
+                                        <p>Discover the extraordinary with our <?php print($data[0]->name); ?> plan – your key to an enhanced digital presence!</p>
                                         <!-- <p><strong>Unlimited Access for 6 Months!</strong> </p> -->
-                                        <p><strong>List Up to 50 Items!</strong></p>
-                                        <p><strong>All for just Rs.1500!</strong> Elevate your journey for an incredible Rs.1000. Experience the best of Normal without breaking the bank! 💸</p>
+                                        <p><strong>List Up to <?php print($data[0]->listing_limit); ?> Items!</strong></p>
+                                        <p><strong>All for just Rs.<?php print($data[0]->price); ?>!</strong> Elevate your journey for an incredible Rs.<?php print($data[0]->price); ?>. Experience the best of Normal without breaking the bank! 💸</p>
                                         <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(1);">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>
@@ -127,13 +128,13 @@
                 
                         <div class="standard-plan">
                                 <div class="header">
-                                        <h2>🌟 STANDARD Exclusive 6-Month Plan 🌟</h2>
+                                        <h2>🌟 <?php print($data[1]->name); ?> Exclusive <?php print($data[1]->duration); ?>-Month Plan 🌟</h2>
                                 </div>
                                 <div class="content">
-                                        <p>Experience excellence with our STANDARD plan – crafted for those who seek greatness!</p>
+                                        <p>Experience excellence with our <?php print($data[1]->name); ?> plan – crafted for those who seek greatness!</p>
                                         <!-- <p><strong>Unlimited Access for 6 Months!</strong></p> -->
-                                        <p><strong>List Up to 150 Items!</strong> </p>
-                                        <p><strong>All for just Rs.2500!</strong> Elevate your journey for a mere Rs.1500. Unleash the power of STANDARD without compromising your budget! 💸</p>
+                                        <p><strong>List Up to <?php print($data[1]->listing_limit); ?> Items!</strong> </p>
+                                        <p><strong>All for just Rs.<?php print($data[1]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[1]->price); ?>. Unleash the power of <?php print($data[1]->name); ?> without compromising your budget! 💸</p>
                                         <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>
                                 </div>
                         </div>

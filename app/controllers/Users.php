@@ -605,11 +605,11 @@ class Users extends Controller{
 
             if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $data = $this->userModel->register($data);
+                $data1 = $this->userModel->register($data);
                 // $this->userModel->register($data);
-                print_r($data);
+                // print_r($data);
                 
-                if($data){
+                if($data1){
                     // print("s");
                     
                         $this->createUserSession3($data);                    
@@ -878,8 +878,8 @@ class Users extends Controller{
 
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
-            $this->view('Pages/index');
-            header("Location:http://localhost/Easyfarm/Pages/vehicleRenterCreatePost");
+            // $this->view('Pages/index');
+            header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
         }    
         // else  if($_SESSION['user_type'] == 'Admin'){
@@ -897,12 +897,15 @@ class Users extends Controller{
     }
 
     public function createUserSession3($data){
+        print_r("ss");
        
         $_SESSION['user_email1'] = $data['email'];
+
+        print_r( $_SESSION['user_email1']);
         
         
         // header("Location:http://localhost/Easyfarm/Pages/index");
-         header("Location:http://localhost/Easyfarm/Pages/v_choosepkg");
+         header("Location:http://localhost/Easyfarm/V_plan/choosepkg");
         
     }
 
