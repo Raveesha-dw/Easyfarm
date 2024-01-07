@@ -1,0 +1,121 @@
+
+
+.wrapperVcreatedPost.column12{
+    float: left;
+    width: 20%;
+    padding: 10px;
+    height: 300px;
+    background-color: rgb(255, 254, 254);
+    height: 0%;
+    display: flex;
+}
+ 
+
+
+
+
+
+/* .sidebar-post hr{
+    border: 1;
+    height: 2px;
+    width: 100px;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+.sidebar-post{
+    width: 20%;
+    height: 2000px;
+    float: left;
+    top: 0;
+    left: 0;
+    padding: 1px 15px;
+    background: #fff;
+    
+} */
+
+.wrapperVcreatedPost .poost1{
+    display: grid;
+    grid-template-columns: (3, 1fr);
+    width: 250px;
+    height:200px;
+    border-radius: 4%;
+}
+
+.wrapperVcreatedPost #product-vehicle-container{
+    grid-template-columns: (3, 1fr);
+    width: auto;   
+}
+
+.wrapperVcreatedPost #product-vehicle{
+    width: 280px;
+}
+
+.wrapperVcreatedPost ul{
+    list-style: none;
+    padding: 0 15px;
+}
+
+
+ 
+
+
+.wrapperVcreatedPost .productt{
+    /* width: 23%; */
+    width: fit-content;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    background-color: white;
+    position: relative;
+    align-items: center;
+    
+}
+.wrapperVcreatedPost .button-n{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* height: 30px; */
+    /* width: 50px; */
+    cursor: pointer;
+}
+
+.wrapperVcreatedPost #namee1{
+    /* top:100px; */
+    margin-left: 15px;
+    color: rgb(58, 237, 70);
+    display: flex;
+}
+.wrapperVcreatedPost .wrapperVcreatedPost .name{
+    margin-top: 40px;
+    display: flex;
+}
+
+.wrapperVcreatedPost #price1{
+    margin-left: 180px;
+    color: rgb(238, 0, 255);
+    display: flex;
+}
+
+
+
+.wrapperVcreatedPost .button-n .btn2{
+    background-color: aquamarine;
+}
+
+
+.wrapperVcreatedPost #btnv3{
+    color: rgb(27, 24, 24);
+    border-radius: 10px;
+    background-color: rgb(202, 36, 36);
+   
+   
+}
+
+
+
+

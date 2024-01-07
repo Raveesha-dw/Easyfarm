@@ -170,7 +170,8 @@ public  function create_post(){
         
         
         $data = $this->v_postModel->get_data($_SESSION['user_ID']);
-        $this->view('VehicleRenter/v_createdpost', $data);
+        print_r($data);
+        $this->view('VehicleRenter/v_vehicle_createdpost', $data);
        
     }
 

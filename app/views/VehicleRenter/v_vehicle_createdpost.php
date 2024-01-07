@@ -6,42 +6,11 @@
 
 <?php $products = json_decode(json_encode($data), true); ?>
 
-<!-- if(isset($_POST['delete_item'])) {
-    $this->db=new Database();
-    
-
-} -->
 
 
-        <div class="hero">
-            <!-- <nav>
-            <img src="<?php echo URLROOT?>/public/images/seller/logo.png" alt=""  class="logo">
-            <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt="" class="user-pic" onclick="toggleMenu()">
 
+        <div class="wrapperVcreatedPost">
 
-                <div class="sub-menu-wrap" id="subMenu">
-                    <div class="sub-menu">
-                        <div class="user-info">
-                            <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt="">
-                            <h3>imalka Dhananja </h2>
-                        </div>
-                        <hr>
-                        
-                        <a href="#" class="sub-menu-link">
-                            <img src="<?php echo URLROOT?>/public/images/seller/profile.png" alt="">
-                            <p>Edit Profile</p>
-                            <span></span>
-                        </a>
-
-                        <a href="#" class="sub-menu-link">
-                            <img src="<?php echo URLROOT?>/public/images/seller/logout.png" alt="">
-                            <p>Log Out</p>
-                            <span></span>
-                        </a>
-
-                    </div>
-                </div>
-            </nav> -->
         
         
             
@@ -50,33 +19,28 @@
 
 
             <!--Posts-->
-            <div class="product-container" id="product-seller-container">
+            <div class="product-container" id="product-vehicle-container">
                 <?php $products =$data; ?>
-                <?php print_r($products); ?>
-
                 <?php foreach($products as $product) : ?>
                   
-                    <div class="productt" id="product-seller">
+                    <div class="productt" id="product-vehicle">
 
                     
-                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?> " alt="" class="poost1">
+                        <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $product->Image;?> " alt="" class="poost1">
                         <!-- <?php echo$product->Image; ?> -->
                         
                         
 
                         <div class="name">
                             
-                            <b id="namee1"> <?php echo $product->Item_Id;?> </b> 
-                             <b id="price1"> <?php echo  $product->Unit_price;?> </b> 
+                            <b id="namee1"> <?php echo $product->V_Id;?> </b> 
+                             <b id="price1"> <?php echo  $product->Rental_Fee;?> </b> 
 
                             
                         </div>
                         
                         
-                        <!--<div class="buttonn">
-                            <a href="http://localhost/Easyfarm/Pages/updateProduct?id=<?php echo $product->Item_Id;?>">
-                            <button id="btn2" >Update</button>
-                            </a>-->
+
                         
                             <div class="button-n">
                                 <input  type="hidden" name="Item_Id" value="<?php echo $product->Item_Id;?>">
@@ -120,4 +84,5 @@
 
 </script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>   
+
 
