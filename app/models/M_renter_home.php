@@ -22,6 +22,8 @@ public function get_itemids1($seller_ID){
     // print_r($result);
     return $result;
 }
+
+
 public function get_itemids2($seller_ID){
     // colum name=variable
     $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
@@ -33,6 +35,8 @@ public function get_itemids2($seller_ID){
     // print_r($result);
     return $result;
 }
+
+  
 public function get_itemids3($seller_ID){
     // colum name=variable
     $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
