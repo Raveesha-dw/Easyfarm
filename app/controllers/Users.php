@@ -684,7 +684,7 @@ class Users extends Controller{
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
                 $logged_user = $this->userModel->login($data);
-                print_r($logged_user);
+                // print_r($logged_user);
                 if($logged_user){
                     $this->createUserSession($logged_user);                    
                 } // Logging in user

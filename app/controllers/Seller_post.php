@@ -19,7 +19,7 @@ class Seller_post extends Controller{
 
 public function cretesession3(){
     $data=$this->sellerModel->get_planid();
-    // print_r($data);
+    print_r($data);
     $_SESSION['plan_id']=$data[0]->plan_id;
     header("Location:http://localhost/Easyfarm/Seller_post/creating");
 
@@ -27,9 +27,9 @@ public function cretesession3(){
 
 public function creating(){
     // print_r($_SESSION['user_ID']);
-    // print_r($_SESSION['plan_id']);
+    print_r($_SESSION['plan_id']);
     if ($_SESSION['plan_id']==''){
-        // print_r("so");
+        print_r("so");
         $this->view('seller/v_register_plan1');
 
     }else{
