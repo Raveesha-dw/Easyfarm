@@ -24,8 +24,8 @@ class M_users{
  
 
     public function register($data){
-
-        if(($data['user_type']) =='Buyer'){
+        // print_r($data);
+        if($data['user_type'] == 'Buyer'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -49,7 +49,7 @@ class M_users{
             return true;
         }
 
-        elseif($data['user_type'] =='Seller'){
+        elseif($data['user_type'] == 'Seller'){
             
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
@@ -82,8 +82,7 @@ class M_users{
         }
 
 
-        elseif($data['user_type'] =='AgricultureExpert'){
-            
+        elseif($data['user_type'] == 'AgricultureExpert'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);

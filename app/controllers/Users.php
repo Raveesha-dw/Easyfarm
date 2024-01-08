@@ -552,7 +552,7 @@ class Users extends Controller{
                 'password_err'=>'',
                 'confirm-password_err'=>''
             ];
-
+            print_r($data);
             if(empty($data['fullname'])){
                 $data['name_err'] = 'Please enter a name';
             }
@@ -603,20 +603,21 @@ class Users extends Controller{
 
             if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-                    if($this->userModel->register($data)){print_r("Successfully registered");
-                        // $this->login();
-                        header("Location:http://localhost/Easyfarm/Users/login");
-                        // redirect('Users/v_login');
-                        flash('register_success', 'You have successfully registered with EasyFarm');
-                        // $this->view('Pages/loginPage');
-                    }
-                    else{
-                        die('Something went wrong');
-                    }
+                $data1 = $this->userModel->register($data);
+                // $this->userModel->register($data);
+                // print_r($data);
+                
+                if($data1){
+                    // print("s");
                     
-
-
+                        $this->createUserSession3($data);                    
+                    
+                    // $this->login();
+                    // redirect('Users/v_login');
+                }   
+                else{
+                    die('Something went wrong');
+                }
             }
             else{
                 $this->view('Users/v_registerVehicleRenter', $data);
@@ -645,6 +646,7 @@ class Users extends Controller{
             ];
             $this->view('Users/v_registerVehicleRenter',$data);
         }
+        
     }
     
 }
@@ -955,20 +957,50 @@ class Users extends Controller{
 
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
-            header("Location:http://localhost/Easyfarm/Pages/vehicleRenterCreatePost");
+            // $this->view('Pages/index');
+            header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
         }    
         // else  if($_SESSION['user_type'] == 'Admin'){
 
         // }
     }
+    public function createUserSession2($data){
+       
+        $_SESSION['user_email1'] = $data['email'];
+        
+        
+        // header("Location:http://localhost/Easyfarm/Pages/index");
+         header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+        
+    }
 
+    public function createUserSession3($data){
+        print_r("ss");
+       
+        $_SESSION['user_email1'] = $data['email'];
+
+        print_r( $_SESSION['user_email1']);
+        
+        
+        // header("Location:http://localhost/Easyfarm/Pages/index");
+         header("Location:http://localhost/Easyfarm/V_plan/choosepkg");
+        
+    }
+
+
+
+    // public function choosepkg(){
+    //     // $this->view('Pages/choosepkg');
+    //     header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+    // }
     public function logOut(){
         unset($_SESSION['user_ID']); 
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_type']);
 
+        
         session_destroy();
         redirect('Pages/index');
     }
