@@ -1,8 +1,8 @@
 <!--Sidebar-->
             
-<!-- add new side bar -->
+
                 
-<div class ="sidebar-post">
+                    <div class ="sidebar-post">
                         <hr>
                         <header>MENU</header>
                         
@@ -18,26 +18,26 @@
                     </div>
                     <script>
                         document.getElementById("post").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Seller_post/creating";
+                             window.location.href = "http://localhost/Easyfarm/V_post/creating";
                             });
                     </script>
                     <script>
                         document.getElementById("order").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Seller_home/get_product_details1";
+                             window.location.href = "#";
                             });
                     </script>
-                    <!-- <script>
+                    <script>
                         document.getElementById("inventory").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Inventory/get_inventory_details";
+                             window.location.href = "#";
                             });
-                    </script> -->
+                    </script>
                     <script>
                         document.getElementById("plan").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Plan/get_plan_details";
+                             window.location.href = "#";
                             });
                     </script>
                     <script>
                         document.getElementById("created").addEventListener("click", function() {
-                             window.location.href = "http://localhost/Easyfarm/Seller_post/created_post";
+                             window.location.href = "http://localhost/Easyfarm/V_post/created_post";
                             });
                     </script>

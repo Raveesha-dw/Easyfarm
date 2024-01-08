@@ -1,8 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<!-- <?php require APPROOT . '/views/inc/components/sidebars/renter_sidebar.php'?> -->
+<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 <!-- <?php print_r($data)?> -->
-<?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
+<?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
 
        <div class ="shero5">
                             <?php $products=$data; ?>

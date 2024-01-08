@@ -11,11 +11,11 @@ public function __construct(){
 
 
 // AND  orders.Status='Pending'
-public function get_itemids1($seller_ID){
+public function get_itemids1($renter_ID){
     // colum name=variable
-    $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
-                    INNER JOIN reg_buyer ON  orders.User_ID=reg_buyer.U_Id WHERE orders.seller_ID = :seller_ID AND orders.Status='ACCEPT'");
-    $this->db->bind(':seller_ID', $seller_ID);
+    $this->db->query("SELECT * FROM v_orders  INNER JOIN vehicle_item ON v_orders.Item_ID =vehicle_item.V_Id 
+                    INNER JOIN reg_buyer ON  v_orders.User_ID=reg_buyer.U_Id WHERE v_orders.renter_ID = :renter_ID AND v_orders.Status='ACCEPT'");
+    $this->db->bind(':renter_ID', $renter_ID);
     $this->db->execute();
     //varibale= parameter
     $result=$this->db->resultSet();
@@ -24,11 +24,13 @@ public function get_itemids1($seller_ID){
 }
 
 
-public function get_itemids2($seller_ID){
+
+
+public function get_itemids2($renter_ID){
     // colum name=variable
-    $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
-                    INNER JOIN reg_buyer ON  orders.User_ID=reg_buyer.U_Id WHERE orders.seller_ID = :seller_ID AND orders.Status='PENDING' ");
-    $this->db->bind(':seller_ID', $seller_ID);
+    $this->db->query("SELECT * FROM v_orders  INNER JOIN vehicle_item ON v_orders.Item_ID =vehicle_item.V_Id 
+                    INNER JOIN reg_buyer ON  v_orders.User_ID=reg_buyer.U_Id WHERE v_orders.renter_ID = :renter_ID AND v_orders.Status='PENDING' ");
+    $this->db->bind(':renter_ID', $renter_ID);
     $this->db->execute();
     //varibale= parameter
     $result=$this->db->resultSet();
@@ -37,11 +39,11 @@ public function get_itemids2($seller_ID){
 }
 
   
-public function get_itemids3($seller_ID){
+public function get_itemids3($renter_ID){
     // colum name=variable
-    $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
-                    INNER JOIN reg_buyer ON  orders.User_ID=reg_buyer.U_Id WHERE orders.seller_ID = :seller_ID AND orders.Status='COMPLETED'");
-    $this->db->bind(':seller_ID', $seller_ID);
+    $this->db->query("SELECT * FROM v_orders  INNER JOIN vehicle_item ON v_orders.Item_ID =vehicle_item
+                    INNER JOIN reg_buyer ON  v_orders.User_ID=reg_buyer.U_Id WHERE v_orders.renter_ID = :renter_ID AND v_orders.Status='COMPLETED' ");
+    $this->db->bind(':renter_ID', $renter_ID);
     $this->db->execute();
     //varibale= parameter
     $result=$this->db->resultSet();
@@ -50,16 +52,15 @@ public function get_itemids3($seller_ID){
 }
 
 
-
-public function get_itemids4($seller_ID){
+public function get_itemids4($renter_ID){
     // colum name=variable
-    $this->db->query("SELECT * FROM orders  INNER JOIN item ON orders.Item_ID =item.Item_Id 
-                    INNER JOIN reg_buyer ON  orders.User_ID=reg_buyer.U_Id WHERE orders.seller_ID = :seller_ID AND orders.Status IN ('Cancelled', 'COMPLETED')");
-    $this->db->bind(':seller_ID', $seller_ID);
+    $this->db->query("SELECT * FROM v_orders  INNER JOIN vehicle_item ON v_orders.Item_ID =vehicle_item.V_Id 
+                    INNER JOIN reg_buyer ON  v_orders.User_ID=reg_buyer.U_Id WHERE v_orders.renter_ID = :renter_ID AND v_orders.Status='COMPLETED' ");
+    $this->db->bind(':renter_ID', $renter_ID);
     $this->db->execute();
     //varibale= parameter
     $result=$this->db->resultSet();
-    // print_r($result);
+    print_r($result);
     return $result;
 }
 
