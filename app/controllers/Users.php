@@ -893,7 +893,7 @@ class Users extends Controller{
         
         
         // header("Location:http://localhost/Easyfarm/Pages/index");
-         header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+         header("Location:http://localhost/Easyfarm/Plan/choosepkg");
         
     }
 

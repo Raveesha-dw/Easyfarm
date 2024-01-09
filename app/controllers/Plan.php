@@ -8,6 +8,15 @@
         
     }
 
+    public function choosepkg(){
+        
+        // print_r("ss");
+        $data= $this->planModel->get_dataplan3();
+        // print_r($data);
+        $this->view('seller/v_register_plan',$data);
+
+    }
+
 
     public function get_plan_details(){
 
@@ -17,8 +26,9 @@
         if ($_SESSION['plan_id']==''){
             
             // if not have plan id
+            $data= $this->planModel->get_dataplan3();
 
-            $this->view('seller/v_register_plan2');
+            $this->view('seller/v_register_plan2',$data);
     
         }else{
         

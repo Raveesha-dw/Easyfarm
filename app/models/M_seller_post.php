@@ -5,6 +5,19 @@ public function __construct(){
     $this->db=new Database();
 }
 
+public function get_dataplan3(){
+    
+    $this->db->query("SELECT * FROM plandetails  ");
+  
+    $result=$this->db->resultSet();
+    // $this->db->execute();
+    // print_r($result);
+    return $result;
+    
+    // exit();
+
+
+}
 
 public function create_post($data){
     

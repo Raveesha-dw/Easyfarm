@@ -13,6 +13,8 @@ class Seller_post extends Controller{
         $this->sellerModel = $this->model('M_seller_post');
         
     }
+
+  
     // public function Index() {
     //     print_r('hello');
     // }
@@ -26,11 +28,12 @@ public function cretesession3(){
 }
 
 public function creating(){
+   
     // print_r($_SESSION['user_ID']);
     print_r($_SESSION['plan_id']);
     if ($_SESSION['plan_id']==''){
-        print_r("so");
-        $this->view('seller/v_register_plan1');
+        $data= $this->sellerModel->get_dataplan3();
+        $this->view('seller/v_register_plan1',$data);
 
     }else{
     $data=[
