@@ -143,7 +143,7 @@ public  function create_post(){
 
             if(empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err'])&& empty( $data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty( $data['Charging_Unit_err']) && empty($data['Calender_err']) &&empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err']) ){
                 
-                if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/vehicleRentor/'));
+                if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/vehicleRenter/'));
             
             if ($this->v_postModel->create_post($data)){
                 $data = $this->v_postModel->get_data($_SESSION['user_ID']);
@@ -312,7 +312,7 @@ public  function create_post(){
 
           if(empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err'])&& empty( $data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty( $data['Charging_Unit_err']) && empty($data['Calender_err']) &&empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err']) ){
               
-              if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/vehicleRentor/'));
+              if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/vehicleRenter/'));
           
                 // $data['old']['tmp_name'],
               

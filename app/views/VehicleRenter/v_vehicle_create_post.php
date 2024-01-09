@@ -3,6 +3,7 @@
 <?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- <?php print_r($data);?> -->
+<div class ="ss">
 <div class="Wrapper_Vehicle_Create_Post">
     
     <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
@@ -16,11 +17,11 @@
 
 
 
-                     <div class="sdropdown1">
+                     <!-- <div class="sdropdown1"> -->
                         <label for="Category"  class = "scdropdown1" name="Category"><b>Vehicle Category:</b></label>
                         <!-- <span class="invalid"><?php if($data){ echo $data['Category_err'];} ?></span> -->
                         <br>
-                        <select name="V_category" id="sCategory" >
+                        <select name="V_category" id="sCategory" class="sCategory" >
 
                             <option disabled selected>Select Category</option>
                             
@@ -30,7 +31,7 @@
                             <option value= "Seeds">Three Wheelers</option>
                         </select>
                         
-                    </div>
+                    <!-- </div> -->
 
 
 
@@ -177,10 +178,11 @@
         
         
     </form>
+
 </div>
+
+</div>
+<?php require APPROOT . '/views/inc/footer.php'; ?>  
 
 <!-- Your other head elements -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    
-<?php require APPROOT . '/views/inc/footer.php'; ?>     
