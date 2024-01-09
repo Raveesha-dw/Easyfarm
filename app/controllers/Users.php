@@ -879,6 +879,7 @@ class Users extends Controller{
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
             // $this->view('Pages/index');
+            print_r($user);
             header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
         }    

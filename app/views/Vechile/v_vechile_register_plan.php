@@ -46,7 +46,7 @@
                                 payhere.onCompleted = function onCompleted(orderId) {
                                 console.log("Payment completed. OrderID:" + orderId);
                                 var paymentQueryString = Object.keys(payment).map(key => key + '=' + encodeURIComponent(payment[key])).join('&');
-                                window.location.href = "http://localhost/Easyfarm/Plan/update_details?id=" + payment['plan_id'];
+                                window.location.href = "http://localhost/Easyfarm/V_plan/update_details?id=" + payment['plan_id'];
 
 
                                 
