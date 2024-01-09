@@ -157,4 +157,23 @@ public function getcurrent_listing_details($id){
 }
 
 
+public function get_planid1(){
+    $this->db->query("SELECT * FROM reg_vehicleowner WHERE reg_vehicleowner.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    return $result;
+}
+
+public function update_user_plan2(){
+   
+    $this->db->query("UPDATE reg_vehicleowner  SET list_count = (SELECT listing_limit FROM v_plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_vehicleowner.U_Id = :user_ID");
+    $this->db->bind(':plan_id', $_GET['id']);
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    print_r($_SESSION['user_ID']);
+    $this->db->execute();
+    // print_r("xjx");
+    return true;
+
+}
+
 }

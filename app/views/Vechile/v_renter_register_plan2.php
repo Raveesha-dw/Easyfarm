@@ -1,13 +1,12 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <!-- <script>function paymentGateway(){console.log("kk")}</script> -->
-<!-- <?php print_r( $_SESSION['user_email1']);?> -->
-
+<?php print_r($data)?>
 <script>
 
         
     function paymentGateway(id) {
-       
+        
 
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = ()=>{
@@ -46,7 +45,7 @@
                                 payhere.onCompleted = function onCompleted(orderId) {
                                 console.log("Payment completed. OrderID:" + orderId);
                                 var paymentQueryString = Object.keys(payment).map(key => key + '=' + encodeURIComponent(payment[key])).join('&');
-                                window.location.href = "http://localhost/Easyfarm/V_plan/update_details?id=" + payment['plan_id'];
+                                window.location.href = "http://localhost/Easyfarm/V_plan/update_details2?id=" + payment['plan_id'];
 
 
                                 
@@ -71,7 +70,7 @@
                                 payhere.startPayment(payment);
                         }
                 }
-                xhttp.open("GET","<?php echo URLROOT ?>/V_plan/payment?id=" + id,true);
+                xhttp.open("GET","<?php echo URLROOT ?>/V_plan/payment2?id=" + id,true);
                 xhttp.send();
         }
         
@@ -90,7 +89,7 @@
 
 <div class ="shero4">
     <div class="re_p">
-                <div class="wrapperreplan1">
+    <div class="wrapperreplan1">
                         <div class="premium-plan">
                                 <div class="header">
                                         <h1>🌟 <?php print($data[2]->name); ?> Exclusive <?php print($data[2]->duration); ?>-Month Plan 🌟</h1>
@@ -126,20 +125,20 @@
 
                 <div class="wrapperreplan3">
                 
-                        <div class="standard-plan">
-                                <div class="header">
-                                        <h2>🌟 <?php print($data[1]->name); ?> Exclusive <?php print($data[1]->duration); ?>-Month Plan 🌟</h2>
-                                </div>
-                                <div class="content">
-                                        <p>Experience excellence with our <?php print($data[1]->name); ?> plan – crafted for those who seek greatness!</p>
-                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong></p> -->
-                                        <p><strong>List Up to <?php print($data[1]->listing_limit); ?> Items!</strong> </p>
-                                        <p><strong>All for just Rs.<?php print($data[1]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[1]->price); ?>. Unleash the power of <?php print($data[1]->name); ?> without compromising your budget! 💸</p>
-                                        <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>
-                                </div>
+                <div class="standard-plan">
+                        <div class="header">
+                                <h2>🌟 <?php print($data[1]->name); ?> Exclusive <?php print($data[1]->duration); ?>-Month Plan 🌟</h2>
                         </div>
-
+                        <div class="content">
+                                <p>Experience excellence with our <?php print($data[1]->name); ?> plan – crafted for those who seek greatness!</p>
+                                <!-- <p><strong>Unlimited Access for 6 Months!</strong></p> -->
+                                <p><strong>List Up to <?php print($data[1]->listing_limit); ?> Items!</strong> </p>
+                                <p><strong>All for just Rs.<?php print($data[1]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[1]->price); ?>. Unleash the power of <?php print($data[1]->name); ?> without compromising your budget! 💸</p>
+                                <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>
+                        </div>
                 </div>
+
+        </div>
         </div>
 
 
