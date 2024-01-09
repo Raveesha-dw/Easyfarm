@@ -26,21 +26,21 @@
                             <div class="msg-f"> 
                                    
                                           <div class="msg-f-detail">
-                                                 <h3><?php echo $product->Name ?> wants <?php echo $product->Item_name ?> in <?php echo $product->quantity ?> <?php echo $product->Unit_type?></h3>
+                                                 <h3><?php echo $product->Name ?> wants <?php echo $product->V_category ?> on this <?php echo $product->duration ?> day</h3>
                                                  <br>
                                           </div>
-                                                 <div class="msg-pdroduct">
-                                                 <h3>Iteam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Item_name ?></h3>
-                                                 <h3>Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->quantity ?><?php echo $product->Unit_type?></h3>
-                                                 <h3>TO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Address?></h3>
-                                                 <h3>Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->DeliveryMethod?></h3>
+                                          <div class="msg-pdroduct">
+                                                               <h3>Vechile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->V_category ?></h3>
+                                                               <h3>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->duration?></h3>
+                                                               <h3>TO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Address?></h3>
+                                                               <!-- <h3>Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->DeliveryMethod?></h3> -->
 
 
-                                                 </div>
+                                          </div>
                                                  <div class="button-msg">
                                                  
                                                  <div class="aa">
-                                                        <button class="dd"> <a ><?php echo $product->Status; ?> </a> </button>
+                                                        <button class="dd" style="cursor: default; "> <a ><?php echo $product->Status; ?> </a> </button>
 
                                                  </div> 
                                                  </div>

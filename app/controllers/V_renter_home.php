@@ -51,15 +51,14 @@ class V_renter_home extends Controller{
     public function update_status1(){
         $item1 =$this->renterhomeModel->updateiteamdeatils1();
         $items=$this->renterhomeModel->get_itemids2($_SESSION['user_ID']);
-        $this->view('seller/v_seller_home_pending',$items);
+        $this->view('Vechile/v_renter_home_pending',$items);
 
     }
 
     public function update_status2(){
         $item1 =$this->renterhomeModel->updateiteamdeatils2();
         $items=$this->renterhomeModel->get_itemids4($_SESSION['user_ID']);
-        $this->view('seller/v_seller_home_completed',$items);
-
+        $this->view('Vechile/v_renter_home_completed',$items);
     }
 
   

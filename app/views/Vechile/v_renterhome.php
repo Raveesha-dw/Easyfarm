@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
-<!-- <?php print_r($data)?> -->
+<?php print_r($data)?>
 <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
 
        <div class ="shero5">
@@ -26,14 +26,14 @@
                                    <div class="msg-f"> 
                                           
                                                  <div class="msg-f-detail">
-                                                        <h3><?php echo $product->Name ?> wants <?php echo $product->Item_name ?> in <?php echo $product->quantity ?> <?php echo $product->Unit_type?></h3>
+                                                        <h3><?php echo $product->Name ?> wants <?php echo $product->V_category ?> on this <?php echo $product->duration ?> day</h3>
                                                         <br>
                                                  </div>
                                                         <div class="msg-pdroduct">
-                                                               <h3>Iteam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Item_name ?></h3>
-                                                               <h3>Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->quantity ?><?php echo $product->Unit_type?></h3>
-                                                               <h3>TO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Address?></h3>
-                                                               <h3>Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->DeliveryMethod?></h3>
+                                                               <h3>Vechile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->V_category ?></h3>
+                                                               <h3>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->duration?></h3>
+                                                               <h3>TO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Address?></h3>
+                                                               <!-- <h3>Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->DeliveryMethod?></h3> -->
 
 
                                                         </div>
@@ -41,7 +41,7 @@
                                                                <div class="aa">
                                                                       <!-- <button class="dd"> <a href="http://localhost/Easyfarm/Seller_home/update_status2?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" >DECLINE </a> </button> -->
                                                                       <button class="dd" onclick="showModal(<?php echo $product->Order_ID; ?>)">DECLINE</button>
-                                                                      <button class="dd2"> <a href="http://localhost/Easyfarm/Seller_home/update_status1?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" ><?php echo $product->Status; ?> </a> </button>
+                                                                      <button class="dd2"> <a href="http://localhost/Easyfarm/V_renter_home/update_status1?id=<?php echo $product->Order_ID; ?>" onclick="changeText(this)" ><?php echo $product->Status; ?> </a> </button>
 
                                                                </div>
                                                         </div>
@@ -105,7 +105,7 @@
         const reason = encodeURIComponent(document.getElementById('additionalReason').value);
 
         // Build the URL with the current order ID and reason
-        const url = `http://localhost/Easyfarm/Seller_home/update_status2?id=${currentOrderId}&reason=${reason}`;
+        const url = `http://localhost/Easyfarm/V_renter_home/update_status2?id=${currentOrderId}&reason=${reason}`;
 
         // Fetch the URL using GET method
         fetch(url, {
@@ -134,7 +134,7 @@
 
     function okaction(){
        const reason = encodeURIComponent(document.getElementById('additionalReason').value);
-       const url = `http://localhost/Easyfarm/Seller_home/update_status2?id=${currentOrderId}&reason=${reason}`;
+       const url = `http://localhost/Easyfarm/V_renter_home/V_renter_update_status2?id=${currentOrderId}&reason=${reason}`;
 
        fetch(url, {
             method: 'GET',

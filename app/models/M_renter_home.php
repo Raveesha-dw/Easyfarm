@@ -55,12 +55,12 @@ public function get_itemids3($renter_ID){
 public function get_itemids4($renter_ID){
     // colum name=variable
     $this->db->query("SELECT * FROM v_orders  INNER JOIN vehicle_item ON v_orders.Item_ID =vehicle_item.V_Id 
-                    INNER JOIN reg_buyer ON  v_orders.User_ID=reg_buyer.U_Id WHERE v_orders.renter_ID = :renter_ID AND v_orders.Status='COMPLETED' ");
+                    INNER JOIN reg_buyer ON  v_orders.User_ID=reg_buyer.U_Id WHERE v_orders.renter_ID = :renter_ID AND v_orders.Status IN ('Cancelled', 'COMPLETED')");
     $this->db->bind(':renter_ID', $renter_ID);
     $this->db->execute();
     //varibale= parameter
     $result=$this->db->resultSet();
-    print_r($result);
+    // print_r($result);
     return $result;
 }
 
@@ -71,7 +71,7 @@ public function get_itemids4($renter_ID){
 
 public function updateiteamdeatils2(){
     
-    $this->db->query("UPDATE orders SET Status ='Cancelled' WHERE Order_ID = :Order_ID");
+    $this->db->query("UPDATE v_orders SET Status ='Cancelled' WHERE Order_ID = :Order_ID");
     $this->db->bind(':Order_ID',$_GET['id']);
     $this->db->execute();
     $result=$this->db->resultSet();
@@ -82,7 +82,7 @@ public function updateiteamdeatils2(){
 
 public function updateiteamdeatils1(){
     
-    $this->db->query("UPDATE orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
+    $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
     $this->db->bind(':Order_ID',$_GET['id']);
     $this->db->execute();
     $result=$this->db->resultSet();

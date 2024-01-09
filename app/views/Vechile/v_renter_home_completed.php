@@ -136,7 +136,7 @@
                         <td>
                             <p class="status delivered"><?php echo $product->Status; ?></p>
                         </td>
-                        <td> <strong> <?php echo $product->Unit_price?> </strong></td>
+                        <td> <strong> <?php echo $product->Rental_Fee?> </strong></td>
 
                    
                     </tr>
