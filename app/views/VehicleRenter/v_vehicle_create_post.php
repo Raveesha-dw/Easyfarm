@@ -1,6 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
+
+<!-- Include jQuery first -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Then include Mobiscroll -->
+<script src="https://cdn.mobiscroll.com/4.10.4/js/mobiscroll.jquery.min.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- <?php print_r($data);?> -->
 <div class ="ss">
@@ -70,7 +77,7 @@
                                 <br>
                                 
                                     <select name="Charging_Unit" id="stype">
-                                        <option disabled selected>Charging per unit</option>
+                                        <option disabled selected> </option>
                                         <option value="Kg">Per Hour</option>
                                         <option value="g">Per Day</option>
                                         <option value="plant">Per Week</option>
@@ -84,31 +91,6 @@
                      </div>
                 
                 <br>
-                <div class ="sdate">
-                    <b>Calender</b>
-                    <br>
-                    <input id="se_date"  name="Calender"  type="date" placeholder="Enter expire date" >
-                    <!-- <span class="invalid"><?php if($data){echo $data['Expiry_date_err'];}  ?></span> -->
-                    
-                    <script>
-                        var date =new Date();
-                        var tdate =date.getDate();
-                        var month = date.getMonth() + 1; //4
-                        if(tdate <10){
-                            tdate ='0' +tdate;
-                        }
-                        if (month<10){
-                            month = '0'+month;//0 + 4=4
-                        }
-                        var year = date.getFullYear();
-                        var minDate = year + "-" + month + "-" + tdate;
-                        document.getElementById("se_date").setAttribute('min',minDate);
-                        // console.log(minDate);
-                    </script>
-                    
-                    <!-- <span class="invalid"><?php if($data){echo $data['Expiry_date_err'];}  ?></span> -->
-                    <!-- <span class="invalid"><?php if($data){echo $data['Invalid_date_err'];}  ?></span> -->
-                </div>
 
 
 
@@ -179,10 +161,74 @@
         
     </form>
 
+ 
+ 
+
+
+ 
+ 
+         <div class="sdate">
+
+
+<div>
+  <p>Select dates</p>
+  <input type="date" id="date" />
+
+  <button>Add Date</button>
+</div>
+
+<div style="padding-top:20px;">
+  <select name="dates" id="dates" size="5">
+  </select>
+</div>
+
+<button id="finish">Finish</button>
+
+        </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
 </div>
 
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>  
 
 <!-- Your other head elements -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<scipt src="https://code.jquery.com/jquery-3.6.4.min.js"></scipt>
+
+
+<script>
+    document.querySelector("button").addEventListener("click", function() {
+  const sel = document.querySelector("select");
+  const d = document.querySelector("#date").value;
+  
+  if (d === null || d === undefined)
+  {
+    alert("Select a date first.");
+  }
+  else
+  {
+    sel.innerHTML += `<option value="${d}">${d}</option>`;
+  }
+});
+
+// Later on, post the option values from the select list to your backend:
+
+document.querySelector("#finish").addEventListener("click", function() {
+  var dates = [];
+  for (let o of document.querySelectorAll("#dates option"))
+  {
+    dates.push(o.value);
+  }
+});
+</script>

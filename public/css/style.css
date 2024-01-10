@@ -45,6 +45,10 @@
 @import url('components/myplan.css'); */
 
 
+/* vehicle renter */
+@import url('components/calendar.css');
+
+
 :root{
     --dark-green: #6a9739;
     --light-green: #8bc34a;

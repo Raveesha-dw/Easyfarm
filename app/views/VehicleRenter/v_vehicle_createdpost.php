@@ -30,13 +30,14 @@
                         
                         
 
-                        <div class="name">
-                            
-                            <b id="namee1"> <?php echo $product->V_Id;?> </b> 
-                             <b id="price1"> <?php echo  $product->Rental_Fee;?> </b> 
+                        <!-- <div class="name"> --><br><br>
+                            <p><?php echo $product->V_category;?> For Rent - <?php echo $product->V_number;?></p>
+                            <p>LKR <?php echo $product->Rental_Fee;?></p>
+                            <!-- <b id="namee1"> <?php echo $product->V_Id;?> </b>  -->
+                             <!-- <b id="price1"> <?php echo  $product->Rental_Fee;?> </b>  -->
 
                             
-                        </div>
+                        <!-- </div> -->
                         
                         
 

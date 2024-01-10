@@ -55,6 +55,19 @@ class V_renter_home extends Controller{
     }
 
   
-    
+        public function calendar(){
+        $data = [
+            'title' => 'calendar'
+        ];
+        
+        $this->view('VehicleRenter\v_calendar', $data);
+        
+        
+       
+            
+
+      
+    }
+
     
 }
