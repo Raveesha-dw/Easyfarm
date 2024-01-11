@@ -93,7 +93,7 @@
                 <br>
          <div class="sdate">
             <b>Calendar</b>
-            
+
 <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
