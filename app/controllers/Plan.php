@@ -57,7 +57,7 @@
         // print_r($data2);
 
         $concatenatedData = array_merge($data1, $data2);
-        print_r($concatenatedData[0]['listing_limit']);
+        // print_r($concatenatedData[0]['listing_limit']);
         if ($concatenatedData['plan_id'] == 1) {
 
                 $concatenatedData['list_count'] = $concatenatedData['list_count'];
@@ -552,7 +552,7 @@ public function payment6() {
         $data6['Date'] = $newDate;
         $data5= $this->get_plan_details2();
         $concatenatedData = array_merge($data6, $data5);
-            print_r( $concatenatedData);
+            // print_r( $concatenatedData);
 
         if ($concatenatedData['plan_id'] == 1) {
             $concatenatedData['list_count'] = $concatenatedData['list_count'];
@@ -594,7 +594,7 @@ public function payment6() {
         $data6['Date'] = $newDate;
         $data5= $this->get_plan_details2();
         $concatenatedData = array_merge($data6, $data5);
-            print_r( $concatenatedData);
+            // print_r( $concatenatedData);
 
         if ($concatenatedData['plan_id'] == 1) {
             $concatenatedData['list_count'] = $concatenatedData['list_count'];

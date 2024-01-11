@@ -1,8 +1,16 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<!-- <?php print_r($data)?> -->
-<?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
+<!-- <div class="headebr"> -->
+    <div>
+        <?php require APPROOT . '/views/inc/header.php'; ?>
+        <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+        
+    </div>
+
+   
+    <div class="container">
+        <?php require APPROOT . '/views/seller/a.php' ?>
+
+        <section class="home">
+
 
 
 <!-- <?php $products=$data; ?> -->
@@ -19,7 +27,7 @@
               <div class="msg-date"> <p><?php echo $product->Name ?></p>
                       <p><?php echo $product->placed_Date ?><p>
               </div>
-                
+          
                 
        </div>  -->
 
@@ -76,10 +84,10 @@
 <!-- <?php foreach ($products as $product) :?> -->
        <!-- <?php  endforeach;?> -->
        <!--  -->
+       <?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
 
 
 <div class ="shero6">
-
     <main class="table" id="customers_table">
     
         <section class="table__header">
@@ -425,8 +433,11 @@ const downloadFile = function (data, fileType, fileName = '') {
 
 
 
-<?php require APPROOT . '/views/inc/footer.php';?>  
-                            
+<?php require APPROOT . '/views/inc/footer.php'; ?>
+
+</section>
+</div>
+
         
         
         

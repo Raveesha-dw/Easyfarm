@@ -96,7 +96,7 @@ class Pages extends Controller{
     }
 
     public function re_home(){
-        $this->view('seller/v_register_plan');
+        $this->view('seller/a');
     }
 
     public function privacyPolicy(){

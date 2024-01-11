@@ -1,9 +1,18 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
-<!-- <?php print_r($data)?> -->
-<?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
+<div class="headebr">
+    <div>
+        <?php require APPROOT . '/views/inc/header.php'; ?>
+        <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+        
 
+    </div>
+
+
+    <div class="container">
+        <?php require APPROOT . '/views/seller/a.php' ?>
+
+        <section class="home">
+
+        <?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
 <div class ="shero5">
                      <?php $products=$data; ?>
                      <?php foreach ($products as $product) : ?>
@@ -68,9 +77,10 @@
 </div>
  
 
-<?php require APPROOT . '/views/inc/footer.php';?>  
-                            
-        
-        
+<?php require APPROOT . '/views/inc/footer.php'; ?>
+
+</section>
+</div>
+</div>
         
          
