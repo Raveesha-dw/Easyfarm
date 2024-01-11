@@ -16,7 +16,7 @@ class Inventory extends Controller{
 
     public function get_inventory_details(){
         // $data=Array();
-        $data=$this->inventoryModel->get_data('59');
+        $data=$this->inventoryModel->get_data($_SESSION['user_ID']);
         // print_r($data);
         // $data=get_object_vars($data[0]);
        

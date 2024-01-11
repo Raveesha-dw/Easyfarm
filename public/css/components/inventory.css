@@ -4,14 +4,14 @@
     overflow: auto;
 }
 
-table {
+.itable-section .table {
     width: 100%;
     table-layout: fixed;
     min-width: 900px;
     border-collapse: collapse;
 }
 
-thead th {
+.itable-section .table thead th {
     position: sticky;
     top: 0;
     background-color: darkseagreen;
@@ -19,7 +19,7 @@ thead th {
     font-size: 15px;
 }
 
-th, td {
+.itable-section .table th, .itable-section .table td {
     border-bottom: 1px solid rgb(203, 240, 203);
     padding: 10px 20px;
     word-break: break-all;

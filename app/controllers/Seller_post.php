@@ -119,7 +119,7 @@ public  function create_post(){
             // 'stock_err'=>'',
 
 
-                'seller_ID' => 59,
+                'seller_ID' => $_SESSION['user_ID'],
                 'Item_name' => isset($_POST['Item_name']) ? trim($_POST['Item_name']) : '',
                 'Unit_size' => isset($_POST['Unit_size']) ? trim($_POST['Unit_size']) : '',
                 'Category' => isset($_POST['Category']) ? trim($_POST['Category']) : '',
@@ -229,7 +229,7 @@ public  function create_post(){
             // }
             if ($this->sellerModel->create_post($data)){
                 // print_r($data);
-               
+               $data2=$this->sellerModel->update_listing($data['seller_ID']);
                 $data = $this->sellerModel->get_data($data['seller_ID']);
               
                 
@@ -267,7 +267,7 @@ public  function create_post(){
     public  function created_post(){
         
         
-        $data = $this->sellerModel->get_data(('59'));
+        $data = $this->sellerModel->get_data(($_SESSION['user_ID']));
         $this->view('seller/v_createdpost', $data);
        
     }
@@ -464,7 +464,7 @@ public  function create_post(){
                     // $result= $this->sellerModel->update_data($data);
                    
                 
-                    $products = $this->sellerModel->get_data("59");
+                    $products = $this->sellerModel->get_data($_SESSION['user_ID']);
                    
                     // redirect("Seller_post/created_post");
                      $this->view('seller/v_createdpost',$products);
@@ -491,7 +491,7 @@ public  function create_post(){
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $itemId = $_POST['Item_Id'];
                 $this->sellerModel->delete_data($itemId);
-                $products = $this->sellerModel->get_data("59");
+                $products = $this->sellerModel->get_data($_SESSION['user_ID']);
                     
                      $this->view('seller/v_createdpost',$products);
 
