@@ -70,8 +70,10 @@
 
                         <div class="name">
                             
-                            <b id="namee1"> <?php echo $product->Item_Id;?> </b> 
-                             <b id="price1"> <?php echo  $product->Unit_price;?> </b> 
+                            <b id="namee1"> <?php echo $product->Item_name;?> </b> 
+                             
+                             <b id="price1"> Rs. <?php echo $product->Unit_price; ?> </b>
+
 
                             
                         </div>
