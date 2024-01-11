@@ -982,13 +982,13 @@ a.fc-more:hover {
     font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 }
 
-/* #calendar { */
-    /* width: 100%; */
-    /* margin: 0 auto; */
-/* } */
+#calendar {
+    width: 100%;
+    margin: 0 auto;
+}
 
 .response {
-    height: 60px;
+    height: 2%;
 }
 
 .success {
@@ -1016,9 +1016,9 @@ a.fc-more:hover {
 
 .wrapperCalendar {
   width: 50%;
-  max-width: 300px; /* Set your desired maximum width */
-  min-width: 300px; /* Set your desired minimum width */
-  background-color: #11120f4a;
+  max-width: 500px;
+  min-width: 400px;
+  background-color: #eeffcb8f;
   margin: 25px auto 0 auto;
   border: 5px solid rgba(255, 255, 255, .2);
   backdrop-filter: blur(20px);

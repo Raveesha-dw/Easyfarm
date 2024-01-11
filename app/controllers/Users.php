@@ -870,7 +870,7 @@ class Users extends Controller{
            
             // print_r($user);
             
-            // header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
+            header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
         }else if($_SESSION['user_type'] == 'AgriExpert'){
             // redirect('Pages/Profile');
