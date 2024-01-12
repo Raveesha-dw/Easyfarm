@@ -175,7 +175,7 @@ class M_users{
         if($row->User_type=="Seller"){
             // print_r("s");
             if($row){
-                // print_r($data['email']);
+                print_r($data['email']);
                 $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:email");
                 $this->db->bind(':email', $data['email']);
                 $row1 = $this->db->single();
