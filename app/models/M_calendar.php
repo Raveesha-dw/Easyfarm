@@ -37,5 +37,17 @@ class M_calendar{
         
      }
 
+     public function delete_anavailble_Dates($data){
+
+        $this->db->query('DELETE from vehicle_calendar WHERE (calendar_Id= :id)') ; 
+        $this->db->bind(':id', $data['id']);
+        
+        $this->db->execute();
+        return true;
+    
+
+        
+     }
+
 
 }

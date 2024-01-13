@@ -46,6 +46,23 @@ class Calendar extends Controller
         }
 
 
+
+
+
+        public function delete_anavailble_Dates()
+        {
+
+
+            
+
+            $data = [
+                'id' => $_POST['id'],
+       
+            ];
+
+            $this->calendarModel->delete_anavailble_Dates($data);
+        }
+
 }
 
 

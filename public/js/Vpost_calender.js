@@ -58,7 +58,7 @@ $(document).ready(function () {
             if (deleteMsg) {
                 $.ajax({
                     type: "POST",
-                    url: "delete-event.php",
+                    url: "<?php echo URLROOT ?>/Calendar/delete_anavailble_Dates",
                     data: "&id=" + event.id,
                     success: function (response) {
                         if(parseInt(response) > 0) {
