@@ -26,6 +26,26 @@ class Calendar extends Controller
         $this->calendarModel->add_anavailble_Dates($data);
         }
 
-    }
+
+
+        public function edit_anavailble_Dates()
+        {
+
+
+            
+
+            $data = [
+                'id' => $_POST['id'],
+                'title' => $_POST['title'],
+                'start' => $_POST['start'], 
+                'end' => $_POST['end'], 
+            
+            ];
+
+            $this->calendarModel->edit_anavailble_Dates($data);
+        }
+
 
 }
+
+

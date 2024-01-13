@@ -21,4 +21,21 @@ class M_calendar{
         
      }
 
+
+     public function edit_anavailble_Dates($data){
+
+        $this->db->query('UPDATE INTO vehicle_calendar(title, start, end) VALUES (:title, :start, :end ) WHERE (calendar_Id= :id)') ; 
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':start', $data['start']);
+        $this->db->bind(':end', $data['end']);
+        $this->db->bind(':id', $data['id']);
+        
+        $this->db->execute();
+        return true;
+    
+
+        
+     }
+
+
 }

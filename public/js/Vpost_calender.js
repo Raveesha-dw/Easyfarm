@@ -20,7 +20,7 @@ $(document).ready(function () {
                 var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
 
                 $.ajax({
-                    url: 'add-event.php',
+                    url: '<?php echo URLROOT ?>/Calendar/add_anavailble_Dates',
                     data: 'title=' + title + '&start=' + start + '&end=' + end,
                     type: "POST",
                     success: function (data) {
