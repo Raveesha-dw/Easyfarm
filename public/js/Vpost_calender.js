@@ -45,7 +45,7 @@ $(document).ready(function () {
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
-                        url: 'edit-event.php',
+                        url: '<?php echo URLROOT ?>/Calendar/edit_anavailble_Dates',
                         data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
                         type: "POST",
                         success: function (response) {
