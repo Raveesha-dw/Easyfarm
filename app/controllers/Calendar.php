@@ -23,14 +23,7 @@ class Calendar extends Controller
         
         ];
 
-
-
-        $sqlInsert = "INSERT INTO tbl_events (title,start,end) VALUES ('" . $title . "','" . $start . "','" . $end . "')";
-
-        $result = mysqli_query($conn, $sqlInsert);
-
-        if (!$result) {
-            $result = mysqli_error($conn);
+        $this->calendarModel->add_anavailble_Dates($data);
         }
 
     }

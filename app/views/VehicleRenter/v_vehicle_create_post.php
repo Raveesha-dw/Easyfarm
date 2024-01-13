@@ -1,14 +1,14 @@
-<?php require APPROOT . '/views/inc/header.php';?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 
-<!-- Include jQuery first -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<?php require APPROOT . '/views/inc/header.php';?>
+<link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
+<script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
-<!-- Then include Mobiscroll -->
-<script src="https://cdn.mobiscroll.com/4.10.4/js/mobiscroll.jquery.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <!-- <?php print_r($data);?> -->
 <div class ="ss">
 <div class="Wrapper_Vehicle_Create_Post">
@@ -94,27 +94,24 @@
          <div class="sdate">
             <b>Calendar</b>
 
-<link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
-<script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
-<script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
-<script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
 
 
-<div class="wrapperCalendar">
-    <p><I>Mark the unavailable dates for renting</p></I>
-         <div class="cal" >
-            <div class="response"></div>
-            <div id='calendar'></div>
+
+        <div class="wrapperCalendar">
+            <p><I>Unavailable dates for renting</p></I>
+                <div class="cal" >
+                    <div class="response"></div>
+                    <div id='calendar'></div>
+                </div>
         </div>
-</div>
+
+        
 
 
 
 
 
-
-<script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
 
 
 
@@ -244,3 +241,5 @@ document.querySelector("#finish").addEventListener("click", function() {
   }
 });
 </script>
+
+<script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
