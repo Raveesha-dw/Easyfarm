@@ -13,7 +13,7 @@
 <div class ="ss">
 <div class="Wrapper_Vehicle_Create_Post">
 
-    <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
+    <!-- <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST"> -->
 
 
 
@@ -102,7 +102,9 @@
             <p><I>Unavailable dates for renting</p></I>
                 <div class="cal" >
                     <div class="response"></div>
-                    <div id='calendar'></div>
+                    <div id='calendar'>
+                        <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
+                    </div>
                 </div>
         </div>
 
@@ -216,30 +218,6 @@
 <scipt src="https://code.jquery.com/jquery-3.6.4.min.js"></scipt>
 
 
-<script>
-    document.querySelector("button").addEventListener("click", function() {
-  const sel = document.querySelector("select");
-  const d = document.querySelector("#date").value;
 
-  if (d === null || d === undefined)
-  {
-    alert("Select a date first.");
-  }
-  else
-  {
-    sel.innerHTML += `<option value="${d}">${d}</option>`;
-  }
-});
-
-// Later on, post the option values from the select list to your backend:
-
-document.querySelector("#finish").addEventListener("click", function() {
-  var dates = [];
-  for (let o of document.querySelectorAll("#dates option"))
-  {
-    dates.push(o.value);
-  }
-});
-</script>
 
 <script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>

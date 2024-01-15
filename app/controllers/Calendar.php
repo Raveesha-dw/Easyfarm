@@ -14,7 +14,7 @@ class Calendar extends Controller
     {
 
 
-        print_r("sssssssss");
+        // print_r("sssssssss");
 
         $data = [
         'title' => isset($_POST['title']) ? $_POST['title'] : "",
@@ -23,7 +23,10 @@ class Calendar extends Controller
         
         ];
 
+//  print_r($data['title']);
         $this->calendarModel->add_anavailble_Dates($data);
+
+        
         }
 
 
@@ -51,6 +54,8 @@ class Calendar extends Controller
 
         public function delete_anavailble_Dates()
         {
+            print_r("mnsdhfu");
+            
             $data = [
                 'id' => $_POST['id'],
        
