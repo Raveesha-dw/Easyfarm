@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
         editable: true,
-        events: "fetch-event.php",
+        events: "<?php echo URLROOT ?>/Calendar/fetch_anavailble_Dates",
         displayEventTime: false,
         eventRender: function (event, element, view) {
             if (event.allDay === 'true') {

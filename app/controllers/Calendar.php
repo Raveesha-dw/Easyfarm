@@ -14,7 +14,7 @@ class Calendar extends Controller
     {
 
 
-        
+        print_r("sssssssss");
 
         $data = [
         'title' => isset($_POST['title']) ? $_POST['title'] : "",
@@ -51,10 +51,6 @@ class Calendar extends Controller
 
         public function delete_anavailble_Dates()
         {
-
-
-            
-
             $data = [
                 'id' => $_POST['id'],
        
@@ -62,6 +58,31 @@ class Calendar extends Controller
 
             $this->calendarModel->delete_anavailble_Dates($data);
         }
+
+
+        public function fetch_anavailble_Dates()
+        {
+
+            $data = [
+                'id' => $_POST['id'],
+       
+            ];
+
+            $json = array();
+
+            $result = $this->calendarModel->fetch_anavailble_Dates($data);
+            
+
+         
+            $eventArray = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                array_push($eventArray, $row);
+            }
+            mysqli_free_result($result);
+
+            echo json_encode($eventArray);
+        }
+
 
 }
 

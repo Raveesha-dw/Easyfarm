@@ -49,5 +49,18 @@ class M_calendar{
         
      }
 
+     public function fetch_anavailble_Dates($data){
+
+        $this->db->query('SELECT * from vehicle_calendar WHERE (calendar_Id= :id)') ; 
+        $this->db->bind(':id', $data['id']);
+        
+        $this->db->execute();
+        $rows=$this->db->resultSet();     
+        return $rows;
+    
+
+        
+     }
+
 
 }
