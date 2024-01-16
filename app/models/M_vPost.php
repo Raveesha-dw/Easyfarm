@@ -8,7 +8,7 @@ public function __construct(){
 
 public function create_post($data){
     
-    $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Calender,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Calender, :Address, :Description,:Image, :Owner_Id)');
+    $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id)');
     // print_r($data);
     $this->db->bind(':V_category', $data['V_category']); 
     $this->db->bind(':V_name', $data['V_name']); 
@@ -16,7 +16,7 @@ public function create_post($data){
     $this->db->bind(':Contact_Number', $data['Contact_Number']); 
     $this->db->bind(':Rental_Fee', $data['Rental_Fee']); 
     $this->db->bind(':Charging_Unit', $data['Charging_Unit']); 
-    $this->db->bind(':Calender', $data['Calender']); 
+    // $this->db->bind(':Calender', $data['Calender']); 
     $this->db->bind(':Address', $data['Address']); 
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Image', $data['Image_name']); 

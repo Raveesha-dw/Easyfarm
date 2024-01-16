@@ -54,13 +54,13 @@ class Calendar extends Controller
 
         public function delete_anavailble_Dates()
         {
-            print_r("mnsdhfu");
+            print_r("123");
             
             $data = [
                 'id' => $_POST['id'],
        
             ];
-
+print_r($data);
             $this->calendarModel->delete_anavailble_Dates($data);
         }
 

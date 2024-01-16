@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
         editable: true,
-        events: "<?php echo URLROOT ?>/Calendar/fetch_anavailble_Dates",
+        events: "../Calendar/fetch_anavailble_Dates",
         displayEventTime: false,
         eventRender: function (event, element, view) {
             if (event.allDay === 'true') {
@@ -49,10 +49,17 @@ $(document).ready(function () {
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
+                        
                         url: '../Calendar/edit_anavailble_Dates',
-                        data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
+                        data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event._id,
                         type: "POST",
                         success: function (response) {
+                            console.log(event);
+console.log("fdffffffffff");
+
+                            console.log(event._id);
+console.log(start);
+
                             displayMessage("Updated Successfully");
                         }
                     });
@@ -71,8 +78,9 @@ $(document).ready(function () {
                     data: "id=" + event.id,
                     success: function (response) {
                         // displayMessage(response);
-                        console.log("hasi");
-                        console.log(response);
+                        console.log(event.id);
+                        // console.log("hasi");
+                        // console.log(response);
                         if(parseInt(response) > 0) {
                             $('#calendar').fullCalendar('removeEvents', event.id);
                             displayMessage("Deleted Successfully");

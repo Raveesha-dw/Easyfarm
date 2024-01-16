@@ -50,8 +50,9 @@ class M_calendar{
 
         $this->db->query('DELETE from vehicle_calendar WHERE (calendar_Id= :id)') ; 
         $this->db->bind(':id', $data['id']);
-        
+        print_r("oooooo");
         $this->db->execute();
+        print_r("pppp");
         return true;
     
 
