@@ -80,6 +80,19 @@ public  function create_post(){
                 'Image_name' => time() . '_' . (isset($_FILES['Image']['name']) ? $_FILES['Image']['name'] : ''),
 
 
+
+        'title' => isset($_POST['title']) ? $_POST['title'] : "",
+        'start' => isset($_POST['start']) ? $_POST['start'] : "", 
+        'end' => isset($_POST['end']) ? $_POST['end'] : "", 
+        
+
+
+
+
+
+
+
+
                 'V_category_err' => '',
                 'V_name_err' => '',
                 'V_number_err' => '',
@@ -327,7 +340,7 @@ public  function create_post(){
                     $products = $this->v_postModel->get_data($_SESSION['user_ID']);
                    
                     // redirect("Seller_post/created_post");
-                     $this->view('VehicleRentor/v_createdpost',$products);
+                     $this->view('VehicleRentor/v_vehicle_post_details',$products);
     
                 }}
                

@@ -45,7 +45,7 @@
                             <div class="button-n">
                                 <input  type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
 
-                                    <button class ="btn2"><a   href="http://localhost/Easyfarm/Seller_post/update_Product?id=<?php echo $product->Item_Id; ?>">update</a></button>
+                                    <button class ="btn2"><a   href="http://localhost/Easyfarm/V_post/update_Product?id=<?php echo $product->Item_Id; ?>">update</a></button>
                                     <!-- <p>Update  </p>
                                     </a> -->
                                 <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">

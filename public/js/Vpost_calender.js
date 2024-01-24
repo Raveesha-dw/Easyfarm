@@ -22,7 +22,8 @@ $(document).ready(function () {
 
                 $.ajax({
                     // url: '<?php echo URLROOT ?>/Calendar/add_anavailble_Dates',
-                    url: '../Calendar/add_anavailble_Dates',
+                    // url: '../Calendar/add_anavailble_Dates',
+                    url: '../V_post/create_post',
                     data: 'title=' + title + '&start=' + start + '&end=' + end,
                     type: "POST",
                     // print: console.log('title=' + title + '&start=' + start + '&end=' + end),

@@ -3,10 +3,12 @@
 class Calendar extends Controller
 {
     private $calendarModel;
+    private $v_postModel;
 
     public function __construct()
     {
         $this->calendarModel = $this->model('M_calendar');
+        $this->v_postModel = $this->model('M_vPost');
 
     }
 
@@ -24,8 +26,8 @@ class Calendar extends Controller
         ];
 
 //  print_r($data['title']);
-        $this->calendarModel->add_anavailble_Dates($data);
-
+        // $this->calendarModel->add_anavailble_Dates($data);
+        $this->v_postModel->create_post($data);
         
         }
 

@@ -22,6 +22,21 @@ public function create_post($data){
     $this->db->bind(':Image', $data['Image_name']); 
     $this->db->bind(':Owner_Id', $data['Owner_Id']); 
     $this->db->execute();
+
+    $this->db->query('SELECT * FROM vehicle_item WHERE V_number= :V_number');
+    $this->db->bind(':V_number',$data['V_number']);  
+
+    $row=$this->db->single();
+            
+    $V_Id = $row->V_Id;;
+
+    $this->db->query('INSERT INTO vehicle_calendar(title, start, end, V_Id) VALUES (:title, :start, :end ,:V_Id)'); 
+    $this->db->bind(':title', $data['title']);
+    $this->db->bind(':start', $data['start']);
+    $this->db->bind(':end', $data['end']);
+    $this->db->bind(':V_Id', $V_Id);    
+    $this->db->execute();
+
     return true;
 
 }

@@ -13,7 +13,7 @@
 <div class ="ss">
 <div class="Wrapper_Vehicle_Create_Post">
 
-    <!-- <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST"> -->
+    <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
 
 
 

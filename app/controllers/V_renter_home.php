@@ -61,13 +61,18 @@ class V_renter_home extends Controller{
         ];
         
         $this->view('VehicleRenter\v_calendar', $data);
-        
-        
-       
-            
+ 
+        }
 
-      
-    }
+
+        public function get_post_details(){
+        $data = [
+            'title' => 'post'
+        ];
+        
+        $this->view('VehicleRenter\v_vehicle_post_details', $data);
+ 
+        }
 
     
 }

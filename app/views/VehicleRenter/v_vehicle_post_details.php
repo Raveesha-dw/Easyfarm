@@ -1,0 +1,330 @@
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+
+<link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
+
+<div class="wrapper_v_product_details">
+
+                <div class="column4" >
+
+
+                <div class="box">
+                    <div class="wrapper_v_product_details_sub">
+                            <p><b> Truck for Renting : ABO 9090</b></p><br>
+                            <p> Posted on 02 Jan 10:04 am, Dehiwala, Colombo</p>
+                            <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
+                           
+                        <!-- </div> -->
+
+                 <!-- </div> -->
+       
+                 
+     
+
+
+            
+
+
+                    <!-- <div class="wrapper_v_product_details_sub"> -->
+                        <!-- <p><b> <?php echo $data['Item_name']; ?></b></p> -->
+                        <section id="vehicleDetails" class="section-p1">
+                            <!-- <div class="row"> -->
+                                <!-- <div class="column1" > -->
+                                    <div class="single-pro-image">
+                                        <img src="<?php echo URLROOT?>/public/images/vehicleRenter/1704697213_images.jpeg" width="100%" id="MainImg" alt=""> 
+                                        <!-- <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $product->Image; ?> " alt="" class="poost1"> -->
+                                    <!-- </div> -->
+                                </div>
+                            <!-- </div> -->
+
+                        </section>       
+                        </div>
+
+
+
+
+
+
+
+                   <div class="wrapper_v_product_details_sub">
+                            <p><b>Description</b></p><br>
+                             <p> Type : Lorry</p><br>
+                            <p> Fewer working feet are run <br> At its best</p>
+                            <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
+                           
+                        <!-- </div> -->
+
+                 <!-- </div> -->
+       
+                 
+     
+
+
+            
+
+
+
+
+
+                    <!-- <div class="wrapper_v_product_details_sub"> -->
+                        <!-- <p><b> <?php echo $data['Item_name']; ?></b></p> -->
+                        <!-- <section id="vehicleDetails" class="section-p1"> -->
+                            <!-- <div class="row"> -->
+                                <!-- <div class="column1" > -->
+                                    <!-- <div class="single-pro-image"> -->
+                                        <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                            <!-- </div>
+
+                        </section>        -->
+                        </div>
+
+
+
+
+
+
+
+
+                        </div>
+
+                </div>
+                <div class="column5">
+                    <div class="wrapper_v_product_details_sub">
+                        <p><b>Charge</b></p><br>
+                        <div class="row">
+                            <div class="column1" >
+                                <p> LKR 5000</p>
+                            </div>
+                            <div class="column2" >
+                                <p>Per day</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="column1" >
+                                <p>Contact number</p>
+                            </div>
+                            <div class="column2" >
+                                <p>071-5707461</p>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="column1" >
+                                <p>For rent by </p>
+                            </div>
+                            <div class="column2" >
+                                <p>Hasintha</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="column1" >
+                                <p>Location :</p>
+                            </div>
+                            <div class="column2" >
+                                <p>NO 20, Hadaketiya, Angunukolapelessa</p>
+                            </div>
+                        </div>
+
+
+
+                        
+                           <!-- <br><button type="submit" id="btn" class="btn" onclick="paymentGateway();">Place Order</button> -->
+
+
+                           <!-- <input type="hidden" id="hiddenuId" value="<?php echo $data['uId']; ?>">
+                           <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
+                            -->
+                                <?php if (!empty($orderItems)) : ?>                     
+                                    <?php foreach ($orderItems as $data) : ?>
+                                        <?php if (is_array($data)) : ?>
+
+                           
+                                            <input type="hidden" id="hiddenSubTotalpayment[]" value="<?php echo number_format($data['totalPayment'],2); ?>">
+                                            <input type="hidden" id="hiddenItem_Id[]" value="<?php echo $data['Item_Id']; ?>">
+                                            
+                                            <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">                
+                            
+
+
+                                    <?php endif; ?>                        
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+    
+
+                      
+         
+                    </div>
+
+
+
+
+
+                    <div class="wrapper_v_product_details_sub">
+                        <p><b>Calendar</b></p><br>
+                                <div class="wrapperCalendar">
+            <p><I>Unavailable dates for renting</p></I>
+                <div class="cal" >
+                    <div class="response"></div>
+                    <div id='calendar'>
+                        <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
+                    </div>
+                </div>
+        </div>
+
+                      
+         
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <!-- <div class="editAddress"> -->
+                    <div class="form-popup" id="myForm">
+                    <!-- <form action="/action_page.php" class="form-container"> -->
+                    <form action="<?php echo URLROOT ?>/BuyNow/updateAddress" method="POST" class="form-container"> 
+             
+                    <p><b>Change the Address</b><br></p>
+
+                        <p class="type">Address </p>
+                        <div class="input-box">
+                            <input type="text" name="address" placeholder="Enter address" required value="<?php echo $data['Address']; ?>">
+                            <i class='bx bxs-edit-location'></i>
+                            <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
+                        </div>
+
+                        <p class="type">City </p>
+                        <div class="input-box">
+                            <input type="text" name="city" placeholder="Enter the City" required value="">
+                            <i class='bx bxs-edit-location'></i>
+                            <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
+                        </div>
+                        
+                        <p class="type">Province </p>
+                        <div class="input-box">
+
+                        <select name="Province" required value="">
+                                   <option disabled selected>Province</option>
+                                   <option value="North">North</option>
+                                   <option value="Western">Western</option>
+                                   <option value="North Central">North Central</option>
+                                   <option value="Central">Central</option>
+                                   <option value="Sabaragamuwa">Sabaragamuwa</option>
+                                   <option value="North Western">North Western</option>
+                                   <option value="Eastern">Eastern</option>
+                                   <option value="Uva">Uva</option>
+                                   <option value="Southern">Southern</option>
+                            </select>
+
+
+                            <!-- <input type="text" name="district" placeholder="Enter the District" required value=""> -->
+                            <i class='bx bxs-edit-location'></i>
+                            <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
+                        </div>
+
+                    <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
+
+                    <?php if (!empty($orderItems)) : ?>                     
+                            <?php foreach ($orderItems as $data) : ?>
+                                <?php if (is_array($data)) : ?>
+
+                                <!-- <input type="hidden" name="user_type" value="Buyer"> -->
+                                
+                                <input type="hidden" name="quantitiesTo[]" value=<?php echo $data['quantity']; ?>>
+                                <input type="hidden" name="itemIds[]" value=<?php echo $data['Item_Id']; ?>>
+                                <input type="hidden" name="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>>
+                                <input type="hidden" name="totals[]" value=<?php echo $data['total']; ?>>
+                                <input type="hidden" name="deliveryFees[]" value=<?php echo $data['deliveryFee']; ?>>
+                                <input type="hidden" name="totalPayments[]" value=<?php echo $data['totalPayment']; ?>>
+                    
+
+
+                            <?php endif; ?>                        
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+
+
+
+
+                        
+                
+
+
+                        <br><button type="submit" class="btn" onclick="closeForm()">Save Changes</button>
+                    
+                    
+                    </form>
+                    </div>
+                <!-- </div> -->
+
+
+</div>
+
+
+
+
+
+
+ 
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>       
+
+
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+<script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+
+<script src="<?php echo URLROOT ?>\public\js\payment.js"></script>
+
+
+
+<script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
+
+
