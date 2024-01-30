@@ -61,6 +61,7 @@
 
                     <li class="nav-link">
                         <a href="http://localhost/Easyfarm/Seller_post/created_post">
+             
                             <i class='bx bx-heart icon' ></i>
                             <span class="text nav-text">Wallets</span>
                         </a>

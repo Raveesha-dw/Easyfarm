@@ -138,4 +138,11 @@ public function update_listing(){
     return true;
 }
 
+public function getlisting_count(){
+    $this->db->query("SELECT list_count FROM reg_seller WHERE reg_seller.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    return $result;
+}
+
 }

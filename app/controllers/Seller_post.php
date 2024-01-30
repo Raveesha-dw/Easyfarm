@@ -30,12 +30,19 @@ public function cretesession3(){
 public function creating(){
    
     // print_r($_SESSION['user_ID']);
-    print_r($_SESSION['plan_id']);
+    // print_r($_SESSION['plan_id']);
     if ($_SESSION['plan_id']==''){
         $data= $this->sellerModel->get_dataplan3();
         $this->view('seller/v_register_plan1',$data);
 
-    }else{
+    }
+    else {
+        $data=$this->sellerModel->getlisting_count();
+        if ($data==0){
+            $this->view('seller/v_update_plan');
+        }
+    
+    else{
     $data=[
         
         'Item_name' => '',
@@ -64,7 +71,7 @@ public function creating(){
         'Unit_size_err'=>'',
 
     ];
-    $this->view('seller/v_create_post',$data);}
+    $this->view('seller/v_create_post',$data);}}
 
 }
 public  function create_post(){
@@ -268,6 +275,7 @@ public  function create_post(){
         
         
         $data = $this->sellerModel->get_data(($_SESSION['user_ID']));
+       
         $this->view('seller/v_createdpost', $data);
        
     }
@@ -282,8 +290,10 @@ public  function create_post(){
     
     public function update_Product(){
         // variable=columnname
+        
        
         $item1 =$this->sellerModel->getiteamdeatils();
+        // print_r($item1);
         $items  = get_object_vars($item1[0]);
         // $data=Array();
         // Print_r($items);
@@ -297,6 +307,7 @@ public  function create_post(){
         $data['Description']=$items['Description'];
         $data['Image']=$items['Image'];
         $data['Unit_size']=$items['Unit_size'];
+        $data['Unit_type']=$items['Unit_type'];
 
 
         // $data['item_id']=$items['Item_Id'];
@@ -466,6 +477,7 @@ public  function create_post(){
                 
                     $products = $this->sellerModel->get_data($_SESSION['user_ID']);
                    
+                   
                     // redirect("Seller_post/created_post");
                      $this->view('seller/v_createdpost',$products);
     
@@ -473,6 +485,7 @@ public  function create_post(){
                
                 else{
                     //$data     = get_object_vars($data[0]);
+                   
                  return $this->view('seller/v_update_post',$data);
                 }
     

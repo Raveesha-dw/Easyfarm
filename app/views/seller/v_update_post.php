@@ -1,3 +1,4 @@
+
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -6,13 +7,14 @@
 
 
     <div class="container">
+
         <?php require APPROOT . '/views/seller/a.php' ?>
 
         <section class="home">
 
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-           
+
             <div class="shero1">
                 <?php $dat = $data; ?>
                 <form class="ddd" action="<?php echo URLROOT ?>/Seller_post/updatepost" enctype="multipart/form-data" method="POST">
@@ -20,26 +22,24 @@
                     <input type="hidden" name="Item_Id" value=<?php echo $data['Item_Id'] ?>>
 
                     <div class="sdropdown1">
-                        <label for="Category" class="scdropdown1" name="Category"><b>Item Category:</b></label>
+                        <label for="sCategory" class="scdropdown1" name="Category"><b>Item Category:</b></label>
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['Category_err'];
                                                 } ?></span>
                         <br>
                         <select name="Category" id="sCategory">
-
                             <option disabled selected>Select Category</option>
-
-                            <option value="Vegatable">Vegatable</option>
-                            <option value="Fruits">Fruits</option>
-                            <option value="Plants">Plants</option>
-                            <option value="Seeds">Seeds</option>
-                            <option value="Grains">Grains</option>
-                            <option value="Fertilizer">Fertilizer</option>
-                            <option value="Insecticides">Insecticides</option>
-                            <option value="Farming Tools">Farming Tools</option>
+                            <option value="Vegatable" <?php echo ($data['Category'] == 'Vegatable') ? 'selected' : ''; ?>>Vegatable</option>
+                            <option value="Fruits" <?php echo ($data['Category'] == 'Fruits') ? 'selected' : ''; ?>>Fruits</option>
+                            <option value="Plants" <?php echo ($data['Category'] == 'Plants') ? 'selected' : ''; ?>>Plants</option>
+                            <option value="Seeds" <?php echo ($data['Category'] == 'Seeds') ? 'selected' : ''; ?>>Seeds</option>
+                            <option value="Grains" <?php echo ($data['Category'] == 'Grains') ? 'selected' : ''; ?>>Grains</option>
+                            <option value="Fertilizer" <?php echo ($data['Category'] == 'Fertilizer') ? 'selected' : ''; ?>>Fertilizer</option>
+                            <option value="Insecticides" <?php echo ($data['Category'] == 'Insecticides') ? 'selected' : ''; ?>>Insecticides</option>
+                            <option value="Farming Tools" <?php echo ($data['Category'] == 'Farming Tools') ? 'selected' : ''; ?>>Farming Tools</option>
                         </select>
-
                     </div>
+
 
 
 
@@ -63,24 +63,19 @@
                                                     }  ?></span>
                         </div>
                         <div class="sdropdown2">
-                            <label for="Category2"><b>Type:</b></label>
-                            <br>
+    <label for="stype"><b>Type:</b></label>
+    <br>
+    <select name="Unit_type" id="stype">
+        <option disabled selected>Select Unit type</option>
+        <option value="Kg" <?php echo ($data['Unit_type'] == 'Kg') ? 'selected' : ''; ?>>Kg</option>
+        <option value="g" <?php echo ($data['Unit_type'] == 'g') ? 'selected' : ''; ?>>g</option>
+        <option value="plant" <?php echo ($data['Unit_type'] == 'plant') ? 'selected' : ''; ?>>Plant</option>
+        <option value="ml" <?php echo ($data['Unit_type'] == 'ml') ? 'selected' : ''; ?>>ml</option>
+        <option value="L" <?php echo ($data['Unit_type'] == 'L') ? 'selected' : ''; ?>>L</option>
+    </select>
+    <span class="invalid"><?php if ($data) { echo $data['Unit_type_err']; } ?></span>
+</div>
 
-                            <select name="Unit_type" id="stype">
-                                <option disabled selected>Select Unit type</option>
-                                <option value="Kg">Kg</option>
-                                <option value="g">g</option>
-                                <option value="plant">Plant</option>
-                                <option value="ml">ml</option>
-                                <option value="L">L</option>
-
-                            </select>
-                            <span class="invalid"><?php if ($data) {
-                                                        echo $data['Unit_type_err'];
-                                                    }  ?></span>
-
-
-                        </div>
                     </div>
 
                     <div class="sprice">
@@ -183,39 +178,37 @@
 
 
                     <div class="image">
-                        <b>Upload image</b>
-                        <br>
-                        <br>
-                        <!-- <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                    <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                    <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images"> -->
-                        <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images" value="<?php print_r($data['Image']) ?>">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Image_err'];
-                                                }  ?></span>
-                    </div>
+    <b>Upload image</b>
+    <!-- <br> -->
+    <!-- <br> -->
 
+    <!-- Display current image filename -->
+    <?php if (!empty($data['Image'])) : ?>
+        <div>Current Image: <?php echo $data['Image']; ?></div>
+        <br>
+    <?php endif; ?>
 
-                    <div class="dropdown3">
-                        <br>
-                        <b>Delivery Method</b>
-                        <br>
-                        <br>
-
-                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver">
-                        <label for="Home Delivery"> <b>Home Delivery</b></label><br>
-
-
-                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup">
-                        <label for="Insto Pickup"> <b>Insto Pickup</b></label><br>
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['DeliveryMethod_err'];
-                                                }  ?></span>
+    <!-- File input for uploading a new image -->
+    <input id="inside_imageq" name="Image" type="file">
+    <span class="invalid"><?php if ($data) { echo $data['Image_err']; } ?></span>
+</div>
 
 
 
+<div class="dropdown3">
+    <br>
+    <b>Delivery Method</b>
+    <br>
+    <br>
 
-                    </div>
+    <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver" <?php echo ($data['DeliveryMethod'] == 'Home Deliver') ? 'checked' : ''; ?>>
+    <label for="Home Delivery"><b>Home Delivery</b></label><br>
+
+    <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo ($data['DeliveryMethod'] == 'Insto Pickup') ? 'checked' : ''; ?>>
+    <label for="Insto Pickup"><b>Insto Pickup</b></label><br>
+    <span class="invalid"><?php if ($data) { echo $data['DeliveryMethod_err']; } ?></span>
+</div>
+
 
 
 
@@ -238,7 +231,7 @@
     </div>
 
 
-   
+
     <!-- Your other head elements -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
@@ -295,6 +288,6 @@
 
 
     </section>
-   
+
 </div>
 </div>
