@@ -25,28 +25,27 @@
 
 
                      <!-- <div class="sdropdown1"> -->
-                        <label for="Category"  class = "scdropdown1" name="Category"><b>Vehicle Category:</b></label>
-                        <!-- <span class="invalid"><?php if ($data) {echo $data['Category_err'];}?></span> -->
+                        <label for="Category"  class = "scdropdown1" name="V_category"><b>Vehicle Category:</b></label>
+                        <span class="invalid"><?php if ($data) {echo $data['V_category_err'];}?></span>
                         <br>
-                        <select name="V_category" id="sCategory" class="sCategory" >
+                        <select name="V_category" id="vCategory" class="vCategory" >
 
                             <option disabled selected>Select Category</option>
 
-                            <option value= "Vegatable" >Lorries $Trucks</option>
-                            <option value= "Fruits" >Heavy Duty</option>
-                            <option value= "Plants">Tractors</option>
-                            <option value= "Seeds">Three Wheelers</option>
+                            <option value= "Lorries $Trucks" >Lorries $Trucks</option>
+                            <option value= "Heavy Duty" >Heavy Duty</option>
+                            <option value= "Tractors">Tractors</option>
+                            <option value= "Three Wheelers">Three Wheelers</option>
                         </select>
 
                     <!-- </div> -->
-
 
 
                     <div class ="sitem">
                         <label for="Item"><b>Owner Name</b></label>
                     <br>
                         <input id="sitem_name" name="V_name" type="textbox" placeholder="Enter the Vehicle Name" required value="" ><br/>
-                        <!-- <span class="invalid"><?php if ($data) {echo $data['Item_name_err'];}?></span> -->
+                        <span class="invalid"><?php if ($data) {echo $data['V_name_err'];}?></span>
 
                     </div>
 
@@ -54,14 +53,14 @@
                         <label for="Item"><b>Vehicle number</b></label>
                     <br>
                         <input id="sitem_name" name="V_number" type="textbox" placeholder="Enter the Vehicle number" required value="" ><br/>
-                        <!-- <span class="invalid"><?php if ($data) {echo $data['Item_name_err'];}?></span> -->
+                        <span class="invalid"><?php if ($data) {echo $data['V_number_err'];}?></span>
                     </div>
 
                     <div class ="sitem">
                         <label for="Item"><b>Contact number</b></label>
                     <br>
                         <input id="sitem_name" name="Contact_Number" type="textbox" placeholder="Enter the Contact number" required value="" ><br/>
-                        <!-- <span class="invalid"><?php if ($data) {echo $data['Item_name_err'];}?></span> -->
+                        <span class="invalid"><?php if ($data) {echo $data['Contact_Number_err'];}?></span>
                     </div>
 
 
@@ -70,7 +69,7 @@
                         <label for ="stock"> <b>Rental Fee</b></label>
                         <br>
                         <input id="size" name="Rental_Fee" type="number" step="1" min = 0 placeholder="Rental Fee"  required value="">
-                        <!-- <span class="invalid"><?php if ($data) {echo $data['Unit_size_err'];}?></span> -->
+                        <span class="invalid"><?php if ($data) {echo $data['Rental_Fee_err'];}?></span>
                         </div>
                         <div class="sdropdown2">
                                 <label for="Category2"><b>Charging Unit:</b></label>
@@ -78,13 +77,13 @@
 
                                     <select name="Charging_Unit" id="stype">
                                         <option disabled selected> </option>
-                                        <option value="Kg">Per Hour</option>
-                                        <option value="g">Per Day</option>
-                                        <option value="plant">Per Week</option>
-                                        <option value="ml">Per month</option>
+                                        <option value="Per Hour">Per Hour</option>
+                                        <option value="Per Day">Per Day</option>
+                                        <option value="Per Week">Per Week</option>
+                                        <option value="Per month">Per month</option>
 
                                     </select>
-                                <!-- <span class="invalid"><?php if ($data) {echo $data['Unit_type_err'];}?></span> -->
+                                <span class="invalid"><?php if ($data) {echo $data['Charging_Unit_err'];}?></span>
 
 
                         </div>
@@ -151,7 +150,7 @@
                     <b>Descripition</b>
                     <br>
                     <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="">
-                    <!-- <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span> -->
+                    <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
                 </div>
 
 
@@ -167,7 +166,7 @@
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images"> -->
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                    <!-- <span class="invalid"><?php if ($data) {echo $data['Image_err'];}?></span> -->
+                    <span class="invalid"><?php if ($data) {echo $data['Image_err'];}?></span>
                 </div>
 <br>
 <br>

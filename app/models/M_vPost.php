@@ -7,9 +7,9 @@ public function __construct(){
 
 
 public function create_post($data){
-    
+    print_r($data);
     $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id)');
-    // print_r($data);
+    
     $this->db->bind(':V_category', $data['V_category']); 
     $this->db->bind(':V_name', $data['V_name']); 
     $this->db->bind(':V_number', $data['V_number']); 

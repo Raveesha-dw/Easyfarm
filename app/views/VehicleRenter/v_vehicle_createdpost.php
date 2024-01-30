@@ -20,6 +20,7 @@
             <!--Posts-->
             <div class="product-container" id="product-vehicle-container">
                 <?php $products = $data;?>
+                <!-- <?php print_r($products );?> -->
                 <?php foreach ($products as $product): ?>
 
                     <div class="productt" id="product-vehicle">
@@ -43,9 +44,11 @@
 
 
                             <div class="button-n">
-                                <input  type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
+                                <input  type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
 
-                                    <button class ="btn2"><a   href="http://localhost/Easyfarm/V_post/update_Product?id=<?php echo $product->Item_Id; ?>">update</a></button>
+                                    <button class ="btn2">
+                                        <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">update</a></button>
+                                    <!-- <button class ="btn2"><a   href="http://localhost/Easyfarm/V_post/updatepost">update</a></button> -->
                                     <!-- <p>Update  </p>
                                     </a> -->
                                 <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">

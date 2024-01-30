@@ -6,5 +6,8 @@
     "editor.defaultColorDecorators": true,
     "editor.definitionLinkOpensInPeek": true,
     "editor.tabSize": 8,
-    "terminal.integrated.altClickMovesCursor": false
+    "terminal.integrated.altClickMovesCursor": false,
+    "files.watcherExclude": {
+        "**/target": true
+    }
 }

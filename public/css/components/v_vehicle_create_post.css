@@ -94,12 +94,12 @@
     background-color: aliceblue;
 
 }
-.Wrapper_Vehicle_Create_Post .sCategory{
+.Wrapper_Vehicle_Create_Post .vCategory{
     margin-left: 2%;
     margin-right: 2%;
 
 }
-.Wrapper_Vehicle_Create_Post #sCategory{
+.Wrapper_Vehicle_Create_Post #vCategory{
 
     width:95%;
     height: 40px;
