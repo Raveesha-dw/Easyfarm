@@ -40,6 +40,11 @@ class V_post extends Controller
             'Image_err' => '',
 
         ];
+
+        $v_Categories =  $this->v_postModel->get_category();
+
+        $data['v_Categories'] = $v_Categories;
+
         $this->view('VehicleRenter\v_vehicle_create_post', $data);
 
     }

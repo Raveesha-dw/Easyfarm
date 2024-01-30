@@ -11,7 +11,7 @@
                 <div class="box">
                     <div class="wrapper_v_product_details_sub">
                             <p><b> <?php echo $data['V_category']; ?> for Renting : <?php echo $data['V_number']; ?></b></p><br>
-                            <?php //TODO:Add the colomn for the database -->> post created time ?> 
+                            <?php //TODO:Add the colomn for the database -->> post created time ?>
                             <p> Posted on 02 Jan 10:04 am, <?php echo $data['Address']; ?></p>
                             <!-- <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
 
@@ -172,7 +172,7 @@
 
 
 
-                                    <?php endif;?>
+                                        <?php endif;?>
                                     <?php endforeach;?>
                                 <?php endif;?>
 

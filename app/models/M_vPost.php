@@ -126,4 +126,16 @@ public function delete_data($data){
     $this->db->execute();
 }
 
+
+
+
+public function get_category(){
+    $this->db->query("SELECT * FROM vehicle_item_category");
+    $result=$this->db->resultSet();
+    return $result;
+}
+
+
+
+
 }
