@@ -51,7 +51,7 @@ class V_post extends Controller
     public function create_post()
     {
     
-    
+    print_r($_POST['Contact_Number']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -175,7 +175,7 @@ class V_post extends Controller
         // variable=columnname
 
         $item1 = $this->v_postModel->getiteamdeatils();
-        print_r($item1);
+        // print_r($item1);
         $items = get_object_vars($item1[0]);
         // $data=Array();
         // Print_r($items);

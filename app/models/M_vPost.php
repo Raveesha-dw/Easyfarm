@@ -7,7 +7,7 @@ public function __construct(){
 
 
 public function create_post($data){
-    print_r($data);
+    // print_r($data);
     $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id)');
     
     $this->db->bind(':V_category', $data['V_category']); 
