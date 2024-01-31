@@ -34,18 +34,20 @@
 
 
             <div class ="sitem">
+                <label for="Item"><b>Vehicle number</b></label>
+            <br>
+                <input id="sitem_name" name="V_number" type="textbox" placeholder="Enter the Vehicle number" required value="" ><br/>
+                <span class="invalid"><?php if ($data) {echo $data['V_number_err'];}?></span>
+            </div>
+
+            
+
+            <div class ="sitem">
                 <label for="Item"><b>Owner Name</b></label>
             <br>
                 <input id="sitem_name" name="V_name" type="textbox" placeholder="Enter the Vehicle Name" required value="" ><br/>
                 <span class="invalid"><?php if ($data) {echo $data['V_name_err'];}?></span>
 
-            </div>
-
-            <div class ="sitem">
-                <label for="Item"><b>Vehicle number</b></label>
-            <br>
-                <input id="sitem_name" name="V_number" type="textbox" placeholder="Enter the Vehicle number" required value="" ><br/>
-                <span class="invalid"><?php if ($data) {echo $data['V_number_err'];}?></span>
             </div>
 
             <div class ="sitem">
@@ -55,6 +57,16 @@
                 <span class="invalid"><?php if ($data) {echo $data['Contact_Number_err'];}?></span>
             </div>
 
+            <div class="saddress">
+                <b>Address</b>
+                <br>
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line3" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" >
+
+
+            </div>
 
             <div class="sstock_size">
                 <div class="iii">
@@ -100,16 +112,7 @@
 
 
             <br>
-            <div class="saddress">
-                <b>Address</b>
-                <br>
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line3" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" >
 
-
-            </div>
 
             <br>
             <br>

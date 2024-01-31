@@ -20,6 +20,12 @@ body .fc {
 .fc-content{
         background-color: darkcyan;
 }
+.fc-day fc-widget-content fc-fri fc-future:active {
+  color: red; /* Change 'color' to 'background-color' or any other property you want to change */
+}
+.fc-widget-content:active{
+  color: red;
+}
 .fc {
   direction:ltr;
   text-align:left
@@ -188,7 +194,8 @@ hr.fc-divider {
   border-style:solid;
   border-width:1px;
   padding:0;
-  vertical-align:top
+  vertical-align:top;
+  background-color: papayawhip;
 }
 .fc td.fc-today {
   border-style:double
