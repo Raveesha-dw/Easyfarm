@@ -48,7 +48,8 @@
 
 
                    <div class="wrapper_v_product_details_sub">
-                            <p><b>Description</b></p><br>
+                            <p><b>Description</b>
+                            <a class="open-button" onclick="openForm()" > Change </a></p><br>
                              <p> Type : <?php echo $data['V_category']; ?></p><br>
                             <p> <?php echo $data['Description']; ?> </p>
                             <!-- <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
@@ -223,45 +224,17 @@
                 <!-- <div class="editAddress"> -->
                     <div class="form-popup" id="myForm">
                     <!-- <form action="/action_page.php" class="form-container"> -->
-                    <form action="<?php echo URLROOT ?>/BuyNow/updateAddress" method="POST" class="form-container">
+                    <form action="<?php echo URLROOT ?>/V_post/updateDescription" method="POST" class="form-container">
 
-                    <p><b>Change the Address</b><br></p>
+                    <p><b>Change the Description</b><br></p>
 
-                        <p class="type">Address </p>
+                        <p class="type">Description </p>
                         <div class="input-box">
-                            <input type="text" name="address" placeholder="Enter address" required value="<?php echo $data['Address']; ?>">
-                            <i class='bx bxs-edit-location'></i>
+                            <input type="text" name="Description" placeholder="Enter Description" required value="<?php echo $data['Description']; ?>">
+                          
                             <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
                         </div>
 
-                        <p class="type">City </p>
-                        <div class="input-box">
-                            <input type="text" name="city" placeholder="Enter the City" required value="">
-                            <i class='bx bxs-edit-location'></i>
-                            <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
-                        </div>
-
-                        <p class="type">Province </p>
-                        <div class="input-box">
-
-                        <select name="Province" required value="">
-                                   <option disabled selected>Province</option>
-                                   <option value="North">North</option>
-                                   <option value="Western">Western</option>
-                                   <option value="North Central">North Central</option>
-                                   <option value="Central">Central</option>
-                                   <option value="Sabaragamuwa">Sabaragamuwa</option>
-                                   <option value="North Western">North Western</option>
-                                   <option value="Eastern">Eastern</option>
-                                   <option value="Uva">Uva</option>
-                                   <option value="Southern">Southern</option>
-                            </select>
-
-
-                            <!-- <input type="text" name="district" placeholder="Enter the District" required value=""> -->
-                            <i class='bx bxs-edit-location'></i>
-                            <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
-                        </div>
 
                     <input type="hidden" name="uId" value=<?php echo $_SESSION['user_ID'] ?>>
 

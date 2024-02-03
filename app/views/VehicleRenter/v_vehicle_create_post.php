@@ -2,10 +2,8 @@
 <?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 
 <?php require APPROOT . '/views/inc/header.php';?>
-<link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
-<script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
-<script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
-<script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
+
+
 
 
 
@@ -103,6 +101,7 @@
                         <div class="cal" >
                             <div class="response"></div>
                             <div id='calendar'>
+       
                                 <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
                             </div>
                         </div>
@@ -158,10 +157,8 @@
 
 <?php require APPROOT . '/views/inc/footer.php';?>
 
-<!-- Your other head elements -->
-<scipt src="https://code.jquery.com/jquery-3.6.4.min.js"></scipt>
 
 
 
 
-<script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
+<!-- <script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script> -->
