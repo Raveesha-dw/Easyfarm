@@ -4,7 +4,8 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        
 
 
 <!-- <?php print_r($data);?> -->
@@ -101,7 +102,17 @@
                         <div class="cal" >
                             <div class="response"></div>
                             <div id='calendar'>
-       
+                                <!-- <script async src="//jsfiddle.net/atn8upt5/1/embed/js,result/"></script> -->
+                                 <!-- <script async src="//jsfiddle.net/a7zzz4fo/1/embed/js,result/"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+
+
                                 <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
                             </div>
                         </div>
@@ -161,4 +172,11 @@
 
 
 
-<!-- <script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script> -->
+<script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
+
+<style>
+    td.clicked-date {
+    background-color: red; /* Change this to your desired color */
+    color: white; /* Change this to the text color you prefer */
+}
+</style>
