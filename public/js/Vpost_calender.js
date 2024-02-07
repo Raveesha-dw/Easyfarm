@@ -1,251 +1,219 @@
-
-
-// // // // // // var today = new Date();
-// // // // // // var threeMonthsLater = new Date();
-// // // // // // threeMonthsLater.setMonth(today.getMonth() + 3);
-
-// // // // // // $('#calendar').multiDatesPicker({
-// // // // // //     minDate: today,
-// // // // // //     maxDate: threeMonthsLater
-// // // // // // });
-
-
-// // // // //  $(document).ready(function () {
-// // // // //         var today = new Date();
-// // // // //         var threeMonthsLater = new Date();
-// // // // //         threeMonthsLater.setMonth(today.getMonth() + 3);
-
-// // // // //         $('#calendar').fullCalendar({
-// // // // //             header: {
-// // // // //                 left: 'prev,next today',
-// // // // //                 center: 'title',
-// // // // //                 right: 'month,agendaWeek,agendaDay'
-// // // // //             },
-// // // // //             defaultDate: today,
-// // // // //             editable: true,
-// // // // //             eventLimit: true,
-// // // // //             events: [
-// // // // //                 // your events data goes here
-// // // // //             ],
-// // // // //             dayClick: function (date, jsEvent, view) {
-// // // // //                 // handle day click
-// // // // //             },
-// // // // //             // Add the following eventRender callback
-// // // // //             eventRender: function (event, element) {
-// // // // //                 return [event.start >= today && event.start <= threeMonthsLater];
-// // // // //             }
-// // // // //         });
-// // // // //     });
-
-
-
-
-
-
-
-
-
-// // // // $(document).ready(function () {
-// // // //     var today = new Date();
-// // // //     var threeMonthsLater = new Date();
-// // // //     threeMonthsLater.setMonth(today.getMonth() + 3);
-
-// // // //     $('#calendar').fullCalendar({
-// // // //         header: {
-// // // //             left: 'prev,next today',
-// // // //             center: 'title',
-// // // //             // right: 'month,agendaWeek,agendaDay'
-// // // //         },
-// // // //         defaultDate: today,
-// // // //         editable: true,
-// // // //         eventLimit: true,
-// // // //         events: [
-// // // //             // your events data goes here
-// // // //         ],
-// // // //         dayClick: function (date, jsEvent, view) {
-// // // //             // handle day click
-// // // //         },
-// // // //         validRange: {
-// // // //             start: today,
-// // // //             end: threeMonthsLater
-// // // //         }
-// // // //     });
-// // // // });
-
-
-
-
-
-// // // $(document).ready(function () {
-// // //     var yesterday = new Date();
-// // //     yesterday.setDate(yesterday.getDate() - 1);
-
-// // //     var threeMonthsLater = new Date();
-// // //     threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
-
-// // //     $('#calendar').fullCalendar({
-// // //         header: {
-// // //             left: 'prev,next today',
-// // //             center: 'title',
-// // //             right: 'month,agendaWeek,agendaDay'
-// // //         },
-// // //         defaultDate: yesterday, // Set defaultDate to yesterday
-// // //         editable: true,
-// // //         eventLimit: true,
-// // //         events: [
-// // //             // your events data goes here
-// // //         ],
-// // //         dayClick: function (date, jsEvent, view) {
-// // //             // handle day click
-// // //         },
-// // //         validRange: function(nowDate) {
-// // //             return {
-// // //                 start: yesterday,
-// // //                 end: threeMonthsLater
-// // //             };
-// // //         }
-// // //     });
-// // // });
-
-
-
-
-
-
-// // // $(document).ready(function () {
-// // //     var yesterday = new Date();
-// // //     yesterday.setDate(yesterday.getDate() - 1);
-
-// // //     var threeMonthsLater = new Date();
-// // //     threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
-
-// // //     $('#calendar').fullCalendar({
-// // //         header: {
-// // //             left: 'prev,next today',
-// // //             center: 'title',
-// // //             right: 'month,agendaWeek,agendaDay'
-// // //         },
-// // //         defaultDate: yesterday,
-// // //         editable: true,
-// // //         eventLimit: true,
-// // //         events: [
-// // //             // your events data goes here
-// // //         ],
-// // //         dayClick: function (date, jsEvent, view) {
-// // //             // Remove the existing 'clicked-date' class from all td elements
-// // //             $('td.clicked-date').removeClass('clicked-date');
-
-// // //             // Add the 'clicked-date' class to the clicked date's td element
-// // //             $(jsEvent.currentTarget).addClass('clicked-date');
-// // //         },
-// // //         validRange: function(nowDate) {
-// // //             return {
-// // //                 start: yesterday,
-// // //                 end: threeMonthsLater
-// // //             };
-// // //         }
-// // //     });
-// // // });
-
-
-
-
-// // $(document).ready(function () {
-// //     var yesterday = new Date();
-// //     yesterday.setDate(yesterday.getDate() - 1);
-
-// //     var threeMonthsLater = new Date();
-// //     threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
-
-// //     $('#calendar').fullCalendar({
-// //         header: {
-// //             left: 'prev,next today',
-// //             center: 'title',
-// //             right: 'month,agendaWeek,agendaDay'
-// //         },
-// //         defaultDate: yesterday,
-// //         editable: true,
-// //         eventLimit: true,
-// //         events: [
-// //             // your events data goes here
-// //         ],
-// //         dayClick: function (date, jsEvent, view) {
-// //             // Remove the existing 'fc-day-top' class from all td elements
-// //             $('.fc-day-top').removeClass('clicked-date');
-
-// //             // Add the 'clicked-date' class to the clicked date's td element
-// //             $(jsEvent.currentTarget).addClass('clicked-date');
-// //         },
-// //         validRange: function(nowDate) {
-// //             return {
-// //                 start: yesterday,
-// //                 end: threeMonthsLater
-// //             };
-// //         }
-// //     });
-// // });
-
-
-
-
-
-
-
-
-
 // $(document).ready(function () {
-//     var yesterday = new Date();
-//     yesterday.setDate(yesterday.getDate() - 1);
-
-//     var threeMonthsLater = new Date();
-//     threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
-
-//     $('#calendar').fullCalendar({
-//         header: {
-//             left: 'prev,next today',
-//             center: 'title',
-//             right: 'month,agendaWeek,agendaDay'
-//         },
-//         defaultDate: yesterday,
+//     var calendar = $('#calendar').fullCalendar({
 //         editable: true,
-//         eventLimit: true,
-//         events: [
-//             // your events data goes here
-//         ],
-//         dayClick: function (date, jsEvent, view) {
-
-//             $('#calendar').multiDatesPicker();
-//             // Remove the existing 'fc-day-top' class from all td elements
-//             $('.fc-day-top').removeClass('clicked-date');
-
-//             // Add the 'clicked-date' class to the clicked date's td element
-//             $(jsEvent.currentTarget).addClass('clicked-date');
-
-//             // Change the background color of the clicked date to red
-//             $(jsEvent.currentTarget).css('background-color', 'red');
+//         events: "../Calendar/fetch_anavailble_Dates",
+//         displayEventTime: false,
+//         eventRender: function (event, element, view) {
+//             if (event.allDay === 'true') {
+//                 event.allDay = true;
+//             } else {
+//                 event.allDay = false;
+//             }
 //         },
-//         validRange: function(nowDate) {
-//             return {
-//                 start: yesterday,
-//                 end: threeMonthsLater
-//             };
+//         selectable: true,
+//         selectHelper: true,
+//         select: function (start, end, allDay) {
+//             // var title = prompt('Event Title:');
+//             var title = "unavailable";
+
+//             if (title) {
+//                 var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+//                 var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+
+//                 $.ajax({
+//                     // url: '<?php echo URLROOT ?>/Calendar/add_anavailble_Dates',
+//                     // url: '../Calendar/add_anavailble_Dates',
+//                     url: '../V_post/create_post',
+//                     data: 'title=' + title + '&start=' + start + '&end=' + end,
+//                     type: "POST",
+//                     // print: console.log('title=' + title + '&start=' + start + '&end=' + end),
+//                     success: function (data) {
+//                         console.log("data");
+//                         displayMessage("Added Successfully");
+//                     }
+//                 });
+//                 calendar.fullCalendar('renderEvent',
+//                         {
+//                             title: title,
+//                             start: start,
+//                             end: end,
+//                             allDay: allDay
+//                         },
+//                 true
+//                         );
+//             }
+//             calendar.fullCalendar('unselect');
+//         },
+        
+//         editable: true,
+//         eventDrop: function (event, delta) {
+//                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+//                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+//                     $.ajax({
+                        
+//                         url: '../Calendar/edit_anavailble_Dates',
+//                         data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event._id,
+//                         type: "POST",
+//                         success: function (response) {
+//                             console.log(event);
+// console.log("fdffffffffff");
+
+//                             console.log(event._id);
+// console.log(start);
+
+//                             displayMessage("Updated Successfully");
+//                         }
+//                     });
+//                 },
+//         eventClick: function (event) {
+//              console.log("11111111");
+//             var deleteMsg = confirm("Do you really want to delete?");
+//             console.log("kkkkkkkkk");
+             
+//             if (deleteMsg) {
+                
+//                 $.ajax({
+                    
+//                     type: "POST",
+//                     url: "../Calendar/delete_anavailble_Dates",
+//                     data: "id=" + event.id,
+//                     success: function (response) {
+//                         // displayMessage(response);
+//                         console.log(event.id);
+//                         // console.log("hasi");
+//                         // console.log(response);
+//                         if(parseInt(response) > 0) {
+//                             $('#calendar').fullCalendar('removeEvents', event.id);
+//                             displayMessage("Deleted Successfully");
+//                         }
+//                     }
+//                 });
+//             }
 //         }
+
 //     });
 // });
 
-$(function() {
-  var today = new Date();
-  var threeMonthsFromNow = new Date();
-  threeMonthsFromNow.setMonth(today.getMonth() + 3);
+// function displayMessage(message) {
+// 	    $(".response").html("<div class='success'>"+message+"</div>");
+//     setInterval(function() { $(".success").fadeOut(); }, 2000);
+// }
 
-  // Initialize the datepicker
-  $('#calendar').datepicker({
-    minDate: today, // Disable past dates
-    maxDate: threeMonthsFromNow, // Disable dates beyond three months
-    dateFormat: 'dd/mm/yy', // Date format
-    onSelect: function(dateText, inst) {
-      // Do something when a date is selected
-      console.log('Selected date:', dateText);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function () {
+    var addedDates = {};
+
+    initializeCalendar();
+
+    function initializeCalendar() {
+        addedDates = {};
+
+        var calendar = $('#calendar').fullCalendar({
+            editable: true,
+            events: "../Calendar/fetch_anavailble_Dates",
+            displayEventTime: false,
+            selectable: true,
+            selectHelper: true,
+            select: function (start, end, allDay) {
+                var selectedDate = start.format('YYYY-MM-DD');
+
+                if (!addedDates[selectedDate]) {
+                    var title = "ADDED";
+                    if (title) {
+                        $.ajax({
+                            url: '../V_post/create_post',
+                            data: 'title=' + title + '&start=' + selectedDate + '&end=' + selectedDate,
+                            type: "POST",
+                            success: function (data) {
+                                displayMessage("Added Successfully");
+                                addedDates[selectedDate] = true;
+                                calendar.fullCalendar('renderEvent', {
+                                    title: title,
+                                    start: selectedDate,
+                                    end: selectedDate,
+                                    allDay: true
+                                }, true);
+                            }
+                        });
+                    }
+                } else {
+                    alert("An event has already been added for this date.");
+                }
+                calendar.fullCalendar('unselect');
+            }
+        });
+
+        // Prevent dragging for multiple date selection
+        var isDragging = false;
+        var dragThreshold = 5; // Adjust this value if needed for sensitivity
+
+        $('#calendar').on('mousedown', function (e) {
+            var startX = e.pageX,
+                startY = e.pageY;
+
+            $(document).on('mousemove.drag', function (e) {
+                var currentX = e.pageX,
+                    currentY = e.pageY;
+
+                if (Math.abs(currentX - startX) > dragThreshold || Math.abs(currentY - startY) > dragThreshold) {
+                    isDragging = true;
+                    $(document).off('mousemove.drag');
+                }
+            });
+        });
+
+        $(document).on('mouseup', function () {
+            $(document).off('mousemove.drag');
+            if (isDragging) {
+                isDragging = false;
+                return false; // Prevent further action
+            }
+        });
     }
-  });
+
+    function displayMessage(message) {
+        $(".response").html("<div class='success'>" + message + "</div>");
+        setInterval(function () { $(".success").fadeOut(); }, 2000);
+    }
 });
