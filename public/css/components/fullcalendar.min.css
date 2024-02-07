@@ -977,7 +977,15 @@ a.fc-more:hover {
   pointer-events: none !important;
 }
 
-
+.added-text {
+  color: rgb(215, 25, 25);
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+}
 
 
 

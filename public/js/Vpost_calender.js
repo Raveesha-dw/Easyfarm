@@ -1,146 +1,3 @@
-// $(document).ready(function () {
-//     var calendar = $('#calendar').fullCalendar({
-//         editable: true,
-//         events: "../Calendar/fetch_anavailble_Dates",
-//         displayEventTime: false,
-//         eventRender: function (event, element, view) {
-//             if (event.allDay === 'true') {
-//                 event.allDay = true;
-//             } else {
-//                 event.allDay = false;
-//             }
-//         },
-//         selectable: true,
-//         selectHelper: true,
-//         select: function (start, end, allDay) {
-//             // var title = prompt('Event Title:');
-//             var title = "unavailable";
-
-//             if (title) {
-//                 var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-//                 var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-
-//                 $.ajax({
-//                     // url: '<?php echo URLROOT ?>/Calendar/add_anavailble_Dates',
-//                     // url: '../Calendar/add_anavailble_Dates',
-//                     url: '../V_post/create_post',
-//                     data: 'title=' + title + '&start=' + start + '&end=' + end,
-//                     type: "POST",
-//                     // print: console.log('title=' + title + '&start=' + start + '&end=' + end),
-//                     success: function (data) {
-//                         console.log("data");
-//                         displayMessage("Added Successfully");
-//                     }
-//                 });
-//                 calendar.fullCalendar('renderEvent',
-//                         {
-//                             title: title,
-//                             start: start,
-//                             end: end,
-//                             allDay: allDay
-//                         },
-//                 true
-//                         );
-//             }
-//             calendar.fullCalendar('unselect');
-//         },
-        
-//         editable: true,
-//         eventDrop: function (event, delta) {
-//                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-//                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-//                     $.ajax({
-                        
-//                         url: '../Calendar/edit_anavailble_Dates',
-//                         data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event._id,
-//                         type: "POST",
-//                         success: function (response) {
-//                             console.log(event);
-// console.log("fdffffffffff");
-
-//                             console.log(event._id);
-// console.log(start);
-
-//                             displayMessage("Updated Successfully");
-//                         }
-//                     });
-//                 },
-//         eventClick: function (event) {
-//              console.log("11111111");
-//             var deleteMsg = confirm("Do you really want to delete?");
-//             console.log("kkkkkkkkk");
-             
-//             if (deleteMsg) {
-                
-//                 $.ajax({
-                    
-//                     type: "POST",
-//                     url: "../Calendar/delete_anavailble_Dates",
-//                     data: "id=" + event.id,
-//                     success: function (response) {
-//                         // displayMessage(response);
-//                         console.log(event.id);
-//                         // console.log("hasi");
-//                         // console.log(response);
-//                         if(parseInt(response) > 0) {
-//                             $('#calendar').fullCalendar('removeEvents', event.id);
-//                             displayMessage("Deleted Successfully");
-//                         }
-//                     }
-//                 });
-//             }
-//         }
-
-//     });
-// });
-
-// function displayMessage(message) {
-// 	    $(".response").html("<div class='success'>"+message+"</div>");
-//     setInterval(function() { $(".success").fadeOut(); }, 2000);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function () {
     var addedDates = {};
 
@@ -148,6 +5,9 @@ $(document).ready(function () {
 
     function initializeCalendar() {
         addedDates = {};
+
+        var currentDate = moment();
+        var threeMonthsLater = moment().add(3, 'months');
 
         var calendar = $('#calendar').fullCalendar({
             editable: true,
@@ -159,7 +19,7 @@ $(document).ready(function () {
                 var selectedDate = start.format('YYYY-MM-DD');
 
                 if (!addedDates[selectedDate]) {
-                    var title = "ADDED";
+                    var title = "Unavailable";
                     if (title) {
                         $.ajax({
                             url: '../V_post/create_post',
@@ -168,12 +28,7 @@ $(document).ready(function () {
                             success: function (data) {
                                 displayMessage("Added Successfully");
                                 addedDates[selectedDate] = true;
-                                calendar.fullCalendar('renderEvent', {
-                                    title: title,
-                                    start: selectedDate,
-                                    end: selectedDate,
-                                    allDay: true
-                                }, true);
+                                highlightAddedDate(selectedDate);
                             }
                         });
                     }
@@ -181,6 +36,10 @@ $(document).ready(function () {
                     alert("An event has already been added for this date.");
                 }
                 calendar.fullCalendar('unselect');
+            },
+            validRange: {
+                start: currentDate,
+                end: threeMonthsLater
             }
         });
 
@@ -211,6 +70,15 @@ $(document).ready(function () {
             }
         });
     }
+
+function highlightAddedDate(date) {
+        var $dateCell = $('.fc-day[data-date="' + date + '"]');
+        $dateCell.css({
+            'background-color': 'brown',
+            'position': 'relative' // Set position to relative to position the added text
+        });
+        $dateCell.append('<span class="added-text">Unavailable</span>'); // Append the text "ADDED" inside the date square
+    }
 
     function displayMessage(message) {
         $(".response").html("<div class='success'>" + message + "</div>");
