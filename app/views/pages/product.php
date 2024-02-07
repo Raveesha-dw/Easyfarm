@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php //include URLROOT . '/public/css/components/product_view.css';?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
 
 
 <section id="productDetails" class="section-p1">
@@ -44,10 +44,15 @@
 
             <div class="button-area">
                 <Button >BUY NOW</Button>
-            <Button >
-                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
-                ADD TO CART
-            </Button>
+                <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
+                    <input type="hidden" name="unitPrice" value="430.00">
+                    <input type="hidden" name="quantity" value="2">
+                    <input type="hidden" name="itemId" value="12">
+                    <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
+                    <button type="submit">ADD TO CART</button>
+                </form>
+
+
             </div>
             
 

@@ -1,7 +1,11 @@
 <?php
  class Product extends Controller{
+    private $productModel;
+    private $reviewModel;
+    
     public function __construct(){
         $this->productModel=$this->model('M_Product');
+        $this->reviewModel=$this->model('M_Review');
     }
 
     public function productVeg(){
@@ -40,6 +44,8 @@
         $this->view('Buyer/v_viewProducts', $data);
     }
 
+
+
     // public function productSeeds(){
     //     $allseed = $this->productModel->getAllSeeds();
 
@@ -68,10 +74,23 @@
     }
 
     public function productPage($itemID){
-        echo $itemID;
+        // echo $itemID;
 
         $productInfo = $this->productModel->getProductInfo($itemID);
-        $this->view('Buyer/v_productDetails', $productInfo);
+        $seller_ID = $productInfo->seller_ID;
+        $sellerInfo = $this->productModel->getSellerInfo($seller_ID);
+
+        $productReviews = $this->reviewModel->getReviewsForItem($itemID);
+
+        $data = [
+            'productInfo' => $productInfo,
+            'sellerInfo' => $sellerInfo,
+            'itemReviews' => $productReviews
+        ];
+        $this->view('Buyer/v_productDetails', $data);
     }
+
+
+
     
  }

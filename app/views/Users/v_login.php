@@ -23,17 +23,22 @@
                 <label>
                     <input type="checkbox"> Remember me 
                 </label>
-                <a href="#"> Forgot password? </a>     
+                <a href="<?php echo URLROOT ?>/Users/forgotPassword"> Forgot password? </a>      
             </div>
 
             <button type="submit" class="btn" >Login</button>
 
 
             <div class="register-link">
-                <p>Don't have an account?<a href="<?php echo URLROOT ?>/Pages/registerPage"> Register</a></p>
+                <p style="align-content: center;">Don't have an account?<a href="<?php echo URLROOT ?>/Pages/registerPage"> Register</a></p>
+                
+            </div>
+
+            <div class="register-link">
+                <h3>Log in a Service Provider<a href="<?php echo URLROOT ?>/Pages/"> Here</a></h3>
                 
             </div>
         </form>
     </div>
 
-    <?php require APPROOT . '/views/inc/footer.php'; ?>    
+    <?php require APPROOT . '/views/inc/footer.php'; ?> 

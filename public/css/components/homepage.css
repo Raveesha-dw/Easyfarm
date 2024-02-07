@@ -36,10 +36,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding-top: 0;
+    width: fit-content;
 }
 
 .product{
-    width: 23%;
+    /* width: 23%; */
+    width: fit-content;
     min-width: 250px;
     padding: 10px 12px;
     border: 1px solid #cce7d0;
@@ -50,6 +52,7 @@
     transition: 0.2s ease;
     background-color: white;
     position: relative;
+    
 }
 
 .product:hover{

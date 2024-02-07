@@ -10,6 +10,10 @@
     <title><?php echo SITENAME; ?></title>
 </head>
 <body>
+
+    <?php
+        date_default_timezone_set('Asia/Colombo');
+    ?>
     
     
 

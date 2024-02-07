@@ -1,0 +1,66 @@
+
+.msg-box{
+    /* background-color: aquamarine; */
+     width: 1000px;
+     
+    margin-left: 400px;
+    margin-top: 80px;
+     /* left: 200px; */
+     /* right: 2px; */
+    height: 200px; 
+    /* padding-left: 200px; */
+    /* padding-top: 200px; */
+}
+.msg-f{
+    background-color: aquamarine;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+.m-header{
+    background-color: black;
+    color: #ffffff;
+    align-items:center;
+    display: flex;
+    /* justify-content: space-between; */
+    padding-left: 10px;
+   
+}
+.msg-ID{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.m-img img {
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the image circular */
+}
+.msg-date {
+    margin-top: 5px;
+    padding-left: 15px;
+    
+}
+/* .button-msg.dd{
+    background-color: rgb(193, 35, 35);
+     margin-left: 8000px; 
+     width: 10px;
+     cursor: pointer;
+    
+    
+} */
+
+.dd{
+    background-color: rgb(193, 35, 35);
+    margin-left: 800px; 
+}
+/* a.dd{
+    width: 59px;
+} */
+
+/* .button-msg{
+margin-bottom: 1000px;
+padding-bottom: 100px;
+} */
+
+
