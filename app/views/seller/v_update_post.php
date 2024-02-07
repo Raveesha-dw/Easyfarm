@@ -1,4 +1,3 @@
-
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -63,18 +62,20 @@
                                                     }  ?></span>
                         </div>
                         <div class="sdropdown2">
-    <label for="stype"><b>Type:</b></label>
-    <br>
-    <select name="Unit_type" id="stype">
-        <option disabled selected>Select Unit type</option>
-        <option value="Kg" <?php echo ($data['Unit_type'] == 'Kg') ? 'selected' : ''; ?>>Kg</option>
-        <option value="g" <?php echo ($data['Unit_type'] == 'g') ? 'selected' : ''; ?>>g</option>
-        <option value="plant" <?php echo ($data['Unit_type'] == 'plant') ? 'selected' : ''; ?>>Plant</option>
-        <option value="ml" <?php echo ($data['Unit_type'] == 'ml') ? 'selected' : ''; ?>>ml</option>
-        <option value="L" <?php echo ($data['Unit_type'] == 'L') ? 'selected' : ''; ?>>L</option>
-    </select>
-    <span class="invalid"><?php if ($data) { echo $data['Unit_type_err']; } ?></span>
-</div>
+                            <label for="stype"><b>Type:</b></label>
+                            <br>
+                            <select name="Unit_type" id="stype">
+                                <option disabled selected>Select Unit type</option>
+                                <option value="Kg" <?php echo ($data['Unit_type'] == 'Kg') ? 'selected' : ''; ?>>Kg</option>
+                                <option value="g" <?php echo ($data['Unit_type'] == 'g') ? 'selected' : ''; ?>>g</option>
+                                <option value="plant" <?php echo ($data['Unit_type'] == 'plant') ? 'selected' : ''; ?>>Plant</option>
+                                <option value="ml" <?php echo ($data['Unit_type'] == 'ml') ? 'selected' : ''; ?>>ml</option>
+                                <option value="L" <?php echo ($data['Unit_type'] == 'L') ? 'selected' : ''; ?>>L</option>
+                            </select>
+                            <span class="invalid"><?php if ($data) {
+                                                        echo $data['Unit_type_err'];
+                                                    } ?></span>
+                        </div>
 
                     </div>
 
@@ -178,36 +179,40 @@
 
 
                     <div class="image">
-    <b>Upload image</b>
-    <!-- <br> -->
-    <!-- <br> -->
+                        <b>Upload image</b>
+                        <!-- <br> -->
+                        <!-- <br> -->
 
-    <!-- Display current image filename -->
-    <?php if (!empty($data['Image'])) : ?>
-        <div>Current Image: <?php echo $data['Image']; ?></div>
-        <br>
-    <?php endif; ?>
+                        <!-- Display current image filename -->
+                        <?php if (!empty($data['Image'])) : ?>
+                            <div>Current Image: <?php echo $data['Image']; ?></div>
+                            <br>
+                        <?php endif; ?>
 
-    <!-- File input for uploading a new image -->
-    <input id="inside_imageq" name="Image" type="file">
-    <span class="invalid"><?php if ($data) { echo $data['Image_err']; } ?></span>
-</div>
+                        <!-- File input for uploading a new image -->
+                        <input id="inside_imageq" name="Image" type="file">
+                        <span class="invalid"><?php if ($data) {
+                                                    echo $data['Image_err'];
+                                                } ?></span>
+                    </div>
 
 
 
-<div class="dropdown3">
-    <br>
-    <b>Delivery Method</b>
-    <br>
-    <br>
+                    <div class="dropdown3">
+                        <br>
+                        <b>Delivery Method</b>
+                        <br>
+                        <br>
 
-    <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver" <?php echo ($data['DeliveryMethod'] == 'Home Deliver') ? 'checked' : ''; ?>>
-    <label for="Home Delivery"><b>Home Delivery</b></label><br>
+                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver" <?php echo ($data['DeliveryMethod'] == 'Home Deliver') ? 'checked' : ''; ?>>
+                        <label for="Home Delivery"><b>Home Delivery</b></label><br>
 
-    <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo ($data['DeliveryMethod'] == 'Insto Pickup') ? 'checked' : ''; ?>>
-    <label for="Insto Pickup"><b>Insto Pickup</b></label><br>
-    <span class="invalid"><?php if ($data) { echo $data['DeliveryMethod_err']; } ?></span>
-</div>
+                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo ($data['DeliveryMethod'] == 'Insto Pickup') ? 'checked' : ''; ?>>
+                        <label for="Insto Pickup"><b>Insto Pickup</b></label><br>
+                        <span class="invalid"><?php if ($data) {
+                                                    echo $data['DeliveryMethod_err'];
+                                                } ?></span>
+                    </div>
 
 
 
