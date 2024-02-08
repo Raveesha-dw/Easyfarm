@@ -29,7 +29,8 @@ public function create_post($data){
     $row=$this->db->single();
             
     $V_Id = $row->V_Id;;
-
+    print_r("rrrrrrrrrr");
+print_r($data['title']);
     $this->db->query('INSERT INTO vehicle_calendar(title, start, end, V_Id) VALUES (:title, :start, :end ,:V_Id)'); 
     $this->db->bind(':title', $data['title']);
     $this->db->bind(':start', $data['start']);
