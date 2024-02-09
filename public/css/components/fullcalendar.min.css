@@ -195,7 +195,7 @@ hr.fc-divider {
   border-width:1px;
   padding:0;
   vertical-align:top;
-  background-color: papayawhip;
+  /* background-color: papayawhip; */
 }
 .fc td.fc-today {
   border-style:double

@@ -55,15 +55,30 @@ class V_post extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-print_r($_POST['title']);
 
 
 
 
 
 
+// Your controller file (e.g., create_post.php)
 
-
+// Check if the markedDates parameter is received
+if(isset($_POST['markedDates'])) {
+    // Get the markedDates array from the POST data and decode it from JSON
+    $markedDates = json_decode($_POST['markedDates']);
+    
+    // Log the marked dates
+    foreach($markedDates as $date) {
+        error_log("Marked Date: " . $date);
+    }
+    
+    // Respond with a success message (optional)
+    echo "Dates received successfully.";
+} else {
+    // If markedDates parameter is not received, handle the error
+    echo "Error: markedDates parameter is missing.";
+}
 
 
 

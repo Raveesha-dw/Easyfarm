@@ -81,7 +81,7 @@
 
                         <select name="Charging_Unit" id="stype">
                             <option disabled selected> </option>
-                            <option value="Per Hour">Per Hour</option>
+                            <!-- <option value="Per Hour">Per Hour</option> -->
                             <option value="Per Day">Per Day</option>
                             <option value="Per Week">Per Week</option>
                             <option value="Per month">Per month</option>
@@ -99,7 +99,7 @@
                 <b>Calendar</b>
 
                 <div class="wrapperCalendar">
-                    <p><I>Unavailable dates for renting</p></I>
+                    <p><I>Mark unavailable dates for renting</p></I>
                         <div class="cal" >
                             <div class="response"></div>
                             <div id='calendar'>
