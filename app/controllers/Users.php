@@ -684,7 +684,7 @@ class Users extends Controller{
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
                 $logged_user = $this->userModel->login($data);
-                print_r($logged_user);
+                // print_r($logged_user);
                 if($logged_user){
                     $this->createUserSession($logged_user);                    
                 } // Logging in user
@@ -870,7 +870,7 @@ class Users extends Controller{
            
             // print_r($user);
             
-            header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
+             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
         }else if($_SESSION['user_type'] == 'AgriExpert'){
             // redirect('Pages/Profile');
@@ -879,6 +879,7 @@ class Users extends Controller{
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
             // $this->view('Pages/index');
+            print_r($user);
             header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
         }    
@@ -892,7 +893,7 @@ class Users extends Controller{
         
         
         // header("Location:http://localhost/Easyfarm/Pages/index");
-         header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+         header("Location:http://localhost/Easyfarm/Plan/choosepkg");
         
     }
 

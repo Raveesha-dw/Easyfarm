@@ -14,7 +14,7 @@ class M_users{
         $row=$this->db->single();
 
         if ($this->db->rowCount()>0) {
-            return $row;
+            return true;
         }
         else{
             return false;
@@ -108,13 +108,9 @@ class M_users{
             $this->db->execute();
             return true;
         }
-         
         
-
-        elseif($data['user_type'] =='VehicleRenter'){
-            
-            // error_log(print_r($data, TRUE)); 
-
+         elseif($data['user_type'] == 'VehicleRenter'){
+            // print_r("dd");
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -140,7 +136,7 @@ class M_users{
          else{
             return false;
          }
-// 
+
     }
 // this was change because buyer can not login
     // public function login($data){
@@ -167,12 +163,58 @@ class M_users{
 
     public function login($data){
         // echo 'data to login model';
+        // print_r($data);
+
+        // if($email)
+        // $this ->db->query('SELECT * FROM user WHERE Email= :email')
         $this->db->query('SELECT * FROM user WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
 
         $row=$this->db->single();
-        
-        if($row){
+        // print_r($row);
+        if($row->User_type=="Seller"){
+            // print_r("s");
+            if($row){
+                print_r($data['email']);
+                $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:email");
+                $this->db->bind(':email', $data['email']);
+                $row1 = $this->db->single();
+                // print_r($row);
+                // print_r($row1);
+                // echo 'row is here';
+                $hashed_password = $row1->Password;
+    
+               // echo $hashed_password;
+                if(password_verify($data['password'], $hashed_password)){
+                  //  echo "yo";
+                    return $row1;
+                }else{
+                    return false;
+                }
+            }
+        }
+// vechile renter part
+        elseif($row->User_type=="VehicleRenter"){
+            if($row){
+                // print_r($data['email']);
+                $this->db->query("SELECT * FROM reg_vehicleowner INNER JOIN user on reg_vehicleowner.U_Id = user.U_Id WHERE user.Email=:email");
+                $this->db->bind(':email', $data['email']);
+                $row1 = $this->db->single();
+                // print_r($row);
+                // print_r($row1);
+                // echo 'row is here';
+                $hashed_password = $row1->Password;
+    
+               // echo $hashed_password;
+                if(password_verify($data['password'], $hashed_password)){
+                  //  echo "yo";
+                    return $row1;
+                }else{
+                    return false;
+                }
+            }
+        }
+        elseif($row){
             // echo '<br>';
             // echo 'row is here';
             $hashed_password = $row->Password;
@@ -200,13 +242,11 @@ class M_users{
 
     }
 
-    public function createToken($data, $expirationTime){
+    public function createToken($data){
 
-        $this->db->query('UPDATE user SET User_OTP= :otp, expirationTime=:expirationTime  WHERE Email= :email');
+        $this->db->query('UPDATE user SET User_OTP= :otp WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':otp', $data['otp']);
-        $this->db->bind(':expirationTime', $expirationTime);
-
         $this->db->execute();
     
     }
@@ -216,10 +256,10 @@ class M_users{
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':otp', $data['otp']);
 
-        
+        $row=$this->db->single();
 
-        if($row=$this->db->single()){
-            return $row;
+        if($row){
+            return true;
         }else{
             return false;
         }
@@ -234,7 +274,6 @@ class M_users{
         $this->db->execute();
     
     }
-
 
 
 }

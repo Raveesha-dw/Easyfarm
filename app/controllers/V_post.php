@@ -50,50 +50,12 @@ class V_post extends Controller
     }
     public function create_post()
     {
-    
-    print_r($_POST['Contact_Number']);
+
+       
+ 
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-
-
-
-
-
-
-// Your controller file (e.g., create_post.php)
-
-// Check if the markedDates parameter is received
-if(isset($_POST['markedDates'])) {
-    // Get the markedDates array from the POST data and decode it from JSON
-    $markedDates = json_decode($_POST['markedDates']);
-    
-    // Log the marked dates
-    foreach($markedDates as $date) {
-        error_log("Marked Date: " . $date);
-    }
-    
-    // Respond with a success message (optional)
-    echo "Dates received successfully.";
-} else {
-    // If markedDates parameter is not received, handle the error
-    echo "Error: markedDates parameter is missing.";
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             $data = [
@@ -111,9 +73,7 @@ if(isset($_POST['markedDates'])) {
                 'Image' => isset($_FILES['Image']) ? $_FILES['Image'] : [],
                 'Image_name' => time() . '_' . (isset($_FILES['Image']['name']) ? $_FILES['Image']['name'] : ''),
 
-                'title' => isset($_POST['title']) ? $_POST['title'] : "",
-                'start' => isset($_POST['start']) ? $_POST['start'] : "",
-                'end' => isset($_POST['end']) ? $_POST['end'] : "",
+
 
                 'V_category_err' => '',
                 'V_name_err' => '',
@@ -176,7 +136,7 @@ if(isset($_POST['markedDates'])) {
             if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
 
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/vehicleRenter/'));
-
+ redirect("V_post/create_calendar");
                 if ($this->v_postModel->create_post($data)) {
                     $data = $this->v_postModel->get_data($_SESSION['user_ID']);
                     // print_r($data);
@@ -398,4 +358,21 @@ if(isset($_POST['markedDates'])) {
             // exit;
         }
     }
+
+    public function create_calendar(){
+        // Get the markedDates array from the POST data and decode it from JSON
+        $markedDates = json_decode($_POST['markedDates']);
+
+        foreach($markedDates as $date) {
+            echo "console.log('Marked Date: " . $date . "');";
+        }
+
+
+
+
+
+    }
+
+
+
 }
