@@ -87,6 +87,7 @@ class V_post extends Controller
                 'Image_err' => '',
 
             ];
+            $data['calendar_data'] = $this->create_calendar();
 
             if (empty($data['V_category'])) {
                 $data['V_category_err'] = 'please choose a category';
@@ -136,7 +137,7 @@ class V_post extends Controller
             if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
 
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/vehicleRenter/'));
- redirect("V_post/create_calendar");
+
                 if ($this->v_postModel->create_post($data)) {
                     $data = $this->v_postModel->get_data($_SESSION['user_ID']);
                     // print_r($data);
@@ -366,7 +367,7 @@ class V_post extends Controller
         foreach($markedDates as $date) {
             echo "console.log('Marked Date: " . $date . "');";
         }
-
+        return $markedDates;
 
 
 
