@@ -105,6 +105,7 @@
                             <div id='calendar'>
                                 <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
 
+                                <input type="hidden" id="hiddenInputDates" name="markedDates">
 
 
 

@@ -31,10 +31,27 @@ $(document).ready(function() {
                 }
                 currentDate.add(1, 'day');
             }
+
+            document.getElementById("hiddenInputDates").value = selectedDates;
+
             console.log("Marked Dates:", selectedDates); // Log the marked dates
             sendMarkedDates(selectedDates); // Send the marked dates to the controller
         }
     });
+
+
+
+
+    function sendMarkedDates() {
+        var myValue = "Hello from JavaScript!";
+        document.getElementById("hiddenInputDates").value = myValue;
+    }
+
+
+
+
+
+
 
     // Function to send marked dates to the controller
     function sendMarkedDates(datesArray) {

@@ -42,17 +42,12 @@ class V_post extends Controller
         ];
 
         $v_Categories =  $this->v_postModel->get_category();
-
         $data['v_Categories'] = $v_Categories;
-
         $this->view('VehicleRenter\v_vehicle_create_post', $data);
 
     }
     public function create_post()
     {
-
-       
- 
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -67,7 +62,7 @@ class V_post extends Controller
                 'Contact_Number' => isset($_POST['Contact_Number']) ? trim($_POST['Contact_Number']) : '',
                 'Rental_Fee' => isset($_POST['Rental_Fee']) ? trim($_POST['Rental_Fee']) : '',
                 'Charging_Unit' => isset($_POST['Charging_Unit']) ? trim($_POST['Charging_Unit']) : '',
-                'Calender' => isset($_POST['Calender']) ? trim($_POST['Calender']) : '',
+                'Calender' => isset($_POST['markedDates']) ? trim($_POST['markedDates']) : '',
                 'Address' => isset($_POST['address']) ? trim($_POST['address']) : '',
                 'Description' => isset($_POST['Description']) ? trim($_POST['Description']) : '',
                 'Image' => isset($_FILES['Image']) ? $_FILES['Image'] : [],
@@ -87,7 +82,6 @@ class V_post extends Controller
                 'Image_err' => '',
 
             ];
-            $data['calendar_data'] = $this->create_calendar();
 
             if (empty($data['V_category'])) {
                 $data['V_category_err'] = 'please choose a category';
@@ -120,10 +114,7 @@ class V_post extends Controller
                 $data['Charging_Unit'] = 'Please enter the Charging_Unit';
 
             }
-            // if (empty($data['Calender'])){
-            //     $data['Calender'] = 'Please enter the Calender';
-
-            // }
+ 
             if (empty($data['Address'])) {
                 $data['Address_err'] = 'Please enter the Address';
 
@@ -140,7 +131,7 @@ class V_post extends Controller
 
                 if ($this->v_postModel->create_post($data)) {
                     $data = $this->v_postModel->get_data($_SESSION['user_ID']);
-                    // print_r($data);
+    
                     redirect("V_post/created_post");
 
                 } else {die('something went wrong');}
@@ -173,13 +164,11 @@ class V_post extends Controller
 
     public function update_Product()
     {
-        // variable=columnname
-
+      
         $item1 = $this->v_postModel->getiteamdeatils();
-        // print_r($item1);
+     
         $items = get_object_vars($item1[0]);
-        // $data=Array();
-        // Print_r($items);
+
         $data['V_Id'] = $items['V_Id'];
         $data['V_name'] = $items['V_name'];
         $data['V_category'] = $items['V_category'];
@@ -187,12 +176,12 @@ class V_post extends Controller
         $data['Contact_Number'] = $items['Contact_Number'];
         $data['Rental_Fee'] = $items['Rental_Fee'];
         $data['Charging_Unit'] = $items['Charging_Unit'];
-        $data['Calender'] = $items['Calender'];
+        $data['Calender'] = $items['markedDates'];
         $data['Address'] = $items['Address'];
         $data['Description'] = $items['Description'];
         $data['Image'] = $items['Image'];
         $data['Owner_Id'] = $items['Owner_Id'];
-        // $data['item_id']=$items['Item_Id'];
+        
 
         $data['V_category_err'] = '';
         $data['V_name_err'] = '';
@@ -243,7 +232,7 @@ class V_post extends Controller
                 'Rental_Fee' => trim($_POST['Rental_Fee']),
                 'Charging_Unit' => isset($_POST['Charging_Unit']) ? trim($_POST['Charging_Unit']) : '',
                 'Stock_size' => trim($_POST['Stock_size']),
-                'Calender' => trim($_POST['Calender']),
+                'Calender' => trim($_POST['markedDates']),
                 'Address' => trim($_POST['Address']),
                 'Description' => trim($_POST['Description']),
 
@@ -360,19 +349,19 @@ class V_post extends Controller
         }
     }
 
-    public function create_calendar(){
-        // Get the markedDates array from the POST data and decode it from JSON
-        $markedDates = json_decode($_POST['markedDates']);
+    // public function create_calendar(){
+    //     // Get the markedDates array from the POST data and decode it from JSON
+    //     $markedDates = json_decode($_POST['markedDates']);
 
-        foreach($markedDates as $date) {
-            echo "console.log('Marked Date: " . $date . "');";
-        }
-        return $markedDates;
-
-
+    //     foreach($markedDates as $date) {
+    //         echo "console.log('Marked Date: " . $date . "');";
+    //     }
+    //     return $markedDates;
 
 
-    }
+
+
+    // }
 
 
 
