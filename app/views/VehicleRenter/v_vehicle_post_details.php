@@ -6,81 +6,73 @@
 <div class="wrapper_v_product_details">
 
                 <div class="column4" >
-<?php print_r($data);?>
-
+                   <?php $product =$data; ?>
+<?php print_r($product);?>
                 <div class="box">
                     <div class="wrapper_v_product_details_sub">
-                            <p><b> <?php echo $data['V_category']; ?> for Renting : <?php echo $data['V_number']; ?></b></p><br>
+                            <p><b> <?php echo $product['V_category']; ?> for Renting : <?php echo $data['V_number']; ?></b></p><br>
                             <?php //TODO:Add the colomn for the database -->> post created time ?>
-                            <p> Posted on 02 Jan 10:04 am, <?php echo $data['Address']; ?></p>
+                            <p> Posted on 02 Jan 10:04 am, <?php echo $product['Address']; ?></p>
                             <!-- <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
 
-                        <!-- </div> -->
-
-                 <!-- </div> -->
-
-
-
-
-
-
-
-
-                    <!-- <div class="wrapper_v_product_details_sub"> -->
-                        <!-- <p><b> <?php echo $data['Item_name']; ?></b></p> -->
+        
                         <section id="vehicleDetails" class="section-p1">
-                            <!-- <div class="row"> -->
-                                <!-- <div class="column1" > -->
                                     <div class="single-pro-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/1704697213_images.jpeg" width="100%" id="MainImg" alt="">
-                                        <!-- <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $product->Image; ?> " alt="" class="poost1"> -->
-                                    <!-- </div> -->
+                                         <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $product['Image']; ?> " width="100%" id="MainImg" alt="">
                                 </div>
-                            <!-- </div> -->
 
                         </section>
                         </div>
 
 
+<div class="change_popup">
+    <div class="wrapper_v_product_details_sub">
+    <p><b>Description</b>
+    <a class="open-button" onclick="openForm()"> Change </a></p><br>
+    <p> Type : <?php echo $data['V_category']; ?></p><br>
+    <p> <?php echo $data['Description']; ?> </p>
+</div>
 
 
-
-
-
-                   <div class="wrapper_v_product_details_sub">
-                            <p><b>Description</b>
-                            <a class="open-button" onclick="openForm()" > Change </a></p><br>
-                             <p> Type : <?php echo $data['V_category']; ?></p><br>
-                            <p> <?php echo $data['Description']; ?> </p>
-                            <!-- <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
-
-                        <!-- </div> -->
-
-                 <!-- </div> -->
-
-
-
-
-
+<div class="popup-form" id="popupForm">
+    <form class="form-container" id="formData">
+        <h4 id="popupTitle">Change Description</h4><br>
+        <textarea id="description" name="description" rows="10" cols="500" required></textarea><br><br>
+        <button type="button" class="btn ok" onclick="handleOk()">OK</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+    </form>
+</div>
 
 
 
 
 
 
-                    <!-- <div class="wrapper_v_product_details_sub"> -->
-                        <!-- <p><b> <?php echo $data['Item_name']; ?></b></p> -->
-                        <!-- <section id="vehicleDetails" class="section-p1"> -->
-                            <!-- <div class="row"> -->
-                                <!-- <div class="column1" > -->
-                                    <!-- <div class="single-pro-image"> -->
-                                        <!-- <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
-                                    <!-- </div> -->
-                                <!-- </div> -->
-                            <!-- </div>
 
-                        </section>        -->
-                        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -219,60 +211,6 @@
 
 
 
-
-
-                <!-- <div class="editAddress"> -->
-                    <div class="form-popup" id="myForm">
-                    <!-- <form action="/action_page.php" class="form-container"> -->
-                    <form action="<?php echo URLROOT ?>/V_post/updateDescription" method="POST" class="form-container">
-
-                    <p><b>Change the Description</b><br></p>
-
-                        <p class="type">Description </p>
-                        <div class="input-box">
-                            <input type="text" name="Description" placeholder="Enter Description" required value="<?php echo $data['Description']; ?>">
-                          
-                            <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
-                        </div>
-
-
-                    <input type="hidden" name="uId" value=<?php echo $_SESSION['user_ID'] ?>>
-
-                    <?php if (!empty($orderItems)): ?>
-                            <?php foreach ($orderItems as $data): ?>
-                                <?php if (is_array($data)): ?>
-
-                                <!-- <input type="hidden" name="user_type" value="Buyer"> -->
-
-                                <input type="hidden" name="quantitiesTo[]" value=<?php echo $data['quantity']; ?>>
-                                <input type="hidden" name="itemIds[]" value=<?php echo $data['Item_Id']; ?>>
-                                <input type="hidden" name="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>>
-                                <input type="hidden" name="totals[]" value=<?php echo $data['total']; ?>>
-                                <input type="hidden" name="deliveryFees[]" value=<?php echo $data['deliveryFee']; ?>>
-                                <input type="hidden" name="totalPayments[]" value=<?php echo $data['totalPayment']; ?>>
-
-
-
-                            <?php endif;?>
-                            <?php endforeach;?>
-                        <?php endif;?>
-
-
-
-
-
-
-
-
-
-                        <br><button type="submit" class="btn" onclick="closeForm()">Save Changes</button>
-
-
-                    </form>
-                    </div>
-                <!-- </div> -->
-
-
 </div>
 
 
@@ -286,15 +224,6 @@
 
 
 
-<script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-</script>
 
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
@@ -308,3 +237,21 @@ function closeForm() {
 <script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
 
 
+<script>
+    function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+    function handleOk() {
+    // Add your logic here for the "OK" button action
+    // For example, you can close the pop-up or perform any other action
+    closeForm(); // Close the pop-up
+}
+
+
+
+
+</script>

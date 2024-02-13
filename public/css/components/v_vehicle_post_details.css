@@ -346,40 +346,13 @@
 
 
 
-.editAddress  {box-sizing: border-box;}
 
-/* Button used to open the contact form - fixed at the bottom of the page
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-} */
 
 /* The popup form - hidden by default */
 .wrapper_v_product_details .form-popup {
   display: none;
   position: fixed;
-  /* bottom: 0; */
-  /* right: 15px; */
-  /* border: 3px solid #f1f1f1; */
-  /* z-index: 9; */
 
-  /* width :50%;
-  background-color:ivory;
-  margin:auto;
-  border:5px solid rgba(255, 255, 255, .2);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
-  color: #333;
-  border-radius: 10px;
-  padding: 30px 40px; */
 
   width: 40%;
   content-visibility: auto;
@@ -396,20 +369,6 @@
 
 
 
-/* Full-width input fields */
-/* .form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-} */
-
-/* When the inputs get focus, do something */
-/* .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-} */
 
 /* Set a style for the submit/login button */
 .form-container .btn {
@@ -447,70 +406,39 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .editAddress {
-  width :50%;
-  background-color: transparent;
-  margin: 25px auto 0 auto;
-  border:5px solid rgba(255, 255, 255, .2);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
-  color: #333;
-  border-radius: 10px;
-  padding: 30px 40px;
-} */
-
-.editAddress .type{
-  margin-top: 20px;
-  margin-bottom: 0;
-}
-.editAddress .input-box {
-  position: relative;
-  width: 100%;
-  height: 50px;
-  background-color: rgb(230, 255, 230);
-  margin-top: 2px;
-  margin-bottom: 30px;
+.change_popup .popup-form {
+    display: none;
+    position: fixed; /* Changed to fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    background-color: #fff;
+    max-width: 90%;
 }
 
-.editAddress .input-box input {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  border: 2px solid rgba(255, 255, 255, .2);
-  border-radius : 40px; 
-  font-size: 16px;
-  color :black;
-  padding:0 0 0 20px;
 
+.change_popup .form-container {
+    max-width: 300px;
+    padding: 20px;
 }
 
-.editAddress.input-box input::placeholder{
-  color: rgba(192, 172, 172, 0.588) ;
+.change_popup .form-container h2 {
+    margin-bottom: 10px;
 }
 
-.editAddress .input-box i {
-  position: absolute;
-  right:20px;
-  top:50%;
-  transform: translateY(-50%);
-  font-size: 20px;
+.change_popup .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
 
+.change_popup .cancel {
+    background-color: #ff5252;
+    margin-left: 10px;
 }
