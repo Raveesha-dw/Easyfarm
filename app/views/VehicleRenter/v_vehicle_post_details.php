@@ -3,9 +3,7 @@
 
 <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
 
-
-
-<       div class="wrapper_v_product_details">
+        <div class="wrapper_v_product_details">
 
             <div class="column4" >
                 <?php $product = $data;?>
@@ -123,9 +121,7 @@
             </div>
         </div>
 
-
 <?php require APPROOT . '/views/inc/footer.php';?>
-
 
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>

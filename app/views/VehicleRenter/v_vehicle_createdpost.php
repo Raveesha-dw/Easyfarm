@@ -20,7 +20,7 @@
             <!--Posts-->
             <div class="product-container" id="product-vehicle-container">
                 <?php $products = $data;?>
-                <?php print_r($products );?>
+                <!-- <?php print_r($products );?> -->
                 <?php foreach ($products as $product): ?>
 
                     <div class="productt" id="product-vehicle">
