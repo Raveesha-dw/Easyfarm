@@ -118,6 +118,17 @@ public function update_data($data){
     }
 
 
+    public function getunavailableDates($data){
+        
+        $this->db->query("SELECT date FROM vehicle_calendar WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id',$data);
+        $result=$this->db->resultSet();
+        // print_r($result);
+        return $result;
+        // return $this->db->single();
+        
+    }
 
 
 }
+

@@ -169,6 +169,18 @@ class V_post extends Controller
      
         $items = get_object_vars($item1[0]);
 
+        $unavailableDates = $this->v_postModel->getunavailableDates($items['V_Id']);
+        // $unavailableDates = get_object_vars($unavailableDates);
+
+        $dates = [];
+        foreach ($unavailableDates as $unavailableDate) {
+            $dates[] = $unavailableDate->date;
+        }
+
+  
+
+        // print_r($unavailableDates);
+
         $data['V_Id'] = $items['V_Id'];
         $data['V_name'] = $items['V_name'];
         $data['V_category'] = $items['V_category'];
@@ -176,7 +188,7 @@ class V_post extends Controller
         $data['Contact_Number'] = $items['Contact_Number'];
         $data['Rental_Fee'] = $items['Rental_Fee'];
         $data['Charging_Unit'] = $items['Charging_Unit'];
-        $data['Calender'] = $items['markedDates'];
+        $data['unavailableDates'] = $dates;
         $data['Address'] = $items['Address'];
         $data['Description'] = $items['Description'];
         $data['Image'] = $items['Image'];
@@ -189,7 +201,6 @@ class V_post extends Controller
         $data['Contact_Number_err'] = '';
         $data['Rental_Fee_err'] = '';
         $data['Charging_Unit_err'] = '';
-        $data['Calender_err'] = '';
         $data['Address_err'] = '';
         $data['Description_err'] = '';
         $data['Image_err'] = '';
