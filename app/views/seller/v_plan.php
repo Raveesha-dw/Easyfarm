@@ -427,7 +427,7 @@
                     <?php if ($data['plan_id'] != $data[2]['plan_id']) : ?> <button class="c3" onclick="showPopup(2)">Purchase Now</button> <?php endif; ?>
                 </div>
             </div>
-            
+
             <?php require APPROOT . '/views/inc/footer.php'; ?>
 
         </section>

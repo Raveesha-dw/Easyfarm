@@ -33,17 +33,17 @@ body .fc {
 
 
 /* not select drag */
-.fc-day-grid-event, .fc-highlight {
+/* .fc-day-grid-event, .fc-highlight {
   pointer-events: none !important;
-}
-.added-text {
+} */
+/* .added-text {
   color: rgb(215, 25, 25);
   font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 
 

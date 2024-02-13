@@ -5,11 +5,6 @@
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
-
-
-
-
-
 <section id="vproductDetails" class="section-v1">
     <div class="single-pro-image">
         <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">
@@ -17,6 +12,33 @@
 
         <table>
             <style>
+                .popup button {
+                    margin: 10px;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border: none;
+                    /* Remove default button border */
+                    border-radius: 5px;
+                    /* Add border radius for rounded corners */
+                }
+
+                .popup button.yes {
+                    background-color: green;
+                    /* Change background color for "Yes" button */
+                    color: white;
+                    /* Change text color for "Yes" button */
+                }
+
+                .popup button.no {
+                    background-color: red;
+                    /* Change background color for "No" button */
+                    color: white;
+                    /* Change text color for "No" button */
+                }
+
+
+
+
                 table {
                     width: 140%;
                     border-collapse: collapse;
@@ -52,7 +74,7 @@
                 }
             </style>
             <tr>
-                <th>Field</th>
+                <th>Vechile</th>
                 <th>Value</th>
             </tr>
 
@@ -92,15 +114,20 @@
 
     </div>
 
-    <form id="submitForm" action="<?php echo URLROOT ?>/your-action-endpoint" method="POST">
+    <form id="submitForm" action="<?php echo URLROOT ?>/Vechile_orders/orders" method="POST">
         <div class="sdate2">
             <!-- <b>Calendar</b> -->
 
             <div class="wrapperCalendar2">
                 <p><I>Select the Date</p></I>
+                <span class="invalid"><?php if($data){echo $data['selectedDates_err'];}  ?></span>
+
                 <div class="cal">
                     <div class="response"></div>
+
                     <div id='calendar'>
+
+                        <input type="hidden" id="hiddenInputDates" name="selectedDates">
 
                     </div>
                 </div>
@@ -110,23 +137,30 @@
                     <table>
                         <tr>
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
-                            <td><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value=""></td>
+                            <td><span class="invalid"><?php if($data){echo $data['name_err'];}  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="" size="40" style="height: 40px" ;></td>
+                            
+
                         </tr>
                         <tr>
                             <td><label for="Pickup_location"><b>Pickup Location</b></label></td>
-                            <td><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value=""></td>
+                            <td><span class="invalid"><?php if($data){echo $data['location_err'];}  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="" size="40" style="height: 40px" ;></td>
+                            
+
                         </tr>
                         <tr>
                             <td><label for="number"><b>Your Contact Number</b></label></td>
-                            <td><input id="number" name="number" type="textbox" placeholder="Your Contact Number" required value=""></td>
+                            <td><span class="invalid"><?php if($data){echo $data['number_err'];}  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+                           
+
                         </tr>
                         <tr>
                             <td><label for="Message"><b>Message</b></label></td>
-                            <td><input id="Message" name="Message" type="textbox" placeholder="Message" required value=""></td>
+                            <td><input id="Message" name="Message" type="textbox" placeholder="Message" size="40" style="height: 40px" ;></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="submit" value="Submit" onclick="showConfirmationPopup()"></td> <!-- Submit button -->
+                            <td colspan="2"><input type="submit" value="Submit" onclick="return showConfirmationPopup()"></td> <!-- Submit button -->
                         </tr>
+
                     </table>
 
 
@@ -135,50 +169,38 @@
                     <div id="confirmationPopup" class="popup">
                         <div class="popup-content">
                             <p>Are you sure you want to submit?</p>
-                            <button onclick="submitForm()">Yes</button>
-                            <button onclick="hidePopup()">No</button>
+                            <button class="yes" onclick="submitForm()">Yes</button>
+                            <button class="no" onclick="return hidePopup()">No</button>
+
                         </div>
                     </div>
 
-
-
     </form>
-
     </div>
-
-
-
     </div>
-
-
-
-
-
 </section>
 
 <script>
     function showConfirmationPopup() {
         document.getElementById('confirmationPopup').style.display = 'block';
-    }
-
-    function hidePopup() {
-        document.getElementById('confirmationPopup').style.display = 'none';
+        return false; // Prevent default form submission
     }
 
     function submitForm() {
-        // Add your form submission code here
-        // For example, document.getElementById('submitForm').submit();
+        // Submit the form
+        document.getElementById('submitForm').submit();
     }
+
+    function hidePopup() {
+    document.getElementById('confirmationPopup').style.display = 'none';
+    return false; // Prevent form submission
+}
+
+
     window.onload = function() {
         hidePopup();
     };
 </script>
-
-
-
-
-
-
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 <scipt src="https://code.jquery.com/jquery-3.6.4.min.js"></scipt>

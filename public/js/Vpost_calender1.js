@@ -1,269 +1,103 @@
-// $(document).ready(function () {
-//     var addedDates = {};
+$(document).ready(function() {
+    var today = moment().startOf('day'); // Get today's date
+    var threeMonthsLater = moment().add(3, 'months').endOf('day'); // Get date three months later
 
-//     initializeCalendar();
+    var selectedDates = []; // Array to store selected dates
 
-//     function initializeCalendar() {
-//         addedDates = {};
-
-//         var calendar = $('#calendar').fullCalendar({
-//             editable: true,
-//             events: "../Calendar/fetch_anavailble_Dates",
-//             displayEventTime: false,
-//             selectable: true,
-//             selectHelper: true,
-//             select: function (start, end, allDay) {
-//                 var selectedDate = start.format('YYYY-MM-DD');
-
-//                 if (!addedDates[selectedDate]) {
-//                     var title = "ADDED";
-//                     if (title) {
-//                         $.ajax({
-//                             url: '../V_post/create_post',
-//                             data: 'title=' + title + '&start=' + selectedDate + '&end=' + selectedDate,
-//                             type: "POST",
-//                             success: function (data) {
-//                                 displayMessage("Added Successfully");
-//                                 addedDates[selectedDate] = true;
-//                                 calendar.fullCalendar('renderEvent', {
-//                                     title: title,
-//                                     start: selectedDate,
-//                                     end: selectedDate,
-//                                     allDay: true
-//                                 }, true);
-//                             }
-//                         });
-//                     }
-//                 } else {
-//                     alert("An event has already been added for this date.");
-//                 }
-//                 calendar.fullCalendar('unselect');
-//             }
-//         });
-
-
-//         function highlightAddedDate(date) {
-//             var $dateCell = $('.fc-day[data-date="' + date + '"]');
-//             $dateCell.css('background-color', 'black');
-//         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//         // Prevent dragging for multiple date selection
-//         var isDragging = false;
-//         var dragThreshold = 5; // Adjust this value if needed for sensitivity
-
-//         $('#calendar').on('mousedown', function (e) {
-//             var startX = e.pageX,
-//                 startY = e.pageY;
-
-//             $(document).on('mousemove.drag', function (e) {
-//                 var currentX = e.pageX,
-//                     currentY = e.pageY;
-
-//                 if (Math.abs(currentX - startX) > dragThreshold || Math.abs(currentY - startY) > dragThreshold) {
-//                     isDragging = true;
-//                     $(document).off('mousemove.drag');
-//                 }
-//             });
-//         });
-
-//         $(document).on('mouseup', function () {
-//             $(document).off('mousemove.drag');
-//             if (isDragging) {
-//                 isDragging = false;
-//                 return false; // Prevent further action
-//             }
-//         });
-//     }
-
-//     function displayMessage(message) {
-//         $(".response").html("<div class='success'>" + message + "</div>");
-//         setInterval(function () { $(".success").fadeOut(); }, 2000);
-//     }
-// });
-
-
-
-// $(document).ready(function () {
-//     var addedDates = {};
-
-//     initializeCalendar();
-
-//     function initializeCalendar() {
-//         addedDates = {};
-
-//         var calendar = $('#calendar').fullCalendar({
-//             editable: true,
-//             events: "../Calendar/fetch_anavailble_Dates",
-//             displayEventTime: false,
-//             selectable: true,
-//             selectHelper: true,
-//             select: function (start, end, allDay) {
-//                 var selectedDate = start.format('YYYY-MM-DD');
-
-//                 if (!addedDates[selectedDate]) {
-//                     var title = "ADDED";
-//                     if (title) {
-//                         $.ajax({
-//                             url: '../V_post/create_post',
-//                             data: 'title=' + title + '&start=' + selectedDate + '&end=' + selectedDate,
-//                             type: "POST",
-//                             success: function (data) {
-//                                 displayMessage("Added Successfully");
-//                                 addedDates[selectedDate] = true;
-//                                 highlightAddedDate(selectedDate);
-//                             }
-//                         });
-//                     }
-//                 } else {
-//                     alert("An event has already been added for this date.");
-//                 }
-//                 calendar.fullCalendar('unselect');
-//             }
-//         });
-
-//         // Prevent dragging for multiple date selection
-//         var isDragging = false;
-//         var dragThreshold = 5; // Adjust this value if needed for sensitivity
-
-//         $('#calendar').on('mousedown', function (e) {
-//             var startX = e.pageX,
-//                 startY = e.pageY;
-
-//             $(document).on('mousemove.drag', function (e) {
-//                 var currentX = e.pageX,
-//                     currentY = e.pageY;
-
-//                 if (Math.abs(currentX - startX) > dragThreshold || Math.abs(currentY - startY) > dragThreshold) {
-//                     isDragging = true;
-//                     $(document).off('mousemove.drag');
-//                 }
-//             });
-//         });
-
-//         $(document).on('mouseup', function () {
-//             $(document).off('mousemove.drag');
-//             if (isDragging) {
-//                 isDragging = false;
-//                 return false; // Prevent further action
-//             }
-//         });
-//     }
-
-//     function highlightAddedDate(date) {
-//         var $dateCell = $('.fc-day[data-date="' + date + '"]');
-//         $dateCell.css('background-color', 'white');
-//         $dateCell.append('<span class="added-text">ADDED</span>'); // Append the text "ADDED"
-//     }
-    
-
-//     function displayMessage(message) {
-//         $(".response").html("<div class='success'>" + message + "</div>");
-//         setInterval(function () { $(".success").fadeOut(); }, 2000);
-//     }
-// });
-
-
-
-$(document).ready(function () {
-    var addedDates = {};
-
-    initializeCalendar();
-
-    function initializeCalendar() {
-        addedDates = {};
-
-        var today = moment().startOf('day'); // Get today's date
-        var calendar = $('#calendar').fullCalendar({
-            editable: true,
-            events: "../Calendar/fetch_anavailble_Dates",
-            displayEventTime: false,
-            selectable: true,
-            selectHelper: true,
-            validRange: {
-                start: today // Set the valid range to start from today
-            },
-            select: function (start) {
-                var selectedDate = start.format('YYYY-MM-DD');
-
-                if (!addedDates[selectedDate]) {
-                    var title = "ADDED";
-                    if (title) {
-                        $.ajax({
-                            url: '../V_post/create_post',
-                            data: 'title=' + title + '&start=' + selectedDate + '&end=' + selectedDate,
-                            type: "POST",
-                            success: function (data) {
-                                displayMessage("Added Successfully");
-                                addedDates[selectedDate] = true;
-                                highlightAddedDate(selectedDate);
-                            }
-                        });
-                    }
+    $('#calendar').fullCalendar({
+        // Your FullCalendar options here...
+        // For example:
+        defaultView: 'month',
+        editable: true,
+        selectable: true, // Allow date selection
+        validRange: {
+            start: today, // Set the start of the valid range to today
+            end: threeMonthsLater // Set the end of the valid range to three months later
+        },
+        select: function(start, end, jsEvent, view) {
+            // Store the selected dates
+            var currentDate = moment(start);
+            while (currentDate.isBefore(end, 'day')) {
+                var dateStr = currentDate.format('YYYY-MM-DD');
+                var index = selectedDates.indexOf(dateStr);
+                if (index !== -1) {
+                    // Date is already selected, so unselect it
+                    selectedDates.splice(index, 1);
+                    $('td[data-date="' + dateStr + '"]').removeClass('selected').css('background-color', '').find('.added-text').remove();
                 } else {
-                    alert("An event has already been added for this date.");
+                    // Date is not selected, so select it
+                    selectedDates.push(dateStr);
+                    $('td[data-date="' + dateStr + '"]').addClass('selected').css({
+                        'background-color': 'black',
+                        'position': 'relative' // Ensure the parent container has position:relative
+                    });
+
+                    // Check if the "Allocated" text already exists before appending it
+                    if (!$('td[data-date="' + dateStr + '"]').find('.added-text').length) {
+                        $('td[data-date="' + dateStr + '"]').append('<span class="added-text">Allocated</span>');
+                    }
+
+                    // Apply styles for the added text
+                    $('.added-text').css({
+                        'color': 'red', // Change the text color to red
+                        'position': 'absolute',
+                        'top': '50%',
+                        'left': '50%',
+                        'transform': 'translate(-50%, -50%)',
+                        'z-index': '1' // Ensure it's above the background color
+                    });
+
                 }
-                calendar.fullCalendar('unselect');
+                currentDate.add(1, 'day');
             }
-        });
+            console.log("Marked Dates:", selectedDates); // Log the marked dates
+            // sendMarkedDates(selectedDates); // Send the marked dates to the controller
+            document.getElementById("hiddenInputDates").value = JSON.stringify(selectedDates);
+        }
+    });
 
-        // Prevent dragging for multiple date selection
-        var isDragging = false;
-        var dragThreshold = 5; // Adjust this value if needed for sensitivity
+    // Function to send marked dates to the controller
+    function sendMarkedDates(datesArray) {
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
 
-        $('#calendar').on('mousedown', function (e) {
-            var startX = e.pageX,
-                startY = e.pageY;
+        
 
-            $(document).on('mousemove.drag', function (e) {
-                var currentX = e.pageX,
-                    currentY = e.pageY;
+        // Set up the request
+        xhr.open("POST", url, true);
 
-                if (Math.abs(currentX - startX) > dragThreshold || Math.abs(currentY - startY) > dragThreshold) {
-                    isDragging = true;
-                    $(document).off('mousemove.drag');
+        // Set the appropriate content type for the form data
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Define the callback function to handle the response
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Request was successful
+                    console.log("Dates sent successfully");
+                    // You can handle any response from the server here
+                } else {
+                    // Request failed
+                    console.error("Error sending dates: " + xhr.status);
+                    // You can handle errors here
                 }
-            });
-        });
-
-        $(document).on('mouseup', function () {
-            $(document).off('mousemove.drag');
-            if (isDragging) {
-                isDragging = false;
-                return false; // Prevent further action
             }
-        });
+        };
+
+        // Convert datesArray to a query string
+        var params = "markedDates=" + encodeURIComponent(JSON.stringify(datesArray));
+
+        // Send the request with the form data
+        xhr.send(params);
     }
 
-    function highlightAddedDate(date) {
-        var $dateCell = $('.fc-day[data-date="' + date + '"]');
-        $dateCell.css({
-            'background-color': 'black',
-            'position': 'relative' // Set position to relative to position the added text
-        });
-        $dateCell.append('<span class="added-text">ADDED</span>'); // Append the text "ADDED" inside the date square
-    }
-    
-    function displayMessage(message) {
-        $(".response").html("<div class='success'>" + message + "</div>");
-        setInterval(function () { $(".success").fadeOut(); }, 2000);
-    }
+
+    // Example of clearing the selection on button click
+    $('#clearSelectionBtn').click(function() {
+        // Remove selection
+        $('.selected').removeClass('selected').css('background-color', '').find('.added-text').remove(); // Reset background color and remove added text
+        selectedDates = []; // Clear the selected dates array
+        console.log("Marked Dates:", selectedDates); // Log the marked dates after clearing
+        sendMarkedDates(selectedDates); // Send the empty marked dates array to the controller
+    });
 });
