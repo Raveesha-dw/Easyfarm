@@ -129,6 +129,27 @@ public function update_data($data){
         
     }
 
+    public function update_description($data){
+        print_r($data);
+        $this->db->query("UPDATE vehicle_item SET Description = :Description WHERE V_Id = :V_Id");
+        $this->db->bind(':Description', $data['Description']);
+        $this->db->bind(':V_Id', $data['V_Id']);
+        $result=$this->db->resultSet();
+        print_r($result);
+        return $result;
+        // return $this->db->single();
+        
+    }
+    public function getupdateiteamdeatils($data){
+    
+    $this->db->query("SELECT * FROM vehicle_item WHERE V_Id = :V_Id");
+    $this->db->bind(':V_Id',$data['V_Id']);
+    $result=$this->db->resultSet();
+    return $result;
+    // return $this->db->single();
+    
+}
+
 
 }
 

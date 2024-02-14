@@ -28,15 +28,22 @@
                         <div class="wrapper_v_product_details_sub">
                             <p><b>Description</b>
                             <a class="open-button" onclick="openForm()"> Change </a></p><br>
-                            <p> Type : <?php echo $data['V_category']; ?></p><br>
-                            <p> <?php echo $data['Description']; ?> </p>
+                            <p> Type : <?php echo $product['V_category']; ?></p><br>
+                            <p> <?php echo $product['Description']; ?> </p>
                         </div>
 
 
                         <div class="popup-form" id="popupForm">
-                            <form class="form-container" id="formData">
+                            <form action="<?php echo URLROOT ?>/V_post/update_description" method="post" class="form-container" id="formData">
                                 <h4 id="popupTitle">Change Description</h4><br>
-                                <textarea id="description" name="description" rows="10" cols="500" required></textarea><br><br>
+                                <textarea id="Description" name="Description" rows="10" cols="500" required><?php echo $data['Description']; ?></textarea><br><br>
+
+                                <input type="hidden" name="V_Id" value=<?php echo $product['V_Id']; ?>>
+
+
+
+
+
                                 <button type="button" class="btn ok" onclick="handleOk()">OK</button>
                                 <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                             </form>
@@ -49,7 +56,7 @@
                 <div class="wrapper_v_product_details_sub">
                     <p><b>Calendar</b></p><br>
                     <div class="wrapperCalendar">
-                        <p><I>Unavailable dates for renting</p></I>
+                        <p><I>Update the unavailable dates for renting</p></I>
                         <div class="cal" >
 
                             <?php
@@ -138,9 +145,14 @@
         document.getElementById("popupForm").style.display = "none";
     }
     function handleOk() {
-    // Add your logic here for the "OK" button action
-    // For example, you can close the pop-up or perform any other action
-    closeForm(); // Close the pop-up
+        // Get the form element
+        var form = document.getElementById('formData');
+        
+        // Submit the form
+        form.submit();
+        
+        // Close the pop-up
+        closeForm();
 }
 
 </script>
