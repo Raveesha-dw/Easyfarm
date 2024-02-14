@@ -26,7 +26,7 @@ class Pages extends Controller{
     }
 
     public function ve_home(){
-        $this->view('renter/v_vechiledetail');
+        $this->view('Vechile/vecile_home');
     }
     public function myplan(){
         $this->view('seller/v_plan');

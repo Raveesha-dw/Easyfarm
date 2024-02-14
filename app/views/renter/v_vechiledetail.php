@@ -5,6 +5,9 @@
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
+
+<?php print_r($data) ?>
+
 <section id="vproductDetails" class="section-v1">
     <div class="single-pro-image">
         <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">
@@ -81,32 +84,33 @@
 
             <tr>
                 <td>Owner name</td>
-                <td></td>
+                <td><b><?php print($data[0]->V_name); ?></b></td>
+
             </tr>
             <tr>
                 <td>Vechile number</td>
-                <td></td>
+                <td><b><?php print($data[0]->V_number); ?></b></td>
             </tr>
             <tr>
                 <td>Contact Number</td>
-                <td></td>
+                <td><b><?php print($data[0]->Contact_Number); ?></b></td>
             </tr>
             <tr>
                 <td>Rental Fee</td>
-                <td></td>
+                <td><b><?php print($data[0]->Rental_Fee); ?></b></td>
             </tr>
             <tr>
                 <td>Charging Unit</td>
-                <td></td>
+                <td><b><?php print($data[0]->Charging_Unit); ?></b></td>
             </tr>
 
             <tr>
                 <td>Address</td>
-                <td></td>
+                <td><b><?php print($data[0]->Address); ?></b></td>
             </tr>
             <tr>
                 <td>Description</td>
-                <td></td>
+                <td><b><?php print($data[0]->Description); ?></b></td>
             </tr>
         </table>
 
@@ -119,8 +123,15 @@
             <!-- <b>Calendar</b> -->
 
             <div class="wrapperCalendar2">
-                <p><I>Select the Date</p></I>
-                <span class="invalid"><?php if($data){echo $data['selectedDates_err'];}  ?></span>
+                <p><i>Select the Date</i></p>
+                <?php foreach ($data as $item) : ?>
+                    <?php if (is_object($item) && property_exists($item, 'date')) : ?>
+                        <span><?php echo $item->date; ?></span>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <span class="invalid"><?php if (!empty($dataArray)) echo $dataArray['selectedDates_err']; ?></span>
+
+
 
                 <div class="cal">
                     <div class="response"></div>
@@ -137,20 +148,26 @@
                     <table>
                         <tr>
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
-                            <td><span class="invalid"><?php if($data){echo $data['name_err'];}  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="" size="40" style="height: 40px" ;></td>
-                            
+                            <td><span class="invalid"><?php if ($data) {
+                                                            echo $data['name_err'];
+                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="" size="40" style="height: 40px" ;></td>
+
 
                         </tr>
                         <tr>
                             <td><label for="Pickup_location"><b>Pickup Location</b></label></td>
-                            <td><span class="invalid"><?php if($data){echo $data['location_err'];}  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="" size="40" style="height: 40px" ;></td>
-                            
+                            <td><span class="invalid"><?php if ($data) {
+                                                            echo $data['location_err'];
+                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="" size="40" style="height: 40px" ;></td>
+
 
                         </tr>
                         <tr>
                             <td><label for="number"><b>Your Contact Number</b></label></td>
-                            <td><span class="invalid"><?php if($data){echo $data['number_err'];}  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="" min="0" size="40" style="height: 40px; width: 300px" ;></td>
-                           
+                            <td><span class="invalid"><?php if ($data) {
+                                                            echo $data['number_err'];
+                                                        }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+
 
                         </tr>
                         <tr>
@@ -192,9 +209,9 @@
     }
 
     function hidePopup() {
-    document.getElementById('confirmationPopup').style.display = 'none';
-    return false; // Prevent form submission
-}
+        document.getElementById('confirmationPopup').style.display = 'none';
+        return false; // Prevent form submission
+    }
 
 
     window.onload = function() {

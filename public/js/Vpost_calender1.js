@@ -101,3 +101,5 @@ $(document).ready(function() {
         sendMarkedDates(selectedDates); // Send the empty marked dates array to the controller
     });
 });
+
+
