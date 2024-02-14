@@ -50,6 +50,7 @@ public function get_data($Owner_Id){
     $this->db->query("SELECT * FROM vehicle_item WHERE Owner_Id = :Owner_Id");
     $this->db->bind(':Owner_Id', $Owner_Id);
     $result=$this->db->resultSet();
+    // print_r($result);
     return $result;
 
 }

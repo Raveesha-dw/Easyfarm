@@ -7,7 +7,7 @@
 
             <div class="column4" >
                 <?php $product = $data;?>
-                <!-- <?php print_r($product['unavailableDates']);?> -->
+                <?php print_r($product);?>
 
                 <div class="box">
                     <div class="wrapper_v_product_details_sub">
@@ -60,8 +60,8 @@
                         <div class="cal" >
 
                             <?php
-                                // Encode $dates array as JSON
-                                $datesJson = json_encode($product['unavailableDates']);?>
+// Encode $dates array as JSON
+$datesJson = json_encode($product['unavailableDates']);?>
                             <div id='calendar' data-dates='<?php echo $datesJson; ?>'>
                             </div><br><br>
                             <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData">
@@ -70,20 +70,21 @@
                             <button id="saveChangesButton">Save Changes</button>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
 
             <div class="column5">
                 <div class="wrapper_v_product_details_sub">
-                    <p><b>Charge</b></p><br>
+                    <p><b>Charge</b>
+                    <a class="open-button" onclick="openChargeForm()"> Change </a></p><br></p><br>
                     <div class="row">
                         <div class="column1" >
                             <p> <?php echo $data['V_category']; ?></p>
                         </div>
                         <div class="column2" >
-                            <p>Per day</p>
+                            <p><?php echo $data['Rental_Fee']; ?>  <?php echo $data['Charging_Unit']; ?></p>
                         </div>
                     </div>
 
@@ -133,6 +134,91 @@
                 </div>
             </div>
         </div>
+<div class="chargingPopUp">
+    <div class="popup" id="myPopup">
+    <div class="popup-content">
+        <b>Change Details</b><br><br>
+           
+
+<div class="Wrapper_Vehicle_Update_charge_data" id="myPopup">
+<span class="close" onclick="closePopup()">&times;</span>
+        <form class ="ddd" id="chargeForm" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
+
+        
+
+            
+
+            <div class ="sitem">
+                <label for="Item"><b>Owner Name</b></label>
+            <br>
+                <input id="sitem_name" name="V_name" type="textbox" placeholder="Enter the Vehicle Owner Name" required value="<?php echo $data['V_name']; ?>" ><br/>
+                <span class="invalid"><?php if ($data) {echo $data['V_name_err'];}?></span>
+
+            </div>
+
+            <div class ="sitem">
+                <label for="Item"><b>Contact number</b></label>
+            <br>
+                <input id="sitem_name" name="Contact_Number" type="textbox" placeholder="Enter the Contact number" required value="<?php echo $data['Contact_Number']; ?>" ><br/>
+                <span class="invalid"><?php if ($data) {echo $data['Contact_Number_err'];}?></span>
+            </div>
+
+            <div class="saddress">
+                <b>Address</b>
+                <br>
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" value="<?php echo $data['Address']; ?>">
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line3" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" >
+
+
+            </div>
+
+            <div class="sstock_size">
+                <div class="iii">
+                <label for ="stock"> <b>Rental Fee</b></label>
+                <br>
+                <input id="size" name="Rental_Fee" type="number" step="1" min = 0 placeholder="Rental Fee"  required value="<?php echo $data['Rental_Fee']; ?>">
+                <span class="invalid"><?php if ($data) {echo $data['Rental_Fee_err'];}?></span>
+                </div>
+                <div class="sdropdown2">
+                    <label for="Category2"><b>Charging Unit:</b></label>
+                    <br>
+
+                        <select name="Charging_Unit" id="stype">
+                            <option disabled selected><?php echo $data['Charging_Unit']; ?> </option>
+                            <!-- <option value="Per Hour">Per Hour</option> -->
+                            <option value="Per Day">Per Day</option>
+                            <option value="Per Week">Per Week</option>
+                            <option value="Per month">Per month</option>
+
+                        </select>
+                    <span class="invalid"><?php if ($data) {echo $data['Charging_Unit_err'];}?></span>
+
+
+                </div>
+            </div>
+
+   
+      <button type="submit">Submit</button>
+    </form>
+    
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 <?php require APPROOT . '/views/inc/footer.php';?>
 
@@ -153,12 +239,21 @@
     function handleOk() {
         // Get the form element
         var form = document.getElementById('formData');
-        
+
         // Submit the form
         form.submit();
-        
+
         // Close the pop-up
         closeForm();
-}
+    }
+
+    function openChargeForm() {
+        document.getElementById("myPopup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("myPopup").style.display = "none";
+    }
+
 
 </script>

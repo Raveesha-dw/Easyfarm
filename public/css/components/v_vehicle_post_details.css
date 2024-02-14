@@ -469,3 +469,294 @@
     padding: 20px; 
   }
 } */
+
+
+
+
+.chargingPopUp .popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.chargingPopUp .popup-content {
+  /* text-align: center; */
+}
+
+.popup-content .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.popup-content .close:hover,
+.popup-content .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *{
+    margin:0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+} */
+.Wrapper_Vehicle_Update_charge_data{
+    /* width: 100%; */
+    /* min-height: 100vh; */
+    /* margin-left: 25%; */
+    /* margin-top: 15px; */
+    /* background-color: #c3ffc463; */
+   
+}
+
+.Wrapper_Vehicle_Update_charge_data .sdropdown1{
+    width: 95%;
+    margin-top: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.Wrapper_Vehicle_Update_charge_data .sitem{
+    width: 95%;
+    margin-top: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.Wrapper_Vehicle_Update_charge_data .sstock_size{
+    width: 98%;
+    margin-top: 15px;
+    margin-left: 2%;
+    display: flex;
+
+}
+.Wrapper_Vehicle_Update_charge_data .stocksize #Stock{
+    width:95%;
+    height: 40px;
+    /* margin-left: 2%; */
+    border-radius: 5px;
+    color: rgb(7, 7, 7);
+    background-color: aliceblue;
+    /* display: flex; */
+}
+.Wrapper_Vehicle_Update_charge_data .sstock_size .sdropdown2{
+    margin-left: 2%;
+    width: 50%;
+}
+.Wrapper_Vehicle_Update_charge_data .sstock_size .iii{
+   
+    width: 50%;
+}
+.Wrapper_Vehicle_Update_charge_data .stocksize{
+    width: 100%;
+    margin-left: 2%;
+    }
+
+
+
+.Wrapper_Vehicle_Update_charge_data .sDescription{
+    /* margin-left: 150px; */
+    width: 300px;
+}
+
+.Wrapper_Vehicle_Update_charge_data .sdate{
+    margin-left: 2%;
+    width: 100%;
+}
+
+
+.Wrapper_Vehicle_Update_charge_data #sdes{
+    width:97%;
+    height: 120px;
+    border-radius: 5px;
+    /* display: flex; */
+    color: rgb(5, 5, 5);
+    background-color: aliceblue;
+
+}
+.Wrapper_Vehicle_Update_charge_data #stype{
+    width: 95%;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(2, 3, 2);
+    /* margin-left: 200px; */
+    position: relative;
+}
+
+.Wrapper_Vehicle_Update_charge_data #size{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    /* display: flex; */
+    color: rgb(5, 5, 5);
+    background-color: aliceblue;
+
+}
+.Wrapper_Vehicle_Update_charge_data .vCategory{
+    margin-left: 2%;
+    margin-right: 2%;
+
+}
+.Wrapper_Vehicle_Update_charge_data #vCategory{
+
+    width:95%;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(2, 3, 2);
+    /* margin-left: 200px; */
+    position: relative;
+}
+.Wrapper_Vehicle_Update_charge_data #sitem_name{
+    
+    width:100%;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(7, 7, 7);
+    background-color: aliceblue;
+    /* margin-left: 5px; */
+}
+
+.Wrapper_Vehicle_Update_charge_data .sprice{
+    width: 95%;
+    margin-top: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.Wrapper_Vehicle_Update_charge_data #sprice{
+    width:100%;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(7, 7, 7);
+    background-color: aliceblue;
+
+}
+.Wrapper_Vehicle_Update_charge_data .s1{
+width: 300px;
+}
+
+
+
+.Wrapper_Vehicle_Update_charge_data .ddd{
+    /* background-color: rgb(228, 255, 235); */
+    /* background-color: rgb(102 255 141 / 56%); */
+    width: 80%;
+    margin: auto;
+
+    border: 5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #333;
+    border-radius: 10px;
+    background-color: #cbffce8f;
+
+
+
+
+}
+
+
+
+.Wrapper_Vehicle_Update_charge_data #se_date{
+    width: 95%;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(8, 9, 8);
+    background-color: aliceblue;
+}
+.Wrapper_Vehicle_Update_charge_data .saddress{
+    margin-top: 15px;
+    width: 98%;
+    margin-left: 2%;
+}
+.Wrapper_Vehicle_Update_charge_data #sAddress{
+    width: 97%;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1%;
+    background-color: aliceblue;
+}
+
+
+
+.Wrapper_Vehicle_Update_charge_data .sDescription{
+    margin-left: 2%;
+    width: 98%;
+    
+}
+/* #sdes{
+    width:60%;
+    height:100px;
+    border-radius: 5px;
+} */
+
+
+.Wrapper_Vehicle_Update_charge_data #inside_image{
+    /* margin-top: 15px; */
+    border: 1px dashed #999;
+    border-radius: 6px;
+    height: 200px;
+    width: 300px;
+    
+}
+.Wrapper_Vehicle_Update_charge_data #create{
+    
+    margin-left: 10%;
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgba(255, 10, 10, 0.85);
+    font-size: larger;
+    cursor: pointer;
+    
+}
+.Wrapper_Vehicle_Update_charge_data .imgdelivery{
+    margin-left: 2%;
+    width: 98%;
+    display: flex;
+}
+.Wrapper_Vehicle_Update_charge_data .imgdelivery .image{
+    /* margin-left: 150px; */
+    width: 45%;
+}
+.Wrapper_Vehicle_Update_charge_data .imgdelivery .dropdown3{
+    /* margin-left: 150px; */
+    width: 50%;
+}
+
+

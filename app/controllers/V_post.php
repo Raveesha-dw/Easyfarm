@@ -99,11 +99,11 @@ class V_post extends Controller
             }
 
             if (empty($data['Contact_Number'])) {
-                $data['Contact_Number'] = 'Please enter the Contact Number';
+                $data['Contact_Number_err'] = 'Please enter the Contact Number';
             } 
-            elseif (strlen($data['Contact_Number']) == 10) {
-                $data['Contact_Number'] = 'Contact Number must be 10 characters long';
-            }
+            // elseif (strlen($data['Contact_Number']) <= 10) {
+            //     $data['Contact_Number_err'] = 'Contact Number must be 10 characters long';
+            // }
 
 
             if (empty($data['Rental_Fee'])) {
