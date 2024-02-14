@@ -255,33 +255,22 @@
   color: var(--dark-green);
 }
 
-.wrapper_v_product_details #vehicleDetails .single-pro-details .button-area{
+/* .wrapper_v_product_details #vehicleDetails .single-pro-details .button-area{
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
   flex-wrap: wrap;
-}
+} */
 
-.wrapper_v_product_details button{
-  background-color: var(--dark-green);
-  color: white;
-  font-size: 0.875rem;
-  padding: 10px 34px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-  /* min-width: 200px; */
-  /* max-width: 200px; */
-}
 
 .wrapper_v_product_details button:hover {
   background-color: var(--light-green);
 }
 
-.wrapper_v_product_details button i{
+/* .wrapper_v_product_details button i{
   padding-right: 5px;
-}
+} */
 
 .wrapper_v_product_details .custom-list {
   list-style-type: disc; 
@@ -371,7 +360,7 @@
 
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+/* .form-container .btn {
 
   width:auto;
   height: 45px;
@@ -386,14 +375,14 @@
   font-weight: 600;
 
 
-}
+} */
 
 
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+/* .form-container .btn:hover, .open-button:hover {
   opacity: 1;
-}
+} */
 
 .wrapper_v_product_details_sub a{
   color:rgb(248, 108, 108);
@@ -442,3 +431,41 @@
     background-color: #ff5252;
     margin-left: 10px;
 }
+
+
+.wrapperCalendar #saveChangesButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #bdec87; /* Green */
+    border: none;
+    color: white;
+    /* padding: 15px 32px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-width: 5%; /* Minimum width */
+    min-height: 5%; /* Minimum height */
+    margin-right: 10%;
+}
+
+.wrapperCalendar #saveChangesButton:hover {
+    background-color: var(--light-green);
+
+}
+
+
+/* 
+@media screen and (max-width: 600px) {
+  .wrapperCalendar #saveChangesButton {
+    width: 90%; 
+    max-width: none;
+    min-width: 0; 
+    margin: 25px auto;
+    padding: 20px; 
+  }
+} */

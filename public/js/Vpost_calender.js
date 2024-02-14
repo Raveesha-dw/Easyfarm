@@ -29,10 +29,7 @@ $(document).ready(function() {
                 }
                 currentDate.add(1, 'day');
             }
-
             document.getElementById("hiddenInputDates").value = selectedDates;
-
-            // console.log("Marked Dates:", selectedDates); // Log the marked dates
         }
     });
 
@@ -47,11 +44,10 @@ $(document).ready(function() {
     
 
 
-    // Example of clearing the selection on button click
+    // clearing the selection on button click
     $('#clearSelectionBtn').click(function() {
-        // Remove selection
         $('.selected').removeClass('selected').css('background-color', ''); // Reset background color
         selectedDates = []; // Clear the selected dates array
-        // console.log("Marked Dates:", selectedDates); // Log the marked dates after clearing
+        
     });
 });

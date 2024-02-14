@@ -1017,7 +1017,7 @@ a.fc-more:hover {
 }
 
 
-.wrapperCalendar {
+/* .wrapperCalendar {
     width :50%;
     background-color: #e5ff9f4a;;
     margin: 25px auto 0 auto;
@@ -1027,14 +1027,15 @@ a.fc-more:hover {
     color: #333;
     border-radius: 10px;
     padding: 30px 40px;
-}
+} */
 
 
 /*  */
 
 
 
- /* .wrapperCalendar {
+ .wrapperCalendar {
+  position: relative;
   width: 100%;
   max-width: 100%;
   min-width: 100%;
@@ -1046,16 +1047,19 @@ a.fc-more:hover {
   color: #333;
   border-radius: 10px;
   padding: 30px 40px;
-} */
+}
+
+
+
 
 /* Media query for smaller screens */
-/* @media screen and (max-width: 600px) { */
-  /* .wrapperCalendar { */
-    /* width: 90%; Adjust width for smaller screens */
-    /* max-width: none; Remove max-width constraint */
-    /* min-width: 0; Remove min-width constraint */
-    /* margin: 25px auto; */
-    /* padding: 20px; Adjust padding for smaller screens */
-  /* } */
-/* } */
+@media screen and (max-width: 600px) {
+  .wrapperCalendar {
+    width: 90%; 
+    max-width: none;
+    min-width: 0; 
+    margin: 25px auto;
+    padding: 20px; 
+  }
+}
 

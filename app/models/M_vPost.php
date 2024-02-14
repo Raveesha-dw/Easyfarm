@@ -7,7 +7,7 @@ public function __construct(){
 
 
 public function create_post($data){
-    print_r($data);
+    // print_r($data);
     $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id)');
     
     $this->db->bind(':V_category', $data['V_category']); 
@@ -38,11 +38,9 @@ public function create_post($data){
     foreach ($calendarArray as $calendar) {
         $this->db->bind(':status', "unavailable");
         $this->db->bind(':date', trim($calendar)); // trim() to remove any extra whitespace
-        $this->db->bind(':V_Id', $V_Id);
-        
+        $this->db->bind(':V_Id', $V_Id);  
         $this->db->execute();
     }
-
     return true;
 
 
@@ -53,9 +51,6 @@ public function get_data($Owner_Id){
     $this->db->bind(':Owner_Id', $Owner_Id);
     $result=$this->db->resultSet();
     return $result;
-    
-    // exit();
-
 
 }
 
@@ -65,7 +60,6 @@ public function getiteamdeatils(){
     $this->db->bind(':V_Id',$_GET['V_Id']);
     $result=$this->db->resultSet();
     return $result;
-    // return $this->db->single();
     
 }
 
@@ -102,12 +96,13 @@ public function update_data($data){
         return true;
 
     }
+
+
     public function delete_data($data){
         $this->db->query("DELETE FROM vehicle_item WHERE V_Id = :V_Id");
         $this->db->bind(':V_Id', $data);
         $this->db->execute();
     }
-
 
 
 
@@ -123,33 +118,57 @@ public function update_data($data){
         $this->db->query("SELECT date FROM vehicle_calendar WHERE V_Id = :V_Id");
         $this->db->bind(':V_Id',$data);
         $result=$this->db->resultSet();
-        // print_r($result);
         return $result;
-        // return $this->db->single();
+        
         
     }
 
+
     public function update_description($data){
-        print_r($data);
+        
         $this->db->query("UPDATE vehicle_item SET Description = :Description WHERE V_Id = :V_Id");
         $this->db->bind(':Description', $data['Description']);
         $this->db->bind(':V_Id', $data['V_Id']);
-        $result=$this->db->resultSet();
-        print_r($result);
-        return $result;
-        // return $this->db->single();
-        
+        $result=$this->db->resultSet();     
+        return $result;      
     }
+
+
+
     public function getupdateiteamdeatils($data){
+        
+        $this->db->query("SELECT * FROM vehicle_item WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id',$data['V_Id']);
+        $result=$this->db->resultSet();
+        return $result;
     
-    $this->db->query("SELECT * FROM vehicle_item WHERE V_Id = :V_Id");
-    $this->db->bind(':V_Id',$data['V_Id']);
-    $result=$this->db->resultSet();
-    return $result;
-    // return $this->db->single();
-    
-}
+    }
 
 
+
+
+
+
+    public function update_calendar($data){
+    
+        $this->db->query("DELETE FROM vehicle_calendar WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id',$data['V_Id']);
+        $this->db->execute();
+
+        $calendarString = $data['Calender'];
+    
+        $calendarArray = explode(',', $calendarString);  // Split the string into an array
+
+        $this->db->query('INSERT INTO vehicle_calendar(status, date, V_Id) VALUES (:status, :date, :V_Id)');
+
+        foreach ($calendarArray as $calendar) {
+            $this->db->bind(':status', "unavailable");
+            $this->db->bind(':date', trim($calendar)); // trim() to remove any extra whitespace
+            $this->db->bind(':V_Id', $data['V_Id']);
+            
+            $this->db->execute();
+        }
+        return true;
+    }
 }
 

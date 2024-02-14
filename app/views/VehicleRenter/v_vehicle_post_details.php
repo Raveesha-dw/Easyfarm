@@ -63,8 +63,14 @@
                                 // Encode $dates array as JSON
                                 $datesJson = json_encode($product['unavailableDates']);?>
                             <div id='calendar' data-dates='<?php echo $datesJson; ?>'>
-                            </div>
+                            </div><br><br>
+                            <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData">
+                            <input type="hidden" id="hiddenInputDates" name="markedDates">
+                            <input type="hidden"  name="V_Id" value="<?php echo $data['V_Id']; ?>">
+                            <button id="saveChangesButton">Save Changes</button>
+                            </form>
                         </div>
+                        
                     </div>
                 </div>
             </div>
