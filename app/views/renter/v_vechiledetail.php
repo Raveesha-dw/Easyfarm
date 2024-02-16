@@ -187,7 +187,7 @@
                         <tr>
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
-                                                            echo $data['name_err'];
+                                                             echo $data['name_err'];
                                                         }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="" size="40" style="height: 40px" ;></td>
 
 
@@ -204,7 +204,7 @@
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['number_err'];
-                                                        }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+                                                        }  ?></span><input id="number" name="number" value="<?php echo $data[0]->Contact_Number; ?>" type="number" placeholder="Your Contact Number" required value="" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
                         </tr>

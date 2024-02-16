@@ -67,7 +67,13 @@
                 $data['selectedDates_err'] = 'Please enter the date';
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
-                print_r($data);
+                // print_r($data);
+                $data1=$this->vechile_ordersmodel->getdata(91);
+                foreach ($data1 as $object) {
+                    $data2 = (array) $object;
+                }
+                
+                $data = array_merge($data2,$data);
                 if($this->vechile_ordersmodel->update_data($data)){
 
                 }
