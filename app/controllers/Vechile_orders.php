@@ -63,15 +63,22 @@
             if (empty($data['number'])) {
                 $data['number_err'] = 'Please enter the number';
             }
-            // if (empty($data['selectedDates'])) {
-            //     $data['selectedDates_err'] = 'Please enter the date';
-            // }
+            if (empty($data['selectedDates'])) {
+                $data['selectedDates_err'] = 'Please enter the date';
+            }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
-                print_r($data);}
-                // if($this->vechile_ordersmodel->update_data($data)){
+                print_r($data);
+                if($this->vechile_ordersmodel->update_data($data)){
 
-                // }
-            // } else ($this->view('renter/v_vechiledetail', $data));
+                }
+            } else {
+
+                $data1=$this->vechile_ordersmodel->getdata(91);
+                $data2=$this->vechile_ordersmodel->getdatE(91);
+               
+                $data = array_merge($data1, $data2,$data);
+                ($this->view('renter/v_vechiledetail', $data));
+            }
 
             // if ($this->vechile_ordersmodel->update_data($data)){
             //     // $data1=$this->vechile_ordersmodel->update_data($data['seller_ID']);

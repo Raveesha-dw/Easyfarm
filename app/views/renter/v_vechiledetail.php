@@ -124,12 +124,13 @@
 
             <div class="wrapperCalendar2">
                 <p><i>Select the Date</i></p>
+                <span class="invalid"><?php if ($data) {echo $data['selectedDates_err'];} ?></span>
+
                 <?php foreach ($data as $item) : ?>
                 <!-- <?php if (is_object($item) && property_exists($item, 'date')) : ?> -->
                 <!-- <span><?php echo $item->date; ?></span> -->
                 <!-- <?php endif; ?> -->
                 <!-- <?php endforeach; ?> -->
-                <span class="invalid"><?php if (!empty($dataArray)) echo $dataArray['selectedDates_err']; ?></span>
 
 
 
