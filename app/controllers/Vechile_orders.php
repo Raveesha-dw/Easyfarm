@@ -75,7 +75,7 @@
                 
                 $data = array_merge($data2,$data);
                 if($this->vechile_ordersmodel->update_data($data)){
-
+                    
                 }
             } else {
 
