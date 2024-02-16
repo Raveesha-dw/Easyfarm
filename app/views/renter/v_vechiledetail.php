@@ -125,19 +125,56 @@
             <div class="wrapperCalendar2">
                 <p><i>Select the Date</i></p>
                 <?php foreach ($data as $item) : ?>
-                    <?php if (is_object($item) && property_exists($item, 'date')) : ?>
-                        <span><?php echo $item->date; ?></span>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                <!-- <?php if (is_object($item) && property_exists($item, 'date')) : ?> -->
+                <!-- <span><?php echo $item->date; ?></span> -->
+                <!-- <?php endif; ?> -->
+                <!-- <?php endforeach; ?> -->
                 <span class="invalid"><?php if (!empty($dataArray)) echo $dataArray['selectedDates_err']; ?></span>
+
+
+
+
+
+                <?php
+                // Assuming $data is your array obtained from the PHP loop
+                $dataArray = array();
+
+                foreach ($data as $item) {
+                    if (is_object($item) && property_exists($item, 'date')) {
+                        $dataArray[] = $item->date;
+                    }
+                }
+
+                // Encode the PHP array into JSON format
+                $jsonData = json_encode($dataArray);
+
+
+                ?>
+
+                <script>
+                    // Pass JSON data to JavaScript
+                    var jsonData = <?php echo $jsonData; ?>;
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
                 <div class="cal">
                     <div class="response"></div>
 
-                    <div id='calendar'>
-
+                    <div id='calendar' data-date='<?php echo $jsonData; ?>'>
                         <input type="hidden" id="hiddenInputDates" name="selectedDates">
 
                     </div>

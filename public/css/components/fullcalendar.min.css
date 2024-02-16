@@ -29,6 +29,18 @@ body .fc {
 
 
 
+.disabled-text {
+  color: white;
+  background-color: red;
+  padding: 2px 5px; /* Adjust as needed */
+  border-radius: 4px; /* Optional: add rounded corners */
+}
+
+
+
+
+
+
 
 
 

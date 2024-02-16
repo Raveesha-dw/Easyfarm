@@ -1,10 +1,30 @@
+
+
+
 $(document).ready(function() {
+    // console.log(jsonData)
+ 
     var today = moment().startOf('day'); // Get today's date
     var threeMonthsLater = moment().add(3, 'months').endOf('day'); // Get date three months later
 
-    var selectedDates = []; // Array to store selected dates
+    var selectedDates = [];// Array to store selected dates
+    var unavailableDates = jsonData;
+
+
+
 
     $('#calendar').fullCalendar({
+
+        events: unavailableDates.map(function(dateString) {
+            return {
+                title: 'Unavailable', // Displayed title for the event
+                start: dateString, // Start date of the event
+                rendering: 'background', // Render the event as background
+                color: 'red ' // Background color of the event
+            };
+        }),
+
+
         // Your FullCalendar options here...
         // For example:
         defaultView: 'month',
@@ -14,11 +34,27 @@ $(document).ready(function() {
             start: today, // Set the start of the valid range to today
             end: threeMonthsLater // Set the end of the valid range to three months later
         },
+
+
+
         select: function(start, end, jsEvent, view) {
             // Store the selected dates
             var currentDate = moment(start);
             while (currentDate.isBefore(end, 'day')) {
                 var dateStr = currentDate.format('YYYY-MM-DD');
+
+                    
+                if (unavailableDates.includes(dateStr)) {
+                    // Date is unavailable, so prevent selection
+                    alert('This date is unavailable for booking.');
+                    
+                    return false;
+                }
+                
+
+
+
+
                 var index = selectedDates.indexOf(dateStr);
                 if (index !== -1) {
                     // Date is already selected, so unselect it
@@ -51,7 +87,7 @@ $(document).ready(function() {
                 currentDate.add(1, 'day');
             }
             console.log("Marked Dates:", selectedDates); // Log the marked dates
-            // sendMarkedDates(selectedDates); // Send the marked dates to the controller
+            sendMarkedDates(selectedDates); // Send the marked dates to the controller
             document.getElementById("hiddenInputDates").value = JSON.stringify(selectedDates);
         }
     });
@@ -60,11 +96,11 @@ $(document).ready(function() {
     function sendMarkedDates(datesArray) {
         // Create a new XMLHttpRequest object
         var xhr = new XMLHttpRequest();
-
+        // url: '../V_post/create_post',
         
 
         // Set up the request
-        xhr.open("POST", url, true);
+        xhr.open("POST",'../V_post/create_post' , true);
 
         // Set the appropriate content type for the form data
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -101,5 +137,3 @@ $(document).ready(function() {
         sendMarkedDates(selectedDates); // Send the empty marked dates array to the controller
     });
 });
-
-
