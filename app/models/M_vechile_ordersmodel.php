@@ -66,7 +66,6 @@ foreach ($dates as $date) {
        
 
 
-        $this->db->bind(':selectedDates', $data['selectedDates']);
 
 
 

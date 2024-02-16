@@ -15,7 +15,7 @@ class V_renter_home extends Controller{
 
     // renter navbar new arrival
     public function get_details1(){
-
+print_r($_SESSION['user_ID']);
         
         $items=$this->renterhomeModel->get_itemids1($_SESSION['user_ID']);
        
