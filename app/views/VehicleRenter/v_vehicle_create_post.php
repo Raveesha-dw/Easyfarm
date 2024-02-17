@@ -169,5 +169,5 @@
 
 
 
-
-<script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\Vpost_update_calendar.js"></script>
+<!-- <script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script> -->

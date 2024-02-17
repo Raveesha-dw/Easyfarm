@@ -366,7 +366,6 @@ public function update_calendar(){
             'Charging_Unit' => trim($_POST['Charging_Unit']),
             'Contact_Number_err' => '',];
 
-print_r($data);
 
             $this->v_postModel->update_charging_details($data);
 
