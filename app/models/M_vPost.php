@@ -7,8 +7,8 @@ public function __construct(){
 
 
 public function create_post($data){
-    // print_r($data);
-    $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id)');
+    
+    $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id,post_create_date) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id,:post_create_date)');
     
     $this->db->bind(':V_category', $data['V_category']); 
     $this->db->bind(':V_name', $data['V_name']); 
@@ -20,6 +20,7 @@ public function create_post($data){
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Image', $data['Image_name']); 
     $this->db->bind(':Owner_Id', $data['Owner_Id']); 
+    $this->db->bind(':post_create_date', $data['post_create_date']);
     $this->db->execute();
 
     $this->db->query('SELECT * FROM vehicle_item WHERE V_number= :V_number');

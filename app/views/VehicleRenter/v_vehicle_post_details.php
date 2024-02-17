@@ -7,8 +7,6 @@
 
             <div class="column4" >
                 <?php $product = $data;?>
-                <?php print_r($product);?>
-
                 <div class="box">
                     <div class="wrapper_v_product_details_sub">
 
@@ -60,9 +58,11 @@
                         <div class="cal" >
 
                             <?php
-// Encode $dates array as JSON
-$datesJson = json_encode($product['unavailableDates']);?>
-                            <div id='calendar' data-dates='<?php echo $datesJson; ?>'>
+                                // Encode $dates array as JSON
+                                $datesJson = json_encode($product['unavailableDates']);
+                                $post_create_dateJson = json_encode($product['post_create_date']);?>
+
+                            <div id='calendar' data-dates='<?php echo $datesJson; ?>' data-create-date = '<?php echo $post_create_dateJson; ?>'>
                             </div><br><br>
                             <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData">
                             <input type="hidden" id="hiddenInputDates" name="markedDates">

@@ -67,6 +67,8 @@ class V_post extends Controller
                 'Description' => isset($_POST['Description']) ? trim($_POST['Description']) : '',
                 'Image' => isset($_FILES['Image']) ? $_FILES['Image'] : [],
                 'Image_name' => time() . '_' . (isset($_FILES['Image']['name']) ? $_FILES['Image']['name'] : ''),
+                'post_create_date' => date("Y-m-d"),
+
 
 
 
@@ -193,7 +195,7 @@ class V_post extends Controller
         $data['Description'] = $items['Description'];
         $data['Image'] = $items['Image'];
         $data['Owner_Id'] = $items['Owner_Id'];
-        
+        $data['post_create_date'] =  $items['post_create_date'];
 
         $data['V_category_err'] = '';
         $data['V_name_err'] = '';
@@ -212,7 +214,7 @@ class V_post extends Controller
         // $id       = $data['Item_name'];
         // $title    = $data['Category'];
         // $content  = $data['Unit_price'];
-        // print_r($data);
+        print_r($data);
         // print_r("f");
         // }
         // $this->view('VehicleRenter/v_update_post', $data);
@@ -278,6 +280,7 @@ class V_post extends Controller
             $data['Description'] = $items['Description'];
             $data['Image'] = $items['Image'];
             $data['Owner_Id'] = $items['Owner_Id'];
+            $data['post_create_date'] =  $items['post_create_date'];
             
 
             $data['V_category_err'] = '';
@@ -333,8 +336,8 @@ public function update_calendar(){
             $data['Address'] = $items['Address'];
             $data['Description'] = $items['Description'];
             $data['Image'] = $items['Image'];
-            $data['Owner_Id'] = $items['Owner_Id'];
-            
+            $data['Owner_Id'] = $items['Owner_Id'];     
+            $data['post_create_date'] =  $items['post_create_date'];
 
             $data['V_category_err'] = '';
             $data['V_name_err'] = '';
@@ -393,6 +396,7 @@ public function update_calendar(){
             $data['Description'] = $items['Description'];
             $data['Image'] = $items['Image'];
             $data['Owner_Id'] = $items['Owner_Id'];
+            $data['post_create_date'] =  $items['post_create_date'];
             
 
             $data['V_category_err'] = '';
