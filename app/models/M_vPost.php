@@ -130,6 +130,7 @@ public function update_data($data){
         $this->db->query("UPDATE vehicle_item SET Description = :Description WHERE V_Id = :V_Id");
         $this->db->bind(':Description', $data['Description']);
         $this->db->bind(':V_Id', $data['V_Id']);
+        $this->db->execute();
         $result=$this->db->resultSet();     
         return $result;      
     }
@@ -171,5 +172,26 @@ public function update_data($data){
         }
         return true;
     }
+
+
+    public function update_charging_details($data){
+
+        $this->db->query("UPDATE vehicle_item SET V_name=:V_name ,Contact_Number = :Contact_Number, Address=:Address , Rental_Fee =:Rental_Fee, Charging_Unit = :Charging_Unit WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id', $data['V_Id']);
+        $this->db->bind(':V_name', $data['V_name']);
+        $this->db->bind(':Contact_Number', $data['Contact_Number']);
+        $this->db->bind(':Address', $data['Address']);
+        $this->db->bind(':Rental_Fee', $data['Rental_Fee']);
+        $this->db->bind(':Charging_Unit', $data['Charging_Unit']);
+        $this->db->execute();
+
+        $result=$this->db->resultSet();     
+        return $result;
+
+
+    }
+
+
+
 }
 

@@ -1036,9 +1036,9 @@ a.fc-more:hover {
 
  .wrapperCalendar {
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  min-width: 100%;
+  /* width: 100%; */
+  /* max-width: 100%; */
+  min-width: 50%;
   background-color: #eeffcb8f;
   margin: 25px auto 0 auto;
   border: 5px solid rgba(255, 255, 255, .2);

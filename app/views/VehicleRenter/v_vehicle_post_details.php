@@ -142,7 +142,7 @@ $datesJson = json_encode($product['unavailableDates']);?>
 
 <div class="Wrapper_Vehicle_Update_charge_data" id="myPopup">
 <span class="close" onclick="closePopup()">&times;</span>
-        <form class ="ddd" id="chargeForm" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
+        <form class ="ddd" id="chargeForm" action="<?php echo URLROOT ?>/V_post/update_charging_details" enctype="multipart/form-data" method="POST">
 
         
 
@@ -186,11 +186,20 @@ $datesJson = json_encode($product['unavailableDates']);?>
                     <br>
 
                         <select name="Charging_Unit" id="stype">
+     
+
+
+
                             <option disabled selected><?php echo $data['Charging_Unit']; ?> </option>
-                            <!-- <option value="Per Hour">Per Hour</option> -->
                             <option value="Per Day">Per Day</option>
                             <option value="Per Week">Per Week</option>
                             <option value="Per month">Per month</option>
+
+                            <?php if (!isset($_POST['Charging_Unit']) || empty($_POST['Charging_Unit'])) : ?>
+                                <option selected><?php echo $data['Charging_Unit']; ?></option>
+                            <?php else : ?>
+                                <option selected><?php echo $_POST['Charging_Unit']; ?></option>
+                            <?php endif; ?>
 
                         </select>
                     <span class="invalid"><?php if ($data) {echo $data['Charging_Unit_err'];}?></span>
@@ -198,6 +207,13 @@ $datesJson = json_encode($product['unavailableDates']);?>
 
                 </div>
             </div>
+
+            <input type="hidden"  name="V_Id" value="<?php echo $data['V_Id']; ?>">
+
+
+
+
+
 
    
       <button type="submit">Submit</button>
