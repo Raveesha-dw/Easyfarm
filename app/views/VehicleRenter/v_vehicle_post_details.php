@@ -11,8 +11,7 @@
                     <div class="wrapper_v_product_details_sub">
 
                         <p><b> <?php echo $product['V_category']; ?> for Renting : <?php echo $data['V_number']; ?></b></p><br>
-                        <?php //TODO:Add the colomn for the database -->> post created time ?>
-                        <p> Posted on 02 Jan 10:04 am, <?php echo $product['Address']; ?></p>
+                        <p> Posted on <?php echo $product['post_create_date']; ?>, <?php echo $product['Address']; ?></p>
 
                         <section id="vehicleDetails" class="section-p1">
                             <div class="single-pro-image">

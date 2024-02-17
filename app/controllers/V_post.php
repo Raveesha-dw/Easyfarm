@@ -67,6 +67,7 @@ class V_post extends Controller
                 'Description' => isset($_POST['Description']) ? trim($_POST['Description']) : '',
                 'Image' => isset($_FILES['Image']) ? $_FILES['Image'] : [],
                 'Image_name' => time() . '_' . (isset($_FILES['Image']['name']) ? $_FILES['Image']['name'] : ''),
+                // TODO:have to put the date of plan activating
                 'post_create_date' => date("Y-m-d"),
 
 
@@ -214,7 +215,7 @@ class V_post extends Controller
         // $id       = $data['Item_name'];
         // $title    = $data['Category'];
         // $content  = $data['Unit_price'];
-        print_r($data);
+        // print_r($data);
         // print_r("f");
         // }
         // $this->view('VehicleRenter/v_update_post', $data);
@@ -226,17 +227,23 @@ class V_post extends Controller
 
     public function delete_product()
     {
-        // print_r("djd");
-        // $this = self::$this;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $itemId = $_POST['Item_Id'];
-            $this->v_postModel->delete_data($itemId);
-            $products = $this->v_postModel->get_data($_SESSION['user_ID']);
+
+            $data =[
+                'V_Id' => trim($_POST['V_Id']),
+            ];
+
+            $this->v_postModel->delete_data( $data);
+
+
+
+            redirect("V_post/created_post");
+            // $products = $this->v_postModel->get_data($_SESSION['user_ID']);
             // print($products);
             // var_dump($products);
             // header('Location: '.URLROOT.'/Pages/created_post');
             // exit;
-            $this->view('VehicleRentor/v_createdpost', $products);
+            // $this->view('VehicleRentor/v_createdpost', $products);
 
             // print_r($itemId);
             // header('Location: ' . URLROOT . '/Pages/created_post');

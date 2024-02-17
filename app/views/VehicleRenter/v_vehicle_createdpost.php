@@ -51,8 +51,8 @@
                                     <!-- <button class ="btn2"><a   href="http://localhost/Easyfarm/V_post/updatepost">update</a></button> -->
                                     <!-- <p>Update  </p>
                                     </a> -->
-                                <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
-                                    <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
+                                <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/V_post/delete_product">
+                                    <input type="hidden"  name="V_Id" value="<?php echo $product->V_Id; ?>">
                                     <button  type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
                                 </form>
                             </div>

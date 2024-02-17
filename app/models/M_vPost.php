@@ -7,7 +7,7 @@ public function __construct(){
 
 
 public function create_post($data){
-    
+
     $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id,post_create_date) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id,:post_create_date)');
     
     $this->db->bind(':V_category', $data['V_category']); 
@@ -102,7 +102,7 @@ public function update_data($data){
 
     public function delete_data($data){
         $this->db->query("DELETE FROM vehicle_item WHERE V_Id = :V_Id");
-        $this->db->bind(':V_Id', $data);
+        $this->db->bind(':V_Id', $data['V_Id']);
         $this->db->execute();
     }
 
