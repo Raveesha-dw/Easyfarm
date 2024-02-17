@@ -46,14 +46,13 @@
                             <div class="button-n">
                                 <input  type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
 
-                                    <button class ="btn2">
-                                        <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">update</a></button>
-                                    <!-- <button class ="btn2"><a   href="http://localhost/Easyfarm/V_post/updatepost">update</a></button> -->
-                                    <!-- <p>Update  </p>
-                                    </a> -->
-                                <form  onsubmit="showRemoveConfirmation( );" method="post" action="<?php echo URLROOT ?>/V_post/delete_product">
-                                    <input type="hidden"  name="V_Id" value="<?php echo $product->V_Id; ?>">
-                                    <button  type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
+                                <button class ="btn2">
+                                    <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">update</a></button>
+                  
+
+                                 <form onsubmit="return showRemoveConfirmation();" method="post" action="<?php echo URLROOT ?>/V_post/delete_product">
+                                    <input type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
+                                    <button type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
                                 </form>
                             </div>
 
@@ -67,10 +66,6 @@
 
 
 <script>
-    // let subMenu = document.getElementById("subMenu");
-    // function toggleMenu(){
-    //     subMenu.classList.toggle("open-menu");
-    // }
 
 
 

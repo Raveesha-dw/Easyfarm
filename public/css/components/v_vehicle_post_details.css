@@ -455,6 +455,8 @@
 
 .wrapperCalendar #saveChangesButton:hover {
     background-color: var(--light-green);
+    animation-name: example-hover;
+    animation-duration: 0.5s;
 
 }
 
@@ -759,4 +761,29 @@ width: 300px;
     width: 50%;
 }
 
+/* Define the default animation */
+/* @keyframes example {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+} */
+
+/* Apply the default animation to the class */
+.wrapper_v_product_details_sub {
+  animation-name: example;
+  animation-duration: 1s;
+}
+
+/* Define the hover animation */
+@keyframes example-hover {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Change the animation when the mouse hovers over the class */
+.wrapper_v_product_details_sub:hover {
+  animation-name: example-hover;
+  animation-duration: 0.5s; /* Adjust duration as needed */
+}
 

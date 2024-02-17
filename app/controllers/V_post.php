@@ -104,9 +104,9 @@ class V_post extends Controller
             if (empty($data['Contact_Number'])) {
                 $data['Contact_Number_err'] = 'Please enter the Contact Number';
             } 
-            // elseif (strlen($data['Contact_Number']) <= 10) {
-            //     $data['Contact_Number_err'] = 'Contact Number must be 10 characters long';
-            // }
+            elseif (strlen($data['Contact_Number']) != 10) {
+                $data['Contact_Number_err'] = 'PLease enter the valid Contact Number';
+            }
 
 
             if (empty($data['Rental_Fee'])) {
@@ -114,7 +114,7 @@ class V_post extends Controller
 
             }
             if (empty($data['Charging_Unit'])) {
-                $data['Charging_Unit'] = 'Please enter the Charging_Unit';
+                $data['Charging_Unit'] = 'Please select the Charging_Unit';
 
             }
  
@@ -139,7 +139,9 @@ class V_post extends Controller
 
                 } else {die('something went wrong');}
             } else {
-                ($this->view('VehicleRenter/v_vehicle_create_post', $data));
+                $v_Categories =  $this->v_postModel->get_category();
+                $data['v_Categories'] = $v_Categories;
+                $this->view('VehicleRenter\v_vehicle_create_post', $data);
             }
 
         }

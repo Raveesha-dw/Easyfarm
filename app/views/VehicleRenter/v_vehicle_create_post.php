@@ -27,6 +27,8 @@
                 <?php foreach ($v_Categories as $v_Category): ?>
                     <option value="<?php echo htmlspecialchars($v_Category->Category_name); ?>"><?php echo htmlspecialchars($v_Category->Category_name); ?></option>
                 <?php endforeach; ?>
+
+
                 
             </select>
 
@@ -36,7 +38,7 @@
             <div class ="sitem">
                 <label for="Item"><b>Vehicle number</b></label>
             <br>
-                <input id="sitem_name" name="V_number" type="textbox" placeholder="Enter the Vehicle number" required value="" ><br/>
+                <input id="sitem_name" name="V_number" type="textbox" placeholder="Enter the Vehicle number" required value="<?php if ($data) {echo $data['V_number'];}?>" ><br/>
                 <span class="invalid"><?php if ($data) {echo $data['V_number_err'];}?></span>
             </div>
 
@@ -45,7 +47,7 @@
             <div class ="sitem">
                 <label for="Item"><b>Owner Name</b></label>
             <br>
-                <input id="sitem_name" name="V_name" type="textbox" placeholder="Enter the Vehicle Name" required value="" ><br/>
+                <input id="sitem_name" name="V_name" type="textbox" placeholder="Enter the Vehicle Name" required value="<?php if ($data) {echo $data['V_name'];}?>" ><br/>
                 <span class="invalid"><?php if ($data) {echo $data['V_name_err'];}?></span>
 
             </div>
@@ -53,17 +55,17 @@
             <div class ="sitem">
                 <label for="Item"><b>Contact number</b></label>
             <br>
-                <input id="sitem_name" name="Contact_Number" type="textbox" placeholder="Enter the Contact number" required value="" ><br/>
+                <input id="sitem_name" name="Contact_Number" type="textbox" placeholder="Enter the Contact number" required value="<?php if ($data) {echo $data['Contact_Number'];}?>" ><br/>
                 <span class="invalid"><?php if ($data) {echo $data['Contact_Number_err'];}?></span>
             </div>
 
             <div class="saddress">
                 <b>Address</b>
                 <br>
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line3" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" value="<?php if ($data) {echo $data['Address'];}?>" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" value="<?php if ($data) {echo $data['Address'];}?>" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line3" value="<?php if ($data) {echo $data['Address'];}?>" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" value="<?php if ($data) {echo $data['Address'];}?>" >
 
 
             </div>
@@ -72,7 +74,7 @@
                 <div class="iii">
                 <label for ="stock"> <b>Rental Fee</b></label>
                 <br>
-                <input id="size" name="Rental_Fee" type="number" step="1" min = 0 placeholder="Rental Fee"  required value="">
+                <input id="size" name="Rental_Fee" type="number" step="1" min = 0 placeholder="Rental Fee"  required value="<?php if ($data) {echo $data['Rental_Fee'];}?>">
                 <span class="invalid"><?php if ($data) {echo $data['Rental_Fee_err'];}?></span>
                 </div>
                 <div class="sdropdown2">
@@ -86,6 +88,12 @@
                             <option value="Per Week">Per Week</option>
                             <option value="Per month">Per month</option>
 
+                            <?php if (!isset($_POST['Charging_Unit']) || empty($_POST['Charging_Unit'])) : ?>
+                                <option selected><?php echo $data['Charging_Unit']; ?></option>
+                            <?php else : ?>
+                                <option selected><?php echo $_POST['Charging_Unit']; ?></option>
+                            <?php endif; ?>
+                            
                         </select>
                     <span class="invalid"><?php if ($data) {echo $data['Charging_Unit_err'];}?></span>
 
@@ -129,7 +137,7 @@
             <div class="sDescription">
                 <b>Descripition</b>
                 <br>
-                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="">
+                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" >>
                 <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
             </div>
 
@@ -143,10 +151,7 @@
                 <b>Upload image</b>
                 <br>
                 <br>
-                <!-- <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images"> -->
-                <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
+                <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images" required >
                 <span class="invalid"><?php if ($data) {echo $data['Image_err'];}?></span>
             </div>
             <br>
@@ -171,3 +176,13 @@
 
 <!-- <script src="<?php echo URLROOT ?>\public\js\Vpost_update_calendar.js"></script> -->
 <script src="<?php echo URLROOT ?>\public\js\Vpost_calender.js"></script>
+<script>
+    document.getElementById('size').addEventListener('input', function() {
+        var rentalFeeInput = document.getElementById('size');
+        if (rentalFeeInput.value < 0) {
+            rentalFeeInput.value = 0;
+            // Alternatively, you can display a message to the user
+            alert('Rental fee cannot be negative');
+        }
+    });
+</script>

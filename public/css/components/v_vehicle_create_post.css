@@ -9,7 +9,7 @@
     min-height: 100vh;
     margin-left: 25%;
     margin-top: 15px;
-    background-color: #c3ffc463;
+    /* background-color: #c3ffc463; */
    
 }
 
@@ -151,7 +151,7 @@ width: 300px;
     border-radius: 10px;
     background-color: #cbffce8f;
 
-
+ background-image: linear-gradient(to right, #cbffce8f, #f1f4f18f);
 
 
 }
@@ -201,8 +201,7 @@ width: 300px;
     width: 300px;
     
 }
-.Wrapper_Vehicle_Create_Post #create{
-    
+.Wrapper_Vehicle_Create_Post #create {
     margin-left: 10%;
     width: 150px;
     height: 50px;
@@ -210,8 +209,24 @@ width: 300px;
     background-color: rgba(255, 10, 10, 0.85);
     font-size: larger;
     cursor: pointer;
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    color: white; /* Text color */
     
+  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+
+    /* Gradient background */
+    background-image: linear-gradient(to right, #bdec87, #9dff2c);
+
+    /* Hover effect */
 }
+.Wrapper_Vehicle_Create_Post #create:hover {
+    transform: translateY(-3px); /* Move button slightly up */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Change box shadow on hover */
+}
+
 .Wrapper_Vehicle_Create_Post .imgdelivery{
     margin-left: 2%;
     width: 98%;
@@ -227,4 +242,85 @@ width: 300px;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Error message styles */
+.Wrapper_Vehicle_Create_Post .invalid {
+    color: #ff0000;
+    font-size: 14px;
+    transition: all 0.3s ease; /* Animation transition */
+}
+
+/* Add animation when hovering */
+.Wrapper_Vehicle_Create_Post .invalid:hover {
+    color: #ff6666; /* Change text color on hover */
+    font-size: 16px; /* Increase font size on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Add animation to input boxes when hovering */
+.Wrapper_Vehicle_Create_Post input:hover {
+    border-color: #7bffac; /* Change border color on hover */
+    box-shadow: 0 0 10px #66ff85; /* Add box shadow on hover */
+}
+
+/* Add additional styling for input boxes */
+.Wrapper_Vehicle_Create_Post input {
+    border: 2px solid #ccc; /* Default border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for better spacing */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+/* Style for placeholder text */
+.Wrapper_Vehicle_Create_Post input::placeholder {
+    color: #999; /* Placeholder text color */
+}
+
+/* Style for select dropdown */
+.Wrapper_Vehicle_Create_Post select {
+    border: 2px solid #ccc; /* Default border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for better spacing */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+/* Style for select dropdown arrow */
+.Wrapper_Vehicle_Create_Post select::-ms-expand {
+    display: none; /* Hide default arrow on IE Edge */
+}
+
+.Wrapper_Vehicle_Create_Post select:hover {
+    border-color: #7bffac; /* Change border color on hover */
+    box-shadow: 0 0 10px #66ff85; /* Add box shadow on hover */
+}
+
+/* Additional styling for buttons */
+.Wrapper_Vehicle_Create_Post button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for better spacing */
+    cursor: pointer; /* Cursor pointer on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+.Wrapper_Vehicle_Create_Post button:hover {
+    background-color: #45a049; /* Darker green background color on hover */
+}
 
