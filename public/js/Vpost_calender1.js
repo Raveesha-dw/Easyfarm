@@ -3,9 +3,11 @@
 
 $(document).ready(function() {
     // console.log(jsonData)
- 
+ // Inside calendar.js
+console.log(lastday); // This will log the month data to the console
+
     var today = moment().startOf('day'); // Get today's date
-    var threeMonthsLater = moment().add(3, 'months').endOf('day'); // Get date three months later
+    var threeMonthsLater = lastday; // Get date three months later
 
     var selectedDates = [];// Array to store selected dates
     var unavailableDates = jsonData;

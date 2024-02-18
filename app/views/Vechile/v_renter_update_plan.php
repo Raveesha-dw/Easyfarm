@@ -3,7 +3,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
-<!-- <?php print_r($data)?> -->
+<?php print_r($data)?>
 <div class ="shero3">
     <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id']-1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
@@ -32,7 +32,113 @@
                 <h2 class="list__label">REMAING LISTING :</h2>
                 <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
             </div>
-        <div class="ee">
+
+            <div class="zx">
+                    <?php if ($data['plan_id'] != $data[0]['plan_id']) : ?>
+                        <div class="center1">
+                            <div class="front-face">
+                                <div class="contents front">
+                                    <p>
+                                        <?php echo $data[0]['name'] ?>
+                                    </p>
+                                    <span>Easy Farm</span>
+                                </div>
+                            </div>
+                            <div class="back-face">
+                                <div class="contents back">
+
+
+                                    <div class="wrapperseller1">
+                                        <h2><?php echo $data[0]['name'] ?></h2>
+
+                                        <div class="plan-details">
+                                            <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
+                                            <ul>
+                                                <li>Unlimited access for <?php echo $data[0]['duration'] ?> months!</li>
+                                                <li>List up to <?php echo $data[0]['listing_limit'] ?> items!</li>
+                                                <li>All for just ₹<?php echo $data[0]['price'] ?>!</li>
+                                            </ul>
+                                        </div>
+
+                                        <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($data['plan_id'] != $data[1]['plan_id']) : ?>
+                        <div class="center2">
+                            <div class="front-face">
+                                <div class="contents front">
+                                    <p>
+                                        <?php echo $data[1]['name'] ?>
+                                    </p>
+                                    <span>Easy Farm</span>
+                                </div>
+                            </div>
+                            <div class="back-face">
+                                <div class="contents back">
+
+
+
+                                    <div class="wrapperseller1">
+                                        <h2><?php echo $data[1]['name'] ?></h2>
+
+                                        <div class="plan-details">
+                                            <p class="highlight">Exclusive <?php echo $data[1]['duration'] ?>-Month Plan</p>
+                                            <ul>
+                                                <li>Unlimited access for <?php echo $data[1]['duration'] ?> months!</li>
+                                                <li>List up to <?php echo $data[1]['listing_limit'] ?> items!</li>
+                                                <li>All for just ₹<?php echo $data[1]['price'] ?>!</li>
+                                            </ul>
+                                        </div>
+
+                                        <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($data['plan_id'] != $data[2]['plan_id']) : ?>
+                        <div class="center3">
+                            <div class="front-face">
+                                <div class="contents front">
+                                    <p>
+                                        <?php echo $data[2]['name'] ?>
+                                    </p>
+                                    <span>Easy Farm</span>
+                                </div>
+                            </div>
+                            <div class="back-face">
+                                <div class="contents back">
+
+
+                                    <div class="wrapperseller1">
+                                        <h2><?php echo $data[2]['name'] ?></h2>
+
+                                        <div class="plan-details">
+                                            <p class="highlight">Exclusive <?php echo $data[2]['duration'] ?>-Month Plan</p>
+                                            <ul>
+                                                <li>Unlimited access for <?php echo $data[2]['duration'] ?> months!</li>
+                                                <li>List up to <?php echo $data[2]['listing_limit'] ?> items!</li>
+                                                <li>All for just ₹<?php echo $data[2]['price'] ?>!</li>
+                                            </ul>
+                                        </div>
+
+                                        <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+        <!-- <div class="ee">
 
         <?php if ($data['plan_id'] != $data[0]['plan_id']): ?> 
             <div class="wrapperseller1">
@@ -49,8 +155,8 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
-         <?php endif; ?> 
-         <?php if ($data['plan_id'] != $data[1]['plan_id']): ?> 
+         <?php endif; ?>  -->
+         <!-- <?php if ($data['plan_id'] != $data[1]['plan_id']): ?> 
             <div class="wrapperseller2">
             <h2><?php echo $data[1]['name'] ?></h2>
             <div class="plan-details">
@@ -64,8 +170,8 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
-        <?php endif; ?> 
-        <?php if ($data['plan_id'] != $data[2]['plan_id']): ?> 
+        <?php endif; ?>  -->
+        <!-- <?php if ($data['plan_id'] != $data[2]['plan_id']): ?> 
             <div class="wrapperseller3">
             <h2><?php echo $data[2]['name'] ?></h2>
             <div class="plan-details">
@@ -79,9 +185,9 @@
     
             <p class="cta">🎁 **Limited Time Offer!** Grab Yours Now!</p>
             </div>
-        <?php endif; ?> 
+        <?php endif; ?>  -->
 
-        </div>
+        <!-- </div> -->
         <div class="plan_button">
         <?php if ($data['plan_id'] != $data[0]['plan_id']): ?> <button class="c1" onclick="showPopup(0)">Purchase Now</button>       <?php endif; ?>          
         <?php if ($data['plan_id'] != $data[1]['plan_id']): ?>   <button class="c2" onclick="showPopup(1)">Purchase Now</button>     <?php endif; ?> 
@@ -101,7 +207,30 @@
 
 
     </div>
+
+
+
+
+
+
        <!-- <?php $myVariable = "2024-8-4";?> -->
+       <?php
+// Assuming $data['plan_id'] contains the plan ID value
+$planId = $data['plan_id'];
+?>
+
+<script>
+    // Assuming $data['plan_id'] contains the plan ID value
+    var planId = <?php echo json_encode($data['plan_id']); ?>;
+</script>
+
+
+
+
+
+
+
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
@@ -110,12 +239,35 @@
    dayjs.extend(dayjs_plugin_duration);
 
 function activateCountdown(element, dateString) {
-    const targetDate = dayjs(dateString);
+    var planId = <?php echo json_encode($data['plan_id']); ?>;
+    let targetDate;
+
+if (planId == 2) {
+    // Condition 1: planId is not equal to 2
+    targetDate = dayjs(dateString).add(6, 'month').subtract(3, 'day');
+} else if (planId == 1) {
+    // Condition 2: planId is equal to 3
+    targetDate = dayjs(dateString);
+} else {
+    // Condition 3: planId is equal to 2 and not equal to 3
+    targetDate = dayjs(dateString).add(6, 'month').subtract(3, 'day');
+}
+
+
+    // const targetDate = dayjs(dateString);
+    // const targetDate = dayjs(dateString).subtract(3, 'month').add(2, 'days');
+    // const targetDate = dayjs(dateString).add(6, 'month').subtract(3, 'day');
+
+
+
     element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
     
     setInterval(() => {
         const now = dayjs();
         const duration = dayjs.duration(targetDate.diff(now));
+        // if (duration.asMonths() > 3) {
+        //     duration = dayjs.duration({ months: 3 });
+        // }
         element.querySelector(".until__numeric--months").textContent = duration.months().toString().padStart(2, '0');
         element.querySelector(".until__numeric--days").textContent = duration.days().toString().padStart(2, '0');
         element.querySelector(".until__numeric--hours").textContent = duration.hours().toString().padStart(2, '0');

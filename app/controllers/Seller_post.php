@@ -28,13 +28,25 @@ public function cretesession3(){
 }
 
 public function creating(){
-   
+//    print_r($_SESSION['user_ID']);
+
+   $data=$this->sellerModel->user_details($_SESSION['user_ID']);
+   $registerDate = $data[0]->Register_date;
+   $futureDate = date('Y-m-d', strtotime($registerDate . ' +6 months'));
+   print_r($futureDate);
+   print_r( $registerDate);
+
+
     // print_r($_SESSION['user_ID']);
     // print_r($_SESSION['plan_id']);
     if ($_SESSION['plan_id']==''){
         $data= $this->sellerModel->get_dataplan3();
         $this->view('seller/v_register_plan1',$data);
 
+    }
+
+    elseif($registerDate == $futureDate){
+        $this->view('seller/v_update_plan');
     }
     else {
         $data=$this->sellerModel->getlisting_count();

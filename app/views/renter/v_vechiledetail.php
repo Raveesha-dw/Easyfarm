@@ -114,8 +114,14 @@
             </tr>
         </table>
 
+        <?php $lastday = $data['lastday']; ?>
+
+<script>
+    var lastday = <?php echo json_encode($lastday); ?>;
+</script>
 
 
+      
     </div>
 
     <form id="submitForm" action="<?php echo URLROOT ?>/Vechile_orders/orders" method="POST">
