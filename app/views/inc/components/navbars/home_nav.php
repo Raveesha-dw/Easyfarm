@@ -53,17 +53,17 @@
                         <div class="user-menu">
                             <div class="user-info">
                                 <a href="<?php echo URLROOT?>/Pages/Profile" class="sub-link-menu">
-                                    <h2>View Profile</h2>
+                                    <h2><i class="fa-solid fa-user"></i> View Profile </h2>
                                     <span>></span>
                                 </a>
 
                                 <a href="<?php echo URLROOT?>/Pages/dashboard" class="sub-link-menu">
-                                    <h2>Dashboard</h2>
+                                    <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
                                     <span>></span>
                                 </a>
 
                                 <a href="<?php echo URLROOT?>/Users/logout" class="sub-link-menu">
-                                    <h2>Logout</h2>
+                                    <h2><i class="fa-solid fa-right-from-bracket"></i>Logout</h2>
                                     <span>></span>
                                 </a>
                             </div>
