@@ -9,7 +9,7 @@
     }
 
     public function details()
-   
+
     {
         $data = [
             'selectedDates' => '',
@@ -27,36 +27,36 @@
 
 
         ];
-        $data1=$this->vechile_ordersmodel->getdata(91);
-        $data2=$this->vechile_ordersmodel->getdatE(91);
+        $data1 = $this->vechile_ordersmodel->getdata(91);
+        $data2 = $this->vechile_ordersmodel->getdatE(91);
         $owner_id = $data1[0]->Owner_Id;
 
-        $data3=$this->vechile_ordersmodel->getplandata($owner_id);
-        
-        $plan_id=$data3[0]->plan_id;
-        $registed_date=$data3[0]->Register_date;
+        $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
+
+        $plan_id = $data3[0]->plan_id;
+        $registed_date = $data3[0]->Register_date;
         print_r($registed_date);
 
 
 
         $timestamp = strtotime($registed_date);
 
-// Add the specified number of months to the timestamp
-
-       
+        // Add the specified number of months to the timestamp
 
 
 
 
-        
-        $data4=$this->vechile_ordersmodel->getplandmonth($plan_id);
-       
-        $month=$data4[0]->duration;
+
+
+
+        $data4 = $this->vechile_ordersmodel->getplandmonth($plan_id);
+
+        $month = $data4[0]->duration;
         $data['month'] = $month;
         $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
-        $data['lastday']=$new_date;
-        
-        $data = array_merge($data1, $data2,$data);
+        $data['lastday'] = $new_date;
+
+        $data = array_merge($data1, $data2, $data);
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
     }
@@ -70,7 +70,7 @@
 
             $data = [
                 'selectedDates' => isset($_POST['selectedDates']) ? trim($_POST['selectedDates']) : '',
-                
+
                 'name' => isset($_POST['name']) ? trim($_POST['name']) : '',
                 'location' =>  isset($_POST['location']) ? trim($_POST['location']) : '',
                 'number' => isset($_POST['number']) ? trim($_POST['number']) : '',
@@ -94,22 +94,47 @@
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
                 // print_r($data);
-                $data1=$this->vechile_ordersmodel->getdata(91);
+                $data1 = $this->vechile_ordersmodel->getdata(91);
                 foreach ($data1 as $object) {
                     $data2 = (array) $object;
                 }
-                
-                $data = array_merge($data2,$data);
-                if($this->vechile_ordersmodel->update_data($data)){
-                    
+
+                $data = array_merge($data2, $data);
+                if ($this->vechile_ordersmodel->update_data($data)) {
                 }
             } else {
 
-                $data1=$this->vechile_ordersmodel->getdata(91);
-                
-                $data2=$this->vechile_ordersmodel->getdatE(91);
-               
-                $data = array_merge($data1, $data2,$data);
+                $data1 = $this->vechile_ordersmodel->getdata(91);
+
+                $data2 = $this->vechile_ordersmodel->getdatE(91);
+                $owner_id = $data1[0]->Owner_Id;
+
+                $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
+
+                $plan_id = $data3[0]->plan_id;
+                $registed_date = $data3[0]->Register_date;
+                print_r($registed_date);
+
+
+
+                $timestamp = strtotime($registed_date);
+
+                // Add the specified number of months to the timestamp
+
+
+
+
+
+
+
+                $data4 = $this->vechile_ordersmodel->getplandmonth($plan_id);
+
+                $month = $data4[0]->duration;
+                $data['month'] = $month;
+                $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
+                $data['lastday'] = $new_date;
+
+                $data = array_merge($data1, $data2, $data);
                 ($this->view('renter/v_vechiledetail', $data));
             }
 
