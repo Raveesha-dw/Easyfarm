@@ -12,8 +12,7 @@ console.log(lastday); // This will log the month data to the console
     var selectedDates = [];// Array to store selected dates
     var unavailableDates = jsonData;
 
-
-
+   
 
     $('#calendar').fullCalendar({
 
@@ -25,6 +24,8 @@ console.log(lastday); // This will log the month data to the console
                 color: 'red ' // Background color of the event
             };
         }),
+        
+        
 
 
         // Your FullCalendar options here...
@@ -35,12 +36,15 @@ console.log(lastday); // This will log the month data to the console
         validRange: {
             start: today, // Set the start of the valid range to today
             end: threeMonthsLater // Set the end of the valid range to three months later
+
+            
         },
 
 
 
         select: function(start, end, jsEvent, view) {
             // Store the selected dates
+            
             var currentDate = moment(start);
             while (currentDate.isBefore(end, 'day')) {
                 var dateStr = currentDate.format('YYYY-MM-DD');
@@ -52,6 +56,7 @@ console.log(lastday); // This will log the month data to the console
                     
                     return false;
                 }
+               
                 
 
 
