@@ -35,7 +35,7 @@
 
         $plan_id = $data3[0]->plan_id;
         $registed_date = $data3[0]->Register_date;
-        print_r($registed_date);
+       
 
 
 
@@ -113,7 +113,7 @@
 
                 $plan_id = $data3[0]->plan_id;
                 $registed_date = $data3[0]->Register_date;
-                print_r($registed_date);
+                
 
 
 
