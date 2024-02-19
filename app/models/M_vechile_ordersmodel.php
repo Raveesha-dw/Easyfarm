@@ -56,26 +56,16 @@ foreach ($dates as $date) {
             
             return true;
 
-
-
-
-
-
-        
-        // Execute the query
-       
-
-
-
-
-
-
     } else {
         // Handle the case where $_SESSION['user_ID'] is not set
         // You may want to log an error or handle it based on your application's logic
         echo "Error: Session user_ID is not set";
     }
 }
+
+
+
+
 
 
 public function getdata($V_Id){
@@ -90,7 +80,18 @@ public function getdate($V_Id){
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
 }
-
+ public function getplandata($owner_id){
+    $this->db->query('SELECT * FROM reg_vehicleowner WHERE reg_vehicleowner.U_Id = :U_Id');
+    $this->db->bind(':U_Id',$owner_id); 
+    return $this->db->resultSet();
+ }
+ public function getplandmonth($plan_id){
+    $this->db->query('SELECT * FROM v_plandetails WHERE v_plandetails.plan_id = :plan_id');
+    $this->db->bind(':plan_id',$plan_id); 
+   
+    return $this->db->resultSet();
+    
+ }
 
 
 }

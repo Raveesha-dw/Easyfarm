@@ -40,9 +40,9 @@
                     <a href="<?php echo URLROOT?>/Pages/index">Forum</a>
                 </div> -->
 
-                <div class="nav-parts">
-                    <a href="<?php echo URLROOT?>/Pages/index">Vehicle Renting</a>
-                </div>
+            <div class="nav-parts">
+                <a href="<?php echo URLROOT?>/Pages/ve_home">Vehicle Renting</a>
+            </div>
 
             <?php
             if(!empty($_SESSION['user_email'])){
@@ -62,11 +62,10 @@
                                         <span>></span>
                                     </a>
 
-                                    <a href="<?php echo URLROOT?>/Users/logout" class="sub-link-menu">
-                                        <h2>Logout</h2>
-                                        <span>></span>
-                                    </a>
-                                </div>
+                                <a href="<?php echo URLROOT?>/Users/logout" class="sub-link-menu">
+                                    <h2><i class="fa-solid fa-right-from-bracket"></i>Logout</h2>
+                                    <span>></span>
+                                </a>
                             </div>
                         </div>
                 

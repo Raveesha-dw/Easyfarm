@@ -19,6 +19,14 @@ public function get_dataplan3(){
 
 }
 
+public function user_details($seller_ID){
+    $this->db->query("SELECT * FROM reg_seller WHERE U_Id = :seller_ID");
+    $this->db->bind(':seller_ID', $seller_ID);
+    $result=$this->db->resultSet();
+    // print_r($result);
+    return $result;
+}
+
 public function create_post($data){
     $this->db->query('INSERT INTO item (Item_name, Category, Expiry_date, Unit_price, Stock_size, DeliveryMethod, Description, Unit_type, Unit_size, Image, seller_ID) VALUES (:Item_name, :Category, :Expiry_date, :Unit_price, :Stock_size, :DeliveryMethod, :Description, :Unit_type, :Unit_size, :Image, :seller_ID)');
     

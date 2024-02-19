@@ -114,8 +114,14 @@
             </tr>
         </table>
 
+        <?php $lastday = $data['lastday']; ?>
+
+<script>
+    var lastday = <?php echo json_encode($lastday); ?>;
+</script>
 
 
+      
     </div>
 
     <form id="submitForm" action="<?php echo URLROOT ?>/Vechile_orders/orders" method="POST">
@@ -176,7 +182,7 @@
                     <div class="response"></div>
 
                     <div id='calendar' data-date='<?php echo $jsonData; ?>'>
-                        <input type="hidden" id="hiddenInputDates" name="selectedDates">
+                        <input type="hidden" id="hiddenInputDates" name="selectedDates" required value="<?php echo $data['selectedDates']; ?>" >
 
                     </div>
                 </div>
@@ -188,7 +194,7 @@
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                              echo $data['name_err'];
-                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="" size="40" style="height: 40px" ;></td>
+                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="<?php echo $data['name']; ?>" size="40" style="height: 40px" ;></td>
 
 
                         </tr>
@@ -196,7 +202,7 @@
                             <td><label for="Pickup_location"><b>Pickup Location</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['location_err'];
-                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="" size="40" style="height: 40px" ;></td>
+                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo $data['location']; ?>" size="40" style="height: 40px" ;></td>
 
 
                         </tr>
@@ -204,7 +210,7 @@
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['number_err'];
-                                                        }  ?></span><input id="number" name="number" value="<?php echo $data[0]->Contact_Number; ?>" type="number" placeholder="Your Contact Number" required value="" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+                                                        }  ?></span><input id="number" name="number" value="<?php echo $data[0]->Contact_Number; ?>" type="number" placeholder="Your Contact Number" required value="<?php echo $data['number']; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
                         </tr>

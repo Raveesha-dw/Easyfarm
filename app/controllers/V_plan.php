@@ -122,6 +122,7 @@ public function update_details($id = null){
 
         
         $data = $this->vplanModel->get_dataplan( $_SESSION['user_ID']);
+        print_r($data);
         $data1  = get_object_vars($data[0]);
         $originalDate = $data1['Register_date'];
 

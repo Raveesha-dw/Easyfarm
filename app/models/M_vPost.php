@@ -56,6 +56,8 @@ public function get_data($Owner_Id){
 
 }
 
+
+
 public function getiteamdeatils(){
     
     $this->db->query("SELECT * FROM vehicle_item WHERE V_Id = :V_Id");

@@ -3,15 +3,16 @@
 
 $(document).ready(function() {
     // console.log(jsonData)
- 
+ // Inside calendar.js
+console.log(lastday); // This will log the month data to the console
+
     var today = moment().startOf('day'); // Get today's date
-    var threeMonthsLater = moment().add(3, 'months').endOf('day'); // Get date three months later
+    var threeMonthsLater = lastday; // Get date three months later
 
     var selectedDates = [];// Array to store selected dates
     var unavailableDates = jsonData;
 
-
-
+   
 
     $('#calendar').fullCalendar({
 
@@ -23,6 +24,8 @@ $(document).ready(function() {
                 color: 'red ' // Background color of the event
             };
         }),
+        
+        
 
 
         // Your FullCalendar options here...
@@ -33,12 +36,15 @@ $(document).ready(function() {
         validRange: {
             start: today, // Set the start of the valid range to today
             end: threeMonthsLater // Set the end of the valid range to three months later
+
+            
         },
 
 
 
         select: function(start, end, jsEvent, view) {
             // Store the selected dates
+            
             var currentDate = moment(start);
             while (currentDate.isBefore(end, 'day')) {
                 var dateStr = currentDate.format('YYYY-MM-DD');
@@ -50,6 +56,7 @@ $(document).ready(function() {
                     
                     return false;
                 }
+               
                 
 
 
