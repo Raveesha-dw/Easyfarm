@@ -29,7 +29,7 @@
             </div>
 
                 <div class="nav-parts">
-                    <a href="<?php echo URLROOT?>/Pages/index">Marketplace</a>
+                    <a href="<?php echo URLROOT ?>/Home/get_product_details">Marketplace</a>
                 </div>
 
                 <div class="nav-parts">
