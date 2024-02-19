@@ -13,26 +13,36 @@ class Seller_post extends Controller{
         $this->sellerModel = $this->model('M_seller_post');
         
     }
+
+  
     // public function Index() {
     //     print_r('hello');
     // }
 
 public function cretesession3(){
     $data=$this->sellerModel->get_planid();
-    // print_r($data);
+    print_r($data);
     $_SESSION['plan_id']=$data[0]->plan_id;
     header("Location:http://localhost/Easyfarm/Seller_post/creating");
 
 }
 
 public function creating(){
+   
     // print_r($_SESSION['user_ID']);
     // print_r($_SESSION['plan_id']);
     if ($_SESSION['plan_id']==''){
-        // print_r("so");
-        $this->view('seller/v_register_plan1');
+        $data= $this->sellerModel->get_dataplan3();
+        $this->view('seller/v_register_plan1',$data);
 
-    }else{
+    }
+    else {
+        $data=$this->sellerModel->getlisting_count();
+        if ($data==0){
+            $this->view('seller/v_update_plan');
+        }
+    
+    else{
     $data=[
         
         'Item_name' => '',
@@ -61,7 +71,7 @@ public function creating(){
         'Unit_size_err'=>'',
 
     ];
-    $this->view('seller/v_create_post',$data);}
+    $this->view('seller/v_create_post',$data);}}
 
 }
 public  function create_post(){
@@ -116,7 +126,7 @@ public  function create_post(){
             // 'stock_err'=>'',
 
 
-                'seller_ID' => 59,
+                'seller_ID' => $_SESSION['user_ID'],
                 'Item_name' => isset($_POST['Item_name']) ? trim($_POST['Item_name']) : '',
                 'Unit_size' => isset($_POST['Unit_size']) ? trim($_POST['Unit_size']) : '',
                 'Category' => isset($_POST['Category']) ? trim($_POST['Category']) : '',
@@ -225,7 +235,7 @@ public  function create_post(){
             // }
             if ($this->sellerModel->create_post($data)){
                 // print_r($data);
-               
+               $data2=$this->sellerModel->update_listing($data['seller_ID']);
                 $data = $this->sellerModel->get_data($data['seller_ID']);
               
                 
@@ -263,7 +273,8 @@ public  function create_post(){
     public  function created_post(){
         
         
-        $data = $this->sellerModel->get_data(('59'));
+        $data = $this->sellerModel->get_data(($_SESSION['user_ID']));
+       
         $this->view('seller/v_createdpost', $data);
        
     }
@@ -278,8 +289,10 @@ public  function create_post(){
     
     public function update_Product(){
         // variable=columnname
+        
        
         $item1 =$this->sellerModel->getiteamdeatils();
+        // print_r($item1);
         $items  = get_object_vars($item1[0]);
         // $data=Array();
         // Print_r($items);
@@ -293,6 +306,7 @@ public  function create_post(){
         $data['Description']=$items['Description'];
         $data['Image']=$items['Image'];
         $data['Unit_size']=$items['Unit_size'];
+        $data['Unit_type']=$items['Unit_type'];
 
 
         // $data['item_id']=$items['Item_Id'];
@@ -460,7 +474,8 @@ public  function create_post(){
                     // $result= $this->sellerModel->update_data($data);
                    
                 
-                    $products = $this->sellerModel->get_data("59");
+                    $products = $this->sellerModel->get_data($_SESSION['user_ID']);
+                   
                    
                     // redirect("Seller_post/created_post");
                      $this->view('seller/v_createdpost',$products);
@@ -469,6 +484,7 @@ public  function create_post(){
                
                 else{
                     //$data     = get_object_vars($data[0]);
+                   
                  return $this->view('seller/v_update_post',$data);
                 }
     
@@ -487,7 +503,7 @@ public  function create_post(){
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $itemId = $_POST['Item_Id'];
                 $this->sellerModel->delete_data($itemId);
-                $products = $this->sellerModel->get_data("59");
+                $products = $this->sellerModel->get_data($_SESSION['user_ID']);
                     
                      $this->view('seller/v_createdpost',$products);
 

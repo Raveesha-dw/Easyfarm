@@ -38,6 +38,7 @@
     <!--Product List-->
     <section class="product-section container">
         <!-- <h2 class="title">Featured Products</h2> -->
+        <a href="<?php echo URLROOT?>/Vechile_orders/details">
             <div class="product-container">
                 <!-- Hardcode this part -->
                 
@@ -56,12 +57,7 @@
                         <h4> LKR100</h4>
                         <h4> 1 Hour</h4>
                     </div>
-                    <!-- <a href="#"><i class="fas fa-shopping-cart cart"></i></a> -->
                 </div>
-            
-                <?php
-                
-                ?>
             </div>
     </section>
 </div>

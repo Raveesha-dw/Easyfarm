@@ -26,6 +26,7 @@
 }
 
 main.table {
+    margin-top: 1%;
     width: 82vw;
     height: 90vh;
     background-color: #fff5;

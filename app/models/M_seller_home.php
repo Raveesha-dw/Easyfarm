@@ -58,6 +58,7 @@ public function get_itemids4($seller_ID){
 
 
 
+
 public function updateiteamdeatils2(){
     
     $this->db->query("UPDATE orders SET Status ='Cancelled' WHERE Order_ID = :Order_ID");

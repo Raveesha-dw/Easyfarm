@@ -1,7 +1,18 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
-<?php require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
+
+<?php
+//  require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'?>
+<div class="headebr">
+
+    <div>
+        <?php require APPROOT . '/views/inc/header.php'; ?>
+        <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+    </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<div class="container">
+        <?php require APPROOT . '/views/seller/a.php' ?>
+
+        <section class="home">
 <!-- <?php print_r($data);?> -->
 <div class="shero1">
     <form class ="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
@@ -258,6 +269,8 @@
         });
     });
 </script>
+<?php require APPROOT . '/views/inc/footer.php'; ?>   
+</section>
 
-    
-<?php require APPROOT . '/views/inc/footer.php'; ?>     
+</div>
+</div>  

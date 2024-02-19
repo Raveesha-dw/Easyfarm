@@ -16,7 +16,7 @@ class Seller_home extends Controller{
 
         // print_r($_SESSION['user_email']);
         // $data=Array();
-        $items=$this->sellerhomeModel->get_itemids1('59');
+        $items=$this->sellerhomeModel->get_itemids1($_SESSION['user_ID']);
        
             $this->view('seller/v_seller_home',$items);
 
@@ -24,7 +24,7 @@ class Seller_home extends Controller{
     }
     public function get_product_details2(){
         // $data=Array();
-        $items=$this->sellerhomeModel->get_itemids2('59');
+        $items=$this->sellerhomeModel->get_itemids2($_SESSION['user_ID']);
        
             $this->view('seller/v_seller_home_pending',$items);
 
@@ -32,7 +32,7 @@ class Seller_home extends Controller{
     }
     public function get_product_details3(){
         // $data=Array();
-        $items=$this->sellerhomeModel->get_itemids4('59');
+        $items=$this->sellerhomeModel->get_itemids4($_SESSION['user_ID']);
         
        
             $this->view('seller/v_seller_home_completed',$items);
@@ -45,14 +45,14 @@ class Seller_home extends Controller{
 
     public function update_status1(){
         $item1 =$this->sellerhomeModel->updateiteamdeatils1();
-        $items=$this->sellerhomeModel->get_itemids2('59');
+        $items=$this->sellerhomeModel->get_itemids2($_SESSION['user_ID']);
         $this->view('seller/v_seller_home_pending',$items);
 
     }
 
     public function update_status2(){
         $item1 =$this->sellerhomeModel->updateiteamdeatils2();
-        $items=$this->sellerhomeModel->get_itemids4('59');
+        $items=$this->sellerhomeModel->get_itemids4($_SESSION['user_ID']);
         $this->view('seller/v_seller_home_completed',$items);
 
     }

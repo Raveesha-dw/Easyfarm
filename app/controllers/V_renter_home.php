@@ -12,8 +12,10 @@ class V_renter_home extends Controller{
         
     }
 
-    public function get_details1(){
 
+    // renter navbar new arrival
+    public function get_details1(){
+print_r($_SESSION['user_ID']);
         
         $items=$this->renterhomeModel->get_itemids1($_SESSION['user_ID']);
        
@@ -21,19 +23,25 @@ class V_renter_home extends Controller{
 
       
     }
-    public function get_product_details2(){
+
+
+
+     // renter navbar pending
+    public function get_details2(){
         
-        $items=$this->renterhomeModel->get_itemids2('59');
+        $items=$this->renterhomeModel->get_itemids2($_SESSION['user_ID']);
        
-            $this->view('seller/v_seller_home_pending',$items);
+            $this->view('Vechile/v_renter_home_pending',$items);
 
       
     }
-    public function get_product_details3(){
+
+    // renter navbar 
+    public function get_details3(){
        
-        $items=$this->renterhomeModel->get_itemids4('59');
+        $items=$this->renterhomeModel->get_itemids4($_SESSION['user_ID']);
        
-            $this->view('seller/v_seller_home_completed',$items);
+            $this->view('Vechile/v_renter_home_completed',$items);
 
       
     }
@@ -42,16 +50,15 @@ class V_renter_home extends Controller{
 
     public function update_status1(){
         $item1 =$this->renterhomeModel->updateiteamdeatils1();
-        $items=$this->renterhomeModel->get_itemids2('59');
-        $this->view('seller/v_seller_home_pending',$items);
+        $items=$this->renterhomeModel->get_itemids2($_SESSION['user_ID']);
+        $this->view('Vechile/v_renter_home_pending',$items);
 
     }
 
     public function update_status2(){
         $item1 =$this->renterhomeModel->updateiteamdeatils2();
-        $items=$this->renterhomeModel->get_itemids4('59');
-        $this->view('seller/v_seller_home_completed',$items);
-
+        $items=$this->renterhomeModel->get_itemids4($_SESSION['user_ID']);
+        $this->view('Vechile/v_renter_home_completed',$items);
     }
 
   

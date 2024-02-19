@@ -26,6 +26,62 @@ body .fc {
 .fc-widget-content:active{
   color: red;
 }
+
+
+
+
+.fc-content{
+        background-color: darkcyan;
+        /* width:10px; */
+        /* height:10px; */
+}
+
+
+
+.disabled-text {
+  color: white;
+  background-color: red;
+  padding: 2px 5px; /* Adjust as needed */
+  border-radius: 4px; /* Optional: add rounded corners */
+}
+
+
+
+
+
+
+
+
+
+
+/* not select drag */
+/* .fc-day-grid-event, .fc-highlight {
+  pointer-events: none !important;
+} */
+/* .added-text {
+  color: rgb(215, 25, 25);
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .fc {
   direction:ltr;
   text-align:left

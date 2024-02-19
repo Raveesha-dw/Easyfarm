@@ -11,7 +11,8 @@
     border-collapse: collapse;
 }
 
-.itable-section thead th {
+.itable-section .table thead th {
+
     position: sticky;
     top: 0;
     background-color: darkseagreen;

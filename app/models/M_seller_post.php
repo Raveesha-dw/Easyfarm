@@ -5,12 +5,23 @@ public function __construct(){
     $this->db=new Database();
 }
 
+public function get_dataplan3(){
+    
+    $this->db->query("SELECT * FROM plandetails  ");
+  
+    $result=$this->db->resultSet();
+    // $this->db->execute();
+    // print_r($result);
+    return $result;
+    
+    // exit();
+
+
+}
 
 public function create_post($data){
+    $this->db->query('INSERT INTO item (Item_name, Category, Expiry_date, Unit_price, Stock_size, DeliveryMethod, Description, Unit_type, Unit_size, Image, seller_ID) VALUES (:Item_name, :Category, :Expiry_date, :Unit_price, :Stock_size, :DeliveryMethod, :Description, :Unit_type, :Unit_size, :Image, :seller_ID)');
     
-    $this->db->query('INSERT INTO item(seller_ID,Item_name,Category,Expiry_date,Unit_price,Stock_size,DeliveryMethod,Description,Unit_type,Unit_size,Image) VALUES(59,:Item_name,:Category, :Expiry_date, :Unit_price, :Stock_size, :DeliveryMethod, :Description, :Unit_type,:Unit_size, :Image)');
-    // print_r($data);
-    $this->db->bind(':Unit_size', $data['Unit_size']); 
     $this->db->bind(':Item_name', $data['Item_name']); 
     $this->db->bind(':Category', $data['Category']); 
     $this->db->bind(':Expiry_date', $data['Expiry_date']); 
@@ -19,11 +30,14 @@ public function create_post($data){
     $this->db->bind(':DeliveryMethod', $data['DeliveryMethod']); 
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Unit_type', $data['Unit_type']); 
+    $this->db->bind(':Unit_size', $data['Unit_size']); 
     $this->db->bind(':Image', $data['Image_name']); 
+    $this->db->bind(':seller_ID', $_SESSION['user_ID']);
+
     $this->db->execute();
     return true;
-
 }
+
 
 public function get_data($seller_ID){
     $this->db->query("SELECT * FROM item WHERE seller_ID = :seller_ID");
@@ -116,4 +130,19 @@ public function get_planid(){
     $result=$this->db->resultSet();
     return $result;
 }
+
+public function update_listing(){
+    $this->db->query("UPDATE reg_seller SET list_count = list_count - 1 WHERE U_Id = :user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $this->db->execute();
+    return true;
+}
+
+public function getlisting_count(){
+    $this->db->query("SELECT list_count FROM reg_seller WHERE reg_seller.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    return $result;
+}
+
 }

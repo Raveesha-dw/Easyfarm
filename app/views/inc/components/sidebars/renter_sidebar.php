@@ -1,6 +1,6 @@
 <!--Sidebar-->
             
-
+<!-- add new side bar -->
                 
 <div class ="sidebar-post">
                         <hr>

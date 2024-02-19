@@ -23,17 +23,17 @@
                     </script>
                     <script>
                         document.getElementById("order").addEventListener("click", function() {
-                             window.location.href = "#";
+                             window.location.href = "http://localhost/Easyfarm/V_renter_home/get_details1";
                             });
                     </script>
-                    <script>
+                    <!-- <script>
                         document.getElementById("inventory").addEventListener("click", function() {
                              window.location.href = "#";
                             });
-                    </script>
+                    </script> -->
                     <script>
                         document.getElementById("plan").addEventListener("click", function() {
-                             window.location.href = "#";
+                             window.location.href = "http://localhost/Easyfarm/V_plan/get_plan_details";
                             });
                     </script>
                     <script>
@@ -41,3 +41,7 @@
                              window.location.href = "http://localhost/Easyfarm/V_post/created_post";
                             });
                     </script>
+
+            
+
+                

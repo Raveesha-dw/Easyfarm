@@ -8,6 +8,15 @@
         
     }
 
+    public function choosepkg(){
+        
+        // print_r("ss");
+        $data= $this->planModel->get_dataplan3();
+        // print_r($data);
+        $this->view('seller/v_register_plan',$data);
+
+    }
+
 
     public function get_plan_details(){
 
@@ -17,12 +26,13 @@
         if ($_SESSION['plan_id']==''){
             
             // if not have plan id
+            $data= $this->planModel->get_dataplan3();
 
-            $this->view('seller/v_register_plan2');
+            $this->view('seller/v_register_plan2',$data);
     
         }else{
         
-
+           
             // assign user_id
 
         
@@ -47,7 +57,7 @@
         // print_r($data2);
 
         $concatenatedData = array_merge($data1, $data2);
-        print_r($concatenatedData[0]['listing_limit']);
+        // print_r($concatenatedData[0]['listing_limit']);
         if ($concatenatedData['plan_id'] == 1) {
 
                 $concatenatedData['list_count'] = $concatenatedData['list_count'];
@@ -542,7 +552,7 @@ public function payment6() {
         $data6['Date'] = $newDate;
         $data5= $this->get_plan_details2();
         $concatenatedData = array_merge($data6, $data5);
-            print_r( $concatenatedData);
+            // print_r( $concatenatedData);
 
         if ($concatenatedData['plan_id'] == 1) {
             $concatenatedData['list_count'] = $concatenatedData['list_count'];
@@ -584,7 +594,7 @@ public function payment6() {
         $data6['Date'] = $newDate;
         $data5= $this->get_plan_details2();
         $concatenatedData = array_merge($data6, $data5);
-            print_r( $concatenatedData);
+            // print_r( $concatenatedData);
 
         if ($concatenatedData['plan_id'] == 1) {
             $concatenatedData['list_count'] = $concatenatedData['list_count'];

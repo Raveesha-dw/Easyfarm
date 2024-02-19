@@ -1,5 +1,5 @@
 .homeheader{
-
+margin-top: 1%;
     left:0;
     width:100%;
     padding:20px 100px;
@@ -7,6 +7,7 @@
     /* border-radius: 5%; */
     /* display: flex; */
     justify-content: space-between;
+
     align-items: center;
     z-index: 100;
 }
@@ -19,6 +20,7 @@
     position: relative;
     background-color: aquamarine;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .homeheader a::before{
