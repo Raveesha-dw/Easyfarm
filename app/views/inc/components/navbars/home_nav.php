@@ -56,13 +56,20 @@
                                         <h2>View Profile</h2>
                                         <span>></span>
                                     </a>
+                                    <?php if($_SESSION['user_type'] == 'Seller') :?>
+                                        <a href="<?php echo URLROOT?>/Pages/dashboard" class="sub-link-menu">
+                                            <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
+                                            <span>></span>
+                                        </a>
 
-                                    <a href="<?php echo URLROOT?>/Cart/showCart" class="sub-link-menu">
-                                        <h2>Dashboard</h2>
-                                        <span>></span>
-                                    </a>
+                                    <?php else: ?>
+                                        <a href="<?php echo URLROOT?>/Cart/showCart" class="sub-link-menu">
+                                            <h2>Dashboard</h2>
+                                            <span>></span>
+                                        </a>
+                                    <?php endif; ?>
 
-                                <a href="<?php echo URLROOT?>/Users/logout" class="sub-link-menu">
+                                    <a href="<?php echo URLROOT?>/Users/logout" class="sub-link-menu">
                                     <h2><i class="fa-solid fa-right-from-bracket"></i>Logout</h2>
                                     <span>></span>
                                 </a>
