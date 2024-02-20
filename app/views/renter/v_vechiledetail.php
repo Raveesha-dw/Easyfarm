@@ -6,11 +6,12 @@
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
 
-<?php print_r($data) ?>
+<?php 
+print_r($data); ?>
 
 <section id="vproductDetails" class="section-v1">
     <div class="single-pro-image">
-        <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">
+                    <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $data[0]->Image;?>"/>
 
 
         <table>

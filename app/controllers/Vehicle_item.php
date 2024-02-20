@@ -21,11 +21,14 @@
     }
 
 
-
-
     public function getcatergorized_items(){
 
-        $Categorized_items =  $this->V_itemModel->get_Categorized_items();
+        $Categorized_items = $this->V_itemModel->get_Categorized_items();
+        
+        $data = [
+            'Categorized_items' => $Categorized_items
+        ]  ;
+        $this->view('renter/v_viewItems', $data);
 
         
    

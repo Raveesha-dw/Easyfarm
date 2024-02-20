@@ -27,8 +27,8 @@
 
 
         ];
-        $data1 = $this->vechile_ordersmodel->getdata(91);
-        $data2 = $this->vechile_ordersmodel->getdatE(91);
+        $data1 = $this->vechile_ordersmodel->getdata($_GET['V_Id']);
+        $data2 = $this->vechile_ordersmodel->getdatE($_GET['V_Id']);
         $owner_id = $data1[0]->Owner_Id;
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
