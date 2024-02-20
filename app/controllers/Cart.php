@@ -184,6 +184,7 @@ class Cart extends Controller{
 
     public function checkout() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
           
             $itemIds = $_POST['itemIds'];
@@ -203,7 +204,7 @@ class Cart extends Controller{
                 }
                
             }
-    
+            
             // After updating all items, retrieve the updated cart items and render the view
             $Mitems = $this->cartModel->getAllcartItems($data);
             $items = (array) $Mitems;
@@ -220,6 +221,7 @@ class Cart extends Controller{
             }
     
             $this->view('pages/cart', $data);
+            
         }
     }   
 }

@@ -9,7 +9,7 @@ class M_profile{
 
 
     public function getCommonUserDetails(){
-
+        
         $this->db->query('SELECT * FROM user WHERE user.Email = :email') ;
         $this->db->bind(':email', $_GET['email']); // Assuming $data1['email'] contains the user's email address
         $this->db->execute();

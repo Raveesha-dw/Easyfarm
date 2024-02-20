@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
+<?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
     
 <div class="wrapperCart">
     <!-- <div class="column1">
@@ -16,6 +17,7 @@
             
         </div>
     </div> -->
+    
 
     <section id="cart" class="section-c1">
         <div class="small-container cart-page">

@@ -97,9 +97,9 @@ class Pages extends Controller{
         $this->view('Users/v_login');
     }
 
-    public function re_home(){
-        $this->view('seller/a');
-    }
+    // public function re_home(){
+    //     $this->view('seller/a');
+    // }
 
     public function privacyPolicy(){
 
