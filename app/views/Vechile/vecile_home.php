@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 
-
+<?php print_r($data);?>
 <div class="wrapper">
     <!--Menu-->
     <section class="menu">
