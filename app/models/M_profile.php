@@ -20,6 +20,7 @@ class M_profile{
         return $row;
 
 
+        
     }
 
     public function getUserByEmail($data){
