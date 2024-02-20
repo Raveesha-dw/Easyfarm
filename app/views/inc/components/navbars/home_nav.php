@@ -52,7 +52,7 @@
                     <div class="profile-menu-wrap" id="sub-menu">
                         <div class="user-menu">
                             <div class="user-info">
-                                <a href="<?php echo URLROOT?>/Pages/Profile" class="sub-link-menu">
+                                <a href="<?php echo URLROOT?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>" class="sub-link-menu">
                                     <h2><i class="fa-solid fa-user"></i> View Profile </h2>
                                     <span>></span>
                                 </a>

@@ -6,7 +6,7 @@
     <!--<title>Dashboard Sidebar Menu</title>--> 
     
 
-    <nav class="sidebar close">
+    <nav class="sidebarr close">
         <header>
             <div class="image-text">
                 <span class="image">

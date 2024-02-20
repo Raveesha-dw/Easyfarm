@@ -292,7 +292,31 @@ button i{
     cursor: pointer;
 }
 
-.page-number:hover {
+/* .page-number:hover {
+    background-color: var(--light-green);
+} */
+
+.ask-question-card textarea{
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+
+}
+
+.ask-question-card input[type="submit"] {
+    background-color: var(--dark-green);
+    color: white;
+    font-size: 0.875rem;
+    padding: 10px 34px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+
+.ask-question-card input[type="submit"]:hover {
     background-color: var(--light-green);
 }
 

@@ -1,14 +1,16 @@
 <?php
 class Pages extends Controller{
+    private $productModel;
     public function __construct(){
-     
+        $this->productModel=$this->model('M_Product');
     }
 
     public function index(){
-        
+        $products = $this->productModel->getAllProducts();
+
         $data = [
             'title' => 'Easyfarm',
-
+            'product_all' => $products
         ];
         
         $this->view('pages/home', $data);
@@ -50,12 +52,12 @@ class Pages extends Controller{
         $this->view('pages/product', $data);
     }
     
-    public function cart(){
-        $data = [
-            'title' => 'Cart'
-        ];
-        $this->view('pages/cart', $data);
-    }
+    // public function cart(){
+    //     $data = [
+    //         'title' => 'Cart'
+    //     ];
+    //     $this->view('pages/cart', $data);
+    // }
 
     public function about(){
         $data = [

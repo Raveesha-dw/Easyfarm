@@ -1,14 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
 
 <div class="flex-container">
-<div class="left-content">
-<nav class="sidebar-menu">
-                <a href="<?php echo URLROOT; ?>/Pages/dashboard" class="menu-item ">Shopping Cart</a><br><br>
-                <a href="<?php echo URLROOT; ?>/Orders/placedOrders" class="menu-item">My Orders</a><br><br>
-                <a href="<?php echo URLROOT; ?>/Review/userReviews" class="menu-item">My Reviews</a><br><br>
-        </nav>
-</div>
+
 
 <div class="right-content">
 <?php
