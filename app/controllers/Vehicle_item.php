@@ -1,5 +1,5 @@
 <?php
- class Product extends Controller{
+ class Vehicle_item extends Controller{
     private $V_itemModel;
 
 
@@ -12,7 +12,6 @@
     public function gethomepage(){
 
         $v_Categories =  $this->V_itemModel->get_category();
-
         $data['v_Categories'] = $v_Categories;
 
         $this->view('Vechile/vecile_home',$data);

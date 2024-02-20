@@ -1,5 +1,5 @@
 <?php
-class M_product{
+class M_vehicle_item{
     private $db;
 
     public function __construct()

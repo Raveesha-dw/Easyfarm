@@ -2,29 +2,26 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 
-<?php print_r($data);?>
 <div class="wrapper">
     <!--Menu-->
     <section class="menu">
         <div class="container">
             <h2 class="title">Featured Categories</h2>
             <div class="menu-container">
-                <div class="card">
-                <i class="fa-solid fa-truck-fast"></i>
-                    <h3><a href="<?php echo URLROOT?>/Product/productFruit">Lorries & Trucks</a></h3>
-                </div>
-                <div class="card">
-                <i class="fa-brands fa-cc-jcb"></i>
-                    <h3><a href="<?php echo URLROOT?>/Product/productFruit">Heavy Duty</a></h3>
-                </div>
-                <div class="card">
-                <i class="fa-solid fa-tractor"></i>
-                    <h3><a href="<?php echo URLROOT?>/Product/productGrains">Tractors</a></h3>
-                </div>
-                <div class="card">
-                <i class="fa-solid fa-tractor"></i>
-                    <h3><a href="<?php echo URLROOT?>/Product/productPlantsSeeds">Three Wheelers</a></h3>
-                </div>
+
+
+
+
+                <?php foreach ($data['v_Categories'] as $category) : ?>
+                    <div class="card">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <h3><a href="<?php echo URLROOT?>/Vehicle_item/<?php echo $category->Category_name; ?>"><?php echo $category->Category_name; ?>  </a></h3>
+                    </div>
+
+                <?php endforeach; ?>
+
+
+
                 
                 
                 
