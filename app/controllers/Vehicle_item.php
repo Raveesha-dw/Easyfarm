@@ -14,6 +14,11 @@
         $v_Categories =  $this->V_itemModel->get_category();
         $data['v_Categories'] = $v_Categories;
 
+
+        $items = $this->V_itemModel->get_all_items();
+        
+        $data ['items'] = $items ;
+
         $this->view('Vechile/vecile_home',$data);
 
         

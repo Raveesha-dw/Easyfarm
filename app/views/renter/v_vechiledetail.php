@@ -220,9 +220,10 @@ print_r($data); ?>
                             <td><input id="Message" name="Message" type="textbox" placeholder="Message" size="40" style="height: 40px" ;></td>
                         </tr>
                         <tr>
+                            
                             <td colspan="2"><input type="submit" value="Submit" onclick="return showConfirmationPopup()"></td> <!-- Submit button -->
                         </tr>
-
+                        
                     </table>
 
 
@@ -236,8 +237,8 @@ print_r($data); ?>
 
                         </div>
                     </div>
-
-    </form>
+              
+  </form>
     </div>
     </div>
 </section>

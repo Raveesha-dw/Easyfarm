@@ -20,6 +20,12 @@ class M_vehicle_item{
         return $Categorized_items;
     }
 
+        public function get_all_items(){
+        $this->db->query('SELECT * FROM vehicle_item ');
+        $items = $this->db->resultSet();
+        return $items;
+    }
+
 
 
 
