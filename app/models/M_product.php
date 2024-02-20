@@ -78,4 +78,22 @@ class M_product{
 
         return $sellerInfo;
     }
+
+    public function getAllProducts(){
+        $this->db->query('SELECT * FROM item ORDER BY Item_Id DESC');
+       
+        $all = $this->db->resultSet();
+        // print_r($all);
+        return $all;
+    }
+
+    public function searchForProduct($string){
+        if (empty($string)) {
+            return []; 
+        }
+        $this->db->query("SELECT * from item WHERE Item_name LIKE '%$string%'");
+        $searchResults = $this->db->resultSet();
+
+        return $searchResults;
+    }
 }

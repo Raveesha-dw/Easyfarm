@@ -44,18 +44,60 @@
         </div>
     </section>
 
-    <!--Product List-->
-    <section class="product-section container">
+    <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+        <div class="search-container">
+            <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product...">
+            <button type="submit">Search</button>
+            <!-- <a href="<?php echo URLROOT?>/product/productSearch">Search </a>  -->
+        </div>
+    </form>
+
+    <section class="product-section container"> 
+    <?php
+    if (isset($data['search']) && is_array($data['search'])) { ?>
+        <h2><strong>Search Results...</strong></h2>
+        <?php    
+        foreach($data['search'] as $result):
+        ?>
+        
+        
+        <a href="<?php echo URLROOT?>/Product/ProductPage/<?php echo $result->Item_Id?>">
+        <div class="product-container">
+            <div class="product">
+            <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" alt="">
+            <div class="product-description">
+                <h3><?php echo $result->Item_name ?></h3>
+                <p>Rs. <?php echo $result->Unit_price ?></p>
+            </div>
+            </div>
+        </div>
+        </a>
+
+    <?php
+    endforeach;
+    }
+    // else{
+    //     echo 'No search results available.';
+    // }
+    ?>
+    <hr>
+    </section>
+
+
+<!--Product List-->
+<section class="product-section container">
         <!-- <h2 class="title">Featured Products</h2> -->
             <div class="product-container">
-                <!-- Hardcode this part -->
+                    
                 <?php 
-                $products =$data;
-                foreach($products as $product): 
+                // $products =$data['product_all'];
+                if (isset($data['product_all']) && is_array($data['product_all'])) {
+                foreach($data['product_all'] as $product): 
                 ?>           
                 
                 <div class="product">
-                    <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?>"/>
+                <a href="<?php echo URLROOT?>/Product/ProductPage/<?php echo $product->Item_Id?>">
+                    <!-- <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?>"/> -->
                     <div class="product-description">
                         <h3><?php echo $product->Item_name ?> For Sale!</h3>
                         <div class="rating">
@@ -68,11 +110,12 @@
                         <h4><?php echo $product->Unit_price ?> LKR</h4>
                     </div>
                     <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+                </a>
                 </div>
-            <?php endforeach;?>
-                <?php
-                
-                ?>
+            <?php 
+        endforeach; }
+        ?>
+            
             </div>
     </section>
 </div>

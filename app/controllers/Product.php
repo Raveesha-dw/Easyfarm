@@ -90,6 +90,39 @@
         $this->view('Buyer/v_productDetails', $data);
     }
 
+    public function allProducts(){
+        $allProduct = $this->productModel->getAllProducts();
+        // echo $allProduct;
+        $data = [
+            'product_all' => $allProduct
+        ];
+
+        $this->view('pages/home',$data);
+    }
+
+    public function productSearch(){
+        // echo 'dieeee';
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $search = trim($_POST['search']);
+            if (empty($search)) {
+                echo 'Please enter a search term.';
+                return;
+            }
+        }else{
+            $search = '';
+        }
+
+        $searchResult = $this->productModel->searchForProduct($search);
+        
+        $data = [
+            'search' =>$searchResult
+        ];
+
+        $this->view('pages/home', $data);
+    }
 
 
     
