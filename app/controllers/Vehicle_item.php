@@ -15,13 +15,21 @@
         $data['v_Categories'] = $v_Categories;
 
         $this->view('Vechile/vecile_home',$data);
+
+        
    
     }
 
 
 
 
+    public function getcatergorized_items(){
 
+        $Categorized_items =  $this->V_itemModel->get_Categorized_items();
+
+        
+   
+    }
 
 
 

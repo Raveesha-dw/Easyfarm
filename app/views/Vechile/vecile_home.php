@@ -15,7 +15,7 @@
                 <?php foreach ($data['v_Categories'] as $category) : ?>
                     <div class="card">
                         <i class="fa-solid fa-truck-fast"></i>
-                        <h3><a href="<?php echo URLROOT?>/Vehicle_item/<?php echo $category->Category_name; ?>"><?php echo $category->Category_name; ?>  </a></h3>
+                        <h3><a href="<?php echo URLROOT?>/Vehicle_item/getcatergorized_items?Category_name=<?php echo $category->Category_name; ?>"><?php echo $category->Category_name; ?>  </a></h3>
                     </div>
 
                 <?php endforeach; ?>
