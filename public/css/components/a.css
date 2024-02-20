@@ -10,7 +10,7 @@
 :root{
     /* ===== Colors ===== */
     /* --body-color: #E4E9F7; */
-    --sidebar-color: #ffffff;
+    --sidebarr-color: #ffffff;
     --primary-color: #5cfe9d;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
@@ -37,7 +37,7 @@ body{
 
 body.dark{
     --body-color: #18191a;
-    --sidebar-color: #242526;
+    --sidebarr-color: #242526;
     --primary-color: #3a3b3c;
     --primary-color-light: #3a3b3c;
     --toggle-color: #fff;
@@ -46,23 +46,23 @@ body.dark{
 }
 
 /* ===== Sidebar ===== */
- .sidebar{
+ .sidebarr{
     position: absolute;
     top: 100px;
     left: 0;
     height: 100%;
     width: 250px;
     padding: 10px 14px;
-    background: var(--sidebar-color);
+    background: var(--sidebarr-color);
     transition: var(--tran-05);
     z-index: 100;  
 }
-.sidebar.close{
+.sidebarr.close{
     width: 88px;
 }
 
 /* ===== Reusable code - Here ===== */
-.sidebar li{
+.sidebarr li{
     height: 50px;
     list-style: none;
     display: flex;
@@ -70,13 +70,13 @@ body.dark{
     margin-top: 10px;
 }
 
-.sidebar header .image,
-.sidebar .icon{
+.sidebarr header .image,
+.sidebarr .icon{
     min-width: 60px;
     border-radius: 6px;
 }
 
-.sidebar .icon{
+.sidebarr .icon{
     min-width: 60px;
     border-radius: 6px;
     height: 100%;
@@ -86,32 +86,32 @@ body.dark{
     font-size: 20px;
 }
 
-.sidebar .text,
-.sidebar .icon{
+.sidebarr .text,
+.sidebarr .icon{
     color: var(--text-color);
     transition: var(--tran-03);
 }
 
-.sidebar .text{
+.sidebarr .text{
     font-size: 17px;
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
+.sidebarr.close .text{
     opacity: 0;
 }
 /* =========================== */
 
-.sidebar header{
+.sidebarr header{
     position: relative;
 }
 
-.sidebar header .image-text{
+.sidebarr header .image-text{
     display: flex;
     align-items: center;
 }
-.sidebar header .logo-text{
+.sidebarr header .logo-text{
     display: flex;
     flex-direction: column;
 }
@@ -128,19 +128,19 @@ header .image-text .profession{
     display: block;
 }
 
-.sidebar header .image{
+.sidebarr header .image{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sidebar header .image img{
+.sidebarr header .image img{
     width: 40px;
     border-radius: 6px;
 }
 
 
-.sidebar header .toggle{
+.sidebarr header .toggle{
     position: absolute;
     top: 50%;
     right: -25px;
@@ -148,7 +148,7 @@ header .image-text .profession{
     height: 25px;
     width: 25px;
     background-color: var(--primary-color);
-    color: var(--sidebar-color);
+    color: var(--sidebarr-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -158,27 +158,27 @@ header .image-text .profession{
     transition: var(--tran-05);
 }
 
-body.dark .sidebar header .toggle{
+body.dark .sidebarr header .toggle{
     color: var(--text-color);
     
 }
 
-.sidebar.close .toggle{
+.sidebarr.close .toggle{
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu{
+.sidebarr .menu{
     margin-top: 5px;
 }
 
-.sidebar li.search-box{
+.sidebarr li.search-box{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     cursor: pointer;
     transition: var(--tran-05);
 }
 
-.sidebar li.search-box input{
+.sidebarr li.search-box input{
     height: 100%;
     width: 100%;
     outline: none;
@@ -190,7 +190,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a{
+.sidebarr li a{
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -203,19 +203,19 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-03);
 }
 
-.sidebar li a:hover{
+.sidebarr li a:hover{
     background-color: var(--primary-color);
 }
-.sidebar li a:hover .icon,
-.sidebar li a:hover .text{
-    color: var(--sidebar-color);
+.sidebarr li a:hover .icon,
+.sidebarr li a:hover .text{
+    color: var(--sidebarr-color);
 }
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
+body.dark .sidebarr li a:hover .icon,
+body.dark .sidebarr li a:hover .text{
     color: var(--text-color);
 }
 
-.sidebar .menu-bar{
+.sidebarr .menu-bar{
     height: calc(100% - 90px);
     display: flex;
     flex-direction: column;
@@ -225,7 +225,7 @@ body.dark .sidebar li a:hover .text{
 .menu-bar::-webkit-scrollbar{
     display: none;
 }
-.sidebar .menu-bar .mode{
+.sidebarr .menu-bar .mode{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     position: relative;
@@ -279,7 +279,7 @@ body.dark .mode .sun-moon i.moon{
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
-    background-color: var(--sidebar-color);
+    background-color: var(--sidebarr-color);
     transition: var(--tran-04);
 }
 
@@ -304,7 +304,7 @@ body.dark .switch::before{
     padding: 12px 60px;
 }
 
-.sidebar.close ~ .home{
+.sidebarr.close ~ .home{
     left: 78px;
     height: 100vh;
     width: calc(100% - 78px);

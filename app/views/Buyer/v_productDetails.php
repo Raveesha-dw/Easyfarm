@@ -91,7 +91,9 @@ $productReviews = $data['itemReviews'];
                             <button type="submit" >ADD TO CART</button>
                                                         
                         <?php else : ?>                       
-                            <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button>
+                            <!-- <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button> -->
+                            <button type="submit">ADD TO CART</button>
+                            
                            
                         <?php endif; ?>   
                     </form>
@@ -192,6 +194,17 @@ $productReviews = $data['itemReviews'];
                     <p>A: Sorry, We do not offer delivery for this product</p>
                 </div>
             </div>
+
+            <div class="ask-question-card">
+            <!-- <h2>Ask a Question</h2> -->
+                <form>
+                    <!-- <label for="question">Your Question:</label> -->
+                    <textarea id="question" name="question" rows="4" cols="50" placeholder="Enter your question here..."></textarea><br>
+                    <input type="submit" value="Ask Question">
+                </form>
+                <small>Your question should not contain contact information such as email, phone or external web links. 
+                    Visit <a href=""> "My Orders"</a> if you have questions about your previous order.</small>
+            </div>
         </div>
 
         <div class="pagination">
@@ -206,6 +219,13 @@ $productReviews = $data['itemReviews'];
         function showRegisterConfirmation() {
 
              var result = window.confirm("You have to login to the easyFarm .");
+            //  if (result){
+            //     redirect();
+            //     window.location.href = "<?php echo URLROOT; ?>/Users/login";
+            //  }
+            //  else{
+            //     return false;
+            //  }
         }
         
     </script>

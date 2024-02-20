@@ -1,23 +1,34 @@
 
 .wrapper_Verify_Email {
-    width :420px;
+    margin: auto;
+    width: 420px;
     background-color: transparent;
-    border:5px solid rgba(255, 255, 255, .2);
+    border: 5px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #333;
     border-radius: 10px;
     padding: 30px 40px;
+    
 }
+
 .wrapper_Verify_Email h1 {
     font-size: 30px;
     text-align: center;
 }
 
+.wrapper_Verify_Email a{
+    display: inline;
+    color: brown;
+    margin: 25% 0 10%;
+    align-self: flex-start;
+
+}
+
 .wrapper_Verify_Email .input-box {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 75px;
     background-color: rgb(230, 255, 230);
     margin-top: 2px;
     margin-bottom: 30px;

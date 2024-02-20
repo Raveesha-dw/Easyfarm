@@ -1,9 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
-
+<?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
     
 <div class="wrapperCart">
-    <div class="column1">
+    <!-- <div class="column1">
         <div class ="sidebar">
             <h3 >DASHBOARD</h3>
             <hr>
@@ -15,7 +15,8 @@
             </ul>
             
         </div>
-    </div>
+    </div> -->
+    
 
     <section id="cart" class="section-c1">
         <div class="small-container cart-page">
@@ -37,34 +38,42 @@
                         $cartTotal = 0.00;
                         
                         if (!empty($cartItems)) {
+                           
                             foreach ($cartItems as $cartItem) {
-                                $cartTotal += ($cartItem['quantity'] * $cartItem['unitPrice']);
+                                
+                                if (is_array($cartItem)) {
+                                    $cartTotal += ($cartItem['quantity'] * $cartItem['unitPrice']);
+                                }
+                                
+                                // $cartTotal += ($cartItem['quantity'] * $cartItem['unitPrice']);
                             }
                         }
                     ?>
               
                     <?php if (!empty($cartItems)) : ?>
                         <?php foreach ($cartItems as $item) : ?>
+                            <?php if (is_array($cartItem)) : ?>
                             
-                            <tr class="cartItm" data-item-id="<?php echo $item['itemId']; ?>">
-                                <td>
-                                    <div class="cart-info">
-                                        
-                                        <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" alt="<?php echo $item['itemName']; ?>">
-                                        <div>
-                                            <h4><?php echo $item['itemName']; ?></h4>
-                                            <small>Price: LKR <?php echo number_format($item['unitPrice'], 2); ?></small><br>
-                                            <!-- Add a "Remove" link with an onclick event to trigger the popup message -->
-                                                <a  onclick="showRemoveConfirmation('<?php echo $item['itemId']; ?>' )" href="<?php echo URLROOT ?>/Cart/deleteItem?itemId=<?php echo $item['itemId']; ?>&uId=<?php echo $item['uId']; ?>">Remove</a>                                         
+                                <tr class="cartItm" data-item-id="<?php echo $item['itemId']; ?>">
+                                    <td>
+                                        <div class="cart-info">
+                                            
+                                            <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" alt="<?php echo $item['itemName']; ?>">
+                                            <div>
+                                                <h4><?php echo $item['itemName']; ?></h4>
+                                                <small>Price: LKR <?php echo number_format($item['unitPrice'], 2); ?></small><br>
+                                                <!-- Add a "Remove" link with an onclick event to trigger the popup message -->
+                                                    <a  onclick="showRemoveConfirmation('<?php echo $item['itemId']; ?>' )" href="<?php echo URLROOT ?>/Cart/deleteItem?itemId=<?php echo $item['itemId']; ?>&uId=<?php echo $item['uId']; ?>">Remove</a>                                         
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <input type="number" min=1 class="quantity-input" name="quantitiesTo[]" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>"  value="<?php echo $item['quantity']; ?>">      
-                                    <input type="hidden" name="itemIds[]" value="<?php echo $item['itemId']; ?>">                                   
-                                </td>
-                                <td class="subtotal" data-item-id="<?php echo $item['itemId']; ?>">LKR <span class="subtotal-value"><?php echo number_format($item['unitPrice'] * $item['quantity'], 2); ?></span></td>                                
-                            </tr>                           
+                                    </td>
+                                    <td>
+                                        <input type="number" min=1 class="quantity-input" name="quantitiesTo[]" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>"  value="<?php echo $item['quantity']; ?>">      
+                                        <input type="hidden" name="itemIds[]" value="<?php echo $item['itemId']; ?>">                                   
+                                    </td>
+                                    <td class="subtotal" data-item-id="<?php echo $item['itemId']; ?>">LKR <span class="subtotal-value"><?php echo number_format($item['unitPrice'] * $item['quantity'], 2); ?></span></td>                                
+                                </tr>   
+                            <?php endif; ?>                        
                         <?php endforeach; ?>
                     <?php else : ?>
                     <tr>
@@ -96,7 +105,7 @@
             </table>
     </section>
 </div> 
-
+                    
 
 
 <script>
@@ -133,6 +142,9 @@
     // Function to show the remove confirmation popup
     function showRemoveConfirmation(itemId) {
         if (confirm('Are you sure you want to remove this item from your cart?')) {
+            
+            window.location.href = '<?php echo URLROOT ?>/Cart/deleteItem?itemId=' + itemId;
+
             // Handle item removal here, e.g., by making an AJAX request
             let itemRow = document.querySelector(`tr[data-item-id="${itemId}"]`);
             if (itemRow) {

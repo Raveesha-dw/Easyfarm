@@ -1,0 +1,231 @@
+/*Menu*/
+.wrapper_information .menu{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+}
+.wrapper_information {
+    background-image: url('../../images/Information/Growing-More-Wasting-Less-Secrets-of-Sustainable-Agriculture.jpg');
+    background-repeat: no-repeat;
+}
+
+
+
+
+.wrapper_information .menu i{
+    font-size: 25px;
+    color: var(--dark-green);
+    padding-left: 0;
+    padding-right: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
+.wrapper_information .menu .container .grid .card i,
+.wrapper_information .menu .container .grid .card h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper_information .menu-container{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    padding-top: 0;
+    flex-wrap: wrap;
+}
+.wrapper_information .menu p{
+    margin-bottom: 7%;
+    font-size: 20px;
+    margin-top: 5%;
+    
+}
+
+
+/* search bar */
+.wrapper_information .menu .container .box {
+    position:relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+  }
+
+  .wrapper_information .menu .container .box:hover > .input {
+    width: 240px;
+    padding: 0 6px;
+  }
+
+  .wrapper_information .menu .container .box:hover > .searchButton {
+    background: white;
+    color: #2f3640;
+  }
+
+  .wrapper_information .menu .container .box .button {
+    color: white;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+  }
+
+  .wrapper_information .input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+  }
+
+  @media screen and (max-width: 620px) {
+    .searchBox:hover > .searchInput {
+      width: 140px;
+      padding: 0 6px;
+    }
+}
+
+
+footer{
+    margin-top: 40px;
+    padding: 40px;
+    background-color: var(--dark-grey);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer a{
+    color: white;
+}
+
+footer h1{
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 30px;
+}
+
+footer h4{
+    padding-bottom: 20px;
+    color: var(--light-green);
+}
+
+footer .follow h4{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+footer p{
+    margin: 0 0 5px 0;
+}
+
+footer .column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+footer .follow{
+    margin-top: 20px;
+}
+
+footer .follow i{
+    color: white;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .follow i:hover,
+footer a:hover{
+    color: var(--dark-green);
+}
+
+footer .column .paycard{
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .column .paycard i{
+    font-size: 40px;
+    color: #2447d7;
+    padding-right: 5px;
+}
+
+footer .column img{
+    max-width: 150px;
+}
+
+footer .copyright{
+    width: 100%;
+    text-align: center;
+}
+
+/*Utilities*/
+.container{
+    max-width: 1180px;
+    margin: 0 auto;
+    overflow:auto;
+    padding: 0 40px;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 5px;
+    row-gap: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.card a{
+    text-decoration: none;
+    color: black;
+}
+
+.card:hover{
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}

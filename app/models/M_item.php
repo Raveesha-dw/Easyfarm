@@ -38,6 +38,15 @@ class M_item{
         return $jsonString;
     }
 
+    public function sendItemName($item_ID){
+        $this->db->query('SELECT Item_name FROM item WHERE Item_Id = :item_ID');
+        $this->db->bind(':item_ID', $item_ID);
+        $this->db->execute();
+
+        $itemName = $this->db->single();
+        return $itemName;
+    }
+
     public function sendItemIDName($item_ID){
         $this->db->query('SELECT Item_Id, Item_name FROM item WHERE Item_Id = :item_ID');
         $this->db->bind(':item_ID', $item_ID);

@@ -7,15 +7,23 @@
     <form action="<?php echo URLROOT ?>/Users/forgotPassword" method="post" >
         <h1>Forgot passward ?</h1>
         <p class="start">* Enter verification code </p>
+           
         <div class="input-box">
-        <input type="text" name="OTP" placeholder="Enter verification code " required>
+            <input type="text" name="otp" placeholder="Enter verification code send to the email " required>
             <i class='bx bxs-lock-open-alt'></i>
             <span class="invalid"><?php echo $data['otp_err']; ?></span>
         </div>
 
+
         <input type="hidden" name="email" value="<?php echo $data['email']; ?>">
+                                              
+        <div class="resendOtp">
         
-        <button type="submit" class="btn" >Send</button>
+             <a href="<?php echo URLROOT ?>/Users/forgotPassword?email=<?php echo $data['email']; ?>" >Resend OTP</a>
+        </div>
+        
+        <button type="submit" class="btn" >Next</button>
+        
 
     </form>
 </div>
