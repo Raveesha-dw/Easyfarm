@@ -11,9 +11,9 @@
 
 
  <div class="container">
-<?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
+    <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
- <section class="home">
+    <section class="home">
 
 
 

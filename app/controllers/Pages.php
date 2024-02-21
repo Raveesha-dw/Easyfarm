@@ -126,8 +126,11 @@ class Pages extends Controller{
         if($_SESSION['user_type'] == 'Buyer'){
             $this->view('Buyer/v_dashboardCart');
         }
-        if($_SESSION['user_type'] == 'Seller'){
+        elseif($_SESSION['user_type'] == 'Seller'){
             $this->view('seller/v_seller_home');
+        }
+           elseif($_SESSION['user_type'] == 'VehicleRenter'){
+            $this->view('V_renter_home/get_details1');
         }
     }
 
