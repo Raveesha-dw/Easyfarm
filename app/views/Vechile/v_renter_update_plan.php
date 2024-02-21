@@ -1,9 +1,18 @@
 
+<div>
+    <?php require APPROOT . '/views/inc/header.php'; ?>
+    <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+</div>
 
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
-<?php print_r($data)?>
+<div class="container">
+<?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
+<section class="home">
+<!-- <?php print_r($data)?> -->
+
+
+
+
+<!-- <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?> -->
 <div class ="shero3">
     <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id']-1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
@@ -462,3 +471,8 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  
+
+
+</section>
+    </div>
+</div>
