@@ -1,4 +1,4 @@
-/*
+/*!
  * FullCalendar v3.9.0
  * Docs & License: https://fullcalendar.io/
  * (c) 2018 Adam Shaw
@@ -16,6 +16,15 @@ body .fc {
 .fc-unselectable {
   -webkit-touch-callout:none;
   -khtml-user-select:none
+}
+.fc-content{
+        background-color: darkcyan;
+}
+.fc-day fc-widget-content fc-fri fc-future:active {
+  color: red; /* Change 'color' to 'background-color' or any other property you want to change */
+}
+.fc-widget-content:active{
+  color: red;
 }
 
 
@@ -241,7 +250,8 @@ hr.fc-divider {
   border-style:solid;
   border-width:1px;
   padding:0;
-  vertical-align:top
+  vertical-align:top;
+  /* background-color: papayawhip; */
 }
 .fc td.fc-today {
   border-style:double
@@ -1018,9 +1028,20 @@ a.fc-more:hover {
 
 
 
+/* not to drag  */
+.fc-day-grid-event, .highlight{
+  pointer-events: none !important;
+}
 
-
-
+.added-text {
+  color: rgb(215, 25, 25);
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+}
 
 
 
@@ -1029,7 +1050,6 @@ a.fc-more:hover {
 
 
 .cal {
- 
     margin-top: 50px;
     text-align: center;
     font-size: 12px;
@@ -1053,9 +1073,6 @@ a.fc-more:hover {
 }
 
 
-
-
-
 /* .wrapperCalendar {
     width :50%;
     background-color: #e5ff9f4a;;
@@ -1066,16 +1083,18 @@ a.fc-more:hover {
     color: #333;
     border-radius: 10px;
     padding: 30px 40px;
-}
- */
+} */
+
 
 /*  */
 
-.wrapperCalendar {
-  width: 100%;
-  height: 100%;
+
+
+ .wrapperCalendar {
+  position: relative;
+  /* width: 100%; */
   max-width: 500px;
-  min-width: 400px;
+  /* min-width: 50%; */
   background-color: #eeffcb8f;
   margin: 25px auto 0 auto;
   border: 5px solid rgba(255, 255, 255, .2);
@@ -1085,3 +1104,18 @@ a.fc-more:hover {
   border-radius: 10px;
   padding: 30px 40px;
 }
+
+
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+  .wrapperCalendar {
+    width: 90%; 
+    max-width: none;
+    min-width: 0; 
+    margin: 25px auto;
+    padding: 20px; 
+  }
+}
+

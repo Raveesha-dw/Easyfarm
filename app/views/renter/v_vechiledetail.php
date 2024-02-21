@@ -6,11 +6,12 @@
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
 
-<?php print_r($data) ?>
+<?php 
+print_r($data); ?>
 
 <section id="vproductDetails" class="section-v1">
     <div class="single-pro-image">
-        <img src="<?php echo URLROOT ?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">
+                    <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $data[0]->Image;?>"/>
 
 
         <table>
@@ -163,25 +164,10 @@
                     var jsonData = <?php echo $jsonData; ?>;
                 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="cal">
                     <div class="response"></div>
 
-                    <div id='calendar' data-date='<?php echo $jsonData; ?>'>
+                    <div id='calendar' data-date='<?php echo $jsonData; ?>' data-id='<?php echo $data['V_Id']; ?>'>
                         <input type="hidden" id="hiddenInputDates" name="selectedDates" required value="<?php echo $data['selectedDates']; ?>" >
 
                     </div>
@@ -219,9 +205,10 @@
                             <td><input id="Message" name="Message" type="textbox" placeholder="Message" size="40" style="height: 40px" ;></td>
                         </tr>
                         <tr>
+                            <input type="hidden" name="V_Id" value="<?php echo $data[0]->V_Id; ?>"> 
                             <td colspan="2"><input type="submit" value="Submit" onclick="return showConfirmationPopup()"></td> <!-- Submit button -->
                         </tr>
-
+                        
                     </table>
 
 
@@ -235,8 +222,8 @@
 
                         </div>
                     </div>
-
-    </form>
+              
+  </form>
     </div>
     </div>
 </section>

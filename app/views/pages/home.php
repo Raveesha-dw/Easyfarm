@@ -10,7 +10,7 @@
             <div class="menu-container">
                 <div class="card">
                     <i class="fas fa-carrot"></i>
-                    <h3><a href="<?php echo URLROOT?>/Product/productFruit">Vegetables</a></h3>
+                    <h3><a href="<?php echo URLROOT?>/Product/productVeg">Vegetables</a></h3>
                 </div>
                 <div class="card">
                     <i class="fas fa-apple-alt"></i>

@@ -23,6 +23,8 @@ define('SITENAME', 'Easyfarm');
 // define('Mail_port','Port');
 define('PUBROOT', dirname(dirname(dirname(__FILE__))).'\public');
 
+// paymentgateway - merchant secret key
+define('MERCHANT_SECRET', 'Mzg2NjE0MzgyMjk4MDI4MzQ0MjE4MjYwMTE0NDAyMjkyNTU3NTA3');
 
 
-
+?>

@@ -53,10 +53,10 @@
                 <input type="text" name="values[]" placeholder="Enter Vehicle Number" value="<?php echo $data['values'] ?>">
                 <i class="fa-solid fa-truck-monster"></i>
                 <button type="button" id="addInput">+</button>
-            </div>
-            <div>
-            <input type="hidden" name="user_type" value="Buyer">
             </div> -->
+            <!-- <div> -->
+            <!-- <input type="hidden" name="user_type" value="VehicleRenter"> -->
+            <!-- </div> -->
             <!-- <button type="button" id="addInput">+</button> -->
             <div>
             <input type="hidden" name="user_type" value="VehicleRenter">
@@ -66,8 +66,15 @@
             
 
 
-            <button type="submit" class="btn" >Register</button>
+        <div>
+            <input type="hidden" name="user_type" value="VehicleRenter">
+        </div>
+        </div>
 
+
+
+            <button type="submit" class="btn" >Register</button>
+<!--  -->
 
             <div class="login-link">
                 <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="<?php echo URLROOT?>/Pages/termsOfUse"> Terms of use</a> and <a href="<?php echo URLROOT?>/Pages/privacyPolicy">Privacy Policy</a></p>     

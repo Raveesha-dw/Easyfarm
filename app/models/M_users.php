@@ -14,7 +14,7 @@ class M_users{
         $row=$this->db->single();
 
         if ($this->db->rowCount()>0) {
-            return $row;
+            return true;
         }
         else{
             return false;
@@ -242,13 +242,11 @@ class M_users{
 
     }
 
-    public function createToken($data, $expirationTime){
+    public function createToken($data){
 
-        $this->db->query('UPDATE user SET User_OTP= :otp, expirationTime=:expirationTime  WHERE Email= :email');
+        $this->db->query('UPDATE user SET User_OTP= :otp WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':otp', $data['otp']);
-        $this->db->bind(':expirationTime', $expirationTime);
-
         $this->db->execute();
     
     }
@@ -258,10 +256,10 @@ class M_users{
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':otp', $data['otp']);
 
-        
+        $row=$this->db->single();
 
-        if($row=$this->db->single()){
-            return $row;
+        if($row){
+            return true;
         }else{
             return false;
         }
@@ -276,7 +274,6 @@ class M_users{
         $this->db->execute();
     
     }
-
 
 
 }
