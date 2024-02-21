@@ -19,7 +19,7 @@
         <div class="flex">
             <!-- <h1>EasyFarm</h1> -->
             <div class="nav-logo">
-                <h2><a href="<?php echo URLROOT ?>/Home/get_product_details">EasyFarm</a></h2>
+                <h2><a href="<?php echo URLROOT?>/Pages/index">EasyFarm</a></h2>
             </div>
             <div class="nav-parts">
         </div>

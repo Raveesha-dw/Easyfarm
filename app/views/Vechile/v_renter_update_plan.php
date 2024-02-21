@@ -12,7 +12,7 @@
 
 
 
-<?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
+<!-- <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?> -->
 <div class ="shero3">
     <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id']-1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
