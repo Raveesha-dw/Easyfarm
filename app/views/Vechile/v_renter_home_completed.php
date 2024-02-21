@@ -1,8 +1,14 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
-<!-- <?php print_r($data)?> -->
-<?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
+
+<div>
+    <?php require APPROOT . '/views/inc/header.php'; ?>
+    <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+    
+</div>
+
+<div class="container">
+<?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
+
+    <section class="home">
 
 
 <!-- <?php $products=$data; ?> -->
@@ -76,7 +82,7 @@
 <!-- <?php foreach ($products as $product) :?> -->
        <!-- <?php  endforeach;?> -->
        <!--  -->
-
+       <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
 
 <div class ="shero6">
 
@@ -430,4 +436,5 @@ const downloadFile = function (data, fileType, fileName = '') {
         
         
         
-         
+</section>
+</div>

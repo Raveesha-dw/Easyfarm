@@ -1,7 +1,17 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php' ?>
-<?php print_r($data) ?>
+<div>
+    <?php require APPROOT . '/views/inc/header.php'; ?>
+    <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+</div>
+
+<div class="container">
+<?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
+<section class="home">
+<!-- <?php print_r($data)?> -->
+
+
+
+
+<?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
 <?php
 // Assuming $data['plan_id'] contains the plan ID value
 $planId = $data['plan_id'];
@@ -439,3 +449,7 @@ if (planId == 3) {
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+</section>
+    </div>
+</div>

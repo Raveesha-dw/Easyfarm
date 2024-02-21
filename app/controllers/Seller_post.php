@@ -29,6 +29,13 @@ public function cretesession3(){
 
 public function creating(){
 //    print_r($_SESSION['user_ID']);
+$data=$this->sellerModel->get_category();
+$dataArray = [];
+
+foreach ($data as $obj) {
+    $dataArray[] = (array) $obj;
+}
+// print_r($dataArray);
 
    $data=$this->sellerModel->user_details($_SESSION['user_ID']);
    $registerDate = $data[0]->Register_date;
@@ -83,7 +90,8 @@ public function creating(){
         'Unit_size_err'=>'',
 
     ];
-    $this->view('seller/v_create_post',$data);}}
+    $mergedArray = array_merge($data, $dataArray);
+    $this->view('seller/v_create_post',$mergedArray);}}
 
 }
 public  function create_post(){
@@ -302,7 +310,12 @@ public  function create_post(){
     
     public function update_Product(){
         // variable=columnname
-        
+        $data=$this->sellerModel->get_category();
+$dataArray = [];
+
+foreach ($data as $obj) {
+    $dataArray[] = (array) $obj;
+}
        
         $item1 =$this->sellerModel->getiteamdeatils();
         // print_r($item1);
@@ -346,6 +359,8 @@ public  function create_post(){
         // print_r($data);
         // print_r("f");
         // }
+        $mergedArray = array_merge($data, $dataArray);
+
         $this->view('seller/v_update_post',$data);
         // print_r("f");
         

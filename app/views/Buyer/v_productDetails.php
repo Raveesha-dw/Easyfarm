@@ -4,7 +4,7 @@
 
 <?php
 $productDetails = $data['productInfo'];
-// print_r($productDetails);
+print_r($productDetails);
 
 $sellerDetails = $data['sellerInfo'];
 // print_r($sellerDetails);
@@ -14,7 +14,7 @@ $productReviews = $data['itemReviews'];
 
 <section id="productDetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+            <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $productDetails->Image?> " width="100%" id="MainImg" alt=""> 
         </div>
 
         <div class="single-pro-details">
