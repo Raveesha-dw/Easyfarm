@@ -89,6 +89,8 @@
             $userType = $this->inquiryModel->getUserType($user_id);
             $userName = $this->inquiryModel->getUserName($user_id, $userType);
             $inquiry->userName = $userName;
+
+            // $inquiry->answer = $this->inquiryModel->getAnswer($inquiry->question_id);
         endforeach;
 
         $data = [

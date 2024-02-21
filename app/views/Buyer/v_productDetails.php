@@ -175,7 +175,7 @@ $inquiries = $data['inquiries'];
 
         <!-- Editor -->
         <?php 
-            if(isset($_SESSION['user_ID'])){ 
+            if(isset($_SESSION['user_ID']) && $sellerDetails->U_Id != $_SESSION['user_ID']){ 
         ?>
 
                 <div class="question-card">
@@ -191,7 +191,7 @@ $inquiries = $data['inquiries'];
 
         <?php            
             }else{
-                echo "<br><span>Please login to ask questions.</span><br><br><br>";
+                echo "<br><span>Please login as a buyer to ask questions.</span><br><br><br>";
             }
         ?>
 
@@ -208,7 +208,43 @@ $inquiries = $data['inquiries'];
                     <i><?php echo $inquiry->datetime_last_edited;?></i><br>
                 </p>
 
+                <!-- Answer -->
                 <?php
+                    if($inquiry->answer){
+                ?>
+                    <div class="comment-card">
+                        <b><?php echo $sellerDetails->Name;?></b> replies, <br><br>
+                        <?php echo $inquiry->answer;?> <br><br>
+                        <i><?php echo $inquiry->answer_datetime_edited;?></i>
+                        <?php
+                            if(isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID']){
+                        ?>
+                                <!-- Edit Answer -->
+                                <button class="comment-edit-btn display-0 display-1">Edit</button>
+                                <div class="edit-form display-0" style="display:none;">
+                                    <form action="<?php echo URLROOT . '/Inquiry/editAnswer'?>" method="POST">
+                                        <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                        <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                        <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <textarea name="edited_answer" cols="100" rows="4"><?php echo $inquiry->answer;?></textarea><br><br><br>
+                                        <button class="btn btn-save" type="submit">Save</button>
+                                    </form>
+                                    <button class="btn btn-cancel display-1">Cancel</button>
+                                </div>
+
+                                <!-- Delete Answer -->
+                                <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteAnswer'?>" onclick='confirmDeleteAnswer()' method="POST">
+                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                    <input type="submit" name="answerDelete" value="Delete">
+                                </form>
+                <?php            
+                        }
+                ?>
+                    </div>               
+                <?php
+                    }
+
                     if(isset($_SESSION['user_ID'])){
                         if($inquiry->user_id == $_SESSION['user_ID']){
                 ?>
@@ -226,11 +262,29 @@ $inquiries = $data['inquiries'];
                             </div>
 
                             <!-- Delete Question -->
-                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion'?>" onclick='confirmDelete()' method="POST">
+                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion'?>" onclick='confirmDeleteQestion()' method="POST">
                                 <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
                                 <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
                                 <input type="submit" name="questionDelete" value="Delete">
                             </form>
+                <?php            
+                        }
+
+                        // If the logged in user is the seller who posted the ad, he/she can reply
+                        if($sellerDetails->U_Id == $_SESSION['user_ID'] && empty($inquiry->answer)){
+                ?>
+                            <!-- Answer Question -->
+                            <button class="btn btn-answer display-0 display-1">Answer</button>
+                            <div class="edit-form display-0" style="display:none;">
+                                <form action="<?php echo URLROOT . '/Inquiry/answerQuestion'?>" method="POST">
+                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                    <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                    <textarea name="answer" cols="100" rows="4"></textarea><br><br><br>
+                                    <button class="btn btn-save" type="submit">Answer</button>
+                                </form>
+                                <button class="btn btn-cancel display-1">Cancel</button>
+                            </div>
                 <?php            
                         }
                     }
@@ -269,8 +323,15 @@ $inquiries = $data['inquiries'];
         });
     });
 
-    function confirmDelete(){
+    function confirmDeleteQuestion(){
     var result = confirm('Are you sure you want to delete this question?');
+    if (result == false){
+    event.preventDefault();
+        }
+    }
+
+    function confirmDeleteAnswer(){
+    var result = confirm('Are you sure you want to delete this answer?');
     if (result == false){
     event.preventDefault();
         }

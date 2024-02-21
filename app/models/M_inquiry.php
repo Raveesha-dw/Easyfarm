@@ -62,4 +62,39 @@ class M_inquiry{
         $this->db->execute();
         return true;
     }
+
+    public function getAnswer($question_id){
+        $this->db->query("SELECT * FROM inquiry_answer WHERE question_id = :question_id");
+        $this->db->bind(':question_id', $question_id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    public function addAnswer($data){
+        $this->db->query("UPDATE inquiry SET answer = :answer, answer_datetime = :answer_datetime WHERE question_id = :question_id");
+        $this->db->bind(':question_id', $data['question_id']);
+        $this->db->bind(':answer_datetime', $data['answer_datetime']);
+        $this->db->bind(':answer', $data['answer']);
+        $this->db->execute();
+        return true;
+    }
+
+    public function editAnswer($data){
+        $this->db->query("UPDATE inquiry SET answer = :answer, answer_datetime_edited = :answer_datetime_edited WHERE question_id = :question_id");
+        $this->db->bind(':question_id', $data['question_id']);
+        $this->db->bind(':answer_datetime_edited', $data['answer_datetime_edited']);
+        $this->db->bind(':answer', $data['answer']);
+        $this->db->execute();
+        return true;
+    }
+
+    public function deleteAnswer($question_id){
+        $this->db->query("UPDATE inquiry SET answer = :answer, answer_datetime = :answer_datetime, answer_datetime_edited = :answer_datetime_edited WHERE question_id = :question_id");
+        $this->db->bind(':question_id', $question_id);
+        $this->db->bind(':answer_datetime', NULL);
+        $this->db->bind(':answer_datetime_edited', NULL);
+        $this->db->bind(':answer', NULL);
+        $this->db->execute();
+        return true;
+    }
 }

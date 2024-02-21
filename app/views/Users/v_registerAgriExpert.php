@@ -56,26 +56,28 @@
             <span class="invalid"><?php echo $data['address_err']; ?></span>
         </div>
 
-        <p class="type">Occupation *</p>
+        <!-- <p class="type">Occupation *</p>
         <div class="input-box">
             <input type="text" placeholder="Enter occupation" name="occupation" id="occupation"  required value="<?php echo $data['occupation']; ?>">
             <i class='bx bx-user-pin' ></i>
-        </div>
+        </div> -->
         
         <p class="type">Workplace *</p>
         <div class="input-box">
             <input type="text" placeholder="Enter workplace" name="workplace" id="workplace"  required value="<?php echo $data['workplace']; ?>">
             <i class='bx bx-current-location' ></i>
         </div>
-        <p class="type">Upload NIC front/back images *</p>
+
+        <p class="type">Upload NIC front and back as one image *</p>
         <div class="input-box">
-            <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="nic" id="nic" required value="<?php echo $data['nic']; ?>" >
-            
+            <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="nic_img" id="nic_img" required value="<?php echo $data['nic_img']; ?>" > 
+            <span class="invalid"><?php echo $data['nic_err']; ?></span> 
         </div>
-        <p class="type">Upload Workplace ID front/back images *</p>
+
+        <p class="type">Upload Workplace ID front and back as one image *</p>
         <div class="input-box">
-            <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="pId" id="pId" required value="<?php echo $data['pId']; ?>">
-            
+            <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="pid_img" id="pid_img" required value="<?php echo $data['pid_img']; ?>"> 
+            <span class="invalid"><?php echo $data['pid_err']; ?></span>
         </div>
 
         <div>

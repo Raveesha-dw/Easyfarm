@@ -75,4 +75,74 @@ class Inquiry extends Controller{
             }
         }
     }
+
+
+
+    public function answerQuestion(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $data = [
+                'question_id' => trim($_POST['question_id']),
+                'answer' => trim($_POST['answer']),
+                'answer_datetime' => trim($_POST['answer_datetime']),
+
+                'answer_err' => ''
+            ];
+
+            if(empty($data['answer'])){
+                $data['answer_err'] = 'Answer should not be empty.';
+            }
+
+            if(empty($data['answer_err'])){
+                if($this->inquiryModel->addAnswer($data)){
+                    flash('answer_publish_success', 'Your answer has been published successfully!');
+                    header('Location: ' . URLROOT . '/Product/ProductPage/' . $_POST['product_id']);
+                }else{
+                    die('Something went wrong :(');
+                }
+            }else{
+                header('Location: ' . URLROOT . '/Product/ProductPage/' . $_POST['product_id']);
+            }
+        }
+    }
+
+    public function editAnswer(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $data = [
+                'question_id' => trim($_POST['question_id']),
+                'answer' => trim($_POST['edited_answer']),
+                'answer_datetime_edited' => trim($_POST['datetime']),
+
+                'answer_err' => ''
+            ];
+
+            if(empty($data['answer'])){
+                $data['answer_err'] = 'Answer should not be empty.';
+            }
+
+            if(empty($data['answer_err'])){
+                if($this->inquiryModel->editAnswer($data)){
+                    flash('answer_update_success', 'Your answer has been updated successfully!');
+                    header('Location: ' . URLROOT . '/Product/ProductPage/' . $_POST['product_id']);
+                }else{
+                    die('Something went wrong :(');
+                }
+            }else{
+                header('Location: ' . URLROOT . '/Product/ProductPage/' . $_POST['product_id']);
+            }
+        }
+    }
+
+    public function deleteAnswer(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            if($this->inquiryModel->deleteAnswer($_POST['question_id'])){
+                header('Location: ' . URLROOT . '/Product/ProductPage/' . $_POST['product_id']);
+            }else{
+                die('Something went wrong :( Answer is not deleted.');
+            }
+        }
+    }
 }

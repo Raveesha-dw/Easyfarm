@@ -263,7 +263,7 @@ ul{
 
 
 
-
+/* Comment Section */
 .comment-card {
     position: relative;
     border: 1px solid #ccc;
@@ -346,6 +346,10 @@ textarea{
     box-sizing: border-box;
     resize: vertical;
 }
+
+
+
+
 
 @media (min-width: 992px) {
     .blog-main-container {
