@@ -90,6 +90,7 @@
             <div class="product-container">
                     
                 <?php 
+
                 // $products =$data['product_all'];
                 if (isset($data['product_all']) && is_array($data['product_all'])) {
                 foreach($data['product_all'] as $product): 
@@ -98,6 +99,7 @@
                 <div class="product">
                 <a href="<?php echo URLROOT?>/Product/ProductPage/<?php echo $product->Item_Id?>">
                     <!-- <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?>"/> -->
+
                     <div class="product-description">
                         <h3><?php echo $product->Item_name ?> For Sale!</h3>
                         <div class="rating">
@@ -112,10 +114,12 @@
                     <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
                 </a>
                 </div>
+
             <?php 
         endforeach; }
         ?>
             
+
             </div>
     </section>
 </div>

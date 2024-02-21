@@ -288,3 +288,89 @@ button i{
     background-color: var(--light-green);
 }
 
+
+
+/* Inquiry Section */
+
+.comment-card {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.comment-card i{
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+.btn{
+    border-color: darkgreen;
+    color: white;
+    background-color: rgb(7, 147, 7);
+    /* display: flex;
+    justify-content: right;
+    align-items: flex-end; */
+}
+
+.btn:hover{
+    color: white;
+    background-color: rgb(19, 198, 19);
+}
+
+.btn-cancel{
+    position: absolute;
+    bottom: 20px;
+    right: 21px;
+    background-color: #F8F9FA;
+    color: darkgreen;
+    border: solid 1px darkgreen;
+}
+
+.btn-save{
+    position: absolute;
+    bottom: 20px;
+    right: 140px;
+    border: solid 1px darkgreen;
+}
+
+.btn-comment{
+    
+}
+
+.delete-form input[type="submit"]{
+    position: absolute ;
+    top: 20px;
+    right: 25px;
+    width:60px;
+    height: 20px;
+    border: none;
+    color: darkgreen;
+    background-color: white;
+    font-size: 1.0rem;
+}
+
+.delete-form input[type="submit"]:hover{
+    color: rgb(7, 147, 7);
+    cursor: pointer;
+}
+
+.comment-edit-btn{
+    position: absolute;
+    top: 7px;
+    right: 90px;
+    width:40px;
+    height: 20px;
+    border: none;
+    color: darkgreen;
+    background-color: white;
+    font-size: 1.0rem;
+}
+
+.comment-edit-btn:hover{
+    color: rgb(7, 147, 7);
+    background-color: white;
+    cursor: pointer;
+}
+
+

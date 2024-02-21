@@ -10,7 +10,7 @@ class Home extends Controller{
         // self::$this = $this;
         $this->HomeModel = $this->model('M_home');
         
-    }
+   
 
 // public function get_product_details(){
 

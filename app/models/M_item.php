@@ -38,6 +38,7 @@ class M_item{
         return $jsonString;
     }
 
+
     public function sendItemName($item_ID){
         $this->db->query('SELECT Item_name FROM item WHERE Item_Id = :item_ID');
         $this->db->bind(':item_ID', $item_ID);
