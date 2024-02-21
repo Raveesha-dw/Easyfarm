@@ -164,25 +164,10 @@ print_r($data); ?>
                     var jsonData = <?php echo $jsonData; ?>;
                 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="cal">
                     <div class="response"></div>
 
-                    <div id='calendar' data-date='<?php echo $jsonData; ?>'>
+                    <div id='calendar' data-date='<?php echo $jsonData; ?>' data-id='<?php echo $data['V_Id']; ?>'>
                         <input type="hidden" id="hiddenInputDates" name="selectedDates" required value="<?php echo $data['selectedDates']; ?>" >
 
                     </div>
@@ -220,7 +205,7 @@ print_r($data); ?>
                             <td><input id="Message" name="Message" type="textbox" placeholder="Message" size="40" style="height: 40px" ;></td>
                         </tr>
                         <tr>
-                            
+                            <input type="hidden" name="V_Id" value="<?php echo $data[0]->V_Id; ?>"> 
                             <td colspan="2"><input type="submit" value="Submit" onclick="return showConfirmationPopup()"></td> <!-- Submit button -->
                         </tr>
                         

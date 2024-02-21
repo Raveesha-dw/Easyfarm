@@ -180,12 +180,12 @@
                     <br>
                     <br>
 
-                    <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver">
+                    <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery">
                     <label for="Home Delivery"> <b>Home Delivery</b></label><br>
                     
 
-                    <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup">
-                    <label for="Insto Pickup"> <b>Insto Pickup</b></label><br>
+                    <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="In-store Pickup">
+                    <label for="Insto Pickup"> <b>In-store Pickup</b></label><br>
                     <span class="invalid"><?php if($data){echo $data['DeliveryMethod_err'];}  ?></span>
                             
 
