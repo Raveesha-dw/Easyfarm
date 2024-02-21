@@ -11,7 +11,7 @@
 
 
 
-<?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
+<!-- <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?> -->
 <?php
 // Assuming $data['plan_id'] contains the plan ID value
 $planId = $data['plan_id'];
