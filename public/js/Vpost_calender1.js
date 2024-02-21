@@ -2,8 +2,14 @@
 
 
 $(document).ready(function() {
-    // console.log(jsonData)
- // Inside calendar.js
+
+
+
+
+
+    // Initialize selectedDates array to store selected dates
+    var selectedDates = [];
+
 console.log(lastday); // This will log the month data to the console
 
     var today = moment().startOf('day'); // Get today's date
@@ -14,7 +20,7 @@ console.log(lastday); // This will log the month data to the console
 
    
 
-    $('#calendar').fullCalendar({
+    var calendar = $('#calendar').fullCalendar({
 
         events: unavailableDates.map(function(dateString) {
             return {
@@ -96,7 +102,38 @@ console.log(lastday); // This will log the month data to the console
             console.log("Marked Dates:", selectedDates); // Log the marked dates
             sendMarkedDates(selectedDates); // Send the marked dates to the controller
             document.getElementById("hiddenInputDates").value = JSON.stringify(selectedDates);
+        },
+
+        viewRender: function(view, element) {
+            // When the view changes, ensure that selected dates remain black
+            selectedDates.forEach(function(dateStr) {
+                $('td[data-date="' + dateStr + '"]').addClass('selected').css({
+                    'background-color': 'black',
+                    'position': 'relative'
+                });
+                if (!$('td[data-date="' + dateStr + '"]').find('.added-text').length) {
+                    $('td[data-date="' + dateStr + '"]').append('<span class="added-text">Allocated</span>');
+                }
+                $('.added-text').css({
+                    'color': 'red',
+                    'position': 'absolute',
+                    'top': '50%',
+                    'left': '50%',
+                    'transform': 'translate(-50%, -50%)',
+                    'z-index': '1'
+                });
+            });
         }
+
+
+
+
+
+
+
+
+
+
     });
 
     // Function to send marked dates to the controller
