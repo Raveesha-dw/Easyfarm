@@ -4,9 +4,11 @@
 
 <?php
 $productDetails = $data['productInfo'];
+
 $sellerDetails = $data['sellerInfo'];
 $productReviews = $data['itemReviews'];
 $inquiries = $data['inquiries'];
+
 ?>
 
 <section id="productDetails" class="section-p1">
@@ -102,6 +104,7 @@ $inquiries = $data['inquiries'];
             </div>
             </div>
 </section>
+
 
 <!-- Product Description -->
 <section id="productDescription" class="section-p2">
@@ -338,5 +341,6 @@ $inquiries = $data['inquiries'];
     }
     
 </script>
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  

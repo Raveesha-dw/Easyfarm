@@ -3,6 +3,7 @@
     private $productModel;
     private $reviewModel;
     private $inquiryModel;
+
     
     public function __construct(){
         $this->productModel=$this->model('M_Product');
@@ -89,9 +90,8 @@
             $userType = $this->inquiryModel->getUserType($user_id);
             $userName = $this->inquiryModel->getUserName($user_id, $userType);
             $inquiry->userName = $userName;
-
-            // $inquiry->answer = $this->inquiryModel->getAnswer($inquiry->question_id);
         endforeach;
+
 
         $data = [
             'productInfo' => $productInfo,
@@ -102,6 +102,39 @@
         $this->view('Buyer/v_productDetails', $data);
     }
 
+    public function allProducts(){
+        $allProduct = $this->productModel->getAllProducts();
+        // echo $allProduct;
+        $data = [
+            'product_all' => $allProduct
+        ];
+
+        $this->view('pages/home',$data);
+    }
+
+    public function productSearch(){
+        // echo 'dieeee';
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $search = trim($_POST['search']);
+            if (empty($search)) {
+                echo 'Please enter a search term.';
+                return;
+            }
+        }else{
+            $search = '';
+        }
+
+        $searchResult = $this->productModel->searchForProduct($search);
+        
+        $data = [
+            'search' =>$searchResult
+        ];
+
+        $this->view('pages/home', $data);
+    }
 
 
     

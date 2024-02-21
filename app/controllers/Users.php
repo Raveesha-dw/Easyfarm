@@ -321,8 +321,10 @@ class Users extends Controller{
                 if(empty($data['password'])){
                     $data['password_err'] = 'Please enter a password';
                 }
+
                 else if(strlen($data['password'])<8){
                     $data['password_err'] = 'Password must be at least 8 charactors long';
+
                 }
                 else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
                     $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
@@ -420,13 +422,14 @@ class Users extends Controller{
 
                     'pid_img'=> ($_FILES['pid_img']),
                     'nic_img_name'=>time().'_'.$_FILES['pid_img']['name'],
-    
+
                     'name_err' => '',
                     'contactno_err' => '',
                     'email_err' => '',
                     'address_err' => '',
                     'nic_err' => '',
                     'pid_err' => '',
+
                     'password_err'=>'',
                     'confirm-password_err'=>'',
     
@@ -483,6 +486,7 @@ class Users extends Controller{
                         $data['confirm-password_err'] = 'Does not match with the password';
                     }
                 }
+
 
                 if(empty($data['nic_img'])){
                     $data['nic_err'] = 'Please upload your NIC';
@@ -603,8 +607,10 @@ class Users extends Controller{
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter a password';
             }
+
             else if(strlen($data['password'])<8){
                 $data['password_err'] = 'Password must be at least 8 charactors long';
+
             }
             else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
                 $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
@@ -960,8 +966,10 @@ class Users extends Controller{
 
         }else if($_SESSION['user_type'] == 'AgriExpert'){
             // redirect('Pages/Profile');
+
             //$this->view('AgriInstructor/index');
             header("Location:http://localhost/Easyfarm/Blog");
+
 
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
