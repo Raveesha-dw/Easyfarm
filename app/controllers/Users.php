@@ -410,15 +410,23 @@ class Users extends Controller{
                     'email' => trim($_POST['email']),
                     'address' => trim($_POST['address']),
                     'city' => trim($_POST['city']),
-                    'occupation'=>trim($_POST['occupation']),
+                    // 'occupation'=>trim($_POST['occupation']),
                     'workplace'=> trim($_POST['workplace']),
-                    'nic'=> $_POST['nic'],
-                    'pId'=> $_POST['pId'],
+                    // 'nic'=> $_POST['nic'],
+                    // 'pId'=> $_POST['pId'],
+
+                    'nic_img'=> ($_FILES['nic_img']),
+                    'nic_img_name'=>time().'_'.$_FILES['nic_img']['name'],
+
+                    'pid_img'=> ($_FILES['pid_img']),
+                    'nic_img_name'=>time().'_'.$_FILES['pid_img']['name'],
     
                     'name_err' => '',
                     'contactno_err' => '',
                     'email_err' => '',
                     'address_err' => '',
+                    'nic_err' => '',
+                    'pid_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
     
@@ -476,11 +484,21 @@ class Users extends Controller{
                     }
                 }
 
-                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
+                if(empty($data['nic_img'])){
+                    $data['nic_err'] = 'Please upload your NIC';
+                }
+
+                if(empty($data['pid_img'])){
+                    $data['pid_err'] = 'Please upload your workplace ID';
+                }
+
+                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err']) && empty($data['nic_err']) && empty($data['pid_err'])){
+                    
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    // $this->userModel->register($data);
-                    
-                    
+
+                    uploadImage($data['nic_img']['tmp_name'], $data['nic_img_name'],'/images/seller/');
+                    uploadImage($data['pid_img']['tmp_name'], $data['pid_img_name'],'/images/seller/');
+                                 
                     if($this->userModel->register($data)){
                         // $this->login();
                         header("Location:http://localhost/Easyfarm/Users/login");

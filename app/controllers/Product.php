@@ -2,10 +2,12 @@
  class Product extends Controller{
     private $productModel;
     private $reviewModel;
+    private $inquiryModel;
     
     public function __construct(){
         $this->productModel=$this->model('M_Product');
         $this->reviewModel=$this->model('M_Review');
+        $this->inquiryModel=$this->model('M_inquiry');
     }
 
     public function productVeg(){
@@ -79,13 +81,21 @@
         $productInfo = $this->productModel->getProductInfo($itemID);
         $seller_ID = $productInfo->seller_ID;
         $sellerInfo = $this->productModel->getSellerInfo($seller_ID);
-
         $productReviews = $this->reviewModel->getReviewsForItem($itemID);
+        $inquiries = $this->inquiryModel->getQuestions($itemID);
+
+        foreach ($inquiries as $inquiry):
+            $user_id = $inquiry->user_id;
+            $userType = $this->inquiryModel->getUserType($user_id);
+            $userName = $this->inquiryModel->getUserName($user_id, $userType);
+            $inquiry->userName = $userName;
+        endforeach;
 
         $data = [
             'productInfo' => $productInfo,
             'sellerInfo' => $sellerInfo,
-            'itemReviews' => $productReviews
+            'itemReviews' => $productReviews,
+            'inquiries' => $inquiries
         ];
         $this->view('Buyer/v_productDetails', $data);
     }

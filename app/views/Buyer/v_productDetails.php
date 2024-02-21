@@ -4,12 +4,9 @@
 
 <?php
 $productDetails = $data['productInfo'];
-// print_r($productDetails);
-
 $sellerDetails = $data['sellerInfo'];
-// print_r($sellerDetails);
-
 $productReviews = $data['itemReviews'];
+$inquiries = $data['inquiries'];
 ?>
 
 <section id="productDetails" class="section-p1">
@@ -106,117 +103,179 @@ $productReviews = $data['itemReviews'];
             </div>
 </section>
 
+<!-- Product Description -->
 <section id="productDescription" class="section-p2">
-        <h3>Product Details</h3>
+    <h3>Product Details</h3>
+    <hr>
+        <p> <?php echo $productDetails->Description ?>
+        </p>
+
+        <ul class="custom-list2">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+        </ul>
+</section>
+
+<!-- Product Reviews -->
+<section id="reviewSection" class="section-p3">
+    <div class="no-container">
+        <h3>Product Ratings</h3>
         <hr>
-            <p> <?php echo $productDetails->Description ?>
-            </p>
-
-            <ul class="custom-list2">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-            </ul>
-    </section>
-
-    <!-- Change from here onwards -->
-    <section id="reviewSection" class="section-p3">
-        <div class="no-container">
-            <h3>Product Ratings</h3>
-            <hr>
-            <div class="rating">
-                <div class="rating-title">Overall Rating</div>
-                <div class="stars"> 
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
+        <div class="rating">
+            <div class="rating-title">Overall Rating</div>
+            <div class="stars"> 
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+            </div>
+            <div class="rating-bar">
+                <div class="bar">
+                    <div class="bar-fill" style="width: 80%;"></div>
                 </div>
-                <div class="rating-bar">
-                    <div class="bar">
-                        <div class="bar-fill" style="width: 80%;"></div>
-                    </div>
-                    <div class="bar-label">5 Stars (80%)</div>
+                <div class="bar-label">5 Stars (80%)</div>
+            </div>
+            <div class="rating-bar">
+                <div class="bar">
+                    <div class="bar-fill" style="width: 15%;"></div>
                 </div>
-                <div class="rating-bar">
-                    <div class="bar">
-                        <div class="bar-fill" style="width: 15%;"></div>
-                    </div>
-                    <div class="bar-label">4 Stars (15%)</div>
+                <div class="bar-label">4 Stars (15%)</div>
+            </div>
+            <div class="rating-bar">
+                <div class="bar">
+                    <div class="bar-fill" style="width: 5%;"></div>
                 </div>
-                <div class="rating-bar">
-                    <div class="bar">
-                        <div class="bar-fill" style="width: 5%;"></div>
-                    </div>
-                    <div class="bar-label">3 Stars (5%)</div>
+                <div class="bar-label">3 Stars (5%)</div>
+            </div>
+            <div class="rating-bar">
+                <div class="bar">
+                    <div class="bar-fill" style="width: 0%;"></div>
                 </div>
-                <div class="rating-bar">
-                    <div class="bar">
-                        <div class="bar-fill" style="width: 0%;"></div>
-                    </div>
-                    <div class="bar-label">2 Stars (0%)</div>
+                <div class="bar-label">2 Stars (0%)</div>
+            </div>
+            <div class="rating-bar">
+                <div class="bar">
+                    <div class="bar-fill" style="width: 0%;"></div>
                 </div>
-                <div class="rating-bar">
-                    <div class="bar">
-                        <div class="bar-fill" style="width: 0%;"></div>
-                    </div>
-                    <div class="bar-label">1 Star (0%)</div>
-                </div>
+                <div class="bar-label">1 Star (0%)</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id ="questionSection" class="section-p4">
-        <div class="no-container">
-            <h3>Questions About This Product</h3>
-            <hr>
+<!-- Product Inquries -->
+<section id ="questionSection" class="section-p4">
+    <div class="comment-section bg-light p-4 mt-5">
+        <h3>Questions About This Product</h3>
+        <hr>
 
+        <!-- Editor -->
+        <?php 
+            if(isset($_SESSION['user_ID'])){ 
+        ?>
 
-            <div class="question-card">
-                <div class="question"><i class="fas fa-question-circle"></i>
-                    <h3>Q: Is this product available to buy wholesale?</h3>
+                <div class="question-card">
+                    <form action="<?php echo URLROOT . '/Inquiry/askQuestion'?>" method='POST'>
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_ID'];?>">
+                        <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                        <input type="hidden" name="datetime_posted" value="<?php echo date('Y-m-d H:i:s');?>">
+                        <textarea name="question" id="question" cols="100" rows="4" placeholder="Ask Seller a question"></textarea>
+                        <br>
+                        <button type="submit">Ask Question</button>
+                    </form>
                 </div>
-                <div class="answer"><i class="fas fa-check-circle"></i>
-                    <p>A: Yes, this product can be purchased any amount upto 50kg</p>
-                </div>
+
+        <?php            
+            }else{
+                echo "<br><span>Please login to ask questions.</span><br><br><br>";
+            }
+        ?>
+
+        <!-- Display Questions -->
+        <?php 
+            foreach ($inquiries as $inquiry):
+        ?>
+
+            <!-- Question card -->
+            <div class="comment-card">
+                <p>
+                    <b><?php echo $inquiry->userName;?></b> asks, <br><br>
+                    <?php echo $inquiry->question;?> <br><br>
+                    <i><?php echo $inquiry->datetime_last_edited;?></i><br>
+                </p>
+
+                <?php
+                    if(isset($_SESSION['user_ID'])){
+                        if($inquiry->user_id == $_SESSION['user_ID']){
+                ?>
+                            <!-- Edit Question -->
+                            <button class="comment-edit-btn display-0 display-1">Edit</button>
+                            <div class="edit-form display-0" style="display:none;">
+                                <form action="<?php echo URLROOT . '/Inquiry/editQuestion'?>" method="POST">
+                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                    <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                    <textarea name="edited_question" cols="100" rows="4"><?php echo $inquiry->question;?></textarea><br><br><br>
+                                    <button class="btn btn-save" type="submit">Save</button>
+                                </form>
+                                <button class="btn btn-cancel display-1">Cancel</button>
+                            </div>
+
+                            <!-- Delete Question -->
+                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion'?>" onclick='confirmDelete()' method="POST">
+                                <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                <input type="submit" name="questionDelete" value="Delete">
+                            </form>
+                <?php            
+                        }
+                    }
+                ?>
             </div>
 
-            <div class="question-card">
-                <div class="question">
-                    <i class="fas fa-question-circle"></i>
-                    <h3>Q: Can I get this delivered?</h3>
-                </div>
-                <div class="answer">
-                    <i class="fas fa-check-circle"></i>
-                    <p>A: Sorry, We do not offer delivery for this product</p>
-                </div>
-            </div>
-        </div>
+        <?php 
+            endforeach;
+        ?>
+    </div>
+</section>
 
-        <div class="pagination">
-            <span class="page-number">1</span>
-            <span class="page-number">2</span>
-            <span class="page-number">3</span>
-        </div>
-    </section>
 
-    <script>
-        
-        function showRegisterConfirmation() {
 
-             var result = window.confirm("You have to login to the easyFarm .");
-            //  if (result){
-            //     redirect();
-            //     window.location.href = "<?php echo URLROOT; ?>/Users/login";
-            //  }
-            //  else{
-            //     return false;
-            //  }
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    
+    function showRegisterConfirmation() {
+
+            var result = window.confirm("You have to login to the easyFarm .");
+        //  if (result){
+        //     redirect();
+        //     window.location.href = "<?php echo URLROOT; ?>/Users/login";
+        //  }
+        //  else{
+        //     return false;
+        //  }
+    }
+
+    $(document).ready(function () {
+        $(".display-1").on("click", function () {
+            var commentDiv = $(this).closest(".comment-card");
+            commentDiv.find(".display-0").toggle();
+        });
+    });
+
+    function confirmDelete(){
+    var result = confirm('Are you sure you want to delete this question?');
+    if (result == false){
+    event.preventDefault();
         }
-        
-    </script>
+    }
+    
+</script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  
