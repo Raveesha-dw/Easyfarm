@@ -62,6 +62,24 @@ print_r($_SESSION['user_ID']);
     }
 
   
-    
+        public function calendar(){
+        $data = [
+            'title' => 'calendar'
+        ];
+        
+        $this->view('VehicleRenter\v_calendar', $data);
+ 
+        }
+
+
+        public function get_post_details(){
+        $data = [
+            'title' => 'post'
+        ];
+        
+        $this->view('VehicleRenter\v_vehicle_post_details', $data);
+ 
+        }
+
     
 }

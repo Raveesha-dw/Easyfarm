@@ -200,8 +200,7 @@ public  function create_post(){
 
             if ($data['Category'] == "Plants" || $data['Category'] == "Farming Tools" ){
                 if(!empty($data['Expiry_date'])){
-                $data['Invalid_date_err'] = 'Not Valid';
-            }}
+              }}
            
             
             

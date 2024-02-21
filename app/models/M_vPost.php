@@ -7,22 +7,43 @@ public function __construct(){
 
 
 public function create_post($data){
+
+    $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Address,Description,Image,Owner_Id,post_create_date) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Address, :Description,:Image, :Owner_Id,:post_create_date)');
     
-    $this->db->query('INSERT INTO vehicle_item(V_category,V_name,V_number,Contact_Number,Rental_Fee,Charging_Unit,Calender,Address,Description,Image,Owner_Id) VALUES(:V_category,:V_name,:V_number, :Contact_Number, :Rental_Fee, :Charging_Unit, :Calender, :Address, :Description,:Image, :Owner_Id)');
-    // print_r($data);
     $this->db->bind(':V_category', $data['V_category']); 
     $this->db->bind(':V_name', $data['V_name']); 
     $this->db->bind(':V_number', $data['V_number']); 
     $this->db->bind(':Contact_Number', $data['Contact_Number']); 
     $this->db->bind(':Rental_Fee', $data['Rental_Fee']); 
     $this->db->bind(':Charging_Unit', $data['Charging_Unit']); 
-    $this->db->bind(':Calender', $data['Calender']); 
     $this->db->bind(':Address', $data['Address']); 
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Image', $data['Image_name']); 
     $this->db->bind(':Owner_Id', $data['Owner_Id']); 
+    $this->db->bind(':post_create_date', $data['post_create_date']);
     $this->db->execute();
+
+    $this->db->query('SELECT * FROM vehicle_item WHERE V_number= :V_number');
+    $this->db->bind(':V_number',$data['V_number']);  
+
+    $row=$this->db->single();
+            
+    $V_Id = $row->V_Id;
+
+    $calendarString = $data['Calender'];
+   
+    $calendarArray = explode(',', $calendarString);  // Split the string into an array
+
+    $this->db->query('INSERT INTO vehicle_calendar(status, date, V_Id) VALUES (:status, :date, :V_Id)');
+
+    foreach ($calendarArray as $calendar) {
+        $this->db->bind(':status', "unavailable");
+        $this->db->bind(':date', trim($calendar)); // trim() to remove any extra whitespace
+        $this->db->bind(':V_Id', $V_Id);  
+        $this->db->execute();
+    }
     return true;
+
 
 }
 
@@ -32,9 +53,6 @@ public function get_data($Owner_Id){
     $result=$this->db->resultSet();
     // print_r($result);
     return $result;
-    
-    // exit();
-
 
 }
 
@@ -46,21 +64,17 @@ public function getiteamdeatils(){
     $this->db->bind(':V_Id',$_GET['V_Id']);
     $result=$this->db->resultSet();
     return $result;
-    // return $this->db->single();
     
 }
 
-// assign the variable mean bind
 
 public function update_data($data){
-    // print_r($data);
-    // print_r("kkd");
+
     $this->db->query('UPDATE vehicle_item
     SET V_name = :V_name,
         V_category = :V_category,
         V_number = :V_number,
         Contact_Number = :Contact_Number,
-        -- column name= variable
         Rental_Fee = :Rental_Fee,
         Charging_Unit = :Charging_Unit,
         Calender = :Calender,
@@ -71,46 +85,116 @@ public function update_data($data){
 
     WHERE 	
         V_Id = :V_Id');
-    //   $this->db->bind(':item_id', $data['id']);
-    //   $this->db->bind(':seller_ID', '59');
-     $this->db->bind(':V_name', $data['V_name']); 
-    //  variable,data(otherside)
-     $this->db->bind(':V_category', $data['V_category']); 
-     $this->db->bind(':V_number', $data['V_number']); 
-     $this->db->bind(':Contact_Number', $data['Contact_Number']); 
-     $this->db->bind(':Rental_Fee', $data['Rental_Fee']); 
-     $this->db->bind(':Charging_Unit', $data['Charging_Unit']); 
-     $this->db->bind(':Calender', $data['Calender']); 
-     $this->db->bind(':Address', $data['Address']);
-     $this->db->bind(':Description', $data['Description']);
-     $this->db->bind(':Image_name', $data['Image_name']);
-     
-     $this->db->execute();
-     return true;
-    //  $this->db->bind(':Unit_type', $data['Unit_type']); 
+        $this->db->bind(':V_name', $data['V_name']); 
+        $this->db->bind(':V_category', $data['V_category']); 
+        $this->db->bind(':V_number', $data['V_number']); 
+        $this->db->bind(':Contact_Number', $data['Contact_Number']); 
+        $this->db->bind(':Rental_Fee', $data['Rental_Fee']); 
+        $this->db->bind(':Charging_Unit', $data['Charging_Unit']); 
+        $this->db->bind(':Calender', $data['Calender']); 
+        $this->db->bind(':Address', $data['Address']);
+        $this->db->bind(':Description', $data['Description']);
+        $this->db->bind(':Image_name', $data['Image_name']);
+        
+        $this->db->execute();
+        return true;
+
+    }
+
+
+    public function delete_data($data){
+        $this->db->query("DELETE FROM vehicle_item WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id', $data['V_Id']);
+        $this->db->execute();
+    }
+
+
+
+    public function get_category(){
+        $this->db->query("SELECT * FROM vehicle_item_category");
+        $result=$this->db->resultSet();
+        return $result;
+    }
+
+
+    public function getunavailableDates($data){
+        
+        $this->db->query("SELECT date FROM vehicle_calendar WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id',$data);
+        $result=$this->db->resultSet();
+        return $result;
+        
+        
+    }
+
+
+    public function update_description($data){
+        
+        $this->db->query("UPDATE vehicle_item SET Description = :Description WHERE V_Id = :V_Id");
+        $this->db->bind(':Description', $data['Description']);
+        $this->db->bind(':V_Id', $data['V_Id']);
+        $this->db->execute();
+        $result=$this->db->resultSet();     
+        return $result;      
+    }
+
+
+
+    public function getupdateiteamdeatils($data){
+        
+        $this->db->query("SELECT * FROM vehicle_item WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id',$data['V_Id']);
+        $result=$this->db->resultSet();
+        return $result;
     
-    //  if (isset($data['Image']['name']) && !empty($data['Image']['name'])) {
-    //     $this->db->bind(':Image_name', $data['Image_name']);
-    // } else {
-    //     $this->db->bind(':Image_name', '');  // or provide a default value
-    // }
-   
+    }
+
+
+
+
+
+
+    public function update_calendar($data){
     
-    //
-    //  $this->db->bind(':Image', $data['Image_name']);  
-    // $this->db->bind(':Item_Id', $data); 
-    // $this->db->execute();
-    // print_r($data);
-    // exit;
-    // print_r($result);
-    // exit();
+        $this->db->query("DELETE FROM vehicle_calendar WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id',$data['V_Id']);
+        $this->db->execute();
+
+        $calendarString = $data['Calender'];
+    
+        $calendarArray = explode(',', $calendarString);  // Split the string into an array
+
+        $this->db->query('INSERT INTO vehicle_calendar(status, date, V_Id) VALUES (:status, :date, :V_Id)');
+
+        foreach ($calendarArray as $calendar) {
+            $this->db->bind(':status', "unavailable");
+            $this->db->bind(':date', trim($calendar)); // trim() to remove any extra whitespace
+            $this->db->bind(':V_Id', $data['V_Id']);
+            
+            $this->db->execute();
+        }
+        return true;
+    }
+
+
+    public function update_charging_details($data){
+
+        $this->db->query("UPDATE vehicle_item SET V_name=:V_name ,Contact_Number = :Contact_Number, Address=:Address , Rental_Fee =:Rental_Fee, Charging_Unit = :Charging_Unit WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id', $data['V_Id']);
+        $this->db->bind(':V_name', $data['V_name']);
+        $this->db->bind(':Contact_Number', $data['Contact_Number']);
+        $this->db->bind(':Address', $data['Address']);
+        $this->db->bind(':Rental_Fee', $data['Rental_Fee']);
+        $this->db->bind(':Charging_Unit', $data['Charging_Unit']);
+        $this->db->execute();
+
+        $result=$this->db->resultSet();     
+        return $result;
+
+
+    }
+
 
 
 }
-public function delete_data($data){
-    $this->db->query("DELETE FROM vehicle_item WHERE V_Id = :V_Id");
-    $this->db->bind(':V_Id', $data);
-    $this->db->execute();
-}
 
-}

@@ -9,7 +9,8 @@ foreach($data['allProduct'] as $product):
 <a href="<?php echo URLROOT?>/Product/ProductPage/<?php echo $product->Item_Id?>">
 <div class="product-container">
     <div class="product">
-    <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" alt="">
+    <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" alt=""> -->
+    <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?>"/>
     <div class="product-description">
         <h3><?php echo $product->Item_name ?></h3>
     </div>

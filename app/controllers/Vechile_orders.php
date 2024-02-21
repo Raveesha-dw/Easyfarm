@@ -27,8 +27,8 @@
 
 
         ];
-        $data1 = $this->vechile_ordersmodel->getdata(91);
-        $data2 = $this->vechile_ordersmodel->getdatE(91);
+        $data1 = $this->vechile_ordersmodel->getdata($_GET['V_Id']);
+        $data2 = $this->vechile_ordersmodel->getdatE($_GET['V_Id']);
         $owner_id = $data1[0]->Owner_Id;
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
@@ -93,8 +93,8 @@
                 $data['selectedDates_err'] = 'Please enter the date';
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
-                // print_r($data);
-                $data1 = $this->vechile_ordersmodel->getdata(91);
+                print_r($data);
+                $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
                 foreach ($data1 as $object) {
                     $data2 = (array) $object;
                 }
@@ -104,9 +104,9 @@
                 }
             } else {
 
-                $data1 = $this->vechile_ordersmodel->getdata(91);
+                $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
 
-                $data2 = $this->vechile_ordersmodel->getdatE(91);
+                $data2 = $this->vechile_ordersmodel->getdatE($_POST['V_Id']);
                 $owner_id = $data1[0]->Owner_Id;
 
                 $data3 = $this->vechile_ordersmodel->getplandata($owner_id);

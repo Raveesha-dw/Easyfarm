@@ -1,0 +1,177 @@
+
+
+.wrapperVcreatedPost.column12{
+    float: left;
+    width: 20%;
+    padding: 10px;
+    height: 300px;
+    background-color: rgb(255, 254, 254);
+    height: 0%;
+    display: flex;
+}
+ 
+
+
+
+
+
+.wrapperVcreatedPost .poost1{
+    display: grid;
+    grid-template-columns: (3, 1fr);
+    width: 250px;
+    height:200px;
+    border-radius: 4%;
+}
+
+.wrapperVcreatedPost #product-vehicle-container{
+    grid-template-columns: (3, 1fr);
+    width: auto;   
+}
+
+.wrapperVcreatedPost #product-vehicle{
+    width: 280px;
+}
+
+.wrapperVcreatedPost ul{
+    list-style: none;
+    padding: 0 15px;
+}
+
+
+ 
+
+
+.wrapperVcreatedPost .productt{
+    /* width: 23%; */
+    width: fit-content;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    background-color: white;
+    position: relative;
+    align-items: center;
+    
+}
+.wrapperVcreatedPost .button-n{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* height: 30px; */
+    /* width: 50px; */
+    cursor: pointer;
+}
+
+.wrapperVcreatedPost #namee1{
+    /* top:100px; */
+    margin-left: 15px;
+    color: rgb(58, 237, 70);
+    display: flex;
+}
+.wrapperVcreatedPost .wrapperVcreatedPost .name{
+    margin-top: 40px;
+    display: flex;
+}
+
+.wrapperVcreatedPost #price1{
+    margin-left: 180px;
+    color: rgb(238, 0, 255);
+    display: flex;
+}
+
+
+
+.wrapperVcreatedPost .button-n .btn2{
+    background-color: aquamarine;
+}
+
+
+.wrapperVcreatedPost #btnv3{
+    color: rgb(27, 24, 24);
+    border-radius: 10px;
+    background-color: rgb(202, 36, 36);
+   
+   
+}
+
+/* Animate the productt class */
+.wrapperVcreatedPost .productt {
+    width: fit-content;
+    min-width: 250px;
+    padding: 15px;
+    border: 1px solid #cce7d0;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hover effect for productt */
+.wrapperVcreatedPost .productt:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Button animation */
+.wrapperVcreatedPost .button-n .btn2 {
+    background-color: #48bb78;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.wrapperVcreatedPost .button-n .btn2:hover {
+    background-color: #38a169;
+    transform: scale(1.05);
+}
+
+/* Styling for btnv3 */
+.wrapperVcreatedPost #btnv3 {
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: #e53e3e;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Button scaling effect on hover */
+.wrapperVcreatedPost #btnv3:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* Apply the default animation to the class */
+.wrapper_v_product_details_sub {
+  animation-name: example;
+  animation-duration: 1s;
+}
+
+/* Define the hover animation */
+@keyframes example-hover {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Change the animation when the mouse hovers over the class */
+.productt:hover {
+  animation-name: example-hover;
+  animation-duration: 0.5s; /* Adjust duration as needed */
+}

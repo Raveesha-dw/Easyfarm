@@ -1,12 +1,4 @@
 <?php
-// include "../helpers/Mail_helper.php";
-require_once APPROOT . '/helpers/Mail_helper.php';
-require_once APPROOT . '/helpers/OTP_helper.php';
-// require URLROOT . '.app/helpers/Mail_helper.php';
-
-
-
-
 class Users extends Controller{
     private $userModel;
     public function __construct()
@@ -689,13 +681,6 @@ class Users extends Controller{
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter your password';
             }
-            
-
-
-            
-
-
-
 
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
@@ -733,84 +718,50 @@ class Users extends Controller{
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
             
-            if(empty($_POST['otp'])){
+            
+            $data = [
+                'email' => trim($_POST['email']),
+                'otp' =>trim($_POST['OTP']),
 
-                $data = [
-                    'email' => trim($_POST['email']),
-                    'otp' =>'',
-    
-                    'email_err' => '',
-                    'otp_err'=> '',
-                ];
-    
-                if(empty($data['email'])){
-                    $data['email_err'] = 'Please enter an email';
-                }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-                    $data['email_err'] = 'Invalid email format';
-                }else{
-                    if(!$this->userModel->findUserByEmail($data['email'])){
-                        $data['email_err'] = 'User account does not exist';
-                    }
-                }
-    
-               
-                if ( empty($data['email_err'])) {
-                    
-                    $data['otp'] = generate_Otp();
-    
-    print_r($data['otp'] );
-                    // Save OTP, email, and expiration time in the database
-                    $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
-                    $this->userModel->createToken($data, $expirationTime);
-    
-                 
-                    // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                    sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
-                    
+                'email_err' => '',
+                'otp_err'=> '',
+            ];
 
-    
-                }else{
-                    $this->view('Users/v_forgotPassword', $data);
-                }
-    
-    
-                $this->view('Users/v_verifyEmail', $data);
-              
-    
+            if(empty($data['email'])){
+                $data['email_err'] = 'Please enter an email';
+            }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                $data['email_err'] = 'Invalid email format';
             }else{
-
-                $data = [
-                    'email' => trim($_POST['email']),
-                    'otp' =>trim($_POST['otp']),
-
-    
-                    'email_err' => '',
-                    'otp_err'=> '',
-                    'password_err'=>'',
-                    'confirm-password_err'=>'',
-                ];
-
-
-
-                $tokenData = $this->userModel->verifyToken($data);
-
-                if ($tokenData && $tokenData->User_OTP == $data['otp'] && time() <= $tokenData->ExpirationTime) {
-                    // Token is valid and not expired
-                    $this->view('Users/v_resetPassword', $data);
-
-                } else if(empty($tokenData)){
-
-                    $data['otp_err'] = 'Your OTP is invalid';
-                    $this->view('Users/v_verifyEmail', $data);
-
-                }else{
-                    // Token is invalid or expired
-                    $data['otp_err'] = 'Your OTP is expired';
-                    $this->view('Users/v_verifyEmail', $data);
+                if(!$this->userModel->findUserByEmail($data['email'])){
+                    $data['email_err'] = 'User account does not exist';
                 }
+            }
 
+           
+            if ( $this->userModel->findUserByEmail($data)) {
+
+                // generate otp
+                $characters = '0123456789';
+                $length = 6;
+                $otp = '';
+
+                for ($i = 0; $i < $length; $i++) {
+                    $otp .= $characters[rand(0, strlen($characters) - 1)];
+                }
+                $data['otp'] = $otp;
+
+
+                // Save OTP and email in the database
+                $this->userModel->createToken($data);
+
+                // TODO:
+                // Send OTP to the user's email (you can use a library like PHPMailer for this)
+                // sendOTPByEmail($email, $otp); // Implement this function to send OTP via email
 
             }
+
+            $this->view('Users/v_verifyEmail', $data);
+            // redirect('Users/v_login');
 
 
         }else{
@@ -821,40 +772,12 @@ class Users extends Controller{
                 'email_err' => '',
                 'otp_err'=> '',
             ];
+            $this->view('Users/v_forgotPassword', $data);
 
-
-
-            if(!empty($_GET['email'])){
-                $data['email'] = $_GET['email'];
-                
-                $data['otp'] = generate_Otp();
-    
-                print_r($data['otp'] );
-                // Save OTP, email, and expiration time in the database
-                $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
-                $this->userModel->createToken($data, $expirationTime);
-
-             
-                // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
-                
-                $this->view('Users/v_verifyEmail', $data);
-
-
-
-            }else{
-                $this->view('Users/v_forgotPassword', $data);
-
-            }
-
-
-
-    
-    
-    
-            }
 
         }
+    }
+
 
 
 
@@ -871,7 +794,7 @@ class Users extends Controller{
 
             $data = [
                 'email'=> trim($_POST['email']),
-                'otp' => $_POST['otp'],
+                'otp' => $_POST('otp'),
                 'password' => trim($_POST['password']),
                 'confirm-password' => trim($_POST['confirm-password']),
 
@@ -902,41 +825,29 @@ class Users extends Controller{
                 }
             }
 
+            if(!$this->userModel->verifyToken($data)){
+                $data['otp_err'] = 'Invalid OTP';
+
+            }
             
             
             
             
-            if(empty($data['password_err']) && (empty($data['confirm-password_err'])) ){
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-            print_r("kjbaux");
-                print_r($data);
+            else{
+            
                 // Reset the user's password
                 $this->userModel->PasswordReset($data);
 
                  // Clear the password reset token from the database
                  $this->userModel->clearToken($data);
-                 print_r($data);
 
-                 header("Location:http://localhost/Easyfarm/Users/login");
+                 $this->view('pages/home', $data);
 
-            
-
-        }else{
-            $data = [
-                'email'=> '',
-                'otp' => '',
-                'password' => '',
-                'confirm-password' => '',
-
-                'otp_err'=> '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
-            ];
-            $this->view('Uses/v_resetPassword', $data);
+            }
 
         }
 
-    }}
+    }
 
     public function createUserSession($user){
         // print_r($user);

@@ -176,10 +176,19 @@ class Pages extends Controller{
     // public function updateProduct(){
     //     $this->view('seller/v_update_post');
     // }
-
+    public function new_navbar(){
+        $this->view('inc/components/navbars/new_nav');
+    }
+    public function payment(){
+        $this->view('pages/payment');
+    }
+    public function vehicleRenterCreatePost(){
+        $this->view('VehicleRenter/v_vehicle_create_post');
+    }
+    
 
 }
 
-// Pages is the default controller
+// Pages is the default controller                                               
 // Index is the default method
 // That's what runs when we r in the home page
