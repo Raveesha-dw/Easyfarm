@@ -13,7 +13,7 @@
  <div class="container">
     <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
-    <section class="home">
+    <!-- <section class="home"> -->
 
 
 
@@ -177,7 +177,7 @@
     </div>
 </div>
 <?php require APPROOT . '/views/inc/footer.php';?>
-   </section>
+   <!-- </section> -->
 
     </div>
 </div>
