@@ -1,22 +1,8 @@
-<div class="headebr">
 
-
-    <div>
-        <?php require APPROOT . '/views/inc/header.php'; ?>
-        <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-    </div>
-
-
-
-  <div class="container">
-       <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
-
-
-        <section class="home">
-
-
-
-
+<!-- <?php require APPROOT . '/views/inc/csslinking.php';?> -->
+<?php require APPROOT . '/views/inc/header.php';?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
+<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 <?php $products = json_decode(json_encode($data), true);?>
 
 
@@ -97,6 +83,4 @@
 </script>
 <?php require APPROOT . '/views/inc/footer.php';?>
 
-    </section>
-    </div>
-</div>
+

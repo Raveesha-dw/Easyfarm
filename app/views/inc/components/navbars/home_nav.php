@@ -29,7 +29,7 @@
             </div>
 
                 <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Pages/index">Marketplace</a>
+                    <a href="<?php echo URLROOT ?>/Pages/index"">Marketplace</a>
                 </div>
 
                 <div class="nav-parts">
@@ -62,17 +62,11 @@
                                             <span>></span>
                                         </a>
 
-                                        <?php elseif($_SESSION['user_type'] == 'VehicleRenter') :?>
-                                        <a href="<?php echo URLROOT?>/V_renter_home/get_details1" class="sub-link-menu">
-                                            <h2>Dashboard</h2>
-                                            <span>></span>
-                                        </a>
                                     <?php else: ?>
                                         <a href="<?php echo URLROOT?>/Cart/showCart" class="sub-link-menu">
                                             <h2>Dashboard</h2>
                                             <span>></span>
                                         </a>
-
                                     <?php endif; ?>
 
                                     <a href="<?php echo URLROOT?>/Users/logout" class="sub-link-menu">

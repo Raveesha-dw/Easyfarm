@@ -1,23 +1,11 @@
-<div class="headebr">
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
+<?php require APPROOT . '/views/inc/components/sidebars/vehicleRenter_sidebar.php'?>
 
-<div>
-        <?php require APPROOT . '/views/inc/header.php'; ?>
-        <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-</div>
+<?php require APPROOT . '/views/inc/header.php';?>
 <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
-
-
- <div class="container">
-    <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
-
-    <!-- <section class="home"> -->
-
-
-
-
 
 
 
@@ -176,15 +164,10 @@
         </form>
     </div>
 </div>
+
+
+
 <?php require APPROOT . '/views/inc/footer.php';?>
-   <!-- </section> -->
-
-    </div>
-</div>
-
-
-
-
 
 <!-- Your other head elements -->
 <scipt src="https://code.jquery.com/jquery-3.6.4.min.js"></scipt>
