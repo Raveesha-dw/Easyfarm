@@ -57,7 +57,6 @@
         $data['lastday'] = $new_date;
 
         $data = array_merge($data1, $data2, $data);
-        // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
     }
 
@@ -93,21 +92,34 @@
                 $data['selectedDates_err'] = 'Please enter the date';
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
-                print_r($data);
+        
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
+         
                 foreach ($data1 as $object) {
                     $data2 = (array) $object;
                 }
 
                 $data = array_merge($data2, $data);
+               
+                print_r($data);
+                
                 if ($this->vechile_ordersmodel->update_data($data)) {
+                    
+
+
+                $data = array_merge($data2, $data);
+                $data = array_merge($data1, $data);
+             
+                ($this->view('renter/v_afterBooking', $data));
                 }
             } else {
 
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
 
-                $data2 = $this->vechile_ordersmodel->getdatE($_POST['V_Id']);
+                $data2 = $this->vechile_ordersmodel->getdate($_POST['V_Id']);
+
                 $owner_id = $data1[0]->Owner_Id;
+                print_r($data2);
 
                 $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
 
@@ -119,11 +131,7 @@
 
                 $timestamp = strtotime($registed_date);
 
-                // Add the specified number of months to the timestamp
-
-
-
-
+   
 
 
 
@@ -134,13 +142,16 @@
                 $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
                 $data['lastday'] = $new_date;
 
-                $data = array_merge($data1, $data2, $data);
-                ($this->view('renter/v_vechiledetail', $data));
-            }
 
-            // if ($this->vechile_ordersmodel->update_data($data)){
-            //     // $data1=$this->vechile_ordersmodel->update_data($data['seller_ID']);
-            // }
+$bookingDates = $this->vechile_ordersmodel->get_booking_date($_POST['V_Id']);
+
+
+                $data = array_merge($data2, $data);
+                $data = array_merge($data1, $data);
+                $data = array_merge($bookingDates, $data);
+                // print_r($data);
+                ($this->view('renter/v_afterBooking', $data));
+            }
 
 
 

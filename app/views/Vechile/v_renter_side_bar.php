@@ -32,7 +32,7 @@
 <br>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <!-- <a href="http://localhost/Easyfarm/Seller_home/get_product_details1"> -->
+                        <a href="http://localhost/Easyfarm/V_renter_home/get_details1">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
@@ -40,6 +40,8 @@
 
                     <li class="nav-link">
                         <!-- <a href="http://localhost/Easyfarm/Seller_post/creating"> -->
+                         <a href = "http://localhost/Easyfarm/V_post/creating";>
+
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Create</span>
                         </a>
@@ -53,16 +55,12 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
-                        <!-- <a href="http://localhost/Easyfarm/Inventory/get_inventory_details"> -->
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
-                        </a>
-                    </li>
+               
 
                     <li class="nav-link">
                         <!-- <a href="http://localhost/Easyfarm/Seller_post/created_post"> -->
-             
+                             <a href = "http://localhost/Easyfarm/V_post/created_post";>
+
                             <i class='bx bx-heart icon' ></i>
                             <span class="text nav-text">Wallets</span>
                         </a>
