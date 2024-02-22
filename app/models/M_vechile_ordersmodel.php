@@ -76,7 +76,7 @@ public function getdata($V_Id){
 }
 
 public function getdate($V_Id){
-    $this->db->query('SELECT date FROM vehicle_calendar WHERE vehicle_calendar.V_Id = :V_Id');
+    $this->db->query('SELECT date FROM order_calander WHERE order_calander.V_Id = :V_Id');
     $this->db->bind(':V_Id', $V_Id); 
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
