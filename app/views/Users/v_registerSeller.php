@@ -81,7 +81,7 @@
             <i class='bx bxs-edit-location'></i>
         </div>
 
-        <button type="submit" class="btn" name="seller_reg" id="seller_reg"><a href="#"></a>Register</button>
+        <button type="submit" class="btn" name="seller_reg" id="seller_reg"><a href="#"></a>NEXT PAGE</button>
         
         <div>
             <input type="hidden" name="user_type" value="Seller">
@@ -89,7 +89,7 @@
 
         
         <div class="login-link">
-        <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
+        <p>By clicking <b>NEXT PAGE</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
         </div>
     </form>
 </div>

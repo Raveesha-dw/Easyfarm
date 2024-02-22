@@ -1,0 +1,230 @@
+.shero4 .wrapperreplan1{
+    width :29%;
+    height: 530px;
+    background-color: rgb(130, 199, 61);
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+    transition: transform 0.3s ease;
+}
+
+.shero4 .wrapperreplan2{
+    width :29%;
+    height: 530px;
+    background-color: rgb(43, 142, 196);
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+    transition: transform 0.3s ease;
+}
+
+.shero4 .wrapperreplan3{
+    width :29%;
+    height: 530px;
+    background-color: rgb(34, 232, 183);
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+    transition: transform 0.3s ease;
+}
+.shero4 .re_p{
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+/* body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+} */
+
+.shero4 .premium-plan {
+    width: 350px;
+    margin: auto auto auto auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.shero4 .premium-plan .header {
+    margin-bottom: 20px;
+}
+
+.shero4 .premium-plan .header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.shero4 .premium-plan .content {
+    line-height: 1.6;
+    color: #555;
+}
+
+.shero4 .premium-plan .content p {
+    margin-bottom: 15px;
+}
+
+.shero4 .premium-plan .limited-offer {
+    color: #ff4500;
+    font-weight: bold;
+}
+
+.shero4 .premium-plan .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shero4 .premium-plan .cta-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+.shero4 .normal-plan {
+    width: 350px;
+    margin: auto auto auto auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.shero4 .normal-plan .header {
+    margin-bottom: 20px;
+}
+
+.shero4 .normal-plan .header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.shero4 .normal-plan .content {
+    line-height: 1.6;
+    color: #555;
+}
+
+.shero4 .normal-plan .content p {
+    margin-bottom: 15px;
+}
+
+.shero4 .normal-plan .limited-offer {
+    color: #ff4500;
+    font-weight: bold;
+}
+
+.shero4 .normal-plan .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shero4 .normal-plan .cta-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+.shero4 .standard-plan {
+    width: 350px;
+    margin: auto auto auto auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.shero4 .standard-plan .header {
+    margin-bottom: 20px;
+}
+
+.shero4 .standard-plan .header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.shero4 .standard-plan .content {
+    line-height: 1.6;
+    color: #555;
+}
+
+.shero4 .standard-plan .content p {
+    margin-bottom: 15px;
+}
+
+.shero4 .standard-plan .limited-offer {
+    color: #ff4500;
+    font-weight: bold;
+}
+
+.shero4 .standard-plan .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shero4 .standard-plan .cta-button:hover {
+    background-color: #45a049;
+}
+
+
+.shero4 .wrapperreplan1:hover,
+.shero4 .wrapperreplan2:hover,
+.shero4 .wrapperreplan3:hover {
+    transform: scale(1.05);
+}
+

@@ -27,6 +27,10 @@ class Pages extends Controller{
     public function create_post(){
         $this->view('seller/v_create_post');
     }
+
+    public function ve_home(){
+        $this->view('Vechile/vecile_home');
+    }
     public function myplan(){
         $this->view('seller/v_plan');
     
@@ -94,6 +98,10 @@ class Pages extends Controller{
         $this->view('Users/v_login');
     }
 
+    // public function re_home(){
+    //     $this->view('seller/a');
+    // }
+
     public function privacyPolicy(){
 
     }
@@ -134,6 +142,18 @@ class Pages extends Controller{
         $this->view('Buyer/v_dashboardReviews');
     }
 
+    public function choosepkg(){
+        $this->view('seller/v_register_plan');
+    }
+
+
+    public function v_choosepkg(){
+        $this->view('Vechile/v_vechile_register_plan');
+    }
+
+
+
+
     // Seller functions
     // public function seller_home(){
     //     $data = [
@@ -159,10 +179,19 @@ class Pages extends Controller{
     // public function updateProduct(){
     //     $this->view('seller/v_update_post');
     // }
-
+    public function new_navbar(){
+        $this->view('inc/components/navbars/new_nav');
+    }
+    public function payment(){
+        $this->view('pages/payment');
+    }
+    public function vehicleRenterCreatePost(){
+        $this->view('VehicleRenter/v_vehicle_create_post');
+    }
+    
 
 }
 
-// Pages is the default controller
+// Pages is the default controller                                               
 // Index is the default method
 // That's what runs when we r in the home page

@@ -14,9 +14,10 @@ class Home extends Controller{
 
 // public function get_product_details(){
 
-//     $data=$this->HomeModel->get_data('59');
+//     $data=$this->HomeModel->get_data();
     
 //     $this->view('pages/home',$data);
+    
     
 
 // }

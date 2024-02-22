@@ -1,0 +1,463 @@
+.shero3 .untill{
+    margin-left: 25px;
+    color: rgb(254, 255, 255);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1em;
+    padding: 1em;
+    background: rgb(146, 245, 174);
+    border-radius: 5px;
+    box-shadow: 0 0 5px bisque;
+    color: rgb(0, 0, 0);
+    
+
+}
+
+
+
+.shero3 .current {
+    width: 1000px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    padding: 40px; 
+    box-sizing: border-box; 
+    background-color: #ebefef;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+
+.shero3 .current b {
+    font-size: 32px;
+    color: #0d0d0d;
+}
+
+
+.shero3 .unitl__component {
+    text-align: center;
+    background: white;
+    border-radius: 5px;
+}
+.shero3 .untill__numeric {
+    color: black;
+    padding: 0.5em 0;
+    font-size: 3em;
+    font-weight: bold;
+    
+}
+.shero3 .untill__event{
+    grid-column: span 4;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.shero3 .untill__unit{
+    font-size: 1.2em;
+    padding-bottom: 1em;
+    font-weight: bold;
+    color: brown;
+}
+
+
+
+.shero3 .ee{
+    display: flex;
+}
+
+
+
+/* .shero3 .wrapperseller1 {
+    width :25%;
+    height: 300px;
+    background-color: rgb(90, 200, 149);
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+} */
+
+
+
+/* .shero3 .wrapperseller2 {
+    width :25%;
+    background-color: blanchedalmond;
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+} */
+
+
+
+
+
+/* .shero3 .wrapperseller3 {
+    width :25%;
+    background-color: rgb(236, 134, 134);
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+} */
+.plan_button {
+  margin-left: 10%;
+  margin-top: -10%;
+  display: flex;
+}
+
+.shero3 .plan_button .c1 {
+  margin: 25px auto 0 10%;
+  cursor: pointer;
+  background-color: rgb(8, 8, 8);
+}
+
+.shero3 .plan_button .c2 {
+  margin: 25px auto 0 10%;
+  cursor: pointer;
+  background-color: rgb(79, 55, 217);
+}
+
+.shero3 .plan_button .c3 {
+  margin: 25px auto 0 10%;
+  cursor: pointer;
+  background-color: rgb(55, 217, 152);
+}
+
+
+
+.shero3 .plan_button .c1:hover{
+background-color: #45a049}
+
+.shero3 .plan_button .c2:hover{
+    background-color: #45a049}
+
+.shero3 .plan_button .c3:hover{
+        background-color: #45a049}
+
+.shero3 .listing{
+    width :35%;
+    height: 50px;
+    background-color: rgb(226, 236, 134);
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+    /* text-align: center; */
+    
+}
+.shero3 .listing h2{ 
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+
+} 
+/* .list__value h2{
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%); 
+    background: #333;
+} */
+.shero3 .list__value {
+    color: rgb(0, 0, 0);
+    /* top: 5%; */
+    /* left: 70%; */
+    margin-left: 200px;
+}
+
+.shero3 .ee h2{
+    font-weight: 5000;
+    text-align: center;
+    color: #e79511;
+    text-shadow: 2px 2px 4px #eac409;
+}
+
+.shero3 .ee .plan-details p{
+    margin-top: 10px;
+    font-weight: bold;
+
+}
+
+.shero3 .ee .plan-details li{
+    margin-top: 13px;
+    /* background-color: #e79511; */
+}
+
+.shero3 .ee .cta {
+    margin-top: 18px;
+    font-weight: bolder;
+    /* background-color: #e79511; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shero3 .modal-overlay1 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    /* width: 1000px; */
+}
+
+.shero3 .modal-content {
+    background-color: #fff;
+    width: 350px;
+    height: 350px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    position: center;
+}
+
+.shero3 .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.shero3 .custom-popup-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.shero3 .custom-popup-content p {
+    margin-bottom: 10px;
+}
+
+.shero3 .custom-popup-content strong {
+    font-weight: bold;
+}
+
+.shero3 .button-container {
+    margin-top: 20px;
+}
+
+.shero3 .cancel-button,
+.shero3 .ok-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.shero3 .cancel-button {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.shero3 .ok-button {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+/* *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+/* body{
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(45deg,#d8f2f3 0%,#ebf9f9 100%);
+} */
+.center,.front-face,
+.contents,.back-face{
+  position: absolute;
+}
+
+ .center3{
+    margin-left: 10%;
+    margin-top: 15%;
+    margin: 15% auto 0 auto;
+  /* left: 150%; */
+  /* padding: 500px 400px; */
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 290px;
+  transform-style: preserve-3d;
+ perspective: 1000px;
+}
+.front-face, .back-face{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,.2),
+              rgba(0,0,0,.2)),url(bg.jpeg);
+  background-size: cover;
+  background-position: center;
+  transform: translateY(0deg);
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4,.2,.2,1);
+}
+.contents{
+  left: 0%;
+  top: 50%;
+  width: 100%;
+  perspective: 1000px;
+  transform: translateY(-50%) translateZ(60px) scale(0.94);
+}
+.front p{
+  font-size: 35px;
+  margin-bottom: 15px;
+  color: white;
+}
+.front span{
+  font-size: 23px;
+  color: white;
+}
+.front p:after{
+  content: '';
+  display: block;
+  left: 0;
+  right: 0;
+  width: 100px;
+  height: 2px;
+  background: white;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.back-face{
+  transform: rotateY(180deg);
+  background: linear-gradient(45deg,#043348 0%,#032535 100%);
+}
+.back {
+  color: white;
+}
+.back h2{
+  font-size: 33px;
+  padding-bottom: 5px;
+}
+.back span{
+  font-size: 25px;
+}
+.icons{
+  margin: 10px 0;
+  display: block;
+}
+i.fab{
+  color:  #042f4b;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 5px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.center3:hover > .back-face{
+  transform: rotateY(0deg);
+}
+.center3:hover > .front-face{
+  transform: rotateY(-180deg);
+}
+
+.center1{
+    margin-left: 10%;
+    margin-top: 15%;
+    margin: 15% auto 0 auto;
+    /* left: 15%; */
+    /* padding: 500px 400px; */
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 290px;
+    transform-style: preserve-3d;
+   perspective: 1000px;
+  }
+
+  .center1:hover > .back-face{
+    transform: rotateY(0deg);
+  }
+  .center1:hover > .front-face{
+    transform: rotateY(-180deg);
+  }
+
+
+  .center2{
+    margin-left: 10%;
+   margin-top: 15%;
+   margin: 15% auto 0 auto;
+    /* left: 15%; */
+    /* padding: 500px 400px; */
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 290px;
+    transform-style: preserve-3d;
+   perspective: 1000px;
+  }
+
+  .center2:hover > .back-face{
+    transform: rotateY(0deg);
+  }
+  .center2:hover > .front-face{
+    transform: rotateY(-180deg);
+  }
+
+.zx{
+  
+    display: flex;
+    margin-left: 10%;
+    
+   
+  }

@@ -1,41 +1,42 @@
-.header{
+.profileNavBar .header{
     background-color: white;
     color: var(--dark-green);
     height: 100px;
     padding: 20px 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+    
 }
 
-.header .flex{
+.profileNavBar .header .flex{
     display: flex;
     justify-content: space-between;
 }
 
-.flex{
+.profileNavBar .flex{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.greeting:hover{
+.profileNavBar .greeting:hover{
     cursor: pointer;
     color: var(--dark-green)
 }
 
 
-.navbar ul{
+.profileNavBar .navbar ul{
     display: flex; 
     list-style-type: none;
 }
 
-.navbar li{
+.profileNavBar .navbar li{
     padding: 0 20px;
     position: relative;
     color: #333;
 }
 
-.navbar li a{
+.profileNavBar .navbar li a{
     font-size: 16px;
     font-weight: 600;
     transition: 0.3s ease;
@@ -43,12 +44,12 @@
     color: var(--dark-green);
 }
 
-.navbar li a:hover,
-.navbar li a.active{
+.profileNavBar .navbar li a:hover,
+.profileNavBar .navbar li a.active{
     color: var(--dark-green);
 }
 
-.navbar li a.active::after{
+.profileNavBar .navbar li a.active::after{
     content: "";
     width: 50%;
     height: 2px;
@@ -58,7 +59,7 @@
     left: 20px;
 }
 
-.nav-parts a{
+.profileNavBar .nav-parts a{
     text-decoration: none;
     font-size: 20px;
     font-weight: 600;

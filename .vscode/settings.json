@@ -1,0 +1,13 @@
+{
+    "editor.autoIndent": "advanced",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.colorDecoratorsLimit": 1000,
+    "editor.columnSelection": false,
+    "editor.defaultColorDecorators": true,
+    "editor.definitionLinkOpensInPeek": true,
+    "editor.tabSize": 8,
+    "terminal.integrated.altClickMovesCursor": false,
+    "files.watcherExclude": {
+        "**/target": true
+    }
+}
