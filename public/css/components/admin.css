@@ -1,0 +1,26 @@
+.btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-table{
+    padding: 5px 20px !important;
+}
+
+th{
+    font-weight: bold;
+}
+
+tr{
+    cursor: default;
+}
+
+table{
+    margin-top: 20px;
+}
+
+h2{
+    font-size:x-large;
+    font-weight: bold;
+}
