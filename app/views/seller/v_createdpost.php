@@ -15,7 +15,7 @@
             <?php $products = json_decode(json_encode($data), true); ?>
 
 
-
+<?php print_r($data)?>
 
 
 
@@ -83,7 +83,7 @@
                 <!--Posts-->
                 <div class="product-container" id="product-seller-container">
                     <?php $products = $data; ?>
-                    
+
 
                     <?php foreach ($products as $product) : ?>
 
@@ -117,10 +117,10 @@
                                 <button class="btn2"><a href="http://localhost/Easyfarm/Seller_post/update_Product?id=<?php echo $product->Item_Id; ?>">update</a></button>
                                 <!-- <p>Update  </p>
                                     </a> -->
-                               <form onsubmit="return showRemoveConfirmation();" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
-    <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
-    <button type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
-</form>
+                                <form onsubmit="return showRemoveConfirmation();" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
+                                    <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
+                                    <button type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
+                                </form>
                             </div>
 
                         </div>
