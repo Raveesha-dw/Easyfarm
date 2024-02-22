@@ -29,7 +29,6 @@
         ];
         $data1 = $this->vechile_ordersmodel->getdata($_GET['V_Id']);
         $data2 = $this->vechile_ordersmodel->getdate($_GET['V_Id']);
-        // $bookingDates = $this->vechile_ordersmodel->get_booking_date($_GET['V_Id']);
         $owner_id = $data1[0]->Owner_Id;
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);

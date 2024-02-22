@@ -15,6 +15,7 @@ class Pages extends Controller{
         
         $this->view('pages/home', $data);
 
+
     }
 
     public function seller_home(){
@@ -97,9 +98,9 @@ class Pages extends Controller{
         $this->view('Users/v_login');
     }
 
-    public function re_home(){
-        $this->view('seller/a');
-    }
+    // public function re_home(){
+    //     $this->view('seller/a');
+    // }
 
     public function privacyPolicy(){
 
@@ -116,9 +117,11 @@ class Pages extends Controller{
         $this->view('Users/v_registerSeller');
     }
 
+
     public function updateProduct(){
         $this->view('seller/v_update_post');
     }
+
 
 
 

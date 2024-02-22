@@ -292,6 +292,7 @@ button i{
     cursor: pointer;
 }
 
+
 /* .page-number:hover {
     background-color: var(--light-green);
 } */
@@ -317,6 +318,7 @@ button i{
 }
 
 .ask-question-card input[type="submit"]:hover {
+
     background-color: var(--light-green);
 }
 

@@ -7,6 +7,7 @@
         $this->vplanModel = $this->model('M_vplan');
         
     }
+    
 
     public function choosepkg(){
         

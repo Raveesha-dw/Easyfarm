@@ -79,6 +79,7 @@ class M_product{
         return $sellerInfo;
     }
 
+
     public function getAllProducts(){
         $this->db->query('SELECT * FROM item ORDER BY Item_Id DESC');
        
@@ -96,4 +97,5 @@ class M_product{
 
         return $searchResults;
     }
+
 }

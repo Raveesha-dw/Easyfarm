@@ -1,0 +1,50 @@
+.question-card {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.question-card i{
+    font-size: 0.75rem;
+}
+
+.delete-form input[type="submit"]{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width:40px;
+    height: 20px;
+    border: none;
+    color: var(--dark-green);
+    background-color: white;
+    font-size: 1.25rem;
+}
+
+.delete-form input[type="submit"]:hover{
+    color: var(--light-green);
+    cursor: pointer;
+}
+
+.edit-form input[type="submit"]{
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    width:40px;
+    height: 20px;
+    border: none;
+    color: var(--dark-green);
+    background-color: white;
+    font-size: 1.25rem;
+}
+
+.edit-form input[type="submit"]:hover{
+    color: var(--light-green);
+    cursor: pointer;
+}
+
+textarea{
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+}

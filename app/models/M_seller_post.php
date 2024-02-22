@@ -19,6 +19,15 @@ public function get_dataplan3(){
 
 }
 
+public function get_category(){
+    $this->db->query("SELECT * FROM category  ");
+  
+    $result=$this->db->resultSet();
+    // $this->db->execute();
+    // print_r($result);
+    return $result;
+}
+
 public function user_details($seller_ID){
     $this->db->query("SELECT * FROM reg_seller WHERE U_Id = :seller_ID");
     $this->db->bind(':seller_ID', $seller_ID);

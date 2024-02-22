@@ -1,3 +1,4 @@
+
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -26,7 +27,7 @@
                                                     echo $data['Category_err'];
                                                 } ?></span>
                         <br>
-                        <select name="Category" id="sCategory">
+                        <!-- <select name="Category" id="sCategory">
                             <option disabled selected>Select Category</option>
                             <option value="Vegatable" <?php echo ($data['Category'] == 'Vegatable') ? 'selected' : ''; ?>>Vegatable</option>
                             <option value="Fruits" <?php echo ($data['Category'] == 'Fruits') ? 'selected' : ''; ?>>Fruits</option>
@@ -36,7 +37,23 @@
                             <option value="Fertilizer" <?php echo ($data['Category'] == 'Fertilizer') ? 'selected' : ''; ?>>Fertilizer</option>
                             <option value="Insecticides" <?php echo ($data['Category'] == 'Insecticides') ? 'selected' : ''; ?>>Insecticides</option>
                             <option value="Farming Tools" <?php echo ($data['Category'] == 'Farming Tools') ? 'selected' : ''; ?>>Farming Tools</option>
-                        </select>
+                        </select> -->
+
+                        <select name="Category" id="sCategory">
+    <option disabled>Select Category</option>
+    <?php foreach ($data as $categoryObject) : ?>
+        <?php if (isset($categoryObject->category)) : ?>
+            <?php
+            $category = $categoryObject->category;
+            ?>
+            <option value="<?php echo htmlspecialchars($category); ?>" <?php echo ($category === $data['Category']) ? 'selected' : ''; ?>>
+                <?php echo htmlspecialchars($category); ?>
+            </option>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</select>
+
+
                     </div>
 
 
@@ -239,7 +256,7 @@
 
     <!-- Your other head elements -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $("#sCategory").on('change', function() {
                 var el = $(this);
@@ -287,7 +304,56 @@
                 typeDropdown.val(typeDropdown.find('option:first').val());
             });
         });
-    </script>
+    </script> -->
+    <script>
+                console.log(categoryData);
+                console.log("dd");
+                var categoryData = <?php echo json_encode(array_values($data)); ?>;
+    console.log("Category Data:", categoryData);
+
+    $(document).ready(function() {
+        $("#sCategory").on('change', function() {
+            var el = $(this);
+            var typeDropdown = $("#stype");
+
+            // Clear existing options
+            typeDropdown.empty();
+            typeDropdown.val(typeDropdown.find('option:first').val());
+
+            // Get the selected category value
+            var selectedCategory = el.val();
+            console.log("Selected Category:", selectedCategory);
+
+            // Check if categoryData is an array
+            if (Array.isArray(categoryData)) {
+                // Find the category in categoryData
+                var selectedCategoryData = categoryData.find(category => category.category === selectedCategory);
+                console.log("Selected Category Data:", selectedCategoryData);
+
+                // Check if categoryData was found
+                if (selectedCategoryData) {
+                    // Check if selectedCategoryData.type is a string
+                    if (typeof selectedCategoryData.type === 'string') {
+                        // Split the type string into an array
+                        var units = selectedCategoryData.type.split(',');
+                        console.log("Units:", units);
+
+                        // Add options for each unit
+                        units.forEach(function(unit) {
+                            typeDropdown.append("<option value='" + unit + "'>" + unit + "</option>");
+                        });
+                    } else {
+                        console.error("Type is not a string:", selectedCategoryData.type);
+                    }
+                } else {
+                    console.error("Category not found:", selectedCategory);
+                }
+            } else {
+                console.error("categoryData is not an array:", categoryData);
+            }
+        });
+    });
+</script>
 
 
 
