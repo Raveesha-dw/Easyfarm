@@ -67,6 +67,13 @@ foreach ($dates as $date) {
 
 
 
+public function getunavalibale_date($V_Id){
+    $this->db->query('SELECT * FROM vehicle_calendar WHERE vehicle_calendar.V_Id = :V_Id');
+    $this->db->bind(':V_Id', $V_Id); 
+    return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
+}
+
+
 
 
 public function getdata($V_Id){

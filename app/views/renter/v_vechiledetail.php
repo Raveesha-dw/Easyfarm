@@ -10,10 +10,10 @@
 print_r($data); ?>
 
 <section id="vproductDetails" class="section-v1">
-    <div class="single-pro-image">
-                    <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $data[0]->Image;?>"/>
+    <div class="single-pro-image1">
+                    <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $data[0]->Image?> " width="100%" id="MainImg" alt=""> 
 
-
+    
         <table>
             <style>
                 .popup button {
@@ -115,6 +115,7 @@ print_r($data); ?>
             </tr>
         </table>
 
+
         <?php $lastday = $data['lastday']; ?>
 
 <script>
@@ -196,7 +197,7 @@ print_r($data); ?>
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['number_err'];
-                                                        }  ?></span><input id="number" name="number" value="<?php echo $data[0]->Contact_Number; ?>" type="number" placeholder="Your Contact Number" required value="<?php echo $data['number']; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+                                                        }  ?></span><input id="number" name="number" value="" type="number" placeholder="Your Contact Number" required value="<?php echo $data['number']; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
                         </tr>
@@ -226,8 +227,8 @@ print_r($data); ?>
   </form>
     </div>
     </div>
-</section>
 
+</section>
 <script>
     function showConfirmationPopup() {
         document.getElementById('confirmationPopup').style.display = 'block';
