@@ -7,7 +7,26 @@
 
 
 <?php 
-print_r($data); ?>
+$pending_dates = array();
+// $pending_dates = array(); // Initialize an empty array to store pending dates
+
+foreach ($data as $item) {
+    // Check if the current item is an object and has a property "Status" equal to "Pending"
+    if (is_object($item) && property_exists($item, 'Status') && $item->Status === 'Pending') {
+        // If the condition is met, add the corresponding date to the pending_dates array
+        $pending_dates[] = $item->date;
+    }
+}
+
+$jsonData1 = json_encode( $pending_dates);
+
+
+         ?>
+
+                <script>
+                    // Pass JSON data to JavaScript
+                    var jsonData1 = <?php echo $jsonData1; ?>;
+                </script>
 
 <section id="vproductDetails" class="section-v1">
     <div class="single-pro-image1">

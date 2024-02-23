@@ -83,4 +83,10 @@ class Database{
     public function rowCount(){
         return $this->stmt->rowCount();
     }
+
+
+// imalka
+public function lastInsertId() {
+    return $this->dbh->lastInsertId();
+}
 }  
