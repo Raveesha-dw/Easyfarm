@@ -57,12 +57,12 @@ $inquiries = $data['inquiries'];
                 <label for="homedelivery">Home Delivery</label>
             </div>
 
-        <?php elseif ($productDetails->DeliveryMethod == "In-store Pickup") : ?>
+        <?php elseif ($productDetails->DeliveryMethod == "Insto Pickup") : ?>
             <div>
                 <input type="radio" id="instorepick" name="delivery" value="In-Store-Pickup" oninput="updateHiddenDelivery()"/>
                 <label for="instorepick">In-Store-Pickup</label>
             </div>
-        <?php elseif ($productDetails->DeliveryMethod == "Home Delivery, In-store Pickup") : ?>
+        <?php elseif ($productDetails->DeliveryMethod == "Home Delivery, Insto Pickup") : ?>
             <div>
                 <input type="radio" id="homedelivery" name="delivery" value="Home Delivery" oninput="updateHiddenDelivery()"  />
                 <label for="homedelivery">Home Delivery</label>

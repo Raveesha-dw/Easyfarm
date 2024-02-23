@@ -51,8 +51,6 @@ foreach ($dates as $date) {
     $this->db->bind(':Status', 'Pending');
     
     $this->db->execute();
-
-    
 }
 
             
@@ -64,6 +62,7 @@ foreach ($dates as $date) {
         echo "Error: Session user_ID is not set";
     }
 }
+
 
 
 
