@@ -6,11 +6,9 @@ public function __construct(){
 }
 
 public function update_data($data) {
-    // Ensure $_SESSION['user_ID'] is properly set
+
     if (isset($_SESSION['user_ID'])) {
-        // Validate data here if needed
-        // print_r($data);
-        // Insert query
+
         $this->db->query('INSERT INTO v_orders( Vechile_ID, Owner_ID, placed_Date, Buyer_ID, Status, name, location, number, Message) 
                          VALUES ( :Vechile_ID, :Owner_ID, :placed_Date, :Buyer_ID, :Status, :name, :location, :number, :Message)');
 
@@ -27,13 +25,15 @@ public function update_data($data) {
         $this->db->execute();
 
         
-        print_r("kk");
+        // print_r("kk");
         $this->db->query('SELECT * FROM v_orders WHERE Vechile_ID = :Vechile_ID');
         $this->db->bind(':Vechile_ID', $data['V_Id']);
         $row=$this->db->single();
         $Order_ID = $row->Order_ID;
         // $this->db->execute();
-        print_r($data);
+        //  print_r("ooooooooooooooooooooooooooooooooooooooo");
+        // print_r($data);
+        // print_r("ooooooooooooooooooooooooooooooooooooooo");
         
 
         // Decode the JSON string into an array
@@ -51,8 +51,6 @@ foreach ($dates as $date) {
     $this->db->bind(':Status', 'Pending');
     
     $this->db->execute();
-
-    
 }
 
             
@@ -69,6 +67,7 @@ foreach ($dates as $date) {
 
 
 
+
 public function getdata($V_Id){
     $this->db->query('SELECT * FROM vehicle_item WHERE vehicle_item.V_Id = :V_Id');
     $this->db->bind(':V_Id', $V_Id); 
@@ -76,11 +75,12 @@ public function getdata($V_Id){
 }
 
 public function getdate($V_Id){
-    $this->db->query('SELECT date FROM vehicle_calendar WHERE vehicle_calendar.V_Id = :V_Id');
+    $this->db->query('SELECT date FROM order_calander WHERE order_calander.v_id = :V_Id');
     $this->db->bind(':V_Id', $V_Id); 
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
 }
+
  public function getplandata($owner_id){
     $this->db->query('SELECT * FROM reg_vehicleowner WHERE reg_vehicleowner.U_Id = :U_Id');
     $this->db->bind(':U_Id',$owner_id); 

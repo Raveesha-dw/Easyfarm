@@ -106,7 +106,7 @@
 
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
 
-                $data2 = $this->vechile_ordersmodel->getdatE($_POST['V_Id']);
+                $data2 = $this->vechile_ordersmodel->getdate($_POST['V_Id']);
                 $owner_id = $data1[0]->Owner_Id;
 
                 $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
