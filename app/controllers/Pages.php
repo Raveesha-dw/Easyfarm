@@ -15,7 +15,6 @@ class Pages extends Controller{
         
         $this->view('pages/home', $data);
 
-
     }
 
     public function seller_home(){
@@ -98,9 +97,9 @@ class Pages extends Controller{
         $this->view('Users/v_login');
     }
 
-    // public function re_home(){
-    //     $this->view('seller/a');
-    // }
+    public function re_home(){
+        $this->view('seller/a');
+    }
 
     public function privacyPolicy(){
 
@@ -117,11 +116,9 @@ class Pages extends Controller{
         $this->view('Users/v_registerSeller');
     }
 
-
     public function updateProduct(){
         $this->view('seller/v_update_post');
     }
-
 
 
 
@@ -129,8 +126,11 @@ class Pages extends Controller{
         if($_SESSION['user_type'] == 'Buyer'){
             $this->view('Buyer/v_dashboardCart');
         }
-        if($_SESSION['user_type'] == 'Seller'){
+        elseif($_SESSION['user_type'] == 'Seller'){
             $this->view('seller/v_seller_home');
+        }
+           elseif($_SESSION['user_type'] == 'VehicleRenter'){
+            $this->view('V_renter_home/get_details1');
         }
     }
 
