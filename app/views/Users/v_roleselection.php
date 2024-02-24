@@ -9,9 +9,8 @@
         <div class="btnList">
             <a href="<?php echo URLROOT ?>/Users/assignUser/Buyer" class="btn">Buyer</a><br>
             <a href="<?php echo URLROOT ?>/Users/assignUser/Seller" class="btn">Seller</a><br>
-            <a href="<?php echo URLROOT ?>/Users/assignUser/AgriExpert" class="btn">Agricultural Expert</a><br>
             <a href="<?php echo URLROOT ?>/Users/assignUser/VehicleRenter" class="btn">Vehicle Renter</a><br>
-    
+            <a href="<?php echo URLROOT ?>/Users/assignUser/AgriExpert" class="btn">Agriculture Instructor</a><br>
         </div>
         
 

@@ -133,11 +133,6 @@
             <div class="scolumn2">
                 <b>Upload image</b>
                 <div class="image">
-                    
-                    <br>
-                    <!-- <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                    <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                    <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images"> -->
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
                     <span class="invalid"><?php if($data){echo $data['Image_err'];}  ?></span>
                 </div>

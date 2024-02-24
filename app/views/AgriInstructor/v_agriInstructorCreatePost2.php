@@ -50,11 +50,6 @@
                     <label for="image">Choose an image:</label>
                     <input type="file" name="image" id="image">
                 </div>
-
-                <div class="form-field mb-4">
-                    <label for="slug">Slug</label>
-                    <input type="text" class="form-control" name="slug" id="slug" placeholder="Enter a SEO friendly slug">
-                </div>
                 
                 <input type="hidden" name="date_published" value="<?php echo date('Y-m-d H:i:s'); ?>"></input>
                 <input type="hidden" name="author" value="<?php echo $_SESSION['user_ID']; ?>"></input>

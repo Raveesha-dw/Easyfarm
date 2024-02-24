@@ -54,8 +54,6 @@ class Users extends Controller{
                 'bank_name' => '',
                 'branch_name' => '',
                 'ac_number' => '',
-                
-                
 
                 'name_err' => '',
                 'contactno_err' => '',
@@ -77,10 +75,9 @@ class Users extends Controller{
                 'email' => '',
                 'address' => '',
                 'city' => '',
-                'occupation'=>'',
                 'workplace'=> '',
-                'nic'=>'',
-                'pId'=> '',
+                'nic_img'=>'',
+                'pid_img'=> '',
 
                 'name_err' => '',
                 'contactno_err' => '',
@@ -88,8 +85,10 @@ class Users extends Controller{
                 'address_err' => '',
                 'password_err'=>'',
                 'confirm-password_err'=>'',
-
+                'nic_err' => '',
+                'pid_err' => ''
             ];
+
             $this->view('Users/v_registerAgriExpert',$data);
         }
 
@@ -276,14 +275,6 @@ class Users extends Controller{
                     // 'address_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
-
-// <<<<<<<<< Temporary merge branch 1
-
-
-
-
-// =========
-// >>>>>>>>> Temporary merge branch 2
                 ];
 
 
@@ -399,7 +390,12 @@ class Users extends Controller{
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-               
+                // Get image data
+                $nic_img = file_get_contents($_FILES['nic_img']['tmp_name']);
+                $nic_img = base64_encode($nic_img); // Convert binary data to base64 for database storage
+
+                $pid_img = file_get_contents($_FILES['pid_img']['tmp_name']);
+                $pid_img = base64_encode($pid_img);
 
                 $data=[
                     'user_type' => $_POST['user_type'],
@@ -410,16 +406,9 @@ class Users extends Controller{
                     'email' => trim($_POST['email']),
                     'address' => trim($_POST['address']),
                     'city' => trim($_POST['city']),
-                    // 'occupation'=>trim($_POST['occupation']),
                     'workplace'=> trim($_POST['workplace']),
-                    // 'nic'=> $_POST['nic'],
-                    // 'pId'=> $_POST['pId'],
-
-                    'nic_img'=> ($_FILES['nic_img']),
-                    'nic_img_name'=>time().'_'.$_FILES['nic_img']['name'],
-
-                    'pid_img'=> ($_FILES['pid_img']),
-                    'nic_img_name'=>time().'_'.$_FILES['pid_img']['name'],
+                    'nic_img' => $nic_img,
+                    'pid_img' => $pid_img,   
     
                     'name_err' => '',
                     'contactno_err' => '',
@@ -428,9 +417,7 @@ class Users extends Controller{
                     'nic_err' => '',
                     'pid_err' => '',
                     'password_err'=>'',
-                    'confirm-password_err'=>'',
-    
-                
+                    'confirm-password_err'=>''
                 ];
 
                 if(empty($data['fullname'])){
@@ -451,7 +438,6 @@ class Users extends Controller{
                 }
                 else{
                     if($this->userModel->findUserByEmail($data['email'])) {
-                        // echo("check1");
                         $data['email_err']='Email is already registered';
                     }
                 }
@@ -495,16 +481,10 @@ class Users extends Controller{
                 if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err']) && empty($data['nic_err']) && empty($data['pid_err'])){
                     
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-                    uploadImage($data['nic_img']['tmp_name'], $data['nic_img_name'],'/images/seller/');
-                    uploadImage($data['pid_img']['tmp_name'], $data['pid_img_name'],'/images/seller/');
                                  
                     if($this->userModel->register($data)){
-                        // $this->login();
-                        header("Location:http://localhost/Easyfarm/Users/login");
-                        // redirect('Users/v_login');
+                        header("Location:http://localhost/Easyfarm/Blog");
                         flash('register_success', 'You have successfully registered with EasyFarm');
-                        // $this->view('Pages/loginPage');
                     }
                     else{
                         die('Something went wrong');
@@ -527,10 +507,9 @@ class Users extends Controller{
                     'email' => '',
                     'address' => '',
                     'city' => '',
-                    'occupation'=>'',
                     'workplace'=> '',
-                    'nic'=>'',
-                    'pId'=> '',
+                    'nic_im'=>'',
+                    'pid_img'=> '',
     
                     'name_err' => '',
                     'contactno_err' => '',
@@ -538,12 +517,12 @@ class Users extends Controller{
                     'address_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
-    
+                    'nic_err' => '',
+                    'pid_err' => ''
+                ];
 
-            ];
-            $this->view('Users/v_registerAgriExpert',$data);
-        
-        }
+                 $this->view('Users/v_registerAgriExpert',$data);
+            }
         }
 
     if($_POST['user_type'] == 'VehicleRenter'){
@@ -763,7 +742,7 @@ class Users extends Controller{
                     
                     $data['otp'] = generate_Otp();
     
-    print_r($data['otp'] );
+                    print_r($data['otp'] );
                     // Save OTP, email, and expiration time in the database
                     $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
                     $this->userModel->createToken($data, $expirationTime);

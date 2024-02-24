@@ -2,9 +2,9 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 
 <div class="wrapperAgriExpert">
-    <h1>Register as a Agricultural expert</h1>
+    <h1>Register as a Agriculture Instructor</h1>
     <p class="startText"> Register to <b>EasyFarm</b></p>
-    <form action="<?php echo URLROOT ?>/Users/register" method="POST">
+    <form action="<?php echo URLROOT ?>/Users/register" method="POST" enctype="multipart/form-data">
     
         <p class="type">Full name *</p>
         <div class="input-box" >
@@ -56,28 +56,23 @@
             <span class="invalid"><?php echo $data['address_err']; ?></span>
         </div>
 
-        <!-- <p class="type">Occupation *</p>
-        <div class="input-box">
-            <input type="text" placeholder="Enter occupation" name="occupation" id="occupation"  required value="<?php echo $data['occupation']; ?>">
-            <i class='bx bx-user-pin' ></i>
-        </div> -->
-        
         <p class="type">Workplace *</p>
         <div class="input-box">
             <input type="text" placeholder="Enter workplace" name="workplace" id="workplace"  required value="<?php echo $data['workplace']; ?>">
             <i class='bx bx-current-location' ></i>
         </div>
 
-        <p class="type">Upload NIC front and back as one image *</p>
+        <p class="type">Upload NIC front and back as one file *</p>
         <div class="input-box">
-            <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="nic_img" id="nic_img" required value="<?php echo $data['nic_img']; ?>" > 
+            <input class="file-upload-input" type="file" name="nic_img" id="nic" required value="<?php echo $data['nic_img'];?>>
             <span class="invalid"><?php echo $data['nic_err']; ?></span> 
         </div>
 
-        <p class="type">Upload Workplace ID front and back as one image *</p>
+        <p class="type">Upload Workplace ID front and back as one file *</p>
         <div class="input-box">
-            <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="pid_img" id="pid_img" required value="<?php echo $data['pid_img']; ?>"> 
+            <input type="file" name="pid_img" id="pid" required value="<?php echo $data['pid_img'];?>>
             <span class="invalid"><?php echo $data['pid_err']; ?></span>
+            <!-- <input class="file-upload-input" type="file" onchange="readURL(this)" accept="=Image/*"  name="pid_img" id="pid_img" value="<?php //echo $data['pid_img']; ?>">  -->
         </div>
 
         <div>
@@ -86,11 +81,11 @@
 
         <button type="submit" class="btn" name="agriExpert_reg" id="agriExpert_reg" >Register</button>
 
-
-        <div class="login-link">
-            <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
-        </div>
     </form>
+        <div class="login-link">
+            <p>By clicking <b>Register</b>, you agree to easyfarm's<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
+        </div>
+    
 </div>
 
 
