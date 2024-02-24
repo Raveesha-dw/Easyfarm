@@ -36,7 +36,9 @@ public function get_itemids1($renter_ID){
                     GROUP BY v_orders.Order_ID");
     $this->db->bind(':renter_ID', $renter_ID);
     $this->db->execute();
+    
     $result = $this->db->resultSet();
+    print_r($result);
     return $result;
 }
 
@@ -142,23 +144,40 @@ public function get_itemids4($renter_ID){
 
 // done
 
-
-
-
-public function updateiteamdeatils2(){
-    
-    $this->db->query("UPDATE v_orders SET Status ='Cancelled' WHERE Order_ID = :Order_ID");
-    $this->db->bind(':Order_ID',$_GET['id']);
-    $this->db->execute();
-    $result=$this->db->resultSet();
-    return $result;
-    
+public function getDatesforcancel() {
+    $this->db->query('SELECT date FROM order_calander WHERE 0rder_ID = :Order_ID');
+    $this->db->bind(':Order_ID', $_GET['id']); // Assuming $Order_ID is passed as an argument
+    return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
 }
+
+
+
+public function updateiteamdeatils2($dates){
+    // Update v_orders table
+    $this->db->query("UPDATE v_orders SET Status ='Cancelled' WHERE Order_ID = :Order_ID");
+    $this->db->bind(':Order_ID', $_GET['id']); // Assuming $_GET['id'] contains the order ID
+    $this->db->execute();
+
+    // Update order_calander table
+    foreach ($dates as $date) {
+        $this->db->query('UPDATE order_calander SET status = "Cancelled" WHERE date = :date AND 0rder_ID = :Order_ID');
+        $this->db->bind(':date', $date);
+        $this->db->bind(':Order_ID', $_GET['id']); // Assuming $_GET['id'] contains the order ID
+        $this->db->execute();
+    }
+
+    // No need to execute the query here again
+    $result = $this->db->resultSet(); // Assuming you want to return some result, adjust this accordingly
+    return $result;
+}
+
 
 
 public function updateiteamdeatils1(){
     
     $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
+    $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
+
     $this->db->bind(':Order_ID',$_GET['id']);
     $this->db->execute();
     $result=$this->db->resultSet();

@@ -157,7 +157,7 @@
 
     function okaction(){
        const reason = encodeURIComponent(document.getElementById('additionalReason').value);
-       const url = `http://localhost/Easyfarm/V_renter_home/V_renter_update_status2?id=${currentOrderId}&reason=${reason}`;
+       const url = `http://localhost/Easyfarm/V_renter_home/update_status2?id=${currentOrderId}&reason=${reason}`;
 
        fetch(url, {
             method: 'GET',

@@ -86,11 +86,23 @@ public function getdata($V_Id){
 }
 
 public function getdate($V_Id){
-    $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id');
+    $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id AND Status = "success"');
     $this->db->bind(':V_Id', $V_Id); 
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
 }
+
+
+public function getdatepending($V_Id){
+    $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id AND Status = "Pending"');
+    $this->db->bind(':V_Id', $V_Id); 
+    return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
+    
+}
+
+
+
+
  public function getplandata($owner_id){
     $this->db->query('SELECT * FROM reg_vehicleowner WHERE reg_vehicleowner.U_Id = :U_Id');
     $this->db->bind(':U_Id',$owner_id); 

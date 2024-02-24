@@ -31,6 +31,7 @@
         
         $data2 = $this->vechile_ordersmodel->getdate($_GET['V_Id']);
         $data5 = $this->vechile_ordersmodel->getunavalibale_date($_GET['V_Id']);
+        $data6 = $this->vechile_ordersmodel->getdatepending($_GET['V_Id']);
         print_r($data5);
         $owner_id = $data1[0]->Owner_Id;
 
@@ -59,7 +60,7 @@
         $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
         $data['lastday'] = $new_date;
 
-        $data = array_merge($data1, $data2, $data,$data5);
+        $data = array_merge($data1, $data2, $data,$data5,$data6);
        
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
