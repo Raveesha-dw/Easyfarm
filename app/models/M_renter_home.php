@@ -150,6 +150,12 @@ public function getDatesforcancel() {
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
 }
 
+public function getDatesforpending() {
+    $this->db->query('SELECT date FROM order_calander WHERE 0rder_ID = :Order_ID');
+    $this->db->bind(':Order_ID', $_GET['id']); // Assuming $Order_ID is passed as an argument
+    return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
+}
+
 
 
 public function updateiteamdeatils2($dates){
@@ -173,27 +179,40 @@ public function updateiteamdeatils2($dates){
 
 
 
-public function updateiteamdeatils1(){
-    
-    $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
-    $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
 
-    $this->db->bind(':Order_ID',$_GET['id']);
+public function updateiteamdeatils1($dates){
+    // Update v_orders table
+    $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
+    $this->db->bind(':Order_ID', $_GET['id']); // Assuming $_GET['id'] contains the order ID
     $this->db->execute();
-    $result=$this->db->resultSet();
+
+    // Update order_calander table
+    foreach ($dates as $date) {
+        $this->db->query('UPDATE order_calander SET status = "success" WHERE date = :date AND 0rder_ID = :Order_ID');
+        $this->db->bind(':date', $date);
+        $this->db->bind(':Order_ID', $_GET['id']); // Assuming $_GET['id'] contains the order ID
+        $this->db->execute();
+    }
+
+    // No need to execute the query here again
+    $result = $this->db->resultSet(); // Assuming you want to return some result, adjust this accordingly
     return $result;
-    
 }
 
-// public function updateiteamdeatils(){
+
+// public function updateiteamdeatils1(){
     
-//     $this->db->query("UPDATE orders SET Status ='Completed' WHERE Order_ID = :Order_ID");
+//     $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
+    
+
 //     $this->db->bind(':Order_ID',$_GET['id']);
 //     $this->db->execute();
 //     $result=$this->db->resultSet();
 //     return $result;
     
 // }
+
+
 
 
 

@@ -51,15 +51,25 @@ print_r($_SESSION['user_ID']);
 
 
     public function update_status1(){
-        $item1 =$this->renterhomeModel->updateiteamdeatils1();
+         $dates = $this->renterhomeModel->getDatesforpending($_GET['id']);
+          $dateStrings = [];
+    foreach ($dates as $dateObject) {
+        $dateStrings[] = $dateObject->date;
+    }
+        $result = $this->renterhomeModel->updateiteamdeatils1($dateStrings);
+        // $item1 =$this->renterhomeModel->updateiteamdeatils1();
         $items=$this->renterhomeModel->get_itemids2($_SESSION['user_ID']);
         $this->view('Vechile/v_renter_home_pending',$items);
 
     }
 
+
+
+
+
+
    public function update_status2(){
-    print("ss");
-    // Assuming $_GET['id'] contains the order ID
+   
     $dates = $this->renterhomeModel->getDatesforcancel($_GET['id']);
 
     $dateStrings = [];
