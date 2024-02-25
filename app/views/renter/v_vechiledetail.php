@@ -151,6 +151,14 @@ $jsonData1 = json_encode( $pending_dates);
 
             <div class="wrapperCalendar2">
                 <p><i>Select the Date</i></p>
+                <br>
+                <br>
+                
+                <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
+    <span>Unavailable Day</span>
+    <br>
+    <div style="background-color: blue; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
+    <span>Pending Day</span>
                 <span class="invalid"><?php if ($data) {echo $data['selectedDates_err'];} ?></span>
 
                 <?php foreach ($data as $item) : ?>
