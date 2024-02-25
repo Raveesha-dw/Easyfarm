@@ -35,7 +35,7 @@ console.log(confirmed_booking_dates);
                     start: date,
                     end: date,
                     rendering: 'background',
-                    color: '#ec6868' // Red
+                    color: '#ec2c2c' // Red
                 });
             });
 
@@ -45,7 +45,7 @@ console.log(confirmed_booking_dates);
                     start: date,
                     end: date,
                     rendering: 'background',
-                    color: '#fbf975' // Yellow
+                    color: '#0b12d6' // Yellow
                 });
             });
 

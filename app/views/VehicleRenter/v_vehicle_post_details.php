@@ -38,7 +38,7 @@
                 <div class="wrapper_v_product_details_sub">
                     <p><b>Calendar</b></p><br>
                     <div class="wrapperCalendar">
-                        <p><I>Update the unavailable dates for renting</p></I>
+                        <!-- <p><I>Update the unavailable dates for renting</p></I> -->
                         <div class="cal" >
 
                             <?php
@@ -69,7 +69,7 @@
                                 <div class="legend-label">Unavailable Dates</div>
                             </div>
                             <div class="legend-item">
-                                <div class="legend-color" style="background-color: #fbf975;"></div>
+                                <div class="legend-color" style="background-color: #0b12d6;"></div>
                                 <div class="legend-label">Unconfirmed Booking Dates</div>
                             </div>
                             <div class="legend-item">
