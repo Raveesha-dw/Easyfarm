@@ -410,11 +410,12 @@ public function update_vehicle_post_details(){
 
 
 
-$data['vehicle_data'] = $vehicle_data;
-$data['unconfirmed_booking_dates'] = $unconfirmed_booking_dates;
-$data['confirmed_booking_dates'] = $confirmed_booking_dates;
-$data['unavailableDates'] = $unavailable__Dates;
-print_r($data);
+        $data['vehicle_data'] = isset($vehicle_data) ? $vehicle_data : [];
+        $data['unconfirmed_booking_dates'] = isset($unconfirmed_booking_dates) ? $unconfirmed_booking_dates : [];
+        $data['confirmed_booking_dates'] = isset($confirmed_booking_dates) ? $confirmed_booking_dates : [];
+        $data['unavailableDates'] = isset($unavailable__Dates) ? $unavailable__Dates : [];
+
+        print_r($data);
 
         $this->view('VehicleRenter/v_vehicle_post_details', $data);
 
