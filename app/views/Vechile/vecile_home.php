@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
-
+<!-- <?php print_r($data) ?> -->
 
 <div class="wrapper">
     <!--Menu-->
@@ -25,7 +25,13 @@
 
 
 
-
+ <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+        <div class="search-container">
+            <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product...">
+            <button type="submit">Search</button>
+            <!-- <a href="<?php echo URLROOT ?>/product/productSearch">Search </a>  -->
+        </div>
+    </form>
   
 
         <!--  -->
@@ -51,7 +57,7 @@
 
                         <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $item->Image; ?>" />
                         <div class="product-description">
-                            <h3>For Rent!</h3>
+                            <h3>For Rent! <?php echo $item->V_category; ?></h3>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>

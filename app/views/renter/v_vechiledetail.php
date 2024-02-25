@@ -153,6 +153,17 @@ $jsonData1 = json_encode( $pending_dates);
                 <p><i>Select the Date</i></p>
                 <br>
                 <br>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p id="modal-content">This date is unavailable for booking.</p>
+    <button id="modal-ok-btn">OK</button>
+  </div>
+</div>
+
                 
                 <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
     <span>Unavailable Day</span>
