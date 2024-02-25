@@ -377,30 +377,46 @@ public function update_vehicle_post_details(){
 
     public function view_more_booking_details()
     {
+
+
+        $data = [];
+
+
         $vehicle_data = $this->v_postModel->getiteamdeatils();
         $vehicle_data = get_object_vars($vehicle_data[0]);
         // print_r($vehicle_data);
 
         $booking_dates = $this->v_postModel->get_booking_dates($vehicle_data['V_Id']);
-       
+    //    print_r($booking_dates);
        foreach ($booking_dates as $booking_date) {
-            $booking_Date_array = get_object_vars($booking_date);
+            if($booking_date -> status == 'Pending'){
+                $unconfirmed_booking_dates[] = $booking_date -> date;
+            }elseif($booking_date -> status == 'success'){
+                $confirmed_booking_dates[] = $booking_date -> date;
+            }
+            // $booking_Data = get_object_vars($booking_date);
         }
-        // print_r($booking_Date_array);
 
 
         $unavailableDates = $this->v_postModel->getunavailableDates($vehicle_data['V_Id']);
-        // $unavailableDates = get_object_vars($unavailableDates);
 
         $unavailable__Dates = [];
         
         foreach ($unavailableDates as $unavailableDate) {
             $unavailable__Dates[] = $unavailableDate->date;
         }
-        print_r($unavailable__Dates);
+        // print_r($unavailable__Dates);
 
 
-        $this->view('VehicleRenter/v_vehicle_post_details', $vehicle_data);
+
+
+$data['vehicle_data'] = $vehicle_data;
+$data['unconfirmed_booking_dates'] = $unconfirmed_booking_dates;
+$data['confirmed_booking_dates'] = $confirmed_booking_dates;
+$data['unavailableDates'] = $unavailable__Dates;
+print_r($data);
+
+        $this->view('VehicleRenter/v_vehicle_post_details', $data);
 
     }
 
