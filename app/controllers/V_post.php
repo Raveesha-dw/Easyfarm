@@ -368,6 +368,65 @@ public function update_vehicle_post_details(){
         }
     }
 
+
+
+
+
+
+
+
+    public function view_more_booking_details()
+    {
+        $vehicle_data = $this->v_postModel->getiteamdeatils();
+        $vehicle_data = get_object_vars($vehicle_data[0]);
+        // print_r($vehicle_data);
+
+        $booking_dates = $this->v_postModel->get_booking_dates($vehicle_data['V_Id']);
+       
+       foreach ($booking_dates as $booking_date) {
+            $booking_Date_array = get_object_vars($booking_date);
+        }
+        // print_r($booking_Date_array);
+
+
+        $unavailableDates = $this->v_postModel->getunavailableDates($vehicle_data['V_Id']);
+        // $unavailableDates = get_object_vars($unavailableDates);
+
+        $unavailable__Dates = [];
+        
+        foreach ($unavailableDates as $unavailableDate) {
+            $unavailable__Dates[] = $unavailableDate->date;
+        }
+        print_r($unavailable__Dates);
+
+
+        $this->view('VehicleRenter/v_vehicle_post_details', $vehicle_data);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // public function update_description(){
 
     //      if ($_SERVER['REQUEST_METHOD'] == 'POST') {

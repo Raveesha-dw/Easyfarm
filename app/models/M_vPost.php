@@ -246,5 +246,21 @@ public function update_data($data){
 
     }
 
+
+
+
+    
+    public function get_booking_dates($V_Id){
+
+        $this->db->query("SELECT * FROM order_calander WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id', $V_Id);
+
+        $result=$this->db->resultSet();
+        return $result;
+    
+
+
+    }
+
 }
 
