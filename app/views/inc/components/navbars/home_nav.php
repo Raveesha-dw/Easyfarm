@@ -19,7 +19,7 @@
             <div class="flex">
                 <!-- <h1>EasyFarm</h1> -->
                 <div class="nav-logo">
-                    <h2><a href="<?php echo URLROOT ?>/Pages/index"">EasyFarm</a></h2>
+                    <h2><a href="<?php echo URLROOT ?>/Pages/index">EasyFarm</a></h2>
                 </div>
                 <div class="nav-parts">
             </div>
@@ -29,6 +29,7 @@
             </div>
 
                 <div class="nav-parts">
+                    
                     <a href="<?php echo URLROOT ?>/Pages/index">Marketplace</a>
                 </div>
 
@@ -53,7 +54,7 @@
                             <div class="user-menu">
                                 <div class="user-info">
                                 <a href="<?php echo URLROOT?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>" class="sub-link-menu">
-                                        <h2>View Profile</h2>
+                                        <h2><i class="fa-solid fa-user"></i>View Profile</h2>
                                         <span>></span>
                                     </a>
                                     <?php if($_SESSION['user_type'] == 'Seller') :?>

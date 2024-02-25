@@ -8,7 +8,7 @@ class Home extends Controller{
     public function __construct()
     {
         // self::$this = $this;
-        $this->HomeModel = $this->model('M_home');
+        $this->HomeModel = $this->model('M_home');}}
         
    
 
@@ -23,7 +23,5 @@ class Home extends Controller{
 // }
 
 
-    }
+    
 
-
-}

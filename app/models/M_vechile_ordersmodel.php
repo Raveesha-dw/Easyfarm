@@ -17,7 +17,7 @@ public function update_data($data) {
         $this->db->bind(':Owner_ID', $data['Owner_Id']); 
         $this->db->bind(':placed_Date', date('Y-m-d')); // Set current date
         $this->db->bind(':Buyer_ID', $_SESSION['user_ID']); 
-        $this->db->bind(':Status', 'PENDING'); // Set status to 'ACCEPT'
+        $this->db->bind(':Status', 'ACCEPT'); // Set status to 'ACCEPT'
         $this->db->bind(':name', $data['name']); 
         $this->db->bind(':location', $data['location']); 
         $this->db->bind(':number', $data['number']);
@@ -26,19 +26,20 @@ public function update_data($data) {
 
         
         // print_r("kk");
-        $this->db->query('SELECT * FROM v_orders WHERE Vechile_ID = :Vechile_ID');
-        $this->db->bind(':Vechile_ID', $data['V_Id']);
-        $row=$this->db->single();
-        $Order_ID = $row->Order_ID;
-        // $this->db->execute();
-        //  print_r("ooooooooooooooooooooooooooooooooooooooo");
-        // print_r($data);
-        // print_r("ooooooooooooooooooooooooooooooooooooooo");
+        $Order_ID = $this->db->lastInsertId();
+        // $this->db->query('SELECT * FROM v_orders WHERE Vechile_ID = :Vechile_ID');
+        // $this->db->bind(':Vechile_ID', $data['V_Id']);
+        // $row=$this->db->single();
+        // $Order_ID = $row->Order_ID;
+        // // $this->db->execute();
+        print_r( $Order_ID);
         
 
         // Decode the JSON string into an array
 $dates = json_decode($data['selectedDates'], true);
-
+// $row = $this->db->single();
+// $orderID = $row->Order_ID;
+// print_r($row);
 // Loop through the array of dates and insert each one into the database
 foreach ($dates as $date) {
     // Assuming $Order_ID is defined somewhere in your code
@@ -65,6 +66,12 @@ foreach ($dates as $date) {
 
 
 
+public function getunavalibale_date($V_Id){
+    $this->db->query('SELECT * FROM vehicle_calendar WHERE vehicle_calendar.V_Id = :V_Id');
+    $this->db->bind(':V_Id', $V_Id); 
+    return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
+}
+
 
 
 
@@ -75,11 +82,22 @@ public function getdata($V_Id){
 }
 
 public function getdate($V_Id){
-    $this->db->query('SELECT date FROM order_calander WHERE order_calander.v_id = :V_Id');
+    $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id AND Status = "success"');
     $this->db->bind(':V_Id', $V_Id); 
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
 }
+
+
+public function getdatepending($V_Id){
+    $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id AND Status = "Pending"');
+    $this->db->bind(':V_Id', $V_Id); 
+    return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
+    
+}
+
+
+
 
  public function getplandata($owner_id){
     $this->db->query('SELECT * FROM reg_vehicleowner WHERE reg_vehicleowner.U_Id = :U_Id');

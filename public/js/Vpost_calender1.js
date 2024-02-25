@@ -17,20 +17,31 @@ console.log(lastday); // This will log the month data to the console
 
     var selectedDates = [];// Array to store selected dates
     var unavailableDates = jsonData;
+    var pendingdates = jsonData1;
 
    
 
     var calendar = $('#calendar').fullCalendar({
 
-        events: unavailableDates.map(function(dateString) {
-            return {
-                title: 'Unavailable', // Displayed title for the event
-                start: dateString, // Start date of the event
-                rendering: 'background', // Render the event as background
-                color: 'red ' // Background color of the event
-            };
-        }),
-        
+          events: [
+    ...unavailableDates.map(function(dateString) {
+        return {
+            title: 'Unavailable', // Displayed title for the event
+            start: dateString, // Start date of the event
+            rendering: 'background', // Render the event as background
+            color: 'red' // Background color of the event
+        };
+    }),
+    ...pendingdates.map(function(dateString) {
+        return {
+            title: 'Pending', // Displayed title for the event
+            start: dateString, // Start date of the event
+            rendering: 'background', // Render the event as background
+            color: 'blue' // Background color of the event
+        };
+    })
+],
+
         
 
 

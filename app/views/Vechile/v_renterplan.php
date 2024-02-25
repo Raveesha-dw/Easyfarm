@@ -42,10 +42,10 @@ $planId = $data['plan_id'];
     </div>
 
 
-    <div class="listing">
-        <h2 class="list__label">REMAING LISTING :</h2>
-        <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
-    </div>
+   <!-- <div class="listing"> -->
+        <!-- <h2 class="list__label">REMAING LISTING :</h2> -->
+        <!-- <h2 class="list__value"><?php echo $data['list_count'] ?></h2> -->
+    <!-- </div> -->
     
     <div class="zx">
                     <?php if ($data['plan_id'] != $data[0]['plan_id']) : ?>
@@ -69,7 +69,7 @@ $planId = $data['plan_id'];
                                             <p class="highlight">Exclusive <?php echo $data[0]['duration'] ?>-Month Plan</p>
                                             <ul>
                                                 <li>Unlimited access for <?php echo $data[0]['duration'] ?> months!</li>
-                                                <li>List up to <?php echo $data[0]['listing_limit'] ?> items!</li>
+                                                <!-- <li>List up to <?php echo $data[0]['listing_limit'] ?> items!</li> -->
                                                 <li>All for just ₹<?php echo $data[0]['price'] ?>!</li>
                                             </ul>
                                         </div>
@@ -104,7 +104,7 @@ $planId = $data['plan_id'];
                                             <p class="highlight">Exclusive <?php echo $data[1]['duration'] ?>-Month Plan</p>
                                             <ul>
                                                 <li>Unlimited access for <?php echo $data[1]['duration'] ?> months!</li>
-                                                <li>List up to <?php echo $data[1]['listing_limit'] ?> items!</li>
+                                                <!-- <li>List up to <?php echo $data[1]['listing_limit'] ?> items!</li> -->
                                                 <li>All for just ₹<?php echo $data[1]['price'] ?>!</li>
                                             </ul>
                                         </div>
@@ -138,7 +138,7 @@ $planId = $data['plan_id'];
                                             <p class="highlight">Exclusive <?php echo $data[2]['duration'] ?>-Month Plan</p>
                                             <ul>
                                                 <li>Unlimited access for <?php echo $data[2]['duration'] ?> months!</li>
-                                                <li>List up to <?php echo $data[2]['listing_limit'] ?> items!</li>
+                                                <!-- <li>List up to <?php echo $data[2]['listing_limit'] ?> items!</li> -->
                                                 <li>All for just ₹<?php echo $data[2]['price'] ?>!</li>
                                             </ul>
                                         </div>
