@@ -389,12 +389,13 @@ public function update_vehicle_post_details(){
         $booking_dates = $this->v_postModel->get_booking_dates($vehicle_data['V_Id']);
     //    print_r($booking_dates);
        foreach ($booking_dates as $booking_date) {
+            $booking_Data[] = get_object_vars($booking_date);
             if($booking_date -> status == 'Pending'){
                 $unconfirmed_booking_dates[] = $booking_date -> date;
             }elseif($booking_date -> status == 'success'){
                 $confirmed_booking_dates[] = $booking_date -> date;
             }
-            // $booking_Data = get_object_vars($booking_date);
+            
         }
 
 
@@ -414,6 +415,7 @@ public function update_vehicle_post_details(){
         $data['unconfirmed_booking_dates'] = isset($unconfirmed_booking_dates) ? $unconfirmed_booking_dates : [];
         $data['confirmed_booking_dates'] = isset($confirmed_booking_dates) ? $confirmed_booking_dates : [];
         $data['unavailableDates'] = isset($unavailable__Dates) ? $unavailable__Dates : [];
+        $data['booking_Data'] = isset($booking_Data) ? $booking_Data : [];
 
         print_r($data);
 

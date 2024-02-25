@@ -1,19 +1,18 @@
 $(document).ready(function() {
     var calendarElement = document.getElementById('calendar');
     var unavailableDatesJson = calendarElement.getAttribute('data-unavailable-dates');
-    
     var unconfirmed_booking_datesJson = calendarElement.getAttribute('data-unconfirmed_booking_dates');
-    console.log(unconfirmed_booking_datesJson);
     var confirmed_booking_datesJson = calendarElement.getAttribute('data-confirmed_booking_dates');
     var post_create_dateJson = calendarElement.getAttribute('data-create-date');
+    var booking_DataJson = calendarElement.getAttribute('data-booking_Data');
 
     var unavailableDates = JSON.parse(unavailableDatesJson);
     var unconfirmed_booking_dates = JSON.parse(unconfirmed_booking_datesJson);
     var confirmed_booking_dates = JSON.parse(confirmed_booking_datesJson);
+    var booking_Data = JSON.parse(booking_DataJson);
+    console.log(booking_Data);
     var post_create_date = JSON.parse(post_create_dateJson);
-console.log(confirmed_booking_dates);
-// console.log(unavailableDates);
-// console.log(unconfirmed_booking_dates);
+
     var today = moment().startOf('day'); // Get today's date
     var postCreateDate = moment(post_create_date);
     var threeMonthsLater = postCreateDate.add(3, 'months').endOf('day'); // Get date three months later
@@ -60,6 +59,24 @@ console.log(confirmed_booking_dates);
             });
 
             callback(events);
+        },
+        dayClick: function(date, jsEvent, view) {
+            // Check if the clicked date is in the booking data
+            var clickedDate = date.format('YYYY-MM-DD');
+            var found = booking_Data.some(function(item) {
+                return item.date === clickedDate;
+            });
+            if (found) {
+                // Popup message when clicking a date
+                alert('You clicked on: ' + date.format());
+            }
+        },
+        select: function(start, end, jsEvent, view) {
+            // Print the selected date
+            console.log('Selected date: ' + start.format());
+            // You can do further actions with the selected date here
+
+            document.getElementById("hiddenSelectedDates").value = start.format();
         }
     });
 });

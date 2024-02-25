@@ -13,6 +13,9 @@
                 <?php $unconfirmed_booking_dates = $data['unconfirmed_booking_dates'];?>
                 <?php $confirmed_booking_dates = $data['confirmed_booking_dates'];?>
                 <?php $unavailableDates = $data['unavailableDates'];?>
+                <!-- <?php $booking_Data = $data['booking_Data'];?>
+                <?php print_r($booking_Data);?> -->
+
                 <div class="box">
                     <div class="wrapper_v_product_details_sub">
 
@@ -49,6 +52,8 @@
                             $unavailableDatesJson = json_encode($unavailableDates);
                             $unconfirmed_booking_datesJson = json_encode($unconfirmed_booking_dates);
                             $confirmed_booking_datesJson = json_encode($confirmed_booking_dates);
+                            $booking_DataJson = json_encode($booking_Data);
+                        
 
                             $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
                             ?>
@@ -57,7 +62,9 @@
                                 data-unavailable-dates='<?php echo $unavailableDatesJson; ?>' 
                                 data-create-date='<?php echo $post_create_dateJson; ?>' 
                                 data-unconfirmed_booking_dates='<?php echo $unconfirmed_booking_datesJson; ?>' 
-                                data-confirmed_booking_dates='<?php echo $confirmed_booking_datesJson; ?>'>
+                                data-confirmed_booking_dates='<?php echo $confirmed_booking_datesJson; ?>'
+                                data-booking_Data='<?php echo $booking_DataJson;?>'
+                                >
                             </div><br><br>
 
                             <!-- <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData">
