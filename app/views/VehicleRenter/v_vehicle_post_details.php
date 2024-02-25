@@ -41,13 +41,22 @@
                         <p><I>Update the unavailable dates for renting</p></I>
                         <div class="cal" >
 
-                            <?php
-                                // Encode $dates array as JSON
-                                $datesJson = json_encode($unavailableDates);
-                                $post_create_dateJson = json_encode($vehicle_data['post_create_date']);?>
+<?php
+// Encode $dates array as JSON
+$unavailableDatesJson = json_encode($unavailableDates);
+$unconfirmed_booking_datesJson = json_encode($unconfirmed_booking_dates);
+$confirmed_booking_datesJson = json_encode($confirmed_booking_dates);
 
-                            <div id='calendar' data-dates='<?php echo $datesJson; ?>' data-create-date = '<?php echo $post_create_dateJson; ?>'>
-                            </div><br><br>
+$post_create_dateJson = json_encode($vehicle_data['post_create_date']);
+?>
+
+<div id='calendar' 
+     data-unavailable-dates='<?php echo $unavailableDatesJson; ?>' 
+     data-create-date='<?php echo $post_create_dateJson; ?>' 
+     data-unconfirmed_booking_dates='<?php echo $unconfirmed_booking_datesJson; ?>' 
+     data-confirmed_booking_dates='<?php echo $confirmed_booking_datesJson; ?>'>
+</div><br><br>
+
                             <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData">
                             <input type="hidden" id="hiddenInputDates" name="markedDates">
                             <input type="hidden"  name="V_Id" value="<?php echo $vehicle_data['V_Id']; ?>">
@@ -117,5 +126,5 @@
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
-<script src="<?php echo URLROOT ?>\public\js\Vpost_update_calendar.js"></script>
+<script src="<?php echo URLROOT ?>\public\js\Vpost_booking_detials_calendar.js"></script>
 
