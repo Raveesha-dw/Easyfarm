@@ -211,9 +211,9 @@ public  function create_post(){
             
             
            
-            // if (empty($data['Expiry_date'])){
-            //     $data['Expiry_date_err'] = 'Please enter the date';
-            // }
+            if (empty($data['Expiry_date'])){
+                $data['Expiry_date_err'] = 'Please enter the date';
+            }
             
             
             if (empty($data['DeliveryMethod'])){
@@ -276,7 +276,39 @@ public  function create_post(){
             }
             else{die('something went wrong');}
             }
-            else ($this->view('seller/v_create_post',$data));
+            else {
+                
+                
+                
+
+
+
+
+                $data1 = $this->sellerModel->get_category();
+$dataArray = [];
+
+// Convert objects to arrays
+foreach ($data1 as $obj) {
+    $dataArray[] = (array) $obj;
+}
+
+// Merge the original data array with the array representation
+$mergedArray = array_merge($data, $dataArray);
+
+// Pass the merged data array to the view with an appropriate key
+ $this->view('seller/v_create_post',$mergedArray);
+// $this->view('seller/v_create_post', ['data' => $mergedArray]
+
+
+
+                
+                
+                
+            }
+                
+                
+                
+            
             
            
             
