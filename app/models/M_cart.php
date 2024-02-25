@@ -7,6 +7,7 @@ class M_cart{
         $this->db=new Database();
     }
 
+
     public function addToCart($data){
         
         $this->db->query('INSERT INTO cart(Item_Id, U_Id, Quantity,selectedDeliveryMethod) VALUES (:itemId, :uId, :quantity , :selectedDeliveryMethod)'); 
