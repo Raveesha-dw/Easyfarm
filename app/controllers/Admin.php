@@ -8,7 +8,7 @@ class Admin extends Controller{
     }
 
     public function index(){
-        
+        header('Location: ' . URLROOT . '/Admin/agriInstructor');
     }
 
     public function blog(){
@@ -105,6 +105,33 @@ class Admin extends Controller{
         if($_SERVER['REQUEST_METHOD']=='POST'){
             if($this->adminModel->deleteCategory(trim($_POST['permalink']))){
                 header('Location: ' . URLROOT . '/Admin');
+            }else{
+                die('Something went wrong :(');
+            }
+        }
+    }
+
+    public function agriInstructor(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['AccStatus'])){ 
+            $AccStatus = $_GET['AccStatus']; 
+        }else{
+            $AccStatus = 'Under Review';
+        }
+
+        $data = $this->adminModel->getAgriInstructorsByAccStatus($AccStatus);
+
+        $this->view('Admin/v_adminAgriInstructor', $data);
+    }
+
+    public function reviewAgriInstructor(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['id'])){
+            $data = $this->adminModel->getAgriInstructorById($_GET['id']);
+            $this->view('Admin/v_adminReviewAgriInstructor', $data);
+        }
+
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
+            if($this->adminModel->setAgriInstructorAccStatus(trim($_POST['id']), trim($_POST['accStatus']))){
+                header('Location: ' . URLROOT . '/Admin/agriInstructor');
             }else{
                 die('Something went wrong :(');
             }
