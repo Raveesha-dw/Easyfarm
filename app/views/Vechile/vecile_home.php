@@ -9,7 +9,6 @@
             <h2 class="title">Featured Categories</h2>
             <div class="menu-container">
 
-
                 <?php foreach ($data['v_Categories'] as $category) : ?>
                     <div class="card">
                         <i class="fa-solid fa-truck-fast"></i>
@@ -17,7 +16,6 @@
                     </div>
 
                 <?php endforeach; ?>
-
 
             </div>
         </div>
@@ -28,24 +26,29 @@
 
 
 
-    <?php
-
-    // print_r($data);
-    foreach ($data['items'] as $item) :
-    ?>
+  
 
         <!--  -->
 
 
         <!--Product List-->
         <section class="product-section container">
+
+    
+
             <!-- <h2 class="title">Featured Products</h2> -->
-            <a href="<?php echo URLROOT ?>/Vechile_orders/details?V_Id=<?php echo $item->V_Id; ?>">
-                <div class="product-container">
+            <div class="product-container">
+                              <?php
+
+    // print_r($data);
+    foreach ($data['items'] as $item) :
+    ?>
                     <!-- Hardcode this part -->
 
 
                     <div class="product">
+                         <a href="<?php echo URLROOT ?>/Vechile_orders/details?V_Id=<?php echo $item->V_Id; ?>">
+
                         <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $item->Image; ?>" />
                         <div class="product-description">
                             <h3>For Rent!</h3>
@@ -59,14 +62,22 @@
                             <h4> LKR <?php echo $item->Rental_Fee; ?></h4>
                             <h4> <?php echo $item->Charging_Unit; ?></h4>
                         </div>
+                        <!-- </div> -->
+                        <!-- </div> -->
+                        <input type="hidden" name="V_Id" value="<?php echo $item->V_Id; ?>">
+                        </a>
                     </div>
-                </div>
-                <input type="hidden" name="V_Id" value="<?php echo $item->V_Id; ?>">
-            </a>
+                     <?php endforeach; ?>
+                
+            </div>
+
+           
+
+
         </section>
+
 
 </div>
 
-    <?php endforeach; ?>
 
-    <?php require APPROOT . '/views/inc/footer.php'; ?>
+<?php require APPROOT . '/views/inc/footer.php'; ?>
