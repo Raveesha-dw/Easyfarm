@@ -1,3 +1,4 @@
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
@@ -152,6 +153,9 @@
                 subtotalElements = document.querySelectorAll('.subtotal .subtotal-value');
                 recalculateTotal();
             }
+        } else {
+            // If cancel is clicked, prevent the default action (navigating to the delete URL)
+            event.preventDefault();
         }
     }
 
