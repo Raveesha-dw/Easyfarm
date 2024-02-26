@@ -75,6 +75,7 @@ public function getunavalibale_date($V_Id){
 
 
 
+
 public function getdata($V_Id){
     $this->db->query('SELECT * FROM vehicle_item WHERE vehicle_item.V_Id = :V_Id');
     $this->db->bind(':V_Id', $V_Id); 
