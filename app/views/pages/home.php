@@ -52,7 +52,12 @@
         </div>
     </form>
 
+    
+
     <section class="product-section container">
+
+
+      
         <?php
         if (isset($data['search']) && is_array($data['search'])) { ?>
             <h2><strong>Search Results...</strong></h2>
@@ -87,6 +92,23 @@
 
     <!--Product List-->
     <section class="product-section container">
+
+        <div class = "filters">
+
+            <select class="form-control" name="sort" id ="sort">
+                <option selected="" disabled="" >Sort by Default </option>
+                <option value="l2h">Price low to high</option>
+                <option value="h2l">Price high to low</option>
+            </select>
+
+
+        </div>
+
+
+
+
+
+          
         <!-- <h2 class="title">Featured Products</h2> -->
         <div class="product-container">
 
@@ -125,6 +147,36 @@
         </div>
     </section>
 </div>
+
+<!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
+<script>
+    document.getElementById('sort').addEventListener('change', function() {
+        var productsContainer = document.querySelector('.product-container');
+        var products = Array.from(productsContainer.querySelectorAll('.product'));
+
+        var sortValue = this.value;
+
+        products.sort(function(a, b) {
+            var priceA = parseFloat(a.querySelector('.product-description h4').textContent);
+            var priceB = parseFloat(b.querySelector('.product-description h4').textContent);
+
+            if (sortValue === 'l2h') {
+                return priceA - priceB;
+            } else if (sortValue === 'h2l') {
+                return priceB - priceA;
+            }
+        });
+
+        // Clear the products container
+        productsContainer.innerHTML = '';
+
+        // Append sorted products to the container
+        products.forEach(function(product) {
+            productsContainer.appendChild(product);
+        });
+    });
+</script>
+
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
