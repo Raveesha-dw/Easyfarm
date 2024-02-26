@@ -9,7 +9,7 @@
     <hr><br>
 
     <?php
-        $agriInstructorDetails = $data[0];
+        $agriInstructorDetails = $data;
     ?>
 
     <table>

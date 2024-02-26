@@ -684,15 +684,15 @@ class Users extends Controller{
 
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
-                $logged_user = $this->userModel->login($data);
+                $loggedInUser = $this->userModel->login($data);
                 
-                if($logged_user){
-                    $this->createUserSession($logged_user);                    
-                } // Logging in user
-                else{
+                if($loggedInUser){
+                    $this->assignUserType($loggedInUser);                    
+                }else{
                     $data['password_err'] = 'Password is incorrect';
                     $this->view('Users/v_login', $data);
                 }
+
             }else{
                 $this->view('Users/v_login', $data);
             }
@@ -746,13 +746,10 @@ class Users extends Controller{
                     // Save OTP, email, and expiration time in the database
                     $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
                     $this->userModel->createToken($data, $expirationTime);
-    
                  
-                    // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                    sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
-                    
+                    // Send OTP to the user's email 
+                    sendOTPByEmail($data['email'], $data['otp']); 
 
-    
                 }else{
                     $this->view('Users/v_forgotPassword', $data);
                 }
@@ -819,8 +816,8 @@ class Users extends Controller{
                 $this->userModel->createToken($data, $expirationTime);
 
              
-                // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
+                // Send OTP to the user's email 
+                sendOTPByEmail($data['email'], $data['otp']); 
                 
                 $this->view('Users/v_verifyEmail', $data);
 
@@ -922,40 +919,54 @@ class Users extends Controller{
 
     }}
 
+    public function assignUserType($user){
+        $userType = $user->User_type;
+
+        if($userType == 'Buyer'){
+            $this->createUserSession($user);
+            header("Location:http://localhost/Easyfarm/Pages/index");
+            
+        }else if($userType == 'Seller'){
+            $this->createUserSession($user);
+            header("Location:http://localhost/Easyfarm/Seller_home/get_product_details");
+
+        }else if($userType == 'AgricultureExpert'){
+            $accStatus = $this->userModel->getAgriInstructorAccStatus($user->U_Id)->AccStatus;
+            switch($accStatus){
+                case 'Verified':
+                    $this->createUserSession($user);
+                    redirect('Blog');
+                    break;
+                case 'Under Review':
+                    echo('<div style="display:flex; align-item:center; justify-content:center; font-size:30px;">Your account is under review. You will receive an email when your account has been verified.</div>');
+                    break;
+                case 'Rejected':
+                    echo('<div style="display:flex; align-item:center; justify-content:center; font-size:30px;">Your previous document submission was rejected. To continue, please register with a new email address and submit the required documents.</div>');
+                    break;
+                default:
+                    echo('<div style="display:flex; align-item:center; justify-content:center; font-size:30px;">Unrecognized Account Type</div>');
+                    break;
+            }
+
+        }else if($userType == 'VehicleRenter'){
+            $this->createUserSession($user);
+            $this->view('Pages/index');
+        }    
+        else  if($userType == 'Admin'){
+            $this->createUserSession($user);
+            redirect('Admin');
+        }
+    }
+
     public function createUserSession($user){
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
-        // $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_type'] = $user->User_type;
-
-        if($_SESSION['user_type'] == 'Buyer'){
-            // redirect('Pages/index');
-            // $this->view('pages/home');
-            header("Location:http://localhost/Easyfarm/Pages/index");
-            
-        }else if($_SESSION['user_type'] == 'Seller'){
-            // redirect('Pages/Profile');
-            header("Location:http://localhost/Easyfarm/Seller_home/get_product_details");
-
-        }else if($_SESSION['user_type'] == 'AgriExpert'){
-            // redirect('Pages/Profile');
-            //$this->view('AgriInstructor/index');
-            header("Location:http://localhost/Easyfarm/Blog");
-
-        }else if($_SESSION['user_type'] == 'VehicleRenter'){
-            // redirect('Pages/Profile');
-            $this->view('Pages/index');
-
-        }    
-        // else  if($_SESSION['user_type'] == 'Admin'){
-
-        // }
     }
 
     public function logOut(){
         unset($_SESSION['user_ID']); 
         unset($_SESSION['user_email']);
-        unset($_SESSION['user_name']);
         unset($_SESSION['user_type']);
 
         session_destroy();
@@ -965,8 +976,7 @@ class Users extends Controller{
     public function isLoggedIn(){
         if(isset($_SESSION['user_ID'])){
             return true;
-        }
-        else{
+        }else{
             false;
         }
     }

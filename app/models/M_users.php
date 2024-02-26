@@ -152,20 +152,14 @@ class M_users{
     }
 
     public function login($data){
-        // echo 'data to login model';
         $this->db->query('SELECT * FROM user WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
-
         $row=$this->db->single();
         
         if($row){
-            // echo '<br>';
-            // echo 'row is here';
             $hashed_password = $row->Password;
 
-           // echo $hashed_password;
             if(password_verify($data['password'], $hashed_password)){
-              //  echo "yo";
                 return $row;
             }else{
                 return false;
@@ -218,6 +212,13 @@ class M_users{
         $this->db->bind(':email', $data['email']);
         $this->db->execute();
     
+    }
+
+    public function getAgriInstructorAccStatus($id){
+        $this->db->query("SELECT AccStatus FROM reg_agriinstructor WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $accStatus = $this->db->single();
+        return $accStatus;
     }
 
 

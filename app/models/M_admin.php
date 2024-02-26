@@ -45,7 +45,7 @@ class M_admin{
     public function getAgriInstructorById($id){
         $this->db->query("SELECT a.*, u.Email FROM reg_agriinstructor a INNER JOIN user u ON a.U_Id = u.U_Id WHERE a.U_Id = :id");
         $this->db->bind(':id', $id);
-        $result = $this->db->resultSet();
+        $result = $this->db->single();
         return $result;
     }
 
