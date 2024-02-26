@@ -806,53 +806,36 @@ class Users extends Controller
 
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter a password';
+
+            } else if (empty($data['confirm-password'])) {
+                $data['confirm-password_err'] = 'Please confirm your password';
+
+            } elseif ($data['password'] != $data['confirm-password']) {
+                $data['confirm-password_err'] = 'Does not match with the password';
+
             } else if (strlen($data['password']) > 8) {
                 $data['password_err'] = 'Password should not contain more than 8 characters';
+
             } else if (ctype_lower($data['password']) || ctype_upper($data['password'])) {
                 $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
             }
-            // else if(ctype_alnum($data['password'])){
-            //     $data['password_err'] = 'Password should contain one or more non-alphabetic characters';
-            // }
-            else if (empty($data['confirm-password'])) {
-                $data['confirm-password_err'] = 'Please re-enter your password';
+            
+            if (empty($data['password_err']) && (empty($data['confirm-password_err']))) {
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+      
+                // Reset the user's password
+                $this->userModel->PasswordReset($data);
+
+                // Clear the password reset token from the database
+                $this->userModel->clearToken($data);
+
+                header("Location:http://localhost/Easyfarm/Users/login");
+
             } else {
-                if ($data['password'] != $data['confirm-password']) {
-                    $data['confirm-password_err'] = 'Does not match with the password';
-                }
+                $this->view('Users/v_resetPassword', $data);
             }
 
-        }
-
-        if (empty($data['password_err']) && (empty($data['confirm-password_err']))) {
-            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-            print_r("kjbaux");
-            print_r($data);
-            // Reset the user's password
-            $this->userModel->PasswordReset($data);
-
-            // Clear the password reset token from the database
-            $this->userModel->clearToken($data);
-            print_r($data);
-
-            header("Location:http://localhost/Easyfarm/Users/login");
-
-        } else {
-            $data = [
-                'email' => '',
-                'otp' => '',
-                'password' => '',
-                'confirm-password' => '',
-
-                'otp_err' => '',
-                'password_err' => '',
-                'confirm-password_err' => '',
-            ];
-            $this->view('Uses/v_resetPassword', $data);
-
-        }
-
-    }
+        }}
 
     public function createUserSession($user)
     {
