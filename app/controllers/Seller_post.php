@@ -432,7 +432,14 @@ foreach ($data as $obj) {
                 'DeliveryMethod' => $data['DeliveryMethod'],
                 'Description'=> trim($_POST['Description']),
                 'Unit_type' => isset($_POST['Unit_type']) ? trim($_POST['Unit_type']) : '',
-                'Image'=> ($_FILES['Image']),
+                // 'Image'=> ($_FILES['Image']),
+                'Image' => [
+        'name' => $_FILES['Image']['name'],
+        'type' => $_FILES['Image']['type'],
+        'tmp_name' => $_FILES['Image']['tmp_name'],
+        'error' => $_FILES['Image']['error'],
+        'size' => $_FILES['Image']['size']
+    ],
                 'Image_name'=>time().'_'.$_FILES['Image']['name'],
                 
                 // 'old'=>  ($_FILES['Image']),
@@ -523,7 +530,7 @@ foreach ($data as $obj) {
 
             if(empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err'])&& empty( $data['stock_err']) && empty($data['Expiry_date_err']) && empty( $data['Invalid_date_err']) && empty($data['Unit_type_err']) &&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) &&empty($data['Unit_size_err']) &&empty($data['Image_err'])){
                 
-                uploadImage( $data['Image']['tmp_name'], $data['Image_name'],'/images/seller/');
+    if (updateImage($data['Image']['tmp_name'], $data['Image_name'], $data['Image']['name'], '/images/seller/')) {
                 // $data['old']['tmp_name'],
               
                 // if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/'));
@@ -540,7 +547,7 @@ foreach ($data as $obj) {
                     // redirect("Seller_post/created_post");
                      $this->view('seller/v_createdpost',$products);
     
-                }}
+                }}}
                
                 else{
                     //$data     = get_object_vars($data[0]);
