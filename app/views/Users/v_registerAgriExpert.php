@@ -62,13 +62,14 @@
             <i class='bx bx-current-location' ></i>
         </div>
 
-        <p class="type">Upload NIC front and back as one file *</p>
+
+        <p class="type">Upload NIC front and back as one image *</p>
         <div class="input-box">
             <input class="file-upload-input" type="file" name="nic_img" id="nic" required value="<?php echo $data['nic_img'];?>>
             <span class="invalid"><?php echo $data['nic_err']; ?></span> 
         </div>
 
-        <p class="type">Upload Workplace ID front and back as one file *</p>
+        <p class="type">Upload Workplace ID front and back as one image *</p>
         <div class="input-box">
             <input type="file" name="pid_img" id="pid" required value="<?php echo $data['pid_img'];?>>
             <span class="invalid"><?php echo $data['pid_err']; ?></span>

@@ -817,7 +817,7 @@ class Users extends Controller{
 
              
                 // Send OTP to the user's email 
-                sendOTPByEmail($data['email'], $data['otp']); 
+                sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
                 
                 $this->view('Users/v_verifyEmail', $data);
 

@@ -1,17 +1,20 @@
 <?php
 class Pages extends Controller{
+    private $productModel;
     public function __construct(){
-     
+        $this->productModel=$this->model('M_Product');
     }
 
     public function index(){
-        
+        $products = $this->productModel->getAllProducts();
+
         $data = [
             'title' => 'Easyfarm',
-
+            'product_all' => $products
         ];
         
         $this->view('pages/home', $data);
+
 
     }
 
@@ -52,20 +55,6 @@ class Pages extends Controller{
     //     ];
     //     $this->view('pages/cart', $data);
     // }
-
-    public function qna(){
-        $data = [
-            'title' => 'Q&A'
-        ];
-        $this->view('inc/components/qna_section/qna_section', $data);
-    }
-
-    public function editquestion(){
-        $data = [
-            'title' => 'Edit Question'
-        ];
-        $this->view('inc/components/qna_section/question_edit', $data);
-    }
 
     public function about(){
         $data = [
@@ -120,9 +109,11 @@ class Pages extends Controller{
         $this->view('Users/v_registerSeller');
     }
 
+
     public function updateProduct(){
         $this->view('seller/v_update_post');
     }
+
 
 
 

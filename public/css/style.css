@@ -25,10 +25,13 @@
 @import url('components/product_details_page.css');
 @import url('components/Inf_default.css');
 @import url('components/profile.css');
+
 @import url('components/inventory.css');
 @import url('components/blog.css');
 @import url('components/agriInstructorSidebar.css');
 @import url('components/admin.css');
+@import url('components/inventory.css');
+
 /* Seller styles */
 /* @import url('components/seller_home_style.css');
 @import url('components/create_post_style.css');
