@@ -38,6 +38,16 @@
 
         <!--Product List-->
         <section class="product-section container">
+            <div class = "filters">
+
+            <select class="form-control" name="sort" id ="sort">
+                <option selected="" disabled="" >Sort by Default </option>
+                <option value="l2h">Price low to high</option>
+                <option value="h2l">Price high to low</option>
+            </select>
+
+
+        </div>
 
     
 
@@ -48,7 +58,7 @@
     // print_r($data);
     foreach ($data['items'] as $item) :
     ?>
-                    <!-- Hardcode this part -->
+                  
 
 
                     <div class="product">
@@ -64,8 +74,9 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <h4> LKR <?php echo $item->Rental_Fee; ?></h4>
-                            <h4> <?php echo $item->Charging_Unit; ?></h4>
+                            
+                            <h5> <?php echo $item->Charging_Unit; ?></h5>
+                            <h4><?php echo $item->Rental_Fee; ?>LKR</h4>
                         </div>
                         <!-- </div> -->
                         <!-- </div> -->
@@ -83,6 +94,39 @@
 
 
 </div>
+<!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
+<script>
+   document.getElementById('sort').addEventListener('change', function() {
+    console.log("Sort dropdown changed"); // Check if event listener triggers
+
+    var productsContainer = document.querySelector('.product-container');
+    var products = Array.from(productsContainer.querySelectorAll('.product'));
+
+    var sortValue = this.value;
+    console.log("Sort value:", sortValue); // Check selected sort value
+
+    products.sort(function(a, b) {
+        var priceA = parseFloat(a.querySelector('.product-description h4').textContent);
+        var priceB = parseFloat(b.querySelector('.product-description h4').textContent);
+        console.log("Price A:", priceA, "Price B:", priceB); // Check prices for comparison
+
+        if (sortValue === 'l2h') {
+            return priceA - priceB;
+        } else if (sortValue === 'h2l') {
+            return priceB - priceA;
+        }
+    });
+
+    // Clear the products container
+    productsContainer.innerHTML = '';
+
+    // Append sorted products to the container
+    products.forEach(function(product) {
+        productsContainer.appendChild(product);
+    });
+});
+
+</script>
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
