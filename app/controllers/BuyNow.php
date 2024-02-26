@@ -50,6 +50,8 @@ class BuyNow extends Controller{
     
                     
                 ];
+               
+
                 // print_r($_POST['delivery']);
                 // print_r($data); 
 
@@ -74,7 +76,7 @@ class BuyNow extends Controller{
                 $mergedArray = array_merge($orderdDetails, $buyerDetails);
                 $data1 = array_unique($mergedArray);
                 $data = array_merge($data1, $data);
-    
+    print_r("dd");
                 // $data['total'] = $data['quantity']*$data['Unit_price'] ;
                 // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
                 $data['total'] = (floatval($data['quantity'])/$data['Unit_size'] * $data['Unit_price']);
@@ -82,7 +84,7 @@ class BuyNow extends Controller{
                 $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
                 $data2[0] = $data;
                 $data = $data2;
-                // print_r($data);
+                print_r($data);
     
                 $this->view('pages/buyNow',$data);
 
@@ -94,7 +96,9 @@ class BuyNow extends Controller{
 
       
             
-        }elseif(!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] != 'Buyer')  ){
+        } 
+        
+        elseif(!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] != 'Buyer')  ){
 
             $data=[
                 'user_type'=> '',
@@ -126,12 +130,14 @@ class BuyNow extends Controller{
                 'email_err' => '',
                 'password_err' => ''
             ];
+
             $this->view('Users/v_login', $data);
 
             // redirect('Users/v_login');
 
         }
         else {
+            
             // redirect('pages/cart');
             $data = [
                 'unitPrice' => '',
@@ -141,7 +147,7 @@ class BuyNow extends Controller{
             ];
             $this->view('pages/payment', $data);
         }
-    
+    print_r("s");
     }
 
 

@@ -294,6 +294,7 @@ public  function create_post(){
         
         
         $data = $this->sellerModel->get_data(($_SESSION['user_ID']));
+     
        
         $this->view('seller/v_createdpost', $data);
        
@@ -528,7 +529,9 @@ foreach ($data as $obj) {
         {
             
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                
                 $itemId = $_POST['Item_Id'];
+
                 $this->sellerModel->delete_data($itemId);
                 $products = $this->sellerModel->get_data($_SESSION['user_ID']);
                     

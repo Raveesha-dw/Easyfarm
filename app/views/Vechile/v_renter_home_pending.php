@@ -35,17 +35,21 @@
                             <div class="msg-f"> 
                                    
                                           <div class="msg-f-detail">
-                                                 <h3><?php echo $product->Name ?> wants <?php echo $product->V_category ?> on this <?php echo $product->duration ?> day</h3>
+                                                        <h3><?php echo $product->Name ?> wants <?php echo $product->V_name ?> number in  <?php echo $product->V_number ?> vechile</h3>
                                                  <br>
                                           </div>
-                                          <div class="msg-pdroduct">
-                                                               <h3>Vechile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->V_category ?></h3>
-                                                               <h3>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->duration?></h3>
-                                                               <h3>TO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Address?></h3>
-                                                               <!-- <h3>Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->DeliveryMethod?></h3> -->
+                                           <div class="msg-product">
 
 
-                                          </div>
+                                                               <h3>Vechile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->V_name ?></h3>
+                                                               <h3>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->order_dates?></h3>
+                                                               <h3>Pickup Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->location?></h3>
+                                                               <h3>Contact Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->number?></h3>
+                                                                <h3>Notice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->Message?></h3>
+
+
+
+                                                        </div>
                                                  <div class="button-msg">
                                                  
                                                  <div class="aa">
@@ -81,6 +85,40 @@
                             
         
 </section>
+
+<style>
+    /* Style for the container of the message box */
+    .msg-box {
+        border: 1px solid #ccc;
+        /* padding: 10px; */
+        margin-bottom: 200px;
+    }
+
+    
+
+    /* Style for the message ID */
+    .msg-ID {
+        display: flex;
+        align-items: center;
+    }
+
+   
+
+    /* Style for the message content */
+    
+
+    /* Style for the product details */
+    .msg-f-detail h3 {
+        margin-bottom: 5px;
+    }
+
+    /* Style for the product information */
+    .msg-product h3 {
+        margin: 5px 0;
+    }
+
+   
+</style>
 </div>
 </div>
         

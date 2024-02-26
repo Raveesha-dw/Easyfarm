@@ -1,4 +1,5 @@
 <div class="headebr">
+<div class="headebr">
 
 <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -134,6 +135,13 @@
                         </div>
                 </div>
             </div>
+             <style>
+       #calendar {
+    z-index: 9999 !important; /* Adjust the z-index value as needed */
+    position: relative; /* Ensure that z-index works */
+   
+}
+    </style>
 
 
 
@@ -176,14 +184,17 @@
         </form>
     </div>
 </div>
-<?php require APPROOT . '/views/inc/footer.php';?>
+
+
+
+
    <!-- </section> -->
 
     </div>
-</div>
 
 
 
+<?php require APPROOT . '/views/inc/footer.php';?>
 
 
 <!-- Your other head elements -->

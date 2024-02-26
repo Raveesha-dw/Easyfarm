@@ -7,13 +7,32 @@
 
 
 <?php 
-print_r($data); ?>
+$pending_dates = array();
+// $pending_dates = array(); // Initialize an empty array to store pending dates
+
+foreach ($data as $item) {
+    // Check if the current item is an object and has a property "Status" equal to "Pending"
+    if (is_object($item) && property_exists($item, 'Status') && $item->Status === 'Pending') {
+        // If the condition is met, add the corresponding date to the pending_dates array
+        $pending_dates[] = $item->date;
+    }
+}
+
+$jsonData1 = json_encode( $pending_dates);
+
+
+         ?>
+
+                <script>
+                    // Pass JSON data to JavaScript
+                    var jsonData1 = <?php echo $jsonData1; ?>;
+                </script>
 
 <section id="vproductDetails" class="section-v1">
-    <div class="single-pro-image">
-                    <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $data[0]->Image;?>"/>
+    <div class="single-pro-image1">
+                    <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $data[0]->Image?> " width="100%" id="MainImg" alt=""> 
 
-
+    
         <table>
             <style>
                 .popup button {
@@ -115,6 +134,7 @@ print_r($data); ?>
             </tr>
         </table>
 
+
         <?php $lastday = $data['lastday']; ?>
 
 <script>
@@ -131,6 +151,14 @@ print_r($data); ?>
 
             <div class="wrapperCalendar2">
                 <p><i>Select the Date</i></p>
+                <br>
+                <br>
+                
+                <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
+    <span>Unavailable Day</span>
+    <br>
+    <div style="background-color: blue; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
+    <span>Pending Day</span>
                 <span class="invalid"><?php if ($data) {echo $data['selectedDates_err'];} ?></span>
 
                 <?php foreach ($data as $item) : ?>
@@ -196,7 +224,7 @@ print_r($data); ?>
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['number_err'];
-                                                        }  ?></span><input id="number" name="number" value="<?php echo $data[0]->Contact_Number; ?>" type="number" placeholder="Your Contact Number" required value="<?php echo $data['number']; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+                                                        }  ?></span><input id="number" name="number" value="" type="number" placeholder="Your Contact Number" required value="<?php echo $data['number']; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
                         </tr>
@@ -226,8 +254,8 @@ print_r($data); ?>
   </form>
     </div>
     </div>
-</section>
 
+</section>
 <script>
     function showConfirmationPopup() {
         document.getElementById('confirmationPopup').style.display = 'block';

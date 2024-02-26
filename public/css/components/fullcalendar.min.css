@@ -1050,6 +1050,7 @@ a.fc-more:hover {
 
 
 .cal {
+  
     margin-top: 50px;
     text-align: center;
     font-size: 12px;
@@ -1092,8 +1093,8 @@ a.fc-more:hover {
 
  .wrapperCalendar {
   position: relative;
-  /* width: 100%; */
-  max-width: 500px;
+  /* cursor: pointer; */
+   max-width: 500px;
   /* min-width: 50%; */
   background-color: #eeffcb8f;
   margin: 25px auto 0 auto;
