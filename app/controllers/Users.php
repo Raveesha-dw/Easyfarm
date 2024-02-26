@@ -4,48 +4,47 @@ require_once APPROOT . '/helpers/Mail_helper.php';
 require_once APPROOT . '/helpers/OTP_helper.php';
 // require URLROOT . '.app/helpers/Mail_helper.php';
 
-
-
-
-class Users extends Controller{
+class Users extends Controller
+{
     private $userModel;
     public function __construct()
     {
         $this->userModel = $this->model('M_users');
-        
+
     }
 
-    public function assignUser($usertype){
-        if($usertype == 'Buyer'){
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
+    public function assignUser($usertype)
+    {
+        if ($usertype == 'Buyer') {
+            $data = [
+                'user_type' => '',
+                'fullname' => '',
+                'contactno' => '',
                 'email' => '',
                 'address' => '',
                 'city' => '',
                 'postalcode' => '',
-                'password'=>'',
-                'confirm-password'=>'',
+                'password' => '',
+                'confirm-password' => '',
 
                 'name_err' => '',
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+                'password_err' => '',
+                'confirm-password_err' => '',
 
             ];
-            $this->view('Users/v_registerBuyer',$data);
+            $this->view('Users/v_registerBuyer', $data);
         }
 
-        if($usertype == 'Seller'){
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
-                'password'=>'',
-                'confirm-password'=>'',
+        if ($usertype == 'Seller') {
+            $data = [
+                'user_type' => '',
+                'fullname' => '',
+                'contactno' => '',
+                'password' => '',
+                'confirm-password' => '',
                 'email' => '',
                 'nic' => '',
                 'store_name' => '',
@@ -59,25 +58,26 @@ class Users extends Controller{
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+                'password_err' => '',
+                'confirm-password_err' => '',
 
             ];
-            $this->view('Users/v_registerSeller',$data);
+            $this->view('Users/v_registerSeller', $data);
         }
-        if($usertype == 'AgriExpert'){
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
-                'password'=>'',
-                'confirm-password'=>'',
+        if ($usertype == 'AgriExpert') {
+            $data = [
+                'user_type' => '',
+                'fullname' => '',
+                'contactno' => '',
+                'password' => '',
+                'confirm-password' => '',
                 'email' => '',
                 'address' => '',
                 'city' => '',
+                'occupation'=>'',
                 'workplace'=> '',
-                'nic_img'=>'',
-                'pid_img'=> '',
+                'nic'=>'',
+                'pId'=> '',
 
                 'name_err' => '',
                 'contactno_err' => '',
@@ -85,47 +85,46 @@ class Users extends Controller{
                 'address_err' => '',
                 'password_err'=>'',
                 'confirm-password_err'=>'',
-                'nic_err' => '',
-                'pid_err' => ''
-            ];
 
+            ];
             $this->view('Users/v_registerAgriExpert',$data);
         }
 
-        if($usertype == 'VehicleRenter'){
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
+        if ($usertype == 'VehicleRenter') {
+            $data = [
+                'user_type' => '',
+                'fullname' => '',
+                'contactno' => '',
                 'email' => '',
                 'address' => '',
                 'city' => '',
                 // 'postalcode' => '',
                 // 'postalcode' => '',
-                'password'=>'',
-                'confirm-password'=>'',
+                'password' => '',
+                'confirm-password' => '',
 
                 'name_err' => '',
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+                'password_err' => '',
+                'confirm-password_err' => '',
 
             ];
-            $this->view('Users/v_registerVehicleRenter',$data);
+            $this->view('Users/v_registerVehicleRenter', $data);
         }
 
     }
 
-    public function register(){        
+    public function register()
+    {
 
-        if($_POST['user_type'] == 'Buyer'){
+        if ($_POST['user_type'] == 'Buyer') {
             //Check for POST
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-                $data=[
+                $data = [
                     'fullname' => trim($_POST['fullname']),
                     'contactno' => trim($_POST['contactno']),
                     'email' => trim($_POST['email']),
@@ -141,117 +140,107 @@ class Users extends Controller{
                     'contactno_err' => '',
                     'email_err' => '',
                     'address_err' => '',
-                    'password_err'=>'',
-                    'confirm-password_err'=>'',
+                    'password_err' => '',
+                    'confirm-password_err' => '',
 
                 ];
 
-                if(empty($data['fullname'])){
+                if (empty($data['fullname'])) {
                     $data['name_err'] = 'Please enter a name';
                 }
-                if(empty($data['contactno'])){
+                if (empty($data['contactno'])) {
                     $data['contactno_err'] = 'Please enter contact number';
                 }
-                if(strlen($data['contactno'])<10){
+                if (strlen($data['contactno']) < 10) {
                     $data['contactno_err'] = 'Not enough digits in contact number';
                 }
 
-                if(empty($data['email'])){
+                if (empty($data['email'])) {
                     $data['email_err'] = 'Please enter an email';
-                }
-                else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['email_err'] = "Invalid email format";
-                }
-                else{
-                    if($this->userModel->findUserByEmail($data['email'])) {
+                } else {
+                    if ($this->userModel->findUserByEmail($data['email'])) {
                         // echo("check1");
-                        $data['email_err']='Email is already registered';
+                        $data['email_err'] = 'Email is already registered';
                     }
                 }
 
-                if(empty($data['address'])){
+                if (empty($data['address'])) {
                     $data['address_err'] = 'Please enter your address';
                 }
-                if(empty($data['city'])){
+                if (empty($data['city'])) {
                     $data['address_err'] = 'Please enter your address';
                 }
-                if(empty($data['postalcode'])){
+                if (empty($data['postalcode'])) {
                     $data['address_err'] = 'Please enter your address';
                 }
 
-                if(empty($data['password'])){
+                if (empty($data['password'])) {
                     $data['password_err'] = 'Please enter a password';
-                }
-                else if(strlen($data['password'])<8){
-                    $data['password_err'] = 'Password must be at least 8 charactors long';
-                }
-                else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
+                } else if (strlen($data['password']) < 8) {
+                    $data['password_err'] = 'Password should not contain more than 8 characters';
+                } else if (ctype_lower($data['password']) || ctype_upper($data['password'])) {
                     $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
                 }
                 // else if(ctype_alnum($data['password'])){
                 //     $data['password_err'] = 'Password should contain one or more non-alphabetic characters';
                 // }
-                else if(empty($data['confirm-password'])){
+                else if (empty($data['confirm-password'])) {
                     $data['confirm-password_err'] = 'Please re-enter your password';
-                }else{
-                    if($data['password'] != $data['confirm-password']){
+                } else {
+                    if ($data['password'] != $data['confirm-password']) {
                         $data['confirm-password_err'] = 'Does not match with the password';
                     }
                 }
 
-                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
+                if (empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     // $this->userModel->register($data);
 
-                    if($this->userModel->register($data)){
+                    if ($this->userModel->register($data)) {
                         header("Location:http://localhost/Easyfarm/Users/login");
                         flash('register_success', 'You have successfully registered with EasyFarm');
                         // $this->login();
                         // redirect('Users/v_login');
-                    }   
-                    else{
+                    } else {
                         die('Something went wrong');
                     }
-                }
-                else{
+                } else {
                     $this->view('Users/v_registerBuyer', $data);
                 }
 
-
-
             } else {
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
-                'email' => '',
-                'address' => '',
-                'city' => '',
-                'postalcode' => '',
-                'password'=>'',
-                'confirm-password'=>'',
+                $data = [
+                    'user_type' => '',
+                    'fullname' => '',
+                    'contactno' => '',
+                    'email' => '',
+                    'address' => '',
+                    'city' => '',
+                    'postalcode' => '',
+                    'password' => '',
+                    'confirm-password' => '',
 
-                'name_err' => '',
-                'contactno_err' => '',
-                'email_err' => '',
-                'address_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+                    'name_err' => '',
+                    'contactno_err' => '',
+                    'email_err' => '',
+                    'address_err' => '',
+                    'password_err' => '',
+                    'confirm-password_err' => '',
 
-            ];
-            $this->view('Users/v_registerBuyer',$data);
-        
+                ];
+                $this->view('Users/v_registerBuyer', $data);
+
+            }
         }
-        }
 
-        if($_POST['user_type'] == 'Seller'){
+        if ($_POST['user_type'] == 'Seller') {
             //Check for POST
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-                
-
-                $data=[
+                $data = [
 
                     'user_type' => $_POST['user_type'],
                     'fullname' => trim($_POST['fullname']),
@@ -266,9 +255,7 @@ class Users extends Controller{
                     'bank_name' => trim($_POST['bank_name']),
                     'branch_name' => trim($_POST['branch_name']),
                     'ac_number' => trim($_POST['ac_number']),
-                    
-                    
-    
+
                     'name_err' => '',
                     'contactno_err' => '',
                     'email_err' => '',
@@ -281,23 +268,21 @@ class Users extends Controller{
                 if(empty($data['fullname'])){
                     $data['name_err'] = 'Please enter a name';
                 }
-                if(empty($data['contactno'])){
+                if (empty($data['contactno'])) {
                     $data['contactno_err'] = 'Please enter contact number';
                 }
-                if(strlen($data['contactno'])<10){
+                if (strlen($data['contactno']) < 10) {
                     $data['contactno_err'] = 'Not enough digits in contact number';
                 }
 
-                if(empty($data['email'])){
+                if (empty($data['email'])) {
                     $data['email_err'] = 'Please enter an email';
-                }
-                else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['email_err'] = "Invalid email format";
-                }
-                else{
-                    if($this->userModel->findUserByEmail($data['email'])) {
+                } else {
+                    if ($this->userModel->findUserByEmail($data['email'])) {
                         // echo("check1");
-                        $data['email_err']='Email is already registered';
+                        $data['email_err'] = 'Email is already registered';
                     }
                 }
 
@@ -308,12 +293,13 @@ class Users extends Controller{
                 //     $data['address_err'] = 'Please enter your address';
                 // }
 
-
-                if(empty($data['password'])){
+                if (empty($data['password'])) {
                     $data['password_err'] = 'Please enter a password';
                 }
+
                 else if(strlen($data['password'])<8){
                     $data['password_err'] = 'Password must be at least 8 charactors long';
+
                 }
                 else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
                     $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
@@ -321,73 +307,73 @@ class Users extends Controller{
                 // else if(ctype_alnum($data['password'])){
                 //     $data['password_err'] = 'Password should contain one or more non-alphabetic characters';
                 // }
-                else if(empty($data['confirm-password'])){
+                else if (empty($data['confirm-password'])) {
                     $data['confirm-password_err'] = 'Please re-enter your password';
-                }else{
-                    if($data['password'] != $data['confirm-password']){
+                } else {
+                    if ($data['password'] != $data['confirm-password']) {
                         $data['confirm-password_err'] = 'Does not match with the password';
                     }
                 }
 
-
-                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err'])   && empty($data['password_err']) && empty($data['confirm-password_err'])){
+                if (empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     // $this->userModel->register($data);
-                    
+
                     // print_r($data);
-                    if($this->userModel->register($data)){
-                        header("Location:http://localhost/Easyfarm/Users/login");
+                    if (1 == 1) {
+                        $r_user = $this->userModel->register($data);
+                        //  $this->userModel->register($data);
+                        // print_r( $data);
+                        // print_r($r_user);
+                        if ($r_user) {
+                            $this->createUserSession2($data);
+                        }
+                        // header("Location:http://localhost/Easyfarm/Users/choosepkg");
                         // print_r('Succefully Registered');
                         // $this->login();
                         // print_r($data);
                         // redirect('Users/v_login');
                         // flash('register_success', 'You have successfully registered with EasyFarm');
                         // $this->view('Pages/loginPage');
-                    }
-                    else{
+                    } else {
                         die('Something went wrong');
                     }
-                }
-                else{
+                } else {
                     $this->view('Users/v_registerSeller', $data);
                 }
 
-
-
             } else {
-            $data=[
-                'user_type'=> '',
-                'fullname'=>'',
-                'contactno'=>'',
-                'password'=>'',
-                'confirm-password'=>'',
-                'email' => '',
-                'nic' => '',
-                'store_name' => '',
-                'store_address' => '',
-                'ac_Holder_name' => '',
-                'bank_name' => '',
-                'branch_name' => '',
-                'ac_number' => '',
-                
-                
+                $data = [
+                    'user_type' => '',
+                    'fullname' => '',
+                    'contactno' => '',
+                    'password' => '',
+                    'confirm-password' => '',
+                    'email' => '',
+                    'nic' => '',
+                    'store_name' => '',
+                    'store_address' => '',
+                    'ac_Holder_name' => '',
+                    'bank_name' => '',
+                    'branch_name' => '',
+                    'ac_number' => '',
 
-                'name_err' => '',
-                'contactno_err' => '',
-                'email_err' => '',
-                'address_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+                    'name_err' => '',
+                    'contactno_err' => '',
+                    'email_err' => '',
+                    'address_err' => '',
+                    'password_err' => '',
+                    'confirm-password_err' => '',
 
-            ];
-            $this->view('Users/v_registerSeller',$data);
-        
-        }
+                ];
+                $this->view('Users/v_registerSeller', $data);
+
+            }
         }
 
-        if($_POST['user_type'] == 'AgricultureExpert'){
+        if ($_POST['user_type'] == 'AgricultureExpert') {
             //Check for POST
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
                 // Get image data
@@ -420,20 +406,19 @@ class Users extends Controller{
                     'confirm-password_err'=>''
                 ];
 
-                if(empty($data['fullname'])){
+                if (empty($data['fullname'])) {
                     $data['name_err'] = 'Please enter a name';
                 }
-                if(empty($data['contactno'])){
+                if (empty($data['contactno'])) {
                     $data['contactno_err'] = 'Please enter contact number';
                 }
-                if(strlen($data['contactno'])<10){
+                if (strlen($data['contactno']) < 10) {
                     $data['contactno_err'] = 'Not enough digits in contact number';
                 }
 
-                if(empty($data['email'])){
+                if (empty($data['email'])) {
                     $data['email_err'] = 'Please enter an email';
-                }
-                else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['email_err'] = "Invalid email format";
                 }
                 else{
@@ -442,30 +427,27 @@ class Users extends Controller{
                     }
                 }
 
-                if(empty($data['address'])){
+                if (empty($data['address'])) {
                     $data['address_err'] = 'Please enter your address';
                 }
-                if(empty($data['city'])){
+                if (empty($data['city'])) {
                     $data['address_err'] = 'Please enter your address';
                 }
 
-
-                if(empty($data['password'])){
+                if (empty($data['password'])) {
                     $data['password_err'] = 'Please enter a password';
-                }
-                else if(strlen($data['password'])<8){
+                } else if (strlen($data['password']) < 8) {
                     $data['password_err'] = 'Password must be at least 8 charactors long';
-                }
-                else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
+                } else if (ctype_lower($data['password']) || ctype_upper($data['password'])) {
                     $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
                 }
                 // else if(ctype_alnum($data['password'])){
                 //     $data['password_err'] = 'Password should contain one or more non-alphabetic characters';
                 // }
-                else if(empty($data['confirm-password'])){
+                else if (empty($data['confirm-password'])) {
                     $data['confirm-password_err'] = 'Please re-enter your password';
-                }else{
-                    if($data['password'] != $data['confirm-password']){
+                } else {
+                    if ($data['password'] != $data['confirm-password']) {
                         $data['confirm-password_err'] = 'Does not match with the password';
                     }
                 }
@@ -474,12 +456,12 @@ class Users extends Controller{
                     $data['nic_err'] = 'Please upload your NIC';
                 }
 
-                if(empty($data['pid_img'])){
+                if (empty($data['pid_img'])) {
                     $data['pid_err'] = 'Please upload your workplace ID';
                 }
 
-                if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err']) && empty($data['nic_err']) && empty($data['pid_err'])){
-                    
+                if (empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err']) && empty($data['nic_err']) && empty($data['pid_err'])) {
+
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                                  
                     if($this->userModel->register($data)){
@@ -489,21 +471,18 @@ class Users extends Controller{
                     else{
                         die('Something went wrong');
                     }
-                }
-                else{
+                } else {
                     $this->view('Users/v_registerAgriExpert', $data);
                 }
 
-
-
             } else {
-          
-                $data=[
-                    'user_type'=> '',
-                    'fullname'=>'',
-                    'contactno'=>'',
-                    'password'=>'',
-                    'confirm-password'=>'',
+
+                $data = [
+                    'user_type' => '',
+                    'fullname' => '',
+                    'contactno' => '',
+                    'password' => '',
+                    'confirm-password' => '',
                     'email' => '',
                     'address' => '',
                     'city' => '',
@@ -525,53 +504,51 @@ class Users extends Controller{
             }
         }
 
-    if($_POST['user_type'] == 'VehicleRenter'){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+        if ($_POST['user_type'] == 'VehicleRenter') {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-            $data = [
-                'fullname' => trim($_POST['fullname']),
-                'contactno' => trim($_POST['contactno']),
-                'email' => trim($_POST['email']),
-                'address' => trim($_POST['address']),
-                'city' => trim($_POST['city']),
-                'password' => trim($_POST['password']),
-                'confirm-password' => trim($_POST['confirm-password']),
-                // 'values' => trim($_POST['values[]']),
-                'user_type' => $_POST['user_type'],
+                $data = [
+                    'fullname' => trim($_POST['fullname']),
+                    'contactno' => trim($_POST['contactno']),
+                    'email' => trim($_POST['email']),
+                    'address' => trim($_POST['address']),
+                    'city' => trim($_POST['city']),
+                    'password' => trim($_POST['password']),
+                    'confirm-password' => trim($_POST['confirm-password']),
+                    // 'values' => trim($_POST['values[]']),
+                    'user_type' => $_POST['user_type'],
 
-                'name_err' => '',
-                'contactno_err' => '',
-                'email_err' => '',
-                'address_err' => '',
-                'city_err' => '',
-                // 'values_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>''
-            ];
-
-            if(empty($data['fullname'])){
-                $data['name_err'] = 'Please enter a name';
-            }
-            if(empty($data['contactno'])){
-                $data['contactno_err'] = 'Please enter contact number';
-            }
-            if(strlen($data['contactno'])<10){
-                $data['contactno_err'] = 'Not enough digits in contact number';
-            }
-
-            if(empty($data['email'])){
-                $data['email_err'] = 'Please enter an email';
-            }
-            else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                $data['email_err'] = "Invalid email format";
-            }
-            else{
-                if($this->userModel->findUserByEmail($data['email'])) {
-                    // echo("check1");
-                    $data['email_err']='Email is already registered';
+                    'name_err' => '',
+                    'contactno_err' => '',
+                    'email_err' => '',
+                    'address_err' => '',
+                    'city_err' => '',
+                    // 'values_err' => '',
+                    'password_err' => '',
+                    'confirm-password_err' => '',
+                ];
+                print_r($data);
+                if (empty($data['fullname'])) {
+                    $data['name_err'] = 'Please enter a name';
                 }
-            }
+                if (empty($data['contactno'])) {
+                    $data['contactno_err'] = 'Please enter contact number';
+                }
+                if (strlen($data['contactno']) < 10) {
+                    $data['contactno_err'] = 'Not enough digits in contact number';
+                }
+
+                if (empty($data['email'])) {
+                    $data['email_err'] = 'Please enter an email';
+                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['email_err'] = "Invalid email format";
+                } else {
+                    if ($this->userModel->findUserByEmail($data['email'])) {
+                        // echo("check1");
+                        $data['email_err'] = 'Email is already registered';
+                    }
+                }
 
             if(empty($data['address'])){
                 $data['address_err'] = 'Please enter your address';
@@ -597,59 +574,60 @@ class Users extends Controller{
                 }
             }
 
-            // if(empty($data['values'])){
-            //     $data['values_err'] = 'Please enter your Vehicle Numbers(s)';
-            // }
+                // if(empty($data['values'])){
+                //     $data['values_err'] = 'Please enter your Vehicle Numbers(s)';
+                // }
 
-            if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                // $this->userModel->register($data);
-                
-                
-                if($this->userModel->register($data)){
-                    header("Location:http://localhost/Easyfarm/Users/login");
-                    flash('register_success', 'You have successfully registered with EasyFarm');
-                    // $this->login();
-                    // redirect('Users/v_login');
-                }   
-                else{
-                    die('Something went wrong');
+                if (empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    $data1 = $this->userModel->register($data);
+
+                    // $this->userModel->register($data);
+
+                    if ($data1) {
+                        // print("s");
+
+                        $this->createUserSession3($data);
+
+                        // $this->login();
+                        // redirect('Users/v_login');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    $this->view('Users/v_registerVehicleRenter', $data);
                 }
-            }
-            else{
+
+            } else {
+                $data = [
+                    'fullname' => '',
+                    'contactno' => '',
+                    'email' => '',
+                    'address' => '',
+                    'city' => '',
+                    'password' => '',
+                    'confirm-password' => '',
+                    'values' => '',
+
+                    'name_err' => '',
+                    'contactno_err' => '',
+                    'email_err' => '',
+                    'address_err' => '',
+                    'city_err' => '',
+                    'password_err' => '',
+                    'confirm-password_err' => '',
+
+                ];
                 $this->view('Users/v_registerVehicleRenter', $data);
             }
-
-
-        }else {
-            $data=[
-                'fullname'=>'',
-                'contactno'=>'',
-                'email' => '',
-                'address' => '',
-                'city' => '',
-                'password'=>'',
-                'confirm-password'=>'',
-                'values' => '',
-
-                'name_err' => '',
-                'contactno_err' => '',
-                'email_err' => '',
-                'address_err' => '',
-                'city_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
-
-            ];
-            $this->view('Users/v_registerVehicleRenter',$data);
         }
+
     }
-    
-}
 
-    public function login(){
+    public function login()
+    {
 
-        if($_SERVER['REQUEST_METHOD']=='POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
             $data = [
@@ -661,17 +639,17 @@ class Users extends Controller{
 
             ];
 
-            if(empty($data['email'])){
+            if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter an email';
-            }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+            } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 $data['email_err'] = 'Invalid email format';
-            }else{
-                if(!$this->userModel->findUserByEmail($data['email'])){
+            } else {
+                if (!$this->userModel->findUserByEmail($data['email'])) {
                     $data['email_err'] = 'User account does not exist';
                 }
             }
 
-            if(empty($data['password'])){
+            if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter your password';
             }
             
@@ -697,54 +675,50 @@ class Users extends Controller{
                 $this->view('Users/v_login', $data);
             }
 
-        }else{
-            $data=[
+        } else {
+            $data = [
                 'email' => '',
                 'password' => '',
 
                 'email_err' => '',
-                'password_err' => ''
+                'password_err' => '',
             ];
             $this->view('Users/v_login', $data);
         }
     }
 
-
-
-
     public function forgotPassword(){
 
-        if($_SERVER['REQUEST_METHOD']=='POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-            
-            if(empty($_POST['otp'])){
+
+            if (empty($_POST['otp'])) {
 
                 $data = [
                     'email' => trim($_POST['email']),
-                    'otp' =>'',
-    
+                    'otp' => '',
+
                     'email_err' => '',
-                    'otp_err'=> '',
+                    'otp_err' => '',
                 ];
-    
-                if(empty($data['email'])){
+
+                if (empty($data['email'])) {
                     $data['email_err'] = 'Please enter an email';
-                }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['email_err'] = 'Invalid email format';
-                }else{
-                    if(!$this->userModel->findUserByEmail($data['email'])){
+                } else {
+                    if (!$this->userModel->findUserByEmail($data['email'])) {
                         $data['email_err'] = 'User account does not exist';
                     }
                 }
-    
-               
-                if ( empty($data['email_err'])) {
-                    
+
+                if (empty($data['email_err'])) {
+
                     $data['otp'] = generate_Otp();
     
                     print_r($data['otp'] );
                     // Save OTP, email, and expiration time in the database
-                    $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
+                    $expirationTime = time() + (1 * 60); // OTP will expire in 1 minutes
                     $this->userModel->createToken($data, $expirationTime);
                  
                     // Send OTP to the user's email 
@@ -753,25 +727,20 @@ class Users extends Controller{
                 }else{
                     $this->view('Users/v_forgotPassword', $data);
                 }
-    
-    
+
                 $this->view('Users/v_verifyEmail', $data);
-              
-    
-            }else{
+
+            } else {
 
                 $data = [
                     'email' => trim($_POST['email']),
-                    'otp' =>trim($_POST['otp']),
+                    'otp' => trim($_POST['otp']),
 
-    
                     'email_err' => '',
-                    'otp_err'=> '',
-                    'password_err'=>'',
-                    'confirm-password_err'=>'',
+                    'otp_err' => '',
+                    'password_err' => '',
+                    'confirm-password_err' => '',
                 ];
-
-
 
                 $tokenData = $this->userModel->verifyToken($data);
 
@@ -779,145 +748,102 @@ class Users extends Controller{
                     // Token is valid and not expired
                     $this->view('Users/v_resetPassword', $data);
 
-                } else if(empty($tokenData)){
+                } else if (empty($tokenData)) {
 
                     $data['otp_err'] = 'Your OTP is invalid';
                     $this->view('Users/v_verifyEmail', $data);
 
-                }else{
+                } else {
                     // Token is invalid or expired
                     $data['otp_err'] = 'Your OTP is expired';
                     $this->view('Users/v_verifyEmail', $data);
                 }
 
-
             }
 
-
-        }else{
+        } else {
             $data = [
                 'email' => '',
                 'otp' => '',
 
                 'email_err' => '',
-                'otp_err'=> '',
+                'otp_err' => '',
             ];
 
-
-
-            if(!empty($_GET['email'])){
+            if (!empty($_GET['email'])) {
                 $data['email'] = $_GET['email'];
-                
+
                 $data['otp'] = generate_Otp();
-    
-                print_r($data['otp'] );
+
+                print_r($data['otp']);
                 // Save OTP, email, and expiration time in the database
-                $expirationTime = time() + (1*60); // OTP will expire in 1 minutes
+                $expirationTime = time() + (1 * 60); // OTP will expire in 1 minutes
                 $this->userModel->createToken($data, $expirationTime);
 
              
                 // Send OTP to the user's email 
                 sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
-                
+
                 $this->view('Users/v_verifyEmail', $data);
 
-
-
-            }else{
+            } else {
                 $this->view('Users/v_forgotPassword', $data);
 
             }
 
-
-
-    
-    
-    
-            }
-
         }
 
-
-
-
-
-
-
+    }
 
     public function resetPassword(){
 
-        if($_SERVER['REQUEST_METHOD']=='POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-
             $data = [
-                'email'=> trim($_POST['email']),
+                'email' => trim($_POST['email']),
                 'otp' => $_POST['otp'],
                 'password' => trim($_POST['password']),
                 'confirm-password' => trim($_POST['confirm-password']),
 
-                'otp_err'=> '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
+                'otp_err' => '',
+                'password_err' => '',
+                'confirm-password_err' => '',
 
             ];
 
-
-            if(empty($data['password'])){
+            if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter a password';
-            }
-            else if(strlen($data['password'])>8){
+
+            } else if (empty($data['confirm-password'])) {
+                $data['confirm-password_err'] = 'Please confirm your password';
+
+            } elseif ($data['password'] != $data['confirm-password']) {
+                $data['confirm-password_err'] = 'Does not match with the password';
+
+            } else if (strlen($data['password']) > 8) {
                 $data['password_err'] = 'Password should not contain more than 8 characters';
-            }
-            else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
+
+            } else if (ctype_lower($data['password']) || ctype_upper($data['password'])) {
                 $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
             }
-            // else if(ctype_alnum($data['password'])){
-            //     $data['password_err'] = 'Password should contain one or more non-alphabetic characters';
-            // }
-            else if(empty($data['confirm-password'])){
-                $data['confirm-password_err'] = 'Please re-enter your password';
-            }else{
-                if($data['password'] != $data['confirm-password']){
-                    $data['confirm-password_err'] = 'Does not match with the password';
-                }
-            }
-
             
-            
-            
-            
-            if(empty($data['password_err']) && (empty($data['confirm-password_err'])) ){
+            if (empty($data['password_err']) && (empty($data['confirm-password_err']))) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-            print_r("kjbaux");
-                print_r($data);
+      
                 // Reset the user's password
                 $this->userModel->PasswordReset($data);
 
-                 // Clear the password reset token from the database
-                 $this->userModel->clearToken($data);
-                 print_r($data);
+                // Clear the password reset token from the database
+                $this->userModel->clearToken($data);
 
-                 header("Location:http://localhost/Easyfarm/Users/login");
+                header("Location:http://localhost/Easyfarm/Users/login");
 
-            
+            } else {
+                $this->view('Users/v_resetPassword', $data);
+            }
 
-        }else{
-            $data = [
-                'email'=> '',
-                'otp' => '',
-                'password' => '',
-                'confirm-password' => '',
-
-                'otp_err'=> '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
-            ];
-            $this->view('Uses/v_resetPassword', $data);
-
-        }
-
-    }}
+        }}
 
     public function assignUserType($user){
         $userType = $user->User_type;
@@ -963,23 +889,51 @@ class Users extends Controller{
         $_SESSION['user_email'] = $user->Email;
         $_SESSION['user_type'] = $user->User_type;
     }
+    public function createUserSession2($data)
+    {
 
-    public function logOut(){
-        unset($_SESSION['user_ID']); 
+        $_SESSION['user_email1'] = $data['email'];
+
+        // header("Location:http://localhost/Easyfarm/Pages/index");
+        header("Location:http://localhost/Easyfarm/Plan/choosepkg");
+
+    }
+
+    public function createUserSession3($data)
+    {
+        print_r("ss");
+
+        $_SESSION['user_email1'] = $data['email'];
+
+        print_r($_SESSION['user_email1']);
+
+        // header("Location:http://localhost/Easyfarm/Pages/index");
+        header("Location:http://localhost/Easyfarm/V_plan/choosepkg");
+
+    }
+
+    // public function choosepkg(){
+    //     // $this->view('Pages/choosepkg');
+    //     header("Location:http://localhost/Easyfarm/Pages/choosepkg");
+    // }
+    public function logOut()
+    {
+        unset($_SESSION['user_ID']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_type']);
+        unset($_SESSION['plan_id']);
 
         session_destroy();
         redirect('Pages/index');
     }
 
-    public function isLoggedIn(){
-        if(isset($_SESSION['user_ID'])){
+    public function isLoggedIn()
+    {
+        if (isset($_SESSION['user_ID'])) {
             return true;
         }else{
             false;
         }
     }
-
 
 }

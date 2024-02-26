@@ -1,4 +1,6 @@
-<div class="header">
+
+<div class="profileNavBar">
+    <div class="header">
         <div class="flex">
             <!-- <h1>EasyFarm</h1> -->
             <div class="nav-logo">
@@ -84,6 +86,8 @@
             
         </div>
     </div>
+
+</div>
 
     <script>
             let subMenu = document.getElementById("sub-menu");

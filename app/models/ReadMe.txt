@@ -1,0 +1,4 @@
+- More information of a add
+- calendar (range)
+- rental fee per value
+- 

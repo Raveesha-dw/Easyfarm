@@ -10,10 +10,11 @@ class M_cart{
 
     public function addToCart($data){
         
-        $this->db->query('INSERT INTO cart(Item_Id, U_Id, Quantity) VALUES (:itemId, :uId, :quantity)'); 
+        $this->db->query('INSERT INTO cart(Item_Id, U_Id, Quantity,selectedDeliveryMethod) VALUES (:itemId, :uId, :quantity , :selectedDeliveryMethod)'); 
         $this->db->bind(':itemId', $data['itemId']);
         $this->db->bind(':uId', $data['uId']);
         $this->db->bind(':quantity', $data['quantity']);
+        $this->db->bind(':selectedDeliveryMethod', $data['selectedDeliveryMethod']);
         $this->db->execute();
         return true;
     
@@ -49,10 +50,11 @@ class M_cart{
 
     public function updateCartItem($data){
 
-        $this->db->query('UPDATE cart SET  Quantity = :quantity WHERE U_Id = :uId AND Item_Id = :itemId');
+        $this->db->query('UPDATE cart SET  Quantity = :quantity, selectedDeliveryMethod = :selectedDeliveryMethod WHERE U_Id = :uId AND Item_Id = :itemId');
         $this->db->bind(':itemId', $data['itemId']);   
         $this->db->bind(':quantity', $data['quantity']);
         $this->db->bind(':uId', $data['uId']);
+        $this->db->bind(':selectedDeliveryMethod', $data['selectedDeliveryMethod']);
 
         if ($this->db->execute()) {  
             return true; 

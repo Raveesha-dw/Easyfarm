@@ -101,7 +101,7 @@ input:checked ~ :after{
 }
 
 #productDetails .single-pro-details input{
-    width: 45px;
+    width: 100px;
     height: 28px;
     padding-left: 5px;
     font-size: 16px;
@@ -289,6 +289,19 @@ button i{
 }
 
 
+/* <<<<<<< imalka
+select{
+    border:none;
+    padding: 10px 20px;
+    border-radius:5px;
+  }
+  
+  select:focus{
+    outline:none;
+  }
+  
+  
+=======
 
 /* Inquiry Section */
 
@@ -374,3 +387,5 @@ button i{
 }
 
 
+
+ */

@@ -5,6 +5,7 @@
 <?php
 $productDetails = $data['productInfo'];
 
+
 $sellerDetails = $data['sellerInfo'];
 $productReviews = $data['itemReviews'];
 $inquiries = $data['inquiries'];
@@ -13,8 +14,10 @@ $inquiries = $data['inquiries'];
 
 <section id="productDetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+            <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $productDetails->Image?> " width="100%" id="MainImg" alt=""> 
         </div>
+
+        <!-- <form action="<?php echo URLROOT; ?>/BuyNow/buyNow" method="POST"> -->
 
         <div class="single-pro-details">
             <h6>Home / Plants and Seeds </h6>
@@ -23,25 +26,54 @@ $inquiries = $data['inquiries'];
             <span>Seller: <?php echo $sellerDetails->Store_Name?> , <?php echo $sellerDetails->Store_Adress?></span>
             </div> 
         <hr>
+        <form>
             <div class="price-tag">
-                <h3>Unit Price:<?php echo $productDetails->Unit_price?> LKR / <?php echo $productDetails->Unit_type?> </h3>
-                <!-- <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1"> -->
-            </div>
-        <hr>
+                <h3 id="unit-price" >Unit Price:<?php echo $productDetails->Unit_price?> LKR / <?php echo $productDetails->Unit_size?> <?php echo $productDetails->Unit_type?> </h3>
+                <label for="quantity">Amount:</label>
+                <input type="number" id="quantity" name="quantity" min="<?php echo $productDetails->Unit_size?>" step="<?php echo $productDetails->Unit_size?>" oninput="updateHiddenField()">
+                 
+                <!-- <br><br> -->
+                <!-- <label for="total-price">Total Price:</label>
+                <span id="total-price"><?php echo number_format($item['unitPrice'] * $item['quantity'], 2); ?></span> -->
 
+                <!-- <h4 id="total-price">Total Price : <?php echo $productDetails->Unit_price?>*<?php echo $productDetails->Unit_price?></h4>  -->
+<!-- 
+                <h4  label for="total-price">Total Price : </label>
+                <h4 id="total-price"><?php echo number_format($productDetails->Unit_price * $item['quantity'], 2); ?></h4> 
+
+                <h4>Number of units : <?php echo $productDetails->Unit_price?></h4>
+                <h4>Size of the product : </h4> -->
+
+
+            </div>
+        </form>
+        <hr>
+        <form>
         <h4>Delivery Method:</h4>
 
-        <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery</label>
-            </div>
-
+        <?php if ($productDetails->DeliveryMethod == "Home Delivery") : ?>
             <div>
-            <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-            <label for="instorepick">In-Store-Pickup</label>
+                <input type="radio" id="homedelivery" name="delivery" value="homedelivery" oninput="updateHiddenDelivery()"  />
+                <label for="homedelivery">Home Delivery</label>
             </div>
 
+        <?php elseif ($productDetails->DeliveryMethod == "Insto Pickup") : ?>
+            <div>
+                <input type="radio" id="instorepick" name="delivery" value="In-Store-Pickup" oninput="updateHiddenDelivery()"/>
+                <label for="instorepick">In-Store-Pickup</label>
+            </div>
+        <?php elseif ($productDetails->DeliveryMethod == "Home Delivery, Insto Pickup") : ?>
+            <div>
+                <input type="radio" id="homedelivery" name="delivery" value="Home Delivery" oninput="updateHiddenDelivery()"  />
+                <label for="homedelivery">Home Delivery</label>
+            </div>
+            <div>
+                <input type="radio" id="instorepick" name="delivery" value="In-Store-Pickup" oninput="updateHiddenDelivery()"/>
+                <label for="instorepick">In-Store-Pickup</label>
+            </div>
+        <?php endif; ?>   
+
+        </form>
         <!-- <?php
             $delivery = $sellerDetails->DeliveryMethod; 
 
@@ -77,15 +109,43 @@ $inquiries = $data['inquiries'];
             ?> -->
             
                 <div class="button-area">
-                <a href=""> <Button >BUY NOW</Button> </a>
+
+                    <form action="<?php echo URLROOT; ?>/BuyNow/buyNow" method="POST">
+
+
+
+                        <?php if (!empty($_SESSION['user_ID'])) : ?>
+                            
+                            <input type="hidden" id="hiddenDelivery1" name="delivery">
+                            <input type="hidden" id="hiddenQuantity1" name="quantity">
+                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+
+                            <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
+                            <button type="submit" >BUY NOW</button>
+                                                    
+                        <?php else : ?>                       
+                        <!-- <button type="submit" onclick="showRegisterConfirmation()">ADD TO CART</button> -->
+                            <button type="submit">BUY NOW</button>
+
+
+                        <?php endif; ?>   
+                    </form>
+
+
+
+
 
                     <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
 
-                            <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+                            <!-- <input type="hidden" id="hiddenQuantity" name="quantity"> -->
+
 
                         <?php if (!empty($_SESSION['user_ID'])) : ?>
 
+                            <input type="hidden" id="hiddenDelivery2" name="delivery">
+                            <input type="hidden" id="hiddenQuantity2" name="quantity">
+                            <input type="hidden" name="itemId" value=<?php echo $productDetails->Item_Id?>>
+                            
                             <input type="hidden" name="uId" value=<?php echo$_SESSION['user_ID']?>>
                             <button type="submit" >ADD TO CART</button>
                                                         
@@ -341,6 +401,49 @@ $inquiries = $data['inquiries'];
     }
     
 </script>
+
+
+<script>
+        function calculateTotal() {
+            // Get quantity and unit price elements
+            var quantityInput = document.getElementById('quantity');
+            var unitPriceSpan = document.getElementById('unit-price');
+            var totalPriceSpan = document.getElementById('total-price');
+
+            // Parse quantity as an integer
+            var quantity = parseInt(quantityInput.value, 10);
+
+            // Parse unit price (assuming it's a fixed value for this example)
+            var unitPrice = parseFloat(unitPriceSpan.innerText.replace('$', ''));
+
+            // Calculate total price
+            var totalPrice = quantity * unitPrice;
+
+            // Update the total price span with the calculated value
+            totalPriceSpan.innerText = 'LKR' + totalPrice.toFixed(2);
+
+            console.log("Updated Hidden Quantity:", totalPriceSpan.innerText );
+        
+        }
+
+        function updateHiddenField() {
+        var quantity = document.getElementById('quantity').value;
+        document.getElementById('hiddenQuantity1').value = quantity;
+        document.getElementById('hiddenQuantity2').value = quantity;
+        }
+
+        function updateHiddenDelivery() {
+            
+            deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+            document.getElementById('hiddenDelivery1').value = deliveryMethod;
+            document.getElementById('hiddenDelivery2').value = deliveryMethod;
+    }
+
+
+    </script>
+
+
+
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  

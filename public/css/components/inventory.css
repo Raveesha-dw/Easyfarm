@@ -4,14 +4,15 @@
     overflow: auto;
 }
 
-table {
+.itable-section table {
     width: 100%;
     table-layout: fixed;
     min-width: 900px;
     border-collapse: collapse;
 }
 
-thead th {
+.itable-section .table thead th {
+
     position: sticky;
     top: 0;
     background-color: darkseagreen;
@@ -19,14 +20,14 @@ thead th {
     font-size: 15px;
 }
 
-th, td {
+.itable-section .table th,.itable-section .table  td {
     border-bottom: 1px solid rgb(203, 240, 203);
     padding: 10px 20px;
     word-break: break-all;
     text-align: center;
 }
 
-td img {
+.itable-section td img {
     height: 60px;
     width: 60px;
     object-fit: cover;
@@ -34,7 +35,7 @@ td img {
     border: 5px solid rgb(206, 236, 197);
 }
 
-tr:hover td {
+.itable-section tr:hover td {
     color: aquamarine;
     cursor: pointer;
     background-color: azure;

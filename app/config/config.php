@@ -13,6 +13,7 @@ define('URLROOT', 'http://localhost/Easyfarm');
 
 //Site name
 define('SITENAME', 'Easyfarm');
+// define('return_url','http://localhost/Easyfarm/Users/login');
 
 
 //Mail setting
@@ -21,3 +22,9 @@ define('Mail_Username','easyfarm123@mail.com');
 define('Mail_Password','2B780F58D47E2A5866CC1DC9DECA11454EE0');
 define('Mail_port','Port');
 define('PUBROOT', dirname(dirname(dirname(__FILE__))).'\public');
+
+// paymentgateway - merchant secret key
+define('MERCHANT_SECRET', 'Mzg2NjE0MzgyMjk4MDI4MzQ0MjE4MjYwMTE0NDAyMjkyNTU3NTA3');
+
+
+?>

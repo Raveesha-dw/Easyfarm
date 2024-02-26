@@ -1,0 +1,41 @@
+.homeheader{
+margin-top: 1%;
+    left:0;
+    width:100%;
+    padding:20px 100px;
+    background: transparent;
+    /* border-radius: 5%; */
+    /* display: flex; */
+    justify-content: space-between;
+
+    align-items: center;
+    z-index: 100;
+}
+
+.homeheader a{
+    font-size: 25px;
+    font-weight:5000px;
+    color: #15b510;
+    margin-left: 200px;
+    position: relative;
+    background-color: aquamarine;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.homeheader a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #121312;
+    
+    transition: 2s;
+}
+
+.homeheader a:hover::before{
+    width:100%;
+}
+
