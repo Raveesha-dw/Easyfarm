@@ -185,18 +185,13 @@
     </div>
 </div>
 
-   <!-- </section> -->
-
-    </div>
-</div>
-
 
 
 
    <!-- </section> -->
 
     </div>
-</div>
+
 
 
 <?php require APPROOT . '/views/inc/footer.php';?>

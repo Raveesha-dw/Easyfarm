@@ -262,5 +262,16 @@ public function update_data($data){
 
     }
 
+
+
+    public function get_booking_details($Order_ID){
+    
+    $this->db->query("SELECT * FROM v_orders WHERE Order_ID = :Order_ID");
+    $this->db->bind(':Order_ID',$Order_ID);
+    $result=$this->db->resultSet();
+    return $result;
+    
+}
+
 }
 

@@ -1,6 +1,3 @@
-
-
-
 <?php require APPROOT . '/views/inc/header.php';?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 
@@ -13,8 +10,9 @@
                 <?php $unconfirmed_booking_dates = $data['unconfirmed_booking_dates'];?>
                 <?php $confirmed_booking_dates = $data['confirmed_booking_dates'];?>
                 <?php $unavailableDates = $data['unavailableDates'];?>
-                <!-- <?php $booking_Data = $data['booking_Data'];?>
-                <?php print_r($booking_Data);?> -->
+                <?php $booking_Data = $data['booking_Data'];?>
+                <?php $more_details_booking = $data['orders'];?>
+                <!-- <?php print_r($more_details_booking);?> -->
 
                 <div class="box">
                     <div class="wrapper_v_product_details_sub">
@@ -48,30 +46,26 @@
                         <div class="cal" >
 
                             <?php
-                            // Encode $dates array as JSON
-                            $unavailableDatesJson = json_encode($unavailableDates);
-                            $unconfirmed_booking_datesJson = json_encode($unconfirmed_booking_dates);
-                            $confirmed_booking_datesJson = json_encode($confirmed_booking_dates);
-                            $booking_DataJson = json_encode($booking_Data);
-                        
+// Encode $dates array as JSON
+$unavailableDatesJson = json_encode($unavailableDates);
+$unconfirmed_booking_datesJson = json_encode($unconfirmed_booking_dates);
+$confirmed_booking_datesJson = json_encode($confirmed_booking_dates);
+$booking_DataJson = json_encode($booking_Data);
+$more_details_bookingJson = json_encode($more_details_booking);
 
-                            $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
-                            ?>
+$post_create_dateJson = json_encode($vehicle_data['post_create_date']);
+?>
 
-                            <div id='calendar' 
-                                data-unavailable-dates='<?php echo $unavailableDatesJson; ?>' 
-                                data-create-date='<?php echo $post_create_dateJson; ?>' 
-                                data-unconfirmed_booking_dates='<?php echo $unconfirmed_booking_datesJson; ?>' 
+                            <div id='calendar'
+                                data-unavailable-dates='<?php echo $unavailableDatesJson; ?>'
+                                data-create-date='<?php echo $post_create_dateJson; ?>'
+                                data-unconfirmed_booking_dates='<?php echo $unconfirmed_booking_datesJson; ?>'
                                 data-confirmed_booking_dates='<?php echo $confirmed_booking_datesJson; ?>'
-                                data-booking_Data='<?php echo $booking_DataJson;?>'
+                                data-booking_Data='<?php echo $booking_DataJson; ?>'
+                                data-more_details_booking='<?php echo $more_details_bookingJson; ?>'
                                 >
                             </div><br><br>
 
-                            <!-- <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData">
-                            <input type="hidden" id="hiddenInputDates" name="markedDates">
-                            <input type="hidden"  name="V_Id" value="<?php echo $vehicle_data['V_Id']; ?>">
-                            <button id="saveChangesButton">Save Changes</button>
-                            </form> -->
                         </div>
                         <div id="legends">
                             <div class="legend-item">
