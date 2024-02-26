@@ -85,6 +85,8 @@ class Users extends Controller
                 'address_err' => '',
                 'password_err' => '',
                 'confirm-password_err' => '',
+                'nic_err'=>'',
+                'pid_err'=>'',
 
             ];
             $this->view('Users/v_registerAgriExpert', $data);
@@ -492,12 +494,14 @@ class Users extends Controller
                     'nic' => '',
                     'pId' => '',
 
-                    'name_err' => '',
-                    'contactno_err' => '',
-                    'email_err' => '',
-                    'address_err' => '',
-                    'password_err' => '',
-                    'confirm-password_err' => '',
+                'name_err' => '',
+                'contactno_err' => '',
+                'email_err' => '',
+                'address_err' => '',
+                'password_err' => '',
+                'confirm-password_err' => '',
+                'nic_err'=>'',
+                'pid_err'=>'',
 
                 ];
                 $this->view('Users/v_registerAgriExpert', $data);
