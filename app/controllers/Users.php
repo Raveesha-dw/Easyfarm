@@ -1,20 +1,16 @@
 <?php
-// include "../helpers/Mail_helper.php";
 require_once APPROOT . '/helpers/Mail_helper.php';
 require_once APPROOT . '/helpers/OTP_helper.php';
-// require URLROOT . '.app/helpers/Mail_helper.php';
 
 class Users extends Controller
 {
     private $userModel;
-    public function __construct()
-    {
+    public function __construct(){
         $this->userModel = $this->model('M_users');
 
     }
 
-    public function assignUser($usertype)
-    {
+    public function assignUser($usertype){
         if ($usertype == 'Buyer') {
             $data = [
                 'user_type' => '',
@@ -116,8 +112,7 @@ class Users extends Controller
 
     }
 
-    public function register()
-    {
+    public function register(){
 
         if ($_POST['user_type'] == 'Buyer') {
             //Check for POST
@@ -624,8 +619,7 @@ class Users extends Controller
 
     }
 
-    public function login()
-    {
+    public function login(){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -715,10 +709,9 @@ class Users extends Controller
                 if (empty($data['email_err'])) {
 
                     $data['otp'] = generate_Otp();
-    
-                    print_r($data['otp'] );
+
                     // Save OTP, email, and expiration time in the database
-                    $expirationTime = time() + (1 * 60); // OTP will expire in 1 minutes
+                    $expirationTime = time() + (5 * 60); // OTP will expire in 5 minutes
                     $this->userModel->createToken($data, $expirationTime);
                  
                     // Send OTP to the user's email 
@@ -843,7 +836,8 @@ class Users extends Controller
                 $this->view('Users/v_resetPassword', $data);
             }
 
-        }}
+        }
+    }
 
     public function assignUserType($user){
         $userType = $user->User_type;
@@ -899,8 +893,7 @@ class Users extends Controller
 
     }
 
-    public function createUserSession3($data)
-    {
+    public function createUserSession3($data){
         print_r("ss");
 
         $_SESSION['user_email1'] = $data['email'];
@@ -916,8 +909,7 @@ class Users extends Controller
     //     // $this->view('Pages/choosepkg');
     //     header("Location:http://localhost/Easyfarm/Pages/choosepkg");
     // }
-    public function logOut()
-    {
+    public function logOut(){
         unset($_SESSION['user_ID']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_type']);
@@ -927,8 +919,7 @@ class Users extends Controller
         redirect('Pages/index');
     }
 
-    public function isLoggedIn()
-    {
+    public function isLoggedIn(){
         if (isset($_SESSION['user_ID'])) {
             return true;
         }else{

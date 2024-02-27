@@ -1,12 +1,12 @@
 <?php
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require APPROOT . '\vendor\autoload.php';
+require ROOT . '\vendor\autoload.php';
+
 
     function sendOTPByEmail($email, $otp){
         $mail = new PHPMailer;      
