@@ -81,11 +81,14 @@
         $sellerInfo = $this->productModel->getSellerInfo($seller_ID);
 
         $productReviews = $this->reviewModel->getReviewsForItem($itemID);
+        $productRating = $this->reviewModel->getRatingsForItem($itemID);
+        // print_r($productRating);
 
         $data = [
             'productInfo' => $productInfo,
             'sellerInfo' => $sellerInfo,
-            'itemReviews' => $productReviews
+            'itemReviews' => $productReviews,
+            'itemRating' => $productRating
         ];
         $this->view('Buyer/v_productDetails', $data);
     }
