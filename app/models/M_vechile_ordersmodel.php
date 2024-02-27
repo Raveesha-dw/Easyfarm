@@ -117,5 +117,13 @@ public function getdatepending($V_Id){
  }
 
 
+ public function getbuyerdetails(){
+    $this->db->query('SELECT * FROM reg_buyer WHERE reg_buyer.U_Id = :U_Id');
+
+    $this->db->bind(':U_Id',$_SESSION['user_ID']); 
+    return $this->db->resultSet();
+ }
+
+
 }
 
