@@ -33,6 +33,7 @@
 
                 <tbody>
                     <?php
+                    // print_r($data);
                         $cartItems =$data;
                         
                         $cartTotal = 0.00;
@@ -58,7 +59,7 @@
                                     <td>
                                         <div class="cart-info">
                                             
-                                            <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" alt="<?php echo $item['itemName']; ?>">
+                                            <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $item['Image']?> " alt="<?php echo $item['itemName']; ?>">
                                             <div>
                                                 
                                                 <h4><?php echo $item['itemName']; ?></h4>

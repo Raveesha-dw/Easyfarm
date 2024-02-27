@@ -137,6 +137,7 @@ class Cart extends Controller{
     {
 
         $Mitems = $this->cartModel->getAllcartItems1($_SESSION['user_ID']);
+        // print_r($Mitems);
         $items = (array) $Mitems;
         $data = array();
         foreach ($items as $Mitem) {
@@ -150,11 +151,15 @@ class Cart extends Controller{
             $viewItem['selectedDeliveryMethod'] = $item['selectedDeliveryMethod'];
             $viewItem['Unit_type'] = $item['Unit_type'];
             $viewItem['Unit_size'] = $item['Unit_size'];
+            $viewItem['Image'] = $item['Image'];
             array_push($data, $viewItem);
 
         }
         // $mergedArray = array_merge($data1, $data);
         // $data = array_unique($mergedArray);
+
+
+
         $this->view('pages/cart', $data);
 
     }

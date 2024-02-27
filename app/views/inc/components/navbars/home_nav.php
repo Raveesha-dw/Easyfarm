@@ -28,6 +28,15 @@
             <div class="nav-parts">
             </div>
 
+
+                    <div class="nav-parts">
+                    <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+                </a>
+                </div>
+
+
+
+
                 <div class="nav-parts">
                     
                     <a href="<?php echo URLROOT ?>/Pages/index">Marketplace</a>
