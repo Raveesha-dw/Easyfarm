@@ -4,7 +4,12 @@ class AgriInstructor extends Controller{
     private $agriInstructorModel;
 
     public function __construct(){
-        $this->agriInstructorModel = $this->model('M_agriInstructor');
+        if(isset($_SESSION['user_ID']) && $_SESSION['user_type']== 'AgricultureExpert'){
+            $this->agriInstructorModel = $this->model('M_agriInstructor');
+        }else{
+            redirect('Blog');
+        }
+        
     }
 
     public function index(){

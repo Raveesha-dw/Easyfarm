@@ -913,8 +913,7 @@ class Users extends Controller
         $_SESSION['user_email'] = $user->Email;
         $_SESSION['user_type'] = $user->User_type;
     }
-    public function createUserSession2($data)
-    {
+    public function createUserSession2($data){
 
         $_SESSION['user_email1'] = $data['email'];
 
