@@ -56,4 +56,11 @@ class M_admin{
         $this->db->execute();
         return true;
     }
+
+    public function getEmailByUserId($id){
+        $this->db->query("SELECT Email FROM user WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $result = $this->db->single();
+        return $result;
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+require_once APPROOT . '/helpers/Mail_helper.php';
+
 class Admin extends Controller{
     private $adminModel;
 
@@ -124,13 +126,33 @@ class Admin extends Controller{
     }
 
     public function reviewAgriInstructor(){
+
+        //View agri instructor's acc details
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['id'])){
             $data = $this->adminModel->getAgriInstructorById($_GET['id']);
             $this->view('Admin/v_adminReviewAgriInstructor', $data);
         }
 
+        //Verify or Reject account
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
-            if($this->adminModel->setAgriInstructorAccStatus(trim($_POST['id']), trim($_POST['accStatus']))){
+
+            $id = trim($_POST['id']);
+            $accStatus = trim($_POST['accStatus']);
+
+            $name = $this->adminModel->getAgriInstructorById($id)->Name;
+            $email = $this->adminModel->getEmailByUserId($id)->Email;
+
+            if($this->adminModel->setAgriInstructorAccStatus($id, $accStatus)){
+                switch($accStatus){
+                    case 'Verified':
+                        sendAccVerifiedEmail($email, $name);
+                        break;
+                    case 'Rejected':
+                        sendAccRejectedEmail($email, $name);
+                        break;
+                    default:
+                        echo 'Email has not been sent.';
+                }
                 header('Location: ' . URLROOT . '/Admin/agriInstructor');
             }else{
                 die('Something went wrong :(');

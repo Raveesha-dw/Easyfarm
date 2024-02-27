@@ -32,7 +32,7 @@
                         <div class="btn-container">
                             <form action="<?php echo URLROOT?>/Admin/reviewAgriInstructor" method="GET">
                                 <input type="hidden" name="id" value="<?php echo $agriInstructor->U_Id?>">
-                                <button class="admin-table" type="submit">Review & Verify</button>   
+                                <button class="admin-table" type="submit">Review</button>   
                             </form>
                         </div>
                     </td>

@@ -460,6 +460,7 @@ class Users extends Controller
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                                  
                     if($this->userModel->register($data)){
+                        // sendRegistrationSuccessEmail($data);
                         header("Location:http://localhost/Easyfarm/Blog");
                         flash('register_success', 'You have successfully registered with EasyFarm');
                     }

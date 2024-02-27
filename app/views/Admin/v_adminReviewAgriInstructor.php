@@ -10,6 +10,7 @@
 
     <?php
         $agriInstructorDetails = $data;
+        // print_r($data);
     ?>
 
     <table>
