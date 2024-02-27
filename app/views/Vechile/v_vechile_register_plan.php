@@ -76,6 +76,8 @@
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
 
+
+
 <div class="box-container">
         <div class="box-item">
                 <div class="flip-box">
