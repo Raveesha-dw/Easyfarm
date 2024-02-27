@@ -123,10 +123,12 @@
                     <p><I>Mark unavailable dates for renting</p></I>
                         <div class="cal" >
                             <div class="response"></div>
-                            <div id='calendar'>
+                            <!-- <?php echo $data['last_date_of_plan']; ?> -->
+                            <div id='calendar' data-last_date_of_plan= '<?php echo $data['last_date_of_plan']; ?>'>
+
                                 <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
 
-                                <input type="hidden" id="hiddenInputDates" name="markedDates">
+                                <input type="hidden" id="hiddenInputDates" name="markedDates" data-last_date_of_plan= "<?php echo $data['last_date_of_plan']; ?>">
 
 
 

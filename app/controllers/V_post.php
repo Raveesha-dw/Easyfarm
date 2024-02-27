@@ -16,7 +16,7 @@ class V_post extends Controller
     {
 
         $data = [
-            'Owner_Id' => '',
+            'Owner_Id' => $_SESSION['user_ID'],
             'V_category' => '',
             'V_name' => '',
             'V_number' => '',
@@ -43,6 +43,17 @@ class V_post extends Controller
 
         $v_Categories = $this->v_postModel->get_category();
         $data['v_Categories'] = $v_Categories;
+        $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
+        $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
+
+
+
+// Convert plan_activated_date to string explicitly if it's not already a string
+        $timestamp = strtotime($data['plan_activated_date']->Register_date);
+        $month = $data['plan_duration']->duration;
+
+        $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+        // print_r($data);
         $this->view('VehicleRenter\v_vehicle_create_post', $data);
 
     }
