@@ -107,8 +107,8 @@ class Cart extends Controller{
                 }
                 // $mergedArray = array_merge($data1, $data);
                 // $data = array_unique($mergedArray);
-                $this->view('pages/cart', $data);
-                // redirect('Cart/checkout');
+                // $this->view('pages/cart', $data);
+                redirect('Cart/getCart');
             }
 
 
@@ -162,7 +162,32 @@ class Cart extends Controller{
     
     }
 
+public function getCart(){
 
+    
+                $Mitems =$this->cartModel->getAllcartItems1($_SESSION['user_ID']);
+                $items = (array) $Mitems;
+                $data = array();
+                foreach ($items as $Mitem) {
+                    $viewItem = array();
+                    $item = (array) $Mitem;
+                    $viewItem['quantity'] = $item ['Quantity'];
+                    $viewItem['itemId'] = $item['Item_Id'];
+                    $viewItem['uId'] = $item['U_Id'];
+                    $viewItem['unitPrice'] = $item['Unit_price'];
+                    $viewItem['itemName'] = $item['Item_name'];
+                    $viewItem['selectedDeliveryMethod'] = $item['selectedDeliveryMethod'];
+                    $viewItem['Unit_type'] = $item['Unit_type'];
+                    $viewItem['Unit_size'] = $item['Unit_size'];
+                    array_push($data, $viewItem);
+    
+    
+                }
+                // $mergedArray = array_merge($data1, $data);
+                // $data = array_unique($mergedArray);
+                $this->view('pages/cart', $data);
+
+}
 
 
 

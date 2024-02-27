@@ -45,6 +45,15 @@ class M_cart{
         return $rows;
     }
     
+        public function getAllcartItems1($data){
+
+        $this->db->query('SELECT * FROM cart, item WHERE (U_Id = :uId) and cart.Item_Id = item.Item_Id') ;
+        $this->db->bind(':uId', $data);
+            
+        $this->db->execute();
+        $rows=$this->db->resultSet();     
+        return $rows;
+    }
 
 
 

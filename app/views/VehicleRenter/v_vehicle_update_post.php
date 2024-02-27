@@ -21,7 +21,7 @@
 
 
 
-<?php print_r($data);?>
+<!-- <?php print_r($data);?> -->
 <div class ="ss">
     <div class="Wrapper_Vehicle_Create_Post">
 
