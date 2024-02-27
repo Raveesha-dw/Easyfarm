@@ -121,10 +121,10 @@ $productReviews = $data['itemReviews'];
             </ul>
     </section>
 
-    <!-- Change from here onwards -->
+    
     <section id="reviewSection" class="section-p3">
         <div class="no-container">
-            <h3>Product Ratings</h3>
+            <h3>Product Ratings and Reviews</h3>
             <hr>
             <div class="rating">
                 <div class="rating-title">Overall Rating</div>
@@ -166,7 +166,19 @@ $productReviews = $data['itemReviews'];
                     <div class="bar-label">1 Star (0%)</div>
                 </div>
             </div>
+
+    <?php foreach($productReviews as $review): ?>
+            <div class="question-card">
+                <div class="question"><i class="fa fa-comment" aria-hidden="true"></i>
+                    <h3><?php echo $review->Name ?> posted on <small><?php echo $review->posted_date ?></small></h3>
+                   
+                </div>
+                <div class="answer">
+                     <h4><?php echo $review->Review ?></h4>
+                </div>
         </div>
+
+        <?php endforeach ?>
     </section>
 
     <section id ="questionSection" class="section-p4">

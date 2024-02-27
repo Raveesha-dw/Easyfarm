@@ -18,7 +18,8 @@
             <ul>
                 <button id ="Cart" >Shopping Cart </button><br>
                 <button id ="Order">My orders</button><br>
-                <button id ="rate">My Reviews</button>
+                <button id ="rate">My Reviews</button><br>
+                <button id ="booking">My Bookings</button>
 
             </ul>
             
@@ -36,7 +37,8 @@
         window.location.href = "http://localhost/Easyfarm/Cart/showCart";
     });
     document.getElementById("Order").addEventListener("click", function() {
-        window.location.href = "http://localhost/Easyfarm/Orders/placedOrders";
+        // window.location.href = "http://localhost/Easyfarm/Orders/placedOrders";
+        window.location.href = "http://localhost/Easyfarm/Orders/pendingOrdersOfUser";
     });
     document.getElementById("rate").addEventListener("click", function() {
         window.location.href = "http://localhost/Easyfarm/Review/userReviews";
