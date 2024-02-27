@@ -9,26 +9,34 @@
         $this->reviewModel=$this->model('M_review');
     }
 
-    public function sendItem($itemName){
+    // public function sendItem($itemName){
        
-        $itemid = $this->itemModel->getItemByName($itemName);
-        // $item_ID = $itemDetails->$Item_Id;
-        // echo $item_ID;
-        // echo($itemDetails);
+    //     $itemid = $this->itemModel->getItemByName($itemName);
+    //     // $item_ID = $itemDetails->$Item_Id;
+    //     // echo $item_ID;
+    //     // echo($itemDetails);
+    //     $data = [
+    //         'item_id' => $itemid,
+    //         'item_name' => $itemName
+    //     ];
+
+    //     $this->view('Buyer/v_buyerItemReview',$data);
+    // }
+
+    public function itemReview($item_ID){
+
+        $item = $this->itemModel->getItemDetails($item_ID);
+        // print_r($item);
+
         $data = [
-            'item_id' => $itemid,
-            'item_name' => $itemName
+            'item_id' => $item->Item_Id,
+             'item_name' => $item->Item_name
         ];
 
         $this->view('Buyer/v_buyerItemReview',$data);
     }
 
     public function postReview(){
-        // $user_ID = $_POST['user_ID'];
-        // $rating = $_POST['rating'];
-        // $review = $_POST['review'];
-        // $date = $_POST['review_date'];
-        // $time = $_POST['review_time'];
         
         $data = [
             // 'review_ID' => $_POST['review_ID'],
@@ -43,7 +51,7 @@
 
         if($this->orderModel->postReview($data)){
             // $this->view('Buyer/v_dashboardCart');
-            header("Location:http://localhost/Easyfarm/Orders/placedOrders");
+            header("Location:http://localhost/Easyfarm/Orders/pendingOrdersOfUser");
         }
 
     }
@@ -59,9 +67,7 @@
     }
 
     public function updateUserReview($review_ID, $item_ID){
-        // echo $review_ID;
-        // echo $item_ID;
-        // $this->view('Buyer/v_buyerItemReview',$data);
+      
 
         $editReview = $this->reviewModel->getSingleReview($review_ID);
         // print_r($editReview);
@@ -99,19 +105,23 @@
         
     // }
 
-    public function deleteReview($review_ID){
-        // if($_SERVER['REQUEST_METHOD']=='GET'){
-        //     if (isset($_GET['review_ID'])) {
-        //     if (isset($_GET['confirm_delete']) && $_GET['confirm_delete'] === 'true') {
-                // if($this->reviewModel->deleteReview($review_ID)){
-                //     header("Location:http://localhost/Easyfarm/Review/userReviews");
-                // }
+    public function deleteReview(){
+
+        // $blah = $_GET['reviewId'];
+        // print_r($blah);
+        // print_r($review_ID);
+        // if($this->reviewModel->deleteReview($_GET)){
+        //     header("Location:http://localhost/Easyfarm/Review/userReviews");
+        // }
+        
+        if(isset($_GET['reviewId'])){
+            $review_ID = $_GET['reviewId'];
                 if($this->reviewModel->deleteReview($review_ID)){
                     header("Location:http://localhost/Easyfarm/Review/userReviews");
                 }
-                
-            }
         }
-//         }
-//     }
-// }
+        else {
+        echo "Review ID not provided.";
+        }
+    }
+}

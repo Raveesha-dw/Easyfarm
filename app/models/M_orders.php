@@ -52,4 +52,47 @@ class M_orders{
 
     }
 
+    public function getPendingOrders(){
+        $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="PENDING"'); 
+        $this->db->bind(':user_ID', $_SESSION['user_ID']);
+        $result = $this->db->resultSet();
+        // print_r($result);
+
+        return $result;   
+    }
+
+    public function getCompletedOrders(){
+        $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="COMPLETED"'); 
+        $this->db->bind(':user_ID', $_SESSION['user_ID']);
+
+        return $this->db->resultSet();   
+    }
+
+    public function getItemsOfOrder($order_ID){
+        $this->db->query("SELECT Item_name FROM item INNER JOIN orders ON item.Item_Id = orders.Item_ID WHERE orders.User_ID = :userID AND orders.Order_ID=:orderID");
+        $this->db->bind(':userID', $_SESSION['user_ID']);
+        $this->db->bind(':orderID', $order_ID);
+
+        // print_r($this->db->resultSet());
+
+        return $this->db->resultSet();
+    }
+
+    public function changeOrderStatus($order_ID){
+        $this->db->query('UPDATE orders SET status = "COMPLETED" WHERE Order_ID=:orderID');
+        $this->db->bind(':orderID', $order_ID);
+
+        return $this->db->execute();
+    }
+
+    public function getItemDetailsOfOrder($orderID){
+        $this->db->query("SELECT * FROM item INNER JOIN orders ON item.Item_Id = orders.Item_ID WHERE orders.User_ID = :userID AND orders.Order_ID=:orderID");   
+        $this->db->bind(':userID', $_SESSION['user_ID']);
+        $this->db->bind(':orderID', $orderID);
+
+        return $this->db->resultSet();
+        
+    }
+
+
 }
