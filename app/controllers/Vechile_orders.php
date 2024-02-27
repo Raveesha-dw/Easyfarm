@@ -110,6 +110,14 @@
             } else {
 
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
+                 $data6 = $this->vechile_ordersmodel->getdatepending($_POST['V_Id']);
+
+
+                 
+                foreach ($data1 as $object) {
+                    $data5 = (array) $object;
+                }
+                // print_r($data1);
 
                 $data2 = $this->vechile_ordersmodel->getdatE($_POST['V_Id']);
                 $owner_id = $data1[0]->Owner_Id;
@@ -119,17 +127,7 @@
                 $plan_id = $data3[0]->plan_id;
                 $registed_date = $data3[0]->Register_date;
                 
-
-
-
                 $timestamp = strtotime($registed_date);
-
-                // Add the specified number of months to the timestamp
-
-
-
-
-
 
 
                 $data4 = $this->vechile_ordersmodel->getplandmonth($plan_id);
@@ -139,7 +137,8 @@
                 $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
                 $data['lastday'] = $new_date;
 
-                $data = array_merge($data1, $data2, $data);
+                $data = array_merge($data1, $data2, $data,$data5,$data6);
+                print_r($data3);
                 ($this->view('renter/v_vechiledetail', $data));
             }
 
