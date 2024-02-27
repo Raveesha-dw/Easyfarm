@@ -372,11 +372,39 @@ class Users extends Controller
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
                 // Get image data
-                $nic_img = file_get_contents($_FILES['nic_img']['tmp_name']);
+                $nicPath = $_FILES['nic_img']['tmp_name'];
+                $pidPath = $_FILES['pid_img']['tmp_name'];
+
+                // Extract extensions from original file names
+                $nicExtension = pathinfo($_FILES['nic_img']['name'], PATHINFO_EXTENSION);
+                $pidExtension = pathinfo($_FILES['pid_img']['name'], PATHINFO_EXTENSION);
+
+                // Validate extensions (considering case-sensitivity)
+                $allowedExtensions = array('jpg', 'jpeg', 'png');
+                if (!in_array(strtolower($nicExtension), $allowedExtensions)) {
+                    die("Invalid file type uploaded for NIC: Only JPG, JPEG, and PNG files are allowed.");
+                }
+                if (!in_array(strtolower($pidExtension), $allowedExtensions)) {
+                    die("Invalid file type uploaded for PID: Only JPG, JPEG, and PNG files are allowed.");
+                }
+
+                // print_r($nicExtension);
+                // print_r($pidExtension);
+
+
+                $nic_img = file_get_contents($nicPath);
                 $nic_img = base64_encode($nic_img); // Convert binary data to base64 for database storage
 
-                $pid_img = file_get_contents($_FILES['pid_img']['tmp_name']);
+                $pid_img = file_get_contents($pidPath);
                 $pid_img = base64_encode($pid_img);
+
+                $imgData = [
+                    'nicPath' => $nicPath,
+                    'pidPath' => $pidPath,
+                    'nicExtension' => $nicExtension,
+                    'pidExtension' => $pidExtension
+                ];
+
 
                 $data=[
                     'user_type' => $_POST['user_type'],
@@ -460,6 +488,7 @@ class Users extends Controller
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                                  
                     if($this->userModel->register($data)){
+                        sendDocumentsToCheckLegitamacy($data, $imgData);
                         // sendRegistrationSuccessEmail($data);
                         header("Location:http://localhost/Easyfarm/Blog");
                         flash('register_success', 'You have successfully registered with EasyFarm');

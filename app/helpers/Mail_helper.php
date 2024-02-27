@@ -107,4 +107,50 @@ require ROOT . '\vendor\autoload.php';
         }
     }
 
+    function sendDocumentsToCheckLegitamacy($data, $imgData){
+
+        $mail = new PHPMailer;      
+        // Create a new PHPMailer instance
+        $mail = new PHPMailer(true);
+
+        try {
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.elasticemail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'easyfarm123@mail.com'; //  Elastic Email username
+            $mail->Password   = '2B780F58D47E2A5866CC1DC9DECA11454EE0';     //  Elastic Email API key
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 2525;
+
+            // Recipients
+            $mail->setFrom('easyfarm123@mail.com', 'EasyFarm'); // Sender's email address and name
+            $mail->addAddress('anjanatharusha13@gmail.com', 'Department of Agriculture'); // Recipient's email address and name
+
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'EasyFarm: Verification Needed for New Agri Instructor Registration';
+
+            $mail->Body = 'This individual wishes to register as an <b>Agricultural Instructor</b> on <b>EasyFarm</b>. 
+                            Kindly review the provided information and documents to verify if the applicant is currently employed at your institute. <br><br>
+                            Full Name: <b>' . $data['fullname'] . '</b><br>
+                            Address: <b>' . $data['address'] . '</b><br>
+                            City: <b>' . $data['city'] . '</b><br>
+                            Workplace: <b>' . $data['workplace'] . '</b><br>
+                            Contact No: <b>' . $data['contactno'] . '</b><br>
+                            Email: <b>' . $data['email'] . '</b>
+                            <br><br>EasyFarm';
+
+            $mail->AddAttachment($imgData['nicPath'], "NIC_" . $data['contactno'] . "." . $imgData['nicExtension']);
+            $mail->AddAttachment($imgData['pidPath'], "PID_" . $data['contactno'] . "." . $imgData['pidExtension']);
+
+
+            $mail->send();
+            // echo 'Message has been sent';
+        } 
+        catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
 ?>
