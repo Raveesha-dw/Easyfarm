@@ -45,7 +45,7 @@
                                 payhere.onCompleted = function onCompleted(orderId) {
                                 console.log("Payment completed. OrderID:" + orderId);
                                 var paymentQueryString = Object.keys(payment).map(key => key + '=' + encodeURIComponent(payment[key])).join('&');
-                                window.location.href = "http://localhost/Easyfarm/V_plan/update_details2?id=" + payment['plan_id'];
+                                window.location.href = "http://localhost/Easyfarm/V_plan/update_details1?id=" + payment['plan_id'];
 
 
                                 
@@ -70,7 +70,7 @@
                                 payhere.startPayment(payment);
                         }
                 }
-                xhttp.open("GET","<?php echo URLROOT ?>/V_plan/payment2?id=" + id,true);
+                xhttp.open("GET","<?php echo URLROOT ?>/V_plan/payment1?id=" + id,true);
                 xhttp.send();
         }
         
@@ -136,7 +136,7 @@
                         <div class="flip-box-back text-center" style="background-image: url('https://s25.postimg.cc/l2q9ujy4f/cta-4.png');">
                                 <div class="inner color-white">
                                         <h3 class="flip-box-header"><?php print($data[2]->name); ?></h3>
-                                        <p>Experience excellence with our <?php print($data[1]->name); ?> plan – crafted for those who seek greatness!</p>
+                                        <p>Experience excellence with our <?php print($data[2]->name); ?> plan – crafted for those who seek greatness!</p>
                                                                                 <p><strong>All for just Rs.<?php print($data[2]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[2]->price); ?>. Unleash the power of <?php print($data[2]->name); ?> without compromising your budget! 💸</p>
 
 <a href="#" class="flip-box-button" onclick="paymentGateway(3);">SUBCRBIE 🌐</a></p>                                </div>

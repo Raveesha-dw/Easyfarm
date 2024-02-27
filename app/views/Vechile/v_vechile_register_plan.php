@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <!-- <script>function paymentGateway(){console.log("kk")}</script> -->
 <!-- <?php print_r($_SESSION['user_email1']); ?> -->
-
+<?php print_r($data)?>
 <script>
         function paymentGateway(id) {
 
@@ -83,20 +83,20 @@
                 <div class="flip-box">
                         <div class="flip-box-front text-center" style="background-image: url('https://s25.postimg.cc/frbd9towf/cta-2.png');">
                                 <div class="inner color-white">
-                                        <h3 class="flip-box-header"><?php print($data[2]->name); ?></h3>
-                                        <p>Exclusive <?php print($data[2]->duration); ?>-Month Plan 🌟</p>
+                                        <h3 class="flip-box-header"><?php print($data[0]->name); ?></h3>
+                                        <p>Exclusive <?php print($data[0]->duration); ?>-Month Plan 🌟</p>
                                         <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
                                 </div>
                         </div>
                         <div class="flip-box-back text-center" style="background-image: url('https://s25.postimg.cc/frbd9towf/cta-2.png');">
                                 <div class="inner color-white">
-                                        <h3 class="flip-box-header"><?php print($data[2]->name); ?></h3>
+                                        <h3 class="flip-box-header"><?php print($data[0]->name); ?></h3>
                                         <br>
                                         <br>
                                         <p>Unlock unparalleled benefits with our <?php print($data[2]->name); ?> plan – your gateway to extraordinary possibilities! 🚀</p>
-                                        <p><strong>All for just Rs.<?php print($data[2]->price); ?>!</strong> Elevate your experience for an unbeatable price of Rs.<?php print($data[2]->price); ?>. Experience the pinnacle of service without compromise! 🎁</p>
+                                        <p><strong>All for just Rs.<?php print($data[0]->price); ?>!</strong> Elevate your experience for an unbeatable price of Rs.<?php print($data[0]->price); ?>. Experience the pinnacle of service without compromise! 🎁</p>
 
-                                        <a href="#" class="flip-box-button" onclick="paymentGateway(3);">SUBCRBIE🌐</a></p>
+                                        <a href="#" class="flip-box-button" onclick="paymentGateway(1);">SUBCRBIE🌐</a></p>
                                 </div>
                         </div>
                 </div>
@@ -105,18 +105,18 @@
                 <div class="flip-box">
                         <div class="flip-box-front text-center" style="background-image: url('https://s25.postimg.cc/hj4c4qnov/cta-3.png');">
                                 <div class="inner color-white">
-                                        <h3 class="flip-box-header"><?php print($data[0]->name); ?></h3>
-                                        <p>Exclusive <?php print($data[0]->duration); ?>-Month Plan 🌟</p>
+                                        <h3 class="flip-box-header"><?php print($data[1]->name); ?></h3>
+                                        <p>Exclusive <?php print($data[1]->duration); ?>-Month Plan 🌟</p>
                                         <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
                                 </div>
                         </div>
                         <div class="flip-box-back text-center" style="background-image: url('https://s25.postimg.cc/hj4c4qnov/cta-3.png');">
                                 <div class="inner color-white">
-                                        <h3 class="flip-box-header"><?php print($data[0]->name); ?></h3>
+                                        <h3 class="flip-box-header"><?php print($data[1]->name); ?></h3>
                                         <p>Discover the extraordinary with our <?php print($data[0]->name); ?> plan – your key to an enhanced digital presence!</p>
-                                                                                <p><strong>All for just Rs.<?php print($data[0]->price); ?>!</strong> Elevate your journey for an incredible Rs.<?php print($data[0]->price); ?>. Experience the best of Normal without breaking the bank! 💸</p>
+                                                                                <p><strong>All for just Rs.<?php print($data[1]->price); ?>!</strong> Elevate your journey for an incredible Rs.<?php print($data[1]->price); ?>. Experience the best of Normal without breaking the bank! 💸</p>
 
-<a href="#" class="flip-box-button" onclick="paymentGateway(1);">SUBCRBIE 🌐</a></p>                                </div>
+<a href="#" class="flip-box-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>                                </div>
                         </div>
                 </div>
         </div>
@@ -124,18 +124,18 @@
                 <div class="flip-box">
                         <div class="flip-box-front text-center filter-" style="background-image: url('https://s25.postimg.cc/l2q9ujy4f/cta-4.png');">
                                 <div class="inner color-white">
-                                        <h3 class="flip-box-header"><?php print($data[1]->name); ?></h3>
-                                        <p> Exclusive <?php print($data[1]->duration); ?>-Month Plan 🌟</p>
+                                        <h3 class="flip-box-header"><?php print($data[2]->name); ?></h3>
+                                        <p> Exclusive <?php print($data[2]->duration); ?>-Month Plan 🌟</p>
                                         <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
                                 </div>
                         </div>
                         <div class="flip-box-back text-center" style="background-image: url('https://s25.postimg.cc/l2q9ujy4f/cta-4.png');">
                                 <div class="inner color-white">
-                                        <h3 class="flip-box-header"><?php print($data[1]->name); ?></h3>
-                                        <p>Experience excellence with our <?php print($data[1]->name); ?> plan – crafted for those who seek greatness!</p>
-                                                                                <p><strong>All for just Rs.<?php print($data[1]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[1]->price); ?>. Unleash the power of <?php print($data[1]->name); ?> without compromising your budget! 💸</p>
+                                        <h3 class="flip-box-header"><?php print($data[2]->name); ?></h3>
+                                        <p>Experience excellence with our <?php print($data[2]->name); ?> plan – crafted for those who seek greatness!</p>
+                                                                                <p><strong>All for just Rs.<?php print($data[2]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[2]->price); ?>. Unleash the power of <?php print($data[2]->name); ?> without compromising your budget! 💸</p>
 
-<a href="#" class="flip-box-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>                                </div>
+<a href="#" class="flip-box-button" onclick="paymentGateway(3);">SUBCRBIE 🌐</a></p>                                </div>
                         </div>
                 </div>
         </div>
