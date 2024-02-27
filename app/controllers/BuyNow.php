@@ -136,18 +136,8 @@ class BuyNow extends Controller{
             // redirect('Users/v_login');
 
         }
-        else {
-            
-            // redirect('pages/cart');
-            $data = [
-                'unitPrice' => '',
-                'quantity' => '',
-                'itemId' => '',
-                'uId' => '',
-            ];
-            $this->view('pages/payment', $data);
-        }
-    print_r("s");
+     
+    
     }
 
 

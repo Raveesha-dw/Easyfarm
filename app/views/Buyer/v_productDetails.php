@@ -32,17 +32,7 @@ $inquiries = $data['inquiries'];
                 <label for="quantity">Amount:</label>
                 <input type="number" id="quantity" name="quantity" min="<?php echo $productDetails->Unit_size?>" step="<?php echo $productDetails->Unit_size?>" oninput="updateHiddenField()">
                  
-                <!-- <br><br> -->
-                <!-- <label for="total-price">Total Price:</label>
-                <span id="total-price"><?php echo number_format($item['unitPrice'] * $item['quantity'], 2); ?></span> -->
-
-                <!-- <h4 id="total-price">Total Price : <?php echo $productDetails->Unit_price?>*<?php echo $productDetails->Unit_price?></h4>  -->
-<!-- 
-                <h4  label for="total-price">Total Price : </label>
-                <h4 id="total-price"><?php echo number_format($productDetails->Unit_price * $item['quantity'], 2); ?></h4> 
-
-                <h4>Number of units : <?php echo $productDetails->Unit_price?></h4>
-                <h4>Size of the product : </h4> -->
+     
 
 
             </div>
@@ -74,43 +64,11 @@ $inquiries = $data['inquiries'];
         <?php endif; ?>   
 
         </form>
-        <!-- <?php
-            $delivery = $sellerDetails->DeliveryMethod; 
-
-            if($delivery == 'In-store Pickup'){
-                ?>
-                <div>
-                <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-                <label for="instorepick">In-Store-Pickup</label>
-                </div>
-                <?php
-            }
-            elseif($delivery == 'Home Delivery'){
-                ?>
-                <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery </label>
-            </div>
-            <?php
-            }
-            else{
-                ?>
-                 <div>
-            <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-            <label for="homedelivery">Home Delivery</label>
-            </div>
-
-            <div>
-            <input type="radio" id="instorepick" name="delivery" value="instorepick" />
-            <label for="instorepick">In-Store-Pickup</label>
-            </div>
-            <?php
-            }
-            ?> -->
+  
             
                 <div class="button-area">
 
-                    <form action="<?php echo URLROOT; ?>/BuyNow/buyNow" method="POST">
+                    <form action="<?php echo URLROOT; ?>/BuyNow/buyNow" method="POST" onsubmit="return validateForm('buyNow')">
 
 
 
@@ -135,7 +93,7 @@ $inquiries = $data['inquiries'];
 
 
 
-                    <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST">
+                    <form action="<?php echo URLROOT; ?>/Cart/addToCart" method="POST" onsubmit="return validateForm('addToCart')">
 
                             <!-- <input type="hidden" id="hiddenQuantity" name="quantity"> -->
 
@@ -437,6 +395,31 @@ $inquiries = $data['inquiries'];
             deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
             document.getElementById('hiddenDelivery1').value = deliveryMethod;
             document.getElementById('hiddenDelivery2').value = deliveryMethod;
+    }
+
+
+
+
+
+
+    function validateForm(formType) {
+        var quantity = document.getElementById('quantity').value;
+        var delivery = document.querySelector('input[name="delivery"]:checked');
+
+        if (!quantity || !delivery) {
+            alert('Please enter quantity and select delivery method.');
+            return false;
+        }
+
+        if (formType === 'buyNow') {
+            document.getElementById('hiddenQuantity1').value = quantity;
+            document.getElementById('hiddenDelivery1').value = delivery.value;
+        } else if (formType === 'addToCart') {
+            document.getElementById('hiddenQuantity2').value = quantity;
+            document.getElementById('hiddenDelivery2').value = delivery.value;
+        }
+
+        return true;
     }
 
 
