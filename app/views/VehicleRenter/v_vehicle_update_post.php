@@ -132,7 +132,10 @@
                                 $datesJson = json_encode($data['unavailableDates']);
                                 $post_create_dateJson = json_encode($data['post_create_date']);?>
 
-                            <div id='calendar' data-dates='<?php echo $datesJson; ?>' data-create-date = '<?php echo $post_create_dateJson; ?>'>
+                            <div id='calendar' 
+                                data-dates='<?php echo $datesJson; ?>' 
+                                data-create-date = '<?php echo $post_create_dateJson; ?>' 
+                                data-last_date_of_plan= '<?php echo $data['last_date_of_plan']; ?>'>
                             </div><br><br>
                             <!-- <form action="<?php echo URLROOT ?>/V_post/update_calendar" method="post" class="form-container" id="formData"> -->
                             <input type="hidden" id="hiddenInputDates" name="markedDates">
