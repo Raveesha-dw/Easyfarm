@@ -63,6 +63,7 @@ $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
                                 data-confirmed_booking_dates='<?php echo $confirmed_booking_datesJson; ?>'
                                 data-booking_Data='<?php echo $booking_DataJson; ?>'
                                 data-more_details_booking='<?php echo $more_details_bookingJson; ?>'
+                                data-last_date_of_plan= '<?php echo $data['last_date_of_plan']; ?>'
                                 >
                             </div><br><br>
 
