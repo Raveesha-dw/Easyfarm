@@ -81,4 +81,66 @@
        $this->view('Buyer/v_dashboardOrders', $data);
     }
 
+    public function pendingOrdersOfUser(){
+        $orders = $this->orderModel->getPendingOrders();
+        $orderItems = [];
+
+        foreach($orders as $order){
+            $itemNames = $this->orderModel->getItemsOfOrder($order->Order_ID);
+            $items = [];
+
+            foreach($itemNames as $item){
+                $items[] = $item->Item_name;
+            }
+
+            $orderItems[$order->Order_ID] = $items;
+
+            // print_r($itemNames);
+        }
+        
+        $data = [
+            'orders' => $orders,
+            'orderItems' => $orderItems
+        ];
+
+        // print_r($data);
+
+        $this->view('Buyer/v_buyerOrders', $data);
+
+    }
+
+    public function completedOrdersOfUser(){
+        $orders = $this->orderModel->getCompletedOrders();
+
+        $orderItems = [];
+        foreach($orders as $order){
+            $orderID = $order->Order_ID;
+            $items = $this->orderModel->getItemDetailsOfOrder($orderID);
+
+            $orderItems[$orderID]['order'] = $order;
+            $orderItems[$orderID]['items'] = $items;
+
+        }
+
+        $data = [
+            'orderItems' => $orderItems
+        ];
+        $this->view('Buyer/v_completed_orders', $data);
+
+    }
+
+    public function changeOrderStatus($orderID){
+         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // $orderID = $_POST['orderId'];
+
+            if($this->orderModel->changeOrderStatus($orderID)){
+                $this->view('Buyer/v_buyerOrders');
+              
+            }else{
+                echo 'Something went wrong';
+            }
+         }
+    }
+
 }

@@ -4,15 +4,14 @@
 class BuyNow extends Controller{
     private $orderModel;  
     // private $buyerModel;
- 
     private $buyerModel;
+    private $deliveryModel;
 
     public function __construct()
     {
         $this->orderModel = $this->model('M_buyNow');
         $this->buyerModel = $this->model('M_buyNow');
-
-
+        $this->deliveryModel = $this->model('M_delivery');
         
     }
     // public function index(){
@@ -50,13 +49,22 @@ class BuyNow extends Controller{
     
                     
                 ];
-               
-
                 // print_r($_POST['delivery']);
                 // print_r($data); 
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
-                    $data['deliveryFee'] = 500;
+                    // echo 'die';
+                    if(isset($_SESSION['buyer_province'])){
+                        // $_SESSION['buyer_province'];
+                        $fee = $this->deliveryModel->getDeliveryFeeForSingleProduct($data['Item_Id']);
+                        print_r($fee);
+                        $base_fee = $fee->base_fee;
+                        $data['deliveryFee'] = $base_fee;
+                    }else{
+                        $data['deliveryFee'] = 0;
+                    }
+                    
+                    // $data['deliveryFee'] = 500; // add delivery fee here
 
                 }else{
                     $data['deliveryFee'] = 0;
@@ -76,7 +84,7 @@ class BuyNow extends Controller{
                 $mergedArray = array_merge($orderdDetails, $buyerDetails);
                 $data1 = array_unique($mergedArray);
                 $data = array_merge($data1, $data);
-    print_r("dd");
+    
                 // $data['total'] = $data['quantity']*$data['Unit_price'] ;
                 // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
                 $data['total'] = (floatval($data['quantity'])/$data['Unit_size'] * $data['Unit_price']);
@@ -84,7 +92,7 @@ class BuyNow extends Controller{
                 $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
                 $data2[0] = $data;
                 $data = $data2;
-                print_r($data);
+                // print_r($data);
     
                 $this->view('pages/buyNow',$data);
 
@@ -96,9 +104,7 @@ class BuyNow extends Controller{
 
       
             
-        } 
-        
-        elseif(!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] != 'Buyer')  ){
+        }elseif(!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] != 'Buyer')  ){
 
             $data=[
                 'user_type'=> '',
@@ -130,14 +136,12 @@ class BuyNow extends Controller{
                 'email_err' => '',
                 'password_err' => ''
             ];
-
             $this->view('Users/v_login', $data);
 
             // redirect('Users/v_login');
 
         }
         else {
-            
             // redirect('pages/cart');
             $data = [
                 'unitPrice' => '',
@@ -147,7 +151,7 @@ class BuyNow extends Controller{
             ];
             $this->view('pages/payment', $data);
         }
-    print_r("s");
+    
     }
 
 
@@ -162,6 +166,13 @@ class BuyNow extends Controller{
             $selectedDeliveryMethods =  $_POST['selectedDeliveryMethods'];   
             $uId = $_POST['uId'];
 
+          
+            $data2 = array();
+
+            $sellerIDs = array();
+            $buyer_province = isset($_SESSION['buyer_province']) ? $_SESSION['buyer_province'] : ($this->deliveryModel->getProvinceOfBuyer());
+            // echo $buyer_province;
+
             // Loop through each item to update the quantity
             for ($i = 0; $i < count($itemIds); $i++) {
                 $data = [
@@ -170,15 +181,33 @@ class BuyNow extends Controller{
                     'selectedDeliveryMethod' => $selectedDeliveryMethods[$i],
                     'uId' => $uId,
                     'total' => 0, 
-                    'deliveryFee' => '',
+                    'deliveryFee' => 0,
                     'totalPayment' => 0,
 
                 ];
 
-                if($data['selectedDeliveryMethod'] == 'Home Delivery'){
-                    $data['deliveryFee'] = 500;
+               
+                // $_SESSION['buyer_province'];
 
-                }else{
+                if($data['selectedDeliveryMethod'] == 'Home Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
+                  
+                    if(isset($_SESSION['buyer_province'])){
+                    
+                    $sellerID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
+                    if(!(in_array($sellerID, $sellerIDs))){
+                        $sellerIDs[] = $sellerID;
+
+                        // $this->deliveryModel->getDeliveryFeeForSeller($sellerID);
+                        $float = (float)$this->deliveryModel->getDeliveryFeeForSeller($sellerID);
+                        $data['deliveryFee'] = $float;
+                    }
+                    else{
+                        $data['deliveryFee'] = 0;
+                    }
+                    }
+                   
+                }
+                else{
                     $data['deliveryFee'] = 0;
                 }
 
@@ -186,18 +215,21 @@ class BuyNow extends Controller{
                 $orderdDetails = $this->orderModel->getItemDetais($data);
                 $buyerDetails =  $this->orderModel->getUserDetails($data);
 
-                // Convert objects to arrays
+                
                 $orderdDetails = get_object_vars($orderdDetails);
                 $buyerDetails = get_object_vars($buyerDetails);
 
-                // Merge arrays and remove duplicates
+               
                 $mergedArray = array_merge($orderdDetails, $buyerDetails);
+                
                 $data1 = array_unique($mergedArray);
+                
                 $data = array_merge($data1, $data);
+           
 
                 // $data['total'] = $data['quantity']*$data['Unit_price'] ;
                 $data['total'] = (floatval($data['quantity'])/$data['Unit_size'] * $data['Unit_price']);
-                $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
+                $data['totalPayment'] = $data['total']+ $data['deliveryFee'] ;
 
                 $data2[$i] = $data;
 
@@ -209,30 +241,11 @@ class BuyNow extends Controller{
                
             }
             $data = $data2;
-         
+            
     
             $this->view('pages/buyNow',$data);
         }
     }   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function updateAddress() {
@@ -260,16 +273,34 @@ class BuyNow extends Controller{
                     'totalPayment' => 0,
                     'address' => trim($_POST['address']),
                     'city' => trim($_POST['city']),
-                    // 'Province' => trim($_POST['Province']),
+                    'Province' => trim($_POST['Province']),
 
 
                 ];
                 
-                $this->buyerModel->updateBuyerAddress($data);
 
+                // echo 'die';
+                if($this->buyerModel->updateBuyerAddress($data)){
+                    $_SESSION['buyer_province'] = $data['Province'];
+                    // echo $_SESSION['buyer_province'];
+                    $this->checkout();
+                }
+
+                
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
-                    $data['deliveryFee'] = 500;
+
+                    // if(isset($_SESSION['buyer_province'])){
+                    //     // $_SESSION['buyer_province'];
+                    //     $fee = $this->deliveryModel->getDeliveryFeeForSingleProduct($data['Item_Id']);
+                    //     print_r($fee);
+                    //     $base_fee = $fee->base_fee;
+                    //     $data['deliveryFee'] = $base_fee;
+                    // }else{
+                    //     $data['deliveryFee'] = 0;
+                    // }
+
+                   
 
                 }else{
                     $data['deliveryFee'] = 0;
@@ -303,14 +334,10 @@ class BuyNow extends Controller{
             }
             $data = $data2;
          
-    
-            $this->view('pages/buyNow',$data);
+            
+            
 
-
-
-
-
-
+            // $this->view('pages/buyNow',$data);
 
 
         }
@@ -320,4 +347,4 @@ class BuyNow extends Controller{
 
 }
 
-?>
+?>  
