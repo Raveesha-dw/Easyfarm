@@ -108,15 +108,14 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_agriexpert(U_Id, Email, Address, City, Occupation, Workplace, NIC, Prof_id) VALUES(:id, :email, :address, :city,:occupation,:workplace,:nic,:pId)');
+            $this->db->query('INSERT INTO reg_agriinstructor(U_Id, Name, Address, City, Workplace, NIC, PID) VALUES(:id, :name, :address, :city, :workplace, :NIC, :PID)');
             $this->db->bind(':id', $id);
-            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':name', $data['fullname']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':city', $data['city']);
-            $this->db->bind(':occupation', $data['occupation']);
             $this->db->bind(':workplace', $data['workplace']);
-            $this->db->bind(':nic', $data['nic']);  
-            $this->db->bind(':pId', $data['pId']);
+            $this->db->bind(':NIC', $data['nic_img']);  
+            $this->db->bind(':PID', $data['pid_img']);
 
             $this->db->execute();
             return true;
@@ -152,67 +151,20 @@ class M_users{
 
     }
 
-public function login($data){
+    public function login($data){
         // echo 'data to login model';
-        // print_r($data);
-
-        // if($email)
-        // $this ->db->query('SELECT * FROM user WHERE Email= :email')
         $this->db->query('SELECT * FROM user WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
-
         $row=$this->db->single();
-        // print_r($row);
-        if($row->User_type=="Seller"){
-            // print_r("s");
-            if($row){
-                print_r($data['email']);
-                $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:email");
-                $this->db->bind(':email', $data['email']);
-                $row1 = $this->db->single();
-                // print_r($row);
-                // print_r($row1);
-                // echo 'row is here';
-                $hashed_password = $row1->Password;
-    
-               // echo $hashed_password;
-                if(password_verify($data['password'], $hashed_password)){
-                  //  echo "yo";
-                    return $row1;
-                }else{
-                    return false;
-                }
-            }
-        }
-// vechile renter part
-        elseif($row->User_type=="VehicleRenter"){
-            if($row){
-                // print_r($data['email']);
-                $this->db->query("SELECT * FROM reg_vehicleowner INNER JOIN user on reg_vehicleowner.U_Id = user.U_Id WHERE user.Email=:email");
-                $this->db->bind(':email', $data['email']);
-                $row1 = $this->db->single();
-                // print_r($row);
-                // print_r($row1);
-                // echo 'row is here';
-                $hashed_password = $row1->Password;
-    
-               // echo $hashed_password;
-                if(password_verify($data['password'], $hashed_password)){
-                  //  echo "yo";
-                    return $row1;
-                }else{
-                    return false;
-                }
-            }
-        }
-        elseif($row){
+        
+        if($row){
             // echo '<br>';
             // echo 'row is here';
             $hashed_password = $row->Password;
 
-           // echo $hashed_password;
             if(password_verify($data['password'], $hashed_password)){
-              //  echo "yo";
+            
+            
                 return $row;
             }else{
                 return false;
@@ -268,6 +220,13 @@ public function login($data){
         $this->db->bind(':email', $data['email']);
         $this->db->execute();
     
+    }
+
+    public function getAgriInstructorAccStatus($id){
+        $this->db->query("SELECT AccStatus FROM reg_agriinstructor WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $accStatus = $this->db->single();
+        return $accStatus;
     }
 
 

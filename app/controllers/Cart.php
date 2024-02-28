@@ -1,7 +1,7 @@
-<?php 
+<?php
 
-
-class Cart extends Controller{
+class Cart extends Controller
+{
     private $cartModel;
     private $productModel;
     private $reviewModel;
@@ -36,7 +36,7 @@ class Cart extends Controller{
             $viewItem['selectedDeliveryMethod'] = $item['selectedDeliveryMethod'];
             $viewItem['Unit_type'] = $item['Unit_type'];
             $viewItem['Unit_size'] = $item['Unit_size'];
-
+            $viewItem['Image'] = $item['Image'];
             array_push($data, $viewItem);
 
         }
@@ -57,12 +57,9 @@ class Cart extends Controller{
                     'itemId' => $_POST['itemId'],
                     'uId' => $_POST['uId'],
                     'selectedDeliveryMethod' => $_POST['delivery'],
-   
-   
-       
+
                 ];
-    
-    
+
                 // error_log(print_r($data, TRUE));
 
                 // Check if the cart item already exists for this combination of itemId and uId
@@ -157,8 +154,6 @@ class Cart extends Controller{
         }
         // $mergedArray = array_merge($data1, $data);
         // $data = array_unique($mergedArray);
-
-
 
         $this->view('pages/cart', $data);
 
