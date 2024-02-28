@@ -15,7 +15,7 @@
             <?php $products = json_decode(json_encode($data), true); ?>
 
 
-<?php print_r($data)?>
+
 
 
 
