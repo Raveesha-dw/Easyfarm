@@ -3,6 +3,7 @@
 
 <?php
     $post = $data['post'];
+    $sellerDetails = $data['author'];
     $comments = $data['comments'];
     $productDetails = $data['post'];
     $inquiries = $data['comments'];
@@ -12,9 +13,9 @@
     <img src="data:image/jpeg;base64,<?php echo $post->image; ?>" alt="Blog img">
 </div>
 
-<div class="btn-dashboard">
+<!-- <div class="btn-dashboard">
     <a href="<?php echo URLROOT . '/Blog' ?>" ><h5 class="btn-dashboard"><i class="bx bxs-home"></i>  Blog</h5></a>
-</div>
+</div> -->
 
 
 <div class="blog-post mt-5">
@@ -22,7 +23,7 @@
         <!-- Article -->
         <div class="post bg-light p-4 mt-5">
             <h1><?php echo $post->title; ?></h1>
-            <p>Posted on <?php echo $post->date_published; ?> </p>
+            <p><?php echo $sellerDetails->Name;?> posted on <?php echo $post->date_published; ?> </p>
             <hr>
             <p><?php echo $post->content; ?> </p>
         </div>
@@ -99,141 +100,144 @@
                             //     }
                             // }
                         ?> -->
-                    </div> -->
+                    <!-- </div> --> 
 
             <?php 
                // endforeach;
             ?>
 
-        </div> -->
+        </div>
 
-    <div class="comment-section bg-light p-4 mt-5">
-        <h3>Write a comment...</h3>
-        <hr>
+        <div class="container">
+            <div class="comment-section bg-light p-4 mt-5">
+            <h3>Write a comment...</h3>
+            <hr>
 
-        <!-- Editor -->
-        <?php 
-            if(isset($_SESSION['user_ID']) &&  $_SESSION['user_type'] == 'Buyer'){ 
-        ?>
+            <!-- Editor -->
+            <?php 
+                if(isset($_SESSION['user_ID']) &&  $_SESSION['user_type'] == 'Buyer'){ 
+            ?>
 
-                <div class="question-card">
-                    <form action="<?php echo URLROOT . '/Blog/askQuestion'?>" method='POST'>
-                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_ID'];?>">
-                        <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
-                        <input type="hidden" name="datetime_posted" value="<?php echo date('Y-m-d H:i:s');?>">
-                        <textarea name="question" id="question" cols="100" rows="4" placeholder="Write a comment..."></textarea>
-                        <br>
-                        <button type="submit">Ask Question</button>
-                    </form>
-                </div>
+                    <div class="question-card">
+                        <form action="<?php echo URLROOT . '/Blog/askQuestion'?>" method='POST'>
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_ID'];?>">
+                            <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
+                            <input type="hidden" name="datetime_posted" value="<?php echo date('Y-m-d H:i:s');?>">
+                            <textarea name="question" id="question" cols="100" rows="4" placeholder="Write a comment..."></textarea>
+                            <br>
+                            <button type="submit">Ask Question</button>
+                        </form>
+                    </div>
 
-        <?php            
-            }else{
-                echo "<br><span>Please login as a buyer to ask questions.</span><br><br><br>";
-            }
-        ?>
+            <?php            
+                }else{
+                    echo "<br><span>Please login as a buyer to ask questions.</span><br><br><br>";
+                }
+            ?>
 
-        <!-- Display Questions -->
-        <?php 
-            foreach ($inquiries as $inquiry):
-        ?> 
+            <!-- Display Questions -->
+            <?php 
+                foreach ($inquiries as $inquiry):
+            ?> 
 
-            <!-- Question card -->
-            <div class="comment-card">
-                <p>
-                    <b><?php echo $inquiry->userName;?></b> asks, <br><br>
-                    <?php echo $inquiry->question;?> <br><br>
-                    <i><?php echo $inquiry->datetime_last_edited;?></i><br>
-                </p>
+                <!-- Question card -->
+                <div class="comment-card"> 
+                    <p>
+                        <b><?php echo $inquiry->userName;?></b> asks, <br><br>
+                        <?php echo $inquiry->question;?> <br><br>
+                        <i><?php echo $inquiry->datetime_last_edited;?></i><br>
+                    </p>
 
-                <!-- Answer -->
-                <?php
-                    if($inquiry->answer){
-                ?>
-                    <div class="comment-card">
-                        <!-- <b><?php echo $sellerDetails->Name;?></b> replies, <br><br> -->
-                        <span><b>Agri Instructor</b> replies,<br></span>
-                        <?php echo $inquiry->answer;?> <br><br>
-                        <i><?php echo $inquiry->answer_datetime_edited;?></i>
-                        <?php
-                            if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'AgricultureExpert'){
-                        ?>
-                                <!-- Edit Answer -->
-                                <button class="comment-edit-btn display-0 display-1">Edit</button>
-                                <div class="edit-form display-0" style="display:none;">
-                                    <form action="<?php echo URLROOT . '/Blog/editAnswer'?>" method="POST">
+                    <!-- Answer -->
+                    <?php
+                        if($inquiry->answer){
+                    ?>
+                        <div class="comment-card">
+                            <b><?php echo $sellerDetails->Name;?></b> replies, <br><br>
+                            <!-- <span><b>Agri Instructor</b> replies,<br></span> -->
+                            <?php echo $inquiry->answer;?> <br><br>
+                            <i><?php echo $inquiry->answer_datetime_edited;?></i>
+                            <?php
+                                if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'AgricultureExpert'){
+                            ?>
+                                    <!-- Edit Answer -->
+                                    <button class="comment-edit-btn display-0 display-1">Edit</button>
+                                    <div class="edit-form display-0" style="display:none;">
+                                        <form action="<?php echo URLROOT . '/Blog/editAnswer'?>" method="POST">
+                                            <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                            <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                            <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                            <textarea name="edited_answer" cols="100" rows="4"><?php echo $inquiry->answer;?></textarea><br><br><br>
+                                            <button class="btn btn-save" type="submit">Save</button>
+                                        </form>
+                                        <button class="btn btn-cancel display-1">Cancel</button>
+                                    </div>
+
+                                    <!-- Delete Answer -->
+                                    <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteAnswer'?>" onclick='confirmDeleteAnswer()' method="POST">
                                         <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
                                         <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                        <input type="submit" name="answerDelete" value="Delete">
+                                    </form>
+                    <?php            
+                            }
+                    ?>
+                        </div>               
+                    <?php
+                        }
+
+                        if(isset($_SESSION['user_ID'])){
+                            if($_SESSION['user_type'] == 'Buyer'){
+                    ?>
+                                <!-- Edit Question -->
+                                <button class="comment-edit-btn display-0 display-1">Edit</button>
+                                <div class="edit-form display-0" style="display:none;">
+                                    <form action="<?php echo URLROOT . '/Blog/editQuestion'?>" method="POST">
+                                        <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                        <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
                                         <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <textarea name="edited_answer" cols="100" rows="4"><?php echo $inquiry->answer;?></textarea><br><br><br>
+                                        <textarea name="edited_question" cols="100" rows="4"><?php echo $inquiry->question;?></textarea><br><br><br>
                                         <button class="btn btn-save" type="submit">Save</button>
                                     </form>
                                     <button class="btn btn-cancel display-1">Cancel</button>
                                 </div>
 
-                                <!-- Delete Answer -->
-                                <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteAnswer'?>" onclick='confirmDeleteAnswer()' method="POST">
-                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
-                                    <input type="submit" name="answerDelete" value="Delete">
-                                </form>
-                <?php            
-                        }
-                ?>
-                    </div>               
-                <?php
-                    }
-
-                    if(isset($_SESSION['user_ID'])){
-                        if($_SESSION['user_type'] == 'Buyer'){
-                ?>
-                            <!-- Edit Question -->
-                            <button class="comment-edit-btn display-0 display-1">Edit</button>
-                            <div class="edit-form display-0" style="display:none;">
-                                <form action="<?php echo URLROOT . '/Blog/editQuestion'?>" method="POST">
+                                <!-- Delete Question -->
+                                <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteQuestion'?>" onclick='confirmDeleteQestion()' method="POST">
                                     <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
                                     <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
-                                    <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s');?>">
-                                    <textarea name="edited_question" cols="100" rows="4"><?php echo $inquiry->question;?></textarea><br><br><br>
-                                    <button class="btn btn-save" type="submit">Save</button>
+                                    <input type="submit" name="questionDelete" value="Delete">
                                 </form>
-                                <button class="btn btn-cancel display-1">Cancel</button>
-                            </div>
+                    <?php            
+                            }
 
-                            <!-- Delete Question -->
-                            <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteQuestion'?>" onclick='confirmDeleteQestion()' method="POST">
-                                <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
-                                <input type="submit" name="questionDelete" value="Delete">
-                            </form>
-                <?php            
+                            // If the logged in user is the seller who posted the ad, he/she can reply
+                            if($_SESSION['user_type'] == 'AgricultureExpert' && empty($inquiry->answer)){
+                    ?>
+                                <!-- Answer Question -->
+                                <button class="btn btn-answer display-0 display-1">Answer</button>
+                                <div class="edit-form display-0" style="display:none;">
+                                    <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
+                                        <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                        <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                        <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <textarea name="answer" cols="100" rows="4"></textarea><br><br><br>
+                                        <button class="btn btn-save" type="submit">Answer</button>
+                                    </form>
+                                    <button class="btn btn-cancel display-1">Cancel</button>
+                                </div>
+                    <?php            
+                            }
                         }
+                    ?>
+                </div>
 
-                        // If the logged in user is the seller who posted the ad, he/she can reply
-                        if($_SESSION['user_type'] == 'AgricultureExpert' && empty($inquiry->answer)){
-                ?>
-                            <!-- Answer Question -->
-                            <button class="btn btn-answer display-0 display-1">Answer</button>
-                            <div class="edit-form display-0" style="display:none;">
-                                <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
-                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
-                                    <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
-                                    <textarea name="answer" cols="100" rows="4"></textarea><br><br><br>
-                                    <button class="btn btn-save" type="submit">Answer</button>
-                                </form>
-                                <button class="btn btn-cancel display-1">Cancel</button>
-                            </div>
-                <?php            
-                        }
-                    }
-                ?>
-            </div>
-
-        <?php 
-            endforeach;
-        ?>
-    </div>
+            <?php 
+                endforeach;
+            ?>
+        </div>
+        </div>
+        <
     </div>
 </div>
 

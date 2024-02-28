@@ -20,7 +20,8 @@ class Blog extends Controller{
 
     public function post(){
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET'){
-            $post = $this->blogModel->getPostById($_GET['id']);
+            $post = $this->blogModel->getPostById($_GET['id']);;
+            $author = $this->blogModel->getAuthor($post->author_id);
             $comments = $this->blogModel->getQuestions($_GET['id']);
 
             foreach ($comments as $comment):
@@ -31,6 +32,7 @@ class Blog extends Controller{
             endforeach;
 
             $data['post'] = $post;
+            $data['author'] = $author;
             $data['comments'] = $comments;
 
             $this->view('Blog/v_blogPost', $data);

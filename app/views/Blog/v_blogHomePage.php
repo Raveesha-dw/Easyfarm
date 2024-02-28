@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="blog-text">
-                    <span>posted on <?php echo $post->date_published; ?> / Agriculture</span>
+                    <span>On <?php echo $post->date_published; ?></span>
                     <a href="#" class="blog-title"><?php echo $post->title; ?></a>
                     <p><?php echo $post->content; ?></p>
 

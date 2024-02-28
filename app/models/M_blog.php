@@ -20,6 +20,13 @@ class M_blog{
         return $post;
     }
 
+    public function getAuthor($author_id){
+        $this->db->query("SELECT * FROM reg_agriinstructor WHERE U_Id = :author_id");
+        $this->db->bind(':author_id', $author_id);
+        $author = $this->db->single();
+        return $author;
+    }
+
     public function getPostsByCategory($category){
         $this->db->query("SELECT * FROM blog_post WHERE category = :category");
         $this->db->bind(':category', $category);
