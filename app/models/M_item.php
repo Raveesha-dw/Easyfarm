@@ -56,7 +56,10 @@ class M_item{
         return $itemName;
     }
 
-    public function viewItemInOrder($items){
+    public function getItemDetails($item_ID){
+        $this->db->query('SELECT * FROM item WHERE Item_Id = :item_ID');
+        $this->db->bind(':item_ID', $item_ID);
 
+        return $this->db->single();
     }
 }
