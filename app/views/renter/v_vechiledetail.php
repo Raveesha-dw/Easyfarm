@@ -166,7 +166,7 @@ $jsonData1 = json_encode( $pending_dates);
 
 
                 
-                <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
+                <div style="background-color: red; width: 20px; top:160px; height: 20px; display: inline-block; margin-right: 10px;"></div>
     <span>Unavailable Day</span>
     <br>
     <div style="background-color: blue; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>

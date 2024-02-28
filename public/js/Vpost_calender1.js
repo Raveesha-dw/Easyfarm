@@ -12,7 +12,8 @@ $(document).ready(function() {
     modalContent.innerHTML = message;
     modal.style.display = "block";
 }
-okBtn.onclick = function() {
+okBtn.onclick = function(event) {
+    event.preventDefault();
     modal.style.display = "none";
 }
 
@@ -84,7 +85,7 @@ console.log(lastday); // This will log the month data to the console
                      showModal('This date is unavailable for booking.');
             return false;
                 }
-               
+     
                 
 
 
