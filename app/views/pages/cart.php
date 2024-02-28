@@ -1,3 +1,4 @@
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
 <?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
@@ -32,6 +33,7 @@
 
                 <tbody>
                     <?php
+                    // print_r($data);
                         $cartItems =$data;
                         
                         $cartTotal = 0.00;
@@ -57,7 +59,7 @@
                                     <td>
                                         <div class="cart-info">
                                             
-                                            <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" alt="<?php echo $item['itemName']; ?>">
+                                            <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $item['Image']?> " alt="<?php echo $item['itemName']; ?>">
                                             <div>
                                                 
                                                 <h4><?php echo $item['itemName']; ?></h4>
@@ -152,6 +154,9 @@
                 subtotalElements = document.querySelectorAll('.subtotal .subtotal-value');
                 recalculateTotal();
             }
+        } else {
+            // If cancel is clicked, prevent the default action (navigating to the delete URL)
+            event.preventDefault();
         }
     }
 

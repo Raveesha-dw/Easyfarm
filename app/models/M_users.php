@@ -151,12 +151,60 @@ class M_users{
 
     }
 
+
     public function login($data){
+
         $this->db->query('SELECT * FROM user WHERE Email= :email');
         $this->db->bind(':email', $data['email']);
         $row=$this->db->single();
-        
-        if($row){
+
+        // print_r($row);
+        if($row->User_type=="Seller"){
+            // print_r("s");
+            if($row){
+                print_r($data['email']);
+                $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:email");
+                $this->db->bind(':email', $data['email']);
+                $row1 = $this->db->single();
+                // print_r($row);
+                // print_r($row1);
+                // echo 'row is here';
+                $hashed_password = $row1->Password;
+    
+               // echo $hashed_password;
+                if(password_verify($data['password'], $hashed_password)){
+                  //  echo "yo";
+                    return $row1;
+                }else{
+                    return false;
+                }
+            }
+        }
+// vechile renter part
+        elseif($row->User_type=="VehicleRenter"){
+            if($row){
+                // print_r($data['email']);
+                $this->db->query("SELECT * FROM reg_vehicleowner INNER JOIN user on reg_vehicleowner.U_Id = user.U_Id WHERE user.Email=:email");
+                $this->db->bind(':email', $data['email']);
+                $row1 = $this->db->single();
+                // print_r($row);
+                // print_r($row1);
+                // echo 'row is here';
+                $hashed_password = $row1->Password;
+    
+               // echo $hashed_password;
+                if(password_verify($data['password'], $hashed_password)){
+                  //  echo "yo";
+                    return $row1;
+                }else{
+                    return false;
+                }
+            }
+        }
+        elseif($row){
+            // echo '<br>';
+            // echo 'row is here';
+
             $hashed_password = $row->Password;
 
             if(password_verify($data['password'], $hashed_password)){
@@ -167,6 +215,9 @@ class M_users{
         }
         
     }
+
+
+
 
 
 

@@ -77,6 +77,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+
                 </a>
 
         <?php

@@ -6,6 +6,7 @@ $(document).ready(function() {
     var post_create_dateJson = calendarElement.getAttribute('data-create-date');
     var booking_DataJson = calendarElement.getAttribute('data-booking_Data');
     var more_details_bookingJson = calendarElement.getAttribute('data-more_details_booking');
+    var last_date_of_planJson = calendarElement.getAttribute('data-last_date_of_plan');
 
     var unavailableDates = JSON.parse(unavailableDatesJson);
     var unconfirmed_booking_dates = JSON.parse(unconfirmed_booking_datesJson);
@@ -18,8 +19,13 @@ $(document).ready(function() {
 
 
     var today = moment().startOf('day'); // Get today's date
-    var postCreateDate = moment(post_create_date);
-    var threeMonthsLater = postCreateDate.add(3, 'months').endOf('day'); // Get date three months later
+   
+      
+    var lastDateOfPlan = moment(last_date_of_planJson).startOf('day'); // Parse the last date
+
+    var today = moment().startOf('day'); // Get today's date
+    
+    var activeRangeEnd = moment(lastDateOfPlan).endOf('day');
 
     $('#calendar').fullCalendar({
         defaultView: 'month',
@@ -27,7 +33,7 @@ $(document).ready(function() {
         selectable: true, // Allow date selection
         validRange: {
             start: today.format(), 
-            end: threeMonthsLater.format() 
+            end: activeRangeEnd.format() 
         },
         events: function(start, end, timezone, callback) {
             var events = [];

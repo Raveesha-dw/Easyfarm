@@ -5,14 +5,27 @@ $(document).ready(function() {
     var datesJson = calendarElement.getAttribute('data-dates');
     var post_create_dateJson = calendarElement.getAttribute('data-create-date');
     var dates = JSON.parse(datesJson);
-    var post_create_date = JSON.parse(post_create_dateJson);
+    // var post_create_date = JSON.parse(post_create_dateJson);
+    
+    var last_date_of_planJson = calendarElement.getAttribute('data-last_date_of_plan');
 
     // Use dates array to populate the calendar or perform any other actions
-    console.log(post_create_date);
+    // console.log(post_create_date);
+
+    // var today = moment().startOf('day'); // Get today's date
+    // var post_create_date = moment(post_create_date);
+    // var threeMonthsLater = post_create_date.add(3, 'months').endOf('day'); // Get date three months later
+
+
+
+    var lastDateOfPlan = moment(last_date_of_planJson).startOf('day'); // Parse the last date
 
     var today = moment().startOf('day'); // Get today's date
-    var post_create_date = moment(post_create_date);
-    var threeMonthsLater = post_create_date.add(3, 'months').endOf('day'); // Get date three months later
+    
+    var activeRangeEnd = moment(lastDateOfPlan).endOf('day');
+
+
+
 
 
 
@@ -26,7 +39,7 @@ $(document).ready(function() {
         selectable: true, // Allow date selection
         validRange: {
             start: today, // Set the start of the valid range to today
-            end: threeMonthsLater // Set the end of the valid range to three months later
+            end: activeRangeEnd // Set the end of the valid range to three months later
         },
         select: function(start, end) {
             // Store the selected dates
