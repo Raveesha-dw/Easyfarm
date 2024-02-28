@@ -1,6 +1,6 @@
-# .app/vendor/
-# .composer.json
-# .composer.lock
-# .composer.phar
-# .installer
-# .PHPMailer-master/
+.app/vendor/
+.composer.json
+.composer.lock
+.composer.phar
+.installer
+.PHPMailer-master/
