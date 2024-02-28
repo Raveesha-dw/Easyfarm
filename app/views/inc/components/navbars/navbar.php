@@ -13,9 +13,21 @@
     ?>
                 <div class="nav-panel">
                      <ul class="nav-list">
-                        <li><a href="<?php echo URLROOT . '/AgriInstructor'?>">Manage</a></li>
-                        <li><a href="<?php echo URLROOT?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>">Profile</a></li>
-                        <li><a href="<?php echo URLROOT?>/Users/logout">Logout</a></li>
+                        
+                        <?php
+                            if($_SESSION['user_type'] == 'Admin'){
+                        ?>
+                                <li><a href="<?php echo URLROOT . '/Admin'?>">Manage Blog</a></li>
+                        <?php
+                            }else{
+                        ?>      
+                                <li><a href="<?php echo URLROOT . '/AgriInstructor'?>">Manage</a></li>
+                                <li><a href="<?php echo URLROOT?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>">Profile</a></li>
+                        <?php
+                            }
+                        ?>
+                        
+                                <li><a href="<?php echo URLROOT?>/Users/logout">Logout</a></li>
                      </ul>   
                 </div>
                 <!-- <div class="btn-dashboard">

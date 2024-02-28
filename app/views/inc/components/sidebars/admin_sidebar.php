@@ -28,6 +28,15 @@ function isActive($page)
     <div class="sidebar-links">
       <ul>
         <div class="active-tab"></div>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="<?php echo URLROOT . '/Admin';?>" class="<?php echo isActive(URLROOT . '/Admin/blog');?> data-active="1">
+            <div class="icon">
+              <i class='bx bx-pencil'></i>
+              <i class='bx bxs-pencil'></i>
+            </div>
+            <span class="link hide">Agri Instructors</span>
+          </a>
+        </li>
         <li class="tooltip-element" data-tooltip="0">
           <a href="<?php echo URLROOT . '/Admin/blog';?>"  data-active="0">
             <div class="icon">
@@ -37,15 +46,7 @@ function isActive($page)
             <span class="link hide">Blog Categories</span>
           </a>
         </li>
-        <li class="tooltip-element" data-tooltip="1">
-          <a href="<?php echo URLROOT . '/Admin/functionhere';?>" class="<?php echo isActive(URLROOT . '/Admin/blog');?> data-active="1">
-            <div class="icon">
-              <i class='bx bx-pencil'></i>
-              <i class='bx bxs-pencil'></i>
-            </div>
-            <span class="link hide">Title Here</span>
-          </a>
-        </li>
+        
         <!-- <li class="tooltip-element" data-tooltip="2">
           <a href="#" data-active="2">
             <div class="icon">
@@ -118,11 +119,11 @@ function isActive($page)
         <div class="admin-profile hide">
           <!-- <img src="./img/face-1.png" alt=""> -->
           <div class="admin-info">
-            <h3>Anjana Tharuha</h3>
-            <h5>Agri Instructor</h5>
+            <h3>Admin</h3>
+            <!-- <h5>Admin</h5> -->
           </div>
         </div>
-        <a href="#" class="log-out">
+        <a href="<?php echo URLROOT?>/Users/logout" class="log-out">
           <i class='bx bx-log-out'></i>
         </a>
       </div>
