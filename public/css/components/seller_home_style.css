@@ -93,13 +93,13 @@ padding-bottom: 100px;
 }
 
 /* Styles for the modal content */
-.modal-content {
+.container .modal-content {
     background-color: #87CEEB; 
     padding: 20px;
     border-radius: 5px;
     text-align: center;
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px; /* Adjust the width as needed */
