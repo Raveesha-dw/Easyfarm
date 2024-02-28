@@ -27,21 +27,6 @@
 
 
 
-<!-- https://youtube.com/shorts/dL7mfWopZTk?si=3Hi6d6QhipQJFsdD -->
-
-
-
-
-
-
-
-
-
-            <!-- if(isset($_POST['delete_item'])) {
-    $this->db=new Database();
-    
-
-} -->
 
 
             <div class="hero">
@@ -118,10 +103,11 @@
                                 <!-- <p>Update  </p>
                                     </a> -->
 
-                                <form id="deleteForm" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
-    <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
-    <button type="button" class="buttonn" id="btnv3" onclick="showRemoveConfirmation()">Delete</button>
+     <form id="deleteForm" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
+    <input type="hidden" name="Item_Id" id="Item_Id" value="">
+    <button type="button" class="buttonn" id="btnv3" onclick="showRemoveConfirmation(<?php echo $product->Item_Id; ?>)">Delete</button>
 </form>
+
 
                             </div>
 
@@ -139,14 +125,14 @@
 
 
 
-
-            <div id="removeConfirmationModal" class="modal">
-    <div class="modal-content">
+<div id="removeConfirmationModal" class="modal1">
+    <div class="modal-content1">
         <p>Are you sure you want to delete this item?</p>
         <button id="modal-ok-btn" onclick="submitDeleteForm()">OK</button>
         <button onclick="hideRemoveConfirmation()">Cancel</button>
     </div>
 </div>
+
 
 
 
@@ -175,10 +161,14 @@
     //     return confirm('Are you sure you want to delete this item?');
     //     // Handle item removal here, e.g., by making an AJAX request
     // }
-function showRemoveConfirmation() {
+function showRemoveConfirmation(itemId) {
+    // Set the value of the hidden input field
+    document.getElementById('Item_Id').value = itemId;
+    // Show the confirmation modal
     var modal = document.getElementById("removeConfirmationModal");
     modal.style.display = "block";
 }
+
 
 function hideRemoveConfirmation() {
     var modal = document.getElementById("removeConfirmationModal");
