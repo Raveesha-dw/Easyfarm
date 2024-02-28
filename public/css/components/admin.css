@@ -16,12 +16,8 @@ tr{
     cursor: default;
 }
 
-.body-container table{
+table{
     margin-top: 20px;
-}
-
-td img{
-    border-radius: 0%;
 }
 
 h2{

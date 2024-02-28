@@ -8,22 +8,24 @@ class M_blog{
     }
 
     public function getAllPosts(){
-        $this->db->query("SELECT * FROM blog_post");
+        $this->db->query("SELECT * FROM blog_posts");
         $posts = $this->db->resultSet();
+        //print_r($result);
         return $posts;
     }
 
     public function getPostById($id){
-        $this->db->query("SELECT * FROM blog_post WHERE post_id = :id");
+        $this->db->query("SELECT * FROM blog_posts WHERE post_id = :id");
         $this->db->bind(':id', $id);
         $post = $this->db->single();
         return $post;
     }
 
     public function getPostsByCategory($category){
-        $this->db->query("SELECT * FROM blog_post WHERE category = :category");
+        $this->db->query("SELECT * FROM blog_posts WHERE category = :category");
         $this->db->bind(':category', $category);
         $posts = $this->db->resultSet();
+        // print_r($posts);
         return $posts;
     }
 
@@ -60,7 +62,7 @@ class M_blog{
     }
     
     public function addComment($data){
-        $this->db->query("INSERT INTO blog_comment(user_id, post_id, datetime_posted, comment) VALUES (:user_id, :post_id, :datetime_posted, :comment)");
+        $this->db->query("INSERT INTO blog_comments(user_id, post_id, datetime_posted, comment) VALUES (:user_id, :post_id, :datetime_posted, :comment)");
         $this->db->bind(':user_id', $data['user_id']);
         $this->db->bind(':post_id', $data['post_id']);
         $this->db->bind(':datetime_posted', $data['datetime_posted']);
@@ -70,14 +72,14 @@ class M_blog{
     }
     
     public function getComments($post_id){
-        $this->db->query("SELECT * FROM blog_comment WHERE post_id = :post_id");
+        $this->db->query("SELECT * FROM blog_comments WHERE post_id = :post_id");
         $this->db->bind(':post_id', $post_id);
         $results = $this->db->resultSet();
         return $results;
     }
 
     public function editComment($data){
-        $this->db->query("UPDATE blog_comment SET comment = :comment, datetime_last_edited = :datetime_last_edited WHERE comment_id = :comment_id");
+        $this->db->query("UPDATE blog_comments SET comment = :comment, datetime_last_edited = :datetime_last_edited WHERE comment_id = :comment_id");
         $this->db->bind(':comment_id', $data['comment_id']);
         $this->db->bind(':datetime_last_edited', $data['datetime_last_edited']);
         $this->db->bind(':comment', $data['comment']);
@@ -86,7 +88,7 @@ class M_blog{
     }
 
     public function deleteComment($comment_id){
-        $this->db->query("DELETE FROM blog_comment WHERE comment_id = :comment_id");
+        $this->db->query("DELETE FROM blog_comments WHERE comment_id = :comment_id");
         $this->db->bind(':comment_id', $comment_id);
         $this->db->execute();
         return true;

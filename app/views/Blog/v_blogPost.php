@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/headerBlog.php'; ?>
+<?php require APPROOT . '/views/inc/header_blog.php'; ?>
 
 <?php
     $post = $data['post'];

@@ -4,12 +4,7 @@ class AgriInstructor extends Controller{
     private $agriInstructorModel;
 
     public function __construct(){
-        if(isset($_SESSION['user_ID']) && $_SESSION['user_type']== 'AgricultureExpert'){
-            $this->agriInstructorModel = $this->model('M_agriInstructor');
-        }else{
-            redirect('Blog');
-        }
-        
+        $this->agriInstructorModel = $this->model('M_agriInstructor');
     }
 
     public function index(){
@@ -31,6 +26,7 @@ class AgriInstructor extends Controller{
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
                 'category' => trim($_POST['category']),
+                'slug' => trim($_POST['slug']),
                 'date_published' => trim($_POST['date_published']),
                 'author' => trim($_POST['author']),
                 'image' => $imageData,
@@ -71,6 +67,7 @@ class AgriInstructor extends Controller{
                 'title' => '',
                 'content' => '',
                 'category' => '',
+                'slug' => '',
                 'date_published' => '',
                 'author' => '',
 
