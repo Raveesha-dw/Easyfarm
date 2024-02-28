@@ -200,6 +200,8 @@ public  function create_post(){
 
             if ($data['Category'] == "Plants" || $data['Category'] == "Farming Tools" ){
                 if(!empty($data['Expiry_date'])){
+                                     $data['Invalid_date_err'] = 'Not Valid';
+
               }}
            
             
@@ -421,6 +423,8 @@ foreach ($data as $obj) {
                 $deliveryMethods[] = 'Insto Pickup';
             }
             $data['DeliveryMethod'] = implode(', ', $deliveryMethods);
+
+            
         
             $data = [
                 'Item_Id'=> trim($_POST['Item_Id']),
@@ -489,12 +493,15 @@ foreach ($data as $obj) {
              if (empty($data['Unit_price']) || $data['Unit_price'] <= 0) {
                  $data['Unit_price_err'] = 'Please enter a valid unit price';
              }
+
+    
+
              
              
             
-            //  if (empty($data['Expiry_date'])){
-            //      $data['Expiry_date_err'] = 'Please enter the date';
-            //  }
+             if (empty($data['Expiry_date'])){
+                 $data['Expiry_date_err'] = 'Please enter the date';
+             }
              
              
              if (empty($data['DeliveryMethod'])){
@@ -519,7 +526,7 @@ foreach ($data as $obj) {
             if(empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err'])&& empty( $data['stock_err']) && empty($data['Expiry_date_err']) && empty( $data['Invalid_date_err']) && empty($data['Unit_type_err']) &&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) &&empty($data['Unit_size_err']) &&empty($data['Image_err'])){
               
     
-             
+              
                 if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/'));
                 if ($this->sellerModel->update_data($data)){
                 
