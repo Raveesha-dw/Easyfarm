@@ -32,7 +32,7 @@
         $data2 = $this->vechile_ordersmodel->getdate($_GET['V_Id']);
         $data5 = $this->vechile_ordersmodel->getunavalibale_date($_GET['V_Id']);
         $data6 = $this->vechile_ordersmodel->getdatepending($_GET['V_Id']);
-        print_r($data5);
+        // print_r($data5);
         $owner_id = $data1[0]->Owner_Id;
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);

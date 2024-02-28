@@ -253,16 +253,7 @@ else{
 
 
             redirect("V_post/created_post");
-            // $products = $this->v_postModel->get_data($_SESSION['user_ID']);
-            // print($products);
-            // var_dump($products);
-            // header('Location: '.URLROOT.'/Pages/created_post');
-            // exit;
-            // $this->view('VehicleRentor/v_createdpost', $products);
-
-            // print_r($itemId);
-            // header('Location: ' . URLROOT . '/Pages/created_post');
-            // exit;
+           
         }
     }
 
