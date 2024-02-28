@@ -36,6 +36,7 @@ class Cart extends Controller{
             $viewItem['selectedDeliveryMethod'] = $item['selectedDeliveryMethod'];
             $viewItem['Unit_type'] = $item['Unit_type'];
             $viewItem['Unit_size'] = $item['Unit_size'];
+            $viewItem['Image'] = $item['Image'];
 
             array_push($data, $viewItem);
 
