@@ -34,16 +34,12 @@
                 </div>
 
                 <div class="nav-parts">
-                    <a href="<?php echo URLROOT?>/Pages/index">Repositary</a>
+                    <a href="<?php echo URLROOT?>/Blog">Blog</a>
                 </div>
 
-                <!-- <div class="nav-parts">
-                    <a href="<?php echo URLROOT?>/Pages/index">Forum</a>
-                </div> -->
-
-            <div class="nav-parts">
-                <a href="<?php echo URLROOT?>/Vehicle_item/gethomepage">Vehicle Renting</a>
-            </div>
+                <div class="nav-parts">
+                    <a href="<?php echo URLROOT?>/Vehicle_item/gethomepage">Rent A Vehicle</a>
+                </div>
 
             <?php
             if(!empty($_SESSION['user_email'])){

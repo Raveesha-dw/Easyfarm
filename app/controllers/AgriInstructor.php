@@ -13,8 +13,7 @@ class AgriInstructor extends Controller{
     }
 
     public function index(){
-        $posts = $this->agriInstructorModel->getAllPosts();
-        //print_r($posts);
+        $posts = $this->agriInstructorModel->getPostsByAuthor($_SESSION['user_ID']);
         $this->view('AgriInstructor/v_agriInstructorManagePosts2', $posts);
     }
 
