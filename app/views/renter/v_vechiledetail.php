@@ -4,7 +4,7 @@
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <?php 
 $pending_dates = array();
 // $pending_dates = array(); // Initialize an empty array to store pending dates
@@ -218,7 +218,7 @@ $jsonData1 = json_encode( $pending_dates);
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                              echo $data['name_err'];
-                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enterthe Name" value=" <?php echo isset($data[8]->Name) ? $data[8]->Name : ''; ?>" size="40" style="height: 40px" ;></td>
+                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enterthe Name" value=" <?php echo isset(end($data)->Name) ? end($data)->Name : ''; ?>" size="40" style="height: 40px" ;></td>
 
 
                         </tr>
@@ -226,7 +226,7 @@ $jsonData1 = json_encode( $pending_dates);
                             <td><label for="Pickup_location"><b>Pickup Location</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['location_err'];
-                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo isset($data[8]->Address) ? $data[8]->Address : ''; ?>" size="40" style="height: 40px" ;></td>
+                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo isset(end($data)->Address) ? end($data)->Address : ''; ?>" size="40" style="height: 40px" ;></td>
 
 
                         </tr>
@@ -234,7 +234,7 @@ $jsonData1 = json_encode( $pending_dates);
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['number_err'];
-                                                        }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset($data[8]->Contact_num) ? $data[8]->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+                                                        }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
                         </tr>

@@ -36,7 +36,7 @@
         $owner_id = $data1[0]->Owner_Id;
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
-        $data6= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
+        $data7= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
         // print_r($data6);
 
         $plan_id = $data3[0]->plan_id;
@@ -62,7 +62,7 @@
         $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
         $data['lastday'] = $new_date;
 
-        $data = array_merge($data1, $data2, $data,$data5,$data6);
+        $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
        
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
