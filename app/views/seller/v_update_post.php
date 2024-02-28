@@ -221,7 +221,7 @@
                         <br>
                         <br>
 
-                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver" <?php echo ($data['DeliveryMethod'] == 'Home Deliver') ? 'checked' : ''; ?>>
+<input type="checkbox" id="HomeDelivery" name="Home_Delivery" value="Home Delivery" <?php echo ($data['DeliveryMethod'] == 'Home Delivery') ? 'checked' : ''; ?>>
                         <label for="Home Delivery"><b>Home Delivery</b></label><br>
 
                         <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo ($data['DeliveryMethod'] == 'Insto Pickup') ? 'checked' : ''; ?>>
