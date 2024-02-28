@@ -748,12 +748,12 @@ class Users extends Controller{
 
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
-                $logged_user = $this->userModel->login($data);
+                // $logged_user = $this->userModel->login($data);
                 $loggedInUser = $this->userModel->login($data);
                 // print_r($logged_user);
-                if($logged_user){
-                    $this->createUserSession($logged_user);                    
-                } // Logging in user
+                // if($logged_user){
+                //     $this->createUserSession($logged_user);                    
+                // } // Logging in user
                 if($loggedInUser){
                     $this->assignUserType($loggedInUser);                    
                 }else{
@@ -956,35 +956,35 @@ class Users extends Controller{
 
 
 
-    public function createUserSession($user){
-        // print_r($user);
-        $_SESSION['user_ID'] = $user->U_Id;
-        $_SESSION['user_email'] = $user->Email;
-        $_SESSION['user_type'] = $user->User_type;
-        $_SESSION['plan_id'] = $user->plan_id;    
+    // public function createUserSession($user){
+    //     // print_r($user);
+    //     $_SESSION['user_ID'] = $user->U_Id;
+    //     $_SESSION['user_email'] = $user->Email;
+    //     $_SESSION['user_type'] = $user->User_type;
+    //     $_SESSION['plan_id'] = $user->plan_id;    
        
-        // change this
+    //     // change this
          
-        // $_SESSION['user_name'] = $user->Name;
+    //     // $_SESSION['user_name'] = $user->Name;
        
-        // print_r($_SESSION['user_type']);
+    //     // print_r($_SESSION['user_type']);
 
-        if($_SESSION['user_type'] == 'Buyer'){
-            // redirect('Pages/index');
-            // $this->view('pages/home');
-            header("Location:http://localhost/Easyfarm/Pages/index");
-            // change this also&& $_SESSION['plan_id']
-        }else if($_SESSION['user_type']  == 'Seller'){
+    //     if($_SESSION['user_type'] == 'Buyer'){
+    //         // redirect('Pages/index');
+    //         // $this->view('pages/home');
+    //         header("Location:http://localhost/Easyfarm/Pages/index");
+    //         // change this also&& $_SESSION['plan_id']
+    //     }else if($_SESSION['user_type']  == 'Seller'){
            
-            // print_r($user);
+    //         // print_r($user);
             
-             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
+    //          header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
-        }else if($_SESSION['user_type'] == 'AgriExpert'){
-            // redirect('Pages/Profile');
+    //     }else if($_SESSION['user_type'] == 'AgriExpert'){
+    //         // redirect('Pages/Profile');
 
-        }
-    }
+    //     }
+    // }
 
     //  public function createUserSession($user){
     //     // print_r($user);
@@ -1076,7 +1076,7 @@ class Users extends Controller{
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
         $_SESSION['user_type'] = $user->User_type; 
-        // $_SESSION['plan_id'] = $user->plan_id;  
+        $_SESSION['plan_id'] = $user->plan_id;  
     }
     public function createUserSession2($data){
 

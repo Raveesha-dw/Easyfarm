@@ -213,7 +213,7 @@ $array1[$i] = $array;
             // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
             // $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
 
-            // print_r( $data['total']);
+            print_r( "ijinhuguygytv");
 
             $this->paymentModel->saveOrder($data);
             echo("1");
