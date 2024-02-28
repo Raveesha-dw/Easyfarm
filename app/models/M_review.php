@@ -15,7 +15,9 @@ class M_review{
     }
 
     public function getReviewsForItem($itemID){
-        $this->db->query("SELECT * FROM review WHERE item_ID =$itemID");
+        // $this->db->query("SELECT * FROM review WHERE item_ID =$itemID");
+        $this->db->query('SELECT review.Rating, review.Review, review.item_name, review.posted_date, reg_buyer.Name FROM review INNER JOIN reg_buyer ON reg_buyer.U_id = review.U_ID WHERE item_ID =:itemID');
+        $this->db->bind(':itemID', $itemID);
         $reviews = $this->db->resultSet();
 
         return $reviews;
@@ -48,5 +50,42 @@ class M_review{
         $this->db->execute();
         return true;
     }
-    
+
+    public function getRatingsForItem($itemID){
+        $this->db->query('SELECT Rating FROM review WHERE item_ID =:itemID');
+        $this->db->bind(':itemID', $itemID);
+
+        $ratings = $this->db->resultSet();
+        $ratingCount = [
+            '5' => 0,
+            '4' => 0,
+            '3' => 0,
+            '2' => 0,
+            '1' => 0
+        ];
+        $totalRatings = 0;
+
+        foreach($ratings as $rating){
+            $value = $rating->Rating;
+            if($value >=1 && $value <=5){
+                $ratingCount[$value]++;
+                $totalRatings++;
+            }
+        }
+
+        $overall =0;
+        if($totalRatings >0){
+            $sum =0;
+            foreach($ratingCount as $rating => $count){
+                $sum += $rating * $count;
+            }
+            $overall = (float)$sum / $totalRatings;
+        }
+
+        return [
+            'ratingCount' => $ratingCount,
+            'overall' => $overall
+        ];
     }
+    
+}
