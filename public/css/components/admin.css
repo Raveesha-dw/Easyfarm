@@ -4,27 +4,27 @@
     justify-content: center;
 }
 
-.admin-table{
+.body-container .admin-table{
     padding: 5px 20px !important;
 }
 
-th{
+.body-container th{
     font-weight: bold;
 }
 
-tr{
+.body-container tr{
     cursor: default;
 }
 
-table{
+.body-container table{
     margin-top: 20px;
 }
 
-td img{
+.body-containertd img{
     border-radius: 0%;
 }
 
-h2{
+.body-container h2{
     font-size:x-large;
     font-weight: bold;
 }
