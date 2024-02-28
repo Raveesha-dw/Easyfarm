@@ -55,7 +55,7 @@ class M_profile{
 
     }
     public function getAgricultureExpertDetails($U_Id){
-        $this->db->query('SELECT * FROM reg_agriexpert WHERE reg_agriexpert.U_Id = :U_Id') ;
+        $this->db->query('SELECT * FROM reg_agriinstructor WHERE U_Id = :U_Id') ;
         $this->db->bind(':U_Id', $U_Id); // Assuming $data1['email'] contains the user's email address
         $this->db->execute();
         $row=$this->db->single();

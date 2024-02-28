@@ -1,5 +1,7 @@
 <div class="headebr">
+
 <div class="headebr">
+
 
 <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -12,11 +14,10 @@
 
 
  <div class="container">
-    <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
-    <!-- <section class="home"> -->
+<?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
-
+ <!-- <section class="home"> -->
 
 
 
@@ -186,6 +187,13 @@
         </form>
     </div>
 </div>
+<?php require APPROOT . '/views/inc/footer.php';?>
+   <!-- </section> -->
+
+    </div>
+</div>
+
+
 
 
 
@@ -197,6 +205,7 @@
 
 
 <?php require APPROOT . '/views/inc/footer.php';?>
+
 
 
 <!-- Your other head elements -->

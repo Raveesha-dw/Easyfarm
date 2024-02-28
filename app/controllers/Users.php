@@ -4,18 +4,19 @@ require_once APPROOT . '/helpers/OTP_helper.php';
 
 class Users extends Controller{
     private $userModel;
-    public function __construct()
-    {
+    public function __construct(){
         $this->userModel = $this->model('M_users');
         
     }
 
     public function assignUser($usertype){
+
         if($usertype == 'Buyer'){
             $data=[
                 'user_type'=> '',
                 'fullname'=>'',
                 'contactno'=>'',
+
                 'email' => '',
                 'address' => '',
                 'city' => '',
@@ -114,7 +115,9 @@ class Users extends Controller{
 
     }
 
+
     public function register(){        
+
 
         if($_POST['user_type'] == 'Buyer'){
             //Check for POST
@@ -272,13 +275,6 @@ class Users extends Controller{
                     'password_err'=>'',
                     'confirm-password_err'=>'',
 
-// <<<<<<<<< Temporary merge branch 1
-
-
-
-
-// =========
-// >>>>>>>>> Temporary merge branch 2
                 ];
 
 
@@ -403,7 +399,42 @@ class Users extends Controller{
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-               
+
+                // Get image data
+                $nicPath = $_FILES['nic_img']['tmp_name'];
+                $pidPath = $_FILES['pid_img']['tmp_name'];
+
+                // Extract extensions from original file names
+                $nicExtension = pathinfo($_FILES['nic_img']['name'], PATHINFO_EXTENSION);
+                $pidExtension = pathinfo($_FILES['pid_img']['name'], PATHINFO_EXTENSION);
+
+                // Validate extensions (considering case-sensitivity)
+                $allowedExtensions = array('jpg', 'jpeg', 'png');
+                if (!in_array(strtolower($nicExtension), $allowedExtensions)) {
+                    die("Invalid file type uploaded for NIC: Only JPG, JPEG, and PNG files are allowed.");
+                }
+                if (!in_array(strtolower($pidExtension), $allowedExtensions)) {
+                    die("Invalid file type uploaded for PID: Only JPG, JPEG, and PNG files are allowed.");
+                }
+
+                // print_r($nicExtension);
+                // print_r($pidExtension);
+
+
+                $nic_img = file_get_contents($nicPath);
+                $nic_img = base64_encode($nic_img); // Convert binary data to base64 for database storage
+
+                $pid_img = file_get_contents($pidPath);
+                $pid_img = base64_encode($pid_img);
+
+                $imgData = [
+                    'nicPath' => $nicPath,
+                    'pidPath' => $pidPath,
+                    'nicExtension' => $nicExtension,
+                    'pidExtension' => $pidExtension
+                ];
+
+
 
                 $data=[
                     'user_type' => $_POST['user_type'],
@@ -414,16 +445,11 @@ class Users extends Controller{
                     'email' => trim($_POST['email']),
                     'address' => trim($_POST['address']),
                     'city' => trim($_POST['city']),
-                    // 'occupation'=>trim($_POST['occupation']),
+
                     'workplace'=> trim($_POST['workplace']),
-                    // 'nic'=> $_POST['nic'],
-                    // 'pId'=> $_POST['pId'],
-
-                    'nic_img'=> ($_FILES['nic_img']),
-                    'nic_img_name'=>time().'_'.$_FILES['nic_img']['name'],
-
-                    'pid_img'=> ($_FILES['pid_img']),
-                    'nic_img_name'=>time().'_'.$_FILES['pid_img']['name'],
+                    'nic_img' => $nic_img,
+                    'pid_img' => $pid_img,   
+    
 
                     'name_err' => '',
                     'contactno_err' => '',
@@ -433,9 +459,8 @@ class Users extends Controller{
                     'pid_err' => '',
 
                     'password_err'=>'',
-                    'confirm-password_err'=>'',
-    
-                
+                    'confirm-password_err'=>''
+
                 ];
 
                 if(empty($data['fullname'])){
@@ -456,7 +481,7 @@ class Users extends Controller{
                 }
                 else{
                     if($this->userModel->findUserByEmail($data['email'])) {
-                        // echo("check1");
+
                         $data['email_err']='Email is already registered';
                     }
                 }
@@ -502,15 +527,13 @@ class Users extends Controller{
                     
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                    uploadImage($data['nic_img']['tmp_name'], $data['nic_img_name'],'/images/seller/');
-                    uploadImage($data['pid_img']['tmp_name'], $data['pid_img_name'],'/images/seller/');
                                  
                     if($this->userModel->register($data)){
-                        // $this->login();
-                        header("Location:http://localhost/Easyfarm/Users/login");
-                        // redirect('Users/v_login');
+                        sendDocumentsToCheckLegitamacy($data, $imgData);
+                        // sendRegistrationSuccessEmail($data);
+                        header("Location:http://localhost/Easyfarm/Blog");
                         flash('register_success', 'You have successfully registered with EasyFarm');
-                        // $this->view('Pages/loginPage');
+
                     }
                     else{
                         die('Something went wrong');
@@ -533,10 +556,11 @@ class Users extends Controller{
                     'email' => '',
                     'address' => '',
                     'city' => '',
-                    'occupation'=>'',
+
                     'workplace'=> '',
-                    'nic'=>'',
-                    'pId'=> '',
+                    'nic_im'=>'',
+                    'pid_img'=> '',
+
     
                     'name_err' => '',
                     'contactno_err' => '',
@@ -544,10 +568,15 @@ class Users extends Controller{
                     'address_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
+                   'nic_err' => '',
+                    'pid_err' => ''
+                ];
+
+                 $this->view('Users/v_registerAgriExpert',$data);
+
     
 
-            ];
-            $this->view('Users/v_registerAgriExpert',$data);
+           
         
         }
         }
@@ -585,6 +614,7 @@ class Users extends Controller{
             }
             if(strlen($data['contactno'])<10){
                 $data['contactno_err'] = 'Not enough digits in contact number';
+
             }
 
             if(empty($data['email'])){
@@ -610,8 +640,10 @@ class Users extends Controller{
                 $data['password_err'] = 'Please enter a password';
             }
 
+
             else if(strlen($data['password'])<8){
                 $data['password_err'] = 'Password must be at least 8 charactors long';
+
 
             }
             else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
@@ -708,19 +740,29 @@ class Users extends Controller{
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter your password';
             }
+            
+
+
+            
+
 
             if(empty($data['email_err']) && empty($data['password_err'])){
                 
                 $logged_user = $this->userModel->login($data);
+                $loggedInUser = $this->userModel->login($data);
                 // print_r($logged_user);
                 if($logged_user){
                     $this->createUserSession($logged_user);                    
                 } // Logging in user
-                else{
+                if($loggedInUser){
+                    $this->assignUserType($loggedInUser);                    
+                }else{
+
                     $data['password_err'] = 'Password is incorrect';
                     // print_r($data);
                     $this->view('Users/v_login', $data);
                 }
+
             }else{
                 $this->view('Users/v_login', $data);
             }
@@ -737,8 +779,7 @@ class Users extends Controller{
         }
     }
 
-    public function forgotPassword()
-    {
+    public function forgotPassword(){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -767,15 +808,14 @@ class Users extends Controller{
 
                     $data['otp'] = generate_Otp();
 
-                    print_r($data['otp']);
                     // Save OTP, email, and expiration time in the database
-                    $expirationTime = time() + (1 * 60); // OTP will expire in 1 minutes
+                    $expirationTime = time() + (5 * 60); // OTP will expire in 5 minutes
                     $this->userModel->createToken($data, $expirationTime);
+                 
+                    // Send OTP to the user's email 
+                    sendOTPByEmail($data['email'], $data['otp']); 
 
-                    // Send OTP to the user's email (you can use a library like PHPMailer for this)
-                    sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
-
-                } else {
+                }else{
                     $this->view('Users/v_forgotPassword', $data);
                 }
 
@@ -831,7 +871,8 @@ class Users extends Controller{
                 $expirationTime = time() + (1 * 60); // OTP will expire in 1 minutes
                 $this->userModel->createToken($data, $expirationTime);
 
-                // Send OTP to the user's email (you can use a library like PHPMailer for this)
+             
+                // Send OTP to the user's email 
                 sendOTPByEmail($data['email'], $data['otp']); // Implement this function to send OTP via email
 
                 $this->view('Users/v_verifyEmail', $data);
@@ -845,8 +886,7 @@ class Users extends Controller{
 
     }
 
-    public function resetPassword()
-    {
+    public function resetPassword(){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -893,6 +933,7 @@ class Users extends Controller{
             // Clear the password reset token from the database
             $this->userModel->clearToken($data);
             print_r($data);
+
 
             header("Location:http://localhost/Easyfarm/Users/login");
 
@@ -942,23 +983,103 @@ class Users extends Controller{
         }else if($_SESSION['user_type'] == 'AgriExpert'){
             // redirect('Pages/Profile');
 
-            //$this->view('AgriInstructor/index');
-            header("Location:http://localhost/Easyfarm/Blog");
+        }
+    }
+
+    //  public function createUserSession($user){
+    //     // print_r($user);
+    //     $_SESSION['user_ID'] = $user->U_Id;
+    //     $_SESSION['user_email'] = $user->Email;
+    //     $_SESSION['user_type'] = $user->User_type;
+    //     $_SESSION['plan_id'] = $user->plan_id;    
+       
+    //     // change this
+         
+    //     // $_SESSION['user_name'] = $user->Name;
+       
+    //     // print_r($_SESSION['user_type']);
+
+    //     if($_SESSION['user_type'] == 'Buyer'){
+    //         // redirect('Pages/index');
+    //         // $this->view('pages/home');
+    //         header("Location:http://localhost/Easyfarm/Pages/index");
+    //         // change this also&& $_SESSION['plan_id']
+    //     }else if($_SESSION['user_type']  == 'Seller'){
+           
+    //         // print_r($user);
+            
+    //          header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
+
+    //     }else if($_SESSION['user_type'] == 'AgriExpert'){
+    //         // redirect('Pages/Profile');
+
+    //         //$this->view('AgriInstructor/index');
+    //         header("Location:http://localhost/Easyfarm/Blog");
 
 
-        }else if($_SESSION['user_type'] == 'VehicleRenter'){
-            // redirect('Pages/Profile');
-            // $this->view('Pages/index');
-            print_r($user);
-            header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
+    //     }else if($_SESSION['user_type'] == 'VehicleRenter'){
+    //         // redirect('Pages/Profile');
+    //         // $this->view('Pages/index');
+    //         print_r($user);
+    //         header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
+    //     }    
+    //     // else  if($_SESSION['user_type'] == 'Admin'){
+
+    //     // }
+    // }
+
+
+    public function assignUserType($user){
+        $userType = $user->User_type;
+
+
+        if($userType == 'Buyer'){
+            $this->createUserSession($user);
+            header("Location:http://localhost/Easyfarm/Pages/index");
+            
+        }else if($userType == 'Seller'){
+            $this->createUserSession($user);
+            header("Location:http://localhost/Easyfarm/Seller_home/get_product_details");
+
+        }else if($userType == 'AgricultureExpert'){
+            $accStatus = $this->userModel->getAgriInstructorAccStatus($user->U_Id)->AccStatus;
+            switch($accStatus){
+                case 'Verified':
+                    $this->createUserSession($user);
+                    redirect('Blog');
+                    break;
+                case 'Under Review':
+                    echo('<div style="display:flex; align-item:center; justify-content:center; font-size:30px;">Your account is under review. You will receive an email when your account has been verified.</div>');
+                    break;
+                case 'Rejected':
+                    echo('<div style="display:flex; align-item:center; justify-content:center; font-size:30px;">Your previous document submission was rejected. To continue, please register with a new email address and submit the required documents.</div>');
+                    break;
+                default:
+                    echo('<div style="display:flex; align-item:center; justify-content:center; font-size:30px;">Unrecognized Account Type</div>');
+                    break;
+            }
+
+        }else if($userType == 'VehicleRenter'){
+            $this->createUserSession($user);
+          header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
+            $this->view('Pages/index');
         }    
-        // else  if($_SESSION['user_type'] == 'Admin'){
+        else  if($userType == 'Admin'){
+            $this->createUserSession($user);
+            redirect('Admin');
+        }
+    }
 
-        // }
+
+    public function createUserSession($user){
+        $_SESSION['user_ID'] = $user->U_Id;
+        $_SESSION['user_email'] = $user->Email;
+        $_SESSION['user_type'] = $user->User_type; 
+        // $_SESSION['plan_id'] = $user->plan_id;  
     }
     public function createUserSession2($data){
-       
+
         $_SESSION['user_email1'] = $data['email'];
         
         
@@ -987,9 +1108,10 @@ class Users extends Controller{
     //     header("Location:http://localhost/Easyfarm/Pages/choosepkg");
     // }
     public function logOut(){
+
         unset($_SESSION['user_ID']); 
+
         unset($_SESSION['user_email']);
-        unset($_SESSION['user_name']);
         unset($_SESSION['user_type']);
         unset($_SESSION['plan_id']);
 
@@ -999,10 +1121,12 @@ class Users extends Controller{
     }
 
     public function isLoggedIn(){
+
         if(isset($_SESSION['user_ID'])){
             return true;
         }
         else{
+
             false;
         }
     }

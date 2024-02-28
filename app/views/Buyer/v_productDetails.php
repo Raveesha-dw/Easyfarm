@@ -219,7 +219,7 @@ $inquiries = $data['inquiries'];
         <!-- Display Questions -->
         <?php 
             foreach ($inquiries as $inquiry):
-        ?>
+        ?> 
 
             <!-- Question card -->
             <div class="comment-card">

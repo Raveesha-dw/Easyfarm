@@ -208,7 +208,7 @@ width: 300px;
     /* Gradient background */
     background-image: linear-gradient(to right, #bdec87, #9dff2c);
 
-    /* Hover effect */
+   
 }
 .Wrapper_Vehicle_Create_Post #create:hover {
     transform: translateY(-3px); /* Move button slightly up */

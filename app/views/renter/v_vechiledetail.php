@@ -4,8 +4,7 @@
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
-
-
+<!-- <?php print_r($data)?> -->
 <?php 
 $pending_dates = array();
 // $pending_dates = array(); // Initialize an empty array to store pending dates
@@ -154,6 +153,21 @@ $jsonData1 = json_encode( $pending_dates);
                 <br>
                 <br>
 
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p id="modal-content">This date is unavailable for booking.</p>
+    <button id="modal-ok-btn">OK</button>
+  </div>
+</div>
+
+
+                
+
                 <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
     <span>Unavailable Day</span>
     <br>
@@ -206,24 +220,31 @@ $jsonData = json_encode($dataArray);
                         <tr>
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
-    echo $data['name_err'];
-}?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enter Name" required value="<?php echo $data['name']; ?>" size="40" style="height: 40px" ;></td>
+
+                                                             echo $data['name_err'];
+                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enterthe Name" value=" <?php echo isset(end($data)->Name) ? end($data)->Name : ''; ?>" size="40" style="height: 40px" ;></td>
+
 
 
                         </tr>
                         <tr>
                             <td><label for="Pickup_location"><b>Pickup Location</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
-    echo $data['location_err'];
-}?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo $data['location']; ?>" size="40" style="height: 40px" ;></td>
+
+                                                            echo $data['location_err'];
+                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo isset(end($data)->Address) ? end($data)->Address : ''; ?>" size="40" style="height: 40px" ;></td>
+
 
 
                         </tr>
                         <tr>
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
-    echo $data['number_err'];
-}?></span><input id="number" name="number" value="" type="number" placeholder="Your Contact Number" required value="<?php echo $data['number']; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+
+                                                            echo $data['number_err'];
+
+                                                        }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+
 
 
                         </tr>
