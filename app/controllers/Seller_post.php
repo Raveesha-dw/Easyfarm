@@ -211,9 +211,9 @@ public  function create_post(){
             
             
            
-            // if (empty($data['Expiry_date'])){
-            //     $data['Expiry_date_err'] = 'Please enter the date';
-            // }
+            if (empty($data['Expiry_date'])){
+                $data['Expiry_date_err'] = 'Please enter the date';
+            }
             
             
             if (empty($data['DeliveryMethod'])){
@@ -276,7 +276,39 @@ public  function create_post(){
             }
             else{die('something went wrong');}
             }
-            else ($this->view('seller/v_create_post',$data));
+            else {
+                
+                
+                
+
+
+
+
+                $data1 = $this->sellerModel->get_category();
+$dataArray = [];
+
+// Convert objects to arrays
+foreach ($data1 as $obj) {
+    $dataArray[] = (array) $obj;
+}
+
+// Merge the original data array with the array representation
+$mergedArray = array_merge($data, $dataArray);
+
+// Pass the merged data array to the view with an appropriate key
+ $this->view('seller/v_create_post',$mergedArray);
+// $this->view('seller/v_create_post', ['data' => $mergedArray]
+
+
+
+                
+                
+                
+            }
+                
+                
+                
+            
             
            
             
@@ -400,7 +432,14 @@ foreach ($data as $obj) {
                 'DeliveryMethod' => $data['DeliveryMethod'],
                 'Description'=> trim($_POST['Description']),
                 'Unit_type' => isset($_POST['Unit_type']) ? trim($_POST['Unit_type']) : '',
-                'Image'=> ($_FILES['Image']),
+                // 'Image'=> ($_FILES['Image']),
+                'Image' => [
+        'name' => $_FILES['Image']['name'],
+        'type' => $_FILES['Image']['type'],
+        'tmp_name' => $_FILES['Image']['tmp_name'],
+        'error' => $_FILES['Image']['error'],
+        'size' => $_FILES['Image']['size']
+    ],
                 'Image_name'=>time().'_'.$_FILES['Image']['name'],
                 
                 // 'old'=>  ($_FILES['Image']),
@@ -491,7 +530,7 @@ foreach ($data as $obj) {
 
             if(empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err'])&& empty( $data['stock_err']) && empty($data['Expiry_date_err']) && empty( $data['Invalid_date_err']) && empty($data['Unit_type_err']) &&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) &&empty($data['Unit_size_err']) &&empty($data['Image_err'])){
                 
-                uploadImage( $data['Image']['tmp_name'], $data['Image_name'],'/images/seller/');
+    if (updateImage($data['Image']['tmp_name'], $data['Image_name'], $data['Image']['name'], '/images/seller/')) {
                 // $data['old']['tmp_name'],
               
                 // if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/'));
@@ -508,7 +547,7 @@ foreach ($data as $obj) {
                     // redirect("Seller_post/created_post");
                      $this->view('seller/v_createdpost',$products);
     
-                }}
+                }}}
                
                 else{
                     //$data     = get_object_vars($data[0]);

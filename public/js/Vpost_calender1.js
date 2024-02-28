@@ -5,7 +5,16 @@ $(document).ready(function() {
 
 
 
-
+    var modal = document.getElementById("myModal");
+    var okBtn = document.getElementById("modal-ok-btn");
+    function showModal(message) {
+    var modalContent = document.getElementById("modal-content");
+    modalContent.innerHTML = message;
+    modal.style.display = "block";
+}
+okBtn.onclick = function() {
+    modal.style.display = "none";
+}
 
     // Initialize selectedDates array to store selected dates
     var selectedDates = [];
@@ -69,9 +78,11 @@ console.log(lastday); // This will log the month data to the console
                     
                 if (unavailableDates.includes(dateStr)) {
                     // Date is unavailable, so prevent selection
-                    alert('This date is unavailable for booking.');
+                    // alert('This date is unavailable for booking.');
                     
-                    return false;
+                    
+                     showModal('This date is unavailable for booking.');
+            return false;
                 }
                
                 

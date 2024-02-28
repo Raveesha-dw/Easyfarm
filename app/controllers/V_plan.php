@@ -185,6 +185,68 @@ public function update_details($id = null){
     }
 
 
+public function payment1() {
+    
+        $data = $this->vplanModel->get_dataplan2();
+        
+        
+        $mail=$_SESSION['user_email'];
+        $data2=$this->vplanModel->get_userdetails($mail);
+        
+        // print_r($mail);
+        // 4916217501611292
+    
+        
+        $amount =$data[0]->price;
+        $merchant_id =  "1225296";
+        $order_id = uniqid();
+        $merchant_secret = "NTc0MDU0NjMxMjA1NjI3NTI2ODMzMjQwMjAxNTYzMzE0MjI0NDQ4";
+        $currency = "LKR";
+        $name= $data[0]->name;
+        $f_name= $data2[0]->Name;
+        $address= $data2[0]->Address;
+        $email= $data2[0]->Email;
+        $plan_id=$data[0]->plan_id;
+        
+        
+        
+        $hash = strtoupper(
+            md5(
+                $merchant_id . 
+                $order_id . 
+                number_format($amount, 2, '.', '') . 
+                $currency .  
+                strtoupper(md5($merchant_secret)) 
+            ) 
+        );
+        
+        $array =[$data2];
+        // $array["return_url"]= "http://localhost/Easyfarm/Users/login";
+        $array["items"] = $name;
+        $array["full_name"] = $f_name;
+        // $array["last_name"] = "dhananja";
+        $array["email"] = $email;
+        // $array["phone"] = "0715797461";
+        $array["address"] = $address;
+        $array["plan_id"] = $plan_id;
+        // $array["city"] = "Hambanthota";
+        
+        
+        
+        
+        $array["amount"] = $amount;
+        $array["merchant_id"] = $merchant_id;
+        $array["order_id"] = $order_id;
+        $array["merchant_secret"] = $merchant_secret;
+        $array["currency"] = $currency;
+        $array["hash"] = $hash;
+        
+        $jsonObj = json_encode($array);
+        print_r($jsonObj);
+        
+        
+        }
+
 
     public function payment6() {
     
@@ -498,6 +560,24 @@ public function update_details($id = null){
                 header("Location:http://localhost/Easyfarm/V_plan/get_plan_details");
             
             }
+
+
+            public function update_details1($id = null){
+    if ($id === null) {
+        // If $id is not provided as a parameter, try to get it from $_GET['id']
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+    }
+
+    // Now you can use $id in your function
+     if($this->vplanModel->update_user_plan1()){
+        // unset($_SESSION['user_email']);
+        echo '<script>window.location.href = "http://localhost/Easyfarm/V_post/cretesession3";</script>';
+
+        // redirect('Users/v_login');
+     }
+
+    
+}
             
 
 

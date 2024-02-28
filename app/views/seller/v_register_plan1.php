@@ -97,7 +97,6 @@
                                 </div>
                                 <div class="content">
                                         <p>Unlock unparalleled benefits with our <?php print($data[2]->name); ?> plan – your gateway to extraordinary possibilities! 🚀</p>
-                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong> </p> -->
                                         <p><strong>List Up <?php print($data[2]->listing_limit); ?> Items!</strong> </p>
                                         <p><strong>All for just Rs.<?php print($data[2]->price); ?>!</strong> Elevate your experience for an unbeatable price of Rs.<?php print($data[2]->price); ?>. Experience the pinnacle of service without compromise! 🎁</p>
                                         <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(3);">SUBCRBIE🌐</a></p>
@@ -115,7 +114,6 @@
                                 </div>
                                 <div class="content">
                                         <p>Discover the extraordinary with our <?php print($data[0]->name); ?> plan – your key to an enhanced digital presence!</p>
-                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong> </p> -->
                                         <p><strong>List Up to <?php print($data[0]->listing_limit); ?> Items!</strong></p>
                                         <p><strong>All for just Rs.<?php print($data[0]->price); ?>!</strong> Elevate your journey for an incredible Rs.<?php print($data[0]->price); ?>. Experience the best of Normal without breaking the bank! 💸</p>
                                         <p class="limited-offer"><a href="#" class="cta-button" onclick="paymentGateway(1);">SUBCRBIE 🌐</a></p>
@@ -132,7 +130,6 @@
                                 </div>
                                 <div class="content">
                                         <p>Experience excellence with our <?php print($data[1]->name); ?>  plan – crafted for those who seek greatness!</p>
-                                        <!-- <p><strong>Unlimited Access for 6 Months!</strong></p> -->
                                         <p><strong>List Up to  <?php print($data[1]->listing_limit); ?> Items!</strong> </p>
                                         <p><strong>All for just Rs.<?php print($data[1]->price); ?>!</strong> Elevate your journey for a mere Rs.<?php print($data[1]->price); ?>. Unleash the power of <?php print($data[1]->name); ?> without compromising your budget! 💸</p>
                                         <p class="limited-offer"> <a href="#" class="cta-button" onclick="paymentGateway(2);">SUBCRBIE 🌐</a></p>

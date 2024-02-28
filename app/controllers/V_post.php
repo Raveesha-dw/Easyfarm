@@ -9,11 +9,35 @@ class V_post extends Controller
     {
 
         $this->v_postModel = $this->model('M_vPost');
-
     }
+
+
+    public function cretesession3()
+    {
+        $data = $this->v_postModel->get_planid();
+        print_r($data);
+        $_SESSION['plan_id'] = $data[0]->plan_id;
+        header("Location:http://localhost/Easyfarm/V_post/creating");
+    }
+
+
 
     public function creating()
     {
+        print_r($_SESSION['plan_id']);
+
+        $data = $this->v_postModel->user_details($_SESSION['user_ID']);
+        $registerDate = $data[0]->Register_date;
+        $futureDate = date('Y-m-d', strtotime($registerDate . ' +6 months'));
+
+        if ($_SESSION['plan_id'] == '') {
+            $data = $this->v_postModel->get_dataplan3();
+            $this->view('Vechile/v_renter_register_plan1', $data);
+        } elseif ($registerDate == $futureDate) {
+            $this->view('Vechile/v_update_plan');
+        }
+
+else{
 
         $data = [
             'Owner_Id' => '',
@@ -44,8 +68,7 @@ class V_post extends Controller
         $v_Categories = $this->v_postModel->get_category();
         $data['v_Categories'] = $v_Categories;
         $this->view('VehicleRenter\v_vehicle_create_post', $data);
-
-    }
+    }}
     public function create_post()
     {
 
@@ -84,17 +107,14 @@ class V_post extends Controller
 
             if (empty($data['V_category'])) {
                 $data['V_category_err'] = 'please choose a category';
-
             }
 
             if (empty($data['V_name'])) {
                 $data['V_name_err'] = 'Please enter the vehicle name';
-
             }
 
             if (empty($data['V_number'])) {
                 $data['V_number_err'] = 'Please enter the vehicle number';
-
             }
 
             if (empty($data['Contact_Number'])) {
@@ -105,20 +125,16 @@ class V_post extends Controller
 
             if (empty($data['Rental_Fee'])) {
                 $data['Rental_Fee_err'] = 'Please enter the Rental_Fee';
-
             }
             if (empty($data['Charging_Unit'])) {
                 $data['Charging_Unit'] = 'Please select the Charging_Unit';
-
             }
 
             if (empty($data['Address'])) {
                 $data['Address_err'] = 'Please enter the Address';
-
             }
             if (empty($data['Image'])) {
                 $data['Image_err'] = 'please include the image';
-
             }
 
             if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
@@ -128,24 +144,23 @@ class V_post extends Controller
                 if ($this->v_postModel->create_post($data)) {
                     $data = $this->v_postModel->get_data($_SESSION['user_ID']);
 
-                    redirect("V_post/created_post");
 
-                } else {die('something went wrong');}
+                    redirect("V_post/created_post");
+                } else {
+                    die('something went wrong');
+                }
             } else {
                 $v_Categories = $this->v_postModel->get_category();
                 $data['v_Categories'] = $v_Categories;
                 $this->view('VehicleRenter\v_vehicle_create_post', $data);
             }
-
         }
-
     }
 
     public function created_post()
     {
         $data = $this->v_postModel->get_data($_SESSION['user_ID']);
         $this->view('VehicleRenter/v_vehicle_createdpost', $data);
-
     }
 
     public function update_Product()
@@ -192,12 +207,15 @@ class V_post extends Controller
         $v_Categories = $this->v_postModel->get_category();
         $data['v_Categories'] = $v_Categories;
 
+
         $this->view('VehicleRenter/v_vehicle_update_post', $data);
+
 
     }
 
     public function update_vehicle_post_details()
     {
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -219,6 +237,9 @@ class V_post extends Controller
                 // TODO:have to put the date of plan activating
                 // 'post_create_date' => date("Y-m-d"),
 
+
+            $this->v_postModel->delete_data($data);
+
                 'V_category_err' => '',
                 'V_name_err' => '',
                 'V_number_err' => '',
@@ -230,6 +251,7 @@ class V_post extends Controller
                 'Description_err' => '',
                 'Image_err' => '',
 
+
             ];
             if (empty($data['V_category'])) {
                 $data['V_category_err'] = 'please choose a category';
@@ -239,18 +261,38 @@ class V_post extends Controller
             if (empty($data['V_name'])) {
                 $data['V_name_err'] = 'Please enter the vehicle name';
 
+
+    public function update_description()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $data = [
+                'V_Id' => trim($_POST['V_Id']),
+                'Description' => trim($_POST['Description']),
+                'Description_err' => '',
+            ];
+
             }
 
             if (empty($data['V_number'])) {
                 $data['V_number_err'] = 'Please enter the vehicle number';
 
+
             }
+
+
+            $item1 = $this->v_postModel->getupdateiteamdeatils($data);
+
+            $items = get_object_vars($item1[0]);
 
             if (empty($data['Contact_Number'])) {
                 $data['Contact_Number_err'] = 'Please enter the Contact Number';
             } elseif (strlen($data['Contact_Number']) != 10) {
                 $data['Contact_Number_err'] = 'PLease enter the valid Contact Number';
             }
+
 
             if (empty($data['Rental_Fee'])) {
                 $data['Rental_Fee_err'] = 'Please enter the Rental_Fee';
@@ -260,6 +302,36 @@ class V_post extends Controller
                 $data['Charging_Unit'] = 'Please select the Charging_Unit';
 
             }
+
+
+            $data['V_Id'] = $items['V_Id'];
+            $data['V_name'] = $items['V_name'];
+            $data['V_category'] = $items['V_category'];
+            $data['V_number'] = $items['V_number'];
+            $data['Contact_Number'] = $items['Contact_Number'];
+            $data['Rental_Fee'] = $items['Rental_Fee'];
+            $data['Charging_Unit'] = $items['Charging_Unit'];
+            $data['unavailableDates'] = $dates;
+            $data['Address'] = $items['Address'];
+            $data['Description'] = $items['Description'];
+            $data['Image'] = $items['Image'];
+            $data['Owner_Id'] = $items['Owner_Id'];
+            $data['post_create_date'] =  $items['post_create_date'];
+
+
+            $data['V_category_err'] = '';
+            $data['V_name_err'] = '';
+            $data['V_number_err'] = '';
+            $data['Contact_Number_err'] = '';
+            $data['Rental_Fee_err'] = '';
+            $data['Charging_Unit_err'] = '';
+            $data['Address_err'] = '';
+            $data['Description_err'] = '';
+            $data['Image_err'] = '';
+
+            $this->view('VehicleRenter/v_vehicle_post_details', $data);
+        }
+    }
 
             if (empty($data['Address'])) {
                 $data['Address_err'] = 'Please enter the Address';
@@ -272,12 +344,25 @@ class V_post extends Controller
 
             if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
 
+
+    public function update_calendar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $data = [
+                'V_Id' => trim($_POST['V_Id']),
+                'Calender' => trim($_POST['markedDates']),
+                'Calender_err' => '',
+            ];
+
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/vehicleRenter/'));
 
                 if ($this->v_postModel->update_vehicle_post_details($data)) {
                     $data = $this->v_postModel->get_data($_SESSION['user_ID']);
                     $this->view('VehicleRenter/v_vehicle_createdpost', $data);
                     // redirect("V_post/created_post");
+
 
                 } else {die('something went wrong');}
             } else {
@@ -288,7 +373,13 @@ class V_post extends Controller
 
         }
 
+
+            $item1 = $this->v_postModel->getupdateiteamdeatils($data);
+
+            $items = get_object_vars($item1[0]);
+
     }
+
 
     public function delete_product()
     {
@@ -300,6 +391,51 @@ class V_post extends Controller
 
             $this->v_postModel->delete_data($data);
 
+
+            $data['V_Id'] = $items['V_Id'];
+            $data['V_name'] = $items['V_name'];
+            $data['V_category'] = $items['V_category'];
+            $data['V_number'] = $items['V_number'];
+            $data['Contact_Number'] = $items['Contact_Number'];
+            $data['Rental_Fee'] = $items['Rental_Fee'];
+            $data['Charging_Unit'] = $items['Charging_Unit'];
+            $data['unavailableDates'] = $dates;
+            $data['Address'] = $items['Address'];
+            $data['Description'] = $items['Description'];
+            $data['Image'] = $items['Image'];
+            $data['Owner_Id'] = $items['Owner_Id'];
+            $data['post_create_date'] =  $items['post_create_date'];
+
+            $data['V_category_err'] = '';
+            $data['V_name_err'] = '';
+            $data['V_number_err'] = '';
+            $data['Contact_Number_err'] = '';
+            $data['Rental_Fee_err'] = '';
+            $data['Charging_Unit_err'] = '';
+            $data['Address_err'] = '';
+            $data['Description_err'] = '';
+            $data['Image_err'] = '';
+
+            $this->view('VehicleRenter/v_vehicle_post_details', $data);
+        }
+    }
+
+    public function update_charging_details()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $data = [
+                'V_Id' => trim($_POST['V_Id']),
+                'V_name' => isset($_POST['V_name']) ? trim($_POST['V_name']) : '',
+                'Contact_Number' => isset($_POST['Contact_Number']) ? trim($_POST['Contact_Number']) : '',
+                'Address' => isset($_POST['address']) ? trim($_POST['address']) : '',
+                'Rental_Fee' => isset($_POST['Rental_Fee']) ? trim($_POST['Rental_Fee']) : '',
+
+                'Charging_Unit' => trim($_POST['Charging_Unit']),
+                'Contact_Number_err' => '',
+            ];
+
             redirect("V_post/created_post");
 
         }
@@ -310,13 +446,20 @@ class V_post extends Controller
 
         $data = [];
 
+
         $vehicle_data = $this->v_postModel->getiteamdeatils();
         $vehicle_data = get_object_vars($vehicle_data[0]);
 
         $booking_dates = $this->v_postModel->get_booking_dates($vehicle_data['V_Id']);
 
+
+            $item1 = $this->v_postModel->getupdateiteamdeatils($data);
+
+            $items = get_object_vars($item1[0]);
+
         if (!empty($booking_dates)) {
             foreach ($booking_dates as $booking_date) {
+
 
                 $booking_Data[] = get_object_vars($booking_date);
 
@@ -328,11 +471,32 @@ class V_post extends Controller
                     $confirmed_booking_dates[] = $booking_date->date;
                 }
 
+
+            $data['V_Id'] = $items['V_Id'];
+            $data['V_name'] = $items['V_name'];
+            $data['V_category'] = $items['V_category'];
+            $data['V_number'] = $items['V_number'];
+            $data['Contact_Number'] = $items['Contact_Number'];
+            $data['Rental_Fee'] = $items['Rental_Fee'];
+            $data['Charging_Unit'] = $items['Charging_Unit'];
+            $data['unavailableDates'] = $dates;
+            $data['Address'] = $items['Address'];
+            $data['Description'] = $items['Description'];
+            $data['Image'] = $items['Image'];
+            $data['Owner_Id'] = $items['Owner_Id'];
+            $data['post_create_date'] =  $items['post_create_date'];
+
+
                 $unique_booking_details = array_unique(array_map("serialize", $booking_details));
-                $booking_details = array_map("unserialize", $unique_booking_details);
+                $booking_details = array_map("unserialize", $unique_booking_details);>>>>>>> master
 
             }
         }
+
+
+            $this->view('VehicleRenter/v_vehicle_post_details', $data);
+        }
+    }
 
         // print_r($booking_details);
 
@@ -528,5 +692,6 @@ class V_post extends Controller
     //         }
 
     // }
+
 
 }
