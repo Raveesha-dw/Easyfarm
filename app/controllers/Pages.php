@@ -135,7 +135,8 @@ class Pages extends Controller{
     }
 
     public function dashOrders(){
-        $this->view('Buyer/v_dashboardOrders');
+        // $this->view('Buyer/v_dashboardOrders');
+        $this->view('Buyer/v_buyerOrders');
     }
 
     public function dashReviews(){
