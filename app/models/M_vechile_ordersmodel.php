@@ -6,11 +6,9 @@ public function __construct(){
 }
 
 public function update_data($data) {
-    // Ensure $_SESSION['user_ID'] is properly set
+
     if (isset($_SESSION['user_ID'])) {
-        // Validate data here if needed
-        // print_r($data);
-        // Insert query
+
         $this->db->query('INSERT INTO v_orders( Vechile_ID, Owner_ID, placed_Date, Buyer_ID, Status, name, location, number, Message) 
                          VALUES ( :Vechile_ID, :Owner_ID, :placed_Date, :Buyer_ID, :Status, :name, :location, :number, :Message)');
 
@@ -54,8 +52,6 @@ foreach ($dates as $date) {
     $this->db->bind(':Status', 'Pending');
     
     $this->db->execute();
-
-    
 }
 
             
@@ -79,6 +75,7 @@ public function getunavalibale_date($V_Id){
 
 
 
+
 public function getdata($V_Id){
     $this->db->query('SELECT * FROM vehicle_item WHERE vehicle_item.V_Id = :V_Id');
     $this->db->bind(':V_Id', $V_Id); 
@@ -87,6 +84,7 @@ public function getdata($V_Id){
 
 public function getdate($V_Id){
     $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id AND Status = "success"');
+
     $this->db->bind(':V_Id', $V_Id); 
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
@@ -95,10 +93,12 @@ public function getdate($V_Id){
 
 public function getdatepending($V_Id){
     $this->db->query('SELECT date,Status FROM order_calander WHERE order_calander.V_Id = :V_Id AND Status = "Pending"');
+
     $this->db->bind(':V_Id', $V_Id); 
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
     
 }
+
 
 
 

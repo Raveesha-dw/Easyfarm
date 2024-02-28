@@ -154,6 +154,7 @@ $jsonData1 = json_encode( $pending_dates);
                 <br>
 
 
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
@@ -162,6 +163,7 @@ $jsonData1 = json_encode( $pending_dates);
     <button id="modal-ok-btn">OK</button>
   </div>
 </div>
+
 
                 
                 <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
@@ -234,7 +236,9 @@ $jsonData1 = json_encode( $pending_dates);
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
                                                             echo $data['number_err'];
+
                                                         }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+
 
 
                         </tr>

@@ -117,10 +117,12 @@
                                 <button class="btn2"><a href="http://localhost/Easyfarm/Seller_post/update_Product?id=<?php echo $product->Item_Id; ?>">update</a></button>
                                 <!-- <p>Update  </p>
                                     </a> -->
+
                                 <form id="deleteForm" method="post" action="<?php echo URLROOT ?>/Seller_post/delete_product">
     <input type="hidden" name="Item_Id" value="<?php echo $product->Item_Id; ?>">
     <button type="button" class="buttonn" id="btnv3" onclick="showRemoveConfirmation()">Delete</button>
 </form>
+
                             </div>
 
                         </div>
@@ -168,6 +170,7 @@
 
 <script>
     // Function to show the remove confirmation popup
+
     // function showRemoveConfirmation() {
     //     return confirm('Are you sure you want to delete this item?');
     //     // Handle item removal here, e.g., by making an AJAX request
@@ -247,5 +250,6 @@ function submitDeleteForm() {
 
 
 </style>
+
 
 </div>

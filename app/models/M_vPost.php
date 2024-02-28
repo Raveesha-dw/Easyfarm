@@ -227,5 +227,82 @@ public function get_dataplan3(){
 
 
 
+
+    public function update_vehicle_post_details($data){
+
+    $this->db->query('UPDATE vehicle_item SET V_category=:V_category,
+        V_name=:V_name,
+        V_number=:V_number,
+        Contact_Number =:Contact_Number,
+        Rental_Fee =:Rental_Fee,
+        Charging_Unit =  :Charging_Unit,
+        Address = :Address,
+        Description =:Description,
+        Image = :Image
+    
+    WHERE V_Id = :V_Id');
+
+
+    $this->db->bind(':V_Id',$data['V_Id']);
+    $this->db->bind(':V_category', $data['V_category']); 
+    $this->db->bind(':V_name', $data['V_name']); 
+    $this->db->bind(':V_number', $data['V_number']); 
+    $this->db->bind(':Contact_Number', $data['Contact_Number']); 
+    $this->db->bind(':Rental_Fee', $data['Rental_Fee']); 
+    $this->db->bind(':Charging_Unit', $data['Charging_Unit']); 
+    $this->db->bind(':Address', $data['Address']); 
+    $this->db->bind(':Description', $data['Description']); 
+    $this->db->bind(':Image', $data['Image_name']);
+    $this->db->execute();
+
+    $this->db->query("DELETE FROM vehicle_calendar WHERE V_Id = :V_Id");
+            $this->db->bind(':V_Id',$data['V_Id']);
+            $this->db->execute();
+
+            $calendarString = $data['Calender'];
+        
+            $calendarArray = explode(',', $calendarString);  // Split the string into an array
+
+            $this->db->query('INSERT INTO vehicle_calendar(status, date, V_Id) VALUES (:status, :date, :V_Id)');
+
+            foreach ($calendarArray as $calendar) {
+                $this->db->bind(':status', "unavailable");
+                $this->db->bind(':date', trim($calendar)); // trim() to remove any extra whitespace
+                $this->db->bind(':V_Id', $data['V_Id']);
+                
+                $this->db->execute();
+            }
+            return true;
+
+
+    }
+
+
+
+
+    
+    public function get_booking_dates($V_Id){
+
+        $this->db->query("SELECT * FROM order_calander WHERE V_Id = :V_Id");
+        $this->db->bind(':V_Id', $V_Id);
+
+        $result=$this->db->resultSet();
+        return $result;
+    
+
+
+    }
+
+
+
+    public function get_booking_details($Order_ID){
+    
+    $this->db->query("SELECT * FROM v_orders WHERE Order_ID = :Order_ID");
+    $this->db->bind(':Order_ID',$Order_ID);
+    $result=$this->db->resultSet();
+    return $result;
+    
+}
+
 }
 

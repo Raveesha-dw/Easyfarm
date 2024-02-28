@@ -787,3 +787,24 @@ width: 300px;
   animation-duration: 0.5s; /* Adjust duration as needed */
 }
 
+.wrapper_v_product_details #legends {
+    margin-top: 20px;
+}
+
+.wrapper_v_product_details .legend-item {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.wrapper_v_product_details .legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.wrapper_v_product_details .legend-label {
+    display: inline-block;
+    margin-left: 5px;
+    font-size:small;
+}

@@ -38,7 +38,7 @@ public function get_itemids1($renter_ID){
     $this->db->execute();
     
     $result = $this->db->resultSet();
-    print_r($result);
+
     return $result;
 }
 
@@ -150,12 +150,12 @@ public function getDatesforcancel() {
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
 }
 
+
 public function getDatesforpending() {
     $this->db->query('SELECT date FROM order_calander WHERE 0rder_ID = :Order_ID');
     $this->db->bind(':Order_ID', $_GET['id']); // Assuming $Order_ID is passed as an argument
     return $this->db->resultSet(); // Assuming resultSet() fetches multiple rows
 }
-
 
 
 public function updateiteamdeatils2($dates){
@@ -200,10 +200,7 @@ public function updateiteamdeatils1($dates){
 }
 
 
-// public function updateiteamdeatils1(){
-    
-//     $this->db->query("UPDATE v_orders SET Status ='PENDING' WHERE Order_ID = :Order_ID");
-    
+
 
 //     $this->db->bind(':Order_ID',$_GET['id']);
 //     $this->db->execute();

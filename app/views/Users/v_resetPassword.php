@@ -4,7 +4,7 @@
 <div class="wrapper_Reset_Password">
     <form action="<?php echo URLROOT ?>/Users/resetPassword" method="post" >
             <h1>Reset passward ?</h1>
-
+<p>------------------</p>
             <p class="type">New passward *</p>
             <div class="input-box">
                 <input type="password" placeholder="Enter Password"  name="password" id="password" required >
