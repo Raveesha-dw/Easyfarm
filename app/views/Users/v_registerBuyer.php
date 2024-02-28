@@ -46,6 +46,13 @@
             <span class="invalid"><?php echo $data['address_err']; ?></span>
         </div>
 
+        <p class="type">Province (Of Residence) *</p>
+        <div class="input-box">
+            <input type="text" name="province" placeholder="Enter province " required value="<?php echo $data['province']; ?>">
+            <i class='fa-solid fa-map-location-dot' ></i>
+            <span class="invalid"><?php echo $data['province_err']; ?></span>
+        </div>
+
         <p class="type">Password *</p>
         <div class="input-box">
             <input type="password" name="password" placeholder="Enter Password" required value="<?php echo $data['password']; ?>">

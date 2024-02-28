@@ -48,15 +48,22 @@
                        ?>
               
              <?php if (!empty($orderItems)) : ?>
-                      
-                    <?php foreach ($orderItems as $data) : ?>
+
+            <?php
+             $orderItemsBySeller = [];
+
+             foreach($orderItems as $data){
+                $sellerStore = $data['Store_Name'];
+
+                $orderItemsBySeller[$sellerStore][] = $data;                
+             } ?>
+
+                    <?php foreach($orderItemsBySeller as $sellerStore => $items) :?>
+
+                    <br><h3 style="color: darkblue;">Seller: <?php echo $items[0]['Store_Name']; ?></h3>
+                     
+                    <?php foreach ($items as $data) : ?>
                             <?php if (is_array($data)) : ?>
-
-
-
-
-
-
 
 
                     <div class="wrapperBuyNow_sub">
@@ -81,19 +88,10 @@
 
                                 <div class="row">
                                     <div class="column1" >
-                                        <p>Delivery Method</p>
+                                        <p>Quantity</p>
                                     </div>
                                     <div class="column2" >
-                                        <p><?php echo $data['selectedDeliveryMethod']; ?></p>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="column1" >
-                                        <p>Delivery Fee</p>
-                                    </div>
-                                    <div class="column2" >
-                                        <p><b><small>LKR </small></b> <?php echo number_format($data['deliveryFee'],2); ?></p>
+                                        <p><?php echo $data['quantity']; ?><?php echo $data['Unit_type']?></p>
                                     </div>
                                 </div>
 
@@ -106,14 +104,25 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                 <div class="row">
                                     <div class="column1" >
-                                        <p>Quantity</p>
+                                        <p>Amount for Quantity</p>
                                     </div>
                                     <div class="column2" >
-                                        <p><?php echo $data['quantity']; ?><?php echo $data['Unit_type']?></p>
+                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
                                     </div>
                                 </div>
+
+                                
+                                <div class="row">
+                                    <div class="column1" >
+                                        <p>Delivery Fee</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['deliveryFee'],2); ?></p>
+                                    </div>
+                                </div>
+                                
 
    
 
@@ -125,11 +134,30 @@
                                         <p><b><small>LKR </small></b> <?php echo number_format($data['totalPayment'],2); ?></p>
                                     </div>
                                 </div>
+
+                                <br>
+                                 <div class="row">
+                                    <div class="column1" >
+                                        <p>Delivery Method</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p>
+                                         <?php if($data['selectedDeliveryMethod'] == 'Home'){
+                                            echo 'Home Delivery';
+                                         }else
+                                            {
+                                                echo $data['selectedDeliveryMethod'];
+                                            } ?>
+                                        </p>
+                                    </div>
+                                </div>
                         </section>       
                         </div>
 
                         <?php endif; ?>                        
                         <?php endforeach; ?>
+                    <?php endforeach; ?>
+
                 <?php endif; ?>
 
 
@@ -223,8 +251,11 @@
                         
                         <p class="type">Province </p>
                         <div class="input-box">
+                        <?php if(!isset($_SESSION['buyer_province'])){ ?>
+                            <span style="color: red;">Add your delivery province</span>
+                        <?php } ?>
 
-                        <select name="Province" required value="">
+                        <select id="province_select" name="Province" required value="">
                                    <option disabled selected>Province</option>
                                    <option value="North">North</option>
                                    <option value="Western">Western</option>
@@ -284,9 +315,6 @@
 
 
 
-
-
-
  
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>       
@@ -307,7 +335,26 @@ function closeForm() {
 
 <script src="<?php echo URLROOT ?>\public\js\payment.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script>
+$(document).ready(function() {
+    $('#province_select').on('change', function() {
+        var selectedProvince = $(this).val();
+        $.ajax({
+            url: '<?php echo URLROOT?>/BuyNow/Checkout', 
+            method: 'POST',
+            data: { province: selectedProvince },
+            success: function(response) {
+                $('#delivery_fee').text(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+});
+</script>
 
 
 
