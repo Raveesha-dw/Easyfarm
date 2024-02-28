@@ -62,7 +62,9 @@
         $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
         $data['lastday'] = $new_date;
 
+
         $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
+
        
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);

@@ -1,5 +1,8 @@
 <div class="headebr">
 
+<div class="headebr">
+
+
 <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
         <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
@@ -11,9 +14,11 @@
 
 
  <div class="container">
+
 <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
  <!-- <section class="home"> -->
+
 
 
 
@@ -187,6 +192,17 @@
 </div>
 
 
+
+
+
+
+   <!-- </section> -->
+
+    </div>
+
+
+
+<?php require APPROOT . '/views/inc/footer.php';?>
 
 
 

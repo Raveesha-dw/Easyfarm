@@ -39,29 +39,27 @@
 
                     <div class="productt" id="product-vehicle">
 
-
+                    <a   href="http://localhost/Easyfarm/V_post/view_more_booking_details?V_Id=<?php echo $product->V_Id; ?>">
                         <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $product->Image; ?> " alt="" class="poost1">
-                        <!-- <?php echo $product->Image; ?> -->
 
-
-
-                        <!-- <div class="name"> --><br><br>
-                            <p><?php echo $product->V_category; ?> For Rent - <?php echo $product->V_number; ?></p>
-                            <p>LKR <?php echo $product->Rental_Fee; ?></p>
-                            <!-- <b id="namee1"> <?php echo $product->V_Id; ?> </b>  -->
-                             <!-- <b id="price1"> <?php echo $product->Rental_Fee; ?> </b>  -->
+                            <br><br><br>
+                            <p><?php echo $product->V_category; ?> For Rent - <?php echo $product->V_number; ?></p><br>
+                            <p>LKR <?php echo $product->Rental_Fee; ?> - <?php echo $product->Charging_Unit; ?></p>
+   
 
 
                         <!-- </div> -->
 
 
-
+                    </a>
 
                             <div class="button-n">
                                 <input  type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
 
+                                
+                                <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">
                                 <button class ="btn2">
-                                    <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">update</a></button>
+                                update</button></a>
                   
 
                                  <form onsubmit="return showRemoveConfirmation();" method="post" action="<?php echo URLROOT ?>/V_post/delete_product">
