@@ -869,6 +869,49 @@ class Users extends Controller
         }
     }
 
+    //  public function createUserSession($user){
+    //     // print_r($user);
+    //     $_SESSION['user_ID'] = $user->U_Id;
+    //     $_SESSION['user_email'] = $user->Email;
+    //     $_SESSION['user_type'] = $user->User_type;
+    //     $_SESSION['plan_id'] = $user->plan_id;    
+       
+    //     // change this
+         
+    //     // $_SESSION['user_name'] = $user->Name;
+       
+    //     // print_r($_SESSION['user_type']);
+
+    //     if($_SESSION['user_type'] == 'Buyer'){
+    //         // redirect('Pages/index');
+    //         // $this->view('pages/home');
+    //         header("Location:http://localhost/Easyfarm/Pages/index");
+    //         // change this also&& $_SESSION['plan_id']
+    //     }else if($_SESSION['user_type']  == 'Seller'){
+           
+    //         // print_r($user);
+            
+    //          header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
+
+    //     }else if($_SESSION['user_type'] == 'AgriExpert'){
+    //         // redirect('Pages/Profile');
+
+    //         //$this->view('AgriInstructor/index');
+    //         header("Location:http://localhost/Easyfarm/Blog");
+
+
+    //     }else if($_SESSION['user_type'] == 'VehicleRenter'){
+    //         // redirect('Pages/Profile');
+    //         // $this->view('Pages/index');
+    //         print_r($user);
+    //         header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
+
+    //     }    
+    //     // else  if($_SESSION['user_type'] == 'Admin'){
+
+    //     // }
+    // }
+
     public function assignUserType($user){
         $userType = $user->User_type;
 
@@ -911,7 +954,8 @@ class Users extends Controller
     public function createUserSession($user){
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
-        $_SESSION['user_type'] = $user->User_type;
+        $_SESSION['user_type'] = $user->User_type; 
+        // $_SESSION['plan_id'] = $user->plan_id;  
     }
     public function createUserSession2($data){
 

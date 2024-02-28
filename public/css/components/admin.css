@@ -8,23 +8,23 @@
     padding: 5px 20px !important;
 }
 
-th{
+main th{
     font-weight: bold;
 }
 
-tr{
+main tr{
     cursor: default;
 }
 
-table{
+main table{
     margin-top: 20px;
 }
 
-td img{
+main td img{
     border-radius: 0%;
 }
 
-h2{
+main h2{
     font-size:x-large;
     font-weight: bold;
 }

@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/headerBlog.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/navbar.php'; ?>
 
 <!-- Version 1.0 -->
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -42,23 +43,6 @@
     /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap'); */
 </style>
 
-<header>
-    <div style="overflow: hidden;"><h3>EASYFARM</h3></div>
-    <nav>
-        <ul class="nav-list">
-            <li><a href="">Marketplace</a></li>
-            <li><a href="">Rent A Vehicle</a></li>
-            <li><a href="">Blog</a></li>
-        </ul>
-    </nav>
-    <div class="nav-panel">
-        <div class="login">
-            <a href="">Log in</a>
-            <a class="btn btn-medium" href="">Sign up</a>
-        </div>
-    </div>
-    
-</header>
 
 <section class="cover" id="cover">
     <!-- <div class="btn-dashboard">
@@ -93,7 +77,7 @@
                 </div>
 
                 <div class="blog-text">
-                    <span>by Anjana on <?php echo $post->date_published; ?> / Agriculture</span>
+                    <span>On <?php echo $post->date_published; ?></span>
                     <a href="#" class="blog-title"><?php echo $post->title; ?></a>
                     <p><?php echo $post->content; ?></p>
 
