@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+ 
 
 <!-- <?php print_r($data) ?> -->
 <div class="wrapper">
@@ -54,7 +55,7 @@
 
     
 
-    <section class="product-section container">
+   
 
 
       
@@ -93,6 +94,9 @@
     <!--Product List-->
     <section class="product-section container">
 
+       
+ <section class="product-section container">
+
         <div class = "filters">
 
             <select class="form-control" name="sort" id ="sort">
@@ -102,8 +106,7 @@
             </select>
 
 
-        </div>
-
+ </div>    
 
 
 

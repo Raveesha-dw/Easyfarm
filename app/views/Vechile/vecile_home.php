@@ -4,6 +4,7 @@
 
 <div class="wrapper">
     <!--Menu-->
+    
     <section class="menu">
         <div class="container">
             <h2 class="title">Featured Categories</h2>
@@ -38,7 +39,8 @@
 
         <!--Product List-->
         <section class="product-section container">
-            <div class = "filters">
+ <hr>
+             <div class = "filters">
 
             <select class="form-control" name="sort" id ="sort">
                 <option selected="" disabled="" >Sort by Default </option>
@@ -48,6 +50,9 @@
 
 
         </div>
+
+       
+           
 
     
 

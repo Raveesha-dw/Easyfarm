@@ -241,7 +241,10 @@ footer .copyright{
 /* filters */
 
 .filters {
+    margin-top: 0.5%;
     margin-bottom: 20px;
+    margin-left: 80%;
+    width:180px;
 }
 
 .filters select {
