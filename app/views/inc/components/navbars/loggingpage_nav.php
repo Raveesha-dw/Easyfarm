@@ -88,16 +88,7 @@ if (!empty($_SESSION['user_email'])) {
 } else {
     ?>
 
-                <div class="nav-parts" style="padding: 20px 0">
-                <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Users/login'">Login</button> -->
-                <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
 
-                </div>
-
-                <div class="nav-parts" style="padding: 20px 0">
-                    <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Pages/registerPage'">Register</button> -->
-                    <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a>
-            </div>
             <?php
 }
 ?>

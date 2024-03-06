@@ -1,4 +1,7 @@
-
+<?php
+// This line gets the current URL path, e.g., "/Users/login" or any other page
+$current_page = $_SERVER['REQUEST_URI'];
+?>
 <div class="profileNavBar">
     <div class="header">
             <div class="flex">
@@ -13,7 +16,7 @@
             <div class="nav-parts">
             </div>
 
-                <?php if (($_SESSION['user_type'] == 'Buyer') && (!empty($_SESSION['user_email']))): ?>
+                <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
                     <div class="nav-parts">
                     <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
 
@@ -93,10 +96,20 @@ if (!empty($_SESSION['user_email'])) {
 
                 </div>
 
-                <div class="nav-parts" style="padding: 20px 0">
+                <!-- <div class="nav-parts" style="padding: 20px 0"> -->
                     <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Pages/registerPage'">Register</button> -->
-                    <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a>
-            </div>
+                    <!-- <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a> -->
+            <!-- </div> -->
+
+
+
+
+                            <!-- Conditionally render the Register button if NOT on the login page -->
+                <?php if (strpos($current_page, '/Users/login') === false): ?>
+                    <div class="nav-parts" style="padding: 20px 0">
+                        <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a>
+                    </div>
+                <?php endif;?>
             <?php
 }
 ?>
