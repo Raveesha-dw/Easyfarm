@@ -1,7 +1,6 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
     
 <div class="wrapperCart">
     <!-- <div class="column1">

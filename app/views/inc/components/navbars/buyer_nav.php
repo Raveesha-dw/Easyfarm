@@ -47,6 +47,7 @@ if (!empty($_SESSION['user_email'])) {
                                         <h2><i class="fa-solid fa-user"></i>View Profile</h2>
                                         <span>></span>
                                     </a>
+                                    
                                     <?php if ($_SESSION['user_type'] == 'Seller'): ?>
                                         <a href="<?php echo URLROOT ?>/Pages/dashboard" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
