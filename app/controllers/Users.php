@@ -338,21 +338,11 @@ class Users extends Controller{
                     // $this->userModel->register($data);
                     
                     // print_r($data);
-                    if(1==1){
-                        $r_user = $this->userModel->register($data);
-                        //  $this->userModel->register($data);
-                        // print_r( $data);
-                        // print_r($r_user);
-                        if($r_user){
-                            $this->createUserSession2($data);                    
-                        } 
-                        // header("Location:http://localhost/Easyfarm/Users/choosepkg");
-                        // print_r('Succefully Registered');
+                     if($this->userModel->register($data)){
+                        header("Location:http://localhost/Easyfarm/Users/login");
+                        flash('register_success', 'You have successfully registered with EasyFarm');
                         // $this->login();
-                        // print_r($data);
                         // redirect('Users/v_login');
-                        // flash('register_success', 'You have successfully registered with EasyFarm');
-                        // $this->view('Pages/loginPage');
                     }
                     else{
                         die('Something went wrong');
@@ -637,10 +627,16 @@ class Users extends Controller{
                 if($data1){
                     // print("s");
                     
-                        $this->createUserSession3($data);                    
+                        // $this->login();
+                        header("Location:http://localhost/Easyfarm/Users/login");
+                        // redirect('Users/v_login');
+                        flash('register_success', 'You have successfully registered with EasyFarm');
+                        // $this->view('Pages/loginPage');
                     
-                    // $this->login();
-                    // redirect('Users/v_login');
+                    
+                        // $this->createUserSession3($data);                    
+                    
+                    
                 }   
                 else{
                     die('Something went wrong');
@@ -907,7 +903,7 @@ class Users extends Controller{
         }else if($_SESSION['user_type'] == 'VehicleRenter'){
             // redirect('Pages/Profile');
             // $this->view('Pages/index');
-            print_r($user);
+            // print_r($user);
             header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
         }    
@@ -915,28 +911,34 @@ class Users extends Controller{
 
         // }
     }
-    public function createUserSession2($data){
-       
-        $_SESSION['user_email1'] = $data['email'];
-        
-        
-        // header("Location:http://localhost/Easyfarm/Pages/index");
-         header("Location:http://localhost/Easyfarm/Plan/choosepkg");
-        
-    }
 
-    public function createUserSession3($data){
-        print_r("ss");
-       
-        $_SESSION['user_email1'] = $data['email'];
+// this is for after register to seller activate plan.
 
-        print_r( $_SESSION['user_email1']);
+
+    // public function createUserSession2($data){
+       
+    //     $_SESSION['user_email1'] = $data['email'];
         
         
-        // header("Location:http://localhost/Easyfarm/Pages/index");
-         header("Location:http://localhost/Easyfarm/V_plan/choosepkg");
+    //     // header("Location:http://localhost/Easyfarm/Pages/index");
+    //      header("Location:http://localhost/Easyfarm/Plan/choosepkg");
         
-    }
+    // }
+
+    // renter for packege
+
+    // public function createUserSession3($data){
+       
+       
+    //     $_SESSION['user_email1'] = $data['email'];
+
+    //     // print_r( $_SESSION['user_email1']);
+        
+        
+    //     // header("Location:http://localhost/Easyfarm/Pages/index");
+    //      header("Location:http://localhost/Easyfarm/V_plan/choosepkg");
+        
+    // }
 
 
 
