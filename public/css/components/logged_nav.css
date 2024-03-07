@@ -7,8 +7,14 @@
     position: fixed;
     background-color: #03002E;
     color: var(--dark-green);
+        position: fixed;
+    margin-bottom: 5000px;
+    z-index: 20;
+    top: 0; 
 }
-
+.navvvvvv{
+    margin-bottom: 125px;
+}
 .log .flex{
     display: flex;
     justify-content: space-between;

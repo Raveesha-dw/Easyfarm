@@ -1,37 +1,54 @@
 .section-p1 {
     background-color: white; 
-    padding: 20px;
-    width: 80%; 
-    margin: 0 auto;
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
 }
 
 .section-p1 h2{
     color: var(--dark-grey);
+    
+  
+
 }
 
 .section-p2 {
-    background-color: white; /* Replace with your desired background color */
-    padding: 40px;
-    width: 80%; /* Adjust the width as needed (percentage or px) */
-    margin: 20px auto;
-    font-size: 18px;
+    background-color: white; 
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
 }
 
 .section-p3 {
-    background-color: white; /* Replace with your desired background color */
-    padding: 40px;
-    width: 80%; /* Adjust the width as needed (percentage or px) */
-    margin: 20px auto;
-    font-size: 18px;
+    background-color: white; 
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
 }
 
 .section-p4 {
-    background-color: white; /* Replace with your desired background color */
-    padding: 40px;
-    width: 80%; /* Adjust the width as needed (percentage or px) */
-    margin: 20px auto;
-    font-size: 18px;
+    background-color: white; 
+    margin: 25px auto 0 auto;
+    border:5px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
 }
+
 
 #productDetails .single-pro-image{
     width: 40%;
@@ -107,13 +124,18 @@ input:checked ~ :after{
     font-size: 16px;
     margin-left: 8px;
 }
+#buynow_cart {
+        float: right;
+    width: 40%;
+
+}
 
 #productDetails .single-pro-details input:focus{
     outline: none;
 }
 
 #productDetails .single-pro-details .flex-seller-name{
-    display: flex;
+    display: contents;
     align-items: center;
 }
 
@@ -132,7 +154,7 @@ input:checked ~ :after{
 }
 
 #productDetails .single-pro-details .button-area{
-    display: flex;
+    display: ruby-base;
     justify-content: center;
     align-items: center;
     padding: 40px;
@@ -421,4 +443,95 @@ select{
 }
 
 
+#buynow_cart .deliverymethod{
+    display: flex;
+}
 
+.container_v_productDetails {
+    display: flex;
+    justify-content:safe;
+    margin-top: 100px;
+}
+
+.container_v_productDetails .column_01, .column_02 {
+    width: 75%; /* Adjust the width as needed, ensuring both fit in the container */
+    /* More styling here */
+}
+
+/* Responsive layout adjustment */
+@media (max-width: 768px) {
+    .container_v_productDetails {
+        flex-direction: column;
+    }
+
+    .container_v_productDetails .column_01, .column_02 {
+        width: 100%;
+    }
+}
+
+#buynow_cart .single-pro-details{
+    width: 80%;
+    padding-top: 30px;
+    margin: auto;
+}
+
+#buynow_cart .column_02{
+    display: fixed;
+}
+
+
+
+
+
+
+
+
+#section-p9 #productDetails .single-pro-details .button-area {
+  display: ruby-base;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin-left: -12%;
+}
+
+#section-p9 .single-pro-details{
+    margin: auto;
+}
+
+
+
+
+.section-p9 {
+  background-color: white;
+  border: 5px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #333;
+  border-radius: 10px;
+  padding: 30px 40px;
+  margin: 25px auto 0 auto;
+  margin-top: 25px;
+  margin-right: 10%;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+#section-p9 {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 125px; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+  #section-p9 {
+    top: auto;
+    bottom: 0;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-left: auto;
+    width: 90%; /* Adjust as needed */
+    left: 5%; /* Adjust as needed */
+    right: 5%; /* Adjust as needed */
+  }
+}

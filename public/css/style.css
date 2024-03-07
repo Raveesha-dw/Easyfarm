@@ -98,7 +98,7 @@ hr{
  
 #sub-menu {
     display: none; /* Hide the submenu by default */
-    position: absolute;
+   position: fixed;
     top: 100%; /* Position it below the greeting element */
     right: 0; /* Align to the right */
     background-color: #fff; /* Background color */

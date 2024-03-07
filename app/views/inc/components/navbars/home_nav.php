@@ -2,6 +2,7 @@
 // This line gets the current URL path, e.g., "/Users/login" or any other page
 $current_page = $_SERVER['REQUEST_URI'];
 ?>
+<div class="navvvvvv">
 <div class="profileNavBar">
     <div class="header">
             <div class="flex">
@@ -16,13 +17,7 @@ $current_page = $_SERVER['REQUEST_URI'];
             <div class="nav-parts">
             </div>
 
-                <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
-                    <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
 
-                    </div>
-
-                <?php endif;?>
 
 
                 <div class="nav-parts">
@@ -42,18 +37,18 @@ $current_page = $_SERVER['REQUEST_URI'];
 if (!empty($_SESSION['user_email'])) {
     ?>
                     <div class="welcome-banner" style="padding: 10px">
-                        <h2 class="greeting" onclick="toggleMenu()"><?php echo $_SESSION['user_email']; ?> ></h2>
+                        <h2 class="greeting" onclick="toggleMenu()"><?php echo $_SESSION['user_email']; ?> </h2>
                         <div class="profile-menu-wrap" id="sub-menu">
                             <div class="user-menu">
                                 <div class="user-info">
                                 <a href="<?php echo URLROOT ?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-user"></i>View Profile</h2>
-                                        <span>></span>
+                                        <span></span>
                                     </a>
                                     <?php if ($_SESSION['user_type'] == 'Seller'): ?>
                                         <a href="<?php echo URLROOT ?>/Pages/dashboard" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
-                                            <span>></span>
+                                            <span></span>
                                         </a>
 
                                         <?php elseif ($_SESSION['user_type'] == 'VehicleRenter'): ?>
@@ -115,12 +110,20 @@ if (!empty($_SESSION['user_email'])) {
 ?>
 
 
+
             </div>
+                            <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
+                    <div class="nav-parts">
+                    <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+
+                    </div>
+
+                <?php endif;?>
         </div>
 
 </div>
 
-
+</div></div>
     <script>
             let subMenu = document.getElementById("sub-menu");
             function toggleMenu(){
