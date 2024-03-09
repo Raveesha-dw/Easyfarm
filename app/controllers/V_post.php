@@ -186,65 +186,73 @@ else{
 
     public function update_Product()
     {
-        
+        $current_date = date("Y-m-d");
 
-        $item1 = $this->v_postModel->getiteamdeatils();
+        $can_update = $this->v_postModel->checking_orders($current_date);
 
-        $items = get_object_vars($item1[0]);
+        if (empty($can_update)) {
 
-        $unavailableDates = $this->v_postModel->getunavailableDates($items['V_Id']);
-        // $unavailableDates = get_object_vars($unavailableDates);
+            $item1 = $this->v_postModel->getiteamdeatils();
 
-        $dates = [];
-        foreach ($unavailableDates as $unavailableDate) {
-            $dates[] = $unavailableDate->date;
+            $items = get_object_vars($item1[0]);
+
+            $unavailableDates = $this->v_postModel->getunavailableDates($items['V_Id']);
+            // $unavailableDates = get_object_vars($unavailableDates);
+
+            $dates = [];
+            foreach ($unavailableDates as $unavailableDate) {
+                $dates[] = $unavailableDate->date;
+            }
+
+            // print_r($unavailableDates);
+
+            $data['V_Id'] = $items['V_Id'];
+            $data['V_name'] = $items['V_name'];
+            $data['V_category'] = $items['V_category'];
+            $data['V_number'] = $items['V_number'];
+            $data['Contact_Number'] = $items['Contact_Number'];
+            $data['Rental_Fee'] = $items['Rental_Fee'];
+            $data['Charging_Unit'] = $items['Charging_Unit'];
+            $data['unavailableDates'] = $dates;
+            $data['Address'] = $items['Address'];
+            $data['Description'] = $items['Description'];
+            $data['Image'] = $items['Image'];
+            $data['Owner_Id'] = $items['Owner_Id'];
+            $data['post_create_date'] = $items['post_create_date'];
+
+            $data['V_category_err'] = '';
+            $data['V_name_err'] = '';
+            $data['V_number_err'] = '';
+            $data['Contact_Number_err'] = '';
+            $data['Rental_Fee_err'] = '';
+            $data['Charging_Unit_err'] = '';
+            $data['Address_err'] = '';
+            $data['Description_err'] = '';
+            $data['Image_err'] = '';
+
+            $v_Categories = $this->v_postModel->get_category();
+            $data['v_Categories'] = $v_Categories;
+
+
+            $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
+            $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
+
+
+
+    // Convert plan_activated_date to string explicitly if it's not already a string
+            $timestamp = strtotime($data['plan_activated_date']->Register_date);
+            $month = $data['plan_duration']->duration;
+
+            $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+
+
+
+
+            $this->view('VehicleRenter/v_vehicle_update_post', $data);
         }
-
-        // print_r($unavailableDates);
-
-        $data['V_Id'] = $items['V_Id'];
-        $data['V_name'] = $items['V_name'];
-        $data['V_category'] = $items['V_category'];
-        $data['V_number'] = $items['V_number'];
-        $data['Contact_Number'] = $items['Contact_Number'];
-        $data['Rental_Fee'] = $items['Rental_Fee'];
-        $data['Charging_Unit'] = $items['Charging_Unit'];
-        $data['unavailableDates'] = $dates;
-        $data['Address'] = $items['Address'];
-        $data['Description'] = $items['Description'];
-        $data['Image'] = $items['Image'];
-        $data['Owner_Id'] = $items['Owner_Id'];
-        $data['post_create_date'] = $items['post_create_date'];
-
-        $data['V_category_err'] = '';
-        $data['V_name_err'] = '';
-        $data['V_number_err'] = '';
-        $data['Contact_Number_err'] = '';
-        $data['Rental_Fee_err'] = '';
-        $data['Charging_Unit_err'] = '';
-        $data['Address_err'] = '';
-        $data['Description_err'] = '';
-        $data['Image_err'] = '';
-
-        $v_Categories = $this->v_postModel->get_category();
-        $data['v_Categories'] = $v_Categories;
-
-
-        $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
-        $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
-
-
-
-// Convert plan_activated_date to string explicitly if it's not already a string
-        $timestamp = strtotime($data['plan_activated_date']->Register_date);
-        $month = $data['plan_duration']->duration;
-
-        $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
-
-
-
-
-        $this->view('VehicleRenter/v_vehicle_update_post', $data);
+        else{
+            redirect("V_post/created_post");
+        }
 
     }
 
