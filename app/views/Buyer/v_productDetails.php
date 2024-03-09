@@ -361,7 +361,20 @@ endforeach;
 </div>
 
 
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modalMessage"></p><br><br>
+        <button onclick="closeModal()">Ok</button>
+    </div>
 </div>
+
+
+
+</div>
+
+
+
 
 
 
@@ -441,12 +454,44 @@ endforeach;
 
 
 
+    // function validateForm(formType) {
+    //     var quantity = document.getElementById('quantity').value;
+    //     var delivery = document.querySelector('input[name="delivery"]:checked');
+
+    //     if (!quantity || !delivery) {
+    //         alert('Please enter quantity and select delivery method.');
+    //         return false;
+    //     }
+
+    //     if (formType === 'buyNow') {
+    //         document.getElementById('hiddenQuantity1').value = quantity;
+    //         document.getElementById('hiddenDelivery1').value = delivery.value;
+    //     } else if (formType === 'addToCart') {
+    //         document.getElementById('hiddenQuantity2').value = quantity;
+    //         document.getElementById('hiddenDelivery2').value = delivery.value;
+    //     }
+
+    //     return true;
+    // }
+
+ function openModal(message) {
+        var modal = document.getElementById("myModal");
+        var modalMessage = document.getElementById("modalMessage");
+        modal.style.display = "block";
+        modalMessage.innerText = message;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
     function validateForm(formType) {
         var quantity = document.getElementById('quantity').value;
         var delivery = document.querySelector('input[name="delivery"]:checked');
 
         if (!quantity || !delivery) {
-            alert('Please enter quantity and select delivery method.');
+            openModal('Please enter quantity and select delivery method correctly.');
             return false;
         }
 
@@ -460,6 +505,35 @@ endforeach;
 
         return true;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

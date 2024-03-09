@@ -186,6 +186,7 @@ else{
 
     public function update_Product()
     {
+        
 
         $item1 = $this->v_postModel->getiteamdeatils();
 

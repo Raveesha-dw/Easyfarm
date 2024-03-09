@@ -75,7 +75,7 @@ if (!empty($_SESSION['user_email'])) {
 
                                     <a href="<?php echo URLROOT ?>/Users/logout" class="sub-link-menu">
                                     <h2><i class="fa-solid fa-right-from-bracket"></i>Logout</h2>
-                                    <span>></span>
+                                    <span></span>
                                 </a>
                             </div>
                         </div>
