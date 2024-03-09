@@ -87,6 +87,32 @@ $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
                         </div>
 
                     </div>
+
+
+
+
+
+<div id="myModal" class="modal_booking_details_calendar">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalContent"></div>
+        <button id="okButton">OK</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
 

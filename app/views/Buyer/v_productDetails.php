@@ -361,7 +361,7 @@ endforeach;
 </div>
 
 
-<div id="myModal" class="modal">
+<div id="myModal" class="modalcart_buynow">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <p id="modalMessage"></p><br><br>

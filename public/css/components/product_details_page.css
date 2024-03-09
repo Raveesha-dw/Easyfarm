@@ -413,7 +413,7 @@ select{
 
 
 
-.modal {
+.container_v_productDetails .modal {
     display: none;
     position: fixed;
     z-index: 9999;
@@ -425,7 +425,7 @@ select{
     background-color: rgba(0,0,0,0.5);
 }
 
-.modal-content {
+.container_v_productDetails .modal-content {
     background-color: #fefefe;
     margin: 20% auto;
     padding: 50px;
@@ -435,7 +435,7 @@ select{
     text-align: center;
 }
 
-#modal-ok-btn {
+.container_v_productDetails  #modal-ok-btn {
     margin: 30px;
     padding: 5px 10px;
     cursor: pointer;
@@ -539,7 +539,7 @@ select{
 
 
 /* The Modal */
-.modal {
+.modalcart_buynow {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1000; /* Sit on top */
@@ -552,7 +552,7 @@ select{
 }
 
 /* Modal Content */
-.modal-content {
+.modalcart_buynow .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
@@ -564,7 +564,7 @@ select{
 }
 
 /* Close Button */
-.close {
+.modalcart_buynow.close {
   color: #aaa;
   float: right;
   font-size: 28px;
