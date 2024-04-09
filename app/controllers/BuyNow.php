@@ -170,7 +170,7 @@ class BuyNow extends Controller{
             $data2 = array();
 
             $sellerIDs = array();
-            $buyer_province = isset($_SESSION['buyer_province']) ? $_SESSION['buyer_province'] : ($this->deliveryModel->getProvinceOfBuyer());
+            $buyer_province = $_SESSION['buyer_province'] ? isset($_SESSION['buyer_province'])  : ($this->deliveryModel->getProvinceOfBuyer());
             // echo $buyer_province;
 
             // Loop through each item to update the quantity
@@ -191,7 +191,8 @@ class BuyNow extends Controller{
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
                   
-                    if(isset($_SESSION['buyer_province'])){
+                    // if(isset($_SESSION['buyer_province'])){
+                    if(isset($buyer_province)){
                     
                     $sellerID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
                     if(!(in_array($sellerID, $sellerIDs))){
@@ -242,7 +243,7 @@ class BuyNow extends Controller{
             }
             $data = $data2;
             
-    
+            // print_r($data);
             $this->view('pages/buyNow',$data);
         }
     }   

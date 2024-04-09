@@ -53,6 +53,8 @@
              $orderItemsBySeller = [];
 
              foreach($orderItems as $data){
+                // print_r($data);
+                // Print stmt here
                 $sellerStore = $data['Store_Name'];
 
                 $orderItemsBySeller[$sellerStore][] = $data;                
@@ -64,9 +66,13 @@
                      
                     <?php foreach ($items as $data) : ?>
                             <?php if (is_array($data)) : ?>
+                            <!-- // print_r($data);  
+                      Print stmt here 
+                     new part starts here -->
+                   <?php if($data['selectedDeliveryMethod'] == 'Home'){ ?>
+                    <br><h3><strong>Home Delivery </strong></h3>
 
-
-                    <div class="wrapperBuyNow_sub">
+                        <div class="wrapperBuyNow_sub">
                         <p><b> <?php echo $data['Item_name']; ?></b></p>
                         <section id="productDetails" class="section-p1">
                             <div class="row">
@@ -76,17 +82,8 @@
                                     <!-- </div> -->
                                 </div>
                             </div>
-<!-- 
-                                <div class="row">
-                                    <div class="column1" >
-                                        <p>Name:</p>
-                                    </div>
-                                    <div class="column2" >
-                                        <p><?php echo $data['Item_name']; ?></p>
-                                    </div>
-                                </div> -->
 
-                                <div class="row">
+                        <div class="row">
                                     <div class="column1" >
                                         <p>Quantity</p>
                                     </div>
@@ -112,54 +109,86 @@
                                         <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
                                     </div>
                                 </div>
+                            </section>       
+                        </div>
 
-                                
-                                <div class="row">
-                                    <div class="column1" >
+                        <?php if ($data['deliveryFee'] != 0){
+                            $deli_fee = $data['deliveryFee'];
+                        }
+                         ?>
+
+                        <?php
+                       } ?>
+                       <?php endif; ?>                        
+                        <?php endforeach; ?>
+
+                       <div class="row">
+                                    <!-- <div class="column1" >
                                         <p>Delivery Fee</p>
                                     </div>
                                     <div class="column2" >
-                                        <p><b><small>LKR </small></b> <?php echo number_format($data['deliveryFee'],2); ?></p>
+                                        <p><b><small>LKR </small></b> <?php echo number_format($deli_fee,2); ?></p>
+                                    </div> -->
+                                     <br><h3><b>Delivery Fee</b>&nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deli_fee,2); ?></h3>
+                                </div>
+
+                         
+
+                        <?php foreach ($items as $data) : ?>
+                            <?php if (is_array($data)) : ?>
+                  
+                        <?php if($data['selectedDeliveryMethod'] != 'Home'){ ?>
+                        <br><h3><strong>In-Store Pickup </strong></h3>
+
+                        <div class="wrapperBuyNow_sub">
+                        <p><b> <?php echo $data['Item_name']; ?></b></p>
+                        <section id="productDetails" class="section-p1">
+                            <div class="row">
+                                <!-- <div class="column1" > -->
+                                    <div class="single-pro-image">
+                                        <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+
+                        <div class="row">
+                                    <div class="column1" >
+                                        <p>Quantity</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p><?php echo $data['quantity']; ?><?php echo $data['Unit_type']?></p>
                                     </div>
                                 </div>
-                                
-
-   
 
                                 <div class="row">
                                     <div class="column1" >
-                                        <p>Total Payment for <?php echo $data['Item_name']; ?></p>
+                                        <p>Unit Price</p>
                                     </div>
                                     <div class="column2" >
-                                        <p><b><small>LKR </small></b> <?php echo number_format($data['totalPayment'],2); ?></p>
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['Unit_price'],2)?> / <?php echo $data['Unit_size']?> <?php echo $data['Unit_type']?> </p>
                                     </div>
                                 </div>
 
-                                <br>
                                  <div class="row">
                                     <div class="column1" >
-                                        <p>Delivery Method</p>
+                                        <p>Amount for Quantity</p>
                                     </div>
                                     <div class="column2" >
-                                        <p>
-                                         <?php if($data['selectedDeliveryMethod'] == 'Home'){
-                                            echo 'Home Delivery';
-                                         }else
-                                            {
-                                                echo $data['selectedDeliveryMethod'];
-                                            } ?>
-                                        </p>
+                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
                                     </div>
                                 </div>
-                        </section>       
+                            </section>       
                         </div>
 
+                        <?php } ?>
+                        
                         <?php endif; ?>                        
                         <?php endforeach; ?>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
 
-                <?php endif; ?>
+                    <?php endif; ?>
 
+                 <!-- from here -->
 
 
                 </div>
@@ -201,9 +230,11 @@
 
                            <input type="hidden" id="hiddenuId" value="<?php echo $data['uId']; ?>">
                            <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
+                           <input type="hidden" id="hiddenDeliveryFee" value="<?php echo $orderDeliveryTotal; ?>">
                            
                                 <?php if (!empty($orderItems)) : ?>                     
-                                    <?php foreach ($orderItems as $data) : ?>
+                                    <?php foreach ($orderItems as $data) : 
+                                     ?>
                                         <?php if (is_array($data)) : ?>
 
                            
@@ -217,7 +248,25 @@
                                     <?php endif; ?>                        
                                     <?php endforeach; ?>
                                 <?php endif; ?>
-    
+
+                            <!-- Array with info on items -->
+                            <?php
+                                if (!empty($orderItems)) : 
+                            $orderItemsArray = []; // Initialize empty array to hold order items
+
+                            foreach ($orderItems as $data) : 
+                                // Assuming $data is an associative array containing order item details
+                                if (is_array($data)) : 
+                                    // Pushing order item details into the two-dimensional array
+                                    $orderItemsArray[] = [
+                                        'totalPayment' => number_format($data['totalPayment'], 2),
+                                        'Item_Id' => $data['Item_Id'],
+                                        'quantity' => $data['quantity']
+                                    ];
+                                endif;
+                            endforeach;
+                        endif;
+    ?>
 
                       
          

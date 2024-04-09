@@ -44,10 +44,18 @@ class M_delivery{
         $province = $this->db->single();
         // print_r($province);
 
-        $buyerProv = $_SESSION['buyer_province'];
+        // $buyerProv = $_SESSION['buyer_province'];
+        $buyer = $_SESSION['user_ID'];
+        // print_r($buyer);
+        
+        $this->db->query('SELECT Province FROM reg_buyer WHERE U_Id =:buyer');
+        $this->db->bind(':buyer', $buyer);  
+        $buyerProv = $this->db->single();
+
+        // print_r($buyerProv);
         $this->db->query('SELECT base_fee, weight_fee FROM deliveryfees F INNER JOIN deliveryzones Z ON Z.zone_ID=F.zone_ID WHERE Z.from_province=:province AND Z.to_province=:buyerProv');
         $this->db->bind(':province', $province->Store_province);
-        $this->db->bind(':buyerProv', $buyerProv);
+        $this->db->bind(':buyerProv', $buyerProv->Province);
         $result = $this->db->single();
         // print_r($result);
         $base_fee = $result->base_fee;
