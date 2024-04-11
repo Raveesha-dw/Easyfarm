@@ -213,9 +213,9 @@ public  function create_post(){
             
             
            
-            if (empty($data['Expiry_date'])){
-                $data['Expiry_date_err'] = 'Please enter the date';
-            }
+            // if (empty($data['Expiry_date'])){
+            //     $data['Expiry_date_err'] = 'Please enter the date';
+            // }
             
             
             if (empty($data['DeliveryMethod'])){
@@ -394,7 +394,7 @@ foreach ($data as $obj) {
         // print_r("f");
         // }
         $data = array_merge($data, $dataArray);
-        print_r($data);
+        // print_r($data);
 
         $this->view('seller/v_update_post',$data);
         // print_r("f");

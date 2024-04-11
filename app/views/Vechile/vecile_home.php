@@ -39,7 +39,7 @@
 
         <!--Product List-->
         <section class="product-section container">
- <hr>
+
              <div class = "filters">
 
             <select class="form-control" name="sort" id ="sort">
@@ -50,8 +50,6 @@
 
 
         </div>
-
-       
            
 
     

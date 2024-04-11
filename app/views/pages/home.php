@@ -45,13 +45,13 @@
         </div>
     </section>
 
-    <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+    <!-- <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
         <div class="search-container">
             <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product...">
             <button type="submit">Search</button>
-            <!-- <a href="<?php echo URLROOT ?>/product/productSearch">Search </a>  -->
+            
         </div>
-    </form>
+    </form> -->
 
     
 
