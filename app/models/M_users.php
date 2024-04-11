@@ -119,11 +119,9 @@ class M_users{
 
             $this->db->execute();
             return true;
-        }else{
-            return false;
         }
         
-         if($data['user_type'] == 'VehicleRenter'){
+        if($data['user_type'] == 'VehicleRenter'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -132,47 +130,70 @@ class M_users{
 
             $this->db->query('SELECT * FROM user WHERE Email= :email');
             $this->db->bind(':email',$data['email']);
-
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_vehicleOwner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
+            $this->db->query('INSERT INTO reg_vehicleowner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
             $this->db->bind('address', $data['address']);
             $this->db->bind('city', $data['city']);
             $this->db->execute();
-         }
+            return true;
+        }
 
-         else{
+        else{
             return false;
          }
 
     }
 
-    public function login($data){
-        $this->db->query('SELECT * FROM user WHERE Email= :email');
+    public function authenticateUser($data){
+        $this->db->query('SELECT * FROM user WHERE Email = :email');
         $this->db->bind(':email', $data['email']);
-        $row=$this->db->single();
-        
-        if($row){
-            $hashed_password = $row->Password;
+        $userData = $this->db->single();
 
-            if(password_verify($data['password'], $hashed_password)){
-                return $row;
+        if(password_verify($data['password'], $userData->Password)){
+                return $userData;
             }else{
                 return false;
-            }
-        }
-        
+            }   
+    }
+
+    public function getBuyerInfo($id){
+        $this->db->query("SELECT * FROM reg_buyer WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $buyerData = $this->db->single();
+        return $buyerData;
+    }
+
+    public function getSellerInfo($id){
+        $this->db->query("SELECT * FROM reg_seller WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $sellerData = $this->db->single();
+        return $sellerData;
+    }
+
+    public function getVehicleOwnerInfo($id){
+        $this->db->query("SELECT * FROM reg_vehicleowner WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $vehicleOwnerData = $this->db->single();
+        return $vehicleOwnerData;
+    }
+
+    public function getAgriInstructorInfo($id){
+        $this->db->query("SELECT * FROM reg_agriinstructor WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $agriInstructorData = $this->db->single();
+        return $agriInstructorData;
     }
 
 
 
 
     public function PasswordReset($data){
-        $this->db->query('UPDATE user SET Password= :password WHERE Email= :email');
+        $this->db->query('UPDATE user SET Password = :password WHERE Email = :email');
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':email', $data['email']);
         $this->db->execute();
