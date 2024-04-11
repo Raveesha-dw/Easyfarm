@@ -313,7 +313,7 @@ class Users extends Controller
 
                     if ($this->userModel->register($data)) {
                         flash('register_success', 'You have successfully registered with EasyFarm');
-                         redirect('Users/v_login');
+                         redirect('Users/login');
                     } else {
                         die('Something went wrong');
                     }
