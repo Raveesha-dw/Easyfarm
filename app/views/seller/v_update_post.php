@@ -1,3 +1,4 @@
+<!-- <?php print_r($data) ?> -->
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -10,6 +11,7 @@
         <?php require APPROOT . '/views/seller/a.php' ?>
 
         <section class="home">
+
 
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -219,12 +221,26 @@
                         <b>Delivery Method</b>
                         <br>
                         <br>
+                        <?php
+                        // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
 
-                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver" <?php echo ($data['DeliveryMethod'] == 'Home Deliver') ? 'checked' : ''; ?>>
+                        // Split the value into an array based on comma separator
+                        $deliveryMethods = explode(', ', $data['DeliveryMethod']);
+
+                        // Check each checkbox individually
+                        $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
+                        $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
+
+                        // Output checkboxes
+                        ?>
+
+                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
                         <label for="Home Delivery"><b>Home Delivery</b></label><br>
 
-                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo ($data['DeliveryMethod'] == 'Insto Pickup') ? 'checked' : ''; ?>>
+                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
                         <label for="Insto Pickup"><b>Insto Pickup</b></label><br>
+
+
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['DeliveryMethod_err'];
                                                 } ?></span>
