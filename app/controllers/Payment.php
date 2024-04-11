@@ -216,6 +216,7 @@ $array1[$i] = $array;
             print_r( "ijinhuguygytv");
 
             $this->paymentModel->saveOrder($data);
+            print_r( "ijinhuguygytv");
             echo("1");
 
         }

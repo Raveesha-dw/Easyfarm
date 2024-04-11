@@ -35,9 +35,20 @@ class M_payment{
     }
 
     public function saveOrder($data){
+print_r( $data);
+print_r( $data['orderId']);
+        // $this->db->query('INSERT INTO orders(Order_ID ,Item_ID, User_ID,placed_Date, quantity,seller_ID) VALUES (:orderId ,:itemId, :uId, :placed_Date, :quantity , :seller_ID)'); 
+        // $this->db->bind(':orderId', $data['orderId']);
+        // $this->db->bind(':itemId', $data['Item_Id']);
+        // $this->db->bind(':uId', $data['uId']);
+        // $this->db->bind(':placed_Date', $data['placed_Date']);
+        // $this->db->bind(':quantity', $data['quantity']);
+        // $this->db->bind(':seller_ID', $data['seller_ID']);
+        // $this->db->execute();
+        // return true;
 
         $this->db->query('INSERT INTO orders(Item_ID, User_ID,placed_Date, quantity,seller_ID) VALUES (:itemId, :uId, :placed_Date, :quantity , :seller_ID)'); 
-        $this->db->bind(':orderId', $data['orderId']);
+        // $this->db->bind(':orderId', $data['orderId']);
         $this->db->bind(':itemId', $data['Item_Id']);
         $this->db->bind(':uId', $data['uId']);
         $this->db->bind(':placed_Date', $data['placed_Date']);
@@ -45,7 +56,6 @@ class M_payment{
         $this->db->bind(':seller_ID', $data['seller_ID']);
         $this->db->execute();
         return true;
-
 
     }
 
