@@ -46,16 +46,6 @@
                 <p><?php echo $data['Email']; ?></p>
             </div>
         </div>
-               
-        <div class="row">
-            <div class="column1" >
-                <p>Password  </p>
-            </div>
-            <div class="column2" >
-                <?php  $data['password'] = password_hash($data['Password'], PASSWORD_DEFAULT);?>
-                <p>..........</p>
-            </div>
-        </div>
 
 
         <?php if ($data['User_type'] == "Buyer") : ?>
