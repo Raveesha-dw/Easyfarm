@@ -131,15 +131,15 @@ require ROOT . '\vendor\autoload.php';
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'EasyFarm: Verification Needed for New Agri Instructor Registration';
 
-            $mail->Body = 'This individual wishes to register as an <b>Agricultural Instructor</b> on <b>EasyFarm</b>. 
-                            Kindly review the provided information and documents to verify if the applicant is currently employed at your institute. <br><br>
+            $mail->Body = 'This individual wishes to register as an <b>Agriculture Instructor</b> on our platform <b>EasyFarm</b>. 
+                            Kindly review the information and documents we have sent to you and <b>VERIFY</b> if the applicant is currently employed at your institute. <br><br>
                             Full Name: <b>' . $data['fullname'] . '</b><br>
                             Address: <b>' . $data['address'] . '</b><br>
                             City: <b>' . $data['city'] . '</b><br>
                             Workplace: <b>' . $data['workplace'] . '</b><br>
                             Contact No: <b>' . $data['contactno'] . '</b><br>
                             Email: <b>' . $data['email'] . '</b>
-                            <br><br>EasyFarm';
+                            <br><br>Thank you. <br><br>EasyFarm';
 
             $mail->AddAttachment($imgData['nicPath'], "NIC_" . $data['contactno'] . "." . $imgData['nicExtension']);
             $mail->AddAttachment($imgData['pidPath'], "PID_" . $data['contactno'] . "." . $imgData['pidExtension']);
