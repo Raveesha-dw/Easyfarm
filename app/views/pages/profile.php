@@ -187,15 +187,6 @@
 
             <div class="row">
                 <div class="column1" >
-                    <p>Occupation</p>
-                </div>
-                <div class="column2" >
-                    <p><?php echo $data['Occupation']; ?></p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="column1" >
                     <p>Workplace </p>
                 </div>
                 <div class="column2" >
@@ -203,7 +194,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="column1" >
                     <p> NIC front/back images</p>
                 </div>
@@ -219,7 +210,7 @@
                 <div class="column2" >
                     <p><?php echo $data['Prof_id']; ?></p>
                 </div>
-            </div>
+            </div> -->
 
 
             <?php elseif ($data['User_type'] == "VehicleRenter") : ?>
