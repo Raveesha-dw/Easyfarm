@@ -28,7 +28,7 @@
 
     <div class="wrapperProfile_sub">
 
-        <p><b>Account Details</b></p><br>
+        <h2><b>Account Details</b></h2><br>
 
         <div class="row">
             <div class="column1" >
@@ -183,6 +183,16 @@
                 </div>
                 <div class="column2" >
                     <p><?php echo $data['Workplace']; ?></p>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="column1" >
+                    <p>Account Status </p>
+                </div>
+                <div class="column2" >
+                    <p><?php echo $_SESSION['accStatus']; ?></p>
                 </div>
             </div>
 
