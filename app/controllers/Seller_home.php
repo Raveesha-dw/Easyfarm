@@ -12,7 +12,7 @@ class Seller_home extends Controller{
         
     }
 
-    public function get_product_details1(){
+    public function index(){
 
         // print_r($_SESSION['user_email']);
         // $data=Array();

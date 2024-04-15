@@ -8,23 +8,23 @@
     padding: 5px 20px !important;
 }
 
-.body-container th{
+main th{
     font-weight: bold;
 }
 
-.body-container tr{
+main tr{
     cursor: default;
 }
 
-.body-container table{
+main table{
     margin-top: 20px;
 }
 
-.body-containertd img{
+main td img{
     border-radius: 0%;
 }
 
-.body-container h2{
+main h2{
     font-size:x-large;
     font-weight: bold;
 }

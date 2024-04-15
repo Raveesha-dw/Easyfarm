@@ -9,5 +9,6 @@
     "terminal.integrated.altClickMovesCursor": false,
     "files.watcherExclude": {
         "**/target": true
-    }
+    },
+    "workbench.editor.revealIfOpen": true
 }

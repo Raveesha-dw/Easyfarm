@@ -70,6 +70,18 @@ console.log(dataToSend);
                 "currency": obj["currency"],
                 "hash": obj["hash"],
                 "first_name": obj["first_name"],
+
+
+
+
+
+
+
+
+
+
+
+                
                 "last_name": obj["last_name"],
                 "email": obj["email"],
                 "phone": obj["phone"],
@@ -86,7 +98,9 @@ console.log(dataToSend);
             var numOfItems = itemIds.length;
 
             for (let i = 0; i < numOfItems; i++) {
+                console.log("qqqqqq");
                 payhere.onCompleted = function onCompleted(orderId) {
+                    console.log("eeeeeee");
                 saveOrder(itemIds[i],hiddenuId,quantities[i],orderId);
                 console.log("Payment completed. OrderID:" + orderId);
                 

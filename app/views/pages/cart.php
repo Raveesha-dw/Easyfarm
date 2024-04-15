@@ -1,6 +1,6 @@
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
     
 <div class="wrapperCart">
     <!-- <div class="column1">
@@ -32,6 +32,7 @@
 
                 <tbody>
                     <?php
+                    // print_r($data);
                         $cartItems =$data;
                         
                         $cartTotal = 0.00;
@@ -57,7 +58,7 @@
                                     <td>
                                         <div class="cart-info">
                                             
-                                            <img src="<?php echo URLROOT?>/public/images/products/Coconut-APM-D-1.png" alt="<?php echo $item['itemName']; ?>">
+                                            <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $item['Image']?> " alt="<?php echo $item['itemName']; ?>">
                                             <div>
                                                 
                                                 <h4><?php echo $item['itemName']; ?></h4>
@@ -69,7 +70,7 @@
                                     </td>
                                     <td>
                                         <!-- <input type="number" min=1 class="quantity-input" name="quantitiesTo[]" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>"  value="<?php echo $item['quantity']; ?>">   -->
-                                        <input type="number" class="quantity-input" name="quantitiesTo[]" min="<?php echo $item['Unit_size']?>" step="<?php echo $item['Unit_size']?>" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>" data-item-usize="<?php echo $item['Unit_size']; ?>" value="<?php echo $item['quantity']; ?>">
+                                        <input type="number" class="quantity-input" name="quantitiesTo[]" min="<?php echo $item['Unit_size']?>" step="<?php echo $item['Unit_size']?>" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>" data-item-usize="<?php echo $item['Unit_size']; ?>" value="<?php echo $item['quantity']; ?>"> <?php echo $item['Unit_type']; ?>
     
                                         <input type="hidden" name="itemIds[]" value="<?php echo $item['itemId']; ?>"> 
                                         <input type="hidden" name="selectedDeliveryMethods[]" value="<?php echo $item['selectedDeliveryMethod']; ?>">                                   
@@ -152,6 +153,9 @@
                 subtotalElements = document.querySelectorAll('.subtotal .subtotal-value');
                 recalculateTotal();
             }
+        } else {
+            // If cancel is clicked, prevent the default action (navigating to the delete URL)
+            event.preventDefault();
         }
     }
 

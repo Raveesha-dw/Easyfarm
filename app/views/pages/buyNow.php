@@ -65,7 +65,7 @@
                             <div class="row">
                                 <!-- <div class="column1" > -->
                                     <div class="single-pro-image">
-                                        <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+                                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $data['Image']?> " width="100%" id="MainImg" alt=""> 
                                     <!-- </div> -->
                                 </div>
                             </div>

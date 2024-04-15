@@ -304,5 +304,40 @@ public function get_dataplan3(){
     
 }
 
+public function get_planActivated_duration($Owner_Id){
+    $this->db->query("SELECT p.duration FROM reg_vehicleowner r JOIN v_plandetails p ON r.plan_id = p.plan_id WHERE r.U_Id= :Owner_Id");
+    $this->db->bind(':Owner_Id', $Owner_Id);
+    
+        $this->db->execute();
+        $result=$this->db->single();
+    // print_r($row);
+    return $result;
+
+}
+
+public function get_planActivated_date($Owner_Id){
+    $this->db->query("SELECT Register_date FROM reg_vehicleowner WHERE U_Id= :Owner_Id");
+    $this->db->bind(':Owner_Id', $Owner_Id);
+    
+        $this->db->execute();
+        $result=$this->db->single();
+    // print_r($row);
+    return $result;
+
+}
+
+
+public function checking_orders($current_date){
+    
+    $this->db->query("SELECT * FROM order_calander WHERE V_Id = :V_Id AND date > :current_date");
+    $this->db->bind(':V_Id',$_GET['V_Id']);
+    $this->db->bind(':current_date',$current_date);
+    
+ 
+    $result=$this->db->resultSet();
+    return $result;
+    
+}
+
 }
 

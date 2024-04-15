@@ -149,6 +149,7 @@ class M_users{
 
     }
 
+
     public function authenticateUser($data){
         $this->db->query('SELECT * FROM user WHERE Email = :email');
         $this->db->bind(':email', $data['email']);

@@ -1,12 +1,52 @@
-.profileNavBar .header{
+/* .profileNavBar .header{
     background-color: white;
     color: var(--dark-green);
     height: 100px;
     padding: 20px 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
-   
+    position: fixed;
+    z-index: 20;
     
+} */
+
+
+.header {
+    background-color: white;
+    color: var(--dark-green);
+    height: 100px; /* Set the height to the desired value */
+    width: 100%; /* Ensure the header spans the entire width */
+    padding: 20px 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+    /* position: fixed; */
+    top: 0;
+    z-index: 20;
+    margin-bottom: -20px; /* Adjust this value to create space below the header */
 }
+
+/* Add bottom margin using ::after pseudo-element */
+.header::after {
+    content: '';
+    /* display: block; */
+    height: 100px; /* Adjust this value to set the bottom margin height */
+}
+
+
+
+.profileNavBar .header {
+    background-color: white;
+    color: var(--dark-green);
+    height: 100px; /* Set the height to the desired value */
+    width: 100%; /* Ensure the header spans the entire width */
+    padding: 20px 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+  
+    margin-bottom: 1000px;
+    z-index: 20;
+      position: fixed;
+    /* top: 0;  */
+    /* Fix the header to the top of the viewport */
+}
+
 
 .profileNavBar .header .flex{
     display: flex;
@@ -100,6 +140,10 @@
 .sub-menu-link:hover p{
     font-weight: 600;
 } */
+.fas fa-shopping-cart cart{
+    position: relative;
+
+}
 
 .fas fa-bell{
     width: 50px;
@@ -176,3 +220,4 @@
     color: #777; /* Adjust text color as needed */
     font-size: 12px; /* Adjust font size as needed */
 }
+

@@ -1,19 +1,9 @@
-<!-- <div class="header">
-        <div class="flex"> -->
-<!-- <h1><a href="<?php echo URLROOT ?>/Pages/index"> EasyFarm </a></h1> -->
-<!-- <h1>EasyFarm</h1>
-            <div class="navbar">
-                <ul>
-                    <li><a class="active" href="<?php echo URLROOT ?>/Pages/index">Marketplace</a></li>
-                    <li><a href="#">Repository</a></li>
-                    <li><a href="#">Forum</a></li>
-                    <li><a href="#">Vehicle Renting</a></li>
-                    <li><a href="<?php echo URLROOT ?>/Users/login" id="home">Login</a></li>
-                    <li><a href="<?php echo URLROOT ?>/Pages/registerPage" id="home">Register</a></li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
+<?php
+// This line gets the current URL path, e.g., "/Users/login" or any other page
+$current_page = $_SERVER['REQUEST_URI'];
+?>
+<div class="navvvvvv">
+
 <div class="profileNavBar">
     <div class="header">
         <div class="flex">
@@ -37,6 +27,9 @@
             </div>
             <div class="nav-parts">
             </div>
+
+
+
 
             <div class="nav-parts">
 
@@ -145,39 +138,64 @@
 
 
 
-                                <?php else : ?>
-                                    <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
-                                        <h2>Dashboard</h2>
-                                        <span>></span>
-                                    </a>
+<?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
+                                        <!-- <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
+                                            <h2>Shopping Cart</h2>
+                                        </a> -->
+                                        <a href="<?php echo URLROOT ?>/Orders/placedOrders" class="sub-link-menu">
+                                            <h2>My orders</h2>
+                                        </a>
+                                        <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
+                                            <h2>My Reviews</h2>
+                                        </a>
+                                    <?php endif;?>
 
-                                <?php endif; ?>
-
-                                <a href="<?php echo URLROOT ?>/Users/logout" class="sub-link-menu">
+                                    <a href="<?php echo URLROOT ?>/Users/logout" class="sub-link-menu">
                                     <h2><i class="fa-solid fa-right-from-bracket"></i>Logout</h2>
-                                    <span>></span>
+                                    <span></span>
                                 </a>
                             </div>
                         </div>
 
+
                     </div>
                 <?php
-            } else {
-                ?>
+            } 
+            else {
+    ?>
 
+                <div class="nav-parts" style="padding: 20px 0">
+                <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Users/login'">Login</button> -->
+                <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
+
+                </div>
+
+                <!-- <div class="nav-parts" style="padding: 20px 0"> -->
+                    <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Pages/registerPage'">Register</button> -->
+                    <!-- <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a> -->
+            <!-- </div> -->
+
+
+
+
+                            <!-- Conditionally render the Register button if NOT on the login page -->
+                <?php if (strpos($current_page, '/Users/login') === false): ?>
                     <div class="nav-parts" style="padding: 20px 0">
-                        <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Users/login'">Login</button> -->
-                        <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
-
-                    </div>
-
-                    <div class="nav-parts" style="padding: 20px 0">
-                        <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Pages/registerPage'">Register</button> -->
                         <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a>
                     </div>
-                <?php
-            }
-                ?>
+                <?php endif;?>
+            <?php
+}
+?>
+                </div>
+                            <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
+                    <div class="nav-parts">
+                    <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+
+                    </div>
+
+                <?php endif;?>
+        </div>
 
 
                 </div>

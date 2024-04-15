@@ -566,4 +566,12 @@ endforeach;
 
 <div class="footer">
 <?php require APPROOT . '/views/inc/footer.php';?>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+
+
+
+
+>>>>>>> b141d2db5210502cc39f62990c5bb302ee86ee6a
