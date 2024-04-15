@@ -190,7 +190,7 @@ $array1[$i] = $array;
                 'uId' => $_POST["uId"], 
                 'placed_Date' => $date,
                 'selectedDeliveryMethod' => '',
-                'orderId' => $_POST["orderId"], 
+                'Payment_Id' => $_POST["orderId"], 
                 
                 'totalPayment' => 0,
                 
