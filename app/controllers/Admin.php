@@ -6,11 +6,15 @@ class Admin extends Controller{
     private $adminModel;
 
     public function __construct(){
-        $this->adminModel = $this->model('M_admin');
+         if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'Admin'){
+            $this->adminModel = $this->model('M_admin');
+         }else{
+            redirect("index");
+         }    
     }
 
     public function index(){
-        header('Location: ' . URLROOT . '/Admin/agriInstructor');
+        redirect("Admin/agriInstructor");
     }
 
     public function blog(){

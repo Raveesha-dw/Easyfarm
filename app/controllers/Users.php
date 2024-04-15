@@ -703,8 +703,7 @@ class Users extends Controller
             
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
-        }
-        else if($_SESSION['user_type'] == 'VehicleRenter'){
+        }else if($_SESSION['user_type'] == 'VehicleRenter'){
 
             $vehicleOwnerData = $this->userModel->getVehicleOwnerInfo($_SESSION['user_ID']);
 
@@ -721,7 +720,8 @@ class Users extends Controller
             $_SESSION['accStatus'] = $agriInstructorData->AccStatus;
             
             redirect("AgriInstructor");
-            // header("Location:http://localhost/Easyfarm/Blog");
+        }else if($_SESSION['user_type']  == 'Admin'){
+            redirect("Admin");
         }
     }
 
