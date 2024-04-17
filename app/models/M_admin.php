@@ -79,4 +79,20 @@ class M_admin{
         $this->db->execute();
         return true;
     }
+
+    public function getDeliveryPaymentData($status){
+        $this->db->query("SELECT Payment_Id, seller_ID, delivery_charge, DeliveryPaymentStatus FROM order_charging_details WHERE DeliveryPaymentStatus = :status ORDER BY seller_ID");
+        $this->db->bind(':status', $status);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+    public function setDeliveryPayment($paymentID, $sellerID, $status){
+        $this->db->query("UPDATE order_charging_details SET DeliveryPaymentStatus = :status WHERE Payment_Id = :paymentID AND seller_ID = :sellerID");
+        $this->db->bind(':paymentID', $paymentID);
+        $this->db->bind(':sellerID', $sellerID);
+        $this->db->bind(':status', $status);
+        $this->db->execute();
+        return true;
+    }
 }

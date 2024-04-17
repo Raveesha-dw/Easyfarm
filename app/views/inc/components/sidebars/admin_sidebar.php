@@ -85,6 +85,15 @@ function isActive($page)
             <span class="link hide">Sellers</span>
           </a>
         </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/delivery';?>" data-active="4">
+            <div class="icon">
+              <i class='bx bx-package'></i>
+              <i class='bx bxs-package'></i>
+            </div>
+            <span class="link hide">Delivery Agent</span>
+          </a>
+        </li>
       </ul>
 
       <h4 class="hide">Shortcuts</h4>

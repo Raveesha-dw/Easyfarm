@@ -166,7 +166,8 @@ class Admin extends Controller{
 
     public function seller(){
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['status'])){
-            $data['sellerPayments'] = $this->adminModel->getSellerPaymentData($_GET['status']);
+            $status = trim($_GET['status']);
+            $data['sellerPayments'] = $this->adminModel->getSellerPaymentData($status);
             $this->view('Admin/v_adminSellerPayments', $data);
         }
 
@@ -183,6 +184,29 @@ class Admin extends Controller{
         
         else{
             redirect('Admin/seller?status=Unsettled');
+        }
+    }
+
+    public function delivery(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['status'])){
+            $status = trim($_GET['status']);
+            $data['deliveryPayments'] = $this->adminModel->getDeliveryPaymentData($status);
+            $this->view('Admin/v_adminDeliveryPayments', $data);
+        }
+
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
+            $paymentID = trim($_POST['paymentID']);
+            $sellerID = trim($_POST['sellerID']);
+            $status = trim($_POST['status']);
+
+            $this->adminModel->setDeliveryPayment($paymentID, $sellerID, $status);
+
+            $status = ($status == 'Unsettled') ? ('Settled') : ('Unsettled');
+            redirect('Admin/delivery?status=' .  $status);
+        }
+        
+        else{
+            redirect('Admin/delivery?status=Unsettled');
         }
     }
 }
