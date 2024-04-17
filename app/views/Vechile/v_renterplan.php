@@ -311,7 +311,7 @@ if (planId == 3) {
                             <button class="ok-button" onclick="paymentGateway(${a})">OK</button>
                         </div>
                      `;
-            } else if (formattedCurrentDate <= ex_date) {
+            } else if (1) {
                 var popupContent = ` <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>

@@ -143,12 +143,12 @@
 
                 <script>
                     function showPopup(a) {
-                        console.log(a)
+                        // console.log(a)
                         var pkg = <?php echo json_encode($data); ?>;
                         // var id = pkg[a].id
-                        // console.log("jj")
+                        console.log("jj")
                         // console.log(${pkg[a]})
-                        console.log(a)
+                        // console.log(a)
 
                         var ex_date = <?php echo json_encode($data['Date']); ?>;
                         var currentDate = new Date();
@@ -180,7 +180,7 @@
                             <button class="ok-button" onclick="paymentGateway(${a})">OK</button>
                         </div>
                 `;
-                        } else if (formattedCurrentDate <= ex_date) {
+                        } else if (1) {
                             var popupContent = ` <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>

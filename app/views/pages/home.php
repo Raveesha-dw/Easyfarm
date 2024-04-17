@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+ 
 
 <!-- <?php print_r($data) ?> -->
 <div class="wrapper">
@@ -44,17 +45,17 @@
         </div>
     </section>
 
-    <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+    <!-- <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
         <div class="search-container">
             <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product...">
             <button type="submit">Search</button>
-            <!-- <a href="<?php echo URLROOT ?>/product/productSearch">Search </a>  -->
+            
         </div>
-    </form>
+    </form> -->
 
     
 
-    <section class="product-section container">
+   
 
 
       
@@ -96,6 +97,9 @@
     <!--Product List-->
     <section class="product-section container">
 
+       
+ <section class="product-section container">
+
         <div class = "filters">
 
             <select class="form-control" name="sort" id ="sort">
@@ -105,8 +109,7 @@
             </select>
 
 
-        </div>
-
+ </div>    
 
 
 
@@ -137,7 +140,7 @@
                                 </div>
                                 <h4><?php echo $product->Unit_price ?> LKR</h4>
                             </div>
-                            <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+                            <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
                         </a>
                     </div>
 

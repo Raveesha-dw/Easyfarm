@@ -23,11 +23,11 @@
                         <p><b> <?php echo $vehicle_data['V_category']; ?> for Renting : <?php echo $vehicle_data['V_number']; ?></b></p><br>
                         <p> Posted on <?php echo $vehicle_data['post_create_date']; ?>, <?php echo $vehicle_data['Address']; ?></p>
 
-                        <section id="vehicleDetails" class="section-p1">
+                        <!-- <section id="vehicleDetails" class="section-p1"> -->
                             <div class="single-pro-image">
                                 <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $vehicle_data['Image']; ?> " width="100%" id="MainImg" alt="">
                             </div>
-                        </section>
+                        <!-- </section> -->
                     </div>
 
 
@@ -87,6 +87,32 @@ $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
                         </div>
 
                     </div>
+
+
+
+
+
+<div id="myModal" class="modal_booking_details_calendar">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalContent"></div>
+        <button id="okButton">OK</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
 

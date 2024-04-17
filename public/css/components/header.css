@@ -1,11 +1,52 @@
-.profileNavBar .header{
+/* .profileNavBar .header{
     background-color: white;
     color: var(--dark-green);
     height: 100px;
     padding: 20px 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+    position: fixed;
+    z-index: 20;
     
+} */
+
+
+.header {
+    background-color: white;
+    color: var(--dark-green);
+    height: 100px; /* Set the height to the desired value */
+    width: 100%; /* Ensure the header spans the entire width */
+    padding: 20px 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+    /* position: fixed; */
+    top: 0;
+    z-index: 20;
+    margin-bottom: -20px; /* Adjust this value to create space below the header */
 }
+
+/* Add bottom margin using ::after pseudo-element */
+.header::after {
+    content: '';
+    /* display: block; */
+    height: 100px; /* Adjust this value to set the bottom margin height */
+}
+
+
+
+.profileNavBar .header {
+    background-color: white;
+    color: var(--dark-green);
+    height: 100px; /* Set the height to the desired value */
+    width: 100%; /* Ensure the header spans the entire width */
+    padding: 20px 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+  
+    margin-bottom: 1000px;
+    z-index: 20;
+      position: fixed;
+    /* top: 0;  */
+    /* Fix the header to the top of the viewport */
+}
+
 
 .profileNavBar .header .flex{
     display: flex;
@@ -67,6 +108,7 @@
     text-decoration: none;
     color: var(--dark-green);
     position: relative;
+    margin-left: 50px;
 }
 /* starts here */
 
@@ -98,4 +140,84 @@
 .sub-menu-link:hover p{
     font-weight: 600;
 } */
+.fas fa-shopping-cart cart{
+    position: relative;
+
+}
+
+.fas fa-bell{
+    width: 50px;
+    height: 2000px;
+}
+.icon {
+    cursor: pointer;
+    margin-right: 20px; /* Adjust margin as needed */
+    line-height: 60px;
+    position: relative; /* Add position relative for proper positioning of notification count */
+}
+
+.icon span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* background: #f00; */
+    padding: -411px; /* Adjust padding to decrease the size */
+    border-radius: 50%;
+    color: #fff;
+    font-size: 10px; /* Adjust font size to decrease the size */
+}
+
+
+.icon:hover {
+    opacity: .7;
+}
+
+.notifi-box {
+    width: 300px;
+    opacity: 0;
+    position: absolute;
+    top: 63px; /* Adjust top position as needed */
+    right: 35px; /* Adjust right position as needed */
+    transition: opacity 0.5s ease-in-out; /* Adjust transition as needed */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff; /* Add background color for better visibility */
+    padding: 10px; /* Add padding for better spacing */
+}
+
+.notifi-box h2 {
+    font-size: 16px; /* Adjust font size as needed */
+    margin-bottom: 10px; /* Add margin bottom for better spacing */
+    color: #333; /* Adjust text color as needed */
+}
+
+.notifi-box h2 span {
+    color: #f00;
+}
+
+.notifi-item {
+    padding: 10px 0; /* Add padding for better spacing */
+    border-bottom: 1px solid #eee;
+}
+
+.notifi-item:hover {
+    background-color: #f9f9f9; /* Adjust background color on hover as needed */
+}
+
+.notifi-item img {
+    width: 40px; /* Adjust image size as needed */
+    border-radius: 50%;
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.notifi-item .text h4 {
+    margin: 0; /* Reset margin */
+    color: #333; /* Adjust text color as needed */
+    font-size: 14px; /* Adjust font size as needed */
+}
+
+.notifi-item .text p {
+    margin: 0; /* Reset margin */
+    color: #777; /* Adjust text color as needed */
+    font-size: 12px; /* Adjust font size as needed */
+}
 

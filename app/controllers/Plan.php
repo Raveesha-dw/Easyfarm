@@ -233,11 +233,11 @@ public function payment2() {
 $data = $this->planModel->get_dataplan1();
 
 
-$mail=$_SESSION['user_email1'];
+$mail=$_SESSION['user_email'];
 
-
+print_r($mail);
 $data2=$this->planModel->get_userdetails($mail);
-
+// print_r($data2);
 
 // 4916217501611292
 

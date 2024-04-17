@@ -36,6 +36,7 @@ class M_users{
     // }
 
     public function register($data){
+
         if($data['user_type'] == 'Buyer'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
@@ -49,11 +50,12 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address) VALUES(:id, :fullname, :contactno, :address)');
+            $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address, Province) VALUES(:id, :fullname, :contactno, :address, :province)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
-            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
+            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);
+            $this->db->bind(':province', $data['province']);           
             $this->db->execute();
             return true;
         }
@@ -77,13 +79,14 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
-            VALUES(:id, :fullname, :nic, :store_name, :store_address, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
+          $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Store_province, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
+            VALUES(:id, :fullname, :nic, :store_name, :store_address, :store_province, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':nic', $data['nic']);
             $this->db->bind(':store_name', $data['store_name']);
             $this->db->bind(':store_address', $data['store_address']);
+            $this->db->bind(':store_province', $data['store_province']);
             $this->db->bind(':ac_Holder_name', $data['ac_Holder_name']);
             $this->db->bind(':bank_name', $data['bank_name']);
             $this->db->bind(':branch_name', $data['branch_name']);
@@ -122,6 +125,7 @@ class M_users{
         }
         
         if($data['user_type'] == 'VehicleRenter'){
+        if($data['user_type'] == 'VehicleRenter'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -134,6 +138,7 @@ class M_users{
             $id = $row->U_Id;
 
             $this->db->query('INSERT INTO reg_vehicleowner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
+            $this->db->query('INSERT INTO reg_vehicleowner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
@@ -142,7 +147,10 @@ class M_users{
             $this->db->execute();
             return true;
         }
+            return true;
+        }
 
+        else{
         else{
             return false;
          }
@@ -152,7 +160,13 @@ class M_users{
 
     public function authenticateUser($data){
         $this->db->query('SELECT * FROM user WHERE Email = :email');
+    public function authenticateUser($data){
+        $this->db->query('SELECT * FROM user WHERE Email = :email');
         $this->db->bind(':email', $data['email']);
+        $userData = $this->db->single();
+
+        if(password_verify($data['password'], $userData->Password)){
+                return $userData;
         $userData = $this->db->single();
 
         if(password_verify($data['password'], $userData->Password)){

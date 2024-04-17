@@ -190,7 +190,7 @@ $array1[$i] = $array;
                 'uId' => $_POST["uId"], 
                 'placed_Date' => $date,
                 'selectedDeliveryMethod' => '',
-                'orderId' => $_POST["orderId"], 
+                'Payment_Id' => $_POST["orderId"], 
                 
                 'totalPayment' => 0,
                 
@@ -213,9 +213,10 @@ $array1[$i] = $array;
             // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
             // $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
 
-            // print_r( $data['total']);
+            print_r( "ijinhuguygytv");
 
             $this->paymentModel->saveOrder($data);
+            print_r( "ijinhuguygytv");
             echo("1");
 
         }

@@ -11,16 +11,16 @@ class Users extends Controller{
 
     public function assignUser($usertype){
 
-        if($usertype == 'Buyer'){
+       if($usertype == 'Buyer'){
             $data=[
                 'user_type'=> '',
                 'fullname'=>'',
                 'contactno'=>'',
-
                 'email' => '',
                 'address' => '',
                 'city' => '',
                 'postalcode' => '',
+                'province' => '',
                 'password'=>'',
                 'confirm-password'=>'',
 
@@ -28,6 +28,7 @@ class Users extends Controller{
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
+                'province_err' => '',
                 'password_err'=>'',
                 'confirm-password_err'=>'',
 
@@ -35,7 +36,7 @@ class Users extends Controller{
             $this->view('Users/v_registerBuyer',$data);
         }
 
-        if($usertype == 'Seller'){
+       if($usertype == 'Seller'){
             $data=[
                 'user_type'=> '',
                 'fullname'=>'',
@@ -46,6 +47,7 @@ class Users extends Controller{
                 'nic' => '',
                 'store_name' => '',
                 'store_address' => '',
+                'store_province' => '',
                 'ac_Holder_name' => '',
                 'bank_name' => '',
                 'branch_name' => '',
@@ -119,7 +121,7 @@ class Users extends Controller{
     public function register(){        
 
 
-        if($_POST['user_type'] == 'Buyer'){
+       if($_POST['user_type'] == 'Buyer'){
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
@@ -132,6 +134,7 @@ class Users extends Controller{
                     'address' => trim($_POST['address']),
                     'city' => trim($_POST['city']),
                     'postalcode' => trim($_POST['postalcode']),
+                    'province' => trim($_POST['province']),
                     'password' => trim($_POST['password']),
                     'confirm-password' => trim($_POST['confirm-password']),
                     'user_type' => $_POST['user_type'],
@@ -140,6 +143,7 @@ class Users extends Controller{
                     'contactno_err' => '',
                     'email_err' => '',
                     'address_err' => '',
+                    'province_err' => '',
                     'password_err'=>'',
                     'confirm-password_err'=>'',
 
@@ -163,7 +167,7 @@ class Users extends Controller{
                 }
                 else{
                     if($this->userModel->findUserByEmail($data['email'])) {
-                        // echo("check1");
+                        
                         $data['email_err']='Email is already registered';
                     }
                 }
@@ -178,11 +182,15 @@ class Users extends Controller{
                     $data['address_err'] = 'Please enter your address';
                 }
 
+                if(empty($data['province'])){
+                    $data['province_err'] = 'Please enter your residential province';
+                }
+
                 if(empty($data['password'])){
                     $data['password_err'] = 'Please enter a password';
                 }
-                else if(strlen($data['password'])<8){
-                    $data['password_err'] = 'Password must be at least 8 charactors long';
+                else if(strlen($data['password'])>8){
+                    $data['password_err'] = 'Password should not contain more than 8 characters';
                 }
                 else if(ctype_lower($data['password']) || ctype_upper($data['password'])){
                     $data['password_err'] = 'Password should contain both uppercase and lowercase characters';
@@ -224,6 +232,7 @@ class Users extends Controller{
                 'address' => '',
                 'city' => '',
                 'postalcode' => '',
+                'province' => '',
                 'password'=>'',
                 'confirm-password'=>'',
 
@@ -231,6 +240,7 @@ class Users extends Controller{
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
+                'province_err'=> '',
                 'password_err'=>'',
                 'confirm-password_err'=>'',
 
@@ -258,6 +268,8 @@ class Users extends Controller{
                     'nic' => $_POST['nic'],
                     'store_name' => trim($_POST['store_name']),
                     'store_address' => trim($_POST['store_address']),
+                     'store_province' => trim($_POST['store_province']),
+
                     'ac_Holder_name' => trim($_POST['ac_Holder_name']),
                     'bank_name' => trim($_POST['bank_name']),
                     'branch_name' => trim($_POST['branch_name']),
@@ -355,6 +367,7 @@ class Users extends Controller{
                 'nic' => '',
                 'store_name' => '',
                 'store_address' => '',
+                'store_province' => '',
                 'ac_Holder_name' => '',
                 'bank_name' => '',
                 'branch_name' => '',
@@ -602,18 +615,16 @@ class Users extends Controller{
 
             }
 
-            if(empty($data['email'])){
-                $data['email_err'] = 'Please enter an email';
-            }
-            else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                $data['email_err'] = "Invalid email format";
-            }
-            else{
-                if($this->userModel->findUserByEmail($data['email'])) {
-                    // echo("check1");
-                    $data['email_err']='Email is already registered';
+                if (empty($data['email'])) {
+                    $data['email_err'] = 'Please enter an email';
+                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['email_err'] = "Invalid email format";
+                } else {
+                    if ($this->userModel->findUserByEmail($data['email'])) {
+                        // echo("check1");
+                        $data['email_err'] = 'Email is already registered';
+                    }
                 }
-            }
 
             if(empty($data['address'])){
                 $data['address_err'] = 'Please enter your address';
@@ -647,7 +658,7 @@ class Users extends Controller{
 
             if (empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                if ($this->userModel->register($data)){
+                if ($this->userModel->register($data)) {
                     redirect('Users/login');
                 } else {
                     die('Something went wrong');
@@ -676,37 +687,11 @@ class Users extends Controller{
                     'confirm-password_err' => '',
 
                 ];
-
                 $this->view('Users/v_registerVehicleRenter', $data);
             }
-
-
-        }else {
-            $data=[
-                'fullname'=>'',
-                'contactno'=>'',
-                'email' => '',
-                'address' => '',
-                'city' => '',
-                'password'=>'',
-                'confirm-password'=>'',
-                'values' => '',
-
-                'name_err' => '',
-                'contactno_err' => '',
-                'email_err' => '',
-                'address_err' => '',
-                'city_err' => '',
-                'password_err'=>'',
-                'confirm-password_err'=>'',
-
-            ];
-            $this->view('Users/v_registerVehicleRenter',$data);
         }
-        
+
     }
-    
-}
 
     public function login(){
 
@@ -741,7 +726,9 @@ class Users extends Controller{
                 $loggedInUser = $this->userModel->authenticateUser($data);
                 if($loggedInUser){
                     $this->createUserSession($loggedInUser);                    
+                    $this->createUserSession($loggedInUser);                    
                 }else{
+                    $data['password_err'] = 'Password is incorrect';;
                     $data['password_err'] = 'Password is incorrect';;
                     $this->view('Users/v_login', $data);
                 }
@@ -749,7 +736,6 @@ class Users extends Controller{
             }else{
                 $this->view('Users/v_login', $data);
             }
-
 
 
 
@@ -789,7 +775,8 @@ class Users extends Controller{
             
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
-        }else if($_SESSION['user_type'] == 'VehicleRenter'){
+        }
+        else if($_SESSION['user_type'] == 'VehicleRenter'){
 
             $vehicleOwnerData = $this->userModel->getVehicleOwnerInfo($_SESSION['user_ID']);
 
@@ -798,16 +785,14 @@ class Users extends Controller{
 
             header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
-        }else if($_SESSION['user_type'] == 'AgricultureExpert'){
+        }else if($_SESSION['user_type'] == 'AgriExpert'){
 
             $agriInstructorData = $this->userModel->getAgriInstructorInfo($_SESSION['user_ID']);
 
             $_SESSION['user_name'] = $agriInstructorData->Name;
             $_SESSION['accStatus'] = $agriInstructorData->AccStatus;
             
-            redirect("AgriInstructor");
-        }else if($_SESSION['user_type']  == 'Admin'){
-            redirect("Admin");
+            header("Location:http://localhost/Easyfarm/Blog");
         }
     }
 
