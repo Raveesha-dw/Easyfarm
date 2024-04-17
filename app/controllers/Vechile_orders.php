@@ -8,7 +8,33 @@
         $this->vechile_ordersmodel = $this->model('M_vechile_ordersmodel');
     }
 
-    public function details()
+    public function details(){
+        print_r($_SESSION['user_type']);
+        
+         $data = [
+                'user_type' => '',
+                'fullname' => '',
+                'contactno' => '',
+                'email' => '',
+                'address' => '',
+                'city' => '',
+                'postalcode' => '',
+                'password' => '',
+                'confirm-password' => '',
+
+                'name_err' => '',
+                'contactno_err' => '',
+                'email_err' => '',
+                'address_err' => '',
+                'password_err' => '',
+                'confirm-password_err' => '',
+
+            ];
+    if( ($_SESSION['user_type'] != 'Buyer')){
+        $this->view('Users/v_registerBuyer',$data);
+    }
+    
+    else{
 
     {
         $data = [
@@ -69,7 +95,7 @@
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
     }
-
+    }}
 
     public function orders()
     {

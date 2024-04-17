@@ -17,6 +17,8 @@
                      <?php $products=$data; ?>
                      <?php foreach ($products as $product) : ?>
 
+                     <br><br>
+
                      <div class ="msg-box">
                             <div class ="m-header">
                                    <div class ="msg-ID">
