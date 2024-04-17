@@ -128,7 +128,7 @@
                 $data['selectedDates_err'] = 'Please enter the date';
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
-                print_r($data);
+                // print_r($data);
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
                 foreach ($data1 as $object) {
                     $data2 = (array) $object;
@@ -169,7 +169,7 @@
                 $data['lastday'] = $new_date;
 
                 $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
-                print_r($data3);
+                // print_r($data3);
                 ($this->view('renter/v_vechiledetail', $data));
             }
 
