@@ -58,6 +58,23 @@
             <input type="text" placeholder="Enter your address"  name="store_address" id="store_address" required value="<?php echo $data['store_address']; ?>">
             <i class='bx bxs-edit-location'></i>
         </div>
+
+        <p class="type">Province (Store Location) *</p>  
+        <div>
+
+        <select name="store_province" id="store_province" required>
+            <option value="" disabled selected>Select a district</option>
+            <option value="Western" <?php echo ($data['store_province'] == 'Western') ? 'selected' : ''; ?>>Western</option>
+            <option value="Southern" <?php echo ($data['store_province'] == 'Southern') ? 'selected' : ''; ?>>Southern</option>
+            <option value="Central" <?php echo ($data['store_province'] == 'Central') ? 'selected' : ''; ?>>Central</option>
+            <option value="Eastern" <?php echo ($data['store_province'] == 'Eastern') ? 'selected' : ''; ?>>Eastern</option>
+            <option value="Northern" <?php echo ($data['store_province'] == 'Northern') ? 'selected' : ''; ?>>Northern</option>
+            <option value="Sabaragamuwa" <?php echo ($data['store_province'] == 'Sabaragamuwa') ? 'selected' : ''; ?>>Sabaragamuwa</option>
+            <option value="North Central" <?php echo ($data['store_province'] == 'North Central') ? 'selected' : ''; ?>>North Central</option>
+        
+        </select><i class='bx bxs-edit-location'></i>
+        </div>
+
         <p class="startText"><b>Bank Details</b></p>
 
         <p class="type">Account holder name *</p>
@@ -96,4 +113,4 @@
 
 
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>   
+<?php require APPROOT . '/views/inc/footer.php'; ?>

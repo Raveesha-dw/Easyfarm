@@ -49,11 +49,12 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address) VALUES(:id, :fullname, :contactno, :address)');
+            $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address, Province) VALUES(:id, :fullname, :contactno, :address, :province)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
-            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
+            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);
+            $this->db->bind(':province', $data['province']);           
             $this->db->execute();
             return true;
         }
@@ -77,13 +78,14 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
-            VALUES(:id, :fullname, :nic, :store_name, :store_address, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
+        $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Store_province, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
+            VALUES(:id, :fullname, :nic, :store_name, :store_address, :store_province, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':nic', $data['nic']);
             $this->db->bind(':store_name', $data['store_name']);
             $this->db->bind(':store_address', $data['store_address']);
+            $this->db->bind(':store_province', $data['store_province']);
             $this->db->bind(':ac_Holder_name', $data['ac_Holder_name']);
             $this->db->bind(':bank_name', $data['bank_name']);
             $this->db->bind(':branch_name', $data['branch_name']);

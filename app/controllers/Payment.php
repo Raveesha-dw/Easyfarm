@@ -24,6 +24,7 @@ $hiddenTotalpayment = $inputData['hiddenTotalpayment'];
 $hiddenuId = $inputData['hiddenuId'];
 $itemIds = $inputData['itemIds'];
 $quantities = $inputData['quantities'];
+$selectedDeliveryMethods = $inputData['selectedDeliveryMethods'];
 $subTotalPayments = $inputData['subTotalPayments'];
 
 
@@ -35,7 +36,7 @@ for ($i = 0; $i < count($itemIds); $i++) {
                 'quantity' => $quantities[$i], 
                 'Item_Id' => $itemIds[$i], 
                 'uId' => $hiddenuId,
-                'selectedDeliveryMethod' => '',
+                'selectedDeliveryMethod' => $selectedDeliveryMethods[$i],
                 'total' => $subTotalPayments[$i], 
                 'deliveryFee' => '',
                 'totalPayment' => 0,
