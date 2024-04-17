@@ -5,7 +5,7 @@
     <?php require APPROOT . '/views/inc/components/sidebars/admin_sidebar.php';?>
 
     <main>
-        <h2>Manage Categories</h2>
+        <h2>Manage Blog Categories</h2>
         <hr><br>
 
         <?php

@@ -163,4 +163,26 @@ class Admin extends Controller{
             }
         }
     }
+
+    public function seller(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['status'])){
+            $data['sellerPayments'] = $this->adminModel->getSellerPaymentData($_GET['status']);
+            $this->view('Admin/v_adminSellerPayments', $data);
+        }
+
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
+            $paymentID = trim($_POST['paymentID']);
+            $sellerID = trim($_POST['sellerID']);
+            $status = trim($_POST['status']);
+
+            $this->adminModel->setSellerPayment($paymentID, $sellerID, $status);
+
+            $status = ($status == 'Unsettled') ? ('Settled') : ('Unsettled');
+            redirect('Admin/seller?status=' .  $status);
+        }
+        
+        else{
+            redirect('Admin/seller?status=Unsettled');
+        }
+    }
 }

@@ -63,4 +63,20 @@ class M_admin{
         $result = $this->db->single();
         return $result;
     }
+
+    public function getSellerPaymentData($status){
+        $this->db->query("SELECT Payment_Id, seller_ID, product_charge, PaymentStatus FROM order_charging_details WHERE PaymentStatus = :status ORDER BY seller_ID");
+        $this->db->bind(':status', $status);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+    public function setSellerPayment($paymentID, $sellerID, $status){
+        $this->db->query("UPDATE order_charging_details SET PaymentStatus = :status WHERE Payment_Id = :paymentID AND seller_ID = :sellerID");
+        $this->db->bind(':paymentID', $paymentID);
+        $this->db->bind(':sellerID', $sellerID);
+        $this->db->bind(':status', $status);
+        $this->db->execute();
+        return true;
+    }
 }

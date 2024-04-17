@@ -31,8 +31,8 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="1">
           <a href="<?php echo URLROOT . '/Admin';?>" class="<?php echo isActive(URLROOT . '/Admin/blog');?> data-active="1">
             <div class="icon">
-              <i class='bx bx-pencil'></i>
-              <i class='bx bxs-pencil'></i>
+              <i class='bx bx-user-plus'></i>
+              <i class='bx bxs-user-plus'></i>
             </div>
             <span class="link hide">Agri Instructors</span>
           </a>
@@ -40,8 +40,8 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="0">
           <a href="<?php echo URLROOT . '/Admin/blog';?>"  data-active="0">
             <div class="icon">
-              <i class='bx bx-file'></i>
-              <i class='bx bxs-file'></i>
+              <i class='bx bx-category'></i>
+              <i class='bx bxs-category'></i>
             </div>
             <span class="link hide">Blog Categories</span>
           </a>
@@ -71,6 +71,20 @@ function isActive($page)
           <!-- <span>Messages</span> -->
           <!-- <span>Analytics</span> -->
         </div>
+      </ul>
+
+      <h4 class="hide">Payments</h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/seller';?>" data-active="4">
+            <div class="icon">
+              <i class='bx bx-store'></i>
+              <i class='bx bxs-store'></i>
+            </div>
+            <span class="link hide">Sellers</span>
+          </a>
+        </li>
       </ul>
 
       <h4 class="hide">Shortcuts</h4>
