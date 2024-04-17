@@ -17,13 +17,14 @@ function isActive($page)
         <i class='bx bx-chevron-left'></i>
       </span>
       <!-- <img src="" class="logo" alt=""> -->
-      <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">Dashboard</h3>
+      <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">EasyFarm</h3>
     </div>
+    <br>
 
-    <div class="search">
+    <!-- <div class="search">
       <i class='bx bx-search'></i>
       <input type="text" class="hide" placeholder="Quick Search...">
-    </div>
+    </div> -->
 
     <div class="sidebar-links">
       <ul>
