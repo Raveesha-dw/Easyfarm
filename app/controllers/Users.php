@@ -209,7 +209,7 @@ class Users extends Controller{
                 if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-<<<<<<< HEAD
+
                     if ($this->userModel->register($data)) {
                         flash('register_success', 'You have successfully registered with EasyFarm');
                         redirect('Users/login');
@@ -601,30 +601,28 @@ class Users extends Controller{
                     'password_err' => '',
                     'confirm-password_err' => '',
                 ];
-                // print_r($data);
-                if (empty($data['fullname'])) {
-                    $data['name_err'] = 'Please enter a name';
-                }
-                if (empty($data['contactno'])) {
-                    $data['contactno_err'] = 'Please enter contact number';
-                }
-                if (strlen($data['contactno']) < 10) {
-                    $data['contactno_err'] = 'Not enough digits in contact number';
-                }
-
-
+                
+            // print_r($data);
+            if (empty($data['fullname'])) {
+                $data['name_err'] = 'Please enter a name';
+            }
+            if (empty($data['contactno'])) {
+                $data['contactno_err'] = 'Please enter contact number';
+            }
+            if (strlen($data['contactno']) < 10) {
+                $data['contactno_err'] = 'Not enough digits in contact number';
             }
 
-                if (empty($data['email'])) {
-                    $data['email_err'] = 'Please enter an email';
-                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['email_err'] = "Invalid email format";
-                } else {
-                    if ($this->userModel->findUserByEmail($data['email'])) {
-                        // echo("check1");
-                        $data['email_err'] = 'Email is already registered';
-                    }
+            if (empty($data['email'])) {
+                $data['email_err'] = 'Please enter an email';
+            } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $data['email_err'] = "Invalid email format";
+            } else {
+                if ($this->userModel->findUserByEmail($data['email'])) {
+                    // echo("check1");
+                    $data['email_err'] = 'Email is already registered';
                 }
+            }
 
             if(empty($data['address'])){
                 $data['address_err'] = 'Please enter your address';
@@ -692,6 +690,7 @@ class Users extends Controller{
         }
 
     }
+
 
     public function login(){
 
