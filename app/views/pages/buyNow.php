@@ -4,8 +4,8 @@
 <div class="wrapperBuyNow">
 
                 <div class="column4" >
-<?php
-print_r($data);?>
+
+
                 <div class="box">
                     <div class="wrapperBuyNow_sub">
                             <p><b> Delivered to :</b></p>
@@ -62,17 +62,22 @@ print_r($data);?>
 
                     <?php foreach($orderItemsBySeller as $sellerStore => $items) :?>
 
+                    <?php $deliFee = 0; ?>
                     <br><h3 style="color: darkblue;">Seller: <?php echo $items[0]['Store_Name']; ?></h3>
                      
                     <?php foreach ($items as $data) : ?>
-                            <?php if (is_array($data)) :  print_r($data);   ?>
+                            <?php if (is_array($data)) :  
+                            // print_r($data);   
+                            ?>
                             
                             <!-- 
                       Print stmt here 
                      new part starts here -->
                     
-                   <?php  $deliFee = 0;
+                   <?php  
+                
                    if($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery'){ ?>
+                   
                     <br><h3><strong>Home Delivery </strong></h3>
 
                         <div class="wrapperBuyNow_sub">
@@ -115,31 +120,29 @@ print_r($data);?>
                             </section>       
                         </div>
 
-                       <?php if ($data['deliveryFee'] != 0){
-                            $deliFee = $deliFee + $data['deliveryFee'];
-                        }else{
-                            $data['deliveryFee'] = $deliFee;
-                        }
-                         ?>
-
+                            <?php
+                             $deliFee = $deliFee + $data['deliveryFee'];
+                            // print_r($deliFee);
+                            ?>
                         <?php
                        } ?> 
                        <?php endif; ?>                        
                         <?php endforeach; ?>
 
+                        <?php if($deliFee != 0){ ?>
                        <div class="row">
                                     
-                                     <br><h3><b>Delivery Fee</b>&nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($data['deliveryFee'],2); ?></h3>
+                                     <br><h3><b>Delivery Fee</b>&nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deliFee,2); ?></h3>
                                 </div>
 
-                         
+                        <?php } ?> 
 
                         <?php foreach ($items as $data) : ?>
                             <?php if (is_array($data)) : 
                             // print_r($data);
                             ?>
                             
-                        <?php if(trim($data['selectedDeliveryMethod']) != 'Home Delivery'){ ?>
+                        <?php if($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery')){ ?>
                         
                         <br><h3><strong>In-Store Pickup </strong></h3>
 
