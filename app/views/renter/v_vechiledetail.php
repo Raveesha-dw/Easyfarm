@@ -4,6 +4,7 @@
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
+
 <!-- <?php print_r($data)?> -->
 <?php 
 $pending_dates = array();
@@ -155,19 +156,24 @@ $jsonData1 = json_encode( $pending_dates);
 
 
 
+    
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <!-- Modal content -->
+
+
+
+<!-- <div id="myModal" class="modal">
   <div class="modal-content">
     <p id="modal-content">This date is unavailable for booking.</p>
     <button id="modal-ok-btn">OK</button>
   </div>
-</div>
+</div> -->
+<!-- <div id="messageContainer"></div> -->
+
+
+
 
 
                 
-
                 <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
     <span>Unavailable Day</span>
     <br>
@@ -298,6 +304,14 @@ $jsonData = json_encode($dataArray);
     };
 </script>
 
+<div id="myModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+  <div class="modal-content" style="background-color: #fefefe; position: absolute; top: 50%; left: 50%; border-radius: 5px;transform: translate(-50%, -50%); padding: 50px; border: 1px solid #888; width: 20%; text-align: center;">
+    <p id="modal-content">This date is unavailable for booking.</p>
+    <button id="modal-ok-btn" style="margin-top: 20px; padding: 5px 10px; cursor: pointer; border: none; border-radius: 5px; background-color: #ff0000; color: #fff;">OK</button>
+  </div>
+</div>
+
+
 <?php require APPROOT . '/views/inc/footer.php';?>
-<scipt src="https://code.jquery.com/jquery-3.6.4.min.js"></scipt>
+<!-- <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script> -->
 <script src="<?php echo URLROOT ?>\public\js\Vpost_calender1.js"></script>

@@ -1,4 +1,4 @@
-
+<!-- <?php print_r($data) ?> -->
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -11,6 +11,7 @@
         <?php require APPROOT . '/views/seller/a.php' ?>
 
         <section class="home">
+
 
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -40,18 +41,18 @@
                         </select> -->
 
                         <select name="Category" id="sCategory">
-    <option disabled>Select Category</option>
-    <?php foreach ($data as $categoryObject) : ?>
-        <?php if (isset($categoryObject->category)) : ?>
-            <?php
-            $category = $categoryObject->category;
-            ?>
-            <option value="<?php echo htmlspecialchars($category); ?>" <?php echo ($category === $data['Category']) ? 'selected' : ''; ?>>
-                <?php echo htmlspecialchars($category); ?>
-            </option>
-        <?php endif; ?>
-    <?php endforeach; ?>
-</select>
+                            <option disabled>Select Category</option>
+                            <?php foreach ($data as $categoryObject) : ?>
+                                <?php if (isset($categoryObject->category)) : ?>
+                                    <?php
+                                    $category = $categoryObject->category;
+                                    ?>
+                                    <option value="<?php echo htmlspecialchars($category); ?>" <?php echo ($category === $data['Category']) ? 'selected' : ''; ?>>
+                                        <?php echo htmlspecialchars($category); ?>
+                                    </option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
 
 
                     </div>
@@ -156,7 +157,7 @@
 
 
                     <br>
-                    <div class="saddress">
+                    <!-- <div class="saddress">
                         <b>Address</b>
                         <br>
                         <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line1">
@@ -165,7 +166,7 @@
                         <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line4">
 
 
-                    </div>
+                    </div> -->
 
                     <br>
                     <div>
@@ -220,12 +221,26 @@
                         <b>Delivery Method</b>
                         <br>
                         <br>
+                        <?php
+                        // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
 
-                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Deliver" <?php echo ($data['DeliveryMethod'] == 'Home Deliver') ? 'checked' : ''; ?>>
+                        // Split the value into an array based on comma separator
+                        $deliveryMethods = explode(', ', $data['DeliveryMethod']);
+
+                        // Check each checkbox individually
+                        $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
+                        $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
+
+                        // Output checkboxes
+                        ?>
+
+                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
                         <label for="Home Delivery"><b>Home Delivery</b></label><br>
 
-                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo ($data['DeliveryMethod'] == 'Insto Pickup') ? 'checked' : ''; ?>>
+                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
                         <label for="Insto Pickup"><b>Insto Pickup</b></label><br>
+
+
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['DeliveryMethod_err'];
                                                 } ?></span>
@@ -306,54 +321,54 @@
         });
     </script> -->
     <script>
-                console.log(categoryData);
-                console.log("dd");
-                var categoryData = <?php echo json_encode(array_values($data)); ?>;
-    console.log("Category Data:", categoryData);
+        console.log(categoryData);
+        console.log("dd");
+        var categoryData = <?php echo json_encode(array_values($data)); ?>;
+        console.log("Category Data:", categoryData);
 
-    $(document).ready(function() {
-        $("#sCategory").on('change', function() {
-            var el = $(this);
-            var typeDropdown = $("#stype");
+        $(document).ready(function() {
+            $("#sCategory").on('change', function() {
+                var el = $(this);
+                var typeDropdown = $("#stype");
 
-            // Clear existing options
-            typeDropdown.empty();
-            typeDropdown.val(typeDropdown.find('option:first').val());
+                // Clear existing options
+                typeDropdown.empty();
+                typeDropdown.val(typeDropdown.find('option:first').val());
 
-            // Get the selected category value
-            var selectedCategory = el.val();
-            console.log("Selected Category:", selectedCategory);
+                // Get the selected category value
+                var selectedCategory = el.val();
+                console.log("Selected Category:", selectedCategory);
 
-            // Check if categoryData is an array
-            if (Array.isArray(categoryData)) {
-                // Find the category in categoryData
-                var selectedCategoryData = categoryData.find(category => category.category === selectedCategory);
-                console.log("Selected Category Data:", selectedCategoryData);
+                // Check if categoryData is an array
+                if (Array.isArray(categoryData)) {
+                    // Find the category in categoryData
+                    var selectedCategoryData = categoryData.find(category => category.category === selectedCategory);
+                    console.log("Selected Category Data:", selectedCategoryData);
 
-                // Check if categoryData was found
-                if (selectedCategoryData) {
-                    // Check if selectedCategoryData.type is a string
-                    if (typeof selectedCategoryData.type === 'string') {
-                        // Split the type string into an array
-                        var units = selectedCategoryData.type.split(',');
-                        console.log("Units:", units);
+                    // Check if categoryData was found
+                    if (selectedCategoryData) {
+                        // Check if selectedCategoryData.type is a string
+                        if (typeof selectedCategoryData.type === 'string') {
+                            // Split the type string into an array
+                            var units = selectedCategoryData.type.split(',');
+                            console.log("Units:", units);
 
-                        // Add options for each unit
-                        units.forEach(function(unit) {
-                            typeDropdown.append("<option value='" + unit + "'>" + unit + "</option>");
-                        });
+                            // Add options for each unit
+                            units.forEach(function(unit) {
+                                typeDropdown.append("<option value='" + unit + "'>" + unit + "</option>");
+                            });
+                        } else {
+                            console.error("Type is not a string:", selectedCategoryData.type);
+                        }
                     } else {
-                        console.error("Type is not a string:", selectedCategoryData.type);
+                        console.error("Category not found:", selectedCategory);
                     }
                 } else {
-                    console.error("Category not found:", selectedCategory);
+                    console.error("categoryData is not an array:", categoryData);
                 }
-            } else {
-                console.error("categoryData is not an array:", categoryData);
-            }
+            });
         });
-    });
-</script>
+    </script>
 
 
 

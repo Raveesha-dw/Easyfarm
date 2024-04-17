@@ -68,18 +68,19 @@ public function create_post($data){
 
 // }
 
+// public function get_data($seller_ID){
+//     $this->db->query("SELECT i.* FROM item i LEFT JOIN order_details o ON i.Item_Id = o.Item_ID AND o.seller_ID = :seller_ID WHERE i.seller_ID = :seller_ID AND (o.Item_ID IS NULL OR o.Status = 'Cancelled')");
+//     $this->db->bind(':seller_ID', $seller_ID);
+//     $result = $this->db->resultSet();
+//     return $result;
+// }  
+
 public function get_data($seller_ID){
-    $this->db->query("SELECT i.* FROM item i LEFT JOIN orders o ON i.Item_Id = o.Item_ID AND o.seller_ID = :seller_ID WHERE i.seller_ID = :seller_ID AND (o.Item_ID IS NULL OR o.Status = 'Cancelled')");
-    $this->db->bind(':seller_ID', $seller_ID);
-    $result = $this->db->resultSet();
+     $this->db->query("SELECT * FROM item WHERE seller_ID = :seller_ID");
+   $this->db->bind(':seller_ID', $seller_ID);
+    $result=$this->db->resultSet();
     return $result;
 }
-
-
-
-
-
-
 
 
 public function getiteamdeatils(){

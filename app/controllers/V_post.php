@@ -66,7 +66,7 @@ else{
 
         ];
 
-        $v_Categories = $this->v_postModel->get_category();
+        $v_Categories =  $this->v_postModel->get_category();
         $data['v_Categories'] = $v_Categories;
         $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
         $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
@@ -88,6 +88,7 @@ else{
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
+
             $data = [
 
                 'Owner_Id' => $_SESSION['user_ID'],
@@ -104,6 +105,9 @@ else{
                 'Image_name' => time() . '_' . (isset($_FILES['Image']['name']) ? $_FILES['Image']['name'] : ''),
                 // TODO:have to put the date of plan activating
                 'post_create_date' => date("Y-m-d"),
+
+
+
 
                 'V_category_err' => '',
                 'V_name_err' => '',
@@ -139,6 +143,7 @@ else{
                 $data['Contact_Number_err'] = 'PLease enter the valid Contact Number';
             }
 
+
             if (empty($data['Rental_Fee'])) {
                 $data['Rental_Fee_err'] = 'Please enter the Rental_Fee';
 
@@ -157,6 +162,7 @@ else{
 
             }
 
+
             if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
 
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/vehicleRenter/'));
@@ -168,7 +174,7 @@ else{
 
                 } else {die('something went wrong');}
             } else {
-                $v_Categories = $this->v_postModel->get_category();
+                $v_Categories =  $this->v_postModel->get_category();
                 $data['v_Categories'] = $v_Categories;
                 $this->view('VehicleRenter\v_vehicle_create_post', $data);
             }
@@ -177,12 +183,24 @@ else{
 
     }
 
+
+
+
+
+
     public function created_post()
     {
         $data = $this->v_postModel->get_data($_SESSION['user_ID']);
         $this->view('VehicleRenter/v_vehicle_createdpost', $data);
 
     }
+
+
+
+
+
+
+
 
     public function update_Product()
     {
@@ -321,16 +339,6 @@ else{
 
             }
 
-            if (empty($data['Address'])) {
-                $data['Address_err'] = 'Please enter the Address';
-
-            }
-            if (empty($data['Image'])) {
-                $data['Image_err'] = 'please include the image';
-
-            }
-
-            if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
 
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/vehicleRenter/'));
 
@@ -348,7 +356,7 @@ else{
 
         }
 
-    }
+    
 
     public function delete_product()
     {
@@ -417,7 +425,7 @@ else{
         $data['vehicle_data'] = isset($vehicle_data) ? $vehicle_data : [];
         $data['unconfirmed_booking_dates'] = isset($unconfirmed_booking_dates) ? $unconfirmed_booking_dates : [];
         $data['confirmed_booking_dates'] = isset($confirmed_booking_dates) ? $confirmed_booking_dates : [];
-        $data['unavailableDates'] = isset($unavailable__Dates) ? $unavailable__Dates : [];
+        $data['unavailableDates'] = isset($unavailable_Dates) ? $unavailable_Dates : [];
         $data['booking_Data'] = isset($booking_Data) ? $booking_Data : [];
         $data['orders'] = isset($orders) ? $orders : [];
 
