@@ -35,7 +35,7 @@ class M_payment{
     }
 
     public function saveOrder($data){
-print_r( $data);
+        print_r( $data);
         $this->db->query('INSERT INTO orders(Payment_Id ,Item_ID, User_ID,placed_Date,seller_ID) VALUES (:Payment_Id ,:itemId, :uId, :placed_Date, :seller_ID)'); 
 
         $this->db->bind(':Payment_Id', $data['Payment_Id']);
@@ -48,12 +48,19 @@ print_r( $data);
 
 
 
-        $order_id = $this->db->query('SELECT Order_ID  FROM orders WHERE orders.Item_Id = :itemId') ;
+        $this->db->query('SELECT Order_ID  FROM orders WHERE orders.Item_Id = :itemId') ;
         $this->db->bind(':itemId', $data['Item_Id']);
+        $order_result = $this->db->single();
 
-
+        if ($order_result) {
         
-        $this->db->query('INSERT INTO order_details(quantity, Unit_price,Unit_size,Unit_type,DeliveryMethod) VALUES (:quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod)  WHERE Order_ID = :Order_ID '); 
+        // Extract the Order_ID from the fetched result
+        $order_id = $order_result->Order_ID;
+        
+        print_r($order_id);
+        print_r("ddddddd");
+
+        $this->db->query('INSERT INTO order_details(Order_ID, quantity, Unit_price, Unit_size, Unit_type, DeliveryMethod) VALUES (:Order_ID, :quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod)');
         
         $this->db->bind(':quantity', $data['quantity']);
         $this->db->bind(':Unit_price', $data['Unit_price']);
@@ -63,7 +70,7 @@ print_r( $data);
         $this->db->bind(':Order_ID', $order_id);
         $this->db->execute();
 
-print_r($order_id);
+        print_r($order_id);
 
         // $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge) VALUES (:product_charge, :delivery_charge)  WHERE (Payment_Id = :Payment_Id AND seller_ID = :seller_ID) '); 
         
@@ -80,7 +87,7 @@ print_r($order_id);
         return true;
 
    
-
+}
     }
 
 }
