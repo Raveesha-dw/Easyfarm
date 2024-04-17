@@ -209,4 +209,12 @@ class Admin extends Controller{
             redirect('Admin/delivery?status=Unsettled');
         }
     }
+
+    public function settleSellerPayment(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
+            $sellerID = trim($_POST['sellerID']);
+            $data['sellerData'] = $this->adminModel->getSellerBankInfo($sellerID);
+            $this->view('Admin/v_settleSellerPayment', $data);
+        }
+    }
 }

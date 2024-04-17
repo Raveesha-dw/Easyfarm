@@ -43,6 +43,19 @@
                         <td><?php echo $sellerPayment->PaymentStatus?></td>
                         <td>
                             <div class="btn-container">
+
+                                <?php
+                                        if($sellerPayment->PaymentStatus == 'Unsettled'){
+                                ?>
+                                                <form action="<?php echo URLROOT?>/Admin/settleSellerPayment" method="POST">
+                                                        <input type="hidden" name="sellerID" value="<?php echo $sellerPayment->seller_ID?>">
+                                                        <button class="admin-table" type="submit">Show Bank Details</button>
+                                                </form>
+                                <?php
+                                        }
+                                ?>
+
+
                                 <form action="<?php echo URLROOT?>/Admin/seller" method="POST">
                                     <?php
                                         $status = ($sellerPayment->PaymentStatus == 'Unsettled') ? ('Settled') : ('Unsettled');
@@ -62,3 +75,5 @@
 
     </main>
 </div>
+
+<script src="<?php echo URLROOT . '/public/js/popupModal.js';?>"></script>

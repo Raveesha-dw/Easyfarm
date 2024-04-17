@@ -95,4 +95,11 @@ class M_admin{
         $this->db->execute();
         return true;
     }
+
+    public function getSellerBankInfo($sellerID){
+        $this->db->query("SELECT U_Id, Name, Store_Name, Account_Holder, Bank_Name, Branch_Name, Account_Number FROM reg_seller WHERE U_Id = :sellerID");
+        $this->db->bind(':sellerID', $sellerID);
+        $result = $this->db->single();
+        return $result;
+    }
 }
