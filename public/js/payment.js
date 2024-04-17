@@ -7,11 +7,17 @@ console.log("2344444");
     var hiddenItem_Id = document.querySelectorAll("input[id^='hiddenItem_Id[]']");
     var hiddenquantity = document.querySelectorAll("input[id^='hiddenquantity[]']");
     var hiddenSubTotalpayment = document.querySelectorAll("input[id^='hiddenSubTotalpayment[]']");
+    var hiddenselectedDeliveryMethod = document.querySelectorAll("input[id^='selectedDeliveryMethods[]']");
+
+console.log(hiddenItem_Id);
+console.log(hiddenselectedDeliveryMethod);
 
     // Initialize arrays to store values
     var itemIds = [];
     var quantities = [];
     var subTotalPayments = [];
+    var selectedDeliveryMethods = [];
+    
 
     // Populate arrays with values from hidden input fields
     hiddenItem_Id.forEach(function (element) {
@@ -27,6 +33,9 @@ console.log("2344444");
     hiddenSubTotalpayment.forEach(function (element) {
         subTotalPayments.push(element.value);
     });
+    hiddenselectedDeliveryMethod.forEach(function (element) {
+        selectedDeliveryMethods.push(element.value);
+    });
 
 
         // Create data object to send to the server
@@ -35,6 +44,7 @@ console.log("2344444");
         hiddenuId: hiddenuId,
         itemIds: itemIds,
         quantities: quantities,
+        selectedDeliveryMethods: selectedDeliveryMethods,
         subTotalPayments: subTotalPayments
     };
 console.log(data);
@@ -71,17 +81,7 @@ console.log(dataToSend);
                 "hash": obj["hash"],
                 "first_name": obj["first_name"],
 
-
-
-
-
-
-
-
-
-
-
-                
+         
                 "last_name": obj["last_name"],
                 "email": obj["email"],
                 "phone": obj["phone"],
@@ -101,7 +101,7 @@ console.log(dataToSend);
                 console.log("qqqqqq");
                 payhere.onCompleted = function onCompleted(orderId) {
                     console.log("eeeeeee");
-                saveOrder(itemIds[i],hiddenuId,quantities[i],orderId);
+                saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i]);
                 console.log("Payment completed. OrderID:" + orderId);
                 
             }
@@ -151,7 +151,7 @@ console.log(dataToSend);
     xhttp.send(dataToSend);
 }
 
-function saveOrder(Item_Id,uId , quantity,orderId){
+function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod){
     
 
     var f = new FormData();
@@ -160,6 +160,7 @@ function saveOrder(Item_Id,uId , quantity,orderId){
     f.append("uId", uId);
     f.append("quantity", quantity);
     f.append("orderId", orderId);
+    f.append("selectedDeliveryMethod",selectedDeliveryMethod);
 
     var r = new XMLHttpRequest();
 

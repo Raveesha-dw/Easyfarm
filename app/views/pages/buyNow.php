@@ -182,7 +182,12 @@
                                             <input type="hidden" id="hiddenSubTotalpayment[]" value="<?php echo number_format($data['totalPayment'],2); ?>">
                                             <input type="hidden" id="hiddenItem_Id[]" value="<?php echo $data['Item_Id']; ?>">
                                             
-                                            <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">                
+                                            <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>"> 
+                                            
+                                            <input type="hidden" id="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>> 
+                                            <input type="hidden" id="totals[]" value=<?php echo $data['total']; ?>>
+                                            <input type="hidden" id="deliveryFees[]" value=<?php echo $data['deliveryFee']; ?>>
+                                            <input type="hidden" id="totalPayments[]" value=<?php echo $data['totalPayment']; ?>>              
                             
 
 
