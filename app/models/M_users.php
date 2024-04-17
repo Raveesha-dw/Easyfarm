@@ -151,15 +151,12 @@ class M_users{
         }
 
         else{
-        else{
             return false;
          }
 
     }
 
 
-    public function authenticateUser($data){
-        $this->db->query('SELECT * FROM user WHERE Email = :email');
     public function authenticateUser($data){
         $this->db->query('SELECT * FROM user WHERE Email = :email');
         $this->db->bind(':email', $data['email']);
@@ -174,6 +171,7 @@ class M_users{
             }else{
                 return false;
             }    
+        }
     }
 
     public function getBuyerInfo($id){
