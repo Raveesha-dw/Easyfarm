@@ -149,6 +149,7 @@ class M_users{
 
     }
 
+
     public function authenticateUser($data){
         $this->db->query('SELECT * FROM user WHERE Email = :email');
         $this->db->bind(':email', $data['email']);
@@ -158,7 +159,7 @@ class M_users{
                 return $userData;
             }else{
                 return false;
-            }   
+            }    
     }
 
     public function getBuyerInfo($id){
@@ -188,6 +189,9 @@ class M_users{
         $agriInstructorData = $this->db->single();
         return $agriInstructorData;
     }
+
+
+
 
 
 

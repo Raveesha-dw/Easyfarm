@@ -23,7 +23,7 @@ class M_buyNow{
 
     public function getItemDetais($data){
 
-        $this->db->query('SELECT Item_name,DeliveryMethod,Unit_price,Unit_type,Unit_size  FROM item WHERE item.Item_Id = :Item_Id') ;
+        $this->db->query('SELECT Item_name,DeliveryMethod,Unit_price,Unit_type,Unit_size,Image  FROM item WHERE item.Item_Id = :Item_Id') ;
         $this->db->bind(':Item_Id', $data['Item_Id']);
         $this->db->execute();
             

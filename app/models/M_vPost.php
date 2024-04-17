@@ -195,6 +195,37 @@ public function update_data($data){
     }
 
 
+   public function get_planid(){
+    $this->db->query("SELECT * FROM reg_vehicleowner WHERE reg_vehicleowner.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    return $result;
+}
+
+public function user_details($seller_ID){
+    $this->db->query("SELECT * FROM reg_vehicleowner WHERE U_Id = :seller_ID");
+    $this->db->bind(':seller_ID', $seller_ID);
+    $result=$this->db->resultSet();
+    // print_r($result);
+    return $result;
+}
+
+public function get_dataplan3(){
+    
+    $this->db->query("SELECT * FROM v_plandetails  ");
+  
+    $result=$this->db->resultSet();
+    // $this->db->execute();
+    // print_r($result);
+    return $result;
+    
+    // exit();
+
+
+}
+
+
+
 
 
     public function update_vehicle_post_details($data){
@@ -272,6 +303,31 @@ public function update_data($data){
     return $result;
     
 }
+
+public function get_planActivated_duration($Owner_Id){
+    $this->db->query("SELECT p.duration FROM reg_vehicleowner r JOIN v_plandetails p ON r.plan_id = p.plan_id WHERE r.U_Id= :Owner_Id");
+    $this->db->bind(':Owner_Id', $Owner_Id);
+    
+        $this->db->execute();
+        $result=$this->db->single();
+    // print_r($row);
+    return $result;
+
+}
+
+public function get_planActivated_date($Owner_Id){
+    $this->db->query("SELECT Register_date FROM reg_vehicleowner WHERE U_Id= :Owner_Id");
+    $this->db->bind(':Owner_Id', $Owner_Id);
+    
+        $this->db->execute();
+        $result=$this->db->single();
+    // print_r($row);
+    return $result;
+
+}
+
+
+
 
 }
 

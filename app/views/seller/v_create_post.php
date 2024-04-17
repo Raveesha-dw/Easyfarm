@@ -21,9 +21,8 @@
                     <!-- <div class="imala"> -->
                     <div class="sdropdown1">
                         <label for="Category" class="scdropdown1" name="Category"><b>Item Category:</b></label>
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Category_err'];
-                                                } ?></span>
+                       <span class="invalid"><?php echo isset($data['Category_err']) ? $data['Category_err'] : ''; ?></span>
+
                         <br>
 
 
@@ -68,9 +67,8 @@
                         <label for="Item"><b>Item Name</b></label>
                         <br>
                         <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" required value="<?php echo $data['Item_name']; ?>"><br />
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Item_name_err'];
-                                                } ?></span>
+                        <span class="invalid"><?php echo isset($data['Item_name_err']) ? $data['Item_name_err'] : ''; ?></span>
+
 
                     </div>
 
@@ -79,9 +77,8 @@
                             <label for="stock"> <b>Unit Size</b></label>
                             <br>
                             <input id="size" name="Unit_size" type="number" step="1" min=0 placeholder="Enter unit size" required value="<?php echo $data['Unit_size']; ?>">
-                            <span class="invalid"><?php if ($data) {
-                                                        echo $data['Unit_size_err'];
-                                                    }  ?></span>
+                           <span class="invalid"><?php echo isset($data['Unit_size_err']) ? $data['Unit_size_err'] : ''; ?></span>
+
                         </div>
                         <div class="sdropdown2">
                             <label for="Category2"><b>Type:</b></label>
@@ -117,9 +114,8 @@
 
 
 
-                            <span class="invalid"><?php if ($data) {
-                                                        echo $data['Unit_type_err'];
-                                                    }  ?></span>
+                         <span class="invalid"><?php echo isset($data['Unit_type_err']) ? $data['Unit_type_err'] : ''; ?></span>
+
 
 
                         </div>
@@ -129,9 +125,8 @@
                         <b>Unit Price</b>
                         <br>
                         <input id="sprice" name="Unit_price" type="number" min=0 placeholder="Enter the Unit Price" required value="<?php echo $data['Unit_price']; ?>">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Unit_price_err'];
-                                                }  ?></span>
+                       <span class="invalid"><?php echo isset($data['Unit_price_err']) ? $data['Unit_price_err'] : ''; ?></span>
+
 
                     </div>
 
@@ -140,9 +135,8 @@
                         <b>Stock Size</b>
                         <br>
                         <input id="Stock" name="Stock_size" type="number" step="1" min=0 placeholder="Enter the Stock Size" required value="<?php echo $data['Stock_size']; ?>">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Stock_size_err'];
-                                                }  ?></span>
+                        <span class="invalid"><?php echo isset($data['stock_err']) ? $data['stock_err'] : ''; ?></span>
+
 
                     </div>
 
@@ -154,9 +148,8 @@
                         <b>Exp</b>
                         <br>
                         <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expire date">
-                        <!-- <span class="invalid"><?php if ($data) {
-                                                        echo $data['Expiry_date_err'];
-                                                    }  ?></span> -->
+                        <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
+
 
                         <script>
                             var date = new Date();
@@ -174,12 +167,10 @@
                             // console.log(minDate);
                         </script>
 
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Expiry_date_err'];
-                                                }  ?></span>
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Invalid_date_err'];
-                                                }  ?></span>
+                        <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
+
+                       <span class="invalid"><?php echo isset($data['Invalid_date_err']) ? $data['Invalid_date_err'] : ''; ?></span>
+
                     </div>
 
 
@@ -214,9 +205,8 @@
                         <b>Descripition</b>
                         <br>
                         <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php echo $data['Description']; ?>">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Description_err'];
-                                                }  ?></span>
+                     <span class="invalid"><?php echo isset($data['Description_err']) ? $data['Description_err'] : ''; ?></span>
+
                     </div>
 
 
@@ -232,9 +222,8 @@
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
                     <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images"> -->
                         <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Image_err'];
-                                                }  ?></span>
+                    <span class="invalid"><?php echo isset($data['Image_err']) ? $data['Image_err'] : ''; ?></span>
+
                     </div>
 
 
@@ -250,9 +239,8 @@
 
                         <input type="checkbox" id="Instore Pickup" name="Insto_Pickup" value="Instore Pickup">
                         <label for="InstorePickupd"> <b>Insto Pickup</b></label><br>
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['DeliveryMethod_err'];
-                                                }  ?></span>
+                      <span class="invalid"><?php echo isset($data['DeliveryMethod_err']) ? $data['DeliveryMethod_err'] : ''; ?></span>
+
 
 
 
@@ -415,7 +403,7 @@
 
 
 
-            // </script>
+             </script>
             <?php require APPROOT . '/views/inc/footer.php'; ?>
         </section>
 

@@ -28,8 +28,17 @@
             <div class="nav-parts">
             </div>
 
+
+                    <div class="nav-parts">
+                    <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+                </a>
+                </div>
+
+
+
+
                 <div class="nav-parts">
-                    
+
                     <a href="<?php echo URLROOT ?>/Pages/index">Marketplace</a>
                 </div>
 
@@ -60,10 +69,15 @@
                                         </a>
 
                                         <?php elseif($_SESSION['user_type'] == 'VehicleRenter') :?>
-                                        <a href="<?php echo URLROOT?>/V_renter_home/get_details1" class="sub-link-menu">
-                                            <h2>Dashboard</h2>
+
+                                        <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="sub-link-menu">
+                                            <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
                                             <span>></span>
                                         </a>
+
+                                        
+
+
                                     <?php else: ?>
                                         <a href="<?php echo URLROOT?>/Cart/showCart" class="sub-link-menu">
                                             <h2>Dashboard</h2>

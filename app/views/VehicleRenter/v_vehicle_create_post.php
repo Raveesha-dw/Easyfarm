@@ -1,5 +1,7 @@
 <div class="headebr">
+
 <div class="headebr">
+
 
 <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -12,11 +14,10 @@
 
 
  <div class="container">
-    <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
-    <!-- <section class="home"> -->
+<?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 
-
+ <!-- <section class="home"> -->
 
 
 
@@ -123,10 +124,12 @@
                     <p><I>Mark unavailable dates for renting</p></I>
                         <div class="cal" >
                             <div class="response"></div>
-                            <div id='calendar'>
+                            <!-- <?php echo $data['last_date_of_plan']; ?> -->
+                            <div id='calendar' data-last_date_of_plan= '<?php echo $data['last_date_of_plan']; ?>'>
+
                                 <!-- <input type="hidden" id="hidden_V_Id" value="<?php echo $data['uId']; ?>"> -->
 
-                                <input type="hidden" id="hiddenInputDates" name="markedDates">
+                                <input type="hidden" id="hiddenInputDates" name="markedDates" data-last_date_of_plan= "<?php echo $data['last_date_of_plan']; ?>">
 
 
 
@@ -184,6 +187,13 @@
         </form>
     </div>
 </div>
+<?php require APPROOT . '/views/inc/footer.php';?>
+   <!-- </section> -->
+
+    </div>
+</div>
+
+
 
 
 
@@ -195,6 +205,7 @@
 
 
 <?php require APPROOT . '/views/inc/footer.php';?>
+
 
 
 <!-- Your other head elements -->
