@@ -96,10 +96,10 @@ console.log(dataToSend);
             };
 
             var numOfItems = itemIds.length;
-
+payhere.onCompleted = function onCompleted(orderId) {
             for (let i = 0; i < numOfItems; i++) {
                 console.log("qqqqqq");
-                payhere.onCompleted = function onCompleted(orderId) {
+                
                     console.log("eeeeeee");
                 saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i]);
                 console.log("Payment completed. OrderID:" + orderId);
