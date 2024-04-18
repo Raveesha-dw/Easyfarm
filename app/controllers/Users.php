@@ -751,7 +751,7 @@ class Users extends Controller{
         }
     }
 
-    public function createUserSession($user){
+public function createUserSession($user){
 
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
@@ -774,8 +774,7 @@ class Users extends Controller{
             
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
-        }
-        else if($_SESSION['user_type'] == 'VehicleRenter'){
+        }else if($_SESSION['user_type'] == 'VehicleRenter'){
 
             $vehicleOwnerData = $this->userModel->getVehicleOwnerInfo($_SESSION['user_ID']);
 
@@ -784,16 +783,19 @@ class Users extends Controller{
 
             header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
-        }else if($_SESSION['user_type'] == 'AgriExpert'){
+        }else if($_SESSION['user_type'] == 'AgricultureExpert'){
 
             $agriInstructorData = $this->userModel->getAgriInstructorInfo($_SESSION['user_ID']);
 
             $_SESSION['user_name'] = $agriInstructorData->Name;
             $_SESSION['accStatus'] = $agriInstructorData->AccStatus;
             
-            header("Location:http://localhost/Easyfarm/Blog");
+            redirect("AgriInstructor");
+        }else if($_SESSION['user_type']  == 'Admin'){
+            redirect("Admin");
         }
     }
+
 
     public function forgotPassword(){
 

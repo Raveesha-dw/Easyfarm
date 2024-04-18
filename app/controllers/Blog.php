@@ -148,7 +148,7 @@ class Blog extends Controller{
 
                 $data = [
                     'user_id' => trim($_POST['user_id']),
-                    'product_id' => trim($_POST['product_id']),
+                    'post_id' => trim($_POST['post_id']),
                     'question' => trim($_POST['question']),
                     'datetime_posted' => trim($_POST['datetime_posted']),
 

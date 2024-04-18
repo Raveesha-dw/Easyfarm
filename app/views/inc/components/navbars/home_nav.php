@@ -52,7 +52,7 @@ $current_page = $_SERVER['REQUEST_URI'];
 
 
             
-            <div class="nav-parts">
+            <!-- <div class="nav-parts">
 
                 <div class="s">
 
@@ -90,7 +90,7 @@ $current_page = $_SERVER['REQUEST_URI'];
                     }
                 </script>
 
-            </div>
+            </div> -->
 
 
 
