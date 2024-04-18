@@ -48,8 +48,9 @@ class M_payment{
 
 
 
-        $this->db->query('SELECT Order_ID  FROM orders WHERE orders.Item_Id = :itemId') ;
+        $this->db->query('SELECT Order_ID  FROM orders WHERE (orders.Item_Id = :itemId AND orders.Payment_Id = :Payment_Id)' ) ;
         $this->db->bind(':itemId', $data['Item_Id']);
+        $this->db->bind(':Payment_Id', $data['Payment_Id']);
         $order_result = $this->db->single();
 
         if ($order_result) {
@@ -60,8 +61,8 @@ class M_payment{
         print_r($order_id);
         print_r("ddddddd");
 
-        $this->db->query('INSERT INTO order_details(Order_ID, quantity, Unit_price, Unit_size, Unit_type, DeliveryMethod) VALUES (:Order_ID, :quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod)');
-        
+        $this->db->query('INSERT INTO order_details(Order_ID, quantity, Unit_price, Unit_size, Unit_type, DeliveryMethod,Payment_Id) VALUES (:Order_ID, :quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod , :Payment_Id)');
+        $this->db->bind(':Payment_Id', $data['Payment_Id']);
         $this->db->bind(':quantity', $data['quantity']);
         $this->db->bind(':Unit_price', $data['Unit_price']);
         $this->db->bind(':Unit_size', $data['Unit_size']);
