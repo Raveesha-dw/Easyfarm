@@ -136,7 +136,10 @@
 
                 $data = array_merge($data2, $data);
                 if ($this->vechile_ordersmodel->update_data($data)) {
+                    print_r("x");
+                    redirect('Vehicle_item/gethomepage');
                 }
+
             } else {
 
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
@@ -170,7 +173,8 @@
 
                 $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
                 // print_r($data3);
-                ($this->view('renter/v_vechiledetail', $data));
+                // ($this->view('renter/v_vechiledetail', $data));
+                
             }
 
             // if ($this->vechile_ordersmodel->update_data($data)){

@@ -252,7 +252,7 @@
                                             <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">
                                            
                                             
-                                            <input type="hidden" id="hiddenDeliveryMethod" value="<?php echo $data['selectedDeliveryMethod']; ?>">  <!-- new -->
+                                            <input type="hidden" id="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>>  <!-- new -->
                                             
 
 
