@@ -31,7 +31,7 @@ class BuyNow extends Controller{
         if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
             
-
+            $buyer_province = $_SESSION['buyer_province'] ? isset($_SESSION['buyer_province'])  : ($this->deliveryModel->getProvinceOfBuyer());
 
 
 
@@ -54,7 +54,7 @@ class BuyNow extends Controller{
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
         
-                    if(isset($_SESSION['buyer_province'])){
+                    if(isset($buyer_province)){
                         // $_SESSION['buyer_province'];
                         // $fee = $this->deliveryModel->getDeliveryFeeForSingleProduct($data['Item_Id']);
                         $S_ID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
