@@ -83,7 +83,7 @@ class Cart extends Controller{
 
                 }
 
-                redirect('Cart/getCart');
+                redirect('Pages/index');
             }
 
         } elseif (!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] != 'Buyer')) {
