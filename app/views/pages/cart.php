@@ -1,7 +1,6 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/logged_nav.php'; ?>
-<?php require APPROOT . '/views/inc/components/sidebars/buyer_sidebar.php'?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
     
 <div class="wrapperCart">
     <!-- <div class="column1">
@@ -71,7 +70,7 @@
                                     </td>
                                     <td>
                                         <!-- <input type="number" min=1 class="quantity-input" name="quantitiesTo[]" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>"  value="<?php echo $item['quantity']; ?>">   -->
-                                        <input type="number" class="quantity-input" name="quantitiesTo[]" min="<?php echo $item['Unit_size']?>" step="<?php echo $item['Unit_size']?>" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>" data-item-usize="<?php echo $item['Unit_size']; ?>" value="<?php echo $item['quantity']; ?>">
+                                        <input type="number" class="quantity-input" name="quantitiesTo[]" min="<?php echo $item['Unit_size']?>" step="<?php echo $item['Unit_size']?>" data-item-id="<?php echo $item['itemId']; ?>" data-item-uprice="<?php echo $item['unitPrice']; ?>" data-item-usize="<?php echo $item['Unit_size']; ?>" value="<?php echo $item['quantity']; ?>"> <?php echo $item['Unit_type']; ?>
     
                                         <input type="hidden" name="itemIds[]" value="<?php echo $item['itemId']; ?>"> 
                                         <input type="hidden" name="selectedDeliveryMethods[]" value="<?php echo $item['selectedDeliveryMethod']; ?>">                                   

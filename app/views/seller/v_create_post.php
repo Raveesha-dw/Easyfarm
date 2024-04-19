@@ -176,7 +176,7 @@
 
 
                     <br>
-                    <div class="saddress">
+                    <!-- <div class="saddress">
                         <b>Address</b>
                         <br>
                         <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line1">
@@ -185,7 +185,7 @@
                         <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line4">
 
 
-                    </div>
+                    </div> -->
 
                     <br>
                     <div>

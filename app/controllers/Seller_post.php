@@ -200,6 +200,8 @@ public  function create_post(){
 
             if ($data['Category'] == "Plants" || $data['Category'] == "Farming Tools" ){
                 if(!empty($data['Expiry_date'])){
+                                     $data['Invalid_date_err'] = 'Not Valid';
+
               }}
            
             
@@ -211,9 +213,9 @@ public  function create_post(){
             
             
            
-            if (empty($data['Expiry_date'])){
-                $data['Expiry_date_err'] = 'Please enter the date';
-            }
+            // if (empty($data['Expiry_date'])){
+            //     $data['Expiry_date_err'] = 'Please enter the date';
+            // }
             
             
             if (empty($data['DeliveryMethod'])){
@@ -391,7 +393,8 @@ foreach ($data as $obj) {
         // print_r($data);
         // print_r("f");
         // }
-        $mergedArray = array_merge($data, $dataArray);
+        $data = array_merge($data, $dataArray);
+        // print_r($data);
 
         $this->view('seller/v_update_post',$data);
         // print_r("f");
@@ -401,7 +404,7 @@ foreach ($data as $obj) {
     }
 
     public  function updatepost(){
-        // print_r("Hi");
+       // print_r("Hi");
         // print_r($_GET('id'));
         // $this = self::$this;
         // $data[]=$this->sellerModel-> getposts();
@@ -420,6 +423,8 @@ foreach ($data as $obj) {
                 $deliveryMethods[] = 'Insto Pickup';
             }
             $data['DeliveryMethod'] = implode(', ', $deliveryMethods);
+
+            
         
             $data = [
                 'Item_Id'=> trim($_POST['Item_Id']),
@@ -432,22 +437,9 @@ foreach ($data as $obj) {
                 'DeliveryMethod' => $data['DeliveryMethod'],
                 'Description'=> trim($_POST['Description']),
                 'Unit_type' => isset($_POST['Unit_type']) ? trim($_POST['Unit_type']) : '',
-                // 'Image'=> ($_FILES['Image']),
-                'Image' => [
-        'name' => $_FILES['Image']['name'],
-        'type' => $_FILES['Image']['type'],
-        'tmp_name' => $_FILES['Image']['tmp_name'],
-        'error' => $_FILES['Image']['error'],
-        'size' => $_FILES['Image']['size']
-    ],
+                'Image'=> ($_FILES['Image']),
                 'Image_name'=>time().'_'.$_FILES['Image']['name'],
-                
-                // 'old'=>  ($_FILES['Image']),
-                // $data['old'] = isset($oldImageData['Image']) ? $oldImageData['Image'] : [];
-                // 'old'=>'',
-                
-            
-                // 'Image'=> trim($_POST['Image']),
+      
                
 
                 'Item_name_err' => '',
@@ -501,12 +493,15 @@ foreach ($data as $obj) {
              if (empty($data['Unit_price']) || $data['Unit_price'] <= 0) {
                  $data['Unit_price_err'] = 'Please enter a valid unit price';
              }
+
+    
+
              
              
             
-            //  if (empty($data['Expiry_date'])){
-            //      $data['Expiry_date_err'] = 'Please enter the date';
-            //  }
+             if (empty($data['Expiry_date'])){
+                 $data['Expiry_date_err'] = 'Please enter the date';
+             }
              
              
              if (empty($data['DeliveryMethod'])){
@@ -524,21 +519,17 @@ foreach ($data as $obj) {
             
            
             
-            
+          
             
 
 
             if(empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err'])&& empty( $data['stock_err']) && empty($data['Expiry_date_err']) && empty( $data['Invalid_date_err']) && empty($data['Unit_type_err']) &&empty($data['Unit_price_err']) && empty($data['Stock_size_err']) && empty($data['Description_err']) &&empty($data['Unit_size_err']) &&empty($data['Image_err'])){
-                
-    if (updateImage($data['Image']['tmp_name'], $data['Image_name'], $data['Image']['name'], '/images/seller/')) {
-                // $data['old']['tmp_name'],
               
-                // if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/'));
+    
+              
+                if(uploadImage($data['Image']['tmp_name'], $data['Image_name'],'/images/seller/'));
                 if ($this->sellerModel->update_data($data)){
-                    
-                // $result= $this->sellerModel->update_data($data);
-                    // ($this->sellerModel->create_post($data)
-                    // $result= $this->sellerModel->update_data($data);
+                
                    
                 
                     $products = $this->sellerModel->get_data($_SESSION['user_ID']);
@@ -547,12 +538,26 @@ foreach ($data as $obj) {
                     // redirect("Seller_post/created_post");
                      $this->view('seller/v_createdpost',$products);
     
-                }}}
+                }}
                
                 else{
+
+
+
+                                  $data1=$this->sellerModel->get_category();
+                                
+// $dataArray = [];
+
+// foreach ($data1 as $obj) {
+//     $dataArray[] = (array) $obj;
+// }
+// print_r($dataArray);
+
+ $data11 = array_merge( $data1,$data);
+//   print_r($data);
                     //$data     = get_object_vars($data[0]);
                    
-                 return $this->view('seller/v_update_post',$data);
+                 return $this->view('seller/v_update_post',$data11);
                 }
     
                 

@@ -26,6 +26,7 @@
     justify-content: center;
     padding-top: 0;
     flex-wrap: wrap;
+    margin-top: 10%;
 }
 
 /*Product Section*/
@@ -241,7 +242,10 @@ footer .copyright{
 /* filters */
 
 .filters {
+    margin-top: 0.5%;
     margin-bottom: 20px;
+    margin-left: 80%;
+    width:180px;
 }
 
 .filters select {
