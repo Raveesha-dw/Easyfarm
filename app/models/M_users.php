@@ -36,6 +36,7 @@ class M_users{
     // }
 
     public function register($data){
+
         if($data['user_type'] == 'Buyer'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
@@ -49,11 +50,12 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address) VALUES(:id, :fullname, :contactno, :address)');
+            $this->db->query('INSERT INTO reg_buyer(U_Id, Name, Contact_num, Address, Province) VALUES(:id, :fullname, :contactno, :address, :province)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
-            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);           
+            $this->db->bind(':address', $data['address'].','.$data['city'].','.$data['postalcode']);
+            $this->db->bind(':province', $data['province']);           
             $this->db->execute();
             return true;
         }
@@ -77,13 +79,14 @@ class M_users{
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
-            VALUES(:id, :fullname, :nic, :store_name, :store_address, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
+          $this->db->query('INSERT INTO reg_seller(U_Id, Name, NIC, Store_Name, Store_Adress, Store_province, Account_Holder, Bank_Name, Branch_Name, Account_Number) 
+            VALUES(:id, :fullname, :nic, :store_name, :store_address, :store_province, :ac_Holder_name, :bank_name, :branch_name, :ac_number)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':nic', $data['nic']);
             $this->db->bind(':store_name', $data['store_name']);
             $this->db->bind(':store_address', $data['store_address']);
+            $this->db->bind(':store_province', $data['store_province']);
             $this->db->bind(':ac_Holder_name', $data['ac_Holder_name']);
             $this->db->bind(':bank_name', $data['bank_name']);
             $this->db->bind(':branch_name', $data['branch_name']);
@@ -119,11 +122,9 @@ class M_users{
 
             $this->db->execute();
             return true;
-        }else{
-            return false;
         }
         
-         if($data['user_type'] == 'VehicleRenter'){
+        if($data['user_type'] == 'VehicleRenter'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -132,98 +133,71 @@ class M_users{
 
             $this->db->query('SELECT * FROM user WHERE Email= :email');
             $this->db->bind(':email',$data['email']);
-
             $row=$this->db->single();
             $id = $row->U_Id;
 
-            $this->db->query('INSERT INTO reg_vehicleOwner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
+            $this->db->query('INSERT INTO reg_vehicleowner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
             $this->db->bind('address', $data['address']);
             $this->db->bind('city', $data['city']);
             $this->db->execute();
-         }
+            return true;
+        }
 
-         else{
+        else{
             return false;
          }
 
     }
 
 
-    public function login($data){
-
-        $this->db->query('SELECT * FROM user WHERE Email= :email');
+    public function authenticateUser($data){
+        $this->db->query('SELECT * FROM user WHERE Email = :email');
         $this->db->bind(':email', $data['email']);
-        $row=$this->db->single();
+        $userData = $this->db->single();
 
-        // print_r($row);
-        if($row->User_type=="Seller"){
-            // print_r("s");
-            if($row){
-                print_r($data['email']);
-                $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:email");
-                $this->db->bind(':email', $data['email']);
-                $row1 = $this->db->single();
-                // print_r($row);
-                // print_r($row1);
-                // echo 'row is here';
-                $hashed_password = $row1->Password;
-    
-               // echo $hashed_password;
-                if(password_verify($data['password'], $hashed_password)){
-                  //  echo "yo";
-                    return $row1;
-                }else{
-                    return false;
-                }
-            }
-        }
-// vechile renter part
-        elseif($row->User_type=="VehicleRenter"){
-            if($row){
-                // print_r($data['email']);
-                $this->db->query("SELECT * FROM reg_vehicleowner INNER JOIN user on reg_vehicleowner.U_Id = user.U_Id WHERE user.Email=:email");
-                $this->db->bind(':email', $data['email']);
-                $row1 = $this->db->single();
-                // print_r($row);
-                // print_r($row1);
-                // echo 'row is here';
-                $hashed_password = $row1->Password;
-    
-               // echo $hashed_password;
-                if(password_verify($data['password'], $hashed_password)){
-                  //  echo "yo";
-                    return $row1;
-                }else{
-                    return false;
-                }
-            }
-        }
-        elseif($row){
-            // echo '<br>';
-            // echo 'row is here';
-
-            $hashed_password = $row->Password;
-
-            if(password_verify($data['password'], $hashed_password)){
-                return $row;
+        if(password_verify($data['password'], $userData->Password)){
+                return $userData;
             }else{
                 return false;
-            }
-        }
-        
+            }   
+    }
+
+    public function getBuyerInfo($id){
+        $this->db->query("SELECT * FROM reg_buyer WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $buyerData = $this->db->single();
+        return $buyerData;
+    }
+
+    public function getSellerInfo($id){
+        $this->db->query("SELECT * FROM reg_seller WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $sellerData = $this->db->single();
+        return $sellerData;
+    }
+
+    public function getVehicleOwnerInfo($id){
+        $this->db->query("SELECT * FROM reg_vehicleowner WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $vehicleOwnerData = $this->db->single();
+        return $vehicleOwnerData;
+    }
+
+    public function getAgriInstructorInfo($id){
+        $this->db->query("SELECT * FROM reg_agriinstructor WHERE U_Id = :id");
+        $this->db->bind(':id', $id);
+        $agriInstructorData = $this->db->single();
+        return $agriInstructorData;
     }
 
 
 
 
-
-
-
     public function PasswordReset($data){
-        $this->db->query('UPDATE user SET Password= :password WHERE Email= :email');
+        $this->db->query('UPDATE user SET Password = :password WHERE Email = :email');
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':email', $data['email']);
         $this->db->execute();
@@ -271,6 +245,17 @@ class M_users{
         $accStatus = $this->db->single();
         return $accStatus;
     }
+
+
+    public function get_number_of_cart_items($data){
+    $this->db->query('SELECT COUNT(*) as itemCount FROM cart WHERE U_Id = :uId');
+    $this->db->bind(':uId', $data);
+
+    $result = $this->db->single();
+    $itemCount = $result->itemCount;
+    print_r($itemCount);
+    return $itemCount;
+}
 
 
 

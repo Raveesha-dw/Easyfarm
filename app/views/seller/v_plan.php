@@ -2,6 +2,7 @@
 //  require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'
 ?>
 
+
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -14,6 +15,7 @@
 
         <section class="home">
 
+<?php print_r($data)?>
 
 
 
@@ -135,6 +137,7 @@
 
                         activateCountdown(document.getElementById("myCountdown"), "<?php echo $data['Date'] ?>");
                         // "2025-11-4");
+                        <?php print_r($data)?>
                     </script>
 
 
@@ -146,13 +149,13 @@
                             // var id = pkg[a].id
                             // console.log("jj")
                             // console.log(${pkg[a]})
-                            console.log(a)
+                            // console.log($data)
                             var ex_date = <?php echo json_encode($data['Date']); ?>;
                             var currentDate = new Date();
                             var formattedCurrentDate = currentDate.toLocaleDateString('en-US');
-                            // console.log(date);
+                            console.log(pkg)
                             var dataPlanId = <?php echo json_encode($data['plan_id']); ?>;
-
+console.log(dataPlanId)
                             if (dataPlanId <= a) {
                                 var popupContent = `
                     <div style="text-align: center;">
@@ -171,7 +174,10 @@
                             <button class="ok-button" onclick="paymentGateway(${a})">OK</button>
                         </div>
                      `;
-                            } else if (formattedCurrentDate <= ex_date) {
+                            }
+                            // undifinr   formattedCurrentDate<=ex_date
+                            
+                             else if (1) {
                                 var popupContent = ` <div style="text-align: center;">
                 <i class="fas fa-exclamation-triangle fa-3x" style="color: #ffc107;"></i>
                 <br></br>
@@ -200,26 +206,7 @@
                             document.getElementById("myModal").style.display = "none";
                         }
 
-                        //     function handleOkButtonClick(packageId) {
-
-                        //     // Make an AJAX request to update controller function
-
-                        //     var xhr = new XMLHttpRequest();
-                        //     xhr.open("POST", "<?php echo URLROOT; ?>/Plan/handle_ajax_request", true);  // Update the path to match your actual controller method
-                        //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  // Corrected header
-
-                        //     xhr.onreadystatechange = function () {
-                        //         if (xhr.readyState === 4 && xhr.status === 200) {
-                        //             // Handle the response if needed
-                        //             console.log(xhr.responseText);
-                        //         }
-                        //     };
-
-                        //     // Prepare data to be sent with the request
-                        //     var data = "action=update&packageId=" + encodeURIComponent(packageId);
-
-                        //     xhr.send(data);
-                        // }
+                      
                     </script>
 
 

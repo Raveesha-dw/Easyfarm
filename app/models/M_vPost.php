@@ -327,7 +327,16 @@ public function get_planActivated_date($Owner_Id){
 }
 
 
-
-
+public function checking_orders($current_date){
+    
+    $this->db->query("SELECT * FROM order_calander WHERE V_Id = :V_Id AND date > :current_date");
+    $this->db->bind(':V_Id',$_GET['V_Id']);
+    $this->db->bind(':current_date',$current_date);
+    
+ 
+    $result=$this->db->resultSet();
+    return $result;
+    
 }
 
+}

@@ -48,52 +48,55 @@
                        ?>
               
              <?php if (!empty($orderItems)) : ?>
-                      
-                    <?php foreach ($orderItems as $data) : ?>
-                            <?php if (is_array($data)) : ?>
 
+            <?php
+             $orderItemsBySeller = [];
 
+             foreach($orderItems as $data){
+                // print_r($data);
+                // Print stmt here
+                $sellerStore = $data['Store_Name'];
 
+                $orderItemsBySeller[$sellerStore][] = $data;                
+             } ?>
 
+                    <?php foreach($orderItemsBySeller as $sellerStore => $items) :?>
 
+                    <?php $deliFee = 0; ?>
+                    <br><h3 style="color: darkblue;">Seller: <?php echo $items[0]['Store_Name']; ?></h3>
+                     
+                    <?php foreach ($items as $data) : ?>
+                            <?php if (is_array($data)) :  
+                            // print_r($data);   
+                            ?>
+                            
+                            <!-- 
+                      Print stmt here 
+                     new part starts here -->
+                    
+                   <?php  
+                
+                   if($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery'){ ?>
+                   
+                    <br><h3><strong>Home Delivery </strong></h3>
 
-
-
-                    <div class="wrapperBuyNow_sub">
+                        <div class="wrapperBuyNow_sub">
                         <p><b> <?php echo $data['Item_name']; ?></b></p>
                         <section id="productDetails" class="section-p1">
                             <div class="row">
                                 <!-- <div class="column1" > -->
                                     <div class="single-pro-image">
-                                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $data['Image']?> " width="100%" id="MainImg" alt=""> 
+                                        <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
                                     <!-- </div> -->
                                 </div>
                             </div>
-<!-- 
-                                <div class="row">
-                                    <div class="column1" >
-                                        <p>Name:</p>
-                                    </div>
-                                    <div class="column2" >
-                                        <p><?php echo $data['Item_name']; ?></p>
-                                    </div>
-                                </div> -->
 
-                                <div class="row">
+                        <div class="row">
                                     <div class="column1" >
-                                        <p>Delivery Method</p>
+                                        <p>Quantity</p>
                                     </div>
                                     <div class="column2" >
-                                        <p><?php echo $data['selectedDeliveryMethod']; ?></p>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="column1" >
-                                        <p>Delivery Fee</p>
-                                    </div>
-                                    <div class="column2" >
-                                        <p><b><small>LKR </small></b> <?php echo number_format($data['deliveryFee'],2); ?></p>
+                                        <p><?php echo $data['quantity']; ?><?php echo $data['Unit_type']?></p>
                                     </div>
                                 </div>
 
@@ -106,7 +109,55 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                 <div class="row">
+                                    <div class="column1" >
+                                        <p>Amount for Quantity</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
+                                    </div>
+                                </div>
+                            </section>       
+                        </div>
+
+                            <?php
+                             $deliFee = $deliFee + $data['deliveryFee'];
+                            // print_r($deliFee);
+                            ?>
+                        <?php
+                       } ?> 
+                       <?php endif; ?>                        
+                        <?php endforeach; ?>
+
+                        <?php if($deliFee != 0){ ?>
+                       <div class="row">
+                                    
+                                     <br><h3><b>Delivery Fee</b>&nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deliFee,2); ?></h3>
+                                </div>
+
+                        <?php } ?> 
+
+                        <?php foreach ($items as $data) : ?>
+                            <?php if (is_array($data)) : 
+                            // print_r($data);
+                            ?>
+                            
+                        <?php if($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery')){ ?>
+                        
+                        <br><h3><strong>In-Store Pickup </strong></h3>
+
+                        <div class="wrapperBuyNow_sub">
+                        <p><b> <?php echo $data['Item_name']; ?></b></p>
+                        <section id="productDetails" class="section-p1">
+                            <div class="row">
+                                <!-- <div class="column1" > -->
+                                    <div class="single-pro-image">
+                                        <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+
+                        <div class="row">
                                     <div class="column1" >
                                         <p>Quantity</p>
                                     </div>
@@ -115,23 +166,35 @@
                                     </div>
                                 </div>
 
-   
-
                                 <div class="row">
                                     <div class="column1" >
-                                        <p>Total Payment for <?php echo $data['Item_name']; ?></p>
+                                        <p>Unit Price</p>
                                     </div>
                                     <div class="column2" >
-                                        <p><b><small>LKR </small></b> <?php echo number_format($data['totalPayment'],2); ?></p>
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['Unit_price'],2)?> / <?php echo $data['Unit_size']?> <?php echo $data['Unit_type']?> </p>
                                     </div>
                                 </div>
-                        </section>       
+
+                                 <div class="row">
+                                    <div class="column1" >
+                                        <p>Amount for Quantity</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
+                                    </div>
+                                </div>
+                            </section>       
                         </div>
 
+                        <?php } ?>
+                        
                         <?php endif; ?>                        
                         <?php endforeach; ?>
-                <?php endif; ?>
+                        <?php endforeach; ?>
 
+                    <?php endif; ?>
+
+                 <!-- from here -->
 
 
                 </div>
@@ -173,30 +236,35 @@
 
                            <input type="hidden" id="hiddenuId" value="<?php echo $data['uId']; ?>">
                            <input type="hidden" id="hiddenTotalpayment" value="<?php echo $orderPayment; ?>">
+                           <input type="hidden" id="hiddenDeliveryFee" value="<?php echo $orderDeliveryTotal; ?>">
                            
                                 <?php if (!empty($orderItems)) : ?>                     
-                                    <?php foreach ($orderItems as $data) : ?>
+                                    <?php foreach ($orderItems as $data) : 
+                                     ?>
                                         <?php if (is_array($data)) : ?>
 
                            
                                             <input type="hidden" id="hiddenSubTotalpayment[]" value="<?php echo number_format($data['totalPayment'],2); ?>">
                                             <input type="hidden" id="hiddenItem_Id[]" value="<?php echo $data['Item_Id']; ?>">
+                                            <input type="hidden" id="hiddenUnit_price[]" value="<?php echo $data['Unit_price']; ?>"> <!-- new -->
+                                            <input type="hidden" id="hiddenUnit_size[]" value="<?php echo $data['Unit_size']; ?>">  <!-- new -->
+                                            <input type="hidden" id="hiddenUnit_type[]" value="<?php echo $data['Unit_type']; ?>">   <!-- new -->
+                                            <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">
+                                           
                                             
-                                            <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">                
-                            
+                                            <input type="hidden" id="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>>  <!-- new -->
+                                            
 
 
                                     <?php endif; ?>                        
                                     <?php endforeach; ?>
                                 <?php endif; ?>
-    
 
+                           
                       
          
                     </div>
                 </div>
-
-
 
 
 
@@ -223,8 +291,11 @@
                         
                         <p class="type">Province </p>
                         <div class="input-box">
+                        <?php if(!isset($_SESSION['buyer_province'])){ ?>
+                            <span style="color: red;">Add your delivery province</span>
+                        <?php } ?>
 
-                        <select name="Province" required value="">
+                        <select id="province_select" name="Province" required value="">
                                    <option disabled selected>Province</option>
                                    <option value="North">North</option>
                                    <option value="Western">Western</option>
@@ -239,7 +310,7 @@
 
 
                             <!-- <input type="text" name="district" placeholder="Enter the District" required value=""> -->
-                            <i class='bx bxs-edit-location'></i>
+                            <i class='bx bxs-edit-location'></i> 
                             <!-- <span class="invalid"><?php echo $data['address_err']; ?></span> -->
                         </div>
 
@@ -284,9 +355,6 @@
 
 
 
-
-
-
  
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>       
@@ -307,7 +375,23 @@ function closeForm() {
 
 <script src="<?php echo URLROOT ?>\public\js\payment.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
-
-
+<script>
+$(document).ready(function() {
+    $('#province_select').on('change', function() {
+        var selectedProvince = $(this).val();
+        $.ajax({
+            url: '<?php echo URLROOT?>/BuyNow/Checkout', 
+            method: 'POST',
+            data: { province: selectedProvince },
+            success: function(response) {
+                $('#delivery_fee').text(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+});
+</script>

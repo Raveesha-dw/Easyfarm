@@ -123,6 +123,59 @@ ul{
 
 
 
+/* Modal container */
+.container .modal1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal content */
+.container .modal-content1 {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Close button */
+.container .modal-content1 button {
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* Style for "OK" button */
+.container #modal-ok-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Style for "Cancel" button */
+.container #modal-cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Close button on hover */
+.modal-content1 button:hover {
+    background-color: #555;
+    color: white;
+}
+
+
+
+
 
 
 
