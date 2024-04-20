@@ -26,6 +26,7 @@
 .wrapperVcreatedPost #product-vehicle-container{
     grid-template-columns: (3, 1fr);
     width: auto;   
+    margin-left: 5%;
 }
 
 .wrapperVcreatedPost #product-vehicle{

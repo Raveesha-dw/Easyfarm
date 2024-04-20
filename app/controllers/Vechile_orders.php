@@ -8,7 +8,33 @@
         $this->vechile_ordersmodel = $this->model('M_vechile_ordersmodel');
     }
 
-    public function details()
+    public function details(){
+        print_r($_SESSION['user_type']);
+        
+         $data = [
+                'user_type' => '',
+                'fullname' => '',
+                'contactno' => '',
+                'email' => '',
+                'address' => '',
+                'city' => '',
+                'postalcode' => '',
+                'password' => '',
+                'confirm-password' => '',
+
+                'name_err' => '',
+                'contactno_err' => '',
+                'email_err' => '',
+                'address_err' => '',
+                'password_err' => '',
+                'confirm-password_err' => '',
+
+            ];
+    if( ($_SESSION['user_type'] != 'Buyer')){
+        $this->view('Users/v_registerBuyer',$data);
+    }
+    
+    else{
 
     {
         $data = [
@@ -32,12 +58,12 @@
         $data2 = $this->vechile_ordersmodel->getdate($_GET['V_Id']);
         $data5 = $this->vechile_ordersmodel->getunavalibale_date($_GET['V_Id']);
         $data6 = $this->vechile_ordersmodel->getdatepending($_GET['V_Id']);
-        print_r($data5);
+        // print_r($data1);
         $owner_id = $data1[0]->Owner_Id;
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
         $data7= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
-        // print_r($data6);
+        // print_r($data3);
 
         $plan_id = $data3[0]->plan_id;
         $registed_date = $data3[0]->Register_date;
@@ -69,7 +95,7 @@
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
     }
-
+    }}
 
     public function orders()
     {

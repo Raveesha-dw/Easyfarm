@@ -11,12 +11,13 @@ class Seller_home extends Controller{
         $this->sellerhomeModel = $this->model('M_seller_home');
         
     }
-
-    public function index(){
+// earlier have index
+    public function get_product_details1(){
 
         // print_r($_SESSION['user_email']);
         // $data=Array();
         $items=$this->sellerhomeModel->get_itemids1($_SESSION['user_ID']);
+        
        
             $this->view('seller/v_seller_home',$items);
 
@@ -53,6 +54,7 @@ class Seller_home extends Controller{
     public function update_status2(){
         $item1 =$this->sellerhomeModel->updateiteamdeatils2();
         $items=$this->sellerhomeModel->get_itemids4($_SESSION['user_ID']);
+        print_r("dd");
         $this->view('seller/v_seller_home_completed',$items);
 
     }

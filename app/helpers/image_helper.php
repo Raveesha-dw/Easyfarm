@@ -14,6 +14,13 @@ function updateImage($old, $img, $img_name, $location) {
 
     return move_uploaded_file($img, $target);
 }
+
+
+
+
+
+
+
 // function updateImage($old_tmp_name, $img_name, $location) {
 //     // Get the path to the old image
 //     $oldPath = PUBROOT . $location . basename($old_tmp_name);

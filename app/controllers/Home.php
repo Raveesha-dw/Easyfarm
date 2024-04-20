@@ -7,6 +7,7 @@ class Home extends Controller{
     // private static $this;
     public function __construct()
     {
+        
         // self::$this = $this;
         $this->HomeModel = $this->model('M_home');}}
         
