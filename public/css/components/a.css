@@ -56,6 +56,8 @@ body.dark{
     background: var(--sidebarr-color);
     transition: var(--tran-05);
     z-index: 100;  
+  
+    background-color: #27ae5d;
 }
 .sidebarr.close{
     width: 88px;
