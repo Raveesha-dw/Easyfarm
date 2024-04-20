@@ -14,34 +14,51 @@ class Cart extends Controller{
 
     public function showCart()
     {
+    
 
-        $data = [
-            'quantity' => '',
-            'itemId' => '',
-            'uId' => $_SESSION['user_ID'],
 
-        ];
+         if ( (!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] == 'Buyer'))) {
 
-        $Mitems = $this->cartModel->getAllcartItems($data);
-        $items = (array) $Mitems;
-        $data = array();
-        foreach ($items as $Mitem) {
-            $viewItem = array();
-            $item = (array) $Mitem;
-            $viewItem['quantity'] = $item['Quantity'];
-            $viewItem['itemId'] = $item['Item_Id'];
-            $viewItem['uId'] = $item['U_Id'];
-            $viewItem['unitPrice'] = $item['Unit_price'];
-            $viewItem['itemName'] = $item['Item_name'];
-            $viewItem['selectedDeliveryMethod'] = $item['selectedDeliveryMethod'];
-            $viewItem['Unit_type'] = $item['Unit_type'];
-            $viewItem['Unit_size'] = $item['Unit_size'];
-            $viewItem['Image'] = $item['Image'];
+            $data = [
+                'quantity' => '',
+                'itemId' => '',
+                'uId' => $_SESSION['user_ID'],
 
-            array_push($data, $viewItem);
+            ];
+
+            $Mitems = $this->cartModel->getAllcartItems($data);
+            $items = (array) $Mitems;
+            $data = array();
+            foreach ($items as $Mitem) {
+                $viewItem = array();
+                $item = (array) $Mitem;
+                $viewItem['quantity'] = $item['Quantity'];
+                $viewItem['itemId'] = $item['Item_Id'];
+                $viewItem['uId'] = $item['U_Id'];
+                $viewItem['unitPrice'] = $item['Unit_price'];
+                $viewItem['itemName'] = $item['Item_name'];
+                $viewItem['selectedDeliveryMethod'] = $item['selectedDeliveryMethod'];
+                $viewItem['Unit_type'] = $item['Unit_type'];
+                $viewItem['Unit_size'] = $item['Unit_size'];
+                $viewItem['Image'] = $item['Image'];
+
+                array_push($data, $viewItem);
+
+            }
+            $this->view('pages/cart', $data);
+        }elseif (empty($_SESSION['user_ID'])) {
+            $data = [
+                'email' => '',
+                'password' => '',
+
+                'email_err' => '',
+                'password_err' => '',
+            ];
+            $this->view('Users/v_login', $data);
+
+            // redirect('Users/v_login');
 
         }
-        $this->view('pages/cart', $data);
 
     }
 
@@ -82,6 +99,9 @@ class Cart extends Controller{
                     $this->cartModel->addToCart($data);
 
                 }
+
+
+                $_SESSION['n_cart_items'] = $this->cartModel->get_number_of_cart_items($_SESSION['user_ID']);
 
                 redirect('Pages/index');
             }
@@ -159,7 +179,7 @@ class Cart extends Controller{
         // $mergedArray = array_merge($data1, $data);
         // $data = array_unique($mergedArray);
 
-
+        $_SESSION['n_cart_items'] = $this->cartModel->get_number_of_cart_items($_SESSION['user_ID']);
 
         $this->view('pages/cart', $data);
 
@@ -190,6 +210,8 @@ class Cart extends Controller{
 
                 array_push($data, $viewItem);
             }
+            
+            $_SESSION['n_cart_items'] = $this->cartModel->get_number_of_cart_items($_SESSION['user_ID']);
 
             $this->view('pages/cart', $data);
 
