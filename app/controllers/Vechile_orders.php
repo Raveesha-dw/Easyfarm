@@ -129,15 +129,40 @@
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
                 // print_r($data);
+
+               
+
+
+
+
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
                 foreach ($data1 as $object) {
                     $data2 = (array) $object;
                 }
 
+
+
                 $data = array_merge($data2, $data);
+                print_r($data);
+
+
+                $rentalFeePerWeek = $data['Rental_Fee'];
+
+// Decode JSON to array
+$selectedDatesArray = json_decode($data['selectedDates']);
+
+// Count the number of selected dates
+$numberOfSelectedDates = count($selectedDatesArray);
+
+// Calculate the total rental fee
+$totalRentalFee = $numberOfSelectedDates * $rentalFeePerWeek;
+$data['Total_Rental_Fee'] = $totalRentalFee;
+// Output the total rental fee
+// echo "Total rental fee: " . $totalRentalFee;
+print_r($data);
                 if ($this->vechile_ordersmodel->update_data($data)) {
                     print_r("x");
-                    redirect('Vehicle_item/gethomepage');
+                    // redirect('Vehicle_item/gethomepage');
                 }
 
             } else {
