@@ -23,7 +23,7 @@
     $data = $this->vplanModel->get_dataplan1();
 //    print_r("s");
    ;
-    $mail=$_SESSION['user_email1'];
+    $mail=$_SESSION['user_email'];
     // print_r($mail);
     $data2=$this->vplanModel->get_userdetails($mail);
     // print_r($data2);
@@ -475,7 +475,7 @@ public function payment1() {
             $data = $this->vplanModel->get_dataplan1();
             
             
-            $mail=$_SESSION['user_email1'];
+            $mail=$_SESSION['user_email'];
             
             
             $data2=$this->vplanModel->get_userdetails($mail);
