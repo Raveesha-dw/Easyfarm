@@ -193,10 +193,6 @@ if (!empty($_SESSION['user_email'])) {
                         <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
                         <!-- <?php print_r( $data['n_cart_items']); ?> -->
                     <div class="nav-parts">
-                    <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
-                        <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
                             
                             <a href="<?php echo URLROOT ?>/Cart/showCart" class="cart-link">
                                 <i class="fas fa-shopping-cart cart"></i>
