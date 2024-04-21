@@ -208,10 +208,18 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
                     <div class="dropdown3">
                         <br>
-                        <b>Delivery Method<span class="requiredd"></span></b>
+                        
                         <br>
                         <br>
+                       
                         <div class="delivery-options">
+                            <br><br>
+                             <br><br>
+                            <b>Delivery Method<span class="requiredd"></span></b>
+                          
+                        
+                        
+                        <br><br>
                             <?php
                             // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
 
@@ -225,8 +233,9 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                             // Output checkboxes
                             ?>
 
+  
                             <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
-                            <label for="Home Delivery">Home Delivery</label><br>
+                               <label for="Home Delivery">Home Delivery</label>
 
                             <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
                             <label for="Insto Pickup">In-store-Pickup</label><br>
