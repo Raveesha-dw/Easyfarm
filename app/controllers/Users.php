@@ -760,6 +760,7 @@ class Users extends Controller{
             $buyerData = $this->userModel->getBuyerInfo($_SESSION['user_ID']);
            
             $_SESSION['user_name'] = $buyerData->Name;
+            $_SESSION['buyer_province'] = $user->province;
 
             header("Location:http://localhost/Easyfarm/Pages/index");
 
