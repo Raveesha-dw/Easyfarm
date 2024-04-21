@@ -71,8 +71,19 @@ class M_cart{
             return false;
         }
     }
+ 
 
 
+
+    public function get_number_of_cart_items($data){
+        $this->db->query('SELECT COUNT(*) as itemCount FROM cart WHERE U_Id = :uId');
+        $this->db->bind(':uId', $data);
+
+        $result = $this->db->single();
+        $itemCount = $result->itemCount;
+        print_r($itemCount);
+        return $itemCount;
+    }
 
 
 
