@@ -763,7 +763,9 @@ class Users extends Controller{
             
            
             $_SESSION['user_name'] = $buyerData->Name;
+            $_SESSION['buyer_province'] = $user->province;
             $_SESSION['n_cart_items'] =  $cart_items;
+
 
             header("Location:http://localhost/Easyfarm/Pages/index");
 
