@@ -1,4 +1,21 @@
 <!-- <?php print_r($data) ?> -->
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Store the selected values in session variables
+    $_SESSION['selectedCategory'] = $_POST['Category'];
+    $_SESSION['selectedUnitType'] = $_POST['Unit_type'];
+    $_SESSION['selectedExpiryDate'] = $_POST['Expiry_date'];
+}
+
+// Retrieve the selected values from session variables, or use default values if not set
+$selectedCategory = isset($_SESSION['selectedCategory']) ? $_SESSION['selectedCategory'] : '';
+$selectedUnitType = isset($_SESSION['selectedUnitType']) ? $_SESSION['selectedUnitType'] : '';
+$selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['selectedExpiryDate'] : '';
+
+
+//  require APPROOT . '/views/inc/components/sidebars/seller_sidebar.php'
+?>
 <div class="headebr">
     <div>
         <?php require APPROOT . '/views/inc/header.php'; ?>
@@ -23,22 +40,12 @@
                     <input type="hidden" name="Item_Id" value=<?php echo $data['Item_Id'] ?>>
 
                     <div class="sdropdown1">
-                        <label for="sCategory" class="scdropdown1" name="Category"><b>Item Category:</b></label>
+                        <label for="sCategory" class="scdropdown1" name="Category"><b>Item Category<span class="requiredd"></span></b></label>
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['Category_err'];
                                                 } ?></span>
-                        <br>
-                        <!-- <select name="Category" id="sCategory">
-                            <option disabled selected>Select Category</option>
-                            <option value="Vegatable" <?php echo ($data['Category'] == 'Vegatable') ? 'selected' : ''; ?>>Vegatable</option>
-                            <option value="Fruits" <?php echo ($data['Category'] == 'Fruits') ? 'selected' : ''; ?>>Fruits</option>
-                            <option value="Plants" <?php echo ($data['Category'] == 'Plants') ? 'selected' : ''; ?>>Plants</option>
-                            <option value="Seeds" <?php echo ($data['Category'] == 'Seeds') ? 'selected' : ''; ?>>Seeds</option>
-                            <option value="Grains" <?php echo ($data['Category'] == 'Grains') ? 'selected' : ''; ?>>Grains</option>
-                            <option value="Fertilizer" <?php echo ($data['Category'] == 'Fertilizer') ? 'selected' : ''; ?>>Fertilizer</option>
-                            <option value="Insecticides" <?php echo ($data['Category'] == 'Insecticides') ? 'selected' : ''; ?>>Insecticides</option>
-                            <option value="Farming Tools" <?php echo ($data['Category'] == 'Farming Tools') ? 'selected' : ''; ?>>Farming Tools</option>
-                        </select> -->
+
+
 
                         <select name="Category" id="sCategory">
                             <option disabled>Select Category</option>
@@ -61,35 +68,44 @@
 
 
                     <div class="sitem">
-                        <label for="Item"><b>Item Name</b></label>
-                        <br>
+                        <label for="Item"><b>Item Name<span class="requiredd"></span></b></label>
+
                         <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" value="<?php print_r($dat['Item_name']) ?>"><br />
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['Item_name_err'];
                                                 } ?></span>
 
                     </div>
+                    <br>
 
                     <div class="sstock_size">
                         <div class="iii">
-                            <label for="stock"> <b>Unit Size</b></label>
-                            <br>
+                            <label for="stock"> <b>Unit Size<span class="requiredd"></span></b></label>
+
                             <input id="size" name="Unit_size" type="number" step="1" min=0 placeholder="Enter unit size" value="<?php print_r($dat['Unit_size']) ?>">
                             <span class="invalid"><?php if ($data) {
                                                         echo $data['Unit_size_err'];
                                                     }  ?></span>
                         </div>
                         <div class="sdropdown2">
-                            <label for="stype"><b>Type:</b></label>
-                            <br>
+                            <label for="stype"><b>Type<span class="requiredd"></span></b></label>
+
                             <select name="Unit_type" id="stype">
-                                <option disabled selected>Select Unit type</option>
-                                <option value="Kg" <?php echo ($data['Unit_type'] == 'Kg') ? 'selected' : ''; ?>>Kg</option>
-                                <option value="g" <?php echo ($data['Unit_type'] == 'g') ? 'selected' : ''; ?>>g</option>
-                                <option value="plant" <?php echo ($data['Unit_type'] == 'plant') ? 'selected' : ''; ?>>Plant</option>
-                                <option value="ml" <?php echo ($data['Unit_type'] == 'ml') ? 'selected' : ''; ?>>ml</option>
-                                <option value="L" <?php echo ($data['Unit_type'] == 'L') ? 'selected' : ''; ?>>L</option>
+                                <option disabled>Select Unit type</option>
+                                <?php foreach ($data as $categoryObject) : ?>
+                                    <?php if (isset($categoryObject->type)) : ?>
+                                        <?php
+                                        $types = explode(',', $categoryObject->type);
+                                        ?>
+                                        <?php foreach ($types as $type) : ?>
+                                            <option value="<?php echo htmlspecialchars($type); ?>" <?php echo ($type === $data['Unit_type']) ? 'selected' : ''; ?>>
+                                                <?php echo htmlspecialchars($type); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </select>
+
                             <span class="invalid"><?php if ($data) {
                                                         echo $data['Unit_type_err'];
                                                     } ?></span>
@@ -98,7 +114,7 @@
                     </div>
 
                     <div class="sprice">
-                        <b>Unit Price</b>
+                        <b>Unit Price<span class="requiredd"></span></b>
                         <br>
                         <input id="sprice" name="Unit_price" type="number" min=0 placeholder="Enter the Unit Price" value="<?php print_r($dat['Unit_price']) ?>">
                         <span class="invalid"><?php if ($data) {
@@ -109,7 +125,7 @@
 
                     <div class="stocksize">
                         <br>
-                        <b>Stock Size</b>
+                        <b>Stock Size<span class="requiredd"></span></b>
                         <br>
                         <input id="Stock" name="Stock_size" type="number" step="1" min=0 placeholder="Enter the Stock Size" value="<?php print_r($dat['Stock_size']) ?>">
                         <span class="invalid"><?php if ($data) {
@@ -122,8 +138,14 @@
 
 
                     <br>
+                    <span class="invalid"><?php if ($data) {
+                                                echo $data['Expiry_date_err'];
+                                            }  ?></span>
+                    <span class="invalid"><?php if ($data) {
+                                                echo $data['Invalid_date_err'];
+                                            }  ?></span>
                     <div class="sdate">
-                        <b>Exp</b>
+                        <b>Expiry Date</b>
                         <br>
                         <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expire date" value="<?php print_r($dat['Expiry_date']) ?>">
                         <span class="invalid"><?php if ($data) {
@@ -146,106 +168,75 @@
                             // console.log(minDate);
                         </script>
 
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Expiry_date_err'];
-                                                }  ?></span>
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Invalid_date_err'];
-                                                }  ?></span>
-                    </div>
-
-
-
-                    <br>
-                    <!-- <div class="saddress">
-                        <b>Address</b>
-                        <br>
-                        <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line1">
-                        <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line2">
-                        <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line3">
-                        <input id="sAddress" name="address" type="textbox" placeholder="Enter the Address Line4">
-
-
-                    </div> -->
-
-                    <br>
-                    <div>
-
-
-
 
                     </div>
 
-                    <br>
-                    <br>
 
                     <br>
-
                     <br>
-                    <div class="sDescription">
+                    <!-- <div class="sDescription">
                         <b>Descripition</b>
                         <br>
                         <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" value="<?php print_r($dat['Description']) ?>">
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['Description_err'];
                                                 }  ?></span>
-                    </div>
+                    </div> -->
 
+                    <div class="sDescription">
+                        <!-- <span class="invalid"><?php echo isset($data['Description_err']) ? $data['Description_err'] : ''; ?></span> -->
+
+                        <label for="additionalReason"><b>Description</b></label>
+                        <textarea id="additionalReason" name="Description" rows="4" placeholder="Enter Description"><?php echo isset($data['Description']) ? $data['Description'] : ''; ?></textarea>
+                    </div>
 
 
 
 
 
                     <div class="image">
-                        <b>Upload image</b>
+                       
                         <!-- <br> -->
                         <!-- <br> -->
 
-                        <!-- Display current image filename -->
-                        <?php if (!empty($data['Image'])) : ?>
-                            <div>Current Image: <?php echo $data['Image']; ?></div>
-                            <br>
-                        <?php endif; ?>
-
-                        <!-- File input for uploading a new image -->
-                        <input id="inside_imageq" name="Image" type="file">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Image_err'];
-                                                } ?></span>
+                <label for="inside_imageq"><b>Upload image<span class="requiredd"></span></b></label>
+    <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images" required>
+    <span class="invalid"><?php echo isset($data['Image_err']) ? $data['Image_err'] : ''; ?></span>
                     </div>
 
 
 
                     <div class="dropdown3">
                         <br>
-                        <b>Delivery Method</b>
+                        <b>Delivery Method<span class="requiredd"></span></b>
                         <br>
                         <br>
-                        <?php
-                        // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
+                        <div class="delivery-options">
+                            <?php
+                            // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
 
-                        // Split the value into an array based on comma separator
-                        $deliveryMethods = explode(', ', $data['DeliveryMethod']);
+                            // Split the value into an array based on comma separator
+                            $deliveryMethods = explode(', ', $data['DeliveryMethod']);
 
-                        // Check each checkbox individually
-                        $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
-                        $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
+                            // Check each checkbox individually
+                            $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
+                            $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
 
-                        // Output checkboxes
-                        ?>
+                            // Output checkboxes
+                            ?>
 
-                        <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
-                        <label for="Home Delivery"><b>Home Delivery</b></label><br>
+                            <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
+                            <label for="Home Delivery">Home Delivery</label><br>
 
-                        <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
-                        <label for="Insto Pickup"><b>Insto Pickup</b></label><br>
+                            <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
+                            <label for="Insto Pickup">In-store-Pickup</label><br>
 
 
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['DeliveryMethod_err'];
-                                                } ?></span>
+                            <span class="invalid"><?php if ($data) {
+                                                        echo $data['DeliveryMethod_err'];
+                                                    } ?></span>
+                        </div>
                     </div>
-
 
 
 
@@ -271,55 +262,8 @@
 
     <!-- Your other head elements -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- <script>
-        $(document).ready(function() {
-            $("#sCategory").on('change', function() {
-                var el = $(this);
-                var typeDropdown = $("#stype");
 
-                // Clear existing options
-                typeDropdown.empty();
-                typeDropdown.val(typeDropdown.find('option:first').val());
 
-                if (el.val() === "Vegatable") {
-                    // Add options for Vegatable
-                    typeDropdown.append("<option value='Kg'>Kg</option>");
-                    typeDropdown.append("<option value='g'>g</option>");
-                } else if (el.val() === "Fruits") {
-                    // Add options for Fruits
-                    typeDropdown.append("<option value='Kg'>Kg</option>");
-                    typeDropdown.append("<option value='g'>g</option>");
-                } else if (el.val() === "Plants") {
-                    // Add options for Fruits
-                    typeDropdown.append("<option value='Plants'>Plants</option>");
-
-                } else if (el.val() === "Seeds") {
-                    // Add options for Fruits
-                    typeDropdown.append("<option value='Kg'>Kg</option>");
-                    typeDropdown.append("<option value='g'>g</option>");
-                } else if (el.val() === "Grains") {
-                    // Add options for Fruits
-                    typeDropdown.append("<option value='Kg'>Kg</option>");
-                    typeDropdown.append("<option value='g'>g</option>");
-                } else if (el.val() === "Fertilizer") {
-                    // Add options for Fruits
-                    typeDropdown.append("<option value='Kg'>Kg</option>");
-                    typeDropdown.append("<option value='g'>g</option>");
-                    typeDropdown.append("<option value='L'>L</option>");
-                    typeDropdown.append("<option value='ml'>ml</option>");
-
-                } else if (el.val() === "Insecticides") {
-                    // Add options for Fruits
-                    typeDropdown.append("<option value='ml'>ml</option>");
-                    typeDropdown.append("<option value='l'>l</option>");
-                }
-                // Add options for other categories if needed
-
-                // Optionally, you can select the first option
-                typeDropdown.val(typeDropdown.find('option:first').val());
-            });
-        });
-    </script> -->
     <script>
         console.log(categoryData);
         console.log("dd");

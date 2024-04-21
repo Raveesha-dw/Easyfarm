@@ -15,10 +15,10 @@ margin-top: 1%;
 .homeheader a{
     font-size: 25px;
     font-weight:5000px;
-    color: #15b510;
+    /* color: #15b510; */
     margin-left: 200px;
     position: relative;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     border-radius: 50%;
     cursor: pointer;
 }

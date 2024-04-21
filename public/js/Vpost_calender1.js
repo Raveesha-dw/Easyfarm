@@ -123,23 +123,23 @@ function showModal(message) {
                     // Date is not selected, so select it
                     selectedDates.push(dateStr);
                     $('td[data-date="' + dateStr + '"]').addClass('selected').css({
-                        'background-color': 'black',
+                        'background-color': 'green',
                         'position': 'relative' // Ensure the parent container has position:relative
                     });
 
                     // Check if the "Allocated" text already exists before appending it
                     if (!$('td[data-date="' + dateStr + '"]').find('.added-text').length) {
-                        $('td[data-date="' + dateStr + '"]').append('<span class="added-text">Allocated</span>');
+                        $('td[data-date="' + dateStr + '"]').append('<span class="added-text"></span>');
                     }
 
                     // Apply styles for the added text
                     $('.added-text').css({
-                        'color': 'red', // Change the text color to red
+                        'color': 'red', 
                         'position': 'absolute',
                         'top': '50%',
                         'left': '50%',
                         'transform': 'translate(-50%, -50%)',
-                        'z-index': '1' // Ensure it's above the background color
+                        'z-index': '1' 
                     });
 
                 }

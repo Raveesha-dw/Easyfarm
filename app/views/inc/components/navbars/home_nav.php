@@ -52,7 +52,7 @@ $current_page = $_SERVER['REQUEST_URI'];
 
 
 
-            <div class="nav-parts">
+            <!-- <div class="nav-parts">
 
                 <div class="s">
 
@@ -90,7 +90,7 @@ $current_page = $_SERVER['REQUEST_URI'];
                     }
                 </script>
 
-            </div>
+            </div>  -->
 
 
 
@@ -120,7 +120,7 @@ if (!empty($_SESSION['user_email'])) {
                             <div class="user-info">
                                 <a href="<?php echo URLROOT ?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>" class="sub-link-menu">
                                     <h2><i class="fa-solid fa-user"></i>View Profile</h2>
-                                    <span>></span>
+                                    <span></span>
                                 </a>
                                 <?php if ($_SESSION['user_type'] == 'Seller'): ?>
                                     <a href="<?php echo URLROOT ?>/Pages/dashboard" class="sub-link-menu">
@@ -143,10 +143,10 @@ if (!empty($_SESSION['user_email'])) {
                                             <h2>Shopping Cart</h2>
                                         </a> -->
                                         <a href="<?php echo URLROOT ?>/Orders/placedOrders" class="sub-link-menu">
-                                            <h2>My orders</h2>
+                                            <h2><i class="fa-solid fa-sort"></i>My orders</h2>
                                         </a>
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
-                                            <h2>My Reviews</h2>
+                                            <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Reviews</h2>
                                         </a>
                                     <?php endif;?>
 

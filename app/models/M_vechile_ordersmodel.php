@@ -9,14 +9,15 @@ public function update_data($data) {
 
     if (isset($_SESSION['user_ID'])) {
 
-        $this->db->query('INSERT INTO v_orders( Vechile_ID, Owner_ID, placed_Date, Buyer_ID, Status, name, location, number, Message) 
-                         VALUES ( :Vechile_ID, :Owner_ID, :placed_Date, :Buyer_ID, :Status, :name, :location, :number, :Message)');
+        $this->db->query('INSERT INTO v_orders( Vechile_ID, Owner_ID, placed_Date, Buyer_ID,Total_Rental_Fee, Status, name, location, number, Message) 
+                         VALUES ( :Vechile_ID, :Owner_ID, :placed_Date, :Buyer_ID,:Total_Rental_Fee, :Status, :name, :location, :number, :Message)');
 
         // Bind parameters
         $this->db->bind(':Vechile_ID', $data['V_Id']);
         $this->db->bind(':Owner_ID', $data['Owner_Id']); 
         $this->db->bind(':placed_Date', date('Y-m-d')); // Set current date
         $this->db->bind(':Buyer_ID', $_SESSION['user_ID']); 
+        $this ->db->bind(':Total_Rental_Fee',$data['Total_Rental_Fee']);
         $this->db->bind(':Status', 'ACCEPT'); // Set status to 'ACCEPT'
         $this->db->bind(':name', $data['name']); 
         $this->db->bind(':location', $data['location']); 
