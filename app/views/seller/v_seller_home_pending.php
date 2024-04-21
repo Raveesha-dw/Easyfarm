@@ -47,6 +47,7 @@
                                                         .msg-pdroduct {
                                                                display: flex;
                                                                justify-content: space-between;
+                                                               width: 700px;
                                                         }
 
                                                         .product-info,
