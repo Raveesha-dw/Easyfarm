@@ -14,10 +14,10 @@ class V_post extends Controller
 
 
 
-        public function cretesession3()
+    public function cretesession3()
     {
         $data = $this->v_postModel->get_planid();
-        print_r($data);
+        // print_r($data);
         $_SESSION['plan_id'] = $data[0]->plan_id;
         header("Location:http://localhost/Easyfarm/V_post/creating");
     }
@@ -38,50 +38,55 @@ class V_post extends Controller
             $this->view('Vechile/v_update_plan');
         }
 
-else{
+        else{
 
-        $data = [
-            'Owner_Id' => '',
-            'V_category' => '',
-            'V_name' => '',
-            'V_number' => '',
-            'Contact_Number' => '',
-            'Rental_Fee' => '',
-            'Charging_Unit' => '',
-            'Calender' => '',
-            'Address' => '',
-            'Description' => '',
-            'Image' => '',
+                $data = [
+                    'Owner_Id' => '',
+                    'V_category' => '',
+                    'V_name' => '',
+                    'V_number' => '',
+                    'Contact_Number' => '',
+                    'Rental_Fee' => '',
+                    'Charging_Unit' => '',
+                    'Calender' => '',
+                    'Address' => '',
+                    'Description' => '',
+                    'Image' => '',
 
-            'V_category_err' => '',
-            'V_name_err' => '',
-            'V_number_err' => '',
-            'Contact_Number_err' => '',
-            'Rental_Fee_err' => '',
-            'Charging_Unit_err' => '',
-            'Calender_err' => '',
-            'Address_err' => '',
-            'Description_err' => '',
-            'Image_err' => '',
+                    'V_category_err' => '',
+                    'V_name_err' => '',
+                    'V_number_err' => '',
+                    'Contact_Number_err' => '',
+                    'Rental_Fee_err' => '',
+                    'Charging_Unit_err' => '',
+                    'Calender_err' => '',
+                    'Address_err' => '',
+                    'Description_err' => '',
+                    'Image_err' => '',
 
-        ];
+                ];
 
-        $v_Categories =  $this->v_postModel->get_category();
-        $data['v_Categories'] = $v_Categories;
-        $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
-        $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
+                $v_Categories =  $this->v_postModel->get_category();
+                $data['v_Categories'] = $v_Categories;
+                $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
+                $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
 
 
 
-// Convert plan_activated_date to string explicitly if it's not already a string
-        $timestamp = strtotime($data['plan_activated_date']->Register_date);
-        $month = $data['plan_duration']->duration;
+                    // Convert plan_activated_date to string explicitly if it's not already a string
+                $timestamp = strtotime($data['plan_activated_date']->Register_date);
+                $month = $data['plan_duration']->duration;
 
-        $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
-        // print_r($data);
-        $this->view('VehicleRenter\v_vehicle_create_post', $data);
+                $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+                    // print_r($data);
+                $this->view('VehicleRenter\v_vehicle_create_post', $data);
 
-    }}
+            }
+        }
+
+
+
+
     public function create_post()
     {
 
@@ -373,6 +378,10 @@ else{
         }
     }
 
+
+
+
+
     public function view_more_booking_details()
     {
 
@@ -420,6 +429,7 @@ else{
         foreach ($unavailableDates as $unavailableDate) {
             $unavailable__Dates[] = $unavailableDate->date;
         }
+
         // print_r($unavailable__Dates);
 
         $data['vehicle_data'] = isset($vehicle_data) ? $vehicle_data : [];
@@ -434,7 +444,7 @@ else{
 
 
 
-// Convert plan_activated_date to string explicitly if it's not already a string
+        // Convert plan_activated_date to string explicitly if it's not already a string
         $timestamp = strtotime($data['plan_activated_date']->Register_date);
         $month = $data['plan_duration']->duration;
 
@@ -448,166 +458,6 @@ else{
 
     }
 
-    // public function update_description(){
-
-    //      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-
-    //         $data = [
-    //             'V_Id' => trim($_POST['V_Id']),
-    //             'Description' => trim($_POST['Description']),
-    //             'Description_err' => '',];
-
-    //         $this->v_postModel->update_description($data);
-
-    //         $item1 = $this->v_postModel->getupdateiteamdeatils($data);
-
-    //         $items = get_object_vars($item1[0]);
-
-    //         $unavailableDates = $this->v_postModel->getunavailableDates($items['V_Id']);
-
-    //         $dates = [];
-    //         foreach ($unavailableDates as $unavailableDate) {
-    //             $dates[] = $unavailableDate->date;
-    //         }
-
-    //         $data['V_Id'] = $items['V_Id'];
-    //         $data['V_name'] = $items['V_name'];
-    //         $data['V_category'] = $items['V_category'];
-    //         $data['V_number'] = $items['V_number'];
-    //         $data['Contact_Number'] = $items['Contact_Number'];
-    //         $data['Rental_Fee'] = $items['Rental_Fee'];
-    //         $data['Charging_Unit'] = $items['Charging_Unit'];
-    //         $data['unavailableDates'] = $dates;
-    //         $data['Address'] = $items['Address'];
-    //         $data['Description'] = $items['Description'];
-    //         $data['Image'] = $items['Image'];
-    //         $data['Owner_Id'] = $items['Owner_Id'];
-    //         $data['post_create_date'] =  $items['post_create_date'];
-
-    //         $data['V_category_err'] = '';
-    //         $data['V_name_err'] = '';
-    //         $data['V_number_err'] = '';
-    //         $data['Contact_Number_err'] = '';
-    //         $data['Rental_Fee_err'] = '';
-    //         $data['Charging_Unit_err'] = '';
-    //         $data['Address_err'] = '';
-    //         $data['Description_err'] = '';
-    //         $data['Image_err'] = '';
-
-    //         $this->view('VehicleRenter/v_vehicle_post_details', $data);
-
-    //     }
-
-    // }
-
-// public function update_calendar(){
-//     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-
-//         $data = [
-//             'V_Id' => trim($_POST['V_Id']),
-//             'Calender' => trim($_POST['markedDates']),
-//             'Calender_err' => '',];
-
-//             $this->v_postModel->update_calendar($data);
-
-//             $item1 = $this->v_postModel->getupdateiteamdeatils($data);
-
-//             $items = get_object_vars($item1[0]);
-
-//             $unavailableDates = $this->v_postModel->getunavailableDates($items['V_Id']);
-
-//             $dates = [];
-//             foreach ($unavailableDates as $unavailableDate) {
-//                 $dates[] = $unavailableDate->date;
-//             }
-
-//             $data['V_Id'] = $items['V_Id'];
-//             $data['V_name'] = $items['V_name'];
-//             $data['V_category'] = $items['V_category'];
-//             $data['V_number'] = $items['V_number'];
-//             $data['Contact_Number'] = $items['Contact_Number'];
-//             $data['Rental_Fee'] = $items['Rental_Fee'];
-//             $data['Charging_Unit'] = $items['Charging_Unit'];
-//             $data['unavailableDates'] = $dates;
-//             $data['Address'] = $items['Address'];
-//             $data['Description'] = $items['Description'];
-//             $data['Image'] = $items['Image'];
-//             $data['Owner_Id'] = $items['Owner_Id'];
-//             $data['post_create_date'] =  $items['post_create_date'];
-
-//             $data['V_category_err'] = '';
-//             $data['V_name_err'] = '';
-//             $data['V_number_err'] = '';
-//             $data['Contact_Number_err'] = '';
-//             $data['Rental_Fee_err'] = '';
-//             $data['Charging_Unit_err'] = '';
-//             $data['Address_err'] = '';
-//             $data['Description_err'] = '';
-//             $data['Image_err'] = '';
-
-//             $this->view('VehicleRenter/v_vehicle_post_details', $data);
-
-//         }
-
-//     }
-
-    // public function update_charging_details(){
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-
-    //         $data = [
-    //         'V_Id' => trim($_POST['V_Id']),
-    //         'V_name' => isset($_POST['V_name']) ? trim($_POST['V_name']) : '',
-    //         'Contact_Number' => isset($_POST['Contact_Number']) ? trim($_POST['Contact_Number']) : '',
-    //         'Address' => isset($_POST['address']) ? trim($_POST['address']) : '',
-    //         'Rental_Fee' => isset($_POST['Rental_Fee']) ? trim($_POST['Rental_Fee']) : '',
-
-    //         'Charging_Unit' => trim($_POST['Charging_Unit']),
-    //         'Contact_Number_err' => '',];
-
-    //         $this->v_postModel->update_charging_details($data);
-
-    //         $item1 = $this->v_postModel->getupdateiteamdeatils($data);
-
-    //         $items = get_object_vars($item1[0]);
-
-    //         $unavailableDates = $this->v_postModel->getunavailableDates($items['V_Id']);
-
-    //         $dates = [];
-    //         foreach ($unavailableDates as $unavailableDate) {
-    //             $dates[] = $unavailableDate->date;
-    //         }
-
-    //         $data['V_Id'] = $items['V_Id'];
-    //         $data['V_name'] = $items['V_name'];
-    //         $data['V_category'] = $items['V_category'];
-    //         $data['V_number'] = $items['V_number'];
-    //         $data['Contact_Number'] = $items['Contact_Number'];
-    //         $data['Rental_Fee'] = $items['Rental_Fee'];
-    //         $data['Charging_Unit'] = $items['Charging_Unit'];
-    //         $data['unavailableDates'] = $dates;
-    //         $data['Address'] = $items['Address'];
-    //         $data['Description'] = $items['Description'];
-    //         $data['Image'] = $items['Image'];
-    //         $data['Owner_Id'] = $items['Owner_Id'];
-    //         $data['post_create_date'] =  $items['post_create_date'];
-
-    //         $data['V_category_err'] = '';
-    //         $data['V_name_err'] = '';
-    //         $data['V_number_err'] = '';
-    //         $data['Contact_Number_err'] = '';
-    //         $data['Rental_Fee_err'] = '';
-    //         $data['Charging_Unit_err'] = '';
-    //         $data['Address_err'] = '';
-    //         $data['Description_err'] = '';
-    //         $data['Image_err'] = '';
-
-    //         $this->view('VehicleRenter/v_vehicle_post_details', $data);
-
-    //         }
-
-    // }
+ 
 
 }

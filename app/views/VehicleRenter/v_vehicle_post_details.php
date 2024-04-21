@@ -92,29 +92,19 @@
 
 
 
-<div id="myModal" class="modal_booking_details_calendar">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="modalContent"></div>
-        <button id="okButton">OK</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <div id="myModal" class="modal_booking_details_calendar">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div id="modalContent"></div>
+                            <button id="okButton">OK</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+            
 
             <div class="column5">
                 <div class="wrapper_v_product_details_sub">
