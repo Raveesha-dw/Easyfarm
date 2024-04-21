@@ -8,7 +8,7 @@ public function __construct(){
 public function get_itemids1($seller_ID){
     $this->db->query("SELECT * FROM orders  
                     INNER JOIN item ON orders.Item_ID = item.Item_Id 
-                    INNER JOIN order_charging_details ON orders.Payment_Id = order_charging_details.Payment_Id
+                    -- INNER JOIN order_charging_details ON orders.Payment_Id = order_charging_details.Payment_Id
                     INNER JOIN reg_buyer ON orders.User_ID = reg_buyer.U_Id 
                     INNER JOIN order_details ON orders.Order_ID = order_details.Order_ID  
                     WHERE orders.seller_ID = :seller_ID 
@@ -59,7 +59,7 @@ public function remove_duplicate_values($object) {
 public function get_itemids2($seller_ID){
     $this->db->query("SELECT * FROM orders  
                     INNER JOIN item ON orders.Item_ID = item.Item_Id 
-                    INNER JOIN order_charging_details ON orders.Payment_Id = order_charging_details.Payment_Id
+                    -- INNER JOIN order_charging_details ON orders.Payment_Id = order_charging_details.Payment_Id
                     INNER JOIN reg_buyer ON orders.User_ID = reg_buyer.U_Id 
                     INNER JOIN order_details ON orders.Order_ID = order_details.Order_ID  
                     WHERE orders.seller_ID = :seller_ID 
@@ -120,7 +120,7 @@ public function get_itemids4($seller_ID){
    
     $this->db->query("SELECT * FROM orders  
                     INNER JOIN item ON orders.Item_ID = item.Item_Id 
-                    INNER JOIN order_charging_details ON orders.Payment_Id = order_charging_details.Payment_Id
+                    -- INNER JOIN order_charging_details ON orders.Payment_Id = order_charging_details.Payment_Id
                     INNER JOIN reg_buyer ON orders.User_ID = reg_buyer.U_Id 
                     INNER JOIN order_details ON orders.Order_ID = order_details.Order_ID  
                     WHERE orders.seller_ID = :seller_ID 

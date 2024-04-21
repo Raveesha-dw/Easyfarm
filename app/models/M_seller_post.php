@@ -76,11 +76,12 @@ public function create_post($data){
 // }  
 
 public function get_data($seller_ID){
-     $this->db->query("SELECT * FROM item WHERE seller_ID = :seller_ID");
-   $this->db->bind(':seller_ID', $seller_ID);
-    $result=$this->db->resultSet();
+    $this->db->query("SELECT * FROM item WHERE seller_ID = :seller_ID AND Item_ID NOT IN (SELECT Item_ID FROM orders)");
+    $this->db->bind(':seller_ID', $seller_ID);
+    $result = $this->db->resultSet();
     return $result;
 }
+
 
 
 public function getiteamdeatils(){

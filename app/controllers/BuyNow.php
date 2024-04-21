@@ -31,7 +31,7 @@ class BuyNow extends Controller{
         if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_SESSION['user_ID'])  && ($_SESSION['user_type'] == 'Buyer'))) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
             
-
+            $buyer_province = $_SESSION['buyer_province'] ? isset($_SESSION['buyer_province'])  : ($this->deliveryModel->getProvinceOfBuyer());
 
 
 
@@ -54,7 +54,7 @@ class BuyNow extends Controller{
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
         
-                    if(isset($_SESSION['buyer_province'])){
+                    if(isset($buyer_province)){
                         // $_SESSION['buyer_province'];
                         // $fee = $this->deliveryModel->getDeliveryFeeForSingleProduct($data['Item_Id']);
                         $S_ID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
@@ -203,12 +203,12 @@ class BuyNow extends Controller{
 
                
                 // $_SESSION['buyer_province'];
-
+                $weight_fee = 0;
                 if($data['selectedDeliveryMethod'] == 'Home Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
                   
                     // if(isset($_SESSION['buyer_province'])){
                     if(isset($buyer_province)){
-                    $weight_fee = 0;
+                    
                     $sellerID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
                     if(!(in_array($sellerID, $sellerIDs))){
                         $sellerIDs[] = $sellerID;
@@ -217,22 +217,28 @@ class BuyNow extends Controller{
                         $float = $this->deliveryModel->getDeliveryFeeForSeller($sellerID);
                         $data['deliveryFee'] = (float)$float->base_fee;
 
-                        $weight_fee = $float->weight_fee;
+                        // $weight_fee = $float->weight_fee;
+                        // print_r($weight_fee);
+                        // $data['weightFee'] = $weight_fee;
                         
                     }
                     else{
                         $data['deliveryFee'] = 0;
                     }
 
+                    $result = $this->deliveryModel->getDeliveryFeeForSeller($sellerID);
+                    $weight_fee = $result->weight_fee;
+                    
+
                     if($data['quantity'] <= 5000){
                             $data['weightFee'] = 0;
                         }else{
                             $additional_weight = $data['quantity'] - 5000;
-                            print_r($additional_weight);
-                            $additional_fee_count = ($additional_weight / 2000);
-                            print_r($additional_fee_count);
-                            $data['weightFee'] = $weight_fee * $additional_fee_count;
-                            print_r($data['weightFee']);
+                            // print_r($additional_weight);
+                            $additional_fee_count = (int)($additional_weight / 2000);
+                            // print_r($additional_fee_count);
+                            $data['weightFee'] = $weight_fee * (double)$additional_fee_count;
+                            // print_r($data['weightFee']);
                         }
 
                     }
@@ -369,4 +375,3 @@ class BuyNow extends Controller{
 }
 
 ?>
-

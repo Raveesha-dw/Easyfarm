@@ -24,6 +24,7 @@ $hiddenTotalpayment = $inputData['hiddenTotalpayment'];
 $hiddenuId = $inputData['hiddenuId'];
 $itemIds = $inputData['itemIds'];
 $quantities = $inputData['quantities'];
+$selectedDeliveryMethods = $inputData['selectedDeliveryMethods'];
 $subTotalPayments = $inputData['subTotalPayments'];
 
 
@@ -35,7 +36,7 @@ for ($i = 0; $i < count($itemIds); $i++) {
                 'quantity' => $quantities[$i], 
                 'Item_Id' => $itemIds[$i], 
                 'uId' => $hiddenuId,
-                'selectedDeliveryMethod' => '',
+                'selectedDeliveryMethod' => $selectedDeliveryMethods[$i],
                 'total' => $subTotalPayments[$i], 
                 'deliveryFee' => '',
                 'totalPayment' => 0,
@@ -189,7 +190,7 @@ $array1[$i] = $array;
                 'Item_Id' => $_POST["Item_Id"], 
                 'uId' => $_POST["uId"], 
                 'placed_Date' => $date,
-                'selectedDeliveryMethod' => '',
+                'selectedDeliveryMethod' => $_POST["selectedDeliveryMethod"],
                 'Payment_Id' => $_POST["orderId"], 
                 
                 'totalPayment' => 0,
@@ -213,10 +214,10 @@ $array1[$i] = $array;
             // $data['total'] = floatval($data['quantity']) * $data['Unit_price'];
             // $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
 
-            print_r( "ijinhuguygytv");
+            print_r( "ccccccccccccccccccccccccccccccccc");
 
             $this->paymentModel->saveOrder($data);
-            print_r( "ijinhuguygytv");
+            print_r( "ppppppppppppppppppppppppp");
             echo("1");
 
         }
@@ -229,8 +230,3 @@ $array1[$i] = $array;
 }
 
 ?>
-
-
-
-
-

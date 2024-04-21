@@ -758,9 +758,14 @@ class Users extends Controller{
         if($_SESSION['user_type'] == 'Buyer'){
  
             $buyerData = $this->userModel->getBuyerInfo($_SESSION['user_ID']);
+            $cart_items = $this->userModel->get_number_of_cart_items($_SESSION['user_ID']);
+            print_r($cart_items);
+            
            
             $_SESSION['user_name'] = $buyerData->Name;
             $_SESSION['buyer_province'] = $user->province;
+            $_SESSION['n_cart_items'] =  $cart_items;
+
 
             header("Location:http://localhost/Easyfarm/Pages/index");
 

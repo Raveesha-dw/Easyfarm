@@ -71,7 +71,7 @@
                     <div class="product-container">
                         <div class="product">
                             <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $result->Image ?>" alt="">
-                            <?php echo $result->Image ?>
+                            <!-- <?php echo $result->Image ?> -->
                             <div class="product-description">
                                 <h3><?php echo $result->Item_name ?></h3>
                                 <p>Rs. <?php echo $result->Unit_price ?></p>
