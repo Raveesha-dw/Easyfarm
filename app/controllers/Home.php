@@ -9,7 +9,8 @@ class Home extends Controller{
     {
         
         // self::$this = $this;
-        $this->HomeModel = $this->model('M_home');}}
+        $this->HomeModel = $this->model('M_home');
+        }}
         
    
 
