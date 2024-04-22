@@ -32,8 +32,8 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="1">
           <a href="<?php echo URLROOT . '/Admin';?>" class="<?php echo isActive(URLROOT . '/Admin/blog');?> data-active="1">
             <div class="icon">
-              <i class='bx bx-user-plus'></i>
-              <i class='bx bxs-user-plus'></i>
+              <i class='bx bx-user-check'></i>
+              <i class='bx bxs-user-check'></i>
             </div>
             <span class="link hide">Agri Instructors</span>
           </a>
@@ -50,10 +50,19 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="0">
           <a href="<?php echo URLROOT . '/Admin/marketplace';?>"  data-active="0">
             <div class="icon">
-              <i class='bx bx-store'></i>
-              <i class='bx bxs-store'></i>
+              <i class='bx bx-shopping-bag'></i>
+              <i class='bx bxs-shopping-bag'></i>
             </div>
             <span class="link hide">Marketplace Categories</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/vehicle';?>"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-bus'></i>
+              <i class='bx bxs-bus'></i>
+            </div>
+            <span class="link hide">Vehicle Categories</span>
           </a>
         </li>
         
