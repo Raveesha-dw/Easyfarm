@@ -39,7 +39,8 @@
         }
         elseif ($currentDate > $futureDate) {
              $data = $this->planModel->get_dataplan3();
-            $this->view('seller/v_register_plan2',$data);
+            //  WORK CODE 2
+            $this->view('seller/v_register_plan1',$data);
             }
 
 

@@ -133,7 +133,8 @@ $futureDate = date('Y-m-d', strtotime("$registerDate +$duration months"));      
        elseif ($currentDate > $futureDate) {
             // $this->view('Vechile/v_update_plan');
              $data = $this->vplanModel->get_dataplan3();
-            $this->view('Vechile/v_renter_register_plan1', $data);}
+            //  WORKCODE 1
+            $this->view('Vechile/v_renter_register_plan2', $data);}
         
         
         else{

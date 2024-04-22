@@ -1,5 +1,5 @@
 <div class="homeheader">
-    <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="link" >NEW ORDERS</a>
+    <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="link" >NEW BOOKING</a>
     <a href="http://localhost/Easyfarm/V_renter_home/get_details2" class="link" >PENDING</a>
     <a href="http://localhost/Easyfarm/V_renter_home/get_details3" class="link" >COMPLETED</a>
 </div>
