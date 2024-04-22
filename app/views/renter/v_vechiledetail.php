@@ -150,7 +150,11 @@ $jsonData1 = json_encode( $pending_dates);
             <!-- <b>Calendar</b> -->
 
             <div class="wrapperCalendar2">
-                <p><i>Select the Date</i></p>
+
+                <div style="text-align: center;">
+                    <p><b><i>You can select the Dates</i></b></p>
+                    <p><i>(Rent this vehicle for the day, available from 8 am to 5 pm.)</i></p>
+                </div>
                 <br>
                 <br>
 
