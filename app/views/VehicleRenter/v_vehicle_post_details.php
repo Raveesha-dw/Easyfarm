@@ -49,15 +49,15 @@
                         <div class="cal" >
 
                             <?php
-// Encode $dates array as JSON
-$unavailableDatesJson = json_encode($unavailableDates);
-$unconfirmed_booking_datesJson = json_encode($unconfirmed_booking_dates);
-$confirmed_booking_datesJson = json_encode($confirmed_booking_dates);
-$booking_DataJson = json_encode($booking_Data);
-$more_details_bookingJson = json_encode($more_details_booking);
+                            // Encode $dates array as JSON
+                            $unavailableDatesJson = json_encode($unavailableDates);
+                            $unconfirmed_booking_datesJson = json_encode($unconfirmed_booking_dates);
+                            $confirmed_booking_datesJson = json_encode($confirmed_booking_dates);
+                            $booking_DataJson = json_encode($booking_Data);
+                            $more_details_bookingJson = json_encode($more_details_booking);
 
-$post_create_dateJson = json_encode($vehicle_data['post_create_date']);
-?>
+                            $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
+                            ?>
 
                             <div id='calendar'
                                 data-unavailable-dates='<?php echo $unavailableDatesJson; ?>'
@@ -92,29 +92,19 @@ $post_create_dateJson = json_encode($vehicle_data['post_create_date']);
 
 
 
-<div id="myModal" class="modal_booking_details_calendar">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="modalContent"></div>
-        <button id="okButton">OK</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <div id="myModal" class="modal_booking_details_calendar">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div id="modalContent"></div>
+                            <button id="okButton">OK</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+            
 
             <div class="column5">
                 <div class="wrapper_v_product_details_sub">

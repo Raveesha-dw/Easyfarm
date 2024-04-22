@@ -167,7 +167,6 @@ if (!empty($_SESSION['user_email'])) {
     ?>
 
                             <div class="nav-parts" style="padding: 20px 0">
-                            <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Users/login'">Login</button> -->
                             <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
 
                             </div>

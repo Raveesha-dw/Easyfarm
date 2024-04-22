@@ -47,20 +47,22 @@ body.dark{
 
 /* ===== Sidebar ===== */
  .sidebarr{
-    position: absolute;
+    /* height: 100vh; */
+    position: fixed;
     top: 100px;
     left: 0;
-    height: 100%;
+    /* height: 1593px; */
     width: 250px;
     padding: 10px 14px;
     background: var(--sidebarr-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index: 2;  
   
     background-color: #27ae5d;
 }
 .sidebarr.close{
     width: 88px;
+    position: fixed;
 }
 
 /* ===== Reusable code - Here ===== */

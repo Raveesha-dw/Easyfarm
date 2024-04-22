@@ -4,12 +4,23 @@ class AgriInstructor extends Controller{
     private $agriInstructorModel;
 
     public function __construct(){
-        if(isset($_SESSION['user_ID']) && $_SESSION['user_type']== 'AgricultureExpert'){
-            $this->agriInstructorModel = $this->model('M_agriInstructor');
+        if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'AgricultureExpert'){
+            switch($_SESSION['accStatus']){
+                case 'Under Review':
+                    print("Your account is under review. You will receive an email when your accout has been verified.");
+                    redirect('Profile/viewProfile?email=' . $_SESSION['user_email']);
+                    break;
+                case 'Rejected':
+                    print("Your registration at EasyFarm has been rejected due to missing required documents. You can register using a new email address and resubmit your information. If you have any problems, please contact our customer service representative: <email>info@easyfarm.lk</email>");
+                    redirect('Profile/viewProfile?email=' . $_SESSION['user_email']);
+                    break;
+                case 'Verified':
+                    $this->agriInstructorModel = $this->model('M_agriInstructor');
+                    break;
+            }    
         }else{
-            redirect('Blog');
+            redirect('Users/login');
         }
-        
     }
 
     public function index(){
