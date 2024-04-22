@@ -137,3 +137,15 @@ hr{
   .review-card{
     margin: 50px;
   }
+
+  
+#deliveryFeeInfo {
+    cursor: pointer;
+    color: lightslategray; 
+    margin-left: 5px; 
+}
+
+#deliveryFeeCalculation {
+    border: 1px solid #ccc; 
+    padding: 5px; 
+}

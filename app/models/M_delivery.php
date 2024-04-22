@@ -59,8 +59,15 @@ class M_delivery{
         $result = $this->db->single();
         // print_r($result);
         // $base_fee = $result->base_fee;
+        $data = [
+            'seller_province' =>$province->Store_province,
+            'buyer_province' => $buyerProv->Province,
+            'base_fee' => $result->base_fee,
+            'weight_fee' => $result->weight_fee
+        ];
         
-        return $result;
+        return $data;
+       
     }
 
 

@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+                    <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
 
                 </a>
 
@@ -140,7 +140,7 @@
                                 </div> -->
                                 <h4><?php echo $product->Unit_price ?> LKR</h4>
                             </div>
-                            <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+                            <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
                         </a>
                     </div>
 
