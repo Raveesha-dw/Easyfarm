@@ -148,8 +148,8 @@ if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id != $_SESSION['user_ID'])
 
         <!-- Display Questions -->
         <?php
-foreach ($inquiries as $inquiry):
-?>
+            foreach ($inquiries as $inquiry):
+        ?>
 
             <!-- Question card -->
             <div class="comment-card">
@@ -161,15 +161,15 @@ foreach ($inquiries as $inquiry):
 
                 <!-- Answer -->
                 <?php
-if ($inquiry->answer) {
-    ?>
+                    if ($inquiry->answer) {
+                 ?>
                     <div class="comment-card">
                         <b><?php echo $sellerDetails->Name; ?></b> replies, <br><br>
                         <?php echo $inquiry->answer; ?> <br><br>
                         <i><?php echo $inquiry->answer_datetime_edited; ?></i>
                         <?php
-if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID']) {
-        ?>
+                            if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID']) {
+                        ?>
                                 <!-- Edit Answer -->
                                 <button class="comment-edit-btn display-0 display-1">Edit</button>
                                 <div class="edit-form display-0" style="display:none;">
@@ -190,8 +190,8 @@ if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID'])
                                     <input type="submit" name="answerDelete" value="Delete">
                                 </form>
                 <?php
-}
-    ?>
+                    }
+                ?>
                     </div>
                 <?php
 }

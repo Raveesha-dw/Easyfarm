@@ -125,6 +125,7 @@ class M_users{
         }
         
         if($data['user_type'] == 'VehicleRenter'){
+        if($data['user_type'] == 'VehicleRenter'){
             $this->db->query('INSERT INTO user(Email, Password, User_type) VALUES (:email, :password, :user_type)');
             $this->db->bind(':email', $data['email']);  
             $this->db->bind(':password', $data['password']);
@@ -137,12 +138,15 @@ class M_users{
             $id = $row->U_Id;
 
             $this->db->query('INSERT INTO reg_vehicleowner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
+            $this->db->query('INSERT INTO reg_vehicleowner(U_Id, Name, Contact_num, Address, City) VALUES (:id, :fullname,:contactno, :address, :city)');
             $this->db->bind(':id', $id);
             $this->db->bind(':fullname', $data['fullname']);
             $this->db->bind(':contactno', $data['contactno']);
             $this->db->bind('address', $data['address']);
             $this->db->bind('city', $data['city']);
             $this->db->execute();
+            return true;
+        }
             return true;
         }
 
@@ -160,9 +164,14 @@ class M_users{
 
         if(password_verify($data['password'], $userData->Password)){
                 return $userData;
+        $userData = $this->db->single();
+
+        if(password_verify($data['password'], $userData->Password)){
+                return $userData;
             }else{
                 return false;
-            }   
+            }    
+        }
     }
 
     public function getBuyerInfo($id){
@@ -192,6 +201,9 @@ class M_users{
         $agriInstructorData = $this->db->single();
         return $agriInstructorData;
     }
+
+
+
 
 
 
