@@ -2,8 +2,8 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <div class="completeButton">
-        <form action="<?php echo URLROOT?>/Orders/pendingOrdersOfUser">
-        <button id="completedBtn" type="submit">View Pending Orders</button>
+        <form action="<?php echo URLROOT?>/Orders/completedOrdersOfUser">
+        <button id="completedBtn" type="submit">View Completed Orders</button>
         </form>
 </div>
 
@@ -33,7 +33,13 @@ foreach ($orders as $order): ?>
                </ul>
                 <br>
                 <p>Delivery Method: <?php $order->DeliveryMethod ?></p><br><br>
-                <button><a href="<?php echo URLROOT?>/Review/itemReview/<?php echo $item->Item_Id ?>" style="color: red;">Review item</a></button>
+
+                <p class="status">Mark as Complete:<span style="color: red;"> &nbsp;I have received this order successfully</span></p>
+                <form action="<?php echo URLROOT?>/Orders/changeOrderStatus/<?php echo $orderId; ?>" method="POST">
+                <button class="orderConfirm" type="submit" name="submit">Confirm</button>
+                </form>
+
+
 
 
         </div>
