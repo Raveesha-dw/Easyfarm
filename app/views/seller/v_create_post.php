@@ -54,11 +54,11 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
 
 
-<div class="sitem">
-    <label for="sitem_name"><b>Item Name</b><span class="requiredd"></span></label>
-    <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" required value="<?php echo $data['Item_name']; ?>"><br />
-    <span class="invalid"><?php echo isset($data['Item_name_err']) ? $data['Item_name_err'] : ''; ?></span>
-</div>
+                    <div class="sitem">
+                        <label for="sitem_name"><b>Item Name</b><span class="requiredd"></span></label>
+                        <input id="sitem_name" name="Item_name" type="textbox" placeholder="Enter the Item Name" required value="<?php echo $data['Item_name']; ?>"><br />
+                        <span class="invalid"><?php echo isset($data['Item_name_err']) ? $data['Item_name_err'] : ''; ?></span>
+                    </div>
 
                     <br>
                     <div class="sstock_size">
@@ -128,11 +128,11 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
 
                     <br><br>
-                                                <span class="invalid"><?php echo isset($data['Invalid_date_err']) ? $data['Invalid_date_err'] : ''; ?></span>
+                    <span class="invalid"><?php echo isset($data['Invalid_date_err']) ? $data['Invalid_date_err'] : ''; ?></span>
 
-                                                <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
+                    <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
                     <div class="sdate">
-                    
+
 
                         <b>Expiry Date</b>
                         <br>
@@ -177,11 +177,11 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                     <br>
 
 
-            <div class="image">
-    <label for="inside_imageq"><b>Upload image<span class="requiredd"></span></b></label>
-    <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images" required>
-    <span class="invalid"><?php echo isset($data['Image_err']) ? $data['Image_err'] : ''; ?></span>
-</div>
+                    <div class="image">
+                        <label for="inside_imageq"><b>Upload image<span class="requiredd"></span></b></label>
+                        <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images" required>
+                        <span class="invalid"><?php echo isset($data['Image_err']) ? $data['Image_err'] : ''; ?></span>
+                    </div>
 
 
 
@@ -192,11 +192,17 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
                     <br>
 
-                    <b>Delivery Method<span class="requiredd"></span></b>
+
                     <br>
                     <br>
 
                     <div class="delivery-options">
+                        <b>Delivery Method<span class="requiredd"></span></b>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br><br>
 
                         <div class="option">
                             <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home Delivery') ? 'checked' : ''; ?>>
@@ -206,7 +212,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                             <input type="checkbox" id="Instore_Pickup" name="Insto_Pickup" value="Instore Pickup" <?php echo (isset($_POST['Insto_Pickup']) && $_POST['Insto_Pickup'] == 'Instore Pickup') ? 'checked' : ''; ?>>
                             <label for="Instore_Pickup">In-Store-Pickup</label>
                         </div>
-                        
+
 
                     </div>
 

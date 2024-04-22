@@ -4,7 +4,7 @@
     <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 </div>
 
-<?php print_r($data) ?>
+<!-- <?php print_r($data) ?> -->
 <div class="container">
     <?php require APPROOT . '/views/seller/a.php' ?>
 
@@ -43,46 +43,48 @@
                             <!-- <h3><?php echo $product->Name ?> wants <?php echo $product->Item_name ?> in <?php echo $product->quantity ?> <?php echo $product->Unit_type ?></h3> -->
                             <br>
                         </div>
-                        <style>
-                            .msg-pdroduct {
-                                display: flex;
-                                justify-content: space-between;
-                            }
+<style>
+    .msg-pdroduct {
+        display: flex;
+        width: 700px;
+    }
 
-                            .product-info,
-                            .product-values {
-                                flex: 8;
-                                margin-left: 10px;
-                            }
+    .product-info,
+    .product-values {
+        flex: 1; /* Each section takes equal space */
+        padding: 10px; /* Add padding for separation */
+    }
 
-                            .product-info h3,
-                            .product-values h3 {
-                                margin: 0;
-                                /* Remove default margin */
+    .product-info h3,
+    .product-values h3 {
+        margin: 0; /* Remove default margin */
+    }
+</style>
 
-                            }
-                        </style>
+<div class="msg-pdroduct">
+    <div class="product-info">
+        <h3>Item</h3>
+        <h3>Quantity</h3>
+        <h3>TO</h3>
+        <h3>Method</h3>
+        <h3>Order ID</h3>
+        <h3>Unit Price</h3>
+        <h3>Contact Number</h3>
+    </div>
+    <div class="product-values">
+        <h3><?php echo $product->Item_name ?></h3>
+        <h3><?php echo $product->quantity ?><?php echo $product->Unit_type ?></h3>
+        <h3><?php echo $product->Address ?></h3>
+        <h3><?php echo $product->DeliveryMethod ?></h3>
+        <h3><?php echo $product->Order_ID ?></h3>
+        <h3><?php echo $product->Unit_price ?></h3>
+        <h3><?php echo $product->Contact_num ?></h3>
+    </div>
+</div>
 
-                        <div class="msg-pdroduct">
-                            <div class="product-info">
-                                <h3>Item</h3>
-                                <h3>Quantity</h3>
-                                <h3>TO</h3>
-                                <h3>Method</h3>
-                                <h3>Order ID</h3>
-                                <h3>Unit Price</h3>
-                                <h3>Contact Number</h3>
-                            </div>
-                            <div class="product-values">
-                                <h3><?php echo $product->Item_name ?></h3>
-                                <h3><?php echo $product->quantity ?><?php echo $product->Unit_type ?></h3>
-                                <h3><?php echo $product->Address ?></h3>
-                                <h3><?php echo $product->DeliveryMethod ?></h3>
-                                <h3><?php echo $product->Order_ID ?></h3>
-                                <h3><?php echo $product->Unit_price ?></h3>
-                                <h3><?php echo $product->Contact_num ?></h3>
-                            </div>
-                        </div>
+
+
+
 
                         <div class="button-msg">
                             <div class="aa">
@@ -98,7 +100,7 @@
 
 
             <?php endforeach; ?>
-
+<br>
             <div id="myModal" class="modal-overlay">
                 <!-- Modal content -->
                 <div class="modal-content">

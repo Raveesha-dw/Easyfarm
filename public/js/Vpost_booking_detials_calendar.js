@@ -111,7 +111,7 @@ if (foundBooking) {
     modalContent += '<p><span class="highlight">Name of the customer:</span> ' + moreDetails.name + '</p>';
     modalContent += '<p><span class="highlight">Location:</span> ' + moreDetails.location + '</p>';
     modalContent += '<p><span class="highlight">Phone Number:</span> ' + moreDetails.number + '</p>';
-    modalContent += '<p><span class="highlight">The day the order was placed:</span> ' + moreDetails.placed_Date + '</p>';
+    modalContent += '<p><span class="highlight">The day the order was placed:</span> ' + moreDetails.placed_Date + '</p><br>';
 
     document.getElementById("modalContent").innerHTML = modalContent;
     document.getElementById("myModal").style.display = "block";

@@ -82,7 +82,7 @@
 <!-- <?php foreach ($products as $product) :?> -->
        <!-- <?php  endforeach;?> -->
        <!--  -->
-       <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
+       <?php require APPROOT .'/views/inc/components/navbars/renter_c.php'?>
 
 <div class ="shero6">
 

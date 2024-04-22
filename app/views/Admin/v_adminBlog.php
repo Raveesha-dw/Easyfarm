@@ -42,45 +42,41 @@
                 <th>Permalink</th>
                 <th>Action</th>
             </tr>
-
-            <?php
-                foreach ($blogCategories as $blogCategory):
-            ?>
-                    <tr>
-                        <td><?php echo $blogCategory->category?></td>
-                        <td><?php echo $blogCategory->permalink?></td>
-                        <td>
-                            <div class="btn-container">
-                                <!-- Edit Form -->
-                                <button data-modal-target="#edit-category" class="admin-table">Edit</button>
-                                <div class="modal" id="edit-category">
-                                    <div class="modal-header">
-                                        <div class="title">Edit Category</div>
-                                        <button data-close-button class="close-button">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="<?php echo URLROOT;?>/Admin/editcategory" method="POST">
-                                            <label for="category">Category Name: <br><span>(This will be displayed as the category name on the blog)</span></label>
-                                            <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $blogCategory->category?>"></input><br><br>
-                                            <label for="permalink">Permalink: <br><span>(This should be unique and will be used to identify the category. Also this will be displayed in the URL)</span></label><br>
-                                            <input type="text" id="permalink" name="permalink" placeholder="Enter a suitable and unique permalink" value="<?php echo $blogCategory->permalink?>"></input><br><br>
-                                            <button type="submit" class="admin-table">Edit Category</button>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <!-- Delete Button -->
-                                <form action="<?php echo URLROOT?>/Admin/deletecategory" onclick="confirmDelete()" method="POST">
+<?php foreach ($blogCategories as $index => $blogCategory): ?>
+    <tr>
+        <td><?php echo $blogCategory->category ?></td>
+        <td><?php echo $blogCategory->permalink ?></td>
+        <td>
+            <div class="btn-container">
+                <!-- Edit Form -->
+                <button data-modal-target="#edit-category-<?php echo $index ?>" class="admin-table">Edit</button>
+                <div class="modal" id="edit-category-<?php echo $index ?>">
+                    <div class="modal-header">
+                        <div class="title">Edit Category</div>
+                        <button data-close-button class="close-button">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="<?php echo URLROOT;?>/Admin/editcategory" method="POST">
+                            <label for="category">Category Name: <br><span>(This will be displayed as the category name on the blog)</span></label>
+                            <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $blogCategory->category ?>"></input><br><br>
+                            <label for="permalink">Permalink: <br><span>(This should be unique and will be used to identify the category. Also this will be displayed in the URL)</span></label><br>
+                            <input type="text" id="permalink" name="permalink" placeholder="Enter a suitable and unique permalink" value="<?php echo $blogCategory->permalink ?>"></input><br><br>
+                            <button type="submit" class="admin-table">Edit Category</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Delete Button -->
+               <form action="<?php echo URLROOT?>/Admin/deletecategory" onclick="confirmDelete()" method="POST">
                                     <input type="hidden" name="category" value="<?php echo $blogCategory->category?>">
                                     <input type="hidden" name="permalink" value="<?php echo $blogCategory->permalink?>">
                                     <button class="admin-table" type="submit">Delete</button>
                                 </form>
-                            </div>
-                        </td>
-                    </tr>
-            <?php
-                endforeach;
-            ?>
+            </div>
+        </td>
+    </tr>
+<?php endforeach; ?>
+
+
         </table>
 
     </main>
