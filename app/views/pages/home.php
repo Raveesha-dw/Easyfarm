@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+                    <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
 
                 </a>
 
@@ -131,16 +131,16 @@
 
                             <div class="product-description">
                                 <h3><?php echo $product->Item_name ?> For Sale!</h3>
-                                <div class="rating">
+                                <!-- <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
-                                </div>
+                                </div> -->
                                 <h4><?php echo $product->Unit_price ?> LKR</h4>
                             </div>
-                            <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
+                            <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
                         </a>
                     </div>
 

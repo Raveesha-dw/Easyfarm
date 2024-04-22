@@ -104,4 +104,13 @@ class M_product{
         return $searchResults;
     }
 
+    public function getTypeOfProduct($itemID){
+        $this->db->query('SELECT Unit_type from item WHERE Item_Id = :itemID');
+        $this->db->bind(':itemID', $itemID);
+        $type = $this->db->single();
+
+        return $type->Unit_type;
+
+    }
+
 }

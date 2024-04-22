@@ -138,10 +138,8 @@ if (!empty($_SESSION['user_email'])) {
 
 
 
-<?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
-                                        <!-- <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
-                                            <h2>Shopping Cart</h2>
-                                        </a> -->
+                                <?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
+                                    
                                         <a href="<?php echo URLROOT ?>/Orders/placedOrders" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-sort"></i>My orders</h2>
                                         </a>
@@ -164,7 +162,6 @@ if (!empty($_SESSION['user_email'])) {
     ?>
 
                             <div class="nav-parts" style="padding: 20px 0">
-                            <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Users/login'">Login</button> -->
                             <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
 
                             </div>

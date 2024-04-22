@@ -9,7 +9,6 @@
     }
 
     public function details(){
-        print_r($_SESSION['user_type']);
         
          $data = [
                 'user_type' => '',
@@ -19,6 +18,7 @@
                 'address' => '',
                 'city' => '',
                 'postalcode' => '',
+                'province' => '',
                 'password' => '',
                 'confirm-password' => '',
 
@@ -26,6 +26,7 @@
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
+                'province_err' => '',
                 'password_err' => '',
                 'confirm-password_err' => '',
 
@@ -148,20 +149,21 @@
 
                 $rentalFeePerWeek = $data['Rental_Fee'];
 
-// Decode JSON to array
-$selectedDatesArray = json_decode($data['selectedDates']);
+                // Decode JSON to array
+                $selectedDatesArray = json_decode($data['selectedDates']);
 
-// Count the number of selected dates
-$numberOfSelectedDates = count($selectedDatesArray);
+                // Count the number of selected dates
+                $numberOfSelectedDates = count($selectedDatesArray);
 
-// Calculate the total rental fee
-$totalRentalFee = $numberOfSelectedDates * $rentalFeePerWeek;
-$data['Total_Rental_Fee'] = $totalRentalFee;
-// Output the total rental fee
-// echo "Total rental fee: " . $totalRentalFee;
-print_r($data);
+                // Calculate the total rental fee
+                $totalRentalFee = $numberOfSelectedDates * $rentalFeePerWeek;
+                $data['Total_Rental_Fee'] = $totalRentalFee;
+                // Output the total rental fee
+                // echo "Total rental fee: " . $totalRentalFee;
+                // print_r($data);
+
                 if ($this->vechile_ordersmodel->update_data($data)) {
-                    print_r("x");
+                    // print_r("x");
                     // redirect('Vehicle_item/gethomepage');
                 }
 
