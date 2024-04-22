@@ -1,0 +1,192 @@
+
+.msg-box{
+    /* background-color: aquamarine; */
+     width: 1000px;
+     
+    margin-left: 250px;
+    margin-top: 80px;
+     /* left: 200px; */
+     /* right: 2px; */
+    height: 200px; 
+    /* padding-left: 200px; */
+    /* padding-top: 200px; */
+}
+.msg-f{
+    background-color: aquamarine;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+.m-header{
+    background-color: black;
+    color: #ffffff;
+    align-items:center;
+    display: flex;
+    /* justify-content: space-between; */
+    padding-left: 10px;
+   
+}
+.msg-ID{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.m-img img {
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the image circular */
+}
+.msg-date {
+    margin-top: 5px;
+    padding-left: 15px;
+    
+}
+/* .button-msg.dd{
+    background-color: rgb(193, 35, 35);
+     margin-left: 8000px; 
+     width: 10px;
+     cursor: pointer;
+    
+    
+} */
+
+.shero5 .dd{
+    background-color: rgb(193, 35, 35);
+    margin-left: 800px; 
+    width: 4000px;
+    height:50px;
+    cursor: pointer;
+    /* margin-bottom: 40px; */
+    /* margin-top: 20px; */
+}
+
+.shero5 .dd2{
+    background-color: rgb(255, 247, 247);
+    margin-left: -180px; 
+    margin-top: -60px;
+    width: 4000px;
+    height:50px;
+}
+.aa{
+    display: flex;
+}
+
+/* a.dd{
+    width: 59px;
+} */
+
+/* .button-msg{
+margin-bottom: 1000px;
+padding-bottom: 100px;
+} */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Styles for the modal content */
+.container .modal-content {
+    margin-top: 300px;
+    background-color: #87CEEB; 
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+    color: #121212;
+
+}
+
+/* Style for the close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Styles for the modal buttons */
+.modal-buttons {
+    margin-top: 20px;
+    
+}
+
+.reason-container {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Additional styles for the body to prevent scrolling when the modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+#skipButton {
+    background-color: #ff3333; /* Red color for the "Decline" button */
+}
+
+#okButton {
+    background-color: #4CAF50; /* Green color for the "OK" button */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

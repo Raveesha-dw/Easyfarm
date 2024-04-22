@@ -96,11 +96,11 @@
                     <br>
 
                         <select name="Charging_Unit" id="stype">
-                            <option disabled selected> </option>
+                            <option disabled selected>Per Day </option>
                             <!-- <option value="Per Hour">Per Hour</option> -->
                             <option value="Per Day">Per Day</option>
-                            <option value="Per Week">Per Week</option>
-                            <option value="Per month">Per month</option>
+                            <!-- <option value="Per Week">Per Week</option>
+                            <option value="Per month">Per month</option> -->
 
                             <?php if (!isset($_POST['Charging_Unit']) || empty($_POST['Charging_Unit'])) : ?>
                                 <option selected><?php echo $data['Charging_Unit']; ?></option>
@@ -187,7 +187,6 @@
         </form>
     </div>
 </div>
-<?php require APPROOT . '/views/inc/footer.php';?>
    <!-- </section> -->
 
     </div>
