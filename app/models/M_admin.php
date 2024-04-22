@@ -79,6 +79,38 @@ class M_admin{
     }
 
 
+
+        // Manage Vehicle Categories
+
+    public function getVehicleCategories(){
+        $this->db->query("SELECT * FROM vehicle_item_category");
+        $categories = $this->db->resultSet();
+        return $categories;
+    }
+
+    public function insertVehicleCategory($data){
+        $this->db->query("INSERT INTO vehicle_item_category(Category_name) VALUES (:category)");
+        $this->db->bind(':category', $data['category']);
+        $this->db->execute();
+        return true;
+    }
+
+    public function updateVehicleCategory($data){
+        $this->db->query("UPDATE vehicle_item_category SET Category_name = :category  WHERE Category_Id = :category_id");
+        $this->db->bind(':category_id', $data['category_id']);
+        $this->db->bind(':category', $data['category']);
+        $this->db->execute();
+        return true;
+    }
+
+    public function deleteVehicleCategory($category_id){
+        $this->db->query("DELETE FROM vehicle_item_category WHERE Category_Id = :category_id");
+        $this->db->bind(':category_id', $category_id);
+        $this->db->execute();
+        return true;
+    }
+
+
     // Manage Agri Instructors
 
     public function getAgriInstructorsByAccStatus($accStatus){
