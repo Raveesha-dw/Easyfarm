@@ -68,7 +68,7 @@ if (!empty($_SESSION['user_email'])) {
                                         <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
                                             <h2>Shopping Cart</h2>
                                         </a>
-                                        <a href="<?php echo URLROOT ?>/Orders/placedOrders" class="sub-link-menu">
+                                        <a href="<?php echo URLROOT ?>/Orders/pendingOrdersOfUser" class="sub-link-menu">
                                             <h2>My orders</h2>
                                         </a>
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">

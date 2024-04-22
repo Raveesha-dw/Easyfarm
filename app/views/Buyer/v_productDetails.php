@@ -8,6 +8,7 @@ $productDetails = $data['productInfo'];
 
 $sellerDetails = $data['sellerInfo'];
 $productReviews = $data['itemReviews'];
+print_r($productReviews);
 $inquiries = $data['inquiries'];
 
 ?>
@@ -115,6 +116,28 @@ $inquiries = $data['inquiries'];
                 <div class="bar-label">1 Star (0%)</div>
             </div>
         </div>
+
+        
+        <?php 
+        if($productReviews == NULL){ ?>
+            <p style="color: lightslategray;"><small>
+            This product does not have any ratings yet</small></p>
+       <?php }
+        
+        
+        foreach($productReviews as $review): ?>
+            <div class="question-card">
+                <div class="question"><i class="fa fa-comment" aria-hidden="true"></i>
+                    <h3><?php echo $review->Name ?> posted on <small><?php echo $review->posted_date ?></small></h3>
+                   
+                </div>
+                <div class="answer">
+                     <h4><?php echo $review->Review ?></h4>
+                </div>
+        </div>
+
+        <?php endforeach ?>
+
     </div>
 </section>
 
