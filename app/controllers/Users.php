@@ -791,6 +791,7 @@ public function createUserSession($user){
             $_SESSION['accStatus'] = $agriInstructorData->AccStatus;
             
             redirect("AgriInstructor");
+            
         }else if($_SESSION['user_type']  == 'Admin'){
             redirect("Admin");
         }

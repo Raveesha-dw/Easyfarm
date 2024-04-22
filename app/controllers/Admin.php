@@ -17,8 +17,12 @@ class Admin extends Controller{
         redirect("Admin/agriInstructor");
     }
 
+
+
+    // Manage Blog
+
     public function blog(){
-        $data['blogCategories'] = $this->adminModel->getCategories();
+        $data['blogCategories'] = $this->adminModel->getBlogCategories();
 
         $newCategory = [
             'category' => '',
@@ -33,7 +37,7 @@ class Admin extends Controller{
         $this->view('Admin/v_adminBlog', $data);
     }
 
-    public function addcategory(){
+    public function addBlogCategory(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
@@ -52,14 +56,14 @@ class Admin extends Controller{
             if(empty($newcategory['permalink'])){
                 $newcategory['permalink_err'] = 'Permalink should not be empty';
             }
-            else if($this->adminModel->findCategory($newcategory['permalink'])){
+            else if($this->adminModel->findBlogCategory($newcategory['permalink'])){
                 $newcategory['permalink_err'] = 'This permalink is already used';
             }
             
             if(empty($newcategory['category_err']) && empty($newcategory['permalink_err'])){
-                if($this->adminModel->insertCategory($newcategory)){
+                if($this->adminModel->insertBlogCategory($newcategory)){
                     flash('add_category_success', 'Category has been added successfully!');
-                    header('Location: ' . URLROOT . '/Admin');
+                    redirect('Admin/blog');
                 }else{
                     die('Something went wrong :(');
                 }
@@ -70,52 +74,49 @@ class Admin extends Controller{
         }
     }
 
-    public function editcategory(){
+    public function editBlogCategory(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-            $newcategory = [
+            $category = [
                 'category' => trim($_POST['category']),
                 'permalink' => trim($_POST['permalink']),
 
-                'category_err' => '',
-                'permalink_err' => ''
+                'category_err' => ''
             ];
 
-            if(empty($newcategory['category'])){
-                $newcategory['category_err'] = 'Enter category name';
-            }
-
-            if(empty($newcategory['permalink'])){
-                $newcategory['permalink_err'] = 'Permalink should not be empty';
-            }
-            else if($this->adminModel->findCategory($newcategory['permalink'])){
-                $newcategory['permalink_err'] = 'This permalink is already used';
+            if(empty($category['category'])){
+                $category['category_err'] = 'Enter category name';
             }
             
-            if(empty($newcategory['category_err']) && empty($newcategory['permalink_err'])){
-                if($this->adminModel->insertCategory($newcategory)){
+            if(empty($category['category_err'])){
+                if($this->adminModel->updateBlogCategory($category)){
                     flash('add_category_success', 'Category has been added successfully!');
-                    header('Location: ' . URLROOT . '/Admin');
+                    redirect('Admin/blog');
                 }else{
                     die('Something went wrong :(');
                 }
             }else{
-                $data['newCategory'] = $newcategory;
-                $this->view('Admin/v_adminBlog', $data);
+                redirect('Admin/blog');
+                // $data['category'] = $category;
+                // $this->view('Admin/v_adminBlog', $data);
             }
         }
     }
 
-    public function deletecategory(){
+    public function deleteBlogCategory(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
-            if($this->adminModel->deleteCategory(trim($_POST['permalink']))){
-                header('Location: ' . URLROOT . '/Admin');
+            if($this->adminModel->deleteBlogCategory(trim($_POST['permalink']))){
+                redirect('Admin/blog');
             }else{
                 die('Something went wrong :(');
             }
         }
     }
+
+
+
+    // Manage Agri Instructor
 
     public function agriInstructor(){
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['AccStatus'])){ 
@@ -164,6 +165,12 @@ class Admin extends Controller{
         }
     }
 
+
+
+    // Manage Payments
+
+    // 1) Manage Sellers' Payments
+
     public function seller(){
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['status'])){
             $status = trim($_GET['status']);
@@ -186,6 +193,16 @@ class Admin extends Controller{
             redirect('Admin/seller?status=Unsettled');
         }
     }
+
+    public function settleSellerPayment(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
+            $sellerID = trim($_POST['sellerID']);
+            $data['sellerData'] = $this->adminModel->getSellerBankInfo($sellerID);
+            $this->view('Admin/v_settleSellerPayment', $data);
+        }
+    }
+
+    // 2) Manage Delivery Agent's Payments
 
     public function delivery(){
         if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['status'])){
@@ -210,11 +227,106 @@ class Admin extends Controller{
         }
     }
 
-    public function settleSellerPayment(){
-        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST'){
-            $sellerID = trim($_POST['sellerID']);
-            $data['sellerData'] = $this->adminModel->getSellerBankInfo($sellerID);
-            $this->view('Admin/v_settleSellerPayment', $data);
+
+
+    // Manage Marketplace
+
+    public function marketplace(){
+        $data['marketplaceCategories'] = $this->adminModel->getMarketplaceCategories();
+
+        $newCategory = [
+            'category' => '',
+            'units' => '',
+
+            'category_err' => '',
+            'units_err' => ''
+        ];
+
+        $data['newCategory'] = $newCategory;
+        
+        $this->view('Admin/v_adminMarketplaceCategories', $data);
+    }
+
+    public function addMarketplaceCategory(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $newcategory = [
+                'category' => trim($_POST['category']),
+                'units' => trim($_POST['units']),
+
+                'category_err' => '',
+                'units_err' => ''
+            ];
+
+            if(empty($newcategory['category'])){
+                $newcategory['category_err'] = 'Enter category name';
+            }
+
+            if(empty($newcategory['units'])){
+                $newcategory['units_err'] = 'Units should not be empty';
+            }
+            
+            if(empty($newcategory['category_err']) && empty($newcategory['units_err'])){
+                if($this->adminModel->insertMarketplaceCategory($newcategory)){
+                    flash('add_category_success', 'Category has been added successfully!');
+                    redirect('Admin/marketplace');
+                }else{
+                    die('Something went wrong :(');
+                    redirect('Admin/marketplace');
+                }
+            }else{
+                $data['newCategory'] = $newcategory;
+                $this->view('Admin/v_adminMarketplaceCategories', $data);
+            }
+        }
+    }
+
+    public function editMarketplaceCategory(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $newcategory = [
+                'category_id' => trim($_POST['category_id']),
+                'category' => trim($_POST['category']),
+                'units' => trim($_POST['units']),
+
+                'category_err' => '',
+                'units_err' => ''
+            ];
+
+            if(empty($newcategory['category'])){
+                $newcategory['category_err'] = 'Enter category name';
+            }
+
+            if(empty($newcategory['units'])){
+                $newcategory['units_err'] = 'Units should not be empty';
+            }
+
+            if(empty($newcategory['category_err']) && empty($newcategory['units_err'])){
+                if($this->adminModel->updateMarketplaceCategory($newcategory)){
+                    flash('add_category_success', 'Category has been added successfully!');
+                    // print('done');
+                    redirect('Admin/marketplace');
+                }else{
+                    die('Something went wrong :(');
+                    // redirect('Admin/marketplace');
+                }
+            }else{
+                $data['newCategory'] = $newcategory;
+                $this->view('Admin/v_adminBlog', $data);
+            }
+        }
+    }
+
+    public function deleteMarketplaceCategory(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            if($this->adminModel->deleteMarketplaceCategory(trim($_POST['category_id']))){
+                redirect('Admin/marketplace');
+            }else{
+                die('Something went wrong :(');
+                redirect('Admin/marketplace');
+            }
         }
     }
 }

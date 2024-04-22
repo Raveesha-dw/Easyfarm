@@ -47,6 +47,15 @@ function isActive($page)
             <span class="link hide">Blog Categories</span>
           </a>
         </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/marketplace';?>"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-store'></i>
+              <i class='bx bxs-store'></i>
+            </div>
+            <span class="link hide">Marketplace Categories</span>
+          </a>
+        </li>
         
         <!-- <li class="tooltip-element" data-tooltip="2">
           <a href="#" data-active="2">
