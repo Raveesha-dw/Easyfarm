@@ -5,7 +5,21 @@ public function __construct(){
     $this->db=new Database();
 }
 
+public function user_details($seller_ID){
+    $this->db->query("SELECT * FROM reg_seller WHERE U_Id = :seller_ID");
+    $this->db->bind(':seller_ID', $seller_ID);
+    $result=$this->db->resultSet();
+    // print_r($result);
+    return $result;
+}
 
+public function getlisting_count(){
+    $this->db->query("SELECT list_count FROM reg_seller WHERE reg_seller.U_Id=:user_ID");
+    $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    $result=$this->db->resultSet();
+    // print_r($result);
+    return $result;
+}
 
 public function get_dataplan1(){
     $this->db->query("SELECT * FROM plandetails WHERE plandetails.plan_id=:plan_Id ");

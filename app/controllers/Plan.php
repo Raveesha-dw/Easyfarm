@@ -1,5 +1,6 @@
 <?php class Plan extends Controller{
     private $planModel;
+
     // private static $this;
     public function __construct()
     {
@@ -22,6 +23,11 @@
 
         // check the user have or have not plan id
 
+         $data = $this->planModel->user_details($_SESSION['user_ID']);
+        $registerDate = $data[0]->Register_date;
+        $futureDate = date('Y-m-d', strtotime($registerDate . ' +6 months'));
+        $currentDate = date('Y-m-d');
+
 
         if ($_SESSION['plan_id']==''){
             
@@ -30,7 +36,24 @@
 
             $this->view('seller/v_register_plan2',$data);
     
-        }else{
+        }
+        elseif ($currentDate > $futureDate) {
+             $data = $this->planModel->get_dataplan3();
+            //  WORK CODE 2
+            $this->view('seller/v_register_plan1',$data);
+            }
+
+
+        //  else {
+        //     $data = $this->planModel->getlisting_count();
+        //     $list_count = $data[0]->list_count;
+        //     print_r($data);
+        //     if ($list_count == 0) {
+        //         $data = $this->planModel->get_dataplan3();
+        //     $this->view('seller/v_register_plan2',$data);}
+            
+        
+        else{
         
            
             // assign user_id

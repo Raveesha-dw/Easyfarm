@@ -6,6 +6,7 @@ class Pages extends Controller{
     }
 
     public function index(){
+        
         $products = $this->productModel->getAllProducts();
 
         $data = [

@@ -38,7 +38,9 @@
     padding: 0 15px;
 }
 
-
+.v_created_post_footer{
+    z-index: 100;
+}
  
 
 
@@ -70,8 +72,12 @@
 .wrapperVcreatedPost #namee1{
     /* top:100px; */
     margin-left: 15px;
-    color: rgb(58, 237, 70);
+    color: rgb(0, 0, 0);
     display: flex;
+}
+
+#namee1{
+    color: rgb(0, 0, 0);
 }
 .wrapperVcreatedPost .wrapperVcreatedPost .name{
     margin-top: 40px;
@@ -80,14 +86,16 @@
 
 .wrapperVcreatedPost #price1{
     margin-left: 180px;
-    color: rgb(238, 0, 255);
+    color: rgb(0, 0, 0);
     display: flex;
+}
+#price1{
+    color: rgb(0, 0, 0);
 }
 
 
-
-.wrapperVcreatedPost .button-n .btn2{
-    background-color: aquamarine;
+.button-n .btn2{
+    background-color: rgb(11, 203, 36);
 }
 
 

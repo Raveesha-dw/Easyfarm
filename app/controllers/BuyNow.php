@@ -6,12 +6,14 @@ class BuyNow extends Controller{
     // private $buyerModel;
     private $buyerModel;
     private $deliveryModel;
+    private $productModel;
 
     public function __construct()
     {
         $this->orderModel = $this->model('M_buyNow');
         $this->buyerModel = $this->model('M_buyNow');
         $this->deliveryModel = $this->model('M_delivery');
+        $this->productModel = $this->model('M_product');
         
     }
     // public function index(){
@@ -33,8 +35,7 @@ class BuyNow extends Controller{
             
 
 
-
-
+            $buyer_province = $_SESSION['buyer_province'] ? isset($_SESSION['buyer_province'])  : ($this->deliveryModel->getProvinceOfBuyer());
 
             if((!empty($_POST['quantity'])) && (!empty($_POST['delivery'])) ){
                 $data = [
@@ -45,32 +46,53 @@ class BuyNow extends Controller{
                     'total' => 0, 
                     'deliveryFee' => '',
                     'totalPayment' => 0,
-                    'weightFee' => 0
+                    'weightFee' => 0,
+                    'seller_province' => '',
+                    'buyer_province' => '',
+                    'base_deliveryFee' => 0
     
                     
                 ];
                 // print_r($_POST['delivery']);
-                // print_r($data); 
+                //print_r($data); 
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
         
-                    if(isset($_SESSION['buyer_province'])){
+                    if(isset($buyer_province)){
                         // $_SESSION['buyer_province'];
                         // $fee = $this->deliveryModel->getDeliveryFeeForSingleProduct($data['Item_Id']);
                         $S_ID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
                         $fee = $this->deliveryModel->getDeliveryFeeForSeller($S_ID);
-                        // print_r($fee);
-                        $base_fee = (float)$fee->base_fee;
+                        //print_r($fee);
+                        $base_fee = (float)$fee['base_fee'];
                         $data['deliveryFee'] = $base_fee;
 
-                        $weight_fee = $fee->weight_fee;
-                        if($data['quantity'] <= 5000){
-                            $data['weightFee'] = 0;
+                        $data['seller_province'] = $fee['seller_province'];
+                        $data['buyer_province'] = $fee['buyer_province'];
+                        $data['base_deliveryFee'] = $fee['base_fee'];
+
+
+                        $item_type = $this->productModel->getTypeOfProduct($data['Item_Id']);
+
+                        $weight_fee = $fee['weight_fee'];
+                        if($item_type == 'Kg'){
+                            if($data['quantity'] <=5){
+                                $data['weightFee'] = 0;
+                            }else{
+                                $additional_weight = $data['quantity'] - 5;
+                                $additional_fee_count = (int)($additional_weight / 2);
+                                $data['weightFee'] = $weight_fee * $additional_fee_count;
+                            }
                         }else{
-                            $additional_weight = $data['quantity'] - 5000;
-                            $additional_fee_count = ($additional_weight / 2000);
-                            $data['weightFee'] = $weight_fee * $additional_fee_count;
+                            if($data['quantity'] <= 5000){
+                                $data['weightFee'] = 0;
+                            }else{
+                                $additional_weight = $data['quantity'] - 5000;
+                                $additional_fee_count = (int)($additional_weight / 2000);
+                                $data['weightFee'] = $weight_fee * $additional_fee_count;
+                            }
                         }
+                        
                     }else{
                         $data['deliveryFee'] = 0;
                     }
@@ -105,7 +127,7 @@ class BuyNow extends Controller{
                 $data['totalPayment'] = $data['total']+$data['deliveryFee'] ;
                 $data2[0] = $data;
                 $data = $data2;
-                // print_r($data);
+                //print_r($data);
     
                 $this->view('pages/buyNow',$data);
 
@@ -197,43 +219,63 @@ class BuyNow extends Controller{
                     'total' => 0, 
                     'deliveryFee' => 0,
                     'totalPayment' => 0,
-                    'weightFee' => 0
+                    'weightFee' => 0,
+                    'seller_province' => '',
+                    'buyer_province' => '',
+                    'base_deliveryFee' => 0
 
                 ];
 
                
                 // $_SESSION['buyer_province'];
-
+                $weight_fee = 0;
                 if($data['selectedDeliveryMethod'] == 'Home Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
                   
                     // if(isset($_SESSION['buyer_province'])){
                     if(isset($buyer_province)){
-                    $weight_fee = 0;
+                    
                     $sellerID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
                     if(!(in_array($sellerID, $sellerIDs))){
                         $sellerIDs[] = $sellerID;
 
                         // $this->deliveryModel->getDeliveryFeeForSeller($sellerID);
                         $float = $this->deliveryModel->getDeliveryFeeForSeller($sellerID);
-                        $data['deliveryFee'] = (float)$float->base_fee;
+                        $data['deliveryFee'] = (float)$float['base_fee'];
 
-                        $weight_fee = $float->weight_fee;
-                        
+                        $weight_fee = $float['weight_fee'];
+
+                        $data['seller_province'] = $float['seller_province'];
+                        $data['buyer_province'] = $float['buyer_province'];
+                        $data['base_deliveryFee'] = $float['base_fee'];
                     }
                     else{
                         $data['deliveryFee'] = 0;
                     }
 
-                    if($data['quantity'] <= 5000){
-                            $data['weightFee'] = 0;
-                        }else{
-                            $additional_weight = $data['quantity'] - 5000;
-                            print_r($additional_weight);
-                            $additional_fee_count = ($additional_weight / 2000);
-                            print_r($additional_fee_count);
-                            $data['weightFee'] = $weight_fee * $additional_fee_count;
-                            print_r($data['weightFee']);
-                        }
+                    $result = $this->deliveryModel->getDeliveryFeeForSeller($sellerID);
+                    $weight_fee = $result['weight_fee'];
+                    
+
+
+
+                    $item_type = $this->productModel->getTypeOfProduct($data['Item_Id']);
+                    if($item_type == 'Kg'){
+                            if($data['quantity'] <=5){
+                                $data['weightFee'] = 0;
+                            }else{
+                                $additional_weight = $data['quantity'] - 5;
+                                $additional_fee_count = (int)($additional_weight / 2);
+                                $data['weightFee'] = $weight_fee * $additional_fee_count;
+                            }
+                    }else{
+                            if($data['quantity'] <= 5000){
+                                $data['weightFee'] = 0;
+                            }else{
+                                $additional_weight = $data['quantity'] - 5000;
+                                $additional_fee_count = (int)($additional_weight / 2000);
+                                $data['weightFee'] = $weight_fee * $additional_fee_count;
+                            }
+                    }
 
                     }
                    
@@ -274,7 +316,7 @@ class BuyNow extends Controller{
             }
             $data = $data2;
             
-            // print_r($data);
+            //print_r($data);
             $this->view('pages/buyNow',$data);
         }
     }   
@@ -369,4 +411,3 @@ class BuyNow extends Controller{
 }
 
 ?>
-

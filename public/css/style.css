@@ -11,6 +11,7 @@
 @import url('components/register_Vehicle_Renter.css');
 @import url('components/login.css');
 @import url('components/logged_nav.css');
+@import url('components/home_nav.css');
 @import url('components/seller_home_style.css');
 @import url('components/create_post_style.css');
 @import url('components/createdpost.css');
@@ -33,6 +34,7 @@
 
 @import url('components/v_vehicle_create_post.css');
 @import url('components/v_vehicle_createdpost.css');
+@import url('components/v_renterhome.css');
 
 @import url('components/payment.css');
 @import url('components/register_plan.css');
@@ -136,3 +138,15 @@ hr{
   .review-card{
     margin: 50px;
   }
+
+  
+#deliveryFeeInfo {
+    cursor: pointer;
+    color: lightslategray; 
+    margin-left: 5px; 
+}
+
+#deliveryFeeCalculation {
+    border: 1px solid #ccc; 
+    padding: 5px; 
+}

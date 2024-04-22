@@ -80,13 +80,19 @@ class M_product{
     }
 
 
-    public function getAllProducts(){
-        $this->db->query('SELECT * FROM item ORDER BY Item_Id DESC');
-       
-        $all = $this->db->resultSet();
-        // print_r($all);
-        return $all;
-    }
+   public function getAllProducts(){
+    $this->db->query('
+        SELECT * 
+        FROM item 
+        INNER JOIN reg_seller ON item.seller_ID = reg_seller.U_Id  
+        WHERE reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+        ORDER BY Item_Id DESC
+    ');
+   
+    $all = $this->db->resultSet();
+    return $all;
+}
+
 
     public function searchForProduct($string){
         if (empty($string)) {
@@ -96,6 +102,15 @@ class M_product{
         $searchResults = $this->db->resultSet();
 
         return $searchResults;
+    }
+
+    public function getTypeOfProduct($itemID){
+        $this->db->query('SELECT Unit_type from item WHERE Item_Id = :itemID');
+        $this->db->bind(':itemID', $itemID);
+        $type = $this->db->single();
+
+        return $type->Unit_type;
+
     }
 
 }

@@ -51,7 +51,7 @@ public function update_user_plan(){
    
     $this->db->query("UPDATE reg_vehicleowner SET list_count = (SELECT listing_limit FROM v_plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE U_Id = (SELECT U_Id FROM user WHERE email = :email)");
     $this->db->bind(':plan_id', $_GET['id']);
-    $this->db->bind(':email', $_SESSION['user_email1']);
+    $this->db->bind(':email', $_SESSION['user_email']);
     // print_r($_SESSION['user_email1']);
     $this->db->execute();
     print_r("xjx");
@@ -188,7 +188,19 @@ public function update_user_plan1(){
     return true;
 
 }
-
+public function getplandetails($plan_id) {
+    $this->db->query("SELECT * FROM v_plandetails WHERE plan_id=:plan_id"); // Corrected SQL query
+    
+    $this->db->bind(':plan_id', $plan_id); 
+    
+    
+    $this->db->execute();
+    
+    
+    $result = $this->db->single(); 
+    
+    return $result; 
+}
 
 
 

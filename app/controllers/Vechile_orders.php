@@ -9,7 +9,6 @@
     }
 
     public function details(){
-        print_r($_SESSION['user_type']);
         
          $data = [
                 'user_type' => '',
@@ -19,6 +18,7 @@
                 'address' => '',
                 'city' => '',
                 'postalcode' => '',
+                'province' => '',
                 'password' => '',
                 'confirm-password' => '',
 
@@ -26,6 +26,7 @@
                 'contactno_err' => '',
                 'email_err' => '',
                 'address_err' => '',
+                'province_err' => '',
                 'password_err' => '',
                 'confirm-password_err' => '',
 
@@ -128,15 +129,44 @@
                 $data['selectedDates_err'] = 'Please enter the date';
             }
             if (empty($data['name_err']) && empty($data['location_err']) && empty($data['number_err']) && empty($data['selectedDates_err'])) {
-                print_r($data);
+                // print_r($data);
+
+               
+
+
+
+
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
                 foreach ($data1 as $object) {
                     $data2 = (array) $object;
                 }
 
+
+
                 $data = array_merge($data2, $data);
+                print_r($data);
+
+
+                $rentalFeePerWeek = $data['Rental_Fee'];
+
+                // Decode JSON to array
+                $selectedDatesArray = json_decode($data['selectedDates']);
+
+                // Count the number of selected dates
+                $numberOfSelectedDates = count($selectedDatesArray);
+
+                // Calculate the total rental fee
+                $totalRentalFee = $numberOfSelectedDates * $rentalFeePerWeek;
+                $data['Total_Rental_Fee'] = $totalRentalFee;
+                // Output the total rental fee
+                // echo "Total rental fee: " . $totalRentalFee;
+                // print_r($data);
+
                 if ($this->vechile_ordersmodel->update_data($data)) {
+                    // print_r("x");
+                    // redirect('Vehicle_item/gethomepage');
                 }
+
             } else {
 
                 $data1 = $this->vechile_ordersmodel->getdata($_POST['V_Id']);
@@ -169,8 +199,9 @@
                 $data['lastday'] = $new_date;
 
                 $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
-                print_r($data3);
-                ($this->view('renter/v_vechiledetail', $data));
+                // print_r($data3);
+                // ($this->view('renter/v_vechiledetail', $data));
+                
             }
 
             // if ($this->vechile_ordersmodel->update_data($data)){

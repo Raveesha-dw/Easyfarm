@@ -84,7 +84,7 @@
 <!-- <?php foreach ($products as $product) :?> -->
        <!-- <?php  endforeach;?> -->
        <!--  -->
-       <?php require APPROOT .'/views/inc/components/navbars/sellerhome_nav.php'?>
+       <?php require APPROOT .'/views/inc/components/navbars/d_seller.php'?>
 
 
 <div class ="shero6">
@@ -140,7 +140,7 @@
                         <!-- <td> <?php echo $product->Order_ID ?> </td>
                          -->
                          <td><?php echo $count; ?></td>
-                        <td> <img src="images/Zinzu Chan Lee.jpg" alt=""><?php echo $product->Name ?></td>
+                        <td> <?php echo $product->Name ?></td>
                         <td> <?php echo $product->Address ?> </td>
                         <td> <?php echo $product->placed_Date ?> </td>
                         <td>

@@ -6,7 +6,7 @@
     <!--<title>Dashboard Sidebar Menu</title>--> 
     
 
-    <nav class="sidebarr close">
+    <nav class="sidebarr close" id="sidebarr">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -108,6 +108,8 @@
     </section>
 
     <script>
+
+        
         const body = document.querySelector('body'),
       sidebar = body.querySelector('nav'),
       toggle = body.querySelector(".toggle"),

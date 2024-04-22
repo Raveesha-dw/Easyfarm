@@ -51,7 +51,7 @@ $current_page = $_SERVER['REQUEST_URI'];
             </div>
 
 
-            
+
             <!-- <div class="nav-parts">
 
                 <div class="s">
@@ -90,7 +90,7 @@ $current_page = $_SERVER['REQUEST_URI'];
                     }
                 </script>
 
-            </div> -->
+            </div>  -->
 
 
 
@@ -109,8 +109,8 @@ $current_page = $_SERVER['REQUEST_URI'];
 
 
             <?php
-            if (!empty($_SESSION['user_email'])) {
-            ?>
+if (!empty($_SESSION['user_email'])) {
+    ?>
                 <div class="welcome-banner" style="padding: 10px">
                     <!-- <h2 class="greeting" onclick="toggleMenu()"><?php echo $_SESSION['user_email']; ?> ></h2> -->
                     <h2 class="greeting" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i> </h2>
@@ -120,15 +120,15 @@ $current_page = $_SERVER['REQUEST_URI'];
                             <div class="user-info">
                                 <a href="<?php echo URLROOT ?>/Profile/viewProfile?email=<?php echo $_SESSION['user_email']; ?>" class="sub-link-menu">
                                     <h2><i class="fa-solid fa-user"></i>View Profile</h2>
-                                    <span>></span>
+                                    <span></span>
                                 </a>
-                                <?php if ($_SESSION['user_type'] == 'Seller') : ?>
+                                <?php if ($_SESSION['user_type'] == 'Seller'): ?>
                                     <a href="<?php echo URLROOT ?>/Pages/dashboard" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
                                         <span>></span>
                                     </a>
 
-                                <?php elseif ($_SESSION['user_type'] == 'VehicleRenter') : ?>
+                                <?php elseif ($_SESSION['user_type'] == 'VehicleRenter'): ?>
 
                                     <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
@@ -138,15 +138,13 @@ $current_page = $_SERVER['REQUEST_URI'];
 
 
 
-<?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
-                                        <!-- <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
-                                            <h2>Shopping Cart</h2>
-                                        </a> -->
+                                <?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
+                                    
                                         <a href="<?php echo URLROOT ?>/Orders/placedOrders" class="sub-link-menu">
-                                            <h2>My orders</h2>
+                                            <h2><i class="fa-solid fa-sort"></i>My orders</h2>
                                         </a>
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
-                                            <h2>My Reviews</h2>
+                                            <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Reviews</h2>
                                         </a>
                                     <?php endif;?>
 
@@ -160,42 +158,48 @@ $current_page = $_SERVER['REQUEST_URI'];
 
                     </div>
                 <?php
-            } 
-            else {
+} else {
     ?>
 
-                <div class="nav-parts" style="padding: 20px 0">
-                <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Users/login'">Login</button> -->
-                <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
+                            <div class="nav-parts" style="padding: 20px 0">
+                            <a href="<?php echo URLROOT ?>/Users/login" class="nav-btns">Login</a>
 
-                </div>
+                            </div>
 
-                <!-- <div class="nav-parts" style="padding: 20px 0"> -->
-                    <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Pages/registerPage'">Register</button> -->
-                    <!-- <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a> -->
-            <!-- </div> -->
-
+                            <!-- <div class="nav-parts" style="padding: 20px 0"> -->
+                                <!-- <button class="nav-btns" onclick="location.href='<?php echo URLROOT ?>/Pages/registerPage'">Register</button> -->
+                                <!-- <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a> -->
+                            <!-- </div> -->
 
 
 
-                            <!-- Conditionally render the Register button if NOT on the login page -->
-                <?php if (strpos($current_page, '/Users/login') === false): ?>
-                    <div class="nav-parts" style="padding: 20px 0">
-                        <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a>
-                    </div>
-                <?php endif;?>
-            <?php
-}
-?>
-                </div>
-                            <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
+
+                                        <!-- Conditionally render the Register button if NOT on the login page -->
+                            <?php if (strpos($current_page, '/Users/login') === false): ?>
+                                <div class="nav-parts" style="padding: 20px 0">
+                                    <a href="<?php echo URLROOT ?>/Pages/registerPage" class="nav-btns">Register</a>
+                                </div>
+                            <?php endif;?>
+                            <?php
+                        }
+                        ?>
+                        </div>
+
+
+
+                        <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
+                        <!-- <?php print_r( $data['n_cart_items']); ?> -->
                     <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a>
-
+                 
+                            
+                            <a href="<?php echo URLROOT ?>/Cart/showCart" class="cart-link">
+                                <i class="fas fa-shopping-cart cart"></i>
+                                <span class="cart-count" id="cartCount"><?php print_r( $_SESSION['n_cart_items']); ?></span><!-- Constant number -->
+                            </a>
+                        </div>
                     </div>
-
-                <?php endif;?>
-        </div>
+                    <?php endif;?>
+                </div>
 
 
                 </div>

@@ -15,7 +15,7 @@
 
         <section class="home">
 
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 
 
 
@@ -42,7 +42,7 @@
                         <div class="untill__unit">Minutes</div>
                     </div>
 
-                    <div class="untill__event">Unit 31 Desember 2026</div>
+                    <!-- <div class="untill__event">Unit 31 Desember 2026</div> -->
                 </div>
 
 
@@ -116,29 +116,25 @@
                     <!-- <?php $myVariable = "2024-8-4"; ?> -->
 
 
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/duration.min.js"></script>
-                    <script>
-                        dayjs.extend(dayjs_plugin_duration);
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/duration.min.js"></script>
+                   <script>
+    dayjs.extend(dayjs_plugin_duration);
 
-                        function activateCountdown(element, dateString) {
-                            const targetDate = dayjs(dateString);
-                            element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
+    function activateCountdown(element, dateString) {
+        const targetDate = dayjs(dateString);
+        setInterval(() => {
+            const now = dayjs();
+            const duration = dayjs.duration(targetDate.diff(now));
+            element.querySelector(".until__numeric--months").textContent = duration.months().toString().padStart(2, '0');
+            element.querySelector(".until__numeric--days").textContent = duration.days().toString().padStart(2, '0');
+            element.querySelector(".until__numeric--hours").textContent = duration.hours().toString().padStart(2, '0');
+            element.querySelector(".until__numeric--minutes").textContent = duration.minutes().toString().padStart(2, '0');
+        }, 1000); // Update every second
+    }
 
-                            setInterval(() => {
-                                const now = dayjs();
-                                const duration = dayjs.duration(targetDate.diff(now));
-                                element.querySelector(".until__numeric--months").textContent = duration.months().toString().padStart(2, '0');
-                                element.querySelector(".until__numeric--days").textContent = duration.days().toString().padStart(2, '0');
-                                element.querySelector(".until__numeric--hours").textContent = duration.hours().toString().padStart(2, '0');
-                                element.querySelector(".until__numeric--minutes").textContent = duration.minutes().toString().padStart(2, '0');
-                            }, 250);
-                        }
-
-                        activateCountdown(document.getElementById("myCountdown"), "<?php echo $data['Date'] ?>");
-                        // "2025-11-4");
-                        <?php print_r($data)?>
-                    </script>
+    activateCountdown(document.getElementById("myCountdown"), "<?php echo $data['Date']; ?>");
+</script>
 
 
 
