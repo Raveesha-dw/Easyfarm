@@ -1,32 +1,34 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
+<?php
+    if($data['User_type']=='AgricultureExpert'){
+        $data['User_type'] = 'Agriculture Instructor';
+    }
+?>
+
 <div class="wrapperProfile">
 
 
     <h1>You are registered as a <?php echo $data['User_type']; ?></h1>
 
 
-    <div class="wrapperProfile_sub">
+    <!-- <div class="wrapperProfile_sub">
         <p><b>Profile</b></p><br>
 
         <div class="row">
-            <div class="column1" >
-                <p><img src="<?php echo URLROOT?>/public/images/Profile\images (1).jpeg" alt=""></p>
-                
-            </div>
             <div class="column2" >
                 <p><?php echo $data['Name']; ?></p>
                 <p>Registered as a <?php echo $data['User_type']; ?></p>
             </div>
         </div>
 
-    </div>
+    </div> -->
 
 
     <div class="wrapperProfile_sub">
 
-        <p><b>Account Details</b></p><br>
+        <h2><b>Account Details</b></h2><br>
 
         <div class="row">
             <div class="column1" >
@@ -44,16 +46,6 @@
             </div>
             <div class="column2" >
                 <p><?php echo $data['Email']; ?></p>
-            </div>
-        </div>
-               
-        <div class="row">
-            <div class="column1" >
-                <p>Password  </p>
-            </div>
-            <div class="column2" >
-                <?php  $data['password'] = password_hash($data['Password'], PASSWORD_DEFAULT);?>
-                <p>..........</p>
             </div>
         </div>
 
@@ -166,7 +158,7 @@
                 </div>
             </div>
 
-        <?php elseif ($data['User_type'] == "AgricultureExpert") : ?>
+        <?php elseif ($data['User_type'] == "Agriculture Instructor") : ?>
             <div class="row">
                 <div class="column1" >
                     <p>Address</p>
@@ -187,15 +179,6 @@
 
             <div class="row">
                 <div class="column1" >
-                    <p>Occupation</p>
-                </div>
-                <div class="column2" >
-                    <p><?php echo $data['Occupation']; ?></p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="column1" >
                     <p>Workplace </p>
                 </div>
                 <div class="column2" >
@@ -203,7 +186,17 @@
                 </div>
             </div>
 
+            <br>
             <div class="row">
+                <div class="column1" >
+                    <p>Account Status </p>
+                </div>
+                <div class="column2" >
+                    <p><?php echo $_SESSION['accStatus']; ?></p>
+                </div>
+            </div>
+
+            <!-- <div class="row">
                 <div class="column1" >
                     <p> NIC front/back images</p>
                 </div>
@@ -219,7 +212,7 @@
                 <div class="column2" >
                     <p><?php echo $data['Prof_id']; ?></p>
                 </div>
-            </div>
+            </div> -->
 
 
             <?php elseif ($data['User_type'] == "VehicleRenter") : ?>

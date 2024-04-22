@@ -121,7 +121,7 @@
                     <div class="question-card">
                         <form action="<?php echo URLROOT . '/Blog/askQuestion'?>" method='POST'>
                             <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_ID'];?>">
-                            <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
+                            <input type="hidden" name="post_id" value="<?php echo $post->post_id;?>">
                             <input type="hidden" name="datetime_posted" value="<?php echo date('Y-m-d H:i:s');?>">
                             <textarea name="question" id="question" cols="100" rows="4" placeholder="Write a comment..."></textarea>
                             <br>

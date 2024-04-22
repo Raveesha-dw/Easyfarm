@@ -122,17 +122,17 @@ class M_blog{
         return $userName;
     }
 
-    public function getQuestions($product_id){
-        $this->db->query("SELECT * FROM blog_comments WHERE product_id = :product_id");
-        $this->db->bind(':product_id', $product_id);
+    public function getQuestions($post_id){
+        $this->db->query("SELECT * FROM blog_comment WHERE post_id = :post_id");
+        $this->db->bind(':post_id', $post_id);
         $results = $this->db->resultSet();
         return $results;
     }
 
     public function addQuestion($data){
-        $this->db->query("INSERT INTO blog_comments(user_id, product_id, datetime_posted, question) VALUES (:user_id, :product_id, :datetime_posted, :question)");
+        $this->db->query("INSERT INTO blog_comment(user_id, post_id, datetime_posted, question) VALUES (:user_id, :post_id, :datetime_posted, :question)");
         $this->db->bind(':user_id', $data['user_id']);
-        $this->db->bind(':product_id', $data['product_id']);
+        $this->db->bind(':post_id', $data['post_id']);
         $this->db->bind(':datetime_posted', $data['datetime_posted']);
         $this->db->bind(':question', $data['question']);
         $this->db->execute();
@@ -140,7 +140,7 @@ class M_blog{
     }
 
     public function editQuestion($data){
-        $this->db->query("UPDATE blog_comments SET question = :question, datetime_last_edited = :datetime_last_edited WHERE question_id = :question_id");
+        $this->db->query("UPDATE blog_comment SET question = :question, datetime_last_edited = :datetime_last_edited WHERE question_id = :question_id");
         $this->db->bind(':question_id', $data['question_id']);
         $this->db->bind(':datetime_last_edited', $data['datetime_last_edited']);
         $this->db->bind(':question', $data['question']);
@@ -149,21 +149,21 @@ class M_blog{
     }
 
     public function deleteQuestion($question_id){
-        $this->db->query("DELETE FROM blog_comments WHERE question_id = :question_id");
+        $this->db->query("DELETE FROM blog_comment WHERE question_id = :question_id");
         $this->db->bind(':question_id', $question_id);
         $this->db->execute();
         return true;
     }
 
     public function getAnswer($question_id){
-        $this->db->query("SELECT * FROM blog_comments_answer WHERE question_id = :question_id");
+        $this->db->query("SELECT * FROM blog_comment_answer WHERE question_id = :question_id");
         $this->db->bind(':question_id', $question_id);
         $results = $this->db->resultSet();
         return $results;
     }
 
     public function addAnswer($data){
-        $this->db->query("UPDATE blog_comments SET answer = :answer, answer_datetime = :answer_datetime WHERE question_id = :question_id");
+        $this->db->query("UPDATE blog_comment SET answer = :answer, answer_datetime = :answer_datetime WHERE question_id = :question_id");
         $this->db->bind(':question_id', $data['question_id']);
         $this->db->bind(':answer_datetime', $data['answer_datetime']);
         $this->db->bind(':answer', $data['answer']);
@@ -172,7 +172,7 @@ class M_blog{
     }
 
     public function editAnswer($data){
-        $this->db->query("UPDATE blog_comments SET answer = :answer, answer_datetime_edited = :answer_datetime_edited WHERE question_id = :question_id");
+        $this->db->query("UPDATE blog_comment SET answer = :answer, answer_datetime_edited = :answer_datetime_edited WHERE question_id = :question_id");
         $this->db->bind(':question_id', $data['question_id']);
         $this->db->bind(':answer_datetime_edited', $data['answer_datetime_edited']);
         $this->db->bind(':answer', $data['answer']);
@@ -181,7 +181,7 @@ class M_blog{
     }
 
     public function deleteAnswer($question_id){
-        $this->db->query("UPDATE blog_comments SET answer = :answer, answer_datetime = :answer_datetime, answer_datetime_edited = :answer_datetime_edited WHERE question_id = :question_id");
+        $this->db->query("UPDATE blog_comment SET answer = :answer, answer_datetime = :answer_datetime, answer_datetime_edited = :answer_datetime_edited WHERE question_id = :question_id");
         $this->db->bind(':question_id', $question_id);
         $this->db->bind(':answer_datetime', NULL);
         $this->db->bind(':answer_datetime_edited', NULL);
