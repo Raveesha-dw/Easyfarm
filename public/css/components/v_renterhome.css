@@ -93,7 +93,7 @@ padding-bottom: 100px;
 }
 
 /* Styles for the modal content */
-.container .modal-content {
+.modal-content {
     margin-top: 300px;
     background-color: #87CEEB; 
     padding: 20px;
