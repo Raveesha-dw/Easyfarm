@@ -9,7 +9,6 @@
     <!-- STYLESHEET -->
     <link rel="stylesheet" href="/style.css">
 
-    <!-- <title>Sidebar</title> -->
   </head>
   <!-- <body> -->
     <!-- <div class="container"> -->
@@ -33,7 +32,7 @@
               <li>
                 <a href="#">
                   <i class="icon ph-bold ph-house-simple"></i>
-                  <span class="text">Dashboard</span>
+                  <span class="text">Dashboard j</span>
                 </a>
               </li>
               <li>

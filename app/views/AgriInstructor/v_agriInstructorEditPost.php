@@ -15,7 +15,7 @@
     <main>
         <div class="create-post-form w-100 mx-auto p-4" style="max-width:700px;">
 
-            <h2>Edit Post</h2><br><br>
+            <h2>Edit Post</h2><hr><br><br>
 
             <!-- <div class="create-form w-100 mx-auto p-4" style="max-width:700px;"> -->
             <form action="<?php echo URLROOT?>/AgriInstructor/updatepost" method="POST">
@@ -37,11 +37,6 @@
                 <div class="form-field mb-4">
                     <label for="content">Article</label>
                     <textarea type="text" class="form-control" name="content" id="" cols="30" rows="10" placeholder="Write your ideas..." required><?php echo $post->content;?></textarea>
-                </div>
-
-                <div class="form-field mb-4">
-                    <label for="slug">Slug</label>
-                    <input type="text" class="form-control" name="slug" id="" placeholder="Enter a SEO friendly slug" value="<?php echo $post->slug;?>"></input>
                 </div>
                 
                 <input type="hidden" name="date_updated" value="<?php echo date("Y/m/d"); ?>"></input>

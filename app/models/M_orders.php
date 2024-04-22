@@ -53,7 +53,8 @@ class M_orders{
     }
 
     public function getPendingOrders(){
-        $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="PENDING"'); 
+        // $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="PENDING"'); 
+        $this->db->query('SELECT orders.*, order_details.*, item.Item_name FROM orders O INNER JOIN order_details D on O.Order_ID = D.Order_ID INNER JOIN item I on O.Item_ID = I.Item_Id WHERE O.User_ID=:user_ID AND D.Status ="PENDING"');
         $this->db->bind(':user_ID', $_SESSION['user_ID']);
         $result = $this->db->resultSet();
         // print_r($result);
@@ -62,7 +63,8 @@ class M_orders{
     }
 
     public function getCompletedOrders(){
-        $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="COMPLETED"'); 
+        // $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="COMPLETED"'); 
+        $this->db->query('SELECT orders.*, order_details.*, item.Item_name FROM orders O INNER JOIN order_details D on O.Order_ID = D.Order_ID INNER JOIN item I on O.Item_ID = I.Item_Id WHERE O.User_ID=:user_ID AND D.Status ="COMPLETED"');
         $this->db->bind(':user_ID', $_SESSION['user_ID']);
 
         return $this->db->resultSet();   
@@ -79,7 +81,7 @@ class M_orders{
     }
 
     public function changeOrderStatus($order_ID){
-        $this->db->query('UPDATE orders SET status = "COMPLETED" WHERE Order_ID=:orderID');
+        $this->db->query('UPDATE order_details SET status = "COMPLETED" WHERE Order_ID=:orderID');
         $this->db->bind(':orderID', $order_ID);
 
         return $this->db->execute();

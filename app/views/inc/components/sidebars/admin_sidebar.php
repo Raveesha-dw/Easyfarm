@@ -17,13 +17,14 @@ function isActive($page)
         <i class='bx bx-chevron-left'></i>
       </span>
       <!-- <img src="" class="logo" alt=""> -->
-      <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">Dashboard</h3>
+      <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">EasyFarm</h3>
     </div>
+    <br>
 
-    <div class="search">
+    <!-- <div class="search">
       <i class='bx bx-search'></i>
       <input type="text" class="hide" placeholder="Quick Search...">
-    </div>
+    </div> -->
 
     <div class="sidebar-links">
       <ul>
@@ -31,8 +32,8 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="1">
           <a href="<?php echo URLROOT . '/Admin';?>" class="<?php echo isActive(URLROOT . '/Admin/blog');?> data-active="1">
             <div class="icon">
-              <i class='bx bx-pencil'></i>
-              <i class='bx bxs-pencil'></i>
+              <i class='bx bx-user-plus'></i>
+              <i class='bx bxs-user-plus'></i>
             </div>
             <span class="link hide">Agri Instructors</span>
           </a>
@@ -40,10 +41,19 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="0">
           <a href="<?php echo URLROOT . '/Admin/blog';?>"  data-active="0">
             <div class="icon">
-              <i class='bx bx-file'></i>
-              <i class='bx bxs-file'></i>
+              <i class='bx bx-category'></i>
+              <i class='bx bxs-category'></i>
             </div>
             <span class="link hide">Blog Categories</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/marketplace';?>"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-store'></i>
+              <i class='bx bxs-store'></i>
+            </div>
+            <span class="link hide">Marketplace Categories</span>
           </a>
         </li>
         
@@ -71,6 +81,29 @@ function isActive($page)
           <!-- <span>Messages</span> -->
           <!-- <span>Analytics</span> -->
         </div>
+      </ul>
+
+      <h4 class="hide">Payments</h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/seller';?>" data-active="4">
+            <div class="icon">
+              <i class='bx bx-store'></i>
+              <i class='bx bxs-store'></i>
+            </div>
+            <span class="link hide">Sellers</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/delivery';?>" data-active="4">
+            <div class="icon">
+              <i class='bx bx-package'></i>
+              <i class='bx bxs-package'></i>
+            </div>
+            <span class="link hide">Delivery Agent</span>
+          </a>
+        </li>
       </ul>
 
       <h4 class="hide">Shortcuts</h4>

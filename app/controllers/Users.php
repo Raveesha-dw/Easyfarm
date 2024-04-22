@@ -208,15 +208,12 @@ class Users extends Controller{
 
                 if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])){
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    // $this->userModel->register($data);
 
-                    if($this->userModel->register($data)){
-                        header("Location:http://localhost/Easyfarm/Users/login");
+
+                    if ($this->userModel->register($data)) {
                         flash('register_success', 'You have successfully registered with EasyFarm');
-                        // $this->login();
-                        // redirect('Users/v_login');
-                    }   
-                    else{
+                        redirect('Users/login');
+                    } else {
                         die('Something went wrong');
                     }
                 }
@@ -346,7 +343,6 @@ class Users extends Controller{
 
                 if(empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err'])   && empty($data['password_err']) && empty($data['confirm-password_err'])){
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
                     if ($this->userModel->register($data)) {
                         flash('register_success', 'You have successfully registered with EasyFarm');
                          redirect('Users/login');
@@ -392,8 +388,10 @@ class Users extends Controller{
         }
         }
 
+
         if ($_POST['user_type'] == 'AgricultureExpert') {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
 
@@ -530,6 +528,7 @@ class Users extends Controller{
                         // sendRegistrationSuccessEmail($data);
                         flash('register_success', 'You have successfully registered with EasyFarm');
                         redirect('Users/login');
+
                     }
                     else{
                         die('Something went wrong');
@@ -592,6 +591,7 @@ class Users extends Controller{
                 // 'values' => trim($_POST['values[]']),
                 'user_type' => $_POST['user_type'],
 
+
                     'name_err' => '',
                     'contactno_err' => '',
                     'email_err' => '',
@@ -601,27 +601,28 @@ class Users extends Controller{
                     'password_err' => '',
                     'confirm-password_err' => '',
                 ];
-                // print_r($data);
-                if (empty($data['fullname'])) {
-                    $data['name_err'] = 'Please enter a name';
-                }
-                if (empty($data['contactno'])) {
-                    $data['contactno_err'] = 'Please enter contact number';
-                }
-                if (strlen($data['contactno']) < 10) {
-                    $data['contactno_err'] = 'Not enough digits in contact number';
-                }
+                
+            // print_r($data);
+            if (empty($data['fullname'])) {
+                $data['name_err'] = 'Please enter a name';
+            }
+            if (empty($data['contactno'])) {
+                $data['contactno_err'] = 'Please enter contact number';
+            }
+            if (strlen($data['contactno']) < 10) {
+                $data['contactno_err'] = 'Not enough digits in contact number';
+            }
 
-                if (empty($data['email'])) {
-                    $data['email_err'] = 'Please enter an email';
-                } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['email_err'] = "Invalid email format";
-                } else {
-                    if ($this->userModel->findUserByEmail($data['email'])) {
-                        // echo("check1");
-                        $data['email_err'] = 'Email is already registered';
-                    }
+            if (empty($data['email'])) {
+                $data['email_err'] = 'Please enter an email';
+            } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $data['email_err'] = "Invalid email format";
+            } else {
+                if ($this->userModel->findUserByEmail($data['email'])) {
+                    // echo("check1");
+                    $data['email_err'] = 'Email is already registered';
                 }
+            }
 
             if(empty($data['address'])){
                 $data['address_err'] = 'Please enter your address';
@@ -650,6 +651,7 @@ class Users extends Controller{
                     $data['confirm-password_err'] = 'Does not match with the password';
                 }
             }
+
 
 
             if (empty($data['name_err']) && empty($data['contactno_err']) && empty($data['email_err']) && empty($data['address_err']) && empty($data['city_err']) && empty($data['password_err']) && empty($data['confirm-password_err'])) {
@@ -689,6 +691,7 @@ class Users extends Controller{
 
     }
 
+
     public function login(){
 
         if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -716,16 +719,15 @@ class Users extends Controller{
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter your password';
             }
-            
 
 
             if(empty($data['email_err']) && empty($data['password_err'])){
-            
                 $loggedInUser = $this->userModel->authenticateUser($data);
-
                 if($loggedInUser){
                     $this->createUserSession($loggedInUser);                    
+                    $this->createUserSession($loggedInUser);                    
                 }else{
+                    $data['password_err'] = 'Password is incorrect';;
                     $data['password_err'] = 'Password is incorrect';;
                     $this->view('Users/v_login', $data);
                 }
@@ -749,7 +751,7 @@ class Users extends Controller{
         }
     }
 
-    public function createUserSession($user){
+public function createUserSession($user){
 
         $_SESSION['user_ID'] = $user->U_Id;
         $_SESSION['user_email'] = $user->Email;
@@ -778,8 +780,7 @@ class Users extends Controller{
             
             header("Location:http://localhost/Easyfarm/Seller_home/get_product_details1");
 
-        }
-        else if($_SESSION['user_type'] == 'VehicleRenter'){
+        }else if($_SESSION['user_type'] == 'VehicleRenter'){
 
             $vehicleOwnerData = $this->userModel->getVehicleOwnerInfo($_SESSION['user_ID']);
 
@@ -795,9 +796,13 @@ class Users extends Controller{
             $_SESSION['user_name'] = $agriInstructorData->Name;
             $_SESSION['accStatus'] = $agriInstructorData->AccStatus;
             
-            header("Location:http://localhost/Easyfarm/Blog");
+            redirect("AgriInstructor");
+            
+        }else if($_SESSION['user_type']  == 'Admin'){
+            redirect("Admin");
         }
     }
+
 
     public function forgotPassword(){
 
@@ -957,13 +962,24 @@ class Users extends Controller{
 
             header("Location:http://localhost/Easyfarm/Users/login");
 
-            } else {
-                $this->view('Users/v_resetPassword', $data);
-            }
+        } else {
+            $data = [
+                'email' => '',
+                'otp' => '',
+                'password' => '',
+                'confirm-password' => '',
+
+                'otp_err' => '',
+                'password_err' => '',
+                'confirm-password_err' => '',
+            ];
+            $this->view('Uses/v_resetPassword', $data);
 
         }
-    
-      
+
+    }
+
+
     public function logOut(){
 
         unset($_SESSION['user_ID']); 

@@ -3,13 +3,13 @@
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
 <?php
-function isActive($page)
-{
+function isActive($page){
    $currentUrl = $_SERVER['REQUEST_URI'];
    return strpos($currentUrl, $page) !== false ? 'active' : '';
 }
 ?>
 
+<?php //echo isActive('/AgriInstructor/createpost');?>
 
 <nav>
     <div class="sidebar-top">
@@ -17,19 +17,20 @@ function isActive($page)
         <i class='bx bx-chevron-left'></i>
       </span>
       <!-- <img src="" class="logo" alt=""> -->
-      <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">Dashboard</h3>
+      <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">EasyFarm</h3>
     </div>
+    <br>
 
-    <div class="search">
+    <!-- <div class="search">
       <i class='bx bx-search'></i>
       <input type="text" class="hide" placeholder="Quick Search...">
-    </div>
+    </div> -->
 
     <div class="sidebar-links">
       <ul>
         <div class="active-tab"></div>
         <li class="tooltip-element" data-tooltip="0">
-          <a href="<?php echo URLROOT . '/AgriInstructor/manageposts';?>"  data-active="0">
+          <a href="<?php echo URLROOT . '/AgriInstructor/manageposts';?>" data-active="0">
             <div class="icon">
               <i class='bx bx-file'></i>
               <i class='bx bxs-file'></i>
@@ -38,7 +39,7 @@ function isActive($page)
           </a>
         </li>
         <li class="tooltip-element" data-tooltip="1">
-          <a href="<?php echo URLROOT . '/AgriInstructor/createpost';?>" class="<?php echo isActive(URLROOT . '/AgriInstructor/manageposts');?> data-active="1">
+          <a href="<?php echo URLROOT . '/AgriInstructor/createpost';?>" class="active" data-active="1">
             <div class="icon">
               <i class='bx bx-pencil'></i>
               <i class='bx bxs-pencil'></i>
@@ -66,7 +67,7 @@ function isActive($page)
         </li> -->
         <div class="tooltip">
           <span class="show">Manage Posts</span>
-          <span>Write New Post</span>
+          <span>Write New Poste</span>
           <!-- <span>Messages</span> -->
           <!-- <span>Analytics</span> -->
         </div>
@@ -114,28 +115,42 @@ function isActive($page)
       <a href="#" class="account tooltip-element" data-tooltip="0">
         <i class='bx bx-user'></i>
       </a>
+      <div class="sidebar-links">
+        <ul>
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="<?php echo URLROOT . '/Users/logout';?>" data-active="4">
+              <div class="icon">
+                <i class='bx bx-log-out'></i>
+                <i class='bx bxs-home'></i>
+              </div>
+              <span class="link hide">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr><br>
       <div class="admin-user tooltip-element" data-tooltip="1">
         <div class="admin-profile hide">
           <!-- <img src="./img/face-1.png" alt=""> -->
           <div class="admin-info">
-            <h3>Anjana Tharuha</h3>
+            <h3><?php echo $_SESSION['user_name'] ;?></h3>
             <h5>Agri Instructor</h5>
           </div>
         </div>
-        <a href="#" class="log-out">
+        <!-- <a href="#" class="log-out">
           <i class='bx bx-log-out'></i>
-        </a>
+        </a> -->
       </div>
-      <div class="tooltip">
+      <!-- <div class="tooltip">
         <span class="show">John Doe</span>
         <span>Logout</span>
-      </div>
+      </div> -->
     </div>
 </nav>
 
 <script src="<?php echo URLROOT . '/public/js/agriInstructorSidebar.js';?>"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+<!-- <script>
     $(document).ready(function () {
         // Get the current URL
         var currentUrl = window.location.href;
