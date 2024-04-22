@@ -51,24 +51,31 @@
 
             <?php
              $orderItemsBySeller = [];
+             $deliveryFeeBySeller = [];
 
              foreach($orderItems as $data){
                 // print_r($data);
                 // Print stmt here
                 $sellerStore = $data['Store_Name'];
+                $sellerID = $data['Store_seller'];
 
-                $orderItemsBySeller[$sellerStore][] = $data;                
+                $orderItemsBySeller[$sellerStore][] = $data;     
+                           
              } ?>
 
                     <?php foreach($orderItemsBySeller as $sellerStore => $items) :?>
 
-                    <?php $deliFee = 0; ?>
+                    <?php $deliFee = 0;
+                    $seller_prov = '';
+                    $buyer_prov = '';
+                    $base_deliFee = 0;
+                     ?>
                     <br><h3 style="color: darkblue;">Seller: <?php echo $items[0]['Store_Name']; ?></h3>
-                     
+                     <?php  $deliFee = 0; ?>
                     <?php foreach ($items as $data) : ?>
                             <?php if (is_array($data)) :  
-                            // print_r($data);   
-                            ?>
+                            // print_r($data); 
+                              ?>
                             
                             <!-- 
                       Print stmt here 
@@ -86,7 +93,9 @@
                             <div class="row">
                                 <!-- <div class="column1" > -->
                                     <div class="single-pro-image">
-                                        <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+                                        <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
+                                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $data['Image']?>" width="100%" id="MainImg" alt=""> 
+                                        
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -108,7 +117,7 @@
                                         <p><b><small>LKR </small></b> <?php echo number_format($data['Unit_price'],2)?> / <?php echo $data['Unit_size']?> <?php echo $data['Unit_type']?> </p>
                                     </div>
                                 </div>
-
+                                <br>
                                  <div class="row">
                                     <div class="column1" >
                                         <p>Amount for Quantity</p>
@@ -120,29 +129,44 @@
                             </section>       
                         </div>
 
-                            <?php
+                       <?php
                              $deliFee = $deliFee + $data['deliveryFee'];
-                            // print_r($deliFee);
+                            //print_r($deliFee);
+                            if($data['seller_province'] != NULL && $data['buyer_province'] != NULL){
+                                $seller_prov = $data['seller_province'];
+                                $buyer_prov = $data['buyer_province'];
+                                $base_deliFee = $data['base_deliveryFee'];
+                            }
                             ?>
+
                         <?php
                        } ?> 
                        <?php endif; ?>                        
                         <?php endforeach; ?>
-
-                        <?php if($deliFee != 0){ ?>
+                        
+                        <?php if($deliFee != 0){ 
+                            // $deliveryFeeBySeller[$sellerID][] = $deliFee;
+                            ?>
                        <div class="row">
                                     
-                                     <br><h3><b>Delivery Fee</b>&nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deliFee,2); ?></h3>
+                                     <br><h3><b>Delivery Fee </b><span id="deliveryFeeDisplay"><i class="fa-solid fa-circle-question" id="deliveryFeeInfo" style="color: var(--dark-green)"></i></span>
+                                     &nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deliFee,2); ?></h3>
+                                     
                                 </div>
+                        <div id="deliveryFeeCalculation" style="display: none;">
+                           
+                        </div>
 
                         <?php } ?> 
+
+                    
 
                         <?php foreach ($items as $data) : ?>
                             <?php if (is_array($data)) : 
                             // print_r($data);
                             ?>
                             
-                        <?php if($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery')){ ?>
+                         <?php if($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery')){ ?>
                         
                         <br><h3><strong>In-Store Pickup </strong></h3>
 
@@ -152,7 +176,7 @@
                             <div class="row">
                                 <!-- <div class="column1" > -->
                                     <div class="single-pro-image">
-                                        <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt=""> 
+                                         <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $data['Image']?>" width="100%" id="MainImg" alt="">  
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -194,6 +218,7 @@
 
                     <?php endif; ?>
 
+                    
                  <!-- from here -->
 
 
@@ -394,4 +419,34 @@ $(document).ready(function() {
         });
     });
 });
+
+
+// JavaScript
+document.getElementById('deliveryFeeInfo').addEventListener('click', function() {
+    var deliveryFeeCalculation = document.getElementById('deliveryFeeCalculation');
+    if (deliveryFeeCalculation.style.display === 'none') {
+        deliveryFeeCalculation.style.display = 'block';
+       
+        populateDeliveryFeeCalculation();
+    } else {
+        deliveryFeeCalculation.style.display = 'none';
+    }
+});
+
+
+function populateDeliveryFeeCalculation() {
+   
+    var deliveryFeeCalculation = document.getElementById('deliveryFeeCalculation');
+    deliveryFeeCalculation.innerHTML = 'Delivery fee is calculated based on distance and weight <br> For Standard Delivery of weight less than 5 Kg :<br> From <?php echo $seller_prov ?> Province To <?php echo $buyer_prov ?> Province = LKR <?php echo $base_deliFee ?> <br> Any additional Fee is for extra weight';
+    var base_text = 'Delivery fee is calculated based on distance and weight <br> For Standard Delivery of weight less than 5 Kg :<br> From <?php echo $seller_prov ?> Province To <?php echo $buyer_prov ?> Province = LKR <?php echo $base_deliFee ?>';
+
+    if($base_deliFee != $deliFee){
+        deliveryFeeCalculation.innerHTML = base_text + '<br>Addition Fee for extra weight = <?php echo ($deliFee-$base_deliFee) ?>';
+    }
+
+}
+
+
+
 </script>
+
