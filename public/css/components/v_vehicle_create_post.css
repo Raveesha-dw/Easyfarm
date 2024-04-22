@@ -185,8 +185,8 @@ width: 300px;
     /* margin-top: 15px; */
     border: 1px dashed #999;
     border-radius: 6px;
-    height: 200px;
-    width: 300px;
+    height: fit-content;
+    width: fit-content;
     
 }
 .Wrapper_Vehicle_Create_Post #create {
@@ -222,7 +222,7 @@ width: 300px;
 }
 .Wrapper_Vehicle_Create_Post .imgdelivery .image{
     /* margin-left: 150px; */
-    width: 45%;
+      width: 300px;
 }
 .Wrapper_Vehicle_Create_Post .imgdelivery .dropdown3{
     /* margin-left: 150px; */

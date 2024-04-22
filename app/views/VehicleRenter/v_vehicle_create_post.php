@@ -30,22 +30,23 @@
         <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
 
             <?php $v_Categories = $data['v_Categories']; ?>   
-
-            <label for="Category"  class = "scdropdown1" name="V_category"><b>Vehicle Category:</b></label>
-            <span class="invalid"><?php if ($data) {echo $data['V_category_err'];}?></span>
             <br>
+            <div class ="sitem">
+                <label for="Category"  class = "scdropdown1" name="V_category"><b>   Vehicle Category:</b></label>
+                <span class="invalid"><?php if ($data) {echo $data['V_category_err'];}?></span>
+                <br>
 
-            <select name="V_category" id="vCategory" class="vCategory" >
-                <option disabled selected>Select Category</option>
+                <select name="V_category" id="vCategory" class="vCategory" >
+                    <option disabled selected>Select Category</option>
 
-                <?php foreach ($v_Categories as $v_Category): ?>
-                    <option value="<?php echo htmlspecialchars($v_Category->Category_name); ?>"><?php echo htmlspecialchars($v_Category->Category_name); ?></option>
-                <?php endforeach; ?>
+                    <?php foreach ($v_Categories as $v_Category): ?>
+                        <option value="<?php echo htmlspecialchars($v_Category->Category_name); ?>"><?php echo htmlspecialchars($v_Category->Category_name); ?></option>
+                    <?php endforeach; ?>
 
 
-                
-            </select>
-
+                    
+                </select>
+            </div>
         
 
 
@@ -74,7 +75,7 @@
             </div>
 
             <div class="saddress">
-                <b>Address</b>
+                <b>Address</b><br>
                 <br>
                 <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" value="<?php if ($data) {echo $data['Address'];}?>" >
                 <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" value="<?php if ($data) {echo $data['Address'];}?>" >
@@ -158,9 +159,9 @@
             <br>
 
             <div class="sDescription">
-                <b>Descripition</b>
+                <b>Descripition</b><br>
                 <br>
-                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" >>
+                <textarea id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" ></textarea>
                 <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
             </div>
 
@@ -169,13 +170,14 @@
             <br>
 
             <!-- <div class="imgdelivery"> -->
-
-            <div class="image">
-                <b>Upload image</b>
-                <br>
-                <br>
-                <input id="inside_imageq" name="Image" type="file" placeholder="Upload the Images" required >
-                <span class="invalid"><?php if ($data) {echo $data['Image_err'];}?></span>
+            <div class ="sitem">
+                <div class="image">
+                    <b>Upload image</b>
+                    <br>
+                    <br>
+                    <input id="inside_image" name="Image" type="file" placeholder="Upload the Images" required >
+                    <span class="invalid"><?php if ($data) {echo $data['Image_err'];}?></span>
+                </div>
             </div>
             <br>
             <br>
