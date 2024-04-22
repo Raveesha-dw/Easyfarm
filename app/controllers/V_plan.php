@@ -106,6 +106,18 @@ public function update_details($id = null){
 
  public function get_plan_details(){
 
+            $data = $this->vplanModel->get_userdetails($_SESSION['user_email']);
+            // print_r($data);
+            $registerDate = $data[0]->Register_date;
+             $currentDate = date('Y-m-d');
+              $plan_id = $data[0]->plan_id;
+             $data1=$this->vplanModel->getplandetails($plan_id);
+            //  print_r($data1);
+             $duration = $data1->duration;
+$futureDate = date('Y-m-d', strtotime("$registerDate +$duration months"));        $currentDate = date('Y-m-d');
+
+
+
         // check the user have or have not plan id
 
 
@@ -113,17 +125,25 @@ public function update_details($id = null){
             
             // if not have plan id
             $data= $this->vplanModel->get_plan_details1();
-            print_r("s");
+            // print_r("s");
             $this->view('Vechile/v_renter_register_plan2',$data);
     
-        }else{
+        }
+
+       elseif ($currentDate > $futureDate) {
+            // $this->view('Vechile/v_update_plan');
+             $data = $this->vplanModel->get_dataplan3();
+            $this->view('Vechile/v_renter_register_plan1', $data);}
+        
+        
+        else{
         
 
             // assign user_id
 
         
         $data = $this->vplanModel->get_dataplan( $_SESSION['user_ID']);
-        print_r($data);
+        // print_r($data);
         $data1  = get_object_vars($data[0]);
         $originalDate = $data1['Register_date'];
 

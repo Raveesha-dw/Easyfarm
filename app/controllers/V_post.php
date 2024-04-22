@@ -28,14 +28,25 @@ class V_post extends Controller
 
   
         $data = $this->v_postModel->user_details($_SESSION['user_ID']);
+       
         $registerDate = $data[0]->Register_date;
-        $futureDate = date('Y-m-d', strtotime($registerDate . ' +6 months'));
+                $currentDate = date('Y-m-d');
+
+        $plan_id = $data[0]->plan_id;
+        $data1=$this->v_postModel->getplandetails($plan_id);
+      $duration = $data1->duration;
+
+$futureDate = date('Y-m-d', strtotime("$registerDate +$duration months"));        $currentDate = date('Y-m-d');
+        // print_r($futureDate);
+        
 
         if ($_SESSION['plan_id'] == '') {
             $data = $this->v_postModel->get_dataplan3();
             $this->view('Vechile/v_renter_register_plan1', $data);
-        } elseif ($registerDate == $futureDate) {
-            $this->view('Vechile/v_update_plan');
+        } elseif ($currentDate > $futureDate) {
+            // $this->view('Vechile/v_update_plan');
+             $data = $this->v_postModel->get_dataplan3();
+            $this->view('Vechile/v_renter_register_plan1', $data);
         }
 
 else{

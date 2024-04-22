@@ -150,6 +150,19 @@ public function update_data($data){
     }
 
 
+public function getplandetails($plan_id) {
+    $this->db->query("SELECT * FROM v_plandetails WHERE plan_id=:plan_id"); // Corrected SQL query
+    
+    $this->db->bind(':plan_id', $plan_id); 
+    
+    
+    $this->db->execute();
+    
+    
+    $result = $this->db->single(); 
+    
+    return $result; 
+}
 
 
 

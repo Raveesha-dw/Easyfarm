@@ -41,13 +41,15 @@
              $data = $this->planModel->get_dataplan3();
             $this->view('seller/v_register_plan2',$data);
             }
-         else {
-            $data = $this->planModel->getlisting_count();
-            $list_count = $data[0]->list_count;
-            print_r($data);
-            if ($list_count == 0) {
-                $data = $this->planModel->get_dataplan3();
-            $this->view('seller/v_register_plan2',$data);}
+
+
+        //  else {
+        //     $data = $this->planModel->getlisting_count();
+        //     $list_count = $data[0]->list_count;
+        //     print_r($data);
+        //     if ($list_count == 0) {
+        //         $data = $this->planModel->get_dataplan3();
+        //     $this->view('seller/v_register_plan2',$data);}
             
         
         else{
@@ -93,7 +95,7 @@
         $this->view('seller/v_plan',$concatenatedData );
 
     }
-}}
+}
 
     public function get_plan_details2(){
         
