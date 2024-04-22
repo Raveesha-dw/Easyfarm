@@ -12,7 +12,7 @@
 
               <section class="home">
 
-                     <?php require APPROOT . '/views/inc/components/navbars/sellerhome_nav.php' ?>
+                     <?php require APPROOT . '/views/inc/components/navbars/c_seller.php' ?>
                      <div class="shero5">
                             <?php $products = $data; ?>
                             <?php foreach ($products as $product) : ?>
