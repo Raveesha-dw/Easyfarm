@@ -3,7 +3,7 @@
     <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 </div>
 
-<div class="container">
+<div class="container_v_renter_home">
 <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
 <section class="home">
 <!-- <?php print_r($data)?> -->

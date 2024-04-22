@@ -1,4 +1,3 @@
-<div class="headebr">
 
 
     <div>
@@ -9,7 +8,7 @@
 
 
     <div class="container">
-       <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>
+       <?php require APPROOT . '/views/Vechile/v_renter_side_bar.php' ?>  
 
         <section class="home">
 
@@ -74,6 +73,5 @@
 
             <?php require APPROOT . '/views/inc/footer.php';?>
 
-        </section>
+      </section>
     </div>
-</div>

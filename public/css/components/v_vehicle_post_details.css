@@ -757,7 +757,7 @@
 }
 
 /* Customized close button for a more modern and attractive look */
-.close {
+.modal_booking_details_calendar .close {
   color: #333;
   position: absolute;
   /* top: 10px; */
@@ -766,8 +766,8 @@
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.modal_booking_details_calendar .close:hover,
+.modal_booking_details_calendar .close:focus {
   color: #d33;
   text-decoration: none;
   cursor: pointer;
