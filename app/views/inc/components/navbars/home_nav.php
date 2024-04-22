@@ -138,11 +138,14 @@ if (!empty($_SESSION['user_email'])) {
 
 
 
+
 <?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
                                         <!-- <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
                                             <h2>Shopping Cart</h2>
                                         </a> -->
                                         <a href="<?php echo URLROOT ?>/Orders/pendingOrdersOfUser" class="sub-link-menu">
+
+                   
                                             <h2><i class="fa-solid fa-sort"></i>My orders</h2>
                                         </a>
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
