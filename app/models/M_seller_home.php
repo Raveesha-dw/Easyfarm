@@ -16,29 +16,29 @@ public function get_itemids1($seller_ID){
     $this->db->bind(':seller_ID', $seller_ID);
     $this->db->execute();
     $results = $this->db->resultSet();
-    
+    return $results;
     // Group results by Payment_Id
-    $grouped_results = array_reduce($results, function ($carry, $item) {
-        $payment_id = $item->Payment_Id;
-        if (!isset($carry[$payment_id])) {
-            $carry[$payment_id] = (object) $item;
-        } else {
-            foreach ($item as $key => $value) {
-                if (!empty($value) && is_string($value)) {
-                    $carry[$payment_id]->{$key} .= ", " . $value;
-                }
-            }
-        }
-        return $carry;
-    }, []);
+    // $grouped_results = array_reduce($results, function ($carry, $item) {
+    //     $payment_id = $item->Payment_Id;
+    //     if (!isset($carry[$payment_id])) {
+    //         $carry[$payment_id] = (object) $item;
+    //     } else {
+    //         foreach ($item as $key => $value) {
+    //             if (!empty($value) && is_string($value)) {
+    //                 $carry[$payment_id]->{$key} .= ", " . $value;
+    //             }
+    //         }
+    //     }
+    //     return $carry;
+    // }, []);
     
     // Convert the grouped results to a simple array of objects
-    $final_results = array_values($grouped_results);
+    // $final_results = array_values($grouped_results);
     
     // Remove duplicate values from each field in the object
-    $final_results = array_map([$this, 'remove_duplicate_values'], $final_results);
+    // $final_results = array_map([$this, 'remove_duplicate_values'], $final_results);
     
-    return $final_results;
+    
 }
 
 public function remove_duplicate_values($object) {

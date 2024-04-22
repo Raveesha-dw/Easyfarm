@@ -3,7 +3,7 @@
 define('DB_HOST', 'localhost:3306');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'easyfarm_final');
+define('DB_NAME', 'easyfarm');
 
 //ROOT
 define('ROOT', dirname(dirname(dirname(__FILE__))));

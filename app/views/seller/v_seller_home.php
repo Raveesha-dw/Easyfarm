@@ -18,6 +18,7 @@
             <?php foreach ($products as $product) : ?>
 
                 <br><br>
+                <br><br>
 
                 <div class="msg-box">
                     <div class="m-header">
