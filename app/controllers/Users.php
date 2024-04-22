@@ -786,7 +786,7 @@ class Users extends Controller{
 
             header("Location:http://localhost/Easyfarm/V_renter_home/get_details1");
 
-        }else if($_SESSION['user_type'] == 'AgriExpert'){
+        }else if($_SESSION['user_type'] == 'AgricultureExpert'){
 
             $agriInstructorData = $this->userModel->getAgriInstructorInfo($_SESSION['user_ID']);
 
