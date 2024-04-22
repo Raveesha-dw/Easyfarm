@@ -10,27 +10,35 @@
 .shero1 .sdropdown1{
     width: 500px;
     margin-top: 15px;
+    margin-left: 200px;
 }
 .shero1 .sitem{
     margin-top: 15px;
     width: 500px;
+    margin-left: 200px;
 }
 .shero1 .sstock_size{
     margin-top: 15px;
     width: 300px;
     display: flex;
+    margin-left: 200px;
 
+}
+.stocksize{
+    margin-left: 200px;
 }
 .shero1 .stocksize #Stock{
     width:300px;
     height: 40px;
     border-radius: 5px;
     color: rgb(2, 3, 2);
+    
     /* display: flex; */
 }
 .shero1 .sstock_size .sdropdown2{
     margin-left: 150px;
     width: 500px;
+    /* margin-left: 200px; */
 }
 
 /* .shero1 .dropdown3{
@@ -40,15 +48,18 @@
 .shero1 .image{
     /* margin-left: 150px; */
     width: 300px;
+    margin-left: 200px;
 }
 .shero1 .sDescription{
     /* margin-left: 150px; */
     width: 300px;
+    margin-left: 200px;
 }
 
 .shero1 .sdate{
     /* margin-left: 150px; */
     width: 300px;
+    margin-left: 200px;
 }
 
 
@@ -90,6 +101,7 @@
 }
 
 .shero1 #size{
+    /* margin-left: 200px; */
     width:300px;
     height: 40px;
     border-radius: 5px;
@@ -117,6 +129,7 @@
 .shero1 .sprice{
     margin-top: 15px;
     width: 300px;
+    margin-left: 200px;
 }
 .shero1 #sprice{
     width:300px;
@@ -203,9 +216,9 @@ width: 300px;
 }
 
 .shero1 #create{
-    
+    margin-left: 200px;
    
-     margin-left: 10%;
+     /* margin-left: 10%; */
     width: 150px;
     height: 50px;
     border-radius: 20px;
@@ -252,6 +265,7 @@ width: 300px;
 
 
 .delivery-options {
+    margin-left: 200px;
     display: flex;
     flex-direction: row; /* Display items horizontally */
     gap: 10px; /* Add space between items */

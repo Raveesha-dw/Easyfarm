@@ -41,6 +41,7 @@ class Seller_post extends Controller
         $data = $this->sellerModel->user_details($_SESSION['user_ID']);
         $registerDate = $data[0]->Register_date;
         $futureDate = date('Y-m-d', strtotime($registerDate . ' +6 months'));
+        $currentDate = date('Y-m-d');
         // print_r($futureDate);
         // print_r($registerDate);
 
@@ -50,12 +51,16 @@ class Seller_post extends Controller
         if ($_SESSION['plan_id'] == '') {
             $data = $this->sellerModel->get_dataplan3();
             $this->view('seller/v_register_plan1', $data);
-        } elseif ($registerDate == $futureDate) {
-            $this->view('seller/v_update_plan');
+        } elseif ($currentDate > $futureDate) {
+             $data = $this->sellerModel->get_dataplan3();
+            $this->view('seller/v_register_plan1',$data);
         } else {
             $data = $this->sellerModel->getlisting_count();
-            if ($data == 0) {
-                $this->view('seller/v_update_plan');
+            $list_count = $data[0]->list_count;
+            print_r($data);
+            if ($list_count == 0) {
+                $data = $this->sellerModel->get_dataplan3();
+            $this->view('seller/v_register_plan1',$data);
             } else {
                 $data = [
 

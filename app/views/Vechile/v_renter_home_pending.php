@@ -11,7 +11,7 @@
 
 
 
-<?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
+<?php require APPROOT .'/views/inc/components/navbars/renter_p.php'?>
 
 <div class ="shero5">
                      <?php $products=$data; ?>
@@ -21,7 +21,8 @@
                             <div class ="m-header">
                                    <div class ="msg-ID">
                                           <div class="m-img">
-                                                 <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt="">
+                                                  <i class="fa-solid fa-user"></i>
+                                                 <!-- <img src="<?php echo URLROOT?>/public/images/seller/user.png" alt=""> -->
                                           </div>
                                    
                                    </div>
@@ -34,11 +35,11 @@
 
                             <div class="msg-f"> 
                                    
-                                          <div class="msg-f-detail">
+                                          <!-- <div class="msg-f-detail">
                                                         <h3><?php echo $product->Name ?> wants <?php echo $product->V_name ?> number in  <?php echo $product->V_number ?> vechile</h3>
                                                  <br>
-                                          </div>
-                                           <div class="msg-product">
+                                          </div> -->
+                                           <!-- <div class="msg-product">
 
 
                                                                <h3>Vechile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $product->V_name ?></h3>
@@ -51,7 +52,53 @@
 
 
 
-                                                        </div>
+                                                        </div> -->
+
+                                                        
+                                                        <style>
+    .msg-pdroduct {
+        display: flex;
+        width: 700px;
+    }
+
+    .product-info,
+    .product-values {
+        flex: 1; /* Each section takes equal space */
+        display: flex; /* Use flexbox within each section */
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px; /* Add padding for separation */
+    }
+
+    .product-info h3,
+    .product-values h3 {
+        margin: 0; /* Remove default margin */
+    }
+</style>
+
+<div class="msg-pdroduct">
+    <div class="product-info">
+        <h3>Vechile</h3>
+        <h3>Date</h3>
+        <br>
+        <h3>Pickup Location</h3>
+        <h3>Contact Number</h3>
+        <h3>Order ID</h3>
+        <h3>Notice</h3>
+        
+    </div>
+    <div class="product-values">
+        <h3><?php echo $product->V_name ?></h3>
+        <h3><?php echo $product->order_dates?>
+        <br>
+        <h3><?php echo $product->location ?></h3>
+        <h3><?php echo $product->number ?></h3>
+        <h3><?php echo $product->Order_ID ?></h3>
+        <h3><?php echo $product->Message ?></h3>
+       
+    </div>
+</div>
+
+
                                                  <div class="button-msg">
                                                  
                                                  <div class="aa">

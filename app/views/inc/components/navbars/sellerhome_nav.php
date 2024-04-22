@@ -8,11 +8,14 @@ $(document).ready(function(){
         localStorage.setItem('activeLink', $(link).attr('href'));
     }
     
-    // Check if there's an active link in local storage
-    var activeLink = localStorage.getItem('activeLink');
-    if (activeLink) {
-        setActiveLink('a[href="' + activeLink + '"]');
-    }
+    // Set active link based on the current URL
+    var currentURL = window.location.href;
+    $('.link').each(function() {
+        if ($(this).attr('href') === currentURL) {
+            setActiveLink(this);
+            return false; // exit the loop once the active link is set
+        }
+    });
     
     // Click event handler for links
     $('.link').click(function(event){
