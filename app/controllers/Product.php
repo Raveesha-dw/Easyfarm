@@ -82,7 +82,10 @@
         $productInfo = $this->productModel->getProductInfo($itemID);
         $seller_ID = $productInfo->seller_ID;
         $sellerInfo = $this->productModel->getSellerInfo($seller_ID);
+
         $productReviews = $this->reviewModel->getReviewsForItem($itemID);
+        $productRating = $this->reviewModel->getRatingsForItem($itemID);
+        print_r($productRating);
         $inquiries = $this->inquiryModel->getQuestions($itemID);
 
         foreach ($inquiries as $inquiry):
@@ -97,6 +100,7 @@
             'productInfo' => $productInfo,
             'sellerInfo' => $sellerInfo,
             'itemReviews' => $productReviews,
+            'itemRating' => $productRating,
             'inquiries' => $inquiries
         ];
         $this->view('Buyer/v_productDetails', $data);

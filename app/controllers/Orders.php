@@ -9,101 +9,88 @@
         $this->itemModel=$this->model('M_item');
     }
 
-    public function placedOrders(){
-        $allOrders = $this->orderModel->getAllOrders();
+    // public function placedOrders(){
+    //     $allOrders = $this->orderModel->getAllOrders();
 
-        // $order_IDs = $this->orderModel->getOrderID();
 
-        // $IDs = [
-        //     'allIDs' => $order_IDs
-        // ];
-        // $itemArray = [];
+    //     $categorizedItems = [];
 
-        // foreach($order_IDs as $ID){
-        //     foreach($data['allorders'] as $order){
-        //         if($ID == $order->Order_ID){
-        //             array_push($itemArray, $order->Item_ID);
-        //         }
-        //     }
-        // }
+    // foreach ($allOrders as $record) {
+    //      print_r($record);
+    //     $orderID = $record->Order_ID;
+    //     $itemID = $record->Item_ID;
+    //     $status = $record->Status;
 
-        // return $itemArray;
+        
+    //     if (!array_key_exists($orderID, $categorizedItems)) {
+    //         $categorizedItems[$orderID] = []; 
+    //         $categorizedItems[$orderID][] = $orderID;
+    //         $categorizedItems[$orderID][] = $status;
+    //     }
 
-        $categorizedItems = [];
+    //     $categorizedItems[$orderID][] = $itemID; 
+    // }
 
-// Iterate through the records
-//Made the categorizedArray
-    foreach ($allOrders as $record) {
-        // print_r($record);
-        $orderID = $record->Order_ID;
-        $itemID = $record->Item_ID;
-        $status = $record->Status;
+    // $itemNames = [];
 
-        // Create an array key using orderID and store itemIDs accordingly
-        if (!array_key_exists($orderID, $categorizedItems)) {
-            $categorizedItems[$orderID] = []; // Create an empty array for the orderID if it doesn't exist
-            $categorizedItems[$orderID][] = $orderID;
-            $categorizedItems[$orderID][] = $status;
-        }
+    // $indexes = array_keys($categorizedItems);
+    // $j = 0;
 
-        $categorizedItems[$orderID][] = $itemID; // Append the itemID to the respective orderID array
-    }
+    // foreach($categorizedItems as $seperateArray){   
+    //     $temp = $indexes[$j++];
+    //     $itemNames[] = $temp;
+    //     for($i=2; $i<count($seperateArray); $i++){
+    //         $name = $this->itemModel->getItemName($seperateArray[$i]);
+    //         $data = json_decode($name, true); 
+    //         $itemName = $data['Item_name']; 
+            
 
-    $itemNames = [];
+    //         $itemNames[$temp][] = $itemName;
+            
+    //     }
 
-    $indexes = array_keys($categorizedItems);
-    $j = 0;
+        
+    // }
 
-    foreach($categorizedItems as $seperateArray){   
-        $temp = $indexes[$j++];
-        $itemNames[] = $temp;
-        for($i=2; $i<count($seperateArray); $i++){
-            $name = $this->itemModel->getItemName($seperateArray[$i]);
-            $data = json_decode($name, true); //convert to string
-            $itemName = $data['Item_name'];  //extract item name
-            // echo $itemName;
+    
 
-            $itemNames[$temp][] = $itemName;
-            // $seperateArray[$i] = $itemName;
-        }
-
-        // print_r($seperateArray);
-    }
-
-    // print_r($itemNames);
-
-    $data = [
-        'items' => $categorizedItems,
-        'itemNames' => $itemNames
-    ];
+    // $data = [
+    //     'items' => $categorizedItems,
+    //     'itemNames' => $itemNames
+    // ];
         
 
-       $this->view('Buyer/v_dashboardOrders', $data);
-    }
+    //    $this->view('Buyer/v_dashboardOrders', $data);
+    // }
 
     public function pendingOrdersOfUser(){
         $orders = $this->orderModel->getPendingOrders();
-        $orderItems = [];
+        print_r($orders);
+       // $orderItems = [];
 
-        foreach($orders as $order){
-            $itemNames = $this->orderModel->getItemsOfOrder($order->Order_ID);
-            $items = [];
+        // foreach($orders as $order){
+        //     $itemNames = $this->orderModel->getItemsOfOrder($order->Order_ID);
+        //     $items = [];
 
-            foreach($itemNames as $item){
-                $items[] = $item->Item_name;
-            }
+        //     foreach($itemNames as $item){
+        //         $items[] = $item->Item_name;
+        //     }
 
-            $orderItems[$order->Order_ID] = $items;
+        //     $orderItems[$order->Order_ID] = $items;
 
-            // print_r($itemNames);
-        }
+        //      print_r($itemNames);
+        // }
         
-        $data = [
-            'orders' => $orders,
-            'orderItems' => $orderItems
-        ];
+        // $data = [
+        //     'orders' => $orders,
+        //     'orderItems' => $orderItems
+        // ];
+
 
         // print_r($data);
+        $data = [
+            'orders' => $orders
+        ];
 
         $this->view('Buyer/v_buyerOrders', $data);
 
@@ -112,19 +99,23 @@
     public function completedOrdersOfUser(){
         $orders = $this->orderModel->getCompletedOrders();
 
-        $orderItems = [];
-        foreach($orders as $order){
-            $orderID = $order->Order_ID;
-            $items = $this->orderModel->getItemDetailsOfOrder($orderID);
+        // $orderItems = [];
+        // foreach($orders as $order){
+        //     $orderID = $order->Order_ID;
+        //     $items = $this->orderModel->getItemDetailsOfOrder($orderID);
 
-            $orderItems[$orderID]['order'] = $order;
-            $orderItems[$orderID]['items'] = $items;
+        //     $orderItems[$orderID]['order'] = $order;
+        //     $orderItems[$orderID]['items'] = $items;
 
-        }
+        // }
 
+        // $data = [
+        //     'orderItems' => $orderItems
+        // ];
         $data = [
-            'orderItems' => $orderItems
+            'orders' =>$orders
         ];
+        
         $this->view('Buyer/v_completed_orders', $data);
 
     }

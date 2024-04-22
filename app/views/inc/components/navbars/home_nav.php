@@ -138,13 +138,21 @@ if (!empty($_SESSION['user_email'])) {
 
 
 
-                                <?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
-                                    
-                                        <a href="<?php echo URLROOT ?>/Orders/placedOrders" class="sub-link-menu">
+
+<?php elseif ($_SESSION['user_type'] == 'Buyer'): ?>
+                                        <!-- <a href="<?php echo URLROOT ?>/Cart/showCart" class="sub-link-menu">
+                                            <h2>Shopping Cart</h2>
+                                        </a> -->
+                                        <a href="<?php echo URLROOT ?>/Orders/pendingOrdersOfUser" class="sub-link-menu">
+
+                   
                                             <h2><i class="fa-solid fa-sort"></i>My orders</h2>
                                         </a>
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Reviews</h2>
+                                        </a>
+                                        <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
+                                            <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Bookings</h2>
                                         </a>
                                     <?php endif;?>
 
@@ -194,7 +202,8 @@ if (!empty($_SESSION['user_email'])) {
                             
                             <a href="<?php echo URLROOT ?>/Cart/showCart" class="cart-link">
                                 <i class="fas fa-shopping-cart cart"></i>
-                                <span class="cart-count" id="cartCount"><?php print_r( $_SESSION['n_cart_items']); ?></span><!-- Constant number -->
+                                <span class="cart-count" id="cartCount"><?php print_r( $_SESSION['n_cart_items']); ?></span>
+                                <!-- Constant number -->
                             </a>
                         </div>
                     </div>

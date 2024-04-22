@@ -130,7 +130,7 @@
                             <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $product->Image; ?>" />
 
                             <div class="product-description">
-                                <h3><?php echo $product->Item_name ?> For Sale!</h3>
+                                <h3><?php echo $product->Item_name ?>...</h3>
                                 <!-- <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -138,7 +138,7 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div> -->
-                                <h4><?php echo $product->Unit_price ?> LKR</h4>
+                                <h4><?php echo $product->Unit_price ?> LKR </h4>
                             </div>
                             <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
                         </a>
