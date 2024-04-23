@@ -26,7 +26,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
         <?php require APPROOT . '/views/seller/a.php' ?>
 
         <section class="home">
-            <?php print_r($data); ?>
+            <!-- <?php print_r($data); ?> -->
             <div class="shero1">
                 <form class="ddd" action="<?php echo URLROOT ?>/Seller_post/create_post" enctype="multipart/form-data" method="POST">
                     <br>

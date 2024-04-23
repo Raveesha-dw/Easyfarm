@@ -28,7 +28,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
         <?php require APPROOT . '/views/seller/a.php' ?>
 
         <section class="home">
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -148,9 +148,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <b>Expiry Date</b>
                         <br>
                         <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expire date" value="<?php print_r($dat['Expiry_date']) ?>">
-                        <span class="invalid"><?php if ($data) {
-                                                    echo $data['Expiry_date_err'];
-                                                }  ?></span>
+                       
 
                         <script>
                             var date = new Date();

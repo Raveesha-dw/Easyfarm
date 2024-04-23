@@ -109,8 +109,8 @@ public function update_data($data){
         Stock_size = :Stock_size,
         DeliveryMethod = :DeliveryMethod,
         Image = :Image_name,
-        Description = :Description
-        -- Unit_type = :Unit_type
+        Description = :Description,
+        Unit_type = :Unit_type
         -- 
        
 
@@ -128,6 +128,7 @@ public function update_data($data){
      $this->db->bind(':Description', $data['Description']); 
      $this->db->bind(':item_id', $data['Item_Id']);
      $this->db->bind(':Image_name', $data['Image_name']);
+     $this->db->bind(':Unit_type', $data['Unit_type']);
      
      $this->db->execute();
      return true;
