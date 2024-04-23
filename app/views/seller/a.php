@@ -67,12 +67,12 @@
                         </a>
                     </li>
 
-                    <!-- <li class="nav-link">
-                        <a href="#">
+                    <li class="nav-link">
+                        <a href="http://localhost/Easyfarm/Seller_post/income">
                             <i class='bx bx-wallet iconn' ></i>
-                            <span class="text nav-text">Wallets</span>
+                            <span class="text nav-text">income</span>
                         </a>
-                    </li> -->
+                    </li>
 
                 </ul>
             </div>

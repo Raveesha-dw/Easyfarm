@@ -188,8 +188,8 @@ class Seller_post extends Controller
             //     $data['Expiry_date_err'] = 'Please enter the date';
             // }
 
-
-            if (empty($data['DeliveryMethod'])) {
+            
+               if (empty($data['DeliveryMethod'])) {
                 $data['DeliveryMethod_err'] = 'Please enter Deliery method';
             }
 
@@ -523,5 +523,9 @@ class Seller_post extends Controller
 
             $this->view('seller/v_createdpost', $products);
         }
+    }
+
+    public function income(){
+        $this ->view('seller/income');
     }
 }
