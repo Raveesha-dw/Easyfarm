@@ -300,7 +300,7 @@ width: 300px;
 /* Additional styling for buttons */
 .Wrapper_Vehicle_Create_Post button {
     background-color: #4CAF50; /* Green background color */
-    color: white; /* White text color */
+    color: black; /* White text color */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     padding: 10px 20px; /* Padding for better spacing */
