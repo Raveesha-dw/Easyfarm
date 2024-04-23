@@ -223,7 +223,7 @@ class Seller_post extends Controller
                 //     header('Location: '.URLROOT.'/Pages/created_post');
                 //     // exit;
                 //      $this->view('seller/v_createdpost',$products);
-                // print_r($data);
+                print_r($data);
                 // }
                 if ($this->sellerModel->create_post($data)) {
                     // print_r($data);

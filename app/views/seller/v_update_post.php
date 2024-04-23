@@ -28,7 +28,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
         <?php require APPROOT . '/views/seller/a.php' ?>
 
         <section class="home">
-
+<?php print_r($data)?>
 
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -213,38 +213,75 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <br>
                        
                         <div class="delivery-options">
-                            <br><br>
-                             <br><br>
-                            <b>Delivery Method<span class="requiredd"></span></b>
-                          
-                        
-                        
-                        <br><br>
-                            <?php
-                            // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
+    <br><br>
+    <br><br>
+    <b>Delivery Method<span class="requiredd"></span></b>
+    <br><br>
 
-                            // Split the value into an array based on comma separator
-                            $deliveryMethods = explode(', ', $data['DeliveryMethod']);
+    <?php
+    // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
+    $deliveryMethods = explode(', ', $data['DeliveryMethod']);
+    $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
+    $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
+    ?>
 
-                            // Check each checkbox individually
-                            $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
-                            $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
+    <div id="Home_Delivery" style="<?php echo $homeDeliveryChecked ? '' : 'display:none;'; ?>">
+        <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
+        <label for="Home_Delivery">Home Delivery</label>
+    </div>
 
-                            // Output checkboxes
-                            ?>
+    <div id="Instore_Pickup" style="<?php echo $instoPickupChecked ? '' : 'display:none;'; ?>">
+        <input type="checkbox" id="Insto_Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
+        <label for="Insto_Pickup">In-store Pickup</label><br>
+    </div>
 
-  
-                            <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
-                               <label for="Home Delivery">Home Delivery</label>
+    <span class="invalid"><?php echo isset($data['DeliveryMethod_err']) ? $data['DeliveryMethod_err'] : ''; ?></span>
+</div>
 
-                            <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
-                            <label for="Insto Pickup">In-store-Pickup</label><br>
+<script>
+    $(document).ready(function() {
+        // Define the category data obtained from PHP
+        var categoryData = <?php echo json_encode(array_values($data)); ?>;
 
+        // Function to show delivery options based on the selected category
+        function showDeliveryOptions(selectedCategory) {
+            // Find the selected category data in the array
+            var selectedCategoryData = categoryData.find(function(category) {
+                return category.category === selectedCategory;
+            });
 
-                            <span class="invalid"><?php if ($data) {
-                                                        echo $data['DeliveryMethod_err'];
-                                                    } ?></span>
-                        </div>
+            // Check if the selected category data exists
+            if (selectedCategoryData) {
+                // Check the delivery method of the selected category
+                var deliveryMethod = selectedCategoryData.delivery;
+                if (deliveryMethod === 'home_delivery') {
+                    // Show home delivery option
+                    $('#Home_Delivery').show();
+                    $('#Instore_Pickup').hide();
+                } else if (deliveryMethod === 'insto_pickup') {
+                    // Show in-store pickup option
+                    $('#Home_Delivery').hide();
+                    $('#Instore_Pickup').show();
+                } else if (deliveryMethod === 'both') {
+                    // Show both options
+                    $('#Home_Delivery').show();
+                    $('#Instore_Pickup').show();
+                }
+            }
+        }
+
+        // Event listener for the category dropdown change
+        $("#sCategory").on('change', function() {
+            var selectedCategory = $(this).val();
+            showDeliveryOptions(selectedCategory);
+        });
+
+        // Initialize the delivery options based on the default selected category
+        var defaultCategory = $("#sCategory").val();
+        showDeliveryOptions(defaultCategory);
+    });
+</script>
+
                     </div>
 
 
@@ -266,6 +303,10 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
             </form>
             <?php require APPROOT . '/views/inc/footer.php'; ?>
     </div>
+
+
+         
+
 
 
 

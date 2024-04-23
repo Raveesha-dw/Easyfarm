@@ -52,6 +52,7 @@ public function create_post($data){
     $this->db->bind(':seller_ID', $_SESSION['user_ID']);
 
     $this->db->execute();
+    print_r($data);
     return true;
 }
 
