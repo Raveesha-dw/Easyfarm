@@ -106,7 +106,7 @@ class Seller_post extends Controller
             $deliveryMethods = [];
 
             if (isset($_POST['Home_Delivery'])) {
-                $deliveryMethods[] = 'Home Delivery';
+                $deliveryMethods[] = 'Home-Delivery';
             }
 
             if (isset($_POST['Insto_Pickup'])) {
@@ -370,7 +370,7 @@ class Seller_post extends Controller
             $deliveryMethods = [];
 
             if (isset($_POST['Home_Delivery'])) {
-                $deliveryMethods[] = 'Home Delivery';
+                $deliveryMethods[] = 'Home-Delivery';
             }
 
             if (isset($_POST['Insto_Pickup'])) {

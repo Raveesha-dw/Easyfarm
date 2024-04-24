@@ -221,21 +221,21 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         
                         <br><br>
                             <?php
-                            // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
+                            // Assuming $data['DeliveryMethod'] contains "Home-Delivery, Insto Pickup"
 
                             // Split the value into an array based on comma separator
                             $deliveryMethods = explode(', ', $data['DeliveryMethod']);
 
                             // Check each checkbox individually
-                            $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
+                            $homeDeliveryChecked = in_array('Home-Delivery', $deliveryMethods) ? 'checked' : '';
                             $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
 
                             // Output checkboxes
                             ?>
 
   
-                            <input type="checkbox" id="Home Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
-                               <label for="Home Delivery">Home Delivery</label>
+                            <input type="checkbox" id="Home-Delivery" name="Home_Delivery" value="Home-Delivery" <?php echo $homeDeliveryChecked; ?>>
+                               <label for="Home-Delivery">Home-Delivery</label>
 
                             <input type="checkbox" id="Insto Pickup" name="Insto_Pickup" value="Insto Pickup" <?php echo $instoPickupChecked; ?>>
                             <label for="Insto Pickup">In-store-Pickup</label><br>
