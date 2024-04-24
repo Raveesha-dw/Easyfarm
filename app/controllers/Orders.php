@@ -65,7 +65,7 @@
 
     public function pendingOrdersOfUser(){
         $orders = $this->orderModel->getPendingOrders();
-        print_r($orders);
+        // print_r($orders);
        // $orderItems = [];
 
         // foreach($orders as $order){

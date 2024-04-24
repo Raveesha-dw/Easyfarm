@@ -6,7 +6,7 @@
         }
 
         public function get_notification(){
-                print_r("dd");
+                // print_r("dd");
                 $data = $this->notificationModel->get_notification();
         }
 }

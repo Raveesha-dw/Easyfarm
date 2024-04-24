@@ -54,7 +54,7 @@ class Seller_home extends Controller{
     public function update_status2(){
         $item1 =$this->sellerhomeModel->updateiteamdeatils2();
         $items=$this->sellerhomeModel->get_itemids4($_SESSION['user_ID']);
-        print_r("dd");
+        // print_r("dd");
         $this->view('seller/v_seller_home_completed',$items);
 
     }

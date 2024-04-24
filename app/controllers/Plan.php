@@ -258,7 +258,7 @@ $data = $this->planModel->get_dataplan1();
 
 $mail=$_SESSION['user_email'];
 
-print_r($mail);
+// print_r($mail);
 $data2=$this->planModel->get_userdetails($mail);
 // print_r($data2);
 

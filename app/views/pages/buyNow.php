@@ -5,7 +5,7 @@
 
     <div class="column4" >
 
-        <?php print_r($data);?>
+        <!-- <?php print_r($data);?> -->
 
         <div class="box">
             <div class="wrapperBuyNow_sub">

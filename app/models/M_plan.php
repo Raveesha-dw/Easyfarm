@@ -95,7 +95,7 @@ public function update_user_plan1(){
     $this->db->query("UPDATE reg_seller SET list_count = (SELECT listing_limit FROM plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
-    print_r($_SESSION['user_ID']);
+    // print_r($_SESSION['user_ID']);
     $this->db->execute();
     // print_r("xjx");
     return true;
@@ -107,7 +107,7 @@ public function update_user_plan2(){
     $this->db->query("UPDATE reg_seller SET list_count = (SELECT listing_limit FROM plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_seller.U_Id = :user_ID");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
-    print_r($_SESSION['user_ID']);
+    // print_r($_SESSION['user_ID']);
     $this->db->execute();
     // print_r("xjx");
     return true;

@@ -8,7 +8,7 @@ $productDetails = $data['productInfo'];
 
 $sellerDetails = $data['sellerInfo'];
 $productReviews = $data['itemReviews'];
-print_r($productReviews);
+// print_r($productReviews);
 $inquiries = $data['inquiries'];
 
 ?>

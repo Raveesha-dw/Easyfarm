@@ -77,7 +77,7 @@ class V_renter_home extends Controller{
         $dateStrings[] = $dateObject->date;
     }
 
-    print_r($dates);
+    // print_r($dates);
     // Call the updateiteamdeatils2() method with the retrieved dates
     $result = $this->renterhomeModel->updateiteamdeatils2($dateStrings);
 

@@ -54,7 +54,7 @@ public function update_user_plan(){
     $this->db->bind(':email', $_SESSION['user_email']);
     // print_r($_SESSION['user_email1']);
     $this->db->execute();
-    print_r("xjx");
+    // print_r("xjx");
     return true;
 
 }
@@ -169,7 +169,7 @@ public function update_user_plan2(){
     $this->db->query("UPDATE reg_vehicleowner  SET list_count = (SELECT listing_limit FROM v_plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_vehicleowner.U_Id = :user_ID");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
-    print_r($_SESSION['user_ID']);
+    // print_r($_SESSION['user_ID']);
     $this->db->execute();
     // print_r("xjx");
     return true;
@@ -182,7 +182,7 @@ public function update_user_plan1(){
     $this->db->query("UPDATE reg_vehicleowner SET list_count = (SELECT listing_limit FROM V_plandetails WHERE plan_id = :plan_id), plan_id = :plan_id, Register_date = NOW() WHERE reg_vehicleowner.U_Id = :user_ID");
     $this->db->bind(':plan_id', $_GET['id']);
     $this->db->bind(':user_ID', $_SESSION['user_ID']);
-    print_r($_SESSION['user_ID']);
+    // print_r($_SESSION['user_ID']);
     $this->db->execute();
     // print_r("xjx");
     return true;
