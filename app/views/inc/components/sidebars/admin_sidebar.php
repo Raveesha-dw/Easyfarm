@@ -65,6 +65,15 @@ function isActive($page)
             <span class="link hide">Vehicle Categories</span>
           </a>
         </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/deliveryFees';?>"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-money'></i>
+              <i class='bx bxs-money'></i>
+            </div>
+            <span class="link hide">Delivery Fee Rates</span>
+          </a>
+        </li>
         
         <!-- <li class="tooltip-element" data-tooltip="2">
           <a href="#" data-active="2">
@@ -115,18 +124,18 @@ function isActive($page)
         </li>
       </ul>
 
-      <h4 class="hide">Shortcuts</h4>
+      <!-- <h4 class="hide">Shortcuts</h4>
 
       <ul>
         <li class="tooltip-element" data-tooltip="0">
-          <a href="<?php echo URLROOT . '/Blog';?>" data-active="4">
+          <a href="<?php //echo URLROOT . '/Blog';?>" data-active="4">
             <div class="icon">
               <i class='bx bx-home'></i>
               <i class='bx bxs-home'></i>
             </div>
             <span class="link hide">Go To Blog</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="tooltip-element" data-tooltip="1">
           <a href="#" data-active="5">
             <div class="icon">
@@ -145,12 +154,12 @@ function isActive($page)
             <span class="link hide">Settings</span>
           </a>
         </li> -->
-        <div class="tooltip">
+        <!-- <div class="tooltip">
           <span class="show">Go To Blog</span>
-          <!-- <span>Help</span> -->
-          <!-- <span>Settings</span> -->
+          <span>Help</span>
+          <span>Settings</span>
         </div>
-      </ul>
+      </ul> -->
     </div>
 
     <div class="sidebar-footer">

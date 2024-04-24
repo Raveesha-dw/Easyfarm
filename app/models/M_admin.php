@@ -80,7 +80,7 @@ class M_admin{
 
 
 
-        // Manage Vehicle Categories
+    // Manage Vehicle Categories
 
     public function getVehicleCategories(){
         $this->db->query("SELECT * FROM vehicle_item_category");
@@ -106,6 +106,25 @@ class M_admin{
     public function deleteVehicleCategory($category_id){
         $this->db->query("DELETE FROM vehicle_item_category WHERE Category_Id = :category_id");
         $this->db->bind(':category_id', $category_id);
+        $this->db->execute();
+        return true;
+    }
+
+
+
+    // Manage Delivery Fee Rates
+
+    public function getDeliveryZones(){
+        $this->db->query("SELECT * FROM deliveryzones z INNER JOIN deliveryfees f ON z.zone_ID = f.zone_ID");
+        $deliveryZones = $this->db->resultSet();
+        return $deliveryZones;
+    }
+
+    public function updateDeliveryZone($data){
+        $this->db->query("UPDATE deliveryfees SET base_fee = :baseFee, weight_fee = :weightFee WHERE zone_ID = :zoneID");
+        $this->db->bind(':baseFee', $data['baseFee']);
+        $this->db->bind(':weightFee', $data['weightFee']);
+        $this->db->bind(':zoneID', $data['zoneID']);
         $this->db->execute();
         return true;
     }

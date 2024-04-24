@@ -395,11 +395,10 @@ class Admin extends Controller{
             if(empty($newcategory['category_err'])){
                 if($this->adminModel->updateVehicleCategory($newcategory)){
                     flash('add_category_success', 'Category has been added successfully!');
-                    // print('done');
                     redirect('Admin/vehicle');
                 }else{
                     die('Something went wrong :(');
-                    // redirect('Admin/vehicle');
+                    redirect('Admin/vehicle');
                 }
             }else{
                 $data['newCategory'] = $newcategory;
@@ -415,6 +414,60 @@ class Admin extends Controller{
             }else{
                 die('Something went wrong :(');
                 redirect('Admin/vehicle');
+            }
+        }
+    }
+
+
+
+    // Manage Delivery Fee Rates
+
+    public function deliveryFees(){
+        $data['deliveryZones'] = $this->adminModel->getDeliveryZones();
+        $this->view('Admin/v_adminDeliveryFeeRates', $data);
+    }
+
+    public function editDeliveryFeeRates(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $deliveryZone = [
+                'baseFee' => trim($_POST['baseFee']),
+                'weightFee' => trim($_POST['weightFee']),
+                'zoneID' => trim($_POST['zoneID']),
+
+                'baseFee_err' => '',
+                'weightFee_err' => ''
+            ];
+
+            if(empty($deliveryZone['baseFee'])){
+                $deliveryZone['baseFee_err'] = 'Base fee cannot be empty';
+            }
+
+            if(empty($deliveryZone['weightFee'])){
+                $deliveryZone['weightFee_err'] = 'Weight fee cannot be empty';
+            }
+
+            // if($deliveryZone['baseFee'] < 0){
+            //     $deliveryZone['baseFee_err'] = 'Base fee must be a positive value';
+            // }
+
+            // if($deliveryZone['weightFee'] < 0){
+            //     $deliveryZone['baseFee_err'] = 'Weight fee must be a positive value';
+            // }
+
+            if(empty($deliveryZone['baseFee_err']) && empty($deliveryZone['weightFee_err']) && $deliveryZone['baseFee'] >= 0 && $deliveryZone['weightFee'] >= 0){
+                if($this->adminModel->updateDeliveryZone($deliveryZone)){
+                    flash('add_category_success', 'Category has been added successfully!');
+                    redirect('Admin/deliveryFees');
+                }else{
+                    die('Something went wrong :(');
+                    redirect('Admin/deliveryFees');
+                }
+            }else{
+                $data['deliveryZone'] = $deliveryZone;
+                // $this->view('Admin/v_adminBlog', $data);
+                redirect('Admin/deliveryFees');
             }
         }
     }
