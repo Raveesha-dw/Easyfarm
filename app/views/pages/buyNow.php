@@ -4,7 +4,7 @@
 <div class="wrapperBuyNow">
 
                 <div class="column4" >
-
+<?php print_r($data); ?>
 
                 <div class="box">
                     <div class="wrapperBuyNow_sub">
@@ -275,6 +275,9 @@
                                             <input type="hidden" id="hiddenUnit_size[]" value="<?php echo $data['Unit_size']; ?>">  <!-- new -->
                                             <input type="hidden" id="hiddenUnit_type[]" value="<?php echo $data['Unit_type']; ?>">   <!-- new -->
                                             <input type="hidden" id="hiddenquantity[]" value="<?php echo $data['quantity']; ?>">
+                                            <input type="hidden" id="hiddenseller_Ids[]" value="<?php echo $data['S_ID']; ?>">
+                                            <input type="hidden" id="hidden_product_chargings[]" value="<?php echo $data['total']; ?>">
+                                            <input type="hidden" id="hidden_delivery_chargings[]" value="<?php echo $data['deliveryFee']; ?>">
                                            
                                             
                                             <input type="hidden" id="selectedDeliveryMethods[]" value=<?php echo $data['selectedDeliveryMethod']; ?>>  <!-- new -->

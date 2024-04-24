@@ -61,8 +61,8 @@ class BuyNow extends Controller{
                     if(isset($buyer_province)){
                         // $_SESSION['buyer_province'];
                         // $fee = $this->deliveryModel->getDeliveryFeeForSingleProduct($data['Item_Id']);
-                        $S_ID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
-                        $fee = $this->deliveryModel->getDeliveryFeeForSeller($S_ID);
+                        $data['S_ID'] = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
+                        $fee = $this->deliveryModel->getDeliveryFeeForSeller( $data['S_ID']);
                         //print_r($fee);
                         $base_fee = (float)$fee['base_fee'];
                         $data['deliveryFee'] = $base_fee;

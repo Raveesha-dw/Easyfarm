@@ -8,6 +8,10 @@ console.log("2344444");
     var hiddenquantity = document.querySelectorAll("input[id^='hiddenquantity[]']");
     var hiddenSubTotalpayment = document.querySelectorAll("input[id^='hiddenSubTotalpayment[]']");
     var hiddenselectedDeliveryMethod = document.querySelectorAll("input[id^='selectedDeliveryMethods[]']");
+    
+    var hiddenseller_Ids = document.querySelectorAll("input[id^='hiddenseller_Ids[]']");
+    var hidden_product_chargings = document.querySelectorAll("input[id^='hidden_product_chargings[]']");
+    var hidden_delivery_chargings = document.querySelectorAll("input[id^='hidden_delivery_chargings[]']");
 
 console.log(hiddenItem_Id);
 console.log(hiddenselectedDeliveryMethod);
@@ -17,6 +21,10 @@ console.log(hiddenselectedDeliveryMethod);
     var quantities = [];
     var subTotalPayments = [];
     var selectedDeliveryMethods = [];
+    var sellerIds = [];
+    var product_chargings = [];
+    var delivery_chargings = [];
+
     
 
     // Populate arrays with values from hidden input fields
@@ -36,7 +44,15 @@ console.log(hiddenselectedDeliveryMethod);
     hiddenselectedDeliveryMethod.forEach(function (element) {
         selectedDeliveryMethods.push(element.value);
     });
-
+    hiddenseller_Ids.forEach(function (element) {
+        sellerIds.push(element.value);
+    });
+    hidden_product_chargings.forEach(function (element) {
+        product_chargings.push(element.value);
+    });
+    hidden_delivery_chargings.forEach(function (element) {
+        delivery_chargings.push(element.value);
+    });
 
         // Create data object to send to the server
     var data = {
@@ -44,6 +60,9 @@ console.log(hiddenselectedDeliveryMethod);
         hiddenuId: hiddenuId,
         itemIds: itemIds,
         quantities: quantities,
+        sellerIds:sellerIds,
+        product_chargings: product_chargings,
+        delivery_chargings: delivery_chargings,
         selectedDeliveryMethods: selectedDeliveryMethods,
         subTotalPayments: subTotalPayments
     };
@@ -101,7 +120,7 @@ payhere.onCompleted = function onCompleted(orderId) {
                 console.log("qqqqqq");
                 
                     console.log("eeeeeee");
-                saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i]);
+                saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i],sellerIds[i],product_chargings[i],delivery_chargings[i]);
                 console.log("Payment completed. OrderID:" + orderId);
                 
             }
@@ -151,7 +170,7 @@ payhere.onCompleted = function onCompleted(orderId) {
     xhttp.send(dataToSend);
 }
 
-function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod){
+function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerId,product_charging,delivery_charging){
     
 
     var f = new FormData();
@@ -160,6 +179,9 @@ function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod){
     f.append("uId", uId);
     f.append("quantity", quantity);
     f.append("orderId", orderId);
+    f.append("sellerId",sellerId);
+    f.append("product_charging",product_charging);
+    f.append("delivery_charging",delivery_charging);
     f.append("selectedDeliveryMethod",selectedDeliveryMethod);
 
     var r = new XMLHttpRequest();

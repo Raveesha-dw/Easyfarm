@@ -24,6 +24,10 @@ $hiddenTotalpayment = $inputData['hiddenTotalpayment'];
 $hiddenuId = $inputData['hiddenuId'];
 $itemIds = $inputData['itemIds'];
 $quantities = $inputData['quantities'];
+// $sellerIds = $inputData['sellerIds'];
+// $product_chargings = $inputData['product_chargings'];
+// $delivery_chargings = $inputData['delivery_chargings'];
+
 $selectedDeliveryMethods = $inputData['selectedDeliveryMethods'];
 $subTotalPayments = $inputData['subTotalPayments'];
 
@@ -192,6 +196,9 @@ $array1[$i] = $array;
                 'placed_Date' => $date,
                 'selectedDeliveryMethod' => $_POST["selectedDeliveryMethod"],
                 'Payment_Id' => $_POST["orderId"], 
+                'sellerId' => $_POST["sellerId"],
+                'product_charging' => $_POST["product_charging"],
+                'delivery_charging'=> $_POST["delivery_charging"],
                 
                 'totalPayment' => 0,
                 

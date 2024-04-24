@@ -73,14 +73,14 @@ class M_payment{
 
         print_r($order_id);
 
-        // $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge) VALUES (:product_charge, :delivery_charge)  WHERE (Payment_Id = :Payment_Id AND seller_ID = :seller_ID) '); 
+        $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge,Payment_Id,seller_ID) VALUES (:product_charge, :delivery_charge ,:Payment_Id ,:seller_ID)   '); 
         
-        // $this->db->bind(':product_charge', $data['Item_Id']);
-        // $this->db->bind(':delivery_charge', $data['uId']);
-        // $this->db->bind(':Payment_Id', $data['placed_Date']);
-        // $this->db->bind(':seller_ID', $data['seller_ID']);
+        $this->db->bind(':product_charge', $data['product_charging']);
+        $this->db->bind(':delivery_charge', $data['delivery_charging']);
+        $this->db->bind(':Payment_Id', $data['Payment_Id']);
+        $this->db->bind(':seller_ID', $data['sellerId']);
      
-        // $this->db->execute();
+        $this->db->execute();
 
 
 
