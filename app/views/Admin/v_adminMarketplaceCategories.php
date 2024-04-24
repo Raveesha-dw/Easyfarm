@@ -25,9 +25,18 @@
             <div class="modal-body">
                 <form action="<?php echo URLROOT;?>/Admin/addMarketplaceCategory" method="POST">
                     <label for="category">Category Name:  <br><span>(This will be displayed as the category name on the marketplace)</span></label>
-                    <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $newCategory['category']?>"></input><br><br>
+                    <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $newCategory['category']?>" required></input><br><br>
+                    
                     <label for="units">Units: <br><span>(Enter units separated by commas.)</span></label><br>
-                    <input type="text" id="units" name="units" placeholder="E.g.: Kg, g" value="<?php echo $newCategory['units']?>"></input><br><br>
+                    <input type="text" id="units" name="units" placeholder="E.g.: Kg, g" value="<?php echo $newCategory['units']?>" required></input><br><br>
+
+                    <label for="deliveryMethod">Select Delivery Method:</label>
+                    <select name="deliveryMethod" id="deliveryMethod" required>
+                        <option value="both">Home Delivery & In-Store Pickup</option>
+                        <option value="insto_pickup">In-Store Pickup Only</option>
+                    </select>
+
+                    <br><br>
                     <input type="submit" value="Add Category">
                 </form>
             </div>
@@ -39,6 +48,7 @@
             <tr>
                 <th>Category Name</th>
                 <th>Units</th>
+                <th>Delivery Method</th>
                 <th>Action</th>
             </tr>
 
@@ -48,6 +58,17 @@
                     <tr>
                         <td><?php echo $marketplaceCategory->category?></td>
                         <td><?php echo $marketplaceCategory->type?></td>
+                        <td><?php 
+                                switch($marketplaceCategory->delivery){
+                                    case 'both':
+                                        echo 'Home Delivery & In-Store Pickup';
+                                        break;
+                                    case 'insto_pickup':
+                                        echo 'In-Store Pickup Only';
+                                        break;
+                                }
+                            ?>
+                        </td>
                         <td>
                             <div class="btn-container">
                                 <!-- Edit Form -->
@@ -61,8 +82,16 @@
                                         <form action="<?php echo URLROOT;?>/Admin/editMarketplaceCategory" method="POST">
                                             <label for="category">Category Name: <br><span>(This will be displayed as the category name on the marketplace)</label>
                                             <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $marketplaceCategory->category?>"></input><br><br>
+                                            
                                             <label for="units">Units: <br><span>(Enter units separated by commas.)</span></label><br>
                                             <input type="text" id="units" name="units" placeholder="E.g.: Kg, g" value="<?php echo $marketplaceCategory->type?>"></input><br><br>
+                                            
+                                            <label for="deliveryMethod">Select Delivery Method:</label>
+                                            <select name="deliveryMethod" id="deliveryMethod" value="<?php echo $marketplaceCategory->delivery?>" required>
+                                                <option value="both" <?php if($marketplaceCategory->delivery == "both") echo "selected";?>>Home Delivery & In-Store Pickup</option>
+                                                <option value="insto_pickup" <?php if($marketplaceCategory->delivery == "insto_pickup") echo "selected";?>>In-Store Pickup Only</option>
+                                            </select>
+
                                             <input type="hidden" name="category_id" value="<?php echo $marketplaceCategory->category_id?>">
                                             <button type="submit" class="admin-table">Save Changes</button>
                                         </form>

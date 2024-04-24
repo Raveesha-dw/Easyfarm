@@ -237,9 +237,11 @@ class Admin extends Controller{
         $newCategory = [
             'category' => '',
             'units' => '',
+            'deliveryMethod' => '',
 
             'category_err' => '',
-            'units_err' => ''
+            'units_err' => '',
+            'deliveryMethod_err' => ''
         ];
 
         $data['newCategory'] = $newCategory;
@@ -254,9 +256,11 @@ class Admin extends Controller{
             $newcategory = [
                 'category' => trim($_POST['category']),
                 'units' => trim($_POST['units']),
+                'deliveryMethod' => trim($_POST['deliveryMethod']),
 
                 'category_err' => '',
-                'units_err' => ''
+                'units_err' => '',
+                'deliveryMethod_err' => ''
             ];
 
             if(empty($newcategory['category'])){
@@ -266,8 +270,12 @@ class Admin extends Controller{
             if(empty($newcategory['units'])){
                 $newcategory['units_err'] = 'Units should not be empty';
             }
+
+            if(empty($newcategory['deliveryMethod'])){
+                $newcategory['deliveryMethod_err'] = 'Delivery Method should not be empty';
+            }
             
-            if(empty($newcategory['category_err']) && empty($newcategory['units_err'])){
+            if(empty($newcategory['category_err']) && empty($newcategory['units_err']) && empty($newcategory['deliveryMethod_err'])){
                 if($this->adminModel->insertMarketplaceCategory($newcategory)){
                     flash('add_category_success', 'Category has been added successfully!');
                     redirect('Admin/marketplace');
@@ -277,7 +285,8 @@ class Admin extends Controller{
                 }
             }else{
                 $data['newCategory'] = $newcategory;
-                $this->view('Admin/v_adminMarketplaceCategories', $data);
+                // $this->view('Admin/v_adminMarketplaceCategories', $data);
+                redirect('Admin/marketplace');
             }
         }
     }
@@ -290,9 +299,11 @@ class Admin extends Controller{
                 'category_id' => trim($_POST['category_id']),
                 'category' => trim($_POST['category']),
                 'units' => trim($_POST['units']),
+                'deliveryMethod' => trim($_POST['deliveryMethod']),
 
                 'category_err' => '',
-                'units_err' => ''
+                'units_err' => '',
+                'deliveryMethod_err' => ''
             ];
 
             if(empty($newcategory['category'])){
@@ -303,18 +314,23 @@ class Admin extends Controller{
                 $newcategory['units_err'] = 'Units should not be empty';
             }
 
-            if(empty($newcategory['category_err']) && empty($newcategory['units_err'])){
+            if(empty($newcategory['deliveryMethod'])){
+                $newcategory['deliveryMethod_err'] = 'Delivery Method should not be empty';
+            }
+
+            if(empty($newcategory['category_err']) && empty($newcategory['units_err']) && empty($newcategory['deliveryMethod_err'])){
                 if($this->adminModel->updateMarketplaceCategory($newcategory)){
                     flash('add_category_success', 'Category has been added successfully!');
                     // print('done');
                     redirect('Admin/marketplace');
                 }else{
                     die('Something went wrong :(');
-                    // redirect('Admin/marketplace');
+                    redirect('Admin/marketplace');
                 }
             }else{
                 $data['newCategory'] = $newcategory;
-                $this->view('Admin/v_adminBlog', $data);
+                // $this->view('Admin/v_adminBlog', $data);
+                redirect('Admin/marketplace');
             }
         }
     }

@@ -55,18 +55,20 @@ class M_admin{
     }
 
     public function insertMarketplaceCategory($data){
-        $this->db->query("INSERT INTO category(category, type) VALUES (:category, :units)");
+        $this->db->query("INSERT INTO category(category, type, delivery) VALUES (:category, :units :deliveryMethod)");
         $this->db->bind(':category', $data['category']);
         $this->db->bind(':units', $data['units']);
+        $this->db->bind(':deliveryMethod', $data['deliveryMethod']);
         $this->db->execute();
         return true;
     }
 
     public function updateMarketplaceCategory($data){
-        $this->db->query("UPDATE category SET category = :category, type = :units  WHERE category_id = :category_id");
+        $this->db->query("UPDATE category SET category = :category, type = :units, delivery = :deliveryMethod  WHERE category_id = :category_id");
         $this->db->bind(':category_id', $data['category_id']);
         $this->db->bind(':units', $data['units']);
         $this->db->bind(':category', $data['category']);
+        $this->db->bind(':deliveryMethod', $data['deliveryMethod']);
         $this->db->execute();
         return true;
     }
