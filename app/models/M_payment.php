@@ -35,7 +35,7 @@ class M_payment{
     }
 
     public function saveOrder($data){
-        print_r( $data);
+        // print_r( $data);
         $this->db->query('INSERT INTO orders(Payment_Id ,Item_ID, User_ID,placed_Date,seller_ID) VALUES (:Payment_Id ,:itemId, :uId, :placed_Date, :seller_ID)'); 
 
         $this->db->bind(':Payment_Id', $data['Payment_Id']);
@@ -58,8 +58,8 @@ class M_payment{
         // Extract the Order_ID from the fetched result
         $order_id = $order_result->Order_ID;
         
-        print_r($order_id);
-        print_r("ddddddd");
+        // print_r($order_id);
+        // print_r("ddddddd");
 
         $this->db->query('INSERT INTO order_details(Order_ID, quantity, Unit_price, Unit_size, Unit_type, DeliveryMethod,Payment_Id) VALUES (:Order_ID, :quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod , :Payment_Id)');
         $this->db->bind(':Payment_Id', $data['Payment_Id']);
@@ -71,25 +71,49 @@ class M_payment{
         $this->db->bind(':Order_ID', $order_id);
         $this->db->execute();
 
-        print_r($order_id);
-
-        // $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge) VALUES (:product_charge, :delivery_charge)  WHERE (Payment_Id = :Payment_Id AND seller_ID = :seller_ID) '); 
-        
-        // $this->db->bind(':product_charge', $data['Item_Id']);
-        // $this->db->bind(':delivery_charge', $data['uId']);
-        // $this->db->bind(':Payment_Id', $data['placed_Date']);
-        // $this->db->bind(':seller_ID', $data['seller_ID']);
-     
-        // $this->db->execute();
-
-
 
 
         return true;
 
    
-}
+        }
     }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+    public function saveOrder_Charging_details($data){
+
+        $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge,Payment_Id,seller_ID) VALUES (:product_charge, :delivery_charge ,:Payment_Id ,:seller_ID)   '); 
+        
+        $this->db->bind(':product_charge', $data['product_charging']);
+        $this->db->bind(':delivery_charge', $data['delivery_charging']);
+        $this->db->bind(':Payment_Id', $data['Payment_Id']);
+        $this->db->bind(':seller_ID', $data['sellerId']);
+     
+        $this->db->execute();
+
+        return true;
+
+   
+        }
+    }
+
+
+
+
+
+
+
+
+
 ?>
