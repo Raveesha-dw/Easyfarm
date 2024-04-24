@@ -44,6 +44,7 @@ class Seller_post extends Controller
         $currentDate = date('Y-m-d');
         // print_r($futureDate);
         // print_r($registerDate);
+        
 
 
         // print_r($_SESSION['user_ID']);
