@@ -57,7 +57,7 @@ class M_orders{
         $this->db->query('SELECT orders.*, order_details.*, item.Item_name FROM orders O INNER JOIN order_details D on O.Order_ID = D.Order_ID INNER JOIN item I on O.Item_ID = I.Item_Id WHERE O.User_ID=:user_ID AND D.Status ="PENDING"');
         $this->db->bind(':user_ID', $_SESSION['user_ID']);
         $result = $this->db->resultSet();
-        print_r($result);
+        // print_r($result);
 
         return $result;   
     }
