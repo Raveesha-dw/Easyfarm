@@ -2,15 +2,13 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
  
 
-<?php print_r($_SESSION['a'] ) ?>
+<!-- <?php print_r($data ) ?> -->
 <div class="wrapper">
     <!--Menu-->
     <section class="menu">
         <div class="container">
             <h2 class="title">Featured Categories</h2>
-            <?php print_r($_SESSION['a'] );print_r("eeeeee"); ?>
-            <?php print_r($_SESSION['b'] ) ?>
-            <?php print_r($_SESSION['c'] ) ?>
+       
             <div class="menu-container">
                 <div class="card">
                     <i class="fas fa-carrot"></i>
