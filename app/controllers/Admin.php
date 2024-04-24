@@ -9,7 +9,7 @@ class Admin extends Controller{
          if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'Admin'){
             $this->adminModel = $this->model('M_admin');
          }else{
-            redirect("index");
+            redirect("/Users/login");
          }    
     }
 

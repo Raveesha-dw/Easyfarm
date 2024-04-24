@@ -1,3 +1,5 @@
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+
 <!--Agri Instructor Creates Post-->
 
 <?php
@@ -68,3 +70,5 @@
     </main>
 
 </div>
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>  

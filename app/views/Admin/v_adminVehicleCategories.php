@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/headerAdmin.php';?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <div class="body-container">
     <!--Sidebar-->
@@ -78,6 +79,9 @@
 
     </main>
 </div>
+
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>  
 
 
 <script>

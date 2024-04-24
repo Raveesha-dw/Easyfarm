@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/headerBlog.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/navbar.php'; ?>
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <?php
     $post = $data['post'];
@@ -110,12 +111,12 @@
 
         <div class="container">
             <div class="comment-section bg-light p-4 mt-5">
-            <h3>Write a comment...</h3>
+            <h3>Ask Questions About This Article</h3>
             <hr>
 
             <!-- Editor -->
             <?php 
-                if(isset($_SESSION['user_ID']) &&  $_SESSION['user_type'] == 'Buyer'){ 
+                if(isset($_SESSION['user_ID'])){ 
             ?>
 
                     <div class="question-card">
@@ -125,13 +126,13 @@
                             <input type="hidden" name="datetime_posted" value="<?php echo date('Y-m-d H:i:s');?>">
                             <textarea name="question" id="question" cols="100" rows="4" placeholder="Write a comment..."></textarea>
                             <br>
-                            <button type="submit">Ask Question</button>
+                            <button class="btn" type="submit">Ask Question</button>
                         </form>
                     </div>
 
             <?php            
                 }else{
-                    echo "<br><span>Please login as a buyer to ask questions.</span><br><br><br>";
+                    echo "<br><span>Please login to ask questions.</span><br><br><br>";
                 }
             ?>
 
@@ -165,7 +166,7 @@
                                     <div class="edit-form display-0" style="display:none;">
                                         <form action="<?php echo URLROOT . '/Blog/editAnswer'?>" method="POST">
                                             <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                            <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                            <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
                                             <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s');?>">
                                             <textarea name="edited_answer" cols="100" rows="4"><?php echo $inquiry->answer;?></textarea><br><br><br>
                                             <button class="btn btn-save" type="submit">Save</button>
@@ -176,12 +177,12 @@
                                     <!-- Delete Answer -->
                                     <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteAnswer'?>" onclick='confirmDeleteAnswer()' method="POST">
                                         <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                        <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                        <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
                                         <input type="submit" name="answerDelete" value="Delete">
                                     </form>
-                    <?php            
-                            }
-                    ?>
+                            <?php            
+                                }
+                            ?>
                         </div>               
                     <?php
                         }
@@ -211,7 +212,7 @@
                     <?php            
                             }
 
-                            // If the logged in user is the seller who posted the ad, he/she can reply
+                            // If the logged in user is the agri nstructor who posted the article, he/she can reply
                             if($_SESSION['user_type'] == 'AgricultureExpert' && empty($inquiry->answer)){
                     ?>
                                 <!-- Answer Question -->
@@ -219,7 +220,7 @@
                                 <div class="edit-form display-0" style="display:none;">
                                     <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
                                         <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                        <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id;?>">
+                                        <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
                                         <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
                                         <textarea name="answer" cols="100" rows="4"></textarea><br><br><br>
                                         <button class="btn btn-save" type="submit">Answer</button>
@@ -240,6 +241,8 @@
         <
     </div>
 </div>
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>  
 
 <!-- Include jQuery -->
 <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -273,10 +276,10 @@
         });
     });
 
-    function confirmDeleteQuestion(){
-    var result = confirm('Are you sure you want to delete this question?');
-    if (result == false){
-    event.preventDefault();
+    function confirmDeleteQestion(){
+        var result = confirm('Are you sure you want to delete this question?');
+        if (result == false){
+            event.preventDefault();
         }
     }
 
