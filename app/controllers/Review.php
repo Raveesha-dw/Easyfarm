@@ -63,7 +63,7 @@
 
     public function userReviews(){
         $reviews = $this->reviewModel->getReviews();
-        print_r($reviews);
+        // print_r($reviews);
         $data = [
             'allreviews' => $reviews
         ];

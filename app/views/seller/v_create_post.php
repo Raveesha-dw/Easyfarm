@@ -206,8 +206,8 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <br><br>
 
                         <div class="option">
-                            <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home Delivery') ? 'checked' : ''; ?>>
-                            <label for="Home_Delivery">Home Delivery</label>
+                            <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home-Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home-Delivery') ? 'checked' : ''; ?>>
+                            <label for="Home_Delivery">Home-Delivery</label>
                         </div>
                         <div class="option">
                             <input type="checkbox" id="Instore_Pickup" name="Insto_Pickup" value="Instore Pickup" <?php echo (isset($_POST['Insto_Pickup']) && $_POST['Insto_Pickup'] == 'Instore Pickup') ? 'checked' : ''; ?>>
@@ -225,8 +225,8 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
     <b>Delivery Method<span class="requiredd"></span></b>
     <br><br>
     <div class="option" id="Home_Delivery">
-        <input type="checkbox"  name="Home_Delivery" value="Home Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home Delivery') ? 'checked' : ''; ?>>
-        <label for="Home_Delivery">Home Delivery</label>
+        <input type="checkbox"  name="Home_Delivery" value="Home-Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home-Delivery') ? 'checked' : ''; ?>>
+        <label for="Home_Delivery">Home-Delivery</label>
     </div>
     <div class="option" id="Instore_Pickup">
         <input type="checkbox"  name="Insto_Pickup" value="Instore Pickup" <?php echo (isset($_POST['Insto_Pickup']) && $_POST['Insto_Pickup'] == 'Instore Pickup') ? 'checked' : ''; ?>>

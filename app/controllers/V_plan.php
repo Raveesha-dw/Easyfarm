@@ -335,7 +335,7 @@ public function payment1() {
 
         public function update_plan(){
             // print_r($_SESSION['plan_id']);
-            print_r("nn");
+            // print_r("nn");
             if ($_SESSION['plan_id']==3){
                 $data3=$this->vplanModel->getnew_listing_details();
                 $newplan_id = $data3[0]->plan_id;
@@ -431,7 +431,7 @@ public function payment1() {
             $data6['Date'] = $newDate;
             $data5= $this->get_plan_details2();
             $concatenatedData = array_merge($data6, $data5);
-                print_r( $concatenatedData);
+                // print_r( $concatenatedData);
     
             if ($concatenatedData['plan_id'] == 1) {
                 $concatenatedData['list_count'] = $concatenatedData['list_count'];
@@ -476,7 +476,7 @@ public function payment1() {
             $data6['Date'] = $newDate;
             $data5= $this->get_plan_details2();
             $concatenatedData = array_merge($data6, $data5);
-                print_r( $concatenatedData);
+                // print_r( $concatenatedData);
     
             if ($concatenatedData['plan_id'] == 1) {
                 $concatenatedData['list_count'] = $concatenatedData['list_count'];
