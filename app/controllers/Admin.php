@@ -229,7 +229,7 @@ class Admin extends Controller{
 
 
 
-    // Manage Marketplace
+    // Manage Marketplace Categories
 
     public function marketplace(){
         $data['marketplaceCategories'] = $this->adminModel->getMarketplaceCategories();
@@ -237,9 +237,11 @@ class Admin extends Controller{
         $newCategory = [
             'category' => '',
             'units' => '',
+            'deliveryMethod' => '',
 
             'category_err' => '',
-            'units_err' => ''
+            'units_err' => '',
+            'deliveryMethod_err' => ''
         ];
 
         $data['newCategory'] = $newCategory;
@@ -254,9 +256,11 @@ class Admin extends Controller{
             $newcategory = [
                 'category' => trim($_POST['category']),
                 'units' => trim($_POST['units']),
+                'deliveryMethod' => trim($_POST['deliveryMethod']),
 
                 'category_err' => '',
-                'units_err' => ''
+                'units_err' => '',
+                'deliveryMethod_err' => ''
             ];
 
             if(empty($newcategory['category'])){
@@ -266,8 +270,12 @@ class Admin extends Controller{
             if(empty($newcategory['units'])){
                 $newcategory['units_err'] = 'Units should not be empty';
             }
+
+            if(empty($newcategory['deliveryMethod'])){
+                $newcategory['deliveryMethod_err'] = 'Delivery Method should not be empty';
+            }
             
-            if(empty($newcategory['category_err']) && empty($newcategory['units_err'])){
+            if(empty($newcategory['category_err']) && empty($newcategory['units_err']) && empty($newcategory['deliveryMethod_err'])){
                 if($this->adminModel->insertMarketplaceCategory($newcategory)){
                     flash('add_category_success', 'Category has been added successfully!');
                     redirect('Admin/marketplace');
@@ -277,7 +285,8 @@ class Admin extends Controller{
                 }
             }else{
                 $data['newCategory'] = $newcategory;
-                $this->view('Admin/v_adminMarketplaceCategories', $data);
+                // $this->view('Admin/v_adminMarketplaceCategories', $data);
+                redirect('Admin/marketplace');
             }
         }
     }
@@ -290,9 +299,11 @@ class Admin extends Controller{
                 'category_id' => trim($_POST['category_id']),
                 'category' => trim($_POST['category']),
                 'units' => trim($_POST['units']),
+                'deliveryMethod' => trim($_POST['deliveryMethod']),
 
                 'category_err' => '',
-                'units_err' => ''
+                'units_err' => '',
+                'deliveryMethod_err' => ''
             ];
 
             if(empty($newcategory['category'])){
@@ -303,18 +314,23 @@ class Admin extends Controller{
                 $newcategory['units_err'] = 'Units should not be empty';
             }
 
-            if(empty($newcategory['category_err']) && empty($newcategory['units_err'])){
+            if(empty($newcategory['deliveryMethod'])){
+                $newcategory['deliveryMethod_err'] = 'Delivery Method should not be empty';
+            }
+
+            if(empty($newcategory['category_err']) && empty($newcategory['units_err']) && empty($newcategory['deliveryMethod_err'])){
                 if($this->adminModel->updateMarketplaceCategory($newcategory)){
                     flash('add_category_success', 'Category has been added successfully!');
                     // print('done');
                     redirect('Admin/marketplace');
                 }else{
                     die('Something went wrong :(');
-                    // redirect('Admin/marketplace');
+                    redirect('Admin/marketplace');
                 }
             }else{
                 $data['newCategory'] = $newcategory;
-                $this->view('Admin/v_adminBlog', $data);
+                // $this->view('Admin/v_adminBlog', $data);
+                redirect('Admin/marketplace');
             }
         }
     }
@@ -329,4 +345,147 @@ class Admin extends Controller{
             }
         }
     }
+
+
+
+    // Manage Vehicle Categories
+
+    public function vehicle(){
+        $data['vehicleCategories'] = $this->adminModel->getVehicleCategories();
+
+        $newCategory = [
+            'category' => '',
+
+            'category_err' => ''
+        ];
+
+        $data['newCategory'] = $newCategory;
+        
+        $this->view('Admin/v_adminVehicleCategories', $data);
+    }
+
+    public function addVehicleCategory(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $newcategory = [
+                'category' => trim($_POST['category']),
+
+                'category_err' => ''
+            ];
+
+            if(empty($newcategory['category'])){
+                $newcategory['category_err'] = 'Enter category name';
+            }
+            
+            if(empty($newcategory['category_err'])){
+                if($this->adminModel->insertVehicleCategory($newcategory)){
+                    flash('add_category_success', 'Category has been added successfully!');
+                    redirect('Admin/vehicle');
+                }else{
+                    die('Something went wrong :(');
+                    redirect('Admin/vehicle');
+                }
+            }else{
+                $data['newCategory'] = $newcategory;
+                $this->view('Admin/v_adminVehicleCategories', $data);
+            }
+        }
+    }
+
+    public function editVehicleCategory(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $newcategory = [
+                'category_id' => trim($_POST['category_id']),
+                'category' => trim($_POST['category']),
+
+                'category_err' => ''
+            ];
+
+            if(empty($newcategory['category'])){
+                $newcategory['category_err'] = 'Enter category name';
+            }
+
+            if(empty($newcategory['category_err'])){
+                if($this->adminModel->updateVehicleCategory($newcategory)){
+                    flash('add_category_success', 'Category has been added successfully!');
+                    redirect('Admin/vehicle');
+                }else{
+                    die('Something went wrong :(');
+                    redirect('Admin/vehicle');
+                }
+            }else{
+                $data['newCategory'] = $newcategory;
+                $this->view('Admin/v_adminBlog', $data);
+            }
+        }
+    }
+
+    public function deleteVehicleCategory(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            if($this->adminModel->deleteVehicleCategory(trim($_POST['category_id']))){
+                redirect('Admin/vehicle');
+            }else{
+                die('Something went wrong :(');
+                redirect('Admin/vehicle');
+            }
+        }
+    }
+
+
+
+    // Manage Delivery Fee Rates
+
+    public function deliveryFees(){
+        $data['deliveryZones'] = $this->adminModel->getDeliveryZones();
+        $this->view('Admin/v_adminDeliveryFeeRates', $data);
+    }
+
+    public function editDeliveryFeeRates(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            $deliveryZone = [
+                'baseFee' => trim($_POST['baseFee']),
+                'weightFee' => trim($_POST['weightFee']),
+                'zoneID' => trim($_POST['zoneID']),
+
+                'baseFee_err' => '',
+                'weightFee_err' => ''
+            ];
+
+            if(empty($deliveryZone['baseFee'])){
+                $deliveryZone['baseFee_err'] = 'Base fee cannot be empty';
+            }
+
+            if(empty($deliveryZone['weightFee'])){
+                $deliveryZone['weightFee_err'] = 'Weight fee cannot be empty';
+            }
+
+            // if($deliveryZone['baseFee'] < 0){
+            //     $deliveryZone['baseFee_err'] = 'Base fee must be a positive value';
+            // }
+
+            // if($deliveryZone['weightFee'] < 0){
+            //     $deliveryZone['baseFee_err'] = 'Weight fee must be a positive value';
+            // }
+
+            if(empty($deliveryZone['baseFee_err']) && empty($deliveryZone['weightFee_err']) && $deliveryZone['baseFee'] >= 0 && $deliveryZone['weightFee'] >= 0){
+                if($this->adminModel->updateDeliveryZone($deliveryZone)){
+                    flash('add_category_success', 'Category has been added successfully!');
+                    redirect('Admin/deliveryFees');
+                }else{
+                    die('Something went wrong :(');
+                    redirect('Admin/deliveryFees');
+                }
+            }else{
+                $data['deliveryZone'] = $deliveryZone;
+                // $this->view('Admin/v_adminBlog', $data);
+                redirect('Admin/deliveryFees');
+            }
+        }
+    }
+
 }
