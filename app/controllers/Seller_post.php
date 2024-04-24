@@ -161,7 +161,7 @@ class Seller_post extends Controller
                 $data['Category_err'] = 'please choose a category';
             }
 
-            if ($data['Category'] == "vegatable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
+            if ($data['Category'] == "vegetable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
                 if (empty($data['Expiry_date'])) {
 
                     $data['Expiry_date_err'] = 'Please enter the Expiry date';
@@ -426,7 +426,7 @@ class Seller_post extends Controller
                 $data['Category_err'] = 'please choose a category';
             }
 
-             if ($data['Category'] == "vegatable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
+             if ($data['Category'] == "vegetable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
                 if (empty($data['Expiry_date'])) {
 
                     $data['Expiry_date_err'] = 'Please enter the Expiry date';
