@@ -313,9 +313,16 @@
 
                 <?php if (!empty($orderItems)): ?>
                     <?php foreach ($orderItemsBySeller as $sellerStore => $items): ?>
+                                <?php $sellerID = $items[0]['S_ID']; ?>
                                 <input type="hidden" id="hiddenseller_Ids[]" value="<?php echo $items[0]['S_ID']; ?>">
                                 <input type="hidden" id="hidden_product_chargings[]" value="<?php echo $orderTotals[$sellerID] ?>">
                                 <input type="hidden" id="hidden_delivery_chargings[]" value="<?php echo $deliveryFees[$sellerID] ?>">
+                                       <!-- <?php
+                            $sellerID = $items[0]['S_ID'];
+                            echo "Seller ID: " . $sellerID . "<br>";
+                            echo "Total: " . $orderTotals[$sellerID] . "<br>";
+                            echo "Delivery Fee: " . $deliveryFees[$sellerID] . "<br><br>";
+                        ?> -->
                     <?php endforeach;?>
                 <?php endif;?>
 

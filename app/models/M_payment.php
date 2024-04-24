@@ -73,6 +73,38 @@ class M_payment{
 
         print_r($order_id);
 
+        // $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge,Payment_Id,seller_ID) VALUES (:product_charge, :delivery_charge ,:Payment_Id ,:seller_ID)   '); 
+        
+        // $this->db->bind(':product_charge', $data['product_charging']);
+        // $this->db->bind(':delivery_charge', $data['delivery_charging']);
+        // $this->db->bind(':Payment_Id', $data['Payment_Id']);
+        // $this->db->bind(':seller_ID', $data['sellerId']);
+     
+        // $this->db->execute();
+
+
+
+
+        return true;
+
+   
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function saveOrder_Charging_details($data){
+
         $this->db->query('INSERT INTO order_charging_details(product_charge,delivery_charge,Payment_Id,seller_ID) VALUES (:product_charge, :delivery_charge ,:Payment_Id ,:seller_ID)   '); 
         
         $this->db->bind(':product_charge', $data['product_charging']);
@@ -82,14 +114,18 @@ class M_payment{
      
         $this->db->execute();
 
-
-
-
         return true;
 
    
-}
+        }
     }
 
-}
+
+
+
+
+
+
+
+
 ?>

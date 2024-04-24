@@ -12,9 +12,10 @@ console.log("2344444");
     var hiddenseller_Ids = document.querySelectorAll("input[id^='hiddenseller_Ids[]']");
     var hidden_product_chargings = document.querySelectorAll("input[id^='hidden_product_chargings[]']");
     var hidden_delivery_chargings = document.querySelectorAll("input[id^='hidden_delivery_chargings[]']");
-
-console.log(hiddenItem_Id);
-console.log(hiddenselectedDeliveryMethod);
+console.log("555555555555555555555555555555555555555555555555555555");
+console.log(hidden_delivery_chargings);
+console.log(hidden_product_chargings);
+console.log(hiddenseller_Ids);
 
     // Initialize arrays to store values
     var itemIds = [];
@@ -115,31 +116,42 @@ console.log(dataToSend);
             };
 
             var numOfItems = itemIds.length;
+            var num_of_Seller_Ids = sellerIds.length;
+
             payhere.onCompleted = function onCompleted(orderId) {
-            for (let i = 0; i < numOfItems; i++) {
-                console.log("qqqqqq");
-                
-                    console.log("eeeeeee");
-                saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i],sellerIds[i],product_chargings[i],delivery_chargings[i]);
+                console.log(sellerIds);
 
-                console.log("Payment completed. OrderID:" + orderId);
-                
-            }
+                for (let i = 0; i < numOfItems; i++) {
+                 
+                    saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i],sellerIds,product_chargings,delivery_chargings);
 
-            // Payment completed. It can be a successful failure
+                    // console.log("Payment completed. OrderID:" + orderId);
+                }
 
-                // var paymentQueryString = Object.keys(payment).map(key => key + '=' + encodeURIComponent(payment[key])).join('&');
-                // window.location.href = "http://localhost/Easyfarm/Plan/update_details?id=" + payment['plan_id'];
-                
-                
-                //  Note : validate the payment and show success or failure page to the customer
+
+                // for (let i = 0; i < num_of_Seller_Ids; i++) {
+
+                //     saveOrder_Charging_details(sellerIds[i],product_chargings[i],delivery_chargings[i]);
+
+                //     // console.log("Payment completed. OrderID:" + orderId);       
+                // }
+
+
+
+
+            
+
+
+
+
+
+
 
 
             };
 
             // payment window closed
             payhere.onDismissed = function onDismissed() {
-                //  Note : Prompt user to pay again or show an error page
                 console.log("Payment dismissed");
             }
 
@@ -154,41 +166,41 @@ console.log(dataToSend);
         }
     };
 
-    // xhttp.open("GET", "../Payment/payment?hiddenTotalpayment=" + encodeURIComponent(hiddenTotalpayment), true);
-    // xhttp.send();
 
     xhttp.open("POST", "../Payment/payment", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    // Convert data to a query string
-    // var dataToSend =
-    //     "hiddenTotalpayment=" + encodeURIComponent(hiddenTotalpayment) +
-    //     "&hiddenItem_Id=" + encodeURIComponent(hiddenItem_Id) +
-    //     "&hiddenuId=" + encodeURIComponent(hiddenuId) +
-    //     // "&hiddenuId=" + encodeURIComponent(hiddenuId);
 
 
     xhttp.send(dataToSend);
 }
 
-function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerId,product_charging,delivery_charging){
-    
 
+
+
+
+
+
+
+function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerIds,product_chargings,delivery_chargings){
+    
     var f = new FormData();
 
     f.append("Item_Id", Item_Id);
     f.append("uId", uId);
     f.append("quantity", quantity);
     f.append("orderId", orderId);
-    f.append("sellerId",sellerId);
-    f.append("product_charging",product_charging);
-    f.append("delivery_charging",delivery_charging);
+    f.append("sellerIds",sellerIds);
+    f.append("product_chargings",product_chargings);
+    f.append("delivery_chargings",delivery_chargings);
     f.append("selectedDeliveryMethod",selectedDeliveryMethod);
 
     var r = new XMLHttpRequest();
 
     r.onreadystatechange = function () {
         console.log("yyyyyyyyy");
+        console.log(sellerIds);
+        console.log(product_chargings);
+        console.log(delivery_chargings);
         if(r.readyState == 4) {
             var t = r.responseText;
             console.log(t);
@@ -202,7 +214,40 @@ function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerI
     r.send(f);
 
 
+}
 
+
+
+
+
+
+
+
+
+
+function saveOrder_Charging_details(sellerId,product_charging,delivery_charging){
+    console.log("AMMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    
+    var f = new FormData();
+
+    f.append("sellerId",sellerId);
+    f.append("product_charging",product_charging);
+    f.append("delivery_charging",delivery_charging);
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if(r.readyState == 4) {
+            var t = r.responseText;
+            // console.log(t);
+            // console.log(typeof(t));
+            window.location = "http://localhost/Easyfarm" ;
+
+        }
+    }
+
+    r.open("POST", "../Payment/saveOrder_Charging_details", true);
+    r.send(f);
 
 
 }
