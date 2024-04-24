@@ -55,6 +55,7 @@ class BuyNow extends Controller{
                 ];
                 // print_r($_POST['delivery']);
                 //print_r($data); 
+                $data['S_ID'] = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
 
                 if($data['selectedDeliveryMethod'] == 'Home Delivery'){
         
@@ -203,6 +204,8 @@ class BuyNow extends Controller{
 
           
             $data2 = array();
+            $S_Ids =array();
+            $delivery_fees = array();
 
             $sellerIDs = array();
             $buyer_province = $_SESSION['buyer_province'] ? isset($_SESSION['buyer_province'])  : ($this->deliveryModel->getProvinceOfBuyer());
@@ -229,12 +232,19 @@ class BuyNow extends Controller{
                
                 // $_SESSION['buyer_province'];
                 $weight_fee = 0;
+
+
+                $sellerID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
+                $data['S_ID'] = $sellerID;
+
+
+
                 if($data['selectedDeliveryMethod'] == 'Home Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
                   
                     // if(isset($_SESSION['buyer_province'])){
                     if(isset($buyer_province)){
                     
-                    $sellerID = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
+
                     if(!(in_array($sellerID, $sellerIDs))){
                         $sellerIDs[] = $sellerID;
 
@@ -314,7 +324,9 @@ class BuyNow extends Controller{
 
                
             }
+
             $data = $data2;
+
             
             //print_r($data);
             $this->view('pages/buyNow',$data);

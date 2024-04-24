@@ -115,12 +115,13 @@ console.log(dataToSend);
             };
 
             var numOfItems = itemIds.length;
-payhere.onCompleted = function onCompleted(orderId) {
+            payhere.onCompleted = function onCompleted(orderId) {
             for (let i = 0; i < numOfItems; i++) {
                 console.log("qqqqqq");
                 
                     console.log("eeeeeee");
                 saveOrder(itemIds[i],hiddenuId,quantities[i],orderId, selectedDeliveryMethods[i],sellerIds[i],product_chargings[i],delivery_chargings[i]);
+
                 console.log("Payment completed. OrderID:" + orderId);
                 
             }
@@ -205,3 +206,8 @@ function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerI
 
 
 }
+
+
+
+
+
