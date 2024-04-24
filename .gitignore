@@ -3,4 +3,4 @@
 .composer.lock
 .composer.phar
 .installer
-# .PHPMailer-master/add
+.PHPMailer-master/add
