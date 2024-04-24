@@ -75,12 +75,12 @@ body.dark{
 }
 
 .sidebarr header .image,
-.sidebarr .icon{
+.sidebarr .iconn{
     min-width: 60px;
     border-radius: 6px;
 }
 
-.sidebarr .icon{
+.sidebarr .iconn{
     min-width: 60px;
     border-radius: 6px;
     height: 100%;
@@ -91,7 +91,7 @@ body.dark{
 }
 
 .sidebarr .text,
-.sidebarr .icon{
+.sidebarr .iconn{
     color: var(--text-color);
     transition: var(--tran-03);
 }
@@ -210,11 +210,11 @@ body.dark .sidebarr header .toggle{
 .sidebarr li a:hover{
     background-color: var(--primary-color);
 }
-.sidebarr li a:hover .icon,
+.sidebarr li a:hover .iconn,
 .sidebarr li a:hover .text{
     color: var(--sidebarr-color);
 }
-body.dark .sidebarr li a:hover .icon,
+body.dark .sidebarr li a:hover .iconn,
 body.dark .sidebarr li a:hover .text{
     color: var(--text-color);
 }

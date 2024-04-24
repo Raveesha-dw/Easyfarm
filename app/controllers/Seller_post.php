@@ -44,6 +44,7 @@ class Seller_post extends Controller
         $currentDate = date('Y-m-d');
         // print_r($futureDate);
         // print_r($registerDate);
+        
 
 
         // print_r($_SESSION['user_ID']);
@@ -161,7 +162,7 @@ class Seller_post extends Controller
                 $data['Category_err'] = 'please choose a category';
             }
 
-            if ($data['Category'] == "vegatable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
+            if ($data['Category'] == "Vegetable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
                 if (empty($data['Expiry_date'])) {
 
                     $data['Expiry_date_err'] = 'Please enter the Expiry date';
@@ -188,8 +189,8 @@ class Seller_post extends Controller
             //     $data['Expiry_date_err'] = 'Please enter the date';
             // }
 
-
-            if (empty($data['DeliveryMethod'])) {
+            
+               if (empty($data['DeliveryMethod'])) {
                 $data['DeliveryMethod_err'] = 'Please enter Deliery method';
             }
 
@@ -223,7 +224,7 @@ class Seller_post extends Controller
                 //     header('Location: '.URLROOT.'/Pages/created_post');
                 //     // exit;
                 //      $this->view('seller/v_createdpost',$products);
-                // print_r($data);
+                print_r($data);
                 // }
                 if ($this->sellerModel->create_post($data)) {
                     // print_r($data);
@@ -426,7 +427,7 @@ class Seller_post extends Controller
                 $data['Category_err'] = 'please choose a category';
             }
 
-             if ($data['Category'] == "vegatable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
+             if ($data['Category'] == "Vegetable" || $data['Category'] == "Fruits" ||$data['Category'] == "Tools" || $data['Category'] == "Seeds" || $data['Category'] == "Grains" || $data['Category'] == "Insecticides") {
                 if (empty($data['Expiry_date'])) {
 
                     $data['Expiry_date_err'] = 'Please enter the Expiry date';
@@ -523,5 +524,9 @@ class Seller_post extends Controller
 
             $this->view('seller/v_createdpost', $products);
         }
+    }
+
+    public function income(){
+        $this ->view('seller/income');
     }
 }
