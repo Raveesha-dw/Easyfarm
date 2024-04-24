@@ -16,16 +16,7 @@ class BuyNow extends Controller{
         $this->productModel = $this->model('M_product');
         
     }
-    // public function index(){
-        
-    //     $data = [
-    //         'title' => 'Easyfarm',
 
-    //     ];
-        
-    //     $this->view('pages/home', $data);
-
-    // // }
 
     public function buyNow() {
      

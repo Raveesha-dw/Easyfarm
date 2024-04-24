@@ -12,10 +12,10 @@ console.log("2344444");
     var hiddenseller_Ids = document.querySelectorAll("input[id^='hiddenseller_Ids[]']");
     var hidden_product_chargings = document.querySelectorAll("input[id^='hidden_product_chargings[]']");
     var hidden_delivery_chargings = document.querySelectorAll("input[id^='hidden_delivery_chargings[]']");
-console.log("555555555555555555555555555555555555555555555555555555");
-console.log(hidden_delivery_chargings);
-console.log(hidden_product_chargings);
-console.log(hiddenseller_Ids);
+    // console.log("555555555555555555555555555555555555555555555555555555");
+    // console.log(hidden_delivery_chargings);
+    // console.log(hidden_product_chargings);
+    // console.log(hiddenseller_Ids);
 
     // Initialize arrays to store values
     var itemIds = [];
@@ -67,11 +67,11 @@ console.log(hiddenseller_Ids);
         selectedDeliveryMethods: selectedDeliveryMethods,
         subTotalPayments: subTotalPayments
     };
-console.log(data);
+    // console.log(data);
     // Convert data to JSON format
     var dataToSend = JSON.stringify(data);
-    console.log("sssssssssssssssss");
-console.log(dataToSend);
+    // console.log("sssssssssssssssss");
+    // console.log(dataToSend);
 
 
 
@@ -116,7 +116,6 @@ console.log(dataToSend);
             };
 
             var numOfItems = itemIds.length;
-            var num_of_Seller_Ids = sellerIds.length;
 
             payhere.onCompleted = function onCompleted(orderId) {
                 console.log(sellerIds);
@@ -129,23 +128,7 @@ console.log(dataToSend);
                 }
 
 
-                // for (let i = 0; i < num_of_Seller_Ids; i++) {
-
-                //     saveOrder_Charging_details(sellerIds[i],product_chargings[i],delivery_chargings[i]);
-
-                //     // console.log("Payment completed. OrderID:" + orderId);       
-                // }
-
-
-
-
-            
-
-
-
-
-
-
+      
 
 
             };
@@ -197,10 +180,10 @@ function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerI
     var r = new XMLHttpRequest();
 
     r.onreadystatechange = function () {
-        console.log("yyyyyyyyy");
-        console.log(sellerIds);
-        console.log(product_chargings);
-        console.log(delivery_chargings);
+        // console.log("yyyyyyyyy");
+        // console.log(sellerIds);
+        // console.log(product_chargings);
+        // console.log(delivery_chargings);
         if(r.readyState == 4) {
             var t = r.responseText;
             console.log(t);
@@ -225,32 +208,32 @@ function saveOrder(Item_Id,uId , quantity,orderId,selectedDeliveryMethod,sellerI
 
 
 
-function saveOrder_Charging_details(sellerId,product_charging,delivery_charging){
-    console.log("AMMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+// function saveOrder_Charging_details(sellerId,product_charging,delivery_charging){
+//     console.log("AMMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     
-    var f = new FormData();
+//     var f = new FormData();
 
-    f.append("sellerId",sellerId);
-    f.append("product_charging",product_charging);
-    f.append("delivery_charging",delivery_charging);
+//     f.append("sellerId",sellerId);
+//     f.append("product_charging",product_charging);
+//     f.append("delivery_charging",delivery_charging);
 
-    var r = new XMLHttpRequest();
+//     var r = new XMLHttpRequest();
 
-    r.onreadystatechange = function () {
-        if(r.readyState == 4) {
-            var t = r.responseText;
-            // console.log(t);
-            // console.log(typeof(t));
-            window.location = "http://localhost/Easyfarm" ;
+//     r.onreadystatechange = function () {
+//         if(r.readyState == 4) {
+//             var t = r.responseText;
+//             // console.log(t);
+//             // console.log(typeof(t));
+//             window.location = "http://localhost/Easyfarm" ;
 
-        }
-    }
+//         }
+//     }
 
-    r.open("POST", "../Payment/saveOrder_Charging_details", true);
-    r.send(f);
+//     r.open("POST", "../Payment/saveOrder_Charging_details", true);
+//     r.send(f);
 
 
-}
+// }
 
 
 
