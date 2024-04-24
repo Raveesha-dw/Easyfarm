@@ -75,8 +75,28 @@
 // Update the array with the new date
         $data1['Date'] = $newDate;
         // print_r($data1);
+         $data3=$this->planModel->get_income($_SESSION['user_ID']);
+         print_r($data3);
+
+         // Initialize a variable to store the total delivery charge
+// Initialize a variable to store the total delivery charge
+$totalproductcharge = 0;
+
+// Iterate through each object in the array
+foreach ($data3 as $item) {
+    // Check if the delivery_charge property exists in the current object
+    if (property_exists($item, 'product_charge')) {
+        // Add the delivery_charge of the current object to the total
+        $totalproductcharge += $item->product_charge;
+    }
+}
+
+// Output the total delivery charge
+// echo "Total Delivery Charge: " .  $totalproductcharge;
 // call the get_plan detail funcron controller function
-        $data2= $this->get_plan_details2();       
+        $data2= $this->get_plan_details2();  
+
+       $data2['income'] = $totalproductcharge;
         // print_r($data2);
 
         $concatenatedData = array_merge($data1, $data2);
@@ -495,6 +515,7 @@ public function payment6() {
             $newDate = $dateTime->format('Y-m-d');
             $data6['Date'] = $newDate;
             $data5= $this->get_plan_details2();
+              
             $concatenatedData = array_merge($data6, $data5);
     
     
@@ -615,7 +636,23 @@ public function payment6() {
         $dateTime->add(new DateInterval('P180D'));
         $newDate = $dateTime->format('Y-m-d');
         $data6['Date'] = $newDate;
+          $data8=$this->planModel->get_income($_SESSION['user_ID']);
+        //  print_r($data3);
+
+         // Initialize a variable to store the total delivery charge
+// Initialize a variable to store the total delivery charge
+$totalproductcharge = 0;
+
+// Iterate through each object in the array
+foreach ($data8 as $item) {
+    // Check if the delivery_charge property exists in the current object
+    if (property_exists($item, 'product_charge')) {
+        // Add the delivery_charge of the current object to the total
+        $totalproductcharge += $item->product_charge;
+    }
+}
         $data5= $this->get_plan_details2();
+        $data5['income']=$totalproductcharge ;
         $concatenatedData = array_merge($data6, $data5);
             // print_r( $concatenatedData);
 

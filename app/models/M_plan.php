@@ -71,6 +71,15 @@ public function get_dataplan( $U_Id) {
     return $result;
 }
 
+
+public function get_income($U_Id){
+    $this->db->query("SELECT * FROM order_charging_details WHERE seller_ID = :U_Id AND order_charging_details.PaymentStatus = 'Unsettled'");
+    $this->db->bind(':U_Id', $U_Id);
+    $result = $this->db->resultSet();
+    
+    return $result;
+}
+
 public function get_userdetails($user_email){
     $this->db->query("SELECT * FROM reg_seller INNER JOIN user on reg_seller.U_Id = user.U_Id WHERE user.Email=:user_email");
     $this->db->bind(':user_email', $user_email);

@@ -98,7 +98,7 @@ class M_product{
         if (empty($string)) {
             return []; 
         }
-        $this->db->query("SELECT * from item WHERE Item_name LIKE '%$string%'");
+        $this->db->query("SELECT * from item INNER JOIN reg_seller ON item.Seller_ID = reg_seller.U_Id WHERE reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH) AND  Item_name LIKE '%$string%'");
         $searchResults = $this->db->resultSet();
 
         return $searchResults;

@@ -1,7 +1,7 @@
 
 
 
-    <!-- <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'> -->
+    <!-- <link href='https://unpkg.com/boxiconns@2.1.1/css/boxiconns.min.css' rel='stylesheet'> -->
     
     <!--<title>Dashboard Sidebar Menu</title>--> 
     
@@ -26,35 +26,35 @@
             <div class="menu">
 
                 <li class="search-box">
-                    <i class='bx bx-search icon'></i>
+                    <i class='bx bx-search iconn'></i>
                     <input type="text" placeholder="Search...">
                 </li>
 <br>
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="http://localhost/Easyfarm/Seller_home/get_product_details1">
-                            <i class='bx bx-home-alt icon' ></i>
+                            <i class='bx bx-home-alt iconn' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="http://localhost/Easyfarm/Seller_post/creating">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <i class='bx bx-bar-chart-alt-2 iconn' ></i>
                             <span class="text nav-text">Create</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                     <a href="http://localhost/Easyfarm/Plan/get_plan_details">
-                            <i class='bx bx-bell icon'></i>
+                            <i class='bx bx-bell iconn'></i>
                             <span class="text nav-text">Plan</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="http://localhost/Easyfarm/Inventory/get_inventory_details">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <i class='bx bx-pie-chart-alt iconn' ></i>
                             <span class="text nav-text">Analytics</span>
                         </a>
                     </li>
@@ -62,15 +62,15 @@
                     <li class="nav-link">
                         <a href="http://localhost/Easyfarm/Seller_post/created_post">
              
-                            <i class='bx bx-heart icon' ></i>
+                            <i class='bx bx-heart iconn' ></i>
                             <span class="text nav-text">Wallets</span>
                         </a>
                     </li>
 
                     <!-- <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
+                        <a href="http://localhost/Easyfarm/Seller_post/income">
+                            <i class='bx bx-wallet iconn' ></i>
+                            <span class="text nav-text">income</span>
                         </a>
                     </li> -->
 
@@ -80,15 +80,15 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="<?php echo URLROOT?>/Users/logout">
-                        <i class='bx bx-log-out icon' ></i>
+                        <i class='bx bx-log-out iconn' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
 
                 <li class="mode">
                     <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
+                        <i class='bx bx-moon iconn moon'></i>
+                        <i class='bx bx-sun iconn sun'></i>
                     </div>
                     <span class="mode-text text">Dark mode</span>
 

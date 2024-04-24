@@ -12,6 +12,8 @@
                                     <button id ="inventory"><img src="<?php echo URLROOT?>/public/images/seller/inventory.png" alt="">Inventory </button>
                                     <button id ="plan"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">My Plan </button>
                                     <button id ="created"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">Created Post</button>
+                                     <button id ="income"><img src="<?php echo URLROOT?>/public/images/seller/myplan.png" alt="">Income</button>
+
 
                                 </ul>
                         
@@ -39,5 +41,11 @@
                     <script>
                         document.getElementById("created").addEventListener("click", function() {
                              window.location.href = "http://localhost/Easyfarm/Seller_post/created_post";
+                            });
+                    </script>
+
+                    <script>
+                        document.getElementById("income").addEventListener("click", function() {
+                             window.location.href = "http://localhost/Easyfarm/Seller_post/income";
                             });
                     </script>
