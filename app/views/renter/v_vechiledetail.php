@@ -150,7 +150,11 @@ $jsonData1 = json_encode( $pending_dates);
             <!-- <b>Calendar</b> -->
 
             <div class="wrapperCalendar2">
-                <p><i>Select the Date</i></p>
+
+                <div style="text-align: center;">
+                    <p><b><i>You can select the Dates</i></b></p>
+                    <p><i>(Rent this vehicle for the day, available from 8 am to 5 pm.)</i></p>
+                </div>
                 <br>
                 <br>
 
@@ -174,11 +178,23 @@ $jsonData1 = json_encode( $pending_dates);
 
 
                 
-                <div style="background-color: red; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
-    <span>Unavailable Day</span>
+                <div style="background-color: #f29797; width: 20px; height: 20px; display: inline-block; margin-right: 10px; border-radius: 10px;
+  border: #6a515178;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+  border-style: double;"></div>
+    <span>Unavailable Dates</span>
     <br>
-    <div style="background-color: blue; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></div>
-    <span>Pending Day</span>
+    <div style="background-color: #ca67f7;; width: 20px; height: 20px; display: inline-block; margin-right: 10px;border-radius: 10px;
+  border: #6a515178;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+  border-style: double;"></div>
+    <span>Pending Dates</span>
                 <span class="invalid"><?php if ($data) {echo $data['selectedDates_err'];}?></span>
 
                 <?php foreach ($data as $item): ?>

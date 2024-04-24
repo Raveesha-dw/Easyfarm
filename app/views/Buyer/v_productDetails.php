@@ -473,6 +473,7 @@ endforeach;
         function updateHiddenDelivery() {
 
             deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+            console.log(deliveryMethod);
             document.getElementById('hiddenDelivery1').value = deliveryMethod;
             document.getElementById('hiddenDelivery2').value = deliveryMethod;
     }

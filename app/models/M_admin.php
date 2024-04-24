@@ -55,18 +55,20 @@ class M_admin{
     }
 
     public function insertMarketplaceCategory($data){
-        $this->db->query("INSERT INTO category(category, type) VALUES (:category, :units)");
+        $this->db->query("INSERT INTO category(category, type, delivery) VALUES (:category, :units :deliveryMethod)");
         $this->db->bind(':category', $data['category']);
         $this->db->bind(':units', $data['units']);
+        $this->db->bind(':deliveryMethod', $data['deliveryMethod']);
         $this->db->execute();
         return true;
     }
 
     public function updateMarketplaceCategory($data){
-        $this->db->query("UPDATE category SET category = :category, type = :units  WHERE category_id = :category_id");
+        $this->db->query("UPDATE category SET category = :category, type = :units, delivery = :deliveryMethod  WHERE category_id = :category_id");
         $this->db->bind(':category_id', $data['category_id']);
         $this->db->bind(':units', $data['units']);
         $this->db->bind(':category', $data['category']);
+        $this->db->bind(':deliveryMethod', $data['deliveryMethod']);
         $this->db->execute();
         return true;
     }
@@ -74,6 +76,57 @@ class M_admin{
     public function deleteMarketplaceCategory($category_id){
         $this->db->query("DELETE FROM category WHERE category_id = :category_id");
         $this->db->bind(':category_id', $category_id);
+        $this->db->execute();
+        return true;
+    }
+
+
+
+    // Manage Vehicle Categories
+
+    public function getVehicleCategories(){
+        $this->db->query("SELECT * FROM vehicle_item_category");
+        $categories = $this->db->resultSet();
+        return $categories;
+    }
+
+    public function insertVehicleCategory($data){
+        $this->db->query("INSERT INTO vehicle_item_category(Category_name) VALUES (:category)");
+        $this->db->bind(':category', $data['category']);
+        $this->db->execute();
+        return true;
+    }
+
+    public function updateVehicleCategory($data){
+        $this->db->query("UPDATE vehicle_item_category SET Category_name = :category  WHERE Category_Id = :category_id");
+        $this->db->bind(':category_id', $data['category_id']);
+        $this->db->bind(':category', $data['category']);
+        $this->db->execute();
+        return true;
+    }
+
+    public function deleteVehicleCategory($category_id){
+        $this->db->query("DELETE FROM vehicle_item_category WHERE Category_Id = :category_id");
+        $this->db->bind(':category_id', $category_id);
+        $this->db->execute();
+        return true;
+    }
+
+
+
+    // Manage Delivery Fee Rates
+
+    public function getDeliveryZones(){
+        $this->db->query("SELECT * FROM deliveryzones z INNER JOIN deliveryfees f ON z.zone_ID = f.zone_ID");
+        $deliveryZones = $this->db->resultSet();
+        return $deliveryZones;
+    }
+
+    public function updateDeliveryZone($data){
+        $this->db->query("UPDATE deliveryfees SET base_fee = :baseFee, weight_fee = :weightFee WHERE zone_ID = :zoneID");
+        $this->db->bind(':baseFee', $data['baseFee']);
+        $this->db->bind(':weightFee', $data['weightFee']);
+        $this->db->bind(':zoneID', $data['zoneID']);
         $this->db->execute();
         return true;
     }

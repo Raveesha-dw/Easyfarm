@@ -32,8 +32,8 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="1">
           <a href="<?php echo URLROOT . '/Admin';?>" class="<?php echo isActive(URLROOT . '/Admin/blog');?> data-active="1">
             <div class="icon">
-              <i class='bx bx-user-plus'></i>
-              <i class='bx bxs-user-plus'></i>
+              <i class='bx bx-user-check'></i>
+              <i class='bx bxs-user-check'></i>
             </div>
             <span class="link hide">Agri Instructors</span>
           </a>
@@ -50,10 +50,28 @@ function isActive($page)
         <li class="tooltip-element" data-tooltip="0">
           <a href="<?php echo URLROOT . '/Admin/marketplace';?>"  data-active="0">
             <div class="icon">
-              <i class='bx bx-store'></i>
-              <i class='bx bxs-store'></i>
+              <i class='bx bx-shopping-bag'></i>
+              <i class='bx bxs-shopping-bag'></i>
             </div>
             <span class="link hide">Marketplace Categories</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/vehicle';?>"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-bus'></i>
+              <i class='bx bxs-bus'></i>
+            </div>
+            <span class="link hide">Vehicle Categories</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="<?php echo URLROOT . '/Admin/deliveryFees';?>"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-money'></i>
+              <i class='bx bxs-money'></i>
+            </div>
+            <span class="link hide">Delivery Fee Rates</span>
           </a>
         </li>
         
@@ -106,18 +124,18 @@ function isActive($page)
         </li>
       </ul>
 
-      <h4 class="hide">Shortcuts</h4>
+      <!-- <h4 class="hide">Shortcuts</h4>
 
       <ul>
         <li class="tooltip-element" data-tooltip="0">
-          <a href="<?php echo URLROOT . '/Blog';?>" data-active="4">
+          <a href="<?php //echo URLROOT . '/Blog';?>" data-active="4">
             <div class="icon">
               <i class='bx bx-home'></i>
               <i class='bx bxs-home'></i>
             </div>
             <span class="link hide">Go To Blog</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="tooltip-element" data-tooltip="1">
           <a href="#" data-active="5">
             <div class="icon">
@@ -136,12 +154,12 @@ function isActive($page)
             <span class="link hide">Settings</span>
           </a>
         </li> -->
-        <div class="tooltip">
+        <!-- <div class="tooltip">
           <span class="show">Go To Blog</span>
-          <!-- <span>Help</span> -->
-          <!-- <span>Settings</span> -->
+          <span>Help</span>
+          <span>Settings</span>
         </div>
-      </ul>
+      </ul> -->
     </div>
 
     <div class="sidebar-footer">
