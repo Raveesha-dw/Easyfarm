@@ -24,7 +24,8 @@ class AgriInstructor extends Controller{
     }
 
     public function index(){
-        redirect('/AgriInstructor/notifications');
+        $posts = $this->agriInstructorModel->getPostsByAuthor($_SESSION['user_ID']);
+        $this->view('AgriInstructor/v_agriInstructorManagePosts2', $posts);
     }
 
     public function createpost(){
@@ -96,7 +97,9 @@ class AgriInstructor extends Controller{
     }
 
     public function manageposts(){
+        //print($_SESSION['user_ID']);
         $posts = $this->agriInstructorModel->getPostsByAuthor($_SESSION['user_ID']);
+        //print_r($posts);
         $this->view('AgriInstructor/v_agriInstructorManagePosts2', $posts);
     }
 
@@ -171,10 +174,5 @@ class AgriInstructor extends Controller{
             $post = $this->agriInstructorModel->deletePost($_POST['id']);
             header('Location: ' . URLROOT . '/AgriInstructor/manageposts');
         }
-    }
-
-    public function notifications(){
-        $questions = $this->agriInstructorModel->getUnansweredQuestionsByAuthor($_SESSION['user_ID']);
-        $this->view('AgriInstructor/v_agriInstructorBlogNotifications', $questions);
     }
 }
