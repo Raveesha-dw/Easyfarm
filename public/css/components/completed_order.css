@@ -1,12 +1,15 @@
+*{
+     font-family: sans-serif;
+}
 
-
-* {
+.completed_order {
     margin: 0;
     padding: 0;
 
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
 @media print {
  .table, .table__body {
   overflow: visible;
