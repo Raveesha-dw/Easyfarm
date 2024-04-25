@@ -120,8 +120,9 @@ $inquiries = $data['inquiries'];
 
         <!-- Editor -->
         <?php
-if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id != $_SESSION['user_ID']) {
-    ?>
+            // Buyers can ask questions
+            if (isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'Buyer') {
+        ?>
 
                 <div class="question-card">
                     <form action="<?php echo URLROOT . '/Inquiry/askQuestion' ?>" method='POST'>
@@ -207,7 +208,7 @@ if (isset($_SESSION['user_ID'])) {
                             </div>
 
                             <!-- Delete Question -->
-                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion' ?>" onclick='confirmDeleteQestion()' method="POST">
+                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion' ?>" onclick='confirmDeleteQuestion()' method="POST">
                                 <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
                                 <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
                                 <input type="submit" name="questionDelete" value="Delete">
@@ -396,17 +397,17 @@ endforeach;
     });
 
     function confirmDeleteQuestion(){
-    var result = confirm('Are you sure you want to delete this question?');
-    if (result == false){
-    event.preventDefault();
-        }
+        var result = confirm('Are you sure you want to delete this question?');
+        if (result == false){
+        event.preventDefault();
+            }
     }
 
     function confirmDeleteAnswer(){
-    var result = confirm('Are you sure you want to delete this answer?');
-    if (result == false){
-    event.preventDefault();
-        }
+        var result = confirm('Are you sure you want to delete this answer?');
+        if (result == false){
+        event.preventDefault();
+            }
     }
 
 </script>
