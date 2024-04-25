@@ -293,6 +293,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                             // Show in-store pickup option
                                             $('#Home_Delivery').hide();
                                             $('#Instore_Pickup').show();
+                                            
                                         } else if (deliveryMethod === 'both') {
                                             // Show both options
                                             $('#Home_Delivery').show();
