@@ -265,7 +265,7 @@ class M_users{
 
     $result = $this->db->single();
     $itemCount = $result->itemCount;
-    print_r($itemCount);
+    // print_r($itemCount);
     return $itemCount;
 }
 

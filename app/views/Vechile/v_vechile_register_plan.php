@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 <!-- <script>function paymentGateway(){console.log("kk")}</script> -->
 <!-- <?php print_r($_SESSION['user_email1']); ?> -->
-<?php print_r($data)?>
+<!-- <?php print_r($data)?> -->
 <script>
         function paymentGateway(id) {
 

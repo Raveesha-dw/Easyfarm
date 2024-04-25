@@ -20,9 +20,9 @@ class M_calendar{
         // $this->db->bind(':start',"2024-05-10 00:07:00");
         // $this->db->bind(':end', "2024-05-20 00:07:00");
         $this->db->bind(':V_Id', 22);
-        print_r($data['title']);
-         print_r($data['start']);
-         print_r($data['end']);
+      //   print_r($data['title']);
+      //    print_r($data['start']);
+      //    print_r($data['end']);
         $this->db->execute();
         return true;
     
@@ -50,9 +50,9 @@ class M_calendar{
 
         $this->db->query('DELETE from vehicle_calendar WHERE (calendar_Id= :id)') ; 
         $this->db->bind(':id', $data['id']);
-        print_r("oooooo");
+      //   print_r("oooooo");
         $this->db->execute();
-        print_r("pppp");
+      //   print_r("pppp");
         return true;
     
 

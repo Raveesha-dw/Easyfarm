@@ -85,7 +85,7 @@
 
         $productReviews = $this->reviewModel->getReviewsForItem($itemID);
         $productRating = $this->reviewModel->getRatingsForItem($itemID);
-        print_r($productRating);
+        // print_r($productRating);
         $inquiries = $this->inquiryModel->getQuestions($itemID);
 
         foreach ($inquiries as $inquiry):

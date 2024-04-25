@@ -25,7 +25,7 @@ class Calendar extends Controller
         
         ];
 
-//  print_r($data['title']);
+        //  print_r($data['title']);
         // $this->calendarModel->add_anavailble_Dates($data);
         $this->v_postModel->create_post($data);
         
@@ -56,13 +56,13 @@ class Calendar extends Controller
 
         public function delete_anavailble_Dates()
         {
-            print_r("123");
+            // print_r("123");
             
             $data = [
                 'id' => $_POST['id'],
        
             ];
-print_r($data);
+            // print_r($data);
             $this->calendarModel->delete_anavailble_Dates($data);
         }
 

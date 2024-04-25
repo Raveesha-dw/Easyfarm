@@ -22,7 +22,7 @@ class Seller_post extends Controller
     public function cretesession3()
     {
         $data = $this->sellerModel->get_planid();
-        print_r($data);
+        // print_r($data);
         $_SESSION['plan_id'] = $data[0]->plan_id;
         header("Location:http://localhost/Easyfarm/Seller_post/creating");
     }
@@ -57,7 +57,7 @@ class Seller_post extends Controller
         } else {
             $data = $this->sellerModel->getlisting_count();
             $list_count = $data[0]->list_count;
-            print_r($data);
+            // print_r($data);
             if ($list_count == 0) {
                 $data = $this->sellerModel->get_dataplan3();
             $this->view('seller/v_register_plan1',$data);
@@ -106,7 +106,7 @@ class Seller_post extends Controller
             $deliveryMethods = [];
 
             if (isset($_POST['Home_Delivery'])) {
-                $deliveryMethods[] = 'Home Delivery';
+                $deliveryMethods[] = 'Home-Delivery';
             }
 
             if (isset($_POST['Insto_Pickup'])) {
@@ -223,7 +223,7 @@ class Seller_post extends Controller
                 //     header('Location: '.URLROOT.'/Pages/created_post');
                 //     // exit;
                 //      $this->view('seller/v_createdpost',$products);
-                print_r($data);
+                // print_r($data);
                 // }
                 if ($this->sellerModel->create_post($data)) {
                     // print_r($data);
@@ -370,7 +370,7 @@ class Seller_post extends Controller
             $deliveryMethods = [];
 
             if (isset($_POST['Home_Delivery'])) {
-                $deliveryMethods[] = 'Home Delivery';
+                $deliveryMethods[] = 'Home-Delivery';
             }
 
             if (isset($_POST['Insto_Pickup'])) {

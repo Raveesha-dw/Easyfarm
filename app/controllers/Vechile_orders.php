@@ -144,7 +144,7 @@
 
 
                 $data = array_merge($data2, $data);
-                print_r($data);
+                // print_r($data);
 
 
                 $rentalFeePerWeek = $data['Rental_Fee'];
