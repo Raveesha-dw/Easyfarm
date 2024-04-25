@@ -446,7 +446,7 @@ class V_post extends Controller
         $data['vehicle_data'] = isset($vehicle_data) ? $vehicle_data : [];
         $data['unconfirmed_booking_dates'] = isset($unconfirmed_booking_dates) ? $unconfirmed_booking_dates : [];
         $data['confirmed_booking_dates'] = isset($confirmed_booking_dates) ? $confirmed_booking_dates : [];
-        $data['unavailableDates'] = isset($unavailable__Dates) ? $unavailable__Dates : [];
+        $data['unavailableDates'] = isset($unavailable_Dates) ? $unavailable_Dates : [];
         $data['booking_Data'] = isset($booking_Data) ? $booking_Data : [];
         $data['orders'] = isset($orders) ? $orders : [];
 

@@ -1,6 +1,3 @@
-
-
-
 <?php require APPROOT . '/views/inc/header.php';?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 
@@ -165,4 +162,3 @@
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\Vpost_booking_detials_calendar.js"></script>
-
