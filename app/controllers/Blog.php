@@ -14,7 +14,7 @@ class Blog extends Controller{
         $data['posts'] = $posts;
         $data['categories'] = $categories;
 
-        //print_r($posts);
+        //print_r($posts); 
         $this->view('Blog/v_blogHomePage', $data);
     }
 
