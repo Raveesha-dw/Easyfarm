@@ -14,7 +14,7 @@ class Blog extends Controller{
         $data['posts'] = $posts;
         $data['categories'] = $categories;
 
-        //print_r($posts);
+        //print_r($posts); 
         $this->view('Blog/v_blogHomePage', $data);
     }
 
@@ -29,7 +29,6 @@ class Blog extends Controller{
                 $userType = $this->blogModel->getUserType($user_id);
                 $userName = $this->blogModel->getUserName($user_id, $userType);
                 $comment->userName = $userName;
-                $comment->userType = $userType;
             endforeach;
 
             $data['post'] = $post;
