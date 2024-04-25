@@ -479,12 +479,16 @@ class Seller_post extends Controller
 
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/seller/'));
                 if ($this->sellerModel->update_data($data)) {
+                     $data2 = $this->sellerModel->update_listing($_SESSION['user_ID']);
 
   unset($_SESSION['selectedCategory']);
                     unset($_SESSION['selectedUnitType']);
                     unset($_SESSION['selectedExpiryDate']);
 
                     $products = $this->sellerModel->get_data($_SESSION['user_ID']);
+
+                      
+                    // $data = $this->sellerModel->get_data($data['seller_ID']);
 
 
                     // redirect("Seller_post/created_post");
