@@ -41,7 +41,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <!-- <select name="Category" id="sCategory"> -->
                         <!-- <option disabled selected>Select Category</option> -->
                         <select name="Category" id="sCategory">
-                            <option disabled>Select Category</option>
+                            <option>Select Category</option>
                             <?php foreach ($data as $category) : ?>
                                 <?php if (isset($category['category'])) : ?>
                                     <option value="<?php echo htmlspecialchars($category['category']); ?>" <?php echo ($category['category'] == $selectedCategory) ? 'selected' : ''; ?>><?php echo htmlspecialchars($category['category']); ?></option>
