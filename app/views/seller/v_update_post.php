@@ -138,36 +138,66 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
 
                     <br>
-                    <span class="invalid"><?php if ($data) {
-                                                echo $data['Expiry_date_err'];
-                                            }  ?></span>
-                    <span class="invalid"><?php if ($data) {
-                                                echo $data['Invalid_date_err'];
-                                            }  ?></span>
-                    <div class="sdate">
-                        <b>Expiry Date</b>
-                        <br>
-                        <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expire date" value="<?php print_r($dat['Expiry_date']) ?>">
+                   <!-- Your HTML content -->
+<div class="sdate" id="datt">
+    <span class="invalid"><?php echo isset($data['Invalid_date_err']) ? $data['Invalid_date_err'] : ''; ?></span>
+    <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
+    <br>
+    <b>Expiry Date</b>
+    <br>
+    <!-- Input field for selecting the expiry date -->
+ <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expire date" value="<?php print_r($dat['Expiry_date']) ?>"></div>
+<script>
+    $(document).ready(function() {
+        // Get the input element
+        var expiryDateInput = document.getElementById('se_date');
+        
+        // Set the minimum value to today's date
+        expiryDateInput.min = new Date().toISOString().split("T")[0];
+    });
+</script>
 
+<!-- Your JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Define the category data obtained from PHP
+        var categoryData = <?php echo json_encode(array_values($data)); ?>;
 
-                        <script>
-                            var date = new Date();
-                            var tdate = date.getDate();
-                            var month = date.getMonth() + 1; //4
-                            if (tdate < 10) {
-                                tdate = '0' + tdate;
-                            }
-                            if (month < 10) {
-                                month = '0' + month; //0 + 4=4
-                            }
-                            var year = date.getFullYear();
-                            var minDate = year + "-" + month + "-" + tdate;
-                            document.getElementById("se_date").setAttribute('min', minDate);
-                            // console.log(minDate);
-                        </script>
+        // Function to show or hide the expiry date input based on the selected category
+        function showDate(selectedCategory) {
+            // Find the selected category data in the array
+            var selectedCategoryData = categoryData.find(function(category) {
+                return category.category === selectedCategory;
+            });
 
+            // Check if the selected category data exists
+            if (selectedCategoryData) {
+                // Check the delivery method of the selected category
+                var datee = selectedCategoryData.date;
+                if (datee === 'yes') {
+                    // Show expiry date input
+                    $('#datt').show();
+                } else {
+                    // Hide expiry date input
+                    $('#datt').hide();
+                     $('#se_date').val('');
+                }
+            }
+        }
 
-                    </div>
+        // Event listener for the category dropdown change
+        $("#sCategory").on('change', function() {
+            var selectedCategory = $(this).val();
+            showDate(selectedCategory);
+        });
+
+        // Initialize the expiry date input based on the default selected category
+        var defaultCategory = $("#sCategory").val();
+        showDate(defaultCategory);
+    });
+</script>
+
 
 
                     <br>
@@ -217,18 +247,18 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                             <br><br>
 
                             <?php
-                            // Assuming $data['DeliveryMethod'] contains "Home-Delivery, Insto Pickup"
+                            // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
                             $deliveryMethods = explode(', ', $data['DeliveryMethod']);
 
-                            // in_array('Home-Delivery', $deliveryMethods): This function checks if the value 'Home-Delivery' exists in the array $deliveryMethods. If it does, it returns true; otherwise, it returns false
-                            $homeDeliveryChecked = in_array('Home-Delivery', $deliveryMethods) ? 'checked' : '';
+                            // in_array('Home Delivery', $deliveryMethods): This function checks if the value 'Home Delivery' exists in the array $deliveryMethods. If it does, it returns true; otherwise, it returns false
+                            $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
                             $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
                             ?>
                             <!-- hideen value -->
 
                             <div id="Home_Delivery" style="<?php echo $homeDeliveryChecked ? '' : 'display:none;'; ?>">
-                                <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home-Delivery" <?php echo $homeDeliveryChecked; ?>>
-                                <label for="Home_Delivery">Home-Delivery</label>
+                                <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
+                                <label for="Home_Delivery">Home Delivery</label>
                             </div>
 
                             <div id="Instore_Pickup" style="<?php echo $instoPickupChecked ? '' : 'display:none;'; ?>">
@@ -256,7 +286,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                         // Check the delivery method of the selected category
                                         var deliveryMethod = selectedCategoryData.delivery;
                                         if (deliveryMethod === 'home_delivery') {
-                                            // Show Home-Delivery option
+                                            // Show home delivery option
                                             $('#Home_Delivery').show();
                                             $('#Instore_Pickup').hide();
                                         } else if (deliveryMethod === 'insto_pickup') {
@@ -282,7 +312,6 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                 showDeliveryOptions(defaultCategory);
                             });
                         </script>
-
                     </div>
 
 

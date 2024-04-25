@@ -169,11 +169,11 @@ class Seller_post extends Controller
             }
 
 
-            if ($data['Category'] == "Plants" || $data['Category'] == "Tools") {
-                if (!empty($data['Expiry_date'])) {
-                    $data['Invalid_date_err'] = 'Not Valid';
-                }
-            }
+            // if ($data['Category'] == "Plants" || $data['Category'] == "Tools") {
+            //     if (!empty($data['Expiry_date'])) {
+            //         $data['Invalid_date_err'] = 'Not Valid';
+            //     }
+            // }
 
 
 
@@ -213,7 +213,7 @@ class Seller_post extends Controller
             // }
             // $result = $this->sellerModel->create_post($data);
 
-            if (empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err']) && empty($data['stock_err']) && empty($data['Expiry_date_err']) && empty($data['Invalid_date_err']) && empty($data['Unit_type_err']) && empty($data['Unit_price_err']) && empty($data['Stock_size_err'])  &&  empty($data['Image_err']) && empty($data['Unit_size_err']) ) {
+            if (empty($data['Item_name_err']) && empty($data['DeliveryMethod_err']) && empty($data['Category_err']) && empty($data['stock_err']) && empty($data['Expiry_date_err'])  && empty($data['Unit_type_err']) && empty($data['Unit_price_err']) && empty($data['Stock_size_err'])  &&  empty($data['Image_err']) && empty($data['Unit_size_err']) ) {
 
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/seller/'));
                 // if (($result == 1  )){

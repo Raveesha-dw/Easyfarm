@@ -128,20 +128,76 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
 
                     <br><br>
-                   
-                    <div class="sdate">
 
-                         <span class="invalid"><?php echo isset($data['Invalid_date_err']) ? $data['Invalid_date_err'] : ''; ?></span>
-
-                    <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
-                    <br>
+                    <!-- Your HTML content -->
+                    <div class="sdate" id="datt">
+                        <span class="invalid"><?php echo isset($data['Invalid_date_err']) ? $data['Invalid_date_err'] : ''; ?></span>
+                        <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
+                        <br>
                         <b>Expiry Date</b>
+                        
                         <br>
                         <!-- Input field for selecting the expiry date -->
-                        <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expire date" value="<?php echo htmlspecialchars($selectedExpiryDate); ?>">
-                        <!-- Error message for expiry date -->
-                        <!-- Error message for invalid date -->
+                        <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expiry date" value="<?php echo htmlspecialchars($selectedExpiryDate); ?>">
                     </div>
+                    <script>
+                            var date = new Date();
+                            var tdate = date.getDate();
+                            var month = date.getMonth() + 1; //4
+                            if (tdate < 10) {
+                                tdate = '0' + tdate;
+                            }
+                            if (month < 10) {
+                                month = '0' + month; //0 + 4=4
+                            }
+                            var year = date.getFullYear();
+                            var minDate = year + "-" + month + "-" + tdate;
+                            document.getElementById("s_date").setAttribute('min', minDate);
+                            // console.log(minDate);
+                        </script>
+                      
+
+                    <!-- Your JavaScript -->
+                    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+                    <script>
+                        $(document).ready(function() {
+                            // Define the category data obtained from PHP
+                            var categoryData = <?php echo json_encode(array_values($data)); ?>;
+
+                            // Function to show or hide the expiry date input based on the selected category
+                            function showDate(selectedCategory) {
+                                // Find the selected category data in the array
+                                var selectedCategoryData = categoryData.find(function(category) {
+                                    return category.category === selectedCategory;
+                                });
+
+                                // Check if the selected category data exists
+                                if (selectedCategoryData) {
+                                    // Check the delivery method of the selected category
+                                    var datee = selectedCategoryData.date;
+                                    if (datee === 'yes') {
+                                        // Show expiry date input
+                                        $('#datt').show();
+                                    } else {
+                                        // Hide expiry date input
+                                        $('#datt').hide();
+                                       
+                                    }
+                                }
+                            }
+
+                            // Event listener for the category dropdown change
+                            $("#sCategory").on('change', function() {
+                                var selectedCategory = $(this).val();
+                                showDate(selectedCategory);
+                            });
+
+                            // Initialize the expiry date input based on the default selected category
+                            var defaultCategory = $("#sCategory").val();
+                            showDate(defaultCategory);
+                        });
+                    </script>
+
 
 
 
@@ -154,7 +210,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <span class="invalid"><?php echo isset($data['Description_err']) ? $data['Description_err'] : ''; ?></span>
 
                         <label for="additionalReason"><b>Description</b></label>
-                       <textarea id="additionalReason" name="Description" rows="4" placeholder="Enter Description" required><?php echo $data['Description']; ?></textarea>
+                        <textarea id="additionalReason" name="Description" rows="4" placeholder="Enter Description" required><?php echo $data['Description']; ?></textarea>
 
                     </div>
 
@@ -189,7 +245,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
 
 
-                    
+
 
                     <br>
 
@@ -218,21 +274,21 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                     </div> -->
 
 
-      <div class="delivery-options" id="deliveryOptions">
-        
-      <span class="invalid"><?php echo isset($data['DeliveryMethod_err']) ? $data['DeliveryMethod_err'] : ''; ?></span><br>
-      <br><br>
-    <b>Delivery Method<span class="requiredd"></span></b>
-    <br><br>
-    <div class="option" id="Home_Delivery">
-        <input type="checkbox"  name="Home_Delivery" value="Home-Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home-Delivery') ? 'checked' : ''; ?>>
-        <label for="Home_Delivery">Home-Delivery</label>
-    </div>
-    <div class="option" id="Instore_Pickup">
-        <input type="checkbox"  name="Insto_Pickup" value="Instore Pickup" <?php echo (isset($_POST['Insto_Pickup']) && $_POST['Insto_Pickup'] == 'Instore Pickup') ? 'checked' : ''; ?>>
-        <label for="Instore_Pickup">In-Store-Pickup</label>
-    </div>
-</div>
+                    <div class="delivery-options" id="deliveryOptions">
+
+                        <span class="invalid"><?php echo isset($data['DeliveryMethod_err']) ? $data['DeliveryMethod_err'] : ''; ?></span><br>
+                        <br><br>
+                        <b>Delivery Method<span class="requiredd"></span></b>
+                        <br><br>
+                        <div class="option" id="Home_Delivery">
+                            <input type="checkbox" name="Home_Delivery" value="Home-Delivery" <?php echo (isset($_POST['Home_Delivery']) && $_POST['Home_Delivery'] == 'Home-Delivery') ? 'checked' : ''; ?>>
+                            <label for="Home_Delivery">Home-Delivery</label>
+                        </div>
+                        <div class="option" id="Instore_Pickup">
+                            <input type="checkbox" name="Insto_Pickup" value="Instore Pickup" <?php echo (isset($_POST['Insto_Pickup']) && $_POST['Insto_Pickup'] == 'Instore Pickup') ? 'checked' : ''; ?>>
+                            <label for="Instore_Pickup">In-Store-Pickup</label>
+                        </div>
+                    </div>
 
 
 
@@ -261,61 +317,49 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
 
 
-<script>
-    $(document).ready(function() {
-        // Define the category data obtained from PHP
-        var categoryData = <?php echo json_encode(array_values($data)); ?>;
+            <script>
+                $(document).ready(function() {
+                    // Define the category data obtained from PHP
+                    var categoryData = <?php echo json_encode(array_values($data)); ?>;
 
-        // Function to show delivery options based on the selected category
-        function showDeliveryOptions(selectedCategory) {
-            // Find the selected category data in the array
-            var selectedCategoryData = categoryData.find(function(category) {
-                return category.category === selectedCategory;
-            });
+                    // Function to show delivery options based on the selected category
+                    function showDeliveryOptions(selectedCategory) {
+                        // Find the selected category data in the array
+                        var selectedCategoryData = categoryData.find(function(category) {
+                            return category.category === selectedCategory;
+                        });
 
-            // Check if the selected category data exists
-            if (selectedCategoryData) {
-                // Check the delivery method of the selected category
-                var deliveryMethod = selectedCategoryData.delivery;
-                if (deliveryMethod === 'home_delivery') {
-                    // Show home delivery option
-                    $('#Home_Delivery').show();
-                    $('#Instore_Pickup').hide();
-                } else if (deliveryMethod === 'insto_pickup') {
-                    // Show in-store pickup option
-                    $('#Home_Delivery').hide();
-                    $('#Instore_Pickup').show();
-                } else if (deliveryMethod === 'both') {
-                    // Show both options
-                    $('#Home_Delivery').show();
-                    $('#Instore_Pickup').show();
-                }
-            }
-        }
+                        // Check if the selected category data exists
+                        if (selectedCategoryData) {
+                            // Check the delivery method of the selected category
+                            var deliveryMethod = selectedCategoryData.delivery;
+                            if (deliveryMethod === 'home_delivery') {
+                                // Show home delivery option
+                                $('#Home_Delivery').show();
+                                $('#Instore_Pickup').hide();
+                            } else if (deliveryMethod === 'insto_pickup') {
+                                // Show in-store pickup option
+                                $('#Home_Delivery').hide();
+                                $('#Instore_Pickup').show();
+                            } else if (deliveryMethod === 'both') {
+                                // Show both options
+                                $('#Home_Delivery').show();
+                                $('#Instore_Pickup').show();
+                            }
+                        }
+                    }
 
-        // Event listener for the category dropdown change
-        $("#sCategory").on('change', function() {
-            var selectedCategory = $(this).val();
-            showDeliveryOptions(selectedCategory);
-        });
+                    // Event listener for the category dropdown change
+                    $("#sCategory").on('change', function() {
+                        var selectedCategory = $(this).val();
+                        showDeliveryOptions(selectedCategory);
+                    });
 
-        // Initialize the delivery options based on the default selected category
-        var defaultCategory = $("#sCategory").val();
-        showDeliveryOptions(defaultCategory);
-    });
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
+                    // Initialize the delivery options based on the default selected category
+                    var defaultCategory = $("#sCategory").val();
+                    showDeliveryOptions(defaultCategory);
+                });
+            </script>
 
 
 

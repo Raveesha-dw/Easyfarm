@@ -34,7 +34,7 @@
                      <td><?php echo $count; ?></td>
                     <td> <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $product->Image; ?>"/> </td>
                     <td><?php echo $product->Item_name ?></td>
-                    <td><?php echo $product->Stock_size ?></td>
+                    <td><?php echo $product->remainingStock ?></td>
                     <td><?php echo $product->Expiry_date ?></td>
                 </tr>
             <?php $count++;
