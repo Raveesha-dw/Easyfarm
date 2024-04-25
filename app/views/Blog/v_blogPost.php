@@ -124,7 +124,7 @@
                             <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_ID'];?>">
                             <input type="hidden" name="post_id" value="<?php echo $post->post_id;?>">
                             <input type="hidden" name="datetime_posted" value="<?php echo date('Y-m-d H:i:s');?>">
-                            <textarea name="question" id="question" cols="100" rows="4" placeholder="Write a comment..."></textarea>
+                            <textarea name="question" id="question" cols="100" rows="4" placeholder="Write your question..."></textarea>
                             <br>
                             <button class="btn" type="submit">Ask Question</button>
                         </form>
@@ -144,9 +144,9 @@
                 <!-- Question card -->
                 <div class="comment-card"> 
                     <p>
-                        <b><?php echo $inquiry->userName;?></b> asks, <br><br>
+                        <b><?php echo $inquiry->userName;?></b> <?php echo ($inquiry->userType != 'AgricultureExpert') ? 'asks,' : 'comments,'; ?> <br><br>
                         <?php echo $inquiry->question;?> <br><br>
-                        <i><?php echo $inquiry->datetime_last_edited;?></i><br>
+                        <i>on <?php echo $inquiry->datetime_last_edited;?></i><br>
                     </p>
 
                     <!-- Answer -->
@@ -154,10 +154,10 @@
                         if($inquiry->answer){
                     ?>
                         <div class="comment-card">
-                            <b><?php echo $sellerDetails->Name;?></b> replies, <br><br>
+                            <b><?php echo $sellerDetails->Name;?></b> answers, <br><br>
                             <!-- <span><b>Agri Instructor</b> replies,<br></span> -->
                             <?php echo $inquiry->answer;?> <br><br>
-                            <i><?php echo $inquiry->answer_datetime_edited;?></i>
+                            <i>on <?php echo $inquiry->answer_datetime_edited;?></i>
                             <?php
                                 if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'AgricultureExpert'){
                             ?>
@@ -188,7 +188,9 @@
                         }
 
                         if(isset($_SESSION['user_ID'])){
-                            if($_SESSION['user_type'] == 'Buyer'){
+
+                            //If the logged in user is the person who has asked the question he/she can edit/delete it
+                            if($_SESSION['user_ID'] == $inquiry->user_id){
                     ?>
                                 <!-- Edit Question -->
                                 <button class="comment-edit-btn display-0 display-1">Edit</button>
@@ -212,20 +214,22 @@
                     <?php            
                             }
 
-                            // If the logged in user is the agri nstructor who posted the article, he/she can reply
-                            if($_SESSION['user_type'] == 'AgricultureExpert' && empty($inquiry->answer)){
+                            // Any agri instructor can reply to questions, but there is no reply option for comments posted by agri instructors
+                            if($_SESSION['user_type'] == 'AgricultureExpert' && $inquiry->userType != 'AgricultureExpert' && empty($inquiry->answer)){
                     ?>
                                 <!-- Answer Question -->
-                                <button class="btn btn-answer display-0 display-1">Answer</button>
-                                <div class="edit-form display-0" style="display:none;">
-                                    <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
-                                        <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                        <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
-                                        <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <textarea name="answer" cols="100" rows="4"></textarea><br><br><br>
-                                        <button class="btn btn-save" type="submit">Answer</button>
-                                    </form>
-                                    <button class="btn btn-cancel display-1">Cancel</button>
+                                <div class="display-answer-form">
+                                    <button class="btn btn-answer display-answer-0 display-answer-1">Answer</button>
+                                    <div class="edit-form display-answer-0" style="display:none;">
+                                        <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
+                                            <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                            <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
+                                            <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                            <textarea name="answer" cols="100" rows="4" placeholder="Write answer..."></textarea><br><br><br>
+                                            <button class="btn btn-save" type="submit">Answer</button>
+                                        </form>
+                                        <button class="btn btn-cancel display-answer-1">Cancel</button>
+                                    </div>
                                 </div>
                     <?php            
                             }
@@ -273,6 +277,13 @@
         $(".display-1").on("click", function () {
             var commentDiv = $(this).closest(".comment-card");
             commentDiv.find(".display-0").toggle();
+        });
+    });
+
+    $(document).ready(function () {
+        $(".display-answer-1").on("click", function () {
+            var commentDiv = $(this).closest(".display-answer-form");
+            commentDiv.find(".display-answer-0").toggle();
         });
     });
 

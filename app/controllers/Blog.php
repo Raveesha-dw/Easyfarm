@@ -28,6 +28,8 @@ class Blog extends Controller{
                 $user_id = $comment->user_id;
                 $userType = $this->blogModel->getUserType($user_id);
                 $userName = $this->blogModel->getUserName($user_id, $userType);
+                
+                $comment->userType = $userType;
                 $comment->userName = $userName;
             endforeach;
 
@@ -167,10 +169,12 @@ class Blog extends Controller{
                         flash('question_publish_success', 'Your question has been published successfully!');
                         redirect('/Blog/post?id=' . $data['post_id']);
                     }else{
-                        $this->view('Blog/v_blogPost', $data);
+                        redirect('/Blog/post?id=' . $data['post_id']);
+                        // $this->view('Blog/v_blogPost', $data);
                     }
                 }else{
-                    $this->view('Blog/v_blogPost', $data);
+                    redirect('/Blog/post?id=' . $data['post_id']);
+                    // $this->view('Blog/v_blogPost', $data);
                 }
             }
         }
