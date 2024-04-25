@@ -304,11 +304,11 @@ endforeach;
         <h4>Delivery Method:</h4><br>
 <div class="deliverymethod">
 
-        <?php if ($productDetails->DeliveryMethod == "Home Delivery"): ?>
+        <?php if ($productDetails->DeliveryMethod == "Home-Delivery"): ?>
 
                 <div>
-                <input type="radio" id="homedelivery" name="delivery" value="Home Delivery" oninput="updateHiddenDelivery()"  />
-                <label for="homedelivery">Home Delivery</label>
+                <input type="radio" id="homedelivery" name="delivery" value="Home-Delivery" oninput="updateHiddenDelivery()"  />
+                <label for="homedelivery">Home-Delivery</label>
             </div>
 
         <?php elseif ($productDetails->DeliveryMethod == "Insto Pickup"): ?>
@@ -318,10 +318,10 @@ endforeach;
                 <label for="instorepick">In-Store-Pickup</label>
                 </div>
 
-        <?php elseif ($productDetails->DeliveryMethod == "Home Delivery, Insto Pickup"): ?>
+        <?php elseif ($productDetails->DeliveryMethod == "Home-Delivery, Insto Pickup"): ?>
             <div>
-                <input type="radio" id="homedelivery" name="delivery" value="Home Delivery" oninput="updateHiddenDelivery()"  />
-                <label for="homedelivery">Home Delivery</label>
+                <input type="radio" id="homedelivery" name="delivery" value="Home-Delivery" oninput="updateHiddenDelivery()"  />
+                <label for="homedelivery">Home-Delivery</label>
             </div>
             <div>
                 <input type="radio" id="instorepick" name="delivery" value="In-Store-Pickup" oninput="updateHiddenDelivery()"/>
