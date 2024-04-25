@@ -61,34 +61,32 @@ class M_review{
         $ratings = $this->db->resultSet();
         // print_r($ratings);
         // echo 'whyy';
-        $ratingCount = [
-            '5' => 0,
-            '4' => 0,
-            '3' => 0,
-            '2' => 0,
-            '1' => 0
-        ];
-        $totalRatings = 0;
-
+         $totalRatings = 0;
         foreach($ratings as $rating){
-            $value = $rating->Rating;
-            if($value >=1 && $value <=5){
-                $ratingCount[$value]++;
-                $totalRatings++;
-            }
+            $totalRatings += $rating->Rating;
         }
+       
 
-        $overall =0;
-        if($totalRatings >0){
-            $sum =0;
-            foreach($ratingCount as $rating => $count){
-                $sum += $rating * $count;
-            }
-            $overall = (float)$sum / $totalRatings;
-        }
+        // foreach($ratings as $rating){
+        //     $value = $rating->Rating;
+        //     if($value >=1 && $value <=5){
+        //         $ratingCount[$value]++;
+        //         $totalRatings++;
+        //     }
+        // }
+        $count = count($ratings);
+
+        $overall = ($totalRatings / $count)*10;
+        // if($totalRatings >0){
+        //     $sum =0;
+        //     foreach($ratingCount as $rating => $count){
+        //         $sum += $rating * $count;
+        //     }
+        //     $overall = (float)$sum / $totalRatings;
+        // }
 
         return [
-            'ratingCount' => $ratingCount,
+            'ratingCount' => $count,
             'overall' => $overall
         ];
     }

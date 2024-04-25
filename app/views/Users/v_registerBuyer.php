@@ -47,10 +47,24 @@
         </div>
 
         <p class="type">Province (Of Residence) *</p>
-        <div class="input-box">
+        <!-- <div class="input-box">
             <input type="text" name="province" placeholder="Enter province " required value="<?php echo $data['province']; ?>">
             <i class='fa-solid fa-map-location-dot' ></i>
             <span class="invalid"><?php echo $data['province_err']; ?></span>
+        </div> -->
+        <div>
+
+        <select name="province" id="province" required>
+            <option value="" disabled selected>Select a Province</option>
+            <option value="Western" <?php echo ($data['province'] == 'Western') ? 'selected' : ''; ?>>Western</option>
+            <option value="Southern" <?php echo ($data['province'] == 'Southern') ? 'selected' : ''; ?>>Southern</option>
+            <option value="Central" <?php echo ($data['province'] == 'Central') ? 'selected' : ''; ?>>Central</option>
+            <option value="Eastern" <?php echo ($data['province'] == 'Eastern') ? 'selected' : ''; ?>>Eastern</option>
+            <option value="Northern" <?php echo ($data['province'] == 'Northern') ? 'selected' : ''; ?>>Northern</option>
+            <option value="Sabaragamuwa" <?php echo ($data['province'] == 'Sabaragamuwa') ? 'selected' : ''; ?>>Sabaragamuwa</option>
+            <option value="North Central" <?php echo ($data['province'] == 'North Central') ? 'selected' : ''; ?>>North Central</option>
+        
+        </select><i class='bx bxs-edit-location'></i>
         </div>
 
         <p class="type">Password *</p>

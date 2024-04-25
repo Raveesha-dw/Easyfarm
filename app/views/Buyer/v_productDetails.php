@@ -8,7 +8,7 @@ $productDetails = $data['productInfo'];
 
 $sellerDetails = $data['sellerInfo'];
 $productReviews = $data['itemReviews'];
-// print_r($productReviews);
+$productRatings = $data['itemRating'];
 $inquiries = $data['inquiries'];
 
 ?>
@@ -29,10 +29,10 @@ $inquiries = $data['inquiries'];
             <br><br>
             <hr><br><br>
             <div class="flex-seller-name">
-            <span>Seller: <?php echo $sellerDetails->Store_Name ?> </span><br>
-            <span>Store Address :   <?php echo $sellerDetails->Store_Adress ?></span>
+          <large>  <span>Seller: <?php echo $sellerDetails->Store_Name ?> </span><br>
+            <span>Store Address :   <?php echo $sellerDetails->Store_Adress ?></span></large>
             <br><br>
-            <span><?php echo $productDetails->Description; ?></span>
+            <span> Description: <?php echo $productDetails->Description; ?></span>
                 
             </div>
 
@@ -62,13 +62,7 @@ $inquiries = $data['inquiries'];
         <p> <?php echo $productDetails->Description; ?>
         </p>
 
-        <ul class="custom-list2">
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-        </ul>
+        
 </section> -->
 
 <!-- Product Reviews -->
@@ -77,44 +71,13 @@ $inquiries = $data['inquiries'];
         <h3>Product Ratings</h3>
         <hr>
         <div class="rating">
-            <div class="rating-title">Overall Rating</div>
-            <div class="stars">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
+            <div>
+            <p><medium>Overall Rating: <?php echo $productRatings['overall'];?>% (<?php echo $productRatings['ratingCount'] ?>)</medium></p>
             </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 80%;"></div>
-                </div>
-                <div class="bar-label">5 Stars (80%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 15%;"></div>
-                </div>
-                <div class="bar-label">4 Stars (15%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 5%;"></div>
-                </div>
-                <div class="bar-label">3 Stars (5%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 0%;"></div>
-                </div>
-                <div class="bar-label">2 Stars (0%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 0%;"></div>
-                </div>
-                <div class="bar-label">1 Star (0%)</div>
-            </div>
+            
+            
+            
+            
         </div>
 
         

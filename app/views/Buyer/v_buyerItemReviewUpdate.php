@@ -1,51 +1,44 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
+
 <section id="productDetails" class="section-p1">
-<div class="review-card">
+<div class="review-card" style="display: grid; place-items: center;">
 <?php
-// echo $data['item_id'];
-
-$editReview = $data['editReview'];
-// echo $editReview->Item_name;
+// print_r($data);
+$edit = $data['editReview'];
 ?>
+<h3>Item : <?php echo $data['editReview']->Item_name; ?></h3>
 
-<h2><?php echo $editReview->Item_name; ?></h2>
 
-<form action="<?php echo URLROOT ?>/Review/editReview" method="post">
-        <div>
-            <input type="hidden" name="review_ID" value="<?php echo $editReview->review_ID ?>">
+
+<form action="<?php echo URLROOT ?>/Review/editReview" method="post" id="rating-form">
+          <input type="hidden" name="review_ID" value="<?php echo $edit->review_ID ?>">
             <input type="hidden" name="user_ID" value="<?php echo $_SESSION['user_ID']; ?>">
-            <input type="hidden" name="item_ID" value="<?php echo $editReview->item_ID;?>">
-            <input type="hidden" name="item_name" value="<?php echo $editReview->Item_name;?>">
-            
+            <input type="hidden" name="item_ID" value="<?php echo $data['editReview']->item_id; ?>">
+            <input type="hidden" name="item_name" value="<?php echo $data['editReview']->Item_name; ?>">
+            <!-- <input type="hidden" name="item_name" value="<?php echo $data['item_name']; ?>"> -->
+        
+      
+<div class="rating-container">
+        <div class="rating">
+          <label for="rating"><medium>How likely are you to recomment this product to others?</medium></label><br>
+            <input type="hidden" id="rating-value" name="rating" value="0">
+
+            <?php for ($i = 1; $i <= 10; $i++) { ?>
+            <div class="number-label">
+                <span class="number" data-value="<?php echo $i; ?>" style="color: <?php echo $i <= 7 ? 'red' : 'green'; ?>"><?php echo $i; ?></span>
+                <!-- <span class="number" data-value="<?php echo $i; ?>" onclick="highlightRating(this)" style="color: <?php echo $i <= 7 ? 'red' : 'green'; ?>"><?php echo $i; ?></span> -->
+            </div>
+           <?php } ?>
+
         </div>
+</div>
 
-        <!-- <div class="rating-part">
-        <label for="rating">Rating:</label>
-        <select id="rating" name="rating">
-            <option value="5">5 - Excellent</option>
-            <option value="4">4 - Very Good</option>
-            <option value="3">3 - Good</option>
-            <option value="2">2 - Fair</option>
-            <option value="1">1 - Poor</option>
-        </select><br><br>
-    </div> -->
-
-  
-  <div class="rating">
-    <input type="radio" id="star5" name="rating" value="5" /><span><label for="star5" title="5 stars">&#9734;</label></span>
-    <input type="radio" id="star4" name="rating" value="4" /><span><label for="star4" title="4 stars">&#9734;</label></span>
-    <input type="radio" id="star3" name="rating" value="3" /><span><label for="star3" title="3 stars">&#9734;</label></span>
-    <input type="radio" id="star2" name="rating" value="2" /><span><label for="star2" title="2 stars">&#9734;</label></span>
-    <input type="radio" id="star1" name="rating" value="1" /><span><label for="star1" title="1 star">&#9734;</label></span>
-  </div>
-
-
-    
+       <label for="rating" style="align-items: center;"><medium>Share your thoughts about the product: </medium></label><br> 
     <div class="review-part">
-    <label for="review">Review:</label><br>
-    <textarea id="review" name="review" rows="4" cols="50" required></textarea><br><br>
+    
+    <textarea id="review" name="review" rows="4" cols="50" ></textarea><br><br>
     </div>
 
     <div>
@@ -53,57 +46,93 @@ $editReview = $data['editReview'];
     <input type="hidden" name="review_time" value="<?php echo date('H:i:s'); ?>">
     </div>
 
-    <input type="submit" value="Update Review" style="padding: 8px; color: white; background-color:var(--dark-green)">
+    <!-- <input type="submit" value="Submit Review"> -->
+    <!-- <input type="submit" value="Post" style=" font-size:medium; background-color: var(--dark-green); color: #fff; border-radius: 25%; "> -->
+    <button type="button" onclick="submitReview()" style="align-items: center;">Post</button>
+
 </form>
 
-
+<!-- </div> -->
 </div>
 </section>
 
 <script>
 const ratingForm = document.getElementById('rating-form');
-const stars = ratingForm.querySelectorAll('span');
+const stars = ratingForm.querySelectorAll('.number');
 
 for (const star of stars) {
-  star.addEventListener('click', setRating);
+  star.addEventListener('click', selectRating);
+}
+
+function selectRating(event) {
+  const clickedStar = event.target;
+  const rating = parseInt(clickedStar.dataset.value);
+  document.getElementById('rating-value').value = rating;
+
+  // Highlight the selected star and unhighlight others
+  stars.forEach(star => {
+    if (star.dataset.value <= rating) {
+      star.style.color = rating <= 7 ? 'red' : 'green';
+    } else {
+      star.style.color = '';
+    }
+  });
+}
+
+function submitReview() {
+  const reviewTextarea = document.getElementById('review');
+  const review = reviewTextarea.value.trim();
+  const rating = document.getElementById('rating-value').value;
+
+  // Check if a review is entered
+  if (review === '') {
+    alert('Please enter your review before submitting.');
+    return;
+  }
+
+  // Submit the form
+  ratingForm.submit();
+}
+</script>
+
+<!-- <script>
+const ratingForm = document.getElementById('rating-form');
+const stars = ratingForm.querySelectorAll('input[type="radio"]');
+
+for (const star of stars) {
+  star.addEventListener('change', setRating);
 }
 
 function setRating(event) {
   const clickedStar = event.target;
-  const rating = clickedStar.parentElement.querySelector('input').value;
+  const rating = clickedStar.value;
   console.log('User rated:', rating);
-  // You can send this rating to your backend or do any other action with it.
 
+  // Highlight and unhighlight stars
+  highlightStars(rating);
 
-const data = {
-    rating: rating
-  };
+  // Add a hidden input field to the form with the selected rating value
+  const ratingInput = document.createElement('input');
+  ratingInput.type = 'hidden';
+  ratingInput.name = 'rating'; // Name of the input field
+  ratingInput.value = rating;
+  ratingForm.appendChild(ratingInput);
 
-  
-  fetch('<?php echo URLROOT?>/Review/postReview', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (response.ok) {
-      console.log('Rating submitted successfully');
-   
-    } else {
-      console.error('Rating submission failed');
-      
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    // Optionally, handle errors here
-  });
-
+  // Submit the form
+  ratingForm.submit();
 }
 
-</script>
+function highlightStars(rating) {
+  const labels = ratingForm.querySelectorAll('label');
+  labels.forEach((label, index) => {
+    if (index < rating) {
+      label.classList.add('selected');
+    } else {
+      label.classList.remove('selected');
+    }
+  });
+}
+</script> -->
 
 
 

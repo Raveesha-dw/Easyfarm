@@ -1,8 +1,9 @@
 .section-p1 {
     background-color: white; /* Replace with your desired background color */
-    padding: 20px;/* Add padding for spacing inside the section */
+    padding: 10px;/* Add padding for spacing inside the section */
     width: 80%; /* Adjust the width as needed (percentage or px) */
     margin: 0 auto;
+    /* height: 80%; */
 }
 
 .section-p1 h2{
@@ -31,6 +32,15 @@
     width: 80%; /* Adjust the width as needed (percentage or px) */
     margin: 20px auto;
     font-size: 18px;
+}
+
+.section-p5 {
+    background-color: white; /* Replace with your desired background color */
+    padding: 40px;
+    width: 80%; /* Adjust the width as needed (percentage or px) */
+    margin: 20px auto;
+    /* font-size: 18px; */
+    height: max-content;
 }
 
 #productDetails .single-pro-image{

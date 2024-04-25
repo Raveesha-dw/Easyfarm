@@ -8,10 +8,12 @@ class Pages extends Controller{
     public function index(){
         
         $products = $this->productModel->getAllProducts();
+        $categories = $this->productModel->getAllCategories();
 
         $data = [
             'title' => 'Easyfarm',
-            'product_all' => $products
+            'product_all' => $products,
+            'categories' => $categories
         ];
         
         $this->view('pages/home', $data);

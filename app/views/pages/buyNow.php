@@ -7,16 +7,16 @@
 
         <!-- <?php print_r($data);?> -->
 
-        <div class="box">
-            <div class="wrapperBuyNow_sub">
-                    <p><b> Delivered to :</b></p>
-                    <p> <?php echo $data[0]['Name']; ?></p>
-                    <p> <?php echo $data[0]['Contact_num']; ?> </p>
-                    <p> <?php echo $data[0]['Address']; ?>
-                        <a class="open-button" onclick="openForm()" > Change </a>
-                    </p>
-                    <p> Email to <?php echo $data[0]['Email']; ?></p>
-                </div>
+                <div class="box">
+                    <div class="wrapperBuyNow_sub">
+                            <p><b> Delivered to :</b></p><br>
+                            <p>Name:  <b><?php echo $data[0]['Name']; ?></b></p>
+                            <p>Contact Number: <b><?php echo $data[0]['Contact_num']; ?></b> </p>
+                            <p>Address: <b><?php echo $data[0]['Address']; ?></b>
+                                <a class="open-button" onclick="openForm()" > Change </a>
+                            </p>
+                            <p>Email: <b><?php echo $data[0]['Email']; ?></b></p>
+                        </div>
 
             </div>
 
@@ -119,16 +119,18 @@
 
 	                            <br><h3><strong>Home-Delivery </strong></h3>
 
-	                            <div class="wrapperBuyNow_sub">
-                    
-                                <section id="productDetails" class="section-p1">
-                                    
-                                <p><b> <?php echo $data['Item_name']; ?></b></p><br><br>
-                                    <div class="row">
-                                            <div class="single-pro-image">
-                                                <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $data['Image'] ?>" width="100%" id="MainImg" alt="">
-                                        </div>
-                                    </div>
+                        <div class="wrapperBuyNow_sub">
+                        <p><b>Item:  <?php echo $data['Item_name']; ?></b></p><br>
+                        <!-- <section id="productDetails" class="section-p1"> -->
+                            <div class="row">
+                                <!-- <div class="column1" > -->
+                                    <div class="single-pro-image">
+                                        <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" width="100%" id="MainImg" alt="">  -->
+                                        <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $data['Image']?>" width="100%" id="MainImg" alt=""> 
+                                        
+                                    <!-- </div> -->
+                                </div>
+                            </div>
 
 	                                <div class="row">
 	                                    <div class="column1" >
@@ -139,27 +141,25 @@
 	                                    </div>
 	                                </div>
 
-	                                <div class="row">
-	                                    <div class="column1" >
-	                                        <p>Unit Price</p>
-	                                    </div>
-	                                    <div class="column2" >
-	                                        <p><b><small>LKR </small></b> <?php echo number_format($data['Unit_price'], 2) ?> / <?php echo $data['Unit_size'] ?> <?php echo $data['Unit_type'] ?> </p>
-	                                    </div>
-	                                </div>
-
-	                                <br>
-
-	                                 <div class="row">
-	                                    <div class="column1" >
-	                                        <p>Amount for Quantity</p>
-	                                    </div>
-	                                    <div class="column2" >
-	                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
-	                                    </div>
-	                                </div>
-	                            </section>
-	                        </div>
+                                <div class="row">
+                                    <div class="column1" >
+                                        <p>Unit Price</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p><b><small>LKR </small></b> <?php echo number_format($data['Unit_price'],2)?> / <?php echo $data['Unit_size']?> <?php echo $data['Unit_type']?> </p>
+                                    </div>
+                                </div>
+                                <br>
+                                 <div class="row">
+                                    <div class="column1" >
+                                        <p>Amount for Quantity</p>
+                                    </div>
+                                    <div class="column2" >
+                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
+                                    </div>
+                                </div>
+                            <!-- </section>        -->
+                        </div>
 
 	                        <?php
                                 $deliFee = $deliFee + $data['deliveryFee'];

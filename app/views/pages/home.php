@@ -8,41 +8,21 @@
     <section class="menu">
         <div class="container">
             <h2 class="title">Featured Categories</h2>
-       
+
             <div class="menu-container">
+            <?php 
+            foreach ($data['categories'] as $category){ ?>
+
                 <div class="card">
-                    <i class="fas fa-carrot"></i>
-                    <h3><a href="<?php echo URLROOT ?>/Product/productVeg">Vegetables</a></h3>
+                    <i class="<?php echo $category->icon ?>"></i>
+                    <h3><a href="<?php echo URLROOT ?>/Product/productCategory/<?php echo $category->category ?>"><?php echo $category->category ?></a></h3>
                 </div>
-                <div class="card">
-                    <i class="fas fa-apple-alt"></i>
-                    <h3><a href="<?php echo URLROOT ?>/Product/productFruit">Fruits</a></h3>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-wheat-awn"></i>
-                    <h3><a href="<?php echo URLROOT ?>/Product/productGrains">Grains</a></h3>
-                </div>
-                <div class="card">
-                    <i class="fas fas fa-seedling"></i>
-                    <h3><a href="<?php echo URLROOT ?>/Product/productPlantsSeeds">Plants & Seeds</a></h3>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-sun-plant-wilt"></i>
-                    <h3><a href="<?php echo URLROOT ?>/Product/productFertilizer"> Fertilizers </a></h3>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-bug-slash"></i>
-                    <h3><a href="<?php echo URLROOT ?>/Product/productInsecticides">Insecticides</a></h3>
-                </div>
-                <!-- <div class="card">
-                    <i class="fa-solid fa-tractor"></i>
-                    <h3>Farming Vehicles</h3>
-                </div> -->
-                <div class="card">
-                    <i class="fa-solid fa-trowel"></i>
-                    <h3>Tools & Machinery</h3>
-                </div>
+
+           <?php }
+            ?>
             </div>
+
+          
         </div>
     </section>
 
@@ -60,37 +40,35 @@
 
 
       
-        <?php
-        if (isset($data['search']) && is_array($data['search'])) { ?>
-            <h2><strong>Search Results...</strong></h2>
-            <?php
+        <!-- <?php
+        if (isset($data['search']) && is_array($data['search'])) { ?> -->
+            <!-- <h2><strong>Search Results...</strong></h2> -->
+            <!-- <?php
             foreach ($data['search'] as $result) :
-            ?>
+            ?> -->
 
 
-                <a href="<?php echo URLROOT ?>/Product/ProductPage/<?php echo $result->Item_Id ?>">
+                <!-- <a href="<?php echo URLROOT ?>/Product/ProductPage/<?php echo $result->Item_Id ?>">
                     <div class="product-container">
                         <div class="product">
-                            <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $result->Image ?>" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $result->Image ?>" alt=""> -->
                             <!-- <?php echo $result->Image ?> -->
-                            <div class="product-description">
+                            <!-- <div class="product-description">
                                 <h3><?php echo $result->Item_name ?></h3>
                                 <p>Rs. <?php echo $result->Unit_price ?></p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
+                    
 
-                </a>
+                </a> -->
 
-        <?php
+        <!-- <?php
             endforeach;
-        }
-        // else{
-        //     echo 'No search results available.';
-        // }
-        ?>
+        }   
+       
+        ?> -->
         <hr>
     </section>
 
@@ -131,7 +109,7 @@
                             <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $product->Image; ?>" />
 
                             <div class="product-description">
-                                <h3><?php echo $product->Item_name ?>...</h3>
+                                <h3><?php echo $product->Item_name ?>...</h3><br>
                                 <!-- <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
