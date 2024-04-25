@@ -30,26 +30,6 @@ class M_agriInstructor{
         return $result;
     }
 
-    public function getUnansweredQuestionsByAuthor($author_id){
-        $this->db->query("SELECT c.question, p.title, p.post_id, c.datetime_last_edited,
-                            CASE
-                                WHEN u.User_type = 'Buyer' THEN (SELECT Name FROM reg_buyer WHERE U_Id = c.user_id)
-                                WHEN u.User_type = 'Seller' THEN (SELECT Name FROM reg_seller WHERE U_Id = c.user_id)
-                                WHEN u.User_type = 'AgricultureExpert' THEN (SELECT Name FROM reg_agriinstructor WHERE U_Id = c.user_id)
-                                WHEN u.User_type = 'VehicleRenter' THEN (SELECT Name FROM reg_vehicleowner WHERE U_Id = c.user_id)
-                                WHEN u.User_type = 'Admin' THEN ('Admin')
-                                ELSE CONCAT('User #', c.user_id)
-                            END AS userName
-                            FROM blog_comment c
-                            INNER JOIN user u ON c.user_id = u.U_Id
-                            INNER JOIN blog_post p ON c.post_id = p.post_id
-                            WHERE p.author_id = :author_id AND c.answer IS NULL
-                        ");
-        $this->db->bind(':author_id', $author_id);
-        $result = $this->db->resultSet();
-        return $result;
-    }
-
     public function getCategories(){
         $this->db->query("SELECT * FROM blog_category");
         $categories = $this->db->resultSet();
