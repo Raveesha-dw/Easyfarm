@@ -15,10 +15,52 @@ $current_page = $_SERVER['REQUEST_URI'];
                 </div>
                 <div class="nav-parts">
 
-                    <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
-                        <div class="search-container" style="display: flex;">
-                            <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product..." style="flex: 1; margin-right: 5px;">
-                            <button type="submit" class="search-button">Search</button>
+
+                <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+                    <div class="search-container" style="display: flex;">
+                        <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product..." style="flex: 1; margin-right: 5px;">
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="nav-parts">
+            </div>
+
+
+
+
+               <div class="nav-parts">
+                    <a href="<?php echo URLROOT ?>/Pages/index">Marketplace</a>
+                </div>
+
+                <div class="nav-parts">
+                    <a href="<?php echo URLROOT ?>/Blog">Blog</a>
+                </div>
+
+                <div class="nav-parts">
+                    <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Vehicle Renting</a>
+                    <!-- <a href ="" ><i class="fa-regular fa-bell"></i><span>17</span></a> -->
+                </div>
+
+
+
+            <!-- <div class="nav-parts">
+
+                <div class="s">
+
+                    <div class="icon" onclick="toggleNotifi()">
+                        <img src="\Easyfarm\public\images\pay\bell.png" alt=""> <span>17</span>
+                    </div>
+                    <div class="notifi-box" id="box">
+                        <h2>Notifications <span>17</span></h2>
+                        <div class="notifi-item">
+                            <img src="img/avatar1.png" alt="img">
+                            <div class="text">
+                                <h4>Elias Abdurrahman</h4>
+                                <p>@lorem ipsum dolor sit amet</p>
+                            </div>
                         </div>
 
                     </form>
@@ -43,10 +85,7 @@ $current_page = $_SERVER['REQUEST_URI'];
                         <a href="<?php echo URLROOT ?>/Pages/index">Forum</a>
                     </div> -->
 
-                <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Vehicle Renting</a>
-                    <!-- <a href ="" ><i class="fa-regular fa-bell"></i><span>17</span></a> -->
-                </div>
+      
 
 
 
@@ -148,10 +187,22 @@ $current_page = $_SERVER['REQUEST_URI'];
 
                                     <?php elseif ($_SESSION['user_type'] == 'VehicleRenter'): ?>
 
-                                        <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="sub-link-menu">
-                                            <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
-                                            <span>></span>
-                                        </a>
+                                    <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="sub-link-menu">
+                                        <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
+                                        <span></span>
+                                    </a>
+
+                                <?php elseif ($_SESSION['user_type'] == 'Admin'): ?>
+
+                                    <a href="<?php echo URLROOT ?>/Admin" class="sub-link-menu">
+                                        <h2><i class="fa-solid fa-gauge"></i>Admin Panel</h2>
+                                    </a>
+
+                                <?php elseif ($_SESSION['user_type'] == 'AgricultureExpert'): ?>
+
+                                    <a href="<?php echo URLROOT ?>/AgriInstructor" class="sub-link-menu">
+                                        <h2><i class="fa-solid fa-gauge"></i>Manege Blog</h2>
+                                    </a>
 
 
 
