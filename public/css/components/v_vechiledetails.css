@@ -18,8 +18,50 @@
 
 #vproductDetails {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10%;
     /* margin-bottom: 20px; */
+
+
+
+
+
+    background-color: white;
+  /* margin: 25px auto 0 auto; */
+  border: 5px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #333;
+  border-radius: 10px;
+  padding: 30px 40px;
+  margin-top: 150px;
+  width: max-content;
+}
+
+
+
+
+
+
+
+
+#vproductDetails----- {
+    display: flex;
+    margin-top: 10%;
+    /* margin-bottom: 20px; */
+
+
+
+
+
+    background-color: white;
+  margin: 25px auto 0 auto;
+  border: 5px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #333;
+  border-radius: 10px;
+  padding: 30px 40px;
+  min-height: 92%;
 }
 
 .wrapperCalendar2 {
@@ -36,6 +78,7 @@
     color: #333;
     border-radius: 10px;
     padding: 30px 40px;
+    margin-top: 25px;
   }
 
 
