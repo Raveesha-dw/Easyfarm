@@ -75,8 +75,12 @@ class M_review{
         //     }
         // }
         $count = count($ratings);
-
-        $overall = ($totalRatings / $count)*10;
+        if($count != 0){
+            $overall = ($totalRatings / $count)*10;
+        }else{
+            $overall = 0;
+        }
+        
         // if($totalRatings >0){
         //     $sum =0;
         //     foreach($ratingCount as $rating => $count){

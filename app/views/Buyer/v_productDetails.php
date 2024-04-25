@@ -72,7 +72,13 @@ $inquiries = $data['inquiries'];
         <hr>
         <div class="rating">
             <div>
-            <p><medium>Overall Rating: <?php echo $productRatings['overall'];?>% (<?php echo $productRatings['ratingCount'] ?>)</medium></p>
+            <?php 
+                if($productRatings['ratingCount'] != 0){ ?>
+            <p><medium>Overall Rating:
+                
+                 <?php echo $productRatings['overall'];?>% (<?php echo $productRatings['ratingCount'] ?>)
+              <?php  } ?>
+                </medium></p>
             </div>
             
             
