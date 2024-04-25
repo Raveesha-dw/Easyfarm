@@ -35,7 +35,8 @@
 .profileNavBar .header {
     background-color: white;
     color: var(--dark-green);
-    height: 100px; /* Set the height to the desired value */
+    /* ==================================================================================================== */
+    height: 70px; /* Set the height to the desired value */
     width: 100%; /* Ensure the header spans the entire width */
     padding: 20px 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
