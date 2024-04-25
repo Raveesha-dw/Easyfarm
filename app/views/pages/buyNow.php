@@ -115,9 +115,9 @@
 
 	                   <?php
 
-                            if ( $data['selectedDeliveryMethod'] == 'Home-Delivery'|| $data['selectedDeliveryMethod'] == 'Home' ) {?>
+                            if ($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery') {?>
 
-	                            <br><h3><strong>Home-Delivery </strong></h3>
+	                            <br><h3><strong>Home Delivery </strong></h3>
 
 	                            <div class="wrapperBuyNow_sub">
                     
@@ -198,7 +198,7 @@
                             // print_r($data);
                             ?>
 
-	                            <?php if ($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home-Delivery' || $data['selectedDeliveryMethod'] == 'Home' )) {?>
+	                            <?php if ($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home' || $data['selectedDeliveryMethod'] == 'Home Delivery')) {?>
 
                                     <br><h3><strong>In-Store Pickup </strong></h3>
 

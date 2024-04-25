@@ -32,7 +32,7 @@
 
                     <label for="deliveryMethod">Select Delivery Method:</label>
                     <select name="deliveryMethod" id="deliveryMethod" required>
-                        <option value="both">Home-Delivery & In-Store Pickup</option>
+                        <option value="both">Home Delivery & In-Store Pickup</option>
                         <option value="insto_pickup">In-Store Pickup Only</option>
                     </select>
 
@@ -61,7 +61,7 @@
                         <td><?php 
                                 switch($marketplaceCategory->delivery){
                                     case 'both':
-                                        echo 'Home-Delivery & In-Store Pickup';
+                                        echo 'Home Delivery & In-Store Pickup';
                                         break;
                                     case 'insto_pickup':
                                         echo 'In-Store Pickup Only';
@@ -88,7 +88,7 @@
                                             
                                             <label for="deliveryMethod">Select Delivery Method:</label>
                                             <select name="deliveryMethod" id="deliveryMethod" value="<?php echo $marketplaceCategory->delivery?>" required>
-                                                <option value="both" <?php if($marketplaceCategory->delivery == "both") echo "selected";?>>Home-Delivery & In-Store Pickup</option>
+                                                <option value="both" <?php if($marketplaceCategory->delivery == "both") echo "selected";?>>Home Delivery & In-Store Pickup</option>
                                                 <option value="insto_pickup" <?php if($marketplaceCategory->delivery == "insto_pickup") echo "selected";?>>In-Store Pickup Only</option>
                                             </select>
 

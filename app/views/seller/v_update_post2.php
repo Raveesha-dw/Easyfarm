@@ -149,7 +149,7 @@ $dat=$data;
                     <br>
                         <select name="DeliveryMethod" id="type1" value="<?php  print_r($data['DeliveryMethod']) ?>">
                         <span class="invalid"><?php if($data){echo $data['DeliveryMethod_err'];}  ?></span>
-                            <option value=13>Home-Delivery</option>
+                            <option value=13>Home Delivery</option>
                             <option value=14>Insto Pickup</option>
                             <option value=15>Both</option>
                             

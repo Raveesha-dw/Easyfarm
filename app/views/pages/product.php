@@ -33,7 +33,7 @@
            
                 <div>
                   <input type="radio" id="homedelivery" name="delivery" value="homedelivery" checked />
-                  <label for="homedelivery">Home-Delivery (+500LKR delivery charges may apply)</label>
+                  <label for="homedelivery">Home Delivery (+500LKR delivery charges may apply)</label>
                 </div>
               
                 <div>

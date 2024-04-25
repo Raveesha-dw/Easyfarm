@@ -217,18 +217,18 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                             <br><br>
 
                             <?php
-                            // Assuming $data['DeliveryMethod'] contains "Home-Delivery, Insto Pickup"
+                            // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
                             $deliveryMethods = explode(', ', $data['DeliveryMethod']);
 
-                            // in_array('Home-Delivery', $deliveryMethods): This function checks if the value 'Home-Delivery' exists in the array $deliveryMethods. If it does, it returns true; otherwise, it returns false
-                            $homeDeliveryChecked = in_array('Home-Delivery', $deliveryMethods) ? 'checked' : '';
+                            // in_array('Home Delivery', $deliveryMethods): This function checks if the value 'Home Delivery' exists in the array $deliveryMethods. If it does, it returns true; otherwise, it returns false
+                            $homeDeliveryChecked = in_array('Home Delivery', $deliveryMethods) ? 'checked' : '';
                             $instoPickupChecked = in_array('Insto Pickup', $deliveryMethods) ? 'checked' : '';
                             ?>
                             <!-- hideen value -->
 
                             <div id="Home_Delivery" style="<?php echo $homeDeliveryChecked ? '' : 'display:none;'; ?>">
-                                <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home-Delivery" <?php echo $homeDeliveryChecked; ?>>
-                                <label for="Home_Delivery">Home-Delivery</label>
+                                <input type="checkbox" id="Home_Delivery" name="Home_Delivery" value="Home Delivery" <?php echo $homeDeliveryChecked; ?>>
+                                <label for="Home_Delivery">Home Delivery</label>
                             </div>
 
                             <div id="Instore_Pickup" style="<?php echo $instoPickupChecked ? '' : 'display:none;'; ?>">
@@ -256,7 +256,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                         // Check the delivery method of the selected category
                                         var deliveryMethod = selectedCategoryData.delivery;
                                         if (deliveryMethod === 'home_delivery') {
-                                            // Show Home-Delivery option
+                                            // Show home delivery option
                                             $('#Home_Delivery').show();
                                             $('#Instore_Pickup').hide();
                                         } else if (deliveryMethod === 'insto_pickup') {

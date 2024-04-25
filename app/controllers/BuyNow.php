@@ -48,7 +48,7 @@ class BuyNow extends Controller{
                 //print_r($data); 
                 $data['S_ID'] = $this->deliveryModel->getSellerIDForItem($data['Item_Id']);
 
-                if($data['selectedDeliveryMethod'] == 'Home-Delivery'){
+                if($data['selectedDeliveryMethod'] == 'Home Delivery'){
         
                     if(isset($buyer_province)){
                         // $_SESSION['buyer_province'];
@@ -230,7 +230,7 @@ class BuyNow extends Controller{
 
 
 
-                if($data['selectedDeliveryMethod'] == 'Home-Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
+                if($data['selectedDeliveryMethod'] == 'Home Delivery' || $data['selectedDeliveryMethod'] == 'Home'){
                   
                     // if(isset($_SESSION['buyer_province'])){
                     if(isset($buyer_province)){
@@ -365,7 +365,7 @@ class BuyNow extends Controller{
 
                 
 
-                if($data['selectedDeliveryMethod'] == 'Home-Delivery'){
+                if($data['selectedDeliveryMethod'] == 'Home Delivery'){
 
 
                 }else{
