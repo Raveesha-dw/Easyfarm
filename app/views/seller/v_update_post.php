@@ -290,10 +290,12 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                         if (deliveryMethod === 'home_delivery') {
                                             // Show home delivery option
                                             $('#Home_Delivery').show();
-                                            $('#Instore_Pickup').hide();
+                                           $('#Insto_Pickup').hide().find(':checkbox').prop('checked', false);
+
                                         } else if (deliveryMethod === 'insto_pickup') {
                                             // Show in-store pickup option
-                                            $('#Home_Delivery').hide();
+                                            $('#Home_Delivery').hide().find(':checkbox').prop('checked', false);
+                                            // $('#Home_Delivery').hide();
                                             $('#Instore_Pickup').show();
                                             
                                         } else if (deliveryMethod === 'both') {
