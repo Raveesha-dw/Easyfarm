@@ -12,7 +12,7 @@
 <div class="right-content">
 
 <?php 
-print_r($data);
+// print_r($data);
 ?>
 <?php 
 $orders = $data['orders'];

@@ -185,8 +185,8 @@ width: 300px;
     /* margin-top: 15px; */
     border: 1px dashed #999;
     border-radius: 6px;
-    height: 200px;
-    width: 300px;
+    height: fit-content;
+    width: fit-content;
     
 }
 .Wrapper_Vehicle_Create_Post #create {
@@ -222,7 +222,7 @@ width: 300px;
 }
 .Wrapper_Vehicle_Create_Post .imgdelivery .image{
     /* margin-left: 150px; */
-    width: 45%;
+      width: 300px;
 }
 .Wrapper_Vehicle_Create_Post .imgdelivery .dropdown3{
     /* margin-left: 150px; */
@@ -300,7 +300,7 @@ width: 300px;
 /* Additional styling for buttons */
 .Wrapper_Vehicle_Create_Post button {
     background-color: #4CAF50; /* Green background color */
-    color: white; /* White text color */
+    color: black; /* White text color */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     padding: 10px 20px; /* Padding for better spacing */

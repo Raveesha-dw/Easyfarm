@@ -59,8 +59,8 @@ class M_review{
         $this->db->bind(':itemID', $itemID);
 
         $ratings = $this->db->resultSet();
-        print_r($ratings);
-        echo 'whyy';
+        // print_r($ratings);
+        // echo 'whyy';
         $ratingCount = [
             '5' => 0,
             '4' => 0,

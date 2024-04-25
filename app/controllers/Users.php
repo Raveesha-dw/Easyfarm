@@ -761,7 +761,7 @@ public function createUserSession($user){
  
             $buyerData = $this->userModel->getBuyerInfo($_SESSION['user_ID']);
             $cart_items = $this->userModel->get_number_of_cart_items($_SESSION['user_ID']);
-            print_r($cart_items);
+            // print_r($cart_items);
             
            
             $_SESSION['user_name'] = $buyerData->Name;
@@ -950,14 +950,14 @@ public function createUserSession($user){
 
         if (empty($data['password_err']) && (empty($data['confirm-password_err']))) {
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-            print_r("kjbaux");
-            print_r($data);
+            // print_r("kjbaux");
+            // print_r($data);
             // Reset the user's password
             $this->userModel->PasswordReset($data);
 
             // Clear the password reset token from the database
             $this->userModel->clearToken($data);
-            print_r($data);
+            // print_r($data);
 
 
             header("Location:http://localhost/Easyfarm/Users/login");

@@ -34,9 +34,9 @@ class V_post extends Controller
 
         $plan_id = $data[0]->plan_id;
         $data1=$this->v_postModel->getplandetails($plan_id);
-      $duration = $data1->duration;
+        $duration = $data1->duration;
 
-$futureDate = date('Y-m-d', strtotime("$registerDate +$duration months"));        $currentDate = date('Y-m-d');
+        $futureDate = date('Y-m-d', strtotime("$registerDate +$duration months"));        $currentDate = date('Y-m-d');
         // print_r($futureDate);
         
 

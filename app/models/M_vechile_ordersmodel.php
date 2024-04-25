@@ -33,7 +33,7 @@ public function update_data($data) {
         // $row=$this->db->single();
         // $Order_ID = $row->Order_ID;
         // // $this->db->execute();
-        print_r( $Order_ID);
+        // print_r( $Order_ID);
         
 
         // Decode the JSON string into an array

@@ -23,7 +23,12 @@
             <div class="shero3">
 
 
-                <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id'] - 1]['name'] ?> </b></div>
+          <div class="current-wrapper">
+    <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id'] - 1]['name'] ?> </b></div>
+    <div class="current"> <b>Income  Rs.&nbsp;&nbsp;<?php echo $data['income'] ?></b></div>
+</div>
+
+
                 <div class="untill" id="myCountdown">
                     <div class="unitl__component">
                         <div class="untill__numeric until__numeric--months">00</div>
