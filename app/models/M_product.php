@@ -7,6 +7,20 @@ class M_product{
         $this->db=new Database();
     }
 
+    public function getAllCategories(){
+        $this->db->query('SELECT * FROM category');
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getAllFromCategory($category){
+        $this->db->query('SELECT * FROM item WHERE Category= :category');
+        $this->db->bind(':category', $category);
+
+        return $this->db->resultSet();
+    }
+
     public function getAllVegetables(){
         $this->db->query('SELECT * FROM item WHERE Item_type="Veg"');
         $vegetables = $this->db->resultSet();

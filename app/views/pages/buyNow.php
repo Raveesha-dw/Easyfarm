@@ -7,16 +7,16 @@
 
         <!-- <?php print_r($data);?> -->
 
-        <div class="box">
-            <div class="wrapperBuyNow_sub">
-                    <p><b> Delivered to :</b></p>
-                    <p> <?php echo $data[0]['Name']; ?></p>
-                    <p> <?php echo $data[0]['Contact_num']; ?> </p>
-                    <p> <?php echo $data[0]['Address']; ?>
-                        <a class="open-button" onclick="openForm()" > Change </a>
-                    </p>
-                    <p> Email to <?php echo $data[0]['Email']; ?></p>
-                </div>
+                <div class="box">
+                    <div class="wrapperBuyNow_sub">
+                            <p><b> Delivered to :</b></p><br>
+                            <p>Name:  <b><?php echo $data[0]['Name']; ?></b></p>
+                            <p>Contact Number: <b><?php echo $data[0]['Contact_num']; ?></b> </p>
+                            <p>Address: <b><?php echo $data[0]['Address']; ?></b>
+                                <a class="open-button" onclick="openForm()" > Change </a>
+                            </p>
+                            <p>Email: <b><?php echo $data[0]['Email']; ?></b></p>
+                        </div>
 
             </div>
 
@@ -123,6 +123,7 @@
                                     <h3>Home-Delivery</h3>
                                 </div>
 
+
 	                            <!-- <div class="wrapperBuyNow_sub"> -->
                     
                                 <section id="productDetails" class="section-p1">
@@ -134,6 +135,7 @@
                                         </div>
                                     </div>
 
+
 	                                <div class="row">
 	                                    <div class="column1" >
 	                                        <p>Quantity</p>
@@ -142,6 +144,7 @@
 	                                        <p><?php echo $data['quantity']; ?><?php echo $data['Unit_type'] ?></p>
 	                                    </div>
 	                                </div>
+
 
 	                                <div class="row">
 	                                    <div class="column1" >
@@ -164,6 +167,7 @@
 	                                </div>
 	                            </section><br>
 	                        <!-- </div> -->
+
 
 	                        <?php
                                 $deliFee = $deliFee + $data['deliveryFee'];

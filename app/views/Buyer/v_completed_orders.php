@@ -6,8 +6,13 @@
         <button id="completedBtn" type="submit">View Pending Orders</button>
         </form>
 </div>
-
-<div class="flex-container">
+<section id="productDetails" class="section-p1">
+<!-- <div class="flex-container"> -->
+        <?php if($data['orders'] == NULL){
+        echo 'You currently have no pending orders';
+        }else{
+                ?>
+        
 
 <div class="right-content">
 
@@ -17,23 +22,43 @@
 <?php 
 $orders = $data['orders'];
 foreach ($orders as $order): ?>
+
 <div class="order-container">
-        <div class="product">
-                <h3 class="order-id">Order ID: <?php echo $order->Order_ID ?></h3>
-                <span><small>Placed Date: <?php echo $order->placed_Date?> </small></span><br>
-                <p >Status: &nbsp;<span style="color: red;">PENDING</span></p>
+
+        <!-- <div class="product"> -->
+
+                <?php
+                $orderInfo = $order['order'];
+                $item = $order['item'];
+                $seller = $order['seller'];
+                ?>
+
+                <div class="text-top-right" style="margin-left:85%; margin-top:0%;">
+                <large><b>Status: </b>&nbsp;<span style="color: red;">COMPLETED</span></large>
+                </div>
+
+                <h2 class="order-id">Order ID: <?php echo $orderInfo->Order_ID ?></h2>
+                <span><medium>Placed Date: <?php echo $orderInfo->placed_Date?> </medium></span><br>
+                <!-- <p >Status: &nbsp;<span style="color: red;">PENDING</span></p> -->
                 
-               <br> <h4>Item Details</h4><br>
-               <ul class="item-list">
-                 <li>Item Name: <?php echo $order->Item_name?></li>
-                 <li>Unit Price: <?php echo $order->Unit_price?> / <?php echo $order->Unit_size ?><?php echo $order->Unit_type ?></li>
-                 <li>Quantity: <?php echo $order->quantity?></li>
-                 <?php $price = $order->Unit_price* $order->quantity; ?>
+               <br> <h3>Item Details</h3><br>
+               <ul class="item-list" style="font-size:large;">
+                 <li>Item Name: <?php echo $item->Item_name?></li>
+                 <li>Unit Price: <?php echo $orderInfo->Unit_price?> / <?php echo $orderInfo->Unit_size ?><?php echo $orderInfo->Unit_type ?></li>
+                 <li>Quantity: <?php echo $orderInfo->quantity?></li>
+                 <?php $price = $orderInfo->Unit_price* $orderInfo->quantity; ?>
                  <li>Item Price: <?php echo $price ?></li>
                </ul>
                 <br>
-                <p>Delivery Method: <?php $order->DeliveryMethod ?></p><br><br>
-                <button><a href="<?php echo URLROOT?>/Review/itemReview/<?php echo $item->Item_Id ?>" style="color: red;">Review item</a></button>
+                <p><large>Delivery Method:
+                 <?php 
+                 if($orderInfo->DeliveryMethod == 'Home'){
+                        echo 'Home Delivery';
+                 }else{
+                        echo 'In-Store Pickup';
+                 }
+                ?></large></p><br>
+                <a href="<?php echo URLROOT?>/Review/itemReview/<?php echo $orderInfo->Item_ID ?>" style="color: red;"><button>Review item</button></a>
 
 
         </div>
@@ -43,7 +68,9 @@ foreach ($orders as $order): ?>
 endforeach
 ?>
 </div>
-</div>
+<!-- </div> -->
+<?php } ?>
+</section>
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?> 
