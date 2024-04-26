@@ -156,7 +156,7 @@
 .wrapperBuyNow #productDetails {
   display: flex;
   margin-top: 20px;
-  display: table-cell;
+  /* display: table-cell; */
 
 
   align-content:center;

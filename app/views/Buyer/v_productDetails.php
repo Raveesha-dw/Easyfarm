@@ -29,8 +29,10 @@ $inquiries = $data['inquiries'];
             <br><br>
             <hr><br><br>
             <div class="flex-seller-name">
-          <large>  <span>Seller: <?php echo $sellerDetails->Store_Name ?> </span><br>
-            <span>Store Address :   <?php echo $sellerDetails->Store_Adress ?></span></large>
+
+            <span style="font-size: 16px;">Seller: <?php echo $sellerDetails->Store_Name ?> </span><br>
+            <span style="font-size: 16px;">Store Address :   <?php echo $sellerDetails->Store_Adress ?></span>
+
             <br><br>
             <span> Description: <?php echo $productDetails->Description; ?></span>
                 
