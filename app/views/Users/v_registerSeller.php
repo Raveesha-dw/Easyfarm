@@ -106,7 +106,7 @@
 
         
         <div class="login-link">
-        <p>By clicking <b>NEXT PAGE</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
+        <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
         </div>
     </form>
 </div>

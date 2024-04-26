@@ -251,15 +251,15 @@ function activateCountdown(element, dateString) {
     var planId = <?php echo json_encode($data['plan_id']); ?>;
     let targetDate;
 
-if (planId == 2) {
+if (planId == 3) {
     // Condition 1: planId is not equal to 2
     targetDate = dayjs(dateString).add(6, 'month').subtract(3, 'day');
-} else if (planId == 1) {
+} else if (planId == 2) {
     // Condition 2: planId is equal to 3
     targetDate = dayjs(dateString);
 } else {
     // Condition 3: planId is equal to 2 and not equal to 3
-    targetDate = dayjs(dateString).add(6, 'month').subtract(3, 'day');
+    targetDate = dayjs(dateString).add(3, 'month').subtract(2, 'day');
 }
 
 
@@ -269,7 +269,7 @@ if (planId == 2) {
 
 
 
-    element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
+    // element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
     
     setInterval(() => {
         const now = dayjs();

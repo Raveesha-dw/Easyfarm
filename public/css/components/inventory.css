@@ -1,7 +1,6 @@
 /* Fix: Corrected class name to match HTML */
 .itable-section {
     height: 650px;
-    /* height:auto; */
     overflow: auto;
     /* width: 1000px; */
     margin-left: 50px;
@@ -62,3 +61,4 @@
 ::-webkit-scrollbar-thumb {
     box-shadow: insert 0 0 6px rgb(21, 22, 21);
 }
+

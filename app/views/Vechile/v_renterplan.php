@@ -261,11 +261,12 @@ if (planId == 3) {
     targetDate = dayjs(dateString).subtract(3, 'month').add(2, 'day');
 }
             
-            element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
+            // element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
 
             setInterval(() => {
                 const now = dayjs();
                 const duration = dayjs.duration(targetDate.diff(now));
+
                 element.querySelector(".until__numeric--months").textContent = duration.months().toString().padStart(2, '0');
                 element.querySelector(".until__numeric--days").textContent = duration.days().toString().padStart(2, '0');
                 element.querySelector(".until__numeric--hours").textContent = duration.hours().toString().padStart(2, '0');
