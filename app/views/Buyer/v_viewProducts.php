@@ -27,7 +27,7 @@ foreach($data['allProduct'] as $product):
     <!-- <img src="<?php echo URLROOT?>/public/images/products/vegi2.jpg" alt=""> -->
     <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?>"/>
     <div class="product-description">
-        <h3><?php echo $product->Item_name ?></h3><br>
+        <h3><?php echo $product->Item_name ?></h3>
         <h4><?php echo $product->Unit_price ?> LKR / <?php echo $product->Unit_size ?> <?php echo $product->Unit_type?></h4>
     </div>
     

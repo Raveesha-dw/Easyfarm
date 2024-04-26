@@ -35,7 +35,7 @@ $jsonData1 = json_encode($pending_dates);
                     <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $data[0]->Image ?> " width="100%" id="MainImg" alt="">
 
 
-        <table>
+        <table style ="max-width: 500px;">
             <style>
                 .popup button {
                     margin: 10px;
@@ -67,7 +67,7 @@ $jsonData1 = json_encode($pending_dates);
                 table {
                     width: 125%;
                     border-collapse: collapse;
-                    max-width: 500px;
+                    /* max-width: 500px; */
 
                 }
 
