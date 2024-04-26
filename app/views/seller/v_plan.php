@@ -15,7 +15,7 @@
 
         <section class="home">
 
-<!-- <?php print_r($data)?> -->
+<?php print_r($data)?>
 
 
 
@@ -125,6 +125,7 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/duration.min.js"></script>
                    <script>
     dayjs.extend(dayjs_plugin_duration);
+    console.log(dayjs_plugin_duration)
 
     function activateCountdown(element, dateString) {
         const targetDate = dayjs(dateString);
@@ -219,7 +220,9 @@ console.log(dataPlanId)
                             xhttp.onreadystatechange = () => {
                                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                                     closePopup();
-                                    alert(xhttp.responseText);
+
+                                    // alert on krnna
+                                    // alert(xhttp.responseText);
                                     var obj = JSON.parse(xhttp.responseText);
                                     // console.log("ss")
 
