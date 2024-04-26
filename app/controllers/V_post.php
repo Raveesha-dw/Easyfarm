@@ -412,7 +412,7 @@ class V_post extends Controller
 
                 if ($booking_date->status == 'Pending') {
                     $unconfirmed_booking_dates[] = $booking_date->date;
-                } elseif ($booking_date->status == 'Accept') {
+                } elseif ($booking_date->status == 'success') {
                     $confirmed_booking_dates[] = $booking_date->date;
                 }
 
