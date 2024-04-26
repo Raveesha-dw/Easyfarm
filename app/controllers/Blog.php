@@ -290,14 +290,4 @@ class Blog extends Controller{
             }
         }
     }
-
-    public function agriQnA(){
-        if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] != 'AgricultureExpert'){
-            $answers = $this->blogModel->getAnsweredQuestionsByUser($_SESSION['user_ID']);
-            // print_r($answers);
-            $this->view('Blog/v_blogNotification', $answers);
-        }else{
-            redirect('Users/login');
-        }
-    }
 }
