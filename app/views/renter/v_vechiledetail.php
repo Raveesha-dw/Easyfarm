@@ -149,7 +149,7 @@ $jsonData1 = json_encode($pending_dates);
     </div>
         </section>
 </div>
-    <form id="submitForm" action="<?php echo URLROOT ?>/Orders/toBeAcceptedBookings" method="POST">
+    <form id="submitForm" action="<?php echo URLROOT ?>/Vechile_orders/orders" method="POST">
         <div class="sdate2">
             <!-- <b>Calendar</b> -->
 
