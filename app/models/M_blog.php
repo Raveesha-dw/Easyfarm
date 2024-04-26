@@ -72,6 +72,19 @@ class M_blog{
         return $userName;
     }
 
+
+    public function getAnsweredQuestionsByUser($user_id){
+        $this->db->query("SELECT c.question, c.answer, p.title, p.post_id, c.answer_datetime_edited, a.Name
+                            FROM blog_comment c
+                            INNER JOIN blog_post p ON c.post_id = p.post_id
+                            INNER JOIN reg_agriinstructor a ON p.author_id = a.U_Id
+                            WHERE c.user_id = :user_id AND c.answer IS NOT NULL
+                        ");
+        $this->db->bind(':user_id', $user_id);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
     // public function getUserName($user_id, $userType){
     //     switch($userType){
     //         case 'Buyer':

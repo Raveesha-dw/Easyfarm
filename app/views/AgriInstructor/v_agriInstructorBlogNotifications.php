@@ -7,10 +7,10 @@
 
     <main>
 
-        <h2 style="font-size:x-large;">Blog Notifications</h2>
+        <h2 style="font-size:x-large;">Agri-Q&A: Reader Questions Await Your Insights!</h2>
+        <span></span>
         <hr>
 
-        <!-- Posts -->
         <div class="container">
                 <div class="comment-section bg-light p-4 mt-5">
 
@@ -28,7 +28,7 @@
 
                                                 <div style="display: flex; justify-content:space-between;">
                                                         <div>
-                                                                on the article <b><?php echo $question->title;?></b><br>
+                                                                on the article <a href="<?php echo URLROOT . '/Blog/post?id=' . $question->post_id; ?>"><b><?php echo $question->title;?></b></a><br>
                                                                 <i><?php echo 'on ' . $question->datetime_last_edited;?></i><br><br>
                                                         </div>
                                                         <div>
