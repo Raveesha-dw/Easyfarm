@@ -5,7 +5,7 @@
         
     </div>
 
-   
+   <div class="completed_order">
     <div class="container">
         <?php require APPROOT . '/views/seller/a.php' ?>
 
@@ -440,7 +440,7 @@ const downloadFile = function (data, fileType, fileName = '') {
 </section>
 </div>
 
-        
+    </div>    
         
         
          

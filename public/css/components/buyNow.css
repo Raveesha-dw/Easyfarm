@@ -3,7 +3,7 @@
     width: 75%;
     content-visibility: auto;
     background-color: transparent;
-    margin: 25px auto 0 auto;
+    margin: 175px auto 0 auto;
     border:5px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0,  .2);
@@ -22,6 +22,7 @@
     color: #333;
     border-radius: 10px;
     padding: 30px 40px;
+    line-height: 1.5;
 }
 
 /* Create two equal columns that floats next to each other */
@@ -155,7 +156,7 @@
 .wrapperBuyNow #productDetails {
   display: flex;
   margin-top: 20px;
-  display: table-cell;
+  /* display: table-cell; */
 
 
   align-content:center;

@@ -12,14 +12,14 @@ function isActive($page)
 
 
 <nav>
-    <!-- <div class="sidebar-top">
+    <div class="sidebar-top">
       <span class="shrink-btn">
         <i class='bx bx-chevron-left'></i>
       </span>
-      <img src="" class="logo" alt="">
+      <!-- <img src="" class="logo" alt=""> -->
       <h3 class="hide" style="padding-left: 20px; font-size:xx-large;">EasyFarm</h3>
-    </div> -->
-    <!-- <br> -->
+    </div>
+    <br>
 
     <!-- <div class="search">
       <i class='bx bx-search'></i>

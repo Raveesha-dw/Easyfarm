@@ -45,6 +45,7 @@ class M_item{
         $this->db->execute();
 
         $itemName = $this->db->single();
+        print_r($itemName);
         return $itemName;
     }
 
@@ -56,7 +57,18 @@ class M_item{
         return $itemName;
     }
 
-    public function viewItemInOrder($items){
+    public function getItemSellerInfo($seller_ID){
+        $this->db->query('SELECT Store_Name, Store_Adress FROM reg_seller WHERE U_Id= :sellerID');
+        $this->db->bind(':sellerID', $seller_ID);
+        $seller = $this->db->single();
 
+        return $seller;
+    }
+
+    public function getItemDetails($item_ID){
+        $this->db->query('SELECT * FROM item WHERE Item_Id = :item_ID');
+        $this->db->bind(':item_ID', $item_ID);
+
+        return $this->db->single();
     }
 }

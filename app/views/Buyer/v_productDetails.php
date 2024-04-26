@@ -8,7 +8,7 @@ $productDetails = $data['productInfo'];
 
 $sellerDetails = $data['sellerInfo'];
 $productReviews = $data['itemReviews'];
-// print_r($productReviews);
+$productRatings = $data['itemRating'];
 $inquiries = $data['inquiries'];
 
 ?>
@@ -29,10 +29,12 @@ $inquiries = $data['inquiries'];
             <br><br>
             <hr><br><br>
             <div class="flex-seller-name">
-            <span>Seller: <?php echo $sellerDetails->Store_Name ?> </span><br>
-            <span>Store Address :   <?php echo $sellerDetails->Store_Adress ?></span>
+
+            <span style="font-size: 16px;">Seller: <?php echo $sellerDetails->Store_Name ?> </span><br>
+            <span style="font-size: 16px;">Store Address :   <?php echo $sellerDetails->Store_Adress ?></span>
+
             <br><br>
-            <span><?php echo $productDetails->Description; ?></span>
+            <span> Description: <?php echo $productDetails->Description; ?></span>
                 
             </div>
 
@@ -62,13 +64,7 @@ $inquiries = $data['inquiries'];
         <p> <?php echo $productDetails->Description; ?>
         </p>
 
-        <ul class="custom-list2">
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-        </ul>
+        
 </section> -->
 
 <!-- Product Reviews -->
@@ -77,44 +73,19 @@ $inquiries = $data['inquiries'];
         <h3>Product Ratings</h3>
         <hr>
         <div class="rating">
-            <div class="rating-title">Overall Rating</div>
-            <div class="stars">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
+            <div>
+            <?php 
+                if($productRatings['ratingCount'] != 0){ ?>
+            <p><medium>Overall Rating:
+                
+                 <?php echo $productRatings['overall'];?>% (<?php echo $productRatings['ratingCount'] ?>)
+              <?php  } ?>
+                </medium></p>
             </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 80%;"></div>
-                </div>
-                <div class="bar-label">5 Stars (80%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 15%;"></div>
-                </div>
-                <div class="bar-label">4 Stars (15%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 5%;"></div>
-                </div>
-                <div class="bar-label">3 Stars (5%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 0%;"></div>
-                </div>
-                <div class="bar-label">2 Stars (0%)</div>
-            </div>
-            <div class="rating-bar">
-                <div class="bar">
-                    <div class="bar-fill" style="width: 0%;"></div>
-                </div>
-                <div class="bar-label">1 Star (0%)</div>
-            </div>
+            
+            
+            
+            
         </div>
 
         
@@ -149,9 +120,8 @@ $inquiries = $data['inquiries'];
 
         <!-- Editor -->
         <?php
-            // Buyers can ask questions
-            if (isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'Buyer') {
-        ?>
+if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id != $_SESSION['user_ID']) {
+    ?>
 
                 <div class="question-card">
                     <form action="<?php echo URLROOT . '/Inquiry/askQuestion' ?>" method='POST'>
@@ -237,7 +207,7 @@ if (isset($_SESSION['user_ID'])) {
                             </div>
 
                             <!-- Delete Question -->
-                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion' ?>" onclick='confirmDeleteQuestion()' method="POST">
+                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion' ?>" onclick='confirmDeleteQestion()' method="POST">
                                 <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
                                 <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
                                 <input type="submit" name="questionDelete" value="Delete">
@@ -426,17 +396,17 @@ endforeach;
     });
 
     function confirmDeleteQuestion(){
-        var result = confirm('Are you sure you want to delete this question?');
-        if (result == false){
-        event.preventDefault();
-            }
+    var result = confirm('Are you sure you want to delete this question?');
+    if (result == false){
+    event.preventDefault();
+        }
     }
 
     function confirmDeleteAnswer(){
-        var result = confirm('Are you sure you want to delete this answer?');
-        if (result == false){
-        event.preventDefault();
-            }
+    var result = confirm('Are you sure you want to delete this answer?');
+    if (result == false){
+    event.preventDefault();
+        }
     }
 
 </script>

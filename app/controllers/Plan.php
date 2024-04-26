@@ -76,7 +76,7 @@
         $data1['Date'] = $newDate;
         // print_r($data1);
          $data3=$this->planModel->get_income($_SESSION['user_ID']);
-         print_r($data3);
+        //  print_r($data3);
 
          // Initialize a variable to store the total delivery charge
 // Initialize a variable to store the total delivery charge

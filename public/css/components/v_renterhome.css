@@ -4,17 +4,27 @@
      width: 1000px;
      
     margin-left: 250px;
-    margin-top: 80px;
+    margin-top: 3%;
      /* left: 200px; */
      /* right: 2px; */
-    height: 200px; 
+    height: auto;
     /* padding-left: 200px; */
     /* padding-top: 200px; */
+    background-color: white;
+  margin: 25px auto 0 auto;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #333;
+  border-radius: 10px;
+  padding: 4px 4px;
 }
-.msg-f{
-    background-color: aquamarine;
+.booking-message .msg-f{
+    background-color: #ecfbb6;
     padding-top: 30px;
     padding-left: 20px;
+    border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .m-header{
     background-color: black;
@@ -23,6 +33,8 @@
     display: flex;
     /* justify-content: space-between; */
     padding-left: 10px;
+    border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
    
 }
 .msg-ID{
@@ -41,6 +53,26 @@
     padding-left: 15px;
     
 }
+.msg-order-id{
+    margin-left: 750px;
+}
+
+     .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        .product-table th, .product-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .product-table th {
+            background-color:transparent;
+        }
+
 /* .button-msg.dd{
     background-color: rgb(193, 35, 35);
      margin-left: 8000px; 

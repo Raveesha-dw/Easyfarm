@@ -37,11 +37,6 @@
     }
 
     public function postReview(){
-        // $user_ID = $_POST['user_ID'];
-        // $rating = $_POST['rating'];
-        // $review = $_POST['review'];
-        // $date = $_POST['review_date'];
-        // $time = $_POST['review_time'];
         
         $data = [
             // 'review_ID' => $_POST['review_ID'],
@@ -55,8 +50,9 @@
         ];
 
         if($this->orderModel->postReview($data)){
-            // $this->view('Buyer/v_dashboardCart');
-            header("Location:http://localhost/Easyfarm/Orders/placedOrders");
+            $this->userReviews();
+            // header("Location:http://localhost/Easyfarm/Orders/placedOrders");
+
         }
 
     }
@@ -71,7 +67,7 @@
         $this->view('Buyer/v_dashboardReviews',$data);
     }
 
-    public function updateUserReview($review_ID, $item_ID){
+    public function updateUserReview($review_ID){
         // echo $review_ID;
         // echo $item_ID;
         // $this->view('Buyer/v_buyerItemReview',$data);
@@ -82,6 +78,7 @@
         $data = [
             'editReview' => $editReview
         ];
+        print_r($data);
 
          $this->view('Buyer/v_buyerItemReviewUpdate',$data);
 

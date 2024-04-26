@@ -64,8 +64,6 @@
 
  .user-menu{
     background: #99ed9e;
-    /* background: #405C1F; */
-    color: white;
     padding: 10px;
     margin: 10px;
     margin-top: 125px;
@@ -125,7 +123,6 @@
     left: 50%; /* Adjust as needed */
     transform: translate(-50%, -50%);
     background: rgb(0, 255, 106);
-    /* background: #405C1F; */
     line-height: 2;
  
     padding: 0;
@@ -203,7 +200,7 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #6A9739;
+  background-color: red;
   color: white;
   border-radius: 50%;
   padding: 4px;

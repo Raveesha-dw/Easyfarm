@@ -144,7 +144,21 @@ class M_blog{
     //     return $userType;
     // }
 
+    // public function getUserName($user_id, $userType){
+    //     switch($userType){
+    //         case 'Buyer':
+    //             $query = "SELECT Name FROM reg_buyer WHERE U_Id = :user_id";
+    //             break;
+    //         default:
+    //             die('This user is not allowed to ask questions');
+    //             break;
+    //     }
 
+    //     $this->db->query($query);
+    //     $this->db->bind(':user_id', $user_id);
+    //     $userName = $this->db->single()->Name;
+    //     return $userName;
+    // }
 
     public function getQuestions($post_id){
         $this->db->query("SELECT * FROM blog_comment WHERE post_id = :post_id");

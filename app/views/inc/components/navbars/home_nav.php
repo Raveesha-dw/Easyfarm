@@ -16,7 +16,7 @@ $current_page = $_SERVER['REQUEST_URI'];
             <div class="nav-parts">
 
 
-                <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+                <form id="searchForm" action="<?php echo URLROOT ?>/product/productSearch" method="POST">
                     <div class="search-container" style="display: flex;">
                         <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product..." style="flex: 1; margin-right: 5px;">
                         <button type="submit" class="search-button">Search</button>
@@ -28,6 +28,16 @@ $current_page = $_SERVER['REQUEST_URI'];
             <div class="nav-parts">
             </div>
 
+            <script>
+                var searchInput = document.getElementById("search");
+
+                document.getElementById("searchForm").addEventListener("submit", function(event) {
+                    if (searchInput.value.trim() === "") {
+                        event.preventDefault(); // Prevent form submission
+                        window.location.reload(); // Reload the page
+                 }
+                });
+            </script>
 
 
 
@@ -41,7 +51,7 @@ $current_page = $_SERVER['REQUEST_URI'];
             </div>
 
             <div class="nav-parts">
-                <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Rent A Vehicle</a>
+                <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Vehicle Renting</a>
             </div>
 
 
@@ -102,9 +112,37 @@ $current_page = $_SERVER['REQUEST_URI'];
 
 
 
-            <?php
-if (!empty($_SESSION['user_email'])) {
-    ?>
+
+
+
+
+                        <?php if (!empty($_SESSION['user_email'])) {?>
+
+                                <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
+                                    <!-- <?php print_r($data['n_cart_items']);?> -->
+
+                                    <div class="nav-parts">
+                                        <a href="<?php echo URLROOT ?>/Cart/showCart" class="cart-link">
+                                            <i class="fas fa-shopping-cart cart"></i>
+                                            <span class="cart-count" id="cartCount"><?php print_r($_SESSION['n_cart_items']);?></span>
+                                            <!-- Constant number -->
+                                        </a>
+                                    </div>
+
+                                <?php endif;?>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="welcome-banner" style="padding: 10px">
                     <!-- <h2 class="greeting" onclick="toggleMenu()"><?php echo $_SESSION['user_email']; ?> ></h2> -->
                     <h2 class="greeting" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i> </h2>
@@ -211,27 +249,19 @@ if (!empty($_SESSION['user_email'])) {
                                 </div>
                             <?php endif;?>
                             <?php
-                        }
-                        ?>
+}
+?>
                         </div>
 
 
 
-                        <?php if ((!empty($_SESSION['user_email'])) && ($_SESSION['user_type'] == 'Buyer')): ?>
-                            <!-- <?php print_r( $data['n_cart_items']); ?> -->
-                            <div class="nav-parts"> 
-                                <a href="<?php echo URLROOT ?>/Cart/showCart" class="cart-link">
-                                    <i class="fas fa-shopping-cart cart"></i>
-                                    <span class="cart-count" id="cartCount"><?php print_r( $_SESSION['n_cart_items']); ?></span>
-                                    <!-- Constant number -->
-                                </a>
+                            <div class="nav-parts">
                             </div>
-                    </div>
-                    <?php endif;?>
+
                 </div>
 
 
-                </div>
+            </div>
         </div>
 
     </div>

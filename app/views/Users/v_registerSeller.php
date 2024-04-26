@@ -63,7 +63,7 @@
         <div>
 
         <select name="store_province" id="store_province" required>
-            <option value="" disabled selected>Select a district</option>
+            <option value="" disabled selected>Select a Province</option>
             <option value="Western" <?php echo ($data['store_province'] == 'Western') ? 'selected' : ''; ?>>Western</option>
             <option value="Southern" <?php echo ($data['store_province'] == 'Southern') ? 'selected' : ''; ?>>Southern</option>
             <option value="Central" <?php echo ($data['store_province'] == 'Central') ? 'selected' : ''; ?>>Central</option>
@@ -106,7 +106,7 @@
 
         
         <div class="login-link">
-        <p>By clicking <b>NEXT PAGE</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
+        <p>By clicking <b>Register</b>, you agree to easyfarms<br> <a href="#"> Terms of use</a> and <a href="#">Privacy Policy</a></p>     
         </div>
     </form>
 </div>
