@@ -35,7 +35,7 @@ class M_payment{
     }
 
     public function saveOrder($data){
-        // print_r( $data);
+        print_r( $data);
         $this->db->query('INSERT INTO orders(Payment_Id ,Item_ID, User_ID,placed_Date,seller_ID) VALUES (:Payment_Id ,:itemId, :uId, :placed_Date, :seller_ID)'); 
 
         $this->db->bind(':Payment_Id', $data['Payment_Id']);
@@ -46,7 +46,7 @@ class M_payment{
         $this->db->execute();
         
 
-
+print_r("qqqqqqqq");
 
         $this->db->query('SELECT Order_ID  FROM orders WHERE (orders.Item_Id = :itemId AND orders.Payment_Id = :Payment_Id)' ) ;
         $this->db->bind(':itemId', $data['Item_Id']);
@@ -58,8 +58,8 @@ class M_payment{
         // Extract the Order_ID from the fetched result
         $order_id = $order_result->Order_ID;
         
-        // print_r($order_id);
-        // print_r("ddddddd");
+        print_r($order_id);
+        print_r("ddddddd");
 
         $this->db->query('INSERT INTO order_details(Order_ID, quantity, Unit_price, Unit_size, Unit_type, DeliveryMethod,Payment_Id) VALUES (:Order_ID, :quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod , :Payment_Id)');
         $this->db->bind(':Payment_Id', $data['Payment_Id']);
