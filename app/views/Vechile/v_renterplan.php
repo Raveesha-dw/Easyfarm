@@ -269,6 +269,7 @@ if (planId == 3) {
             setInterval(() => {
                 const now = dayjs();
                 const duration = dayjs.duration(targetDate.diff(now));
+
                 element.querySelector(".until__numeric--months").textContent = duration.months().toString().padStart(2, '0');
                 element.querySelector(".until__numeric--days").textContent = duration.days().toString().padStart(2, '0');
                 element.querySelector(".until__numeric--hours").textContent = duration.hours().toString().padStart(2, '0');
