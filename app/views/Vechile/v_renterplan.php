@@ -18,6 +18,7 @@ $planId = $data['plan_id'];
 //  echo $planId; 
 
 ?>
+<div class="renter_paln">
 <div class="shero3">
     <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id'] - 1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
@@ -447,7 +448,7 @@ if (planId == 3) {
 <?php if ($data['plan_id'] != $data[2]['plan_id']) : ?> <button class="c3" onclick="showPopup(2)">Purchase Now</button> <?php endif; ?>
 </div>
 
-</div>
+</div></div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 

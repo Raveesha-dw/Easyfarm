@@ -12,7 +12,7 @@
 
 
 <?php require APPROOT .'/views/inc/components/navbars/renter_nav.php'?>
-
+<div class="booking-message">
        <div class ="shero5">
                             <?php $products=$data; ?>
                             <?php foreach ($products as $product) : ?>
@@ -26,9 +26,16 @@
                                                  </div>
                                           
                                           </div>
-                                          <div class="msg-date"> <p><?php echo $product->Name ?></p>
-                                                 <p><?php echo $product->placed_Date ?><p>
+                                          <div class="msg-date"> 
+                                                <p><?php echo $product->Name ?></p>
+                                                <p><?php echo $product->placed_Date ?><p>
                                           </div>
+
+                                        <div class="msg-order-id">
+                                            <p><?php echo "Order ID" ?></p>
+                                            <p><?php echo $product->Order_ID ?></p>
+                                        </div>
+
                                           
                                           
                                    </div> 
@@ -73,31 +80,37 @@
         margin: 0; /* Remove default margin */
     }
 </style>
+<img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $product->Image;?>" width="100" height="100"/>
 
-<div class="msg-pdroduct">
-    <div class="product-info">
-        <h3>Vechile</h3>
-        <h3>Date</h3>
-        <br>
-        <h3>Pickup Location</h3>
-        <h3>Contact Number</h3>
-        <h3>Order ID</h3>
-        <h3>Notice</h3>
-        
+
+
+   <div class="msg-product-booking">
+        <table class="product-table">
+            <tr>
+                <th>Booking Dates</th>
+                <td>
+                    <?php 
+                        $dates = explode(',', $product->order_dates); // Split the date string into an array
+                        foreach ($dates as $date) {
+                        echo $date . "<br>"; // Output each date on a new line
+                        }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td><?php echo $product->location; ?></td>
+            </tr>
+            <tr>
+                <th>Contact Number</th>
+                <td><?php echo $product->number; ?></td>
+            </tr>
+            <tr>
+                <th>Customer message</th>
+                <td><?php echo $product->Message; ?></td>
+            </tr>
+        </table>
     </div>
-    <div class="product-values">
-        <h3><?php echo $product->V_name ?></h3>
-        <h3><?php echo $product->order_dates?>
-        <br>
-        <h3><?php echo $product->location ?></h3>
-        <h3><?php echo $product->number ?></h3>
-        <h3><?php echo $product->Order_ID ?></h3>
-        <h3><?php echo $product->Message ?></h3>
-       
-    </div>
-</div>
-
-
 
 
 
@@ -241,16 +254,16 @@
                             <br></br>
                             <br></br>
                             </div>
-
+</div>
 
 <?php require APPROOT . '/views/inc/footer.php';?>  
 </section>
 <style>
     /* Style for the container of the message box */
-    .msg-box {
+    .booking-message.shero5 .msg-box {
         border: 1px solid #ccc;
         /* padding: 10px; */
-        margin-bottom: 200px;
+        /* margin-bottom: 200px; */
     }
 
     

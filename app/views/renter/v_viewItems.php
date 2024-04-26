@@ -23,13 +23,13 @@ foreach($data['Categorized_items'] as $Categorized_item):
                     <img src="<?php echo URLROOT?>/public/images/vehicleRenter/<?php echo $Categorized_item->Image;?>"/>
                     <div class="product-description">
                         <h3>For Rent!</h3>
-                        <div class="rating">
+                        <!-- <div class="rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                        </div>
+                        </div> -->
                         <h4> LKR <?php echo $Categorized_item->Rental_Fee;?></h4>
                         <h4> <?php echo $Categorized_item->Charging_Unit;?></h4>
                     </div>

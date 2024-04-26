@@ -88,7 +88,7 @@
                                                  <div class="button-msg">
 
                                                         <div class="aa">
-                                                               <button class="dd"> <a><?php echo $product->Status; ?> </a> </button>
+                                                               <!-- <div class="dnd">   </div> -->
 
                                                         </div>
                                                  </div>

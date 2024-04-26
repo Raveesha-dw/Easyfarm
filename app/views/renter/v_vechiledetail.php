@@ -1,12 +1,12 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<?php require APPROOT . '/views/inc/header.php';?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php';?>
 <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\moment.min.js"></script>
 <script src="<?php echo URLROOT ?>\public\js\fullcalendar.min.js"></script>
 
 <!-- <?php print_r($data)?> -->
-<?php 
+<?php
 $pending_dates = array();
 // $pending_dates = array(); // Initialize an empty array to store pending dates
 
@@ -18,20 +18,21 @@ foreach ($data as $item) {
     }
 }
 
-$jsonData1 = json_encode( $pending_dates);
+$jsonData1 = json_encode($pending_dates);
 
-
-         ?>
+?>
 
                 <script>
                     // Pass JSON data to JavaScript
                     var jsonData1 = <?php echo $jsonData1; ?>;
                 </script>
-
+<div class="wrapperBuyNow_sub">
 <section id="vproductDetails" class="section-v1">
+    <div class="wrapperBuyNow_sub">
+        <section id="vproductDetails-----" class="section-v1">
     <div class="single-pro-image1">
-                    <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $data[0]->Image ?> " width="100%" id="MainImg" alt="">
-
+        <div class="wrapperBuyNow_sub">
+    <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $data[0]->Image ?> " width="100%" id="MainImg" alt="">
 
         <table>
             <style>
@@ -63,7 +64,7 @@ $jsonData1 = json_encode( $pending_dates);
 
 
                 table {
-                    width: 140%;
+                    width: 100%;
                     border-collapse: collapse;
 
                 }
@@ -97,8 +98,9 @@ $jsonData1 = json_encode( $pending_dates);
                 }
             </style>
             <tr>
-                <th>Vechile</th>
-                <th>Value</th>
+                <!-- <th style="color: green;">Vehicle</th>
+                <th style="color: green;">Value</th> -->
+
             </tr>
 
 
@@ -133,7 +135,7 @@ $jsonData1 = json_encode( $pending_dates);
                 <td><b><?php print($data[0]->Description);?></b></td>
             </tr>
         </table>
-
+        </div>
 
         <?php $lastday = $data['lastday'];?>
 
@@ -144,7 +146,8 @@ $jsonData1 = json_encode( $pending_dates);
 
 
     </div>
-
+        </section>
+</div>
     <form id="submitForm" action="<?php echo URLROOT ?>/Vechile_orders/orders" method="POST">
         <div class="sdate2">
             <!-- <b>Calendar</b> -->
@@ -160,7 +163,7 @@ $jsonData1 = json_encode( $pending_dates);
 
 
 
-    
+
 
 
 
@@ -177,7 +180,7 @@ $jsonData1 = json_encode( $pending_dates);
 
 
 
-                
+
                 <div style="background-color: #f29797; width: 20px; height: 20px; display: inline-block; margin-right: 10px; border-radius: 10px;
   border: #6a515178;
     border-top-style: none;
@@ -243,8 +246,8 @@ $jsonData = json_encode($dataArray);
                             <td><label for="sitem_name"><b>Enter your Name</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
 
-                                                             echo $data['name_err'];
-                                                        }  ?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enterthe Name" value=" <?php echo isset(end($data)->Name) ? end($data)->Name : ''; ?>" size="40" style="height: 40px" ;></td>
+    echo $data['name_err'];
+}?></span><input id="sitem_name" name="name" type="textbox" placeholder="Enterthe Name" value=" <?php echo isset(end($data)->Name) ? end($data)->Name : ''; ?>" size="40" style="height: 40px" ;></td>
 
 
 
@@ -253,8 +256,8 @@ $jsonData = json_encode($dataArray);
                             <td><label for="Pickup_location"><b>Pickup Location</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
 
-                                                            echo $data['location_err'];
-                                                        }  ?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo isset(end($data)->Address) ? end($data)->Address : ''; ?>" size="40" style="height: 40px" ;></td>
+    echo $data['location_err'];
+}?></span><input id="Pickup_location" name="location" type="textbox" placeholder="Pickup Location" required value="<?php echo isset(end($data)->Address) ? end($data)->Address : ''; ?>" size="40" style="height: 40px" ;></td>
 
 
 
@@ -263,9 +266,9 @@ $jsonData = json_encode($dataArray);
                             <td><label for="number"><b>Your Contact Number</b></label></td>
                             <td><span class="invalid"><?php if ($data) {
 
-                                                            echo $data['number_err'];
+    echo $data['number_err'];
 
-                                                        }  ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
+}?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
 
@@ -298,6 +301,7 @@ $jsonData = json_encode($dataArray);
     </div>
 
 </section>
+</div>
 <script>
     function showConfirmationPopup() {
         document.getElementById('confirmationPopup').style.display = 'block';

@@ -137,7 +137,3 @@ modeSwitch.addEventListener("click" , () =>{
     }
 });
     </script>
-
-
-
-

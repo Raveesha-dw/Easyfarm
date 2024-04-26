@@ -7,16 +7,16 @@
 
         <!-- <?php print_r($data);?> -->
 
-        <div class="box">
-            <div class="wrapperBuyNow_sub">
-                    <p><b> Delivered to :</b></p>
-                    <p> <?php echo $data[0]['Name']; ?></p>
-                    <p> <?php echo $data[0]['Contact_num']; ?> </p>
-                    <p> <?php echo $data[0]['Address']; ?>
-                        <a class="open-button" onclick="openForm()" > Change </a>
-                    </p>
-                    <p> Email to <?php echo $data[0]['Email']; ?></p>
-                </div>
+                <div class="box">
+                    <div class="wrapperBuyNow_sub">
+                            <p><b> Delivered to :</b></p><br>
+                            <p>Name:  <b><?php echo $data[0]['Name']; ?></b></p>
+                            <p>Contact Number: <b><?php echo $data[0]['Contact_num']; ?></b> </p>
+                            <p>Address: <b><?php echo $data[0]['Address']; ?></b>
+                                <a class="open-button" onclick="openForm()" > Change </a>
+                            </p>
+                            <p>Email: <b><?php echo $data[0]['Email']; ?></b></p>
+                        </div>
 
             </div>
 
@@ -99,8 +99,9 @@
                             $buyer_prov = '';
                             $base_deliFee = 0;
                         ?>
+                        <div class="wrapperBuyNow_sub">
 
-                        <br><h3 style="color: darkblue;">Seller: <?php echo $items[0]['Store_Name']; ?></h3>
+                        <br><h3 style="color: #089747;">Seller: <?php echo $items[0]['Store_Name']; ?></h3>
 
                         <?php $deliFee = 0;?>
                         <?php $total = 0;?>
@@ -117,18 +118,23 @@
 
                             if ( $data['selectedDeliveryMethod'] == 'Home-Delivery'|| $data['selectedDeliveryMethod'] == 'Home' ) {?>
 
-	                            <br><h3><strong>Home-Delivery </strong></h3>
+	                            <div class="indented" style="padding-left: 10%;">
+                                    <br>
+                                    <h3>Home-Delivery</h3>
+                                </div>
 
-	                            <div class="wrapperBuyNow_sub">
+
+	                            <!-- <div class="wrapperBuyNow_sub"> -->
                     
                                 <section id="productDetails" class="section-p1">
                                     
-                                <p><b> <?php echo $data['Item_name']; ?></b></p><br><br>
+                                <p><b> <?php echo $data['Item_name']; ?></b></p>
                                     <div class="row">
-                                            <div class="single-pro-image">
-                                                <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $data['Image'] ?>" width="100%" id="MainImg" alt="">
+                                            <div class="single-pro-image"><br><br>
+                                                <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $data['Image'] ?>" width="100%" id="MainImg" alt=""><br><br>
                                         </div>
                                     </div>
+
 
 	                                <div class="row">
 	                                    <div class="column1" >
@@ -138,6 +144,7 @@
 	                                        <p><?php echo $data['quantity']; ?><?php echo $data['Unit_type'] ?></p>
 	                                    </div>
 	                                </div>
+
 
 	                                <div class="row">
 	                                    <div class="column1" >
@@ -158,8 +165,9 @@
 	                                        <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
 	                                    </div>
 	                                </div>
-	                            </section>
-	                        </div>
+	                            </section><br>
+	                        <!-- </div> -->
+
 
 	                        <?php
                                 $deliFee = $deliFee + $data['deliveryFee'];
@@ -179,12 +187,7 @@
                              // $deliveryFeeBySeller[$sellerID][] = $deliFee;
                         ?>
 
-                            <div class="row">
-                                <!-- <?php echo $data['S_ID'] ?> -->
-                                <!-- <?php echo number_format($deliFee, 2); ?> -->
-                                    <br><h3><b>Delivery Fee </b><span id="deliveryFeeDisplay"><i class="fa-solid fa-circle-question" id="deliveryFeeInfo" style="color: var(--dark-green)"></i></span>
-                                    &nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deliFee, 2); ?></h3>
-                            </div>
+                          
 
                             <div id="deliveryFeeCalculation" style="display: none;">
                             </div>
@@ -200,15 +203,17 @@
 
 	                            <?php if ($data['selectedDeliveryMethod'] = 'In-Store Pickup' && !($data['selectedDeliveryMethod'] == 'Home-Delivery' || $data['selectedDeliveryMethod'] == 'Home' )) {?>
 
-                                    <br><h3><strong>In-Store Pickup </strong></h3>
+	                            <div class="indented" style="padding-left: 10%;">
+                                    <br><h3>In-Store Pickup </h3>
+                                </div>
 
-                                    <div class="wrapperBuyNow_sub">
+                                    <!-- <div class="wrapperBuyNow_sub"> -->
                                     <section id="productDetails" class="section-p1">
                                         
-                                        <p><b> <?php echo $data['Item_name']; ?></b></p><br><br>
+                                        <p><b> <?php echo $data['Item_name']; ?></b></p>
                                         <div class="row">
-                                            <div class="single-pro-image">
-                                                <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $data['Image'] ?>" width="100%" id="MainImg" alt="">
+                                            <div class="single-pro-image"><br><br>
+                                                <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $data['Image'] ?>" width="100%" id="MainImg" alt=""><br><br>
                                             </div>
                                         </div>
 
@@ -239,8 +244,8 @@
                                                 <p><b><small>LKR </small></b><?php echo number_format($data['total'], 2) ?></p>
                                             </div>
                                         </div>
-                                    </section>
-                                </div>
+                                    </section><br>
+                                <!-- </div> -->
 	                            <?php }?>
 	                        <?php endif;?>                           
                         <?php endforeach;?>
@@ -252,6 +257,22 @@
                             echo "Delivery Fee: " . $deliveryFees[$sellerID] . "<br><br>";
                         ?> -->
 
+
+                            <div class="row" style="padding-left: 45%;">
+                                <?php if( number_format($deliFee, 2) != 0.00): ?>
+                                    <br><h3>Delivery Fee <span id="deliveryFeeDisplay"><i class="fa-solid fa-circle-question" id="deliveryFeeInfo" style="color: var(--dark-green)"></i></span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; <b>LKR</b> <?php echo number_format($deliFee, 2); ?></h3>
+                                <?php endif;?>
+                            </div>
+
+
+
+
+
+
+
+
+ </div>
                         <?php endforeach;?>
                     <?php endif;?>
     </div>
