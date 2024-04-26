@@ -101,9 +101,18 @@ $(document).ready(function() {
 
         // Inside the dayClick function
 if (foundBooking) {
+
+
+    if (foundBooking.status === "success") {
+        foundBooking.status = "Accept";
+    }
+
+
+
     var moreDetails = more_details_booking.find(function(item) {
         return item.Order_ID === foundBooking['0rder_ID'];
     });
+    
 
     var modalContent = '<p>Date: ' + date.format() + '</p>';
     modalContent += '<br><b><p>Booking Details:</b></p>';

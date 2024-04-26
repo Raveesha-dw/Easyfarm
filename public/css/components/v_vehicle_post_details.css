@@ -742,7 +742,8 @@ width: 50%;
 
 /* Improved modal content styling for a modern look */
 .modal_booking_details_calendar .modal-content {
-  position: relative; /* Needed for positioning of close button */
+   /* Needed for positioning of close button */
+  position: relative;
   background-color: #fff;
   margin: auto;
   padding: 20px;
@@ -751,6 +752,7 @@ width: 50%;
   width: 60%; /* Adaptive width */
   max-width: 500px; /* Maximum width to ensure content is comfortably readable */
   animation: slideIn 0.5s; /* Smooth slideIn animation */
+  margin-left: inherit;
 }
 
 /* Enhanced modal content positioning */

@@ -109,7 +109,7 @@ class M_orders{
     }
 
     public function getAcceptBookings(){
-        $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="ACCEPT"'); 
+        $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="success"'); 
         $this->db->bind(':user_ID', $_SESSION['user_ID']);
         $result = $this->db->resultSet();
         // print_r($result);
