@@ -24,20 +24,30 @@
             </div>
             <div class="modal-body">
                 <form action="<?php echo URLROOT;?>/Admin/addMarketplaceCategory" method="POST">
-                    <label for="category">Category Name:  <br><span>(This will be displayed as the category name on the marketplace)</span></label>
+                    <label for="category">Category Name:  <br><span><i>(This will be displayed as the category name on the marketplace.)</i></span></label>
                     <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $newCategory['category']?>" required></input><br><br>
                     
-                    <label for="units">Units: <br><span>(Enter units separated by commas.)</span></label><br>
-                    <input type="text" id="units" name="units" placeholder="E.g.: Kg, g" value="<?php echo $newCategory['units']?>" required></input><br><br>
+                    <label for="units">Units: <br><span><i>(Enter units separated by commas.)</i></span></label>
+                    <input type="text" id="units" name="units" placeholder="E.g: Kg, g" value="<?php echo $newCategory['units']?>" required></input><br><br>                    
 
                     <label for="deliveryMethod">Select Delivery Method:</label>
                     <select name="deliveryMethod" id="deliveryMethod" required>
                         <option value="both">Home-Delivery & In-Store Pickup</option>
                         <option value="insto_pickup">In-Store Pickup Only</option>
                     </select>
-
                     <br><br>
-                    <input type="submit" value="Add Category">
+                    
+                    <div style="display: flex;">
+                        <input type="checkbox" id="isExpDate" name="isExpDate" value="yes">
+                        <label for="isExpDate">&MediumSpace; Producs in this category have an expiry date.</label>
+                    </div>
+                    <br>
+
+                    <label for="fontAwsome">Font awsome code: <br><span><i>(This will be displayed on the marketplace homepage.)</i></label>
+                    <input type="text" id="fontAwsome" name="fontAwsome" placeholder="E.g: fa-fruit" value="<?php echo $newCategory['fontAwsome']?>" required></input><br>
+
+                    <br>
+                    <button type="submit" class="admin-table">Add Category</button>
                 </form>
             </div>
         </div>
@@ -49,6 +59,8 @@
                 <th>Category Name</th>
                 <th>Units</th>
                 <th>Delivery Method</th>
+                <th>Has Expiry Date?</th>
+                <th>Font Awsome Code</th>
                 <th>Action</th>
             </tr>
 
@@ -69,6 +81,8 @@
                                 }
                             ?>
                         </td>
+                        <td><?php echo ucfirst($marketplaceCategory->date)?></td>
+                        <td><?php echo $marketplaceCategory->icon?></td>
                         <td>
                             <div class="btn-container">
                                 <!-- Edit Form -->
@@ -80,10 +94,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="<?php echo URLROOT;?>/Admin/editMarketplaceCategory" method="POST">
-                                            <label for="category">Category Name: <br><span>(This will be displayed as the category name on the marketplace)</label>
+                                            <label for="category">Category Name: <br><span><i>(This will be displayed as the category name on the marketplace.)</i></label>
                                             <input type="text" id="category" name="category" placeholder="Enter new category name" value="<?php echo $marketplaceCategory->category?>"></input><br><br>
                                             
-                                            <label for="units">Units: <br><span>(Enter units separated by commas.)</span></label><br>
+                                            <label for="units">Units: <br><span><i>(Enter units separated by commas.)</i></span></label>
                                             <input type="text" id="units" name="units" placeholder="E.g.: Kg, g" value="<?php echo $marketplaceCategory->type?>"></input><br><br>
                                             
                                             <label for="deliveryMethod">Select Delivery Method:</label>
@@ -91,6 +105,16 @@
                                                 <option value="both" <?php if($marketplaceCategory->delivery == "both") echo "selected";?>>Home-Delivery & In-Store Pickup</option>
                                                 <option value="insto_pickup" <?php if($marketplaceCategory->delivery == "insto_pickup") echo "selected";?>>In-Store Pickup Only</option>
                                             </select>
+                                            <br><br>
+
+                                            <div style="display: flex;">
+                                                <input type="checkbox" id="isExpDate" name="isExpDate" value="yes" <?php echo ($marketplaceCategory->date == 'yes' ? 'checked' : ''); ?>>
+                                                <label for="isExpDate">&MediumSpace; Producs in this category have an expiry date.</label>
+                                            </div>
+                                            <br>
+
+                                            <label for="fontAwsome">Font awsome code: <br><span><i>(This will be displayed on the marketplace homepage.)</i></label>
+                                            <input type="text" id="fontAwsome" name="fontAwsome" placeholder="E.g: fa-fruit" value="<?php echo $marketplaceCategory->icon?>" ></input><br><br>
 
                                             <input type="hidden" name="category_id" value="<?php echo $marketplaceCategory->category_id?>">
                                             <button type="submit" class="admin-table">Save Changes</button>
