@@ -11,6 +11,18 @@
         $this->inquiryModel=$this->model('M_inquiry');
     }
 
+    public function productCategory($category){
+        $categoryAll = $this->productModel->getAllFromCategory($category);
+
+        $data = [
+            'allProduct' => $categoryAll,
+            'category' => $category
+        ];
+        $this->view('Buyer/v_viewProducts', $data);
+
+
+    }
+
     public function productVeg(){
         $allveg = $this->productModel->getAllVegetables();
 
@@ -46,17 +58,6 @@
         ];
         $this->view('Buyer/v_viewProducts', $data);
     }
-
-
-
-    // public function productSeeds(){
-    //     $allseed = $this->productModel->getAllSeeds();
-
-    //     $data = [
-    //         'allSeeds' => $allseed
-    //     ];
-    //     $this->view('Buyer/v_viewProduct', $data);
-    // }
 
     public function productFertilizer(){
         $allfert = $this->productModel->getAllFertilizer();
@@ -123,23 +124,18 @@
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
             $search = trim($_POST['search']);
-            if (empty($search)) {
-                echo 'Please enter a search term.';
-                return;
-            }
-        }else{
-            $search = '';
-        }
 
         $searchResult = $this->productModel->searchForProduct($search);
         
         $data = [
-            'search' =>$searchResult
+            'search' =>$searchResult,
+            'term' => $search
         ];
+        // print_r($data);
 
-        $this->view('pages/home', $data);
+        $this->view('pages/searchResults', $data);
     }
 
-
+    }
     
  }

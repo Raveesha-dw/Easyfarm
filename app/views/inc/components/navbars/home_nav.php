@@ -16,7 +16,7 @@ $current_page = $_SERVER['REQUEST_URI'];
             <div class="nav-parts">
 
 
-                <form action="<?php echo URLROOT ?>/product/productSearch" method="POST">
+                <form id="searchForm" action="<?php echo URLROOT ?>/product/productSearch" method="POST">
                     <div class="search-container" style="display: flex;">
                         <input type="text" id="search" name="search" class="search-bar" placeholder="Search for product..." style="flex: 1; margin-right: 5px;">
                         <button type="submit" class="search-button">Search</button>
@@ -28,6 +28,16 @@ $current_page = $_SERVER['REQUEST_URI'];
             <div class="nav-parts">
             </div>
 
+            <script>
+                var searchInput = document.getElementById("search");
+
+                document.getElementById("searchForm").addEventListener("submit", function(event) {
+                    if (searchInput.value.trim() === "") {
+                        event.preventDefault(); // Prevent form submission
+                        window.location.reload(); // Reload the page
+                 }
+                });
+            </script>
 
 
 
@@ -185,8 +195,8 @@ $current_page = $_SERVER['REQUEST_URI'];
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Reviews</h2>
                                         </a>
-                                        <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
-                                            <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Bookings</h2>
+                                        <a href="<?php echo URLROOT ?>/Orders/toBeAcceptedBookings" class="sub-link-menu">
+                                            <h2><i class="fa-solid fa-calendar-check"></i>My Bookings</h2>
                                         </a>
                                     <?php endif;?>
 
