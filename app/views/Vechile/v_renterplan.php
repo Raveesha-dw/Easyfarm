@@ -47,9 +47,10 @@ $planId = $data['plan_id'];
         <!-- <h2 class="list__label">REMAING LISTING :</h2> -->
         <!-- <h2 class="list__value"><?php echo $data['list_count'] ?></h2> -->
     <!-- </div> -->
-    
+    <div class="zzzzz">
     <div class="zx">
                     <?php if ($data['plan_id'] != $data[0]['plan_id']) : ?>
+                    
                         <div class="center1">
                             <div class="front-face">
                                 <div class="contents front">
@@ -116,6 +117,14 @@ $planId = $data['plan_id'];
 
                                 </div>
                             </div>
+
+
+
+
+
+
+
+
                         </div>
                     <?php endif; ?>
                     <?php if ($data['plan_id'] != $data[2]['plan_id']) : ?>
@@ -447,10 +456,10 @@ if (planId == 3) {
 <?php if ($data['plan_id'] != $data[2]['plan_id']) : ?> <button class="c3" onclick="showPopup(2)">Purchase Now</button> <?php endif; ?>
 </div>
 
-</div></div>
+</div></div></div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 
 </section>
-    </div>
+    
 </div>

@@ -475,6 +475,35 @@ i.fab{
 
 
 
+.renter_paln {
+
+
+  /* box-sizing: border-box;
+  background-color: #ebefef;
+  border-radius: 10px; */
+  max-width: 80%;
+  vertical-align: middle;
+  margin-top: 2%;
+  margin-right: auto;
+  margin-bottom: 2%;
+  margin-left: auto;
+  background-color: white;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #333;
+  border-radius: 50px;
+  /* padding: 4px 4px; */
+
+  background-color: #efffeb;
+  background-image: linear-gradient(to right, #ecfbb6, #f1f4f18f);
+  font-family: sans-serif;
+    padding-bottom: 5%;
+}
+
+
+
+
 
 
 
@@ -504,7 +533,130 @@ width: 900px;
   color: #333;
   border-radius: 50px;
   /* padding: 4px 4px; */
-  background-color: #efffeb;
-  background-image: linear-gradient(to right, #ecfbb6, #f1f4f18f);
+
+background-color: #45f9b5;
+  background-image: linear-gradient(to right, #aeffce, #f1f4f18f);
   font-family: sans-serif;
+
 }
+
+.renter_paln .shero3 .untill {
+  display: grid;
+  grid-template-columns: repeat(4,200px);
+  gap: 0.5em;
+  padding: 1em;
+  background: rgb(146, 245, 174);
+  border-radius: 5px;
+  box-shadow: 0 0 5px bisque;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  margin: 25px auto 0 auto;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #333;
+  border-radius: 20px;
+  padding: 4px 4px;
+background-color: rgb(146, 245, 174);
+  background-image: linear-gradient(to right, #3fe360, #f9f4adc7);
+  font-family: sans-serif;
+  width: fit-content;
+}
+
+
+
+.renter_paln .shero3 .unitl__component {
+  text-align: center;
+  background: white;
+  border-radius: 40px;
+}
+
+
+.renter_paln .zx {
+  display: flex;
+  margin-left: 10%;
+  width: 50%;
+  margin: auto;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: 33%;
+  margin-top: 150px;
+}
+
+.renter_paln .center1{
+    margin-left: 10%;
+    /* margin-top: 10%; */
+    /* margin: 15% auto 0 auto; */
+    /* left: 15%; */
+    /* padding: 500px 400px; */
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 290px;
+    transform-style: preserve-3d;
+   perspective: 1000px;
+  }
+
+
+.renter_paln .center2{
+    margin-left: 10%;
+   /* margin-top: 10%; */
+   /* margin: 15% auto 0 auto; */
+    /* left: 15%; */
+    /* padding: 500px 400px; */
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 290px;
+    transform-style: preserve-3d;
+   perspective: 1000px;
+  }
+
+
+  .renter_paln .back-face{
+  transform: rotateY(180deg);
+  background: linear-gradient(45deg,#0fee27 0%,#1f3139 100%);
+  }
+
+
+
+  .renter_paln .front-face{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(rgba(32, 183, 0, 0.91), rgba(198, 151, 40, 0.77)),url(bg.jpeg);
+  background-size: cover;
+  background-position: center;
+  transform: translateY(0deg);
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4,.2,.2,1);
+}
+
+
+.renter_paln .plan_button {
+margin-left: 27%;
+  margin-top: -10%;
+  display: flex;
+  width: 50%;
+}
+
+/* .renter_paln .shero3 .plan_button .c2 {
+  margin: 25px auto 0 10%;
+  cursor: pointer;
+  background-color: rgb(79, 55, 217);
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.renter_paln .shero3 .plan_button .c1 {
+  margin: 25px auto 0 10%;
+  cursor: pointer;
+  background-color: rgb(8, 8, 8);
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+} */
