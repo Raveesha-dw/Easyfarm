@@ -64,7 +64,7 @@ $(document).ready(function() {
                     start: date,
                     end: date,
                     rendering: 'background',
-                    color: '#26d87f' // Green
+                    color: '#1bec84' // Green
                 });
             });
 
