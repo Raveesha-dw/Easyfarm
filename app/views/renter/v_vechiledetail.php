@@ -67,6 +67,7 @@ $jsonData1 = json_encode($pending_dates);
                 table {
                     width: 125%;
                     border-collapse: collapse;
+                    max-width: 500px;
 
                 }
 

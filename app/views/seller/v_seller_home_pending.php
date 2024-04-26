@@ -85,13 +85,13 @@
                                                         </div>
                                                  </div>
 
-                                                 <div class="button-msg">
+                                                 <!-- <div class="button-msg">
 
                                                         <div class="aa">
                                                                <button class="dd"> <a><?php echo $product->Status; ?> </a> </button>
 
                                                         </div>
-                                                 </div>
+                                                 </div> -->
 
                                           </div>
 
