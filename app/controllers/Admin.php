@@ -238,6 +238,8 @@ class Admin extends Controller{
             'category' => '',
             'units' => '',
             'deliveryMethod' => '',
+            'isExpDate' => '',
+            'fontAwsome' => '',
 
             'category_err' => '',
             'units_err' => '',
@@ -257,6 +259,9 @@ class Admin extends Controller{
                 'category' => trim($_POST['category']),
                 'units' => trim($_POST['units']),
                 'deliveryMethod' => trim($_POST['deliveryMethod']),
+                'isExpDate' => trim($_POST['isExpDate']),
+                'fontAwsome' => trim($_POST['fontAwsome']),
+
 
                 'category_err' => '',
                 'units_err' => '',
@@ -274,6 +279,8 @@ class Admin extends Controller{
             if(empty($newcategory['deliveryMethod'])){
                 $newcategory['deliveryMethod_err'] = 'Delivery Method should not be empty';
             }
+
+            $newcategory['isExpDate'] = ($newcategory['isExpDate']) == 'yes' ? 'yes' : 'no';
             
             if(empty($newcategory['category_err']) && empty($newcategory['units_err']) && empty($newcategory['deliveryMethod_err'])){
                 if($this->adminModel->insertMarketplaceCategory($newcategory)){
@@ -300,6 +307,8 @@ class Admin extends Controller{
                 'category' => trim($_POST['category']),
                 'units' => trim($_POST['units']),
                 'deliveryMethod' => trim($_POST['deliveryMethod']),
+                'isExpDate' => trim($_POST['isExpDate']),
+                'fontAwsome' => trim($_POST['fontAwsome']),
 
                 'category_err' => '',
                 'units_err' => '',
@@ -317,6 +326,8 @@ class Admin extends Controller{
             if(empty($newcategory['deliveryMethod'])){
                 $newcategory['deliveryMethod_err'] = 'Delivery Method should not be empty';
             }
+
+            $newcategory['isExpDate'] = ($newcategory['isExpDate']) == 'yes' ? 'yes' : 'no';
 
             if(empty($newcategory['category_err']) && empty($newcategory['units_err']) && empty($newcategory['deliveryMethod_err'])){
                 if($this->adminModel->updateMarketplaceCategory($newcategory)){
