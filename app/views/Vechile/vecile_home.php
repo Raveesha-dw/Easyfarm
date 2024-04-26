@@ -69,17 +69,19 @@
 
                         <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $item->Image; ?>" />
                         <div class="product-description">
-                            <h3>For Rent! <?php echo $item->V_category; ?></h3>
-                            <div class="rating">
+                            <h3><?php echo $item->V_category; ?></h3>
+                            <!-- <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                            </div>
-                            
+                            </div> -->
+<!--                             
                             <h5> <?php echo $item->Charging_Unit; ?></h5>
-                            <h4><?php echo $item->Rental_Fee; ?>LKR</h4>
+                            <h4><?php echo $item->Rental_Fee; ?>LKR</h4> -->
+                            <h4> LKR <?php echo $item->Rental_Fee;?></h4>
+                            <h4> <?php echo  $item->Charging_Unit;?></h4>
                         </div>
                         <!-- </div> -->
                         <!-- </div> -->

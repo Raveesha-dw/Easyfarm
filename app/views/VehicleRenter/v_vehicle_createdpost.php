@@ -28,9 +28,10 @@
                     <a   href="http://localhost/Easyfarm/V_post/view_more_booking_details?V_Id=<?php echo $product->V_Id; ?>">
                         <img src="<?php echo URLROOT ?>/public/images/vehicleRenter/<?php echo $product->Image; ?> " alt="" class="poost1">
 
-                            <br><br><br>
-                            <p><?php echo $product->V_category; ?> For Rent - <?php echo $product->V_number; ?></p><br>
-                            <p>LKR <?php echo $product->Rental_Fee; ?> - <?php echo $product->Charging_Unit; ?></p>
+                            <br><br><br><strong>
+                            <!-- <p><?php echo $product->V_category; ?> For Rent - <?php echo $product->V_number; ?></p> -->
+                            <p><?php echo $product->V_number; ?></p>
+                            <p>LKR <?php echo $product->Rental_Fee; ?> - <?php echo $product->Charging_Unit; ?></p></strong>
    
                     </a>
 

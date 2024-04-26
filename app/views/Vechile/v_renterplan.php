@@ -18,6 +18,7 @@ $planId = $data['plan_id'];
 //  echo $planId; 
 
 ?>
+<div class="renter_paln">
 <div class="shero3">
     <div class="current"> <b>Current Package : &nbsp;&nbsp;&nbsp;<?php echo $data[$data['plan_id'] - 1]['name'] ?> </b></div>
     <div class="untill" id="myCountdown">
@@ -38,7 +39,9 @@ $planId = $data['plan_id'];
             <div class="untill__unit">Minutes</div>
         </div>
 
-        <!-- <div class="untill__event">Unit 31 Desember 2026</div> -->
+        <div class="untill__event">Until <?php echo $data['Date']; ?></div>
+ 
+
     </div>
 
 
@@ -261,7 +264,7 @@ if (planId == 3) {
     targetDate = dayjs(dateString).subtract(3, 'month').add(2, 'day');
 }
             
-            element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
+            // element.querySelector(".untill__event").textContent = `Until ${targetDate.format("D MMMM YYYY")}`;
 
             setInterval(() => {
                 const now = dayjs();
@@ -446,7 +449,7 @@ if (planId == 3) {
 <?php if ($data['plan_id'] != $data[2]['plan_id']) : ?> <button class="c3" onclick="showPopup(2)">Purchase Now</button> <?php endif; ?>
 </div>
 
-</div>
+</div></div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 

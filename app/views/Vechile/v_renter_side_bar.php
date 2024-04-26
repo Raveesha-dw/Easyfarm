@@ -25,7 +25,7 @@
                     <input type="text" placeholder="Search...">
                 </li>
 <br>
-                <ul class="menu-links">
+                <ul class="menu-links" style="margin-left: -50px;">
                     <li class="nav-link">
                         <a href="http://localhost/Easyfarm/V_renter_home/get_details1">
                             <i class='bx bx-home-alt icon' ></i>
