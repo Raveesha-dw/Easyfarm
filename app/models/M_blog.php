@@ -47,44 +47,6 @@ class M_blog{
         return $userType;
     }
 
-    public function getUserName($user_id, $userType){
-        switch($userType){
-            case 'Buyer':
-                $query = "SELECT Name FROM reg_buyer WHERE U_Id = :user_id";
-                break;
-            case 'Seller':
-                $query = "SELECT Name FROM reg_seller WHERE U_Id = :user_id";
-                break;
-            case 'AgricultureExpert':
-                $query = "SELECT Name FROM reg_agriinstructor WHERE U_Id = :user_id";
-                break;
-            case 'VehicleRenter':
-                $query = "SELECT Name FROM reg_vehicleowner WHERE U_Id = :user_id";
-                break;
-            case 'Admin':
-                $userName = 'Admin';
-                return $userName;
-        }
-
-        $this->db->query($query);
-        $this->db->bind(':user_id', $user_id);
-        $userName = $this->db->single()->Name;
-        return $userName;
-    }
-
-
-    public function getAnsweredQuestionsByUser($user_id){
-        $this->db->query("SELECT c.question, c.answer, p.title, p.post_id, c.answer_datetime_edited, a.Name
-                            FROM blog_comment c
-                            INNER JOIN blog_post p ON c.post_id = p.post_id
-                            INNER JOIN reg_agriinstructor a ON p.author_id = a.U_Id
-                            WHERE c.user_id = :user_id AND c.answer IS NOT NULL
-                        ");
-        $this->db->bind(':user_id', $user_id);
-        $result = $this->db->resultSet();
-        return $result;
-    }
-
     // public function getUserName($user_id, $userType){
     //     switch($userType){
     //         case 'Buyer':
@@ -144,21 +106,21 @@ class M_blog{
     //     return $userType;
     // }
 
-    // public function getUserName($user_id, $userType){
-    //     switch($userType){
-    //         case 'Buyer':
-    //             $query = "SELECT Name FROM reg_buyer WHERE U_Id = :user_id";
-    //             break;
-    //         default:
-    //             die('This user is not allowed to ask questions');
-    //             break;
-    //     }
+    public function getUserName($user_id, $userType){
+        switch($userType){
+            case 'Buyer':
+                $query = "SELECT Name FROM reg_buyer WHERE U_Id = :user_id";
+                break;
+            default:
+                die('This user is not allowed to ask questions');
+                break;
+        }
 
-    //     $this->db->query($query);
-    //     $this->db->bind(':user_id', $user_id);
-    //     $userName = $this->db->single()->Name;
-    //     return $userName;
-    // }
+        $this->db->query($query);
+        $this->db->bind(':user_id', $user_id);
+        $userName = $this->db->single()->Name;
+        return $userName;
+    }
 
     public function getQuestions($post_id){
         $this->db->query("SELECT * FROM blog_comment WHERE post_id = :post_id");
