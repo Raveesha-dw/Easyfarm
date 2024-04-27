@@ -4,7 +4,7 @@
 
 <?php
 
-// print_r($data);
+print_r($data);
 foreach($data['Categorized_items'] as $Categorized_item):
 ?>
 
