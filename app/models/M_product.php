@@ -14,12 +14,15 @@ class M_product{
         return $result;
     }
 
-    public function getAllFromCategory($category){
-        $this->db->query('SELECT * FROM item WHERE Category= :category');
-        $this->db->bind(':category', $category);
+  public function getAllFromCategory($category){
+    $this->db->query('SELECT * FROM item  
+        INNER JOIN reg_seller ON item.seller_ID = reg_seller.U_Id  
+        WHERE reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH) AND item.Category = :category');
+    $this->db->bind(':category', $category);
 
-        return $this->db->resultSet();
-    }
+    return $this->db->resultSet();
+}
+
 
     public function getAllVegetables(){
         $this->db->query('SELECT * FROM item WHERE Item_type="Veg"');

@@ -39,9 +39,7 @@ $planId = $data['plan_id'];
             <div class="untill__unit">Minutes</div>
         </div>
 
-        <div class="untill__event">Until <?php echo $data['Date']; ?></div>
- 
-
+        <!-- <div class="untill__event">Until <?php echo $data['Date']?></div> -->
     </div>
 
 
@@ -375,7 +373,7 @@ if (planId == 3) {
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     closePopup();
-                    alert(xhttp.responseText);
+                    // alert(xhttp.responseText);
                     var obj = JSON.parse(xhttp.responseText);
                     // console.log("ss")
 
