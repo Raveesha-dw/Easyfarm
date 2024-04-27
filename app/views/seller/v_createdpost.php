@@ -129,7 +129,7 @@
                 <div class="modal-content1">
                     <p>Are you sure you want to delete this item?</p>
                     <button id="modal-ok-btn" onclick="submitDeleteForm()">OK</button>
-                    <button onclick="hideRemoveConfirmation()">Cancel</button>
+                    <button  id= "modal-cancel-btn" onclick="hideRemoveConfirmation()">Cancel</button>
                 </div>
             </div>
 
