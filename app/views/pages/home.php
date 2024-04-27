@@ -109,14 +109,8 @@
                             <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $product->Image; ?>" />
 
                             <div class="product-description">
-                                <h3><?php echo $product->Item_name ?>...</h3><br>
-                                <!-- <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div> -->
+                                <h3><?php echo $product->Item_name ?>...</h3>
+                                
                                 <h4><?php echo $product->Unit_price ?> LKR / <?php echo $product->Unit_size ?> <?php echo $product->Unit_type ?></h4>
                             </div>
                             <!-- <a href="<?php echo URLROOT?>/Cart/showCart"><i class="fas fa-shopping-cart cart"></i></a> -->
@@ -133,7 +127,7 @@
     </section>
 </div>
 
-<!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
+
 <script>
     document.getElementById('sort').addEventListener('change', function() {
         var productsContainer = document.querySelector('.product-container');

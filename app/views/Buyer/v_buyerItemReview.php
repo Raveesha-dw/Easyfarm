@@ -8,7 +8,7 @@
 // echo $data['item_id'];
 
 ?>
-<h3>Item : <?php echo $data['item_name']; ?></h3><br>
+<h3>Item : <?php echo $data['item_name']; ?></h3>
 <!-- <div class="product" style="align-items:center; justify-content: center; display: flex;"> -->
 
 
@@ -95,44 +95,6 @@ function submitReview() {
 }
 </script>
 
-<!-- <script>
-const ratingForm = document.getElementById('rating-form');
-const stars = ratingForm.querySelectorAll('input[type="radio"]');
-
-for (const star of stars) {
-  star.addEventListener('change', setRating);
-}
-
-function setRating(event) {
-  const clickedStar = event.target;
-  const rating = clickedStar.value;
-  console.log('User rated:', rating);
-
-  // Highlight and unhighlight stars
-  highlightStars(rating);
-
-  // Add a hidden input field to the form with the selected rating value
-  const ratingInput = document.createElement('input');
-  ratingInput.type = 'hidden';
-  ratingInput.name = 'rating'; // Name of the input field
-  ratingInput.value = rating;
-  ratingForm.appendChild(ratingInput);
-
-  // Submit the form
-  ratingForm.submit();
-}
-
-function highlightStars(rating) {
-  const labels = ratingForm.querySelectorAll('label');
-  labels.forEach((label, index) => {
-    if (index < rating) {
-      label.classList.add('selected');
-    } else {
-      label.classList.remove('selected');
-    }
-  });
-}
-</script> -->
 
 
 
