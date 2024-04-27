@@ -277,9 +277,10 @@ ul{
 }
 
 .btn{
-    border-color: darkgreen;
+    border-color: rgb(7, 147, 7);
     color: white;
     background-color: rgb(7, 147, 7);
+    padding: 8px 20px !important;
     /* display: flex;
     justify-content: right;
     align-items: flex-end; */
@@ -301,7 +302,7 @@ ul{
 .btn-save{
     position: absolute;
     bottom: 20px;
-    right: 100px;
+    right: 120px;
 }
 
 .btn-comment{
