@@ -171,7 +171,6 @@ $current_page = $_SERVER['REQUEST_URI'];
                                         <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
                                         <span></span>
                                     </a>
-
                                     <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
                                     </a>
@@ -181,7 +180,6 @@ $current_page = $_SERVER['REQUEST_URI'];
                                     <a href="<?php echo URLROOT ?>/Admin" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-gauge"></i>Admin Panel</h2>
                                     </a>
-
                                     <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
                                     </a>
@@ -200,17 +198,16 @@ $current_page = $_SERVER['REQUEST_URI'];
                                             <h2>Shopping Cart</h2>
                                         </a> -->
                                         <a href="<?php echo URLROOT ?>/Orders/pendingOrdersOfUser" class="sub-link-menu">
+
+
                                             <h2><i class="fa-solid fa-sort"></i>My orders</h2>
                                         </a>
-
                                         <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
-                                            <h2><i class="fa-solid fa-star-half-o"></i>My Reviews</h2>
+                                            <h2><i class="fa-solid fa-magnifying-glass-dollar"></i>My Reviews</h2>
                                         </a>
-
-                                        <a href="<?php echo URLROOT ?>/Review/userReviews" class="sub-link-menu">
-                                            <h2><i class="fa-solid fa-truck"></i>My Bookings</h2>
+                                        <a href="<?php echo URLROOT ?>/Orders/toBeAcceptedBookings" class="sub-link-menu">
+                                            <h2><i class="fa-solid fa-calendar-check"></i>My Bookings</h2>
                                         </a>
-
                                         <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
                                         </a>

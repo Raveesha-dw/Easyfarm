@@ -34,6 +34,6 @@ $(document).ready(function(){
 
 <div class="homeheader">
     <a href="http://localhost/Easyfarm/Seller_home/get_product_details1" class="link">NEW ARRIVAL</a>
-    <a href="http://localhost/Easyfarm/Seller_home/get_product_details2" class="link">PENDING</a>
+    <a href="http://localhost/Easyfarm/Seller_home/get_product_details2" class="link">ACCEPTED</a>
     <a href="http://localhost/Easyfarm/Seller_home/get_product_details3" class="link">COMPLETED</a>
 </div>

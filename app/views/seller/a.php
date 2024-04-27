@@ -4,9 +4,7 @@
     <!-- <link href='https://unpkg.com/boxiconns@2.1.1/css/boxiconns.min.css' rel='stylesheet'> -->
     
     <!--<title>Dashboard Sidebar Menu</title>--> 
-    <div class="aaaaa">
-
-  
+    
 
     <nav class="sidebarr close" id="sidebarr">
         <header>
@@ -108,7 +106,7 @@
    
       
     </section>
-  </div>
+
     <script>
 
         
@@ -139,7 +137,3 @@ modeSwitch.addEventListener("click" , () =>{
     }
 });
     </script>
-
-
-
-
