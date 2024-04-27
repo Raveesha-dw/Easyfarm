@@ -1,4 +1,4 @@
-
+   
 
 
 $(document).ready(function() {
@@ -86,11 +86,11 @@ console.log(lastday); // This will log the month data to the console
 
 function showModal(message) {
   // Get the modal element
-  var modal = document.getElementById("myModal");
+  var modal = document.getElementById("myModal1");
   // Get the <span> element that closes the modal
   var okBtn = document.getElementById("modal-ok-btn");
   // Get the message container
-  var modalContent = document.getElementById("modal-content");
+  var modalContent = document.getElementById("modal-content1");
 
   // Set the message content
   modalContent.innerHTML = message;
