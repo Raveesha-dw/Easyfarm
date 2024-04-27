@@ -72,7 +72,7 @@ class M_blog{
         return $userName;
     }
 
-        public function getAnsweredQuestionsByUser($user_id){
+    public function getAnsweredQuestionsByUser($user_id){
         $this->db->query("SELECT c.question, c.answer, p.title, p.post_id, c.answer_datetime_edited, a.Name
                             FROM blog_comment c
                             INNER JOIN blog_post p ON c.post_id = p.post_id
