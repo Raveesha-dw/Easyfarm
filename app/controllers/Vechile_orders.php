@@ -92,7 +92,7 @@
 
         $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
 
-       
+       print_r($new_date);
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
     }
