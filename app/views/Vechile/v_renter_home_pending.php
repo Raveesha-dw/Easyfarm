@@ -116,10 +116,10 @@
 
                                                  <div class="button-msg">
                                                  
-                                                 <div class="aa">
+                                                 <!-- <div class="aa">
                                                         <button class="dd" style="cursor: default; "> <a ><?php echo $product->Status; ?> </a> </button>
 
-                                                 </div> 
+                                                 </div>  -->
                                                  </div>
                                                  
                             </div>
