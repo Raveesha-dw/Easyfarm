@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
-<section id="productDetails" class="section-p1" style="height:475px;">
+<section id="productDetails" class="section-p1"">
 <!-- <div class="flex-container"> -->
 
 <br>
@@ -18,16 +18,17 @@ foreach($data['allreviews'] as $review):
     // print_r($review);
 ?>
 
-    <div class="product">
-    <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $review->Image ?> " width="100%" id="MainImg" height="20%" alt="">
+    <!-- <div class="product"> -->
+    <div class="order-container">
+    <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $review->Image ?> " width="100%" id="MainImg" height="50%" alt="">
     <div class="product-description">
         <h3>Reviewed: <?php echo $review->Item_name ?> </h3>
-        <p>on <?php echo $review->posted_date ?> at <?php echo $review->posted_time?></p><br>
+        <p>on <?php echo $review->posted_date ?> at <?php echo $review->posted_time?></p>
 
        
         <p>
             <!-- <?php echo $_SESSION['user_email']?> posted: <br><br> -->
-        Review: <?php echo $review->Review?> <br> 
+        Review: <?php echo $review->Review?><br>
         Rating: <?php echo $review->Rating?> </p>
 </div>
         <a href="<?php echo URLROOT; ?>/Review/updateUserReview/<?php echo $review->review_ID ?>/<?php echo $review->Item_name?>"><button>Update</button></a>

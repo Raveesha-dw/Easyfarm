@@ -99,7 +99,8 @@ $inquiries = $data['inquiries'];
         foreach($productReviews as $review): ?>
             <div class="question-card">
                 <div class="question"><i class="fa fa-comment" aria-hidden="true"></i>
-                    <h3><?php echo $review->Name ?> posted on <small><?php echo $review->posted_date ?></small></h3>
+                    <!-- <h3><?php echo $review->Name ?> posted on <small><?php echo $review->posted_date ?></small></h3> -->
+                    <h3><?php echo $review->Name ?> posted &nbsp; </h3></nbsp><span style="font-size: 10px;"><?php echo $review->posted_date ?></span>
                    
                 </div>
                 <div class="answer">

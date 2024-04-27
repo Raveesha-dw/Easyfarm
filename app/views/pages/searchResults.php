@@ -47,8 +47,8 @@ foreach ($data['search'] as $product): ?>
     <div class="product">
     <img src="<?php echo URLROOT?>/public/images/seller/<?php echo $product->Image;?>"/>
     <div class="product-description">
-        <h3><?php echo $product->Item_name ?></h3><br>
-        <h4><?php echo $product->Unit_price ?> LKR </h4> per <?php echo $product->Unit_size ?> <?php echo $product->Unit_type?>
+        <h3><?php echo $product->Item_name ?></h3>
+        <h4><?php echo $product->Unit_price ?> LKR per <?php echo $product->Unit_size ?> <?php echo $product->Unit_type?> </h4>
     </div>
     </div>
 <!-- </div> -->
