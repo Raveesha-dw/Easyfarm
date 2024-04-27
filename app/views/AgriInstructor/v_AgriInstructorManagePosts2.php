@@ -1,3 +1,6 @@
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+<?php require APPROOT . '/views/inc/headerBlog.php'; ?>
+
 <div class="body-container">
    <!--Sidebar-->
     <?php require APPROOT . '/views/inc/components/sidebars/agriInstructor_sidebar2.php';?>
@@ -62,7 +65,7 @@
     </main> 
 </div>
 
-
+<?php require APPROOT . '/views/inc/footer.php'; ?>  
 
 
 <script>
