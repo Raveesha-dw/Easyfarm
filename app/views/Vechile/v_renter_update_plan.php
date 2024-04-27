@@ -33,7 +33,7 @@
             <div class="untill__unit">Minutes</div>
         </div>
 
-        <!-- <div class="untill__event">Unit 31 Desember 2026</div> -->
+       <!-- <div class="untill__event">Until <?php echo $data['Date']?></div> -->
             </div>
 
 
@@ -397,7 +397,7 @@ activateCountdown(document.getElementById("myCountdown"),"<?php echo $data['Date
                 xhttp.onreadystatechange = ()=>{
                         if(xhttp.readyState == 4 && xhttp.status == 200){
                             closePopup();
-                        alert(xhttp.responseText);
+                        // alert(xhttp.responseText);
                         var obj = JSON.parse(xhttp.responseText);
                         // console.log("ss")
 

@@ -11,7 +11,7 @@
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = ()=>{
                         if(xhttp.readyState == 4 && xhttp.status == 200){
-                        alert(xhttp.responseText);
+                        // alert(xhttp.responseText);
                         var obj = JSON.parse(xhttp.responseText);
 
                         var payment = {
