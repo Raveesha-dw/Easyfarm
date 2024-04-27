@@ -161,17 +161,27 @@ $current_page = $_SERVER['REQUEST_URI'];
                                         <span></span>
                                     </a>
 
+                                    <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
+                                        <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
+                                    </a>
+
                                 <?php elseif ($_SESSION['user_type'] == 'VehicleRenter'): ?>
 
                                     <a href="http://localhost/Easyfarm/V_renter_home/get_details1" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-gauge"></i>Dashboard</h2>
                                         <span></span>
                                     </a>
+                                    <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
+                                        <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
+                                    </a>
 
                                 <?php elseif ($_SESSION['user_type'] == 'Admin'): ?>
 
                                     <a href="<?php echo URLROOT ?>/Admin" class="sub-link-menu">
                                         <h2><i class="fa-solid fa-gauge"></i>Admin Panel</h2>
+                                    </a>
+                                    <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
+                                        <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
                                     </a>
 
                                 <?php elseif ($_SESSION['user_type'] == 'AgricultureExpert'): ?>
@@ -197,6 +207,9 @@ $current_page = $_SERVER['REQUEST_URI'];
                                         </a>
                                         <a href="<?php echo URLROOT ?>/Orders/toBeAcceptedBookings" class="sub-link-menu">
                                             <h2><i class="fa-solid fa-calendar-check"></i>My Bookings</h2>
+                                        </a>
+                                        <a href="<?php echo URLROOT ?>/Blog/agriQnA" class="sub-link-menu">
+                                            <h2><i class="fa-solid fa-leaf"></i>Agri-Q&A</h2>
                                         </a>
                                     <?php endif;?>
 
