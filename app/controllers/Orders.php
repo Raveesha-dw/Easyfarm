@@ -67,10 +67,12 @@
     //    $this->view('Buyer/v_dashboardOrders', $data);
     // }
 
-    public function pendingOrdersOfUser(){
+  public function pendingOrdersOfUser(){
         $orders = $this->orderModel->getPendingOrders();
+        $acceptOrders = $this->orderModel->getAcceptOrders();
         // print_r($orders);
         $orderDetails = [];
+        $acceptOrderDetails = [];
 
          foreach($orders as $order){
             $order_Data = [
@@ -83,33 +85,24 @@
 
          }
 
+         foreach($acceptOrders as $order){
+            $order_Data = [
+                'order' => $order,
+                'item' => $this->itemModel->sendItemName($order->Item_ID),
+                'seller' => $this->itemModel->getItemSellerInfo($order->seller_ID)
+            ];
+
+            $acceptOrderDetails[] = $order_Data;
+
+         }
+
         //  print_r($orderDetails);
 
          $data = [
-            'orders' => $orderDetails
+            'orders' => $orderDetails,
+            'acceptOrders' => $acceptOrderDetails
         ];
-        //     $itemNames = $this->orderModel->getItemsOfOrder($order->Order_ID);
-        //     $items = [];
-
-        //     foreach($itemNames as $item){
-        //         $items[] = $item->Item_name;
-        //     }
-
-        //     $orderItems[$order->Order_ID] = $items;
-
-        //      print_r($itemNames);
-        // }
         
-        // $data = [
-        //     'orders' => $orders,
-        //     'orderItems' => $orderItems
-        // ];
-
-
-        // print_r($data);
-        // $data = [
-        //     'orders' => $orders
-        // ];
 
         $this->view('Buyer/v_buyerOrders', $data);
 
@@ -191,6 +184,34 @@
     $this->view('Buyer/v_confirmedBookings', $data);
     }
 
+    // public function toBeAcceptedBookings(){
+    //     $booking = $this->orderModel->getAcceptBookings();
+    //     $bookingData = [];
+
+    //     foreach($booking as $request){
+    //         $bookingDetails = [
+    //             'request' => $request,
+    //             'vehicle' => $this->orderModel->getVehicleDetailsOfBooking($request->Vechile_ID)
+    //         ];
+
+    //          $bookingData[] = $bookingDetails;
+    //     }
+
+    //     $data = [
+    //         'requests' => $bookingData
+    //     ];
+
+       
+
+    //      $this->view('Buyer/v_bookingsPage', $data);
+    // }
+
+    public function completedBookings(){
+
+    }
+
+
+
     public function toBeAcceptedBookings(){
         $booking = $this->orderModel->getAcceptBookings();
         $bookingData = [];
@@ -198,7 +219,8 @@
         foreach($booking as $request){
             $bookingDetails = [
                 'request' => $request,
-                'vehicle' => $this->orderModel->getVehicleDetailsOfBooking($request->Vechile_ID)
+                'vehicle' => $this->orderModel->getVehicleDetailsOfBooking($request->Vechile_ID),
+                'dates' => $this->orderModel->getDatesOfBooking($request->Order_ID)
             ];
 
              $bookingData[] = $bookingDetails;
@@ -213,8 +235,11 @@
          $this->view('Buyer/v_bookingsPage', $data);
     }
 
-    public function completedBookings(){
 
-    }
+
+
+
+
+
 
 }
