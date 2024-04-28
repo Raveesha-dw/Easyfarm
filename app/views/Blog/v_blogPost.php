@@ -12,20 +12,20 @@
 
 <div class="img-blog-post">
     <img src="data:image/jpeg;base64,<?php echo $post->image; ?>" alt="Blog img">
-</div>
+</div> 
 
 <!-- <div class="btn-dashboard">
-    <a href="<?php echo URLROOT . '/Blog' ?>" ><h5 class="btn-dashboard"><i class="bx bxs-home"></i>  Blog</h5></a>
+    <a href="<?php // echo URLROOT . '/Blog' ?>" ><h5 class="btn-dashboard"><i class="bx bxs-home"></i>  Blog</h5></a>
 </div> -->
 
 
-<div class="blog-post mt-5">
+<div class="blog-post">
     <div class="container">
         <!-- Article -->
-        <div class="post bg-light p-4 mt-5">
+        <div class="post">
             <h1><?php echo $post->title; ?></h1>
             <p><?php echo $sellerDetails->Name;?> posted on <?php echo $post->date_published; ?> </p>
-            <hr>
+            <hr><br>
             <p><?php echo $post->content; ?> </p>
         </div>
 
