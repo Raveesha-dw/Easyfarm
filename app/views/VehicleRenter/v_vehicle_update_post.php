@@ -130,7 +130,28 @@
                             <?php
                                 // Encode $dates array as JSON
                                 $datesJson = json_encode($data['unavailableDates']);
-                                $post_create_dateJson = json_encode($data['post_create_date']);?>
+                                // $post_create_dateJson = json_encode($data['post_create_date']);
+                                
+                                
+                                
+                                
+                                
+                                $post_create_dateJson = null;
+
+                                // Check if the 'post_create_date' is set and is not empty
+                                if (isset($data['post_create_date']) && !empty($data['post_create_date'])) {
+                                    $post_create_dateJson = json_encode($data['post_create_date']);
+                                }
+                                
+                                
+                      
+                                      
+                                
+                                
+                                ?>
+
+
+                                
 
                             <div id='calendar' 
                                 data-dates='<?php echo $datesJson; ?>' 

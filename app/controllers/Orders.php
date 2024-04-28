@@ -67,7 +67,8 @@
     //    $this->view('Buyer/v_dashboardOrders', $data);
     // }
 
-  public function pendingOrdersOfUser(){
+
+public function pendingOrdersOfUser(){
         $orders = $this->orderModel->getPendingOrders();
         $acceptOrders = $this->orderModel->getAcceptOrders();
         // print_r($orders);
@@ -107,6 +108,53 @@
         $this->view('Buyer/v_buyerOrders', $data);
 
     }
+    // public function pendingOrdersOfUser(){
+    //     $orders = $this->orderModel->getPendingOrders();
+    //     // print_r($orders);
+    //     $orderDetails = [];
+
+    //      foreach($orders as $order){
+    //         $order_Data = [
+    //             'order' => $order,
+    //             'item' => $this->itemModel->sendItemName($order->Item_ID),
+    //             'seller' => $this->itemModel->getItemSellerInfo($order->seller_ID)
+    //         ];
+
+    //         $orderDetails[] = $order_Data;
+
+    //      }
+
+    //     //  print_r($orderDetails);
+
+    //      $data = [
+    //         'orders' => $orderDetails
+    //     ];
+    //     //     $itemNames = $this->orderModel->getItemsOfOrder($order->Order_ID);
+    //     //     $items = [];
+
+    //     //     foreach($itemNames as $item){
+    //     //         $items[] = $item->Item_name;
+    //     //     }
+
+    //     //     $orderItems[$order->Order_ID] = $items;
+
+    //     //      print_r($itemNames);
+    //     // }
+        
+    //     // $data = [
+    //     //     'orders' => $orders,
+    //     //     'orderItems' => $orderItems
+    //     // ];
+
+
+    //     // print_r($data);
+    //     // $data = [
+    //     //     'orders' => $orders
+    //     // ];
+
+    //     $this->view('Buyer/v_buyerOrders', $data);
+
+    // }
 
     public function completedOrdersOfUser(){
         $orders = $this->orderModel->getCompletedOrders();

@@ -80,8 +80,8 @@
 <!--                             
                             <h5> <?php echo $item->Charging_Unit; ?></h5>
                             <h4><?php echo $item->Rental_Fee; ?>LKR</h4> -->
-                            <h4> LKR <?php echo $item->Rental_Fee;?></h4>
-                            <h4> <?php echo  $item->Charging_Unit;?></h4>
+                            <p></p> LKR <?php echo $item->Rental_Fee;?>/
+                             <?php echo  $item->Charging_Unit;?></h4></p>
                         </div>
                         <!-- </div> -->
                         <!-- </div> -->

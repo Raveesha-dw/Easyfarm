@@ -6,7 +6,9 @@
         <button id="completedBtn" type="submit">View Pending Orders</button>
         </form>
 </div>
-<section id="productDetails" class="section-p1">
+
+
+<section id="productDetails" class="section-p1" style="display: block;">
 <!-- <div class="flex-container"> -->
         <?php if($data['orders'] == NULL){
         echo 'You currently have no pending orders';
@@ -14,7 +16,7 @@
                 ?>
         
 
-<div class="right-content">
+<!-- <div class="right-content"> -->
 
 <?php 
 // print_r($data);
@@ -67,9 +69,10 @@ foreach ($orders as $order): ?>
 <?php
 endforeach
 ?>
-</div>
+<!-- </div> -->
 <!-- </div> -->
 <?php } ?>
+
 </section>
 
 

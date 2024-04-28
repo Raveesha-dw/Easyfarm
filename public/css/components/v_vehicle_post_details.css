@@ -449,9 +449,9 @@ width: 50%;
   z-index: 1000;
 }
 
-.chargingPopUp .popup-content {
+/* .chargingPopUp .popup-content { */
   /* text-align: center; */
-}
+/* } */
 
 .popup-content .close {
   color: #aaa;
@@ -473,13 +473,13 @@ width: 50%;
     font-family: 'Poppins',sans-serif;
     box-sizing: border-box;
 } */
-.Wrapper_Vehicle_Update_charge_data {
+/* .Wrapper_Vehicle_Update_charge_data { */
   /* width: 100%; */
   /* min-height: 100vh; */
   /* margin-left: 25%; */
   /* margin-top: 15px; */
   /* background-color: #c3ffc463; */
-}
+/* } */
 
 .Wrapper_Vehicle_Update_charge_data .sdropdown1 {
   width: 95%;
