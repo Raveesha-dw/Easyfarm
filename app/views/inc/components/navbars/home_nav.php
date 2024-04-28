@@ -51,7 +51,7 @@ $current_page = $_SERVER['REQUEST_URI'];
             </div>
 
             <div class="nav-parts">
-                <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Vehicle Renting</a>
+                <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">AutoDrive</a>
             </div>
 
 
