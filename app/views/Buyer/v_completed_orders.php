@@ -9,12 +9,12 @@
 <section id="productDetails" class="section-p1">
 <!-- <div class="flex-container"> -->
         <?php if($data['orders'] == NULL){
-        echo 'You currently have no pending orders';
+        echo 'No Orders Yet';
         }else{
                 ?>
         
 
-<div class="right-content">
+<!-- <div class="right-content"> -->
 
 <?php 
 // print_r($data);
@@ -41,15 +41,17 @@ foreach ($orders as $order): ?>
                 <span><medium>Placed Date: <?php echo $orderInfo->placed_Date?> </medium></span><br>
                 <!-- <p >Status: &nbsp;<span style="color: red;">PENDING</span></p> -->
                 
-               <br> <h3>Item Details</h3><br>
-               <ul class="item-list" style="font-size:large;">
+               <br> <h3>Item Details</h3>
+               <ul class="item-list" style="font-size:17px;">
                  <li>Item Name: <?php echo $item->Item_name?></li>
                  <li>Unit Price: <?php echo $orderInfo->Unit_price?> / <?php echo $orderInfo->Unit_size ?><?php echo $orderInfo->Unit_type ?></li>
-                 <li>Quantity: <?php echo $orderInfo->quantity?></li>
-                 <?php $price = $orderInfo->Unit_price* $orderInfo->quantity; ?>
-                 <li>Item Price: <?php echo $price ?></li>
+                 <li>Quantity: <?php echo $orderInfo->quantity?> <?php echo $orderInfo->Unit_type ?></li>
+                 <?php $price = $orderInfo->Unit_price* ($orderInfo->quantity/$orderInfo->Unit_size); ?>
+                 <li>Item Price: <?php echo $price ?> LKR</li>
                </ul>
-                <br>
+                
+                <p><large><b>Seller Information: <?php echo $seller->Store_Name ?> , <?php echo $seller->Store_Adress ?> </b></large></p>
+
                 <p><large>Delivery Method:
                  <?php 
                  if($orderInfo->DeliveryMethod == 'Home'){
@@ -62,12 +64,12 @@ foreach ($orders as $order): ?>
 
 
         </div>
-</div>
+<!-- </div> -->
 
 <?php
 endforeach
 ?>
-</div>
+<!-- </div> -->
 <!-- </div> -->
 <?php } ?>
 </section>

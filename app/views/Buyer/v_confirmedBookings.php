@@ -12,12 +12,13 @@
 
 <?php
 if ($data['bookings'] == null){
-        echo 'You currently have no pending bookings';
+        echo 'No Bookings Yet';
 }
 else{
 ?>
 
 <div class="right-content">
+<span style="margin: 10px; color:dark gray" ><i class="fa-solid fa-circle-info" style="color: var(--dark-green);"></i>Please note that all payments for bookings are handled outside the system</span>
 <?php
 $booking = $data['bookings'];
 
@@ -27,20 +28,20 @@ foreach($booking as $bookData):
         $dates = $bookData['dates'];
 ?>
 
-<div class="order-container" style="margin: 10px;">
+<div class="order-container">
         <?php
         // print_r($book);
         // print_r($vehicle);
         // print_r($dates);
         ?>
 
-        <h3>Booking ID : <?php echo $book->Order_ID ?></h3><br>
+        <h3>Booking ID : <?php echo $book->Order_ID ?></h3>
 
-        <h3>Vehicle Details</h3><br>
-        <p>Requested Vehicle number:<b> <?php echo $vehicle->V_number ?></b> </p><br>
-        <p>Vehicle Name :<b> <?php echo $vehicle->V_name; ?></p> </b><br>
-        <p>Category  : <b><?php echo $vehicle->V_category; ?></b></p><br>
-        <p>Rental Fee :<b> LKR <?php echo $vehicle->Rental_Fee; ?>  <?php echo $vehicle->Charging_Unit;?> </b></p><br>
+        <h3>Vehicle Details</h3>
+        <p>Requested Vehicle number:<b> <?php echo $vehicle->V_number ?></b> </p>
+        <p>Vehicle Name :<b> <?php echo $vehicle->V_name; ?></p> </b>
+        <p>Category  : <b><?php echo $vehicle->V_category; ?></b></p>
+        <p>Rental Fee :<b> LKR <?php echo $vehicle->Rental_Fee; ?>  <?php echo $vehicle->Charging_Unit;?> </b></p>
 
         
         <h3>Booked Dates</h3>
@@ -52,7 +53,7 @@ foreach($booking as $bookData):
         <?php }
         ?>
         </div>
-        <p><b><br>Owner Information </b> : <?php echo $book->name ?>, <?php echo $book->location ?></p><br>
+        <p><b><br>Owner Information </b> : <?php echo $book->name ?>, <?php echo $book->location ?></p>
         <p>Contact Number:<span style="color: darkblue;"> <?php echo $vehicle->Contact_Number ?></span></p>
 
 </div>

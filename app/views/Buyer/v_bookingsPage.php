@@ -51,11 +51,11 @@ if($booking->placed_Date < $currentDate){
         // endforeach;
         ?>
 
-        <h3>Requested Vehicle Details on <medium style="color: darkblue;"><?php echo $booking->placed_Date?></medium> </h3><br>
-        <p><b>Vehicle Number</b> : <?php echo $vehicle->V_number; ?></p><br>
-        <p><b>Vehicle Name</b> : <?php echo $vehicle->V_name; ?></p><br>
-        <p><b>Category </b> : <?php echo $vehicle->V_category; ?></p><br>
-        <p><b>Rental Fee </b> : <?php echo $vehicle->Rental_Fee; ?>  <?php echo $vehicle->Charging_Unit;?> </p><br>
+        <h3>Requested Vehicle Details on <medium style="color: darkblue;"><?php echo $booking->placed_Date?></medium> </h3>
+        <p><b>Vehicle Number</b> : <?php echo $vehicle->V_number; ?></p>
+        <p><b>Vehicle Name</b> : <?php echo $vehicle->V_name; ?></p>
+        <p><b>Category </b> : <?php echo $vehicle->V_category; ?></p>
+        <p><b>Rental Fee </b> : <?php echo $vehicle->Rental_Fee; ?>  <?php echo $vehicle->Charging_Unit;?> </p>
         <p><b>Owner Info </b> : <?php echo $booking->name ?>, <?php echo $booking->location ?></p>
       
 </div>
