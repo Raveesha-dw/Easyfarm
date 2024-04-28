@@ -23,7 +23,7 @@
 
 
 
-<?php print_r($data);?>
+<!-- <?php print_r($data);?> -->
 <div class ="ss">
     <div class="Wrapper_Vehicle_Create_Post">
 
@@ -161,7 +161,7 @@
             <div class="sDescription">
                 <b>Descripition</b>
                 <br>
-                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" >>
+                <textarea id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required ><?php echo $data['Description']; ?></textarea>
                 <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
             </div>
 
