@@ -81,6 +81,7 @@ class M_product{
     }
 
     public function getProductInfo($itemID){
+        
         $this->db->query('SELECT * FROM item WHERE Item_Id= :itemID');
         $this->db->bind(':itemID', $itemID);
         $productInfo = $this->db->single();

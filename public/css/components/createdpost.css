@@ -145,6 +145,7 @@ ul{
     width: 20%; /* Could be more or less, depending on screen size */
     border-radius: 10px;
     text-align: center;
+    height: 20%;
 }
 
 /* Close button */
@@ -162,9 +163,12 @@ ul{
 }
 
 /* Style for "Cancel" button */
-.container #modal-cancel-btn {
+#modal-cancel-btn {
     background-color: #f44336;
     color: white;
+     padding: 10px 20px;
+     margin-top: 40px;
+     width: 80px;
 }
 
 /* Close button on hover */
@@ -172,6 +176,7 @@ ul{
     background-color: #555;
     color: white;
 }
+
 
 
 

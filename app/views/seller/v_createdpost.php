@@ -73,6 +73,8 @@
                     <?php foreach ($products as $product) : ?>
 
                         <div class="productt" id="product-seller">
+<!-- <a href="http://localhost/Easyfarm/Seller_post/viewitem?Id=<?php echo $product->Item_Id; ?>"> -->
+                        <a href="<?php echo URLROOT ?>/Seller_post/viewitem/<?php echo $product->Item_Id ?>">
 
 
                             <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $product->Image; ?> " alt="" class="poost1">
@@ -129,7 +131,7 @@
                 <div class="modal-content1">
                     <p>Are you sure you want to delete this item?</p>
                     <button id="modal-ok-btn" onclick="submitDeleteForm()">OK</button>
-                    <button onclick="hideRemoveConfirmation()">Cancel</button>
+                    <button  id= "modal-cancel-btn" onclick="hideRemoveConfirmation()">Cancel</button>
                 </div>
             </div>
 
