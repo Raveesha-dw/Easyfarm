@@ -189,9 +189,29 @@ class V_post extends Controller
                     redirect("V_post/created_post");
 
                 } else {die('something went wrong');}
+
+
+
             } else {
+
+
                 $v_Categories =  $this->v_postModel->get_category();
                 $data['v_Categories'] = $v_Categories;
+                $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
+                $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
+
+
+
+                // Convert plan_activated_date to string explicitly if it's not already a string
+                $timestamp = strtotime($data['plan_activated_date']->Register_date);
+                $month = $data['plan_duration']->duration;
+
+                $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+
+
+
+
+
                 $this->view('VehicleRenter\v_vehicle_create_post', $data);
             }
 
@@ -206,6 +226,7 @@ class V_post extends Controller
 
     public function created_post()
     {
+        unset($_SESSION['unavailable_datess']);
         $data = $this->v_postModel->get_data($_SESSION['user_ID']);
         $this->view('VehicleRenter/v_vehicle_createdpost', $data);
 
@@ -225,6 +246,10 @@ class V_post extends Controller
         $can_update = $this->v_postModel->checking_orders($current_date);
 
         if (empty($can_update)) {
+
+
+            unset($_SESSION['unavailable_datess'] );
+            // print_r($_SESSION['unavailable_datess'] );
 
             $item1 = $this->v_postModel->getiteamdeatils();
 
@@ -273,18 +298,27 @@ class V_post extends Controller
 
 
 
-    // Convert plan_activated_date to string explicitly if it's not already a string
+            // Convert plan_activated_date to string explicitly if it's not already a string
             $timestamp = strtotime($data['plan_activated_date']->Register_date);
             $month = $data['plan_duration']->duration;
 
             $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+   
 
 
 
+
+            //TODO:-------------------------------------------------------------
+            // $_SESSION['unavailable_datess'] = $data['unavailableDates'];
 
             $this->view('VehicleRenter/v_vehicle_update_post', $data);
+            
         }
+
+
         else{
+            // TODO:setbthe pop up
+            unset($_SESSION['unavailable_datess'] );
             redirect("V_post/created_post");
         }
 
@@ -356,18 +390,103 @@ class V_post extends Controller
             }
 
 
+
+
+
+
+            if (!isset($_SESSION['unavailable_datess'])) {
+                $_SESSION['unavailable_datess'] = array();
+            }
+
+            $v_Categories = $this->v_postModel->get_category();
+            $data['v_Categories'] = $v_Categories;
+
+            $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
+            $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
+
+            // Convert plan_activated_date to string explicitly if it's not already a string
+            $timestamp = strtotime($data['plan_activated_date']->Register_date);
+            $month = $data['plan_duration']->duration;
+
+            $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+
+
+            $unavailableDates = $this->v_postModel->getunavailableDates($data['V_Id']);
+
+            $dates = [];
+            foreach ($unavailableDates as $unavailableDate) {
+                $dates[] = $unavailableDate->date;
+            }
+             $data['unavailableDates'] = $dates;
+
+
+
+            if (is_string($data['Calender'])) {
+                // Convert string to array
+                $calenderArray = array_unique(explode(',', $data['Calender']));
+            } else {
+                $calenderArray = $data['Calender'];
+            }
+
+
+            // print_r($calenderArray);
+            // $data['a'] =$_SESSION['unavailable_datess'];
+            // $data['b'] =$calenderArray;
+
+            $unavailable__Dates = array_merge($_SESSION['unavailable_datess'], $calenderArray);
+
+            $_SESSION['unavailable_datess'] = array_values(array_unique($unavailable__Dates));
+
+            // Convert the array back into a comma-separated string
+            $unavailableDatesString = implode(',', $_SESSION['unavailable_datess']);
+                
+            $data['Calender'] =  $unavailableDatesString;
+            $data['unavailableDates'] =  $_SESSION['unavailable_datess'];
+
+
+            if (empty($data['V_category_err']) && empty($data['V_name_err']) && empty($data['V_number_err']) && empty($data['Contact_Number_err']) && empty($data['Rental_Fee_err']) && empty($data['Charging_Unit_err']) && empty($data['Address_err']) && empty($data['Description_err']) && empty($data['Image_err'])) {
+
                 if (uploadImage($data['Image']['tmp_name'], $data['Image_name'], '/images/vehicleRenter/'));
 
                 if ($this->v_postModel->update_vehicle_post_details($data)) {
+
+                    unset($_SESSION['unavailable_datess']);
                     $data = $this->v_postModel->get_data($_SESSION['user_ID']);
+
                     $this->view('VehicleRenter/v_vehicle_createdpost', $data);
-                    // redirect("V_post/created_post");
 
                 } else {die('something went wrong');}
-            } else {
-                $v_Categories = $this->v_postModel->get_category();
-                $data['v_Categories'] = $v_Categories;
-                $this->view('VehicleRenter\v_vehicle_update_post', $data);
+
+
+            }else{
+    
+                $_SESSION['unavailable_datess'] = $data['unavailableDates'];
+
+                $this->view('VehicleRenter/v_vehicle_update_post', $data);
+
+            }
+
+
+        } else {
+
+
+
+            $v_Categories = $this->v_postModel->get_category();
+            $data['v_Categories'] = $v_Categories;
+
+
+            $data['plan_duration'] = $this->v_postModel->get_planActivated_duration($_SESSION['user_ID']);
+            $data['plan_activated_date'] = $this->v_postModel->get_planActivated_date($_SESSION['user_ID']);
+
+
+
+            // Convert plan_activated_date to string explicitly if it's not already a string
+            $timestamp = strtotime($data['plan_activated_date']->Register_date);
+            $month = $data['plan_duration']->duration;
+
+            $data['last_date_of_plan'] = date('Y-m-d', strtotime("+$month months", $timestamp));
+
+            $this->view('VehicleRenter\v_vehicle_update_post', $data);
             }
 
         }
