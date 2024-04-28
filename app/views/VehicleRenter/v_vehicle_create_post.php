@@ -159,9 +159,9 @@
             <br>
 
             <div class="sDescription">
-                <b>Descripition</b><br>
+                <b>Descripition</b>
                 <br>
-                <textarea id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" ></textarea>
+                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" >>
                 <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
             </div>
 
