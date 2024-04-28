@@ -162,13 +162,13 @@ public function getPendingBookings(){
 
 
 
-public function getAcceptOrders(){
-        $this->db->query('SELECT * FROM orders INNER JOIN order_details on orders.Order_ID = Order_details.Order_ID WHERE Orders.User_ID=:user_ID AND order_details.Status ="ACCEPT"');
-        $this->db->bind(':user_ID', $_SESSION['user_ID']);
+// public function getAcceptOrders(){
+//         $this->db->query('SELECT * FROM orders INNER JOIN order_details on orders.Order_ID = Order_details.Order_ID WHERE Orders.User_ID=:user_ID AND order_details.Status ="ACCEPT"');
+//         $this->db->bind(':user_ID', $_SESSION['user_ID']);
 
-        return $this->db->resultSet();
+//         return $this->db->resultSet();
         
-    }
+//     }
 
 
 
