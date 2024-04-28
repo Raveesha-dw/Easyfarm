@@ -68,19 +68,21 @@
                                                         <div class="product-info">
                                                                <h3>Item</h3>
                                                                <h3>Quantity</h3>
+                                                               <h3>Unit Price</h3>
                                                                <h3>TO</h3>
                                                                <h3>Method</h3>
                                                                <h3>Order ID</h3>
-                                                               <h3>Unit Price</h3>
+                                                               
                                                                <h3>Contact Number</h3>
                                                         </div>
                                                         <div class="product-values">
                                                                <h3><?php echo $product->Item_name ?></h3>
                                                                <h3><?php echo $product->quantity ?><?php echo $product->Unit_type ?></h3>
+                                                                <h3><?php echo $product->Unit_price ?></h3>
                                                                <h3><?php echo $product->Address ?></h3>
                                                                <h3><?php echo $product->DeliveryMethod ?></h3>
                                                                <h3><?php echo $product->Order_ID ?></h3>
-                                                               <h3><?php echo $product->Unit_price ?></h3>
+                                                              
                                                                <h3><?php echo $product->Contact_num ?></h3>
                                                         </div>
                                                  </div>

@@ -14,7 +14,7 @@ class Blog extends Controller{
         $data['posts'] = $posts;
         $data['categories'] = $categories;
 
-        //print_r($posts);
+        //print_r($posts); 
         $this->view('Blog/v_blogHomePage', $data);
     }
 
@@ -28,12 +28,16 @@ class Blog extends Controller{
                 $user_id = $comment->user_id;
                 $userType = $this->blogModel->getUserType($user_id);
                 $userName = $this->blogModel->getUserName($user_id, $userType);
+                
+                $comment->userType = $userType;
                 $comment->userName = $userName;
             endforeach;
 
             $data['post'] = $post;
             $data['author'] = $author;
             $data['comments'] = $comments;
+
+            // print_r($comments);
 
             $this->view('Blog/v_blogPost', $data);
         }
@@ -57,74 +61,75 @@ class Blog extends Controller{
         }
     }
 
-    public function writeComment(){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+    // public function writeComment(){
+    //     if($_SERVER['REQUEST_METHOD']=='POST'){
+    //         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-            $data = [
-                'user_id' => trim($_POST['user_id']),
-                'post_id' => trim($_POST['post_id']),
-                'comment' => trim($_POST['comment']),
-                'datetime_posted' => trim($_POST['datetime_posted']),
+    //         $data = [
+    //             'user_id' => trim($_POST['user_id']),
+    //             'post_id' => trim($_POST['post_id']),
+    //             'comment' => trim($_POST['comment']),
+    //             'datetime_posted' => trim($_POST['datetime_posted']),
 
-                'comment_err' => ''
-            ];
+    //             'comment_err' => ''
+    //         ];
 
-            if(empty($data['comment'])){
-                $data['comment_err'] = 'Comment should not be empty.';
-            }
+    //         if(empty($data['comment'])){
+    //             $data['comment_err'] = 'Comment should not be empty.';
+    //         }
 
-            if(empty($data['comment_err'])){
-                if($this->blogModel->addComment($data)){
-                    flash('comment_publish_success', 'Your comment has been published successfully!');
-                    header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['post_id']);
-                }else{
-                    die('Something went wrong :(');
-                }
-            }else{
-                $this->view('Blog/v_blogPost', $data);
-            }
-        }
-    }
+    //         if(empty($data['comment_err'])){
+    //             if($this->blogModel->addComment($data)){
+    //                 flash('comment_publish_success', 'Your comment has been published successfully!');
+    //                 // header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['post_id']);
+    //                 redirect('/Blog/post?id=' . $data['post_id']);
+    //             }else{
+    //                 $this->view('Blog/v_blogPost', $data);
+    //             }
+    //         }else{
+    //             $this->view('Blog/v_blogPost', $data);
+    //         }
+    //     }
+    // }
 
-    public function editComment(){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+    // public function editComment(){
+    //     if($_SERVER['REQUEST_METHOD']=='POST'){
+    //         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-            $data = [
-                'comment_id' => trim($_POST['comment_id']),
-                'comment' => trim($_POST['edited_comment']),
-                'datetime_last_edited' => trim($_POST['datetime']),
+    //         $data = [
+    //             'comment_id' => trim($_POST['comment_id']),
+    //             'comment' => trim($_POST['edited_comment']),
+    //             'datetime_last_edited' => trim($_POST['datetime']),
 
-                'comment_err' => ''
-            ];
+    //             'comment_err' => ''
+    //         ];
 
-            if(empty($data['comment'])){
-                $data['comment_err'] = 'Comment should not be empty.';
-            }
+    //         if(empty($data['comment'])){
+    //             $data['comment_err'] = 'Comment should not be empty.';
+    //         }
 
-            if(empty($data['comment_err'])){
-                if($this->blogModel->editComment($data)){
-                    flash('comment_update_success', 'Your comment has been updated successfully!');
-                    header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['post_id']);
-                }else{
-                    die('Something went wrong :(');
-                }
-            }else{
-                $this->view('Blog/v_blogPost', $data);
-            }
-        }
-    }
+    //         if(empty($data['comment_err'])){
+    //             if($this->blogModel->editComment($data)){
+    //                 flash('comment_update_success', 'Your comment has been updated successfully!');
+    //                 header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['post_id']);
+    //             }else{
+    //                 die('Something went wrong :(');
+    //             }
+    //         }else{
+    //             $this->view('Blog/v_blogPost', $data);
+    //         }
+    //     }
+    // }
 
-    public function deleteComment(){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            if($this->blogModel->deleteComment($_POST['comment_id'])){
-                header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['post_id']);
-            }else{
-                die('Something went wrong :( Comment is not deleted.');
-            }
-        }
-    }
+    // public function deleteComment(){
+    //     if($_SERVER['REQUEST_METHOD']=='POST'){
+    //         if($this->blogModel->deleteComment($_POST['comment_id'])){
+    //             header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['post_id']);
+    //         }else{
+    //             die('Something went wrong :( Comment is not deleted.');
+    //         }
+    //     }
+    // }
 
     // public function posts(){
     //     if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -145,7 +150,7 @@ class Blog extends Controller{
         public function askQuestion(){
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-
+print_r("c");
                 $data = [
                     'user_id' => trim($_POST['user_id']),
                     'post_id' => trim($_POST['post_id']),
@@ -154,20 +159,25 @@ class Blog extends Controller{
 
                     'question_err' => ''
                 ];
-
+print_r("c");
                 if(empty($data['question'])){
                     $data['question_err'] = 'Question should not be empty.';
                 }
+                print_r("c");
 
                 if(empty($data['question_err'])){
+                    print_r("c");
                     if($this->blogModel->addQuestion($data)){
+                        print_r("c");
                         flash('question_publish_success', 'Your question has been published successfully!');
-                        header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                        redirect('/Blog/post?id=' . $data['post_id']);
                     }else{
-                        die('Something went wrong :(');
+                        redirect('/Blog/post?id=' . $data['post_id']);
+                        // $this->view('Blog/v_blogPost', $data);
                     }
                 }else{
-                    header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                    redirect('/Blog/post?id=' . $data['post_id']);
+                    // $this->view('Blog/v_blogPost', $data);
                 }
             }
         }
@@ -193,10 +203,10 @@ class Blog extends Controller{
                     flash('question_update_success', 'Your question has been updated successfully!');
                     header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
                 }else{
-                    die('Something went wrong :(');
+                    $this->view('Blog/v_blogPost', $data);
                 }
             }else{
-                header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                $this->view('Blog/v_blogPost', $data);
             }
         }
     }
@@ -232,20 +242,12 @@ class Blog extends Controller{
             if(empty($data['answer_err'])){
                 if($this->blogModel->addAnswer($data)){
                     flash('answer_publish_success', 'Your answer has been published successfully!');
-                    // header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);  //this is the line 233
-                     
-                     // Build the redirection URL without newlines
-                        $id = trim($_POST['product_id']);
-                        $redirectUrl = URLROOT . '/Blog' ;
-                        
-                        // Send the header with the constructed URL as a single string
-                        header('Location: ' . $redirectUrl);
-                        // header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                    redirect('/Blog/post?id=' . $_POST['post_id']);
                 }else{
-                    die('Something went wrong :(');
+                    $this->view('Blog/v_blogPost', $data);
                 }
             }else{
-                header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                $this->view('Blog/v_blogPost', $data);
             }
         }
     }
@@ -269,13 +271,12 @@ class Blog extends Controller{
             if(empty($data['answer_err'])){
                 if($this->blogModel->editAnswer($data)){
                     flash('answer_update_success', 'Your answer has been updated successfully!');
-                    header('Location: ' .  URLROOT . '/Blog');
-                    // header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                    redirect('/Blog/post?id=' . $_POST['post_id']);
                 }else{
-                    die('Something went wrong :(');
+                    $this->view('Blog/v_blogPost', $data);
                 }
             }else{
-                header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                $this->view('Blog/v_blogPost', $data);
             }
         }
     }
@@ -283,10 +284,9 @@ class Blog extends Controller{
     public function deleteAnswer(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             if($this->blogModel->deleteAnswer($_POST['question_id'])){
-                header('Location: ' .  URLROOT . '/Blog');
-                // header('Location: ' . URLROOT . '/Blog/post?id=' . $_POST['product_id']);
+                redirect('/Blog/post?id=' . $_POST['post_id']);
             }else{
-                die('Something went wrong :( Answer is not deleted.');
+                redirect('/Blog/post?id=' . $_POST['post_id']);
             }
         }
     }

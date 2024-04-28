@@ -164,9 +164,7 @@
 
                 if ($this->vechile_ordersmodel->update_data($data)) {
                     // print_r("x");
-
                     redirect('Vehicle_item/gethomepage');
-
                 }
 
             } else {
