@@ -37,13 +37,15 @@ public function user_details($seller_ID){
 }
 
 public function create_post($data){
-    $this->db->query('INSERT INTO item (Item_name, Category, Expiry_date, Unit_price, Stock_size, DeliveryMethod, Description, Unit_type, Unit_size, Image, seller_ID) VALUES (:Item_name, :Category, :Expiry_date, :Unit_price, :Stock_size, :DeliveryMethod, :Description, :Unit_type, :Unit_size, :Image, :seller_ID)');
+    $this->db->query('INSERT INTO item (Item_name, Category, Expiry_date, Unit_price,address, Stock_size, DeliveryMethod, Description, Unit_type, Unit_size, Image, seller_ID) VALUES (:Item_name, :Category, :Expiry_date, :Unit_price,:address, :Stock_size, :DeliveryMethod, :Description, :Unit_type, :Unit_size, :Image, :seller_ID)');
     
     $this->db->bind(':Item_name', $data['Item_name']); 
     $this->db->bind(':Category', $data['Category']); 
     $this->db->bind(':Expiry_date', $data['Expiry_date']); 
     $this->db->bind(':Unit_price', $data['Unit_price']); 
     $this->db->bind(':Stock_size', $data['Stock_size']); 
+    $this->db->bind(':address', $data['saddress']); 
+   
     $this->db->bind(':DeliveryMethod', $data['DeliveryMethod']); 
     $this->db->bind(':Description', $data['Description']); 
     $this->db->bind(':Unit_type', $data['Unit_type']); 
@@ -109,6 +111,7 @@ public function update_data($data){
         Unit_price = :Unit_price,
         -- column name= variable
         Stock_size = :Stock_size,
+        address = :address,
         DeliveryMethod = :DeliveryMethod,
         Image = :Image_name,
         Description = :Description,
@@ -125,7 +128,8 @@ public function update_data($data){
      $this->db->bind(':Category', $data['Category']); 
      $this->db->bind(':Expiry_date', $data['Expiry_date']); 
      $this->db->bind(':Unit_price', $data['Unit_price']); 
-     $this->db->bind(':Stock_size', $data['Stock_size']); 
+     $this->db->bind(':Stock_size', $data['Stock_size']);
+     $this->db->bind(':address', $data['saddress']); 
      $this->db->bind(':DeliveryMethod', $data['DeliveryMethod']); 
      $this->db->bind(':Description', $data['Description']); 
      $this->db->bind(':item_id', $data['Item_Id']);

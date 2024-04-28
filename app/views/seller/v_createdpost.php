@@ -73,6 +73,8 @@
                     <?php foreach ($products as $product) : ?>
 
                         <div class="productt" id="product-seller">
+<!-- <a href="http://localhost/Easyfarm/Seller_post/viewitem?Id=<?php echo $product->Item_Id; ?>"> -->
+                        <a href="<?php echo URLROOT ?>/Seller_post/viewitem/<?php echo $product->Item_Id ?>">
 
 
                             <img src="<?php echo URLROOT ?>/public/images/seller/<?php echo $product->Image; ?> " alt="" class="poost1">
