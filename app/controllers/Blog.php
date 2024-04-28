@@ -297,4 +297,8 @@ class Blog extends Controller{
             redirect('Users/login');
         }
     }
+
+    public function getAuthorIdByPostId($postID){
+        return $this->blogModel->getAuthorIdByPostId($postID);
+    }
 }

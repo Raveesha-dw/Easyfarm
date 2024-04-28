@@ -83,6 +83,16 @@ class M_blog{
         $result = $this->db->resultSet();
         return $result;
     }
+
+    public function getAuthorIdByPostId($post_id){
+        $this->db->query("SELECT p.author_id
+                            FROM blog_comment c
+                            INNER JOIN blog_post p ON c.post_id = p.post_id
+                            WHERE c.post_id = :post_id");
+        $this->db->bind(':post_id', $post_id);
+        $author_id = $this->db->single();
+        return $author_id;
+    }
     
     public function addComment($data){
         $this->db->query("INSERT INTO blog_comment(user_id, post_id, datetime_posted, comment) VALUES (:user_id, :post_id, :datetime_posted, :comment)");

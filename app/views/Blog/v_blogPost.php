@@ -189,8 +189,8 @@
 
                         if(isset($_SESSION['user_ID'])){
 
-                            //If the logged in user is the person who has asked the question he/she can edit/delete it
-                            if($_SESSION['user_ID'] == $inquiry->user_id){
+                            //If the logged in user is the person who has asked the question he/she can edit/delete it if author hasn't answered
+                            if($_SESSION['user_ID'] == $inquiry->user_id && empty($inquiry->answer)){
                     ?>
                                 <!-- Edit Question -->
                                 <button class="comment-edit-btn display-0 display-1">Edit</button>
@@ -214,8 +214,8 @@
                     <?php            
                             }
 
-                            // Any agri instructor can reply to questions, but there is no reply option for comments posted by agri instructors
-                            if($_SESSION['user_type'] == 'AgricultureExpert' && $inquiry->userType != 'AgricultureExpert' && empty($inquiry->answer)){
+                            // Author can reply, but there is no reply option for comments posted by agri instructors
+                            if($_SESSION['user_ID'] == $post->author_id && $inquiry->userType != 'AgricultureExpert' && empty($inquiry->answer)){
                     ?>
                                 <!-- Answer Question -->
                                 <div class="display-answer-form">
