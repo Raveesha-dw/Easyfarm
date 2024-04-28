@@ -7,16 +7,10 @@ include_once APPROOT . '/helpers/image_helper.php';
 class Seller_post extends Controller
 {
     private $sellerModel;
-    private $productModel;
-    private $reviewModel;
-    private $inquiryModel;
     // private static $this;
     public function __construct()
     {
         // self::$this = $this;
-       $this->productModel=$this->model('M_Product');
-        $this->reviewModel=$this->model('M_Review');
-        $this->inquiryModel=$this->model('M_inquiry');
         $this->sellerModel = $this->model('M_seller_post');
     }
 
@@ -76,7 +70,6 @@ class Seller_post extends Controller
                     'Invalid_date' => '',
                     'Unit_price' => '',
                     'Stock_size' => '',
-                    'saddress'=>'',
                     'DeliveryMethod' => '',
                     'Description' => '',
                     'Unit_type' => '',
@@ -90,7 +83,6 @@ class Seller_post extends Controller
                     'Invalid_date_err' => '',
                     'Unit_price_err' => '',
                     'Stock_size_err' => '',
-                    'saddress_err' =>'',
                     'DeliveryMethod_err' => '',
                     'Description_err' => '',
                     'Unit_type_err' => '',
@@ -134,7 +126,6 @@ class Seller_post extends Controller
                 'Expiry_date' => isset($_POST['Expiry_date']) ? trim($_POST['Expiry_date']) : '',
                 'Unit_price' => isset($_POST['Unit_price']) ? trim($_POST['Unit_price']) : '',
                 'Stock_size' => isset($_POST['Stock_size']) ? trim($_POST['Stock_size']) : '',
-                'saddress' => isset($_POST['saddress']) ? trim($_POST['saddress']) : '',
                 'Description' => isset($_POST['Description']) ? trim($_POST['Description']) : '',
                 'Unit_type' => isset($_POST['Unit_type']) ? trim($_POST['Unit_type']) : '',
                 'DeliveryMethod' => $data['DeliveryMethod'],
@@ -166,8 +157,6 @@ class Seller_post extends Controller
             if ($data['Unit_size'] > $data['Stock_size']) {
                 $data['stock_err'] = 'Please enter valid stock size';
             }
-            
-            
             if (empty($data['Category'])) {
                 $data['Category_err'] = 'please choose a category';
             }
@@ -337,7 +326,6 @@ class Seller_post extends Controller
         $data['Expiry_date'] = $items['Expiry_date'];
         $data['Unit_price'] = $items['Unit_price'];
         $data['Stock_size'] = $items['Stock_size'];
-        $data['saddress'] = $items['address'];
         $data['DeliveryMethod'] = $items['DeliveryMethod'];
         $data['Description'] = $items['Description'];
         $data['Image'] = $items['Image'];
@@ -400,7 +388,6 @@ class Seller_post extends Controller
                 'Expiry_date' => trim($_POST['Expiry_date']),
                 'Unit_price' => trim($_POST['Unit_price']),
                 'Stock_size' => trim($_POST['Stock_size']),
-                'saddress' => trim($_POST['saddress']),
                 'DeliveryMethod' => $data['DeliveryMethod'],
                 'Description' => trim($_POST['Description']),
                 'Unit_type' => isset($_POST['Unit_type']) ? trim($_POST['Unit_type']) : '',
@@ -544,37 +531,5 @@ class Seller_post extends Controller
 
     public function income(){
         $this ->view('seller/income');
-    }
-
-
-    public function viewitem($itemID){
-        // print_r($itemID);
-         $productInfo = $this->productModel->getProductInfo($itemID);
-         
- 
-        $seller_ID = $productInfo->seller_ID;
-        $sellerInfo = $this->productModel->getSellerInfo($seller_ID);
-
-        $productReviews = $this->reviewModel->getReviewsForItem($itemID);
-        $productRating = $this->reviewModel->getRatingsForItem($itemID);
-        // print_r($productRating);
-        $inquiries = $this->inquiryModel->getQuestions($itemID);
-
-        foreach ($inquiries as $inquiry):
-            $user_id = $inquiry->user_id;
-            $userType = $this->inquiryModel->getUserType($user_id);
-            $userName = $this->inquiryModel->getUserName($user_id, $userType);
-            $inquiry->userName = $userName;
-        endforeach;
-
-
-        $data = [
-            'productInfo' => $productInfo,
-            'sellerInfo' => $sellerInfo,
-            'itemReviews' => $productReviews,
-            'itemRating' => $productRating,
-            'inquiries' => $inquiries
-        ];
-        $this->view('Buyer/v_productDetails', $data);
     }
 }

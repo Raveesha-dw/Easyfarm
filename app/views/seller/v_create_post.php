@@ -124,20 +124,6 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
                     </div>
 
-                    <br>
-                    
-                    <div class="saddress">
-                        
-
-                        <br>
-                        <b>Location<span class="requiredd"></span></b>
-                        <br>
-                        <input id="address" name="saddress"  placeholder="Enter the address" required value="<?php echo $data['saddress']; ?>">
-
-
-
-                    </div>
-
 
 
 

@@ -35,20 +35,6 @@
     
     /* display: flex; */
 }
-
-.shero1 .saddress {
-    margin-left: 200px;
-    width: 500px;
-}
-
-
-.shero1 .saddress #address{
-     width:700px;
-    height: 40px;
-    border-radius: 5px;
-    color: rgb(2, 3, 2);
-}
-
 .shero1 .sstock_size .sdropdown2{
     margin-left: 150px;
     width: 500px;

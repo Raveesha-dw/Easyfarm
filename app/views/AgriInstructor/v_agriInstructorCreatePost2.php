@@ -1,5 +1,4 @@
 <!--Agri Instructor Creates Post-->
-<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <?php
     $post = $data['post'];

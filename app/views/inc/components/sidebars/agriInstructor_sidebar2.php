@@ -29,15 +29,6 @@ function isActive($page){
     <div class="sidebar-links">
       <ul>
         <div class="active-tab"></div>
-        <li class="tooltip-element" data-tooltip="1">
-          <a href="<?php echo URLROOT . '/AgriInstructor/notifications';?>" class="active" data-active="1">
-            <div class="icon">
-              <i class='bx bx-comment-detail'></i>
-              <i class='bx bxs-comment-detail'></i>
-            </div>
-            <span class="link hide">Blog Notifications</span>
-          </a>
-        </li>
         <li class="tooltip-element" data-tooltip="0">
           <a href="<?php echo URLROOT . '/AgriInstructor/manageposts';?>" data-active="0">
             <div class="icon">
@@ -56,7 +47,6 @@ function isActive($page){
             <span class="link hide">Write New Post</span>
           </a>
         </li>
-        
         <!-- <li class="tooltip-element" data-tooltip="2">
           <a href="#" data-active="2">
             <div class="icon">

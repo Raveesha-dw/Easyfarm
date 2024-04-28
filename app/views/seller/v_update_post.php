@@ -123,8 +123,6 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
                     </div>
 
-                    <br>
-
                     <div class="stocksize">
                         <br>
                         <b>Stock Size<span class="requiredd"></span></b>
@@ -133,19 +131,6 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <span class="invalid"><?php if ($data) {
                                                     echo $data['Stock_size_err'];
                                                 }  ?></span>
-
-                    </div>
-
-                    <br>
-                    <div class="saddress">
-                        
-
-                        <br>
-                        <b>Location<span class="requiredd"></span></b>
-                        <br>
-                        <input id="address" name="saddress"  placeholder="Enter the address" required value="<?php echo $data['saddress']; ?>">
-
-
 
                     </div>
 
