@@ -149,7 +149,7 @@ class Payment extends Controller
             // Merge arrays and remove duplicates
             $mergedArray = array_merge($orderdDetails, $buyerDetails);
             $data1 = array_unique($mergedArray);
-            $data = array_merge($data1, $data);
+            $data = array_merge($mergedArray, $data);
 
 
             $this->paymentModel->saveOrder($data);

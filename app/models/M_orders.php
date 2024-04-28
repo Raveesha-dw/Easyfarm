@@ -52,6 +52,12 @@ class M_orders{
 
     }
 
+    public function getAcceptOrders(){
+            $this->db->query('SELECT * FROM orders INNER JOIN order_details on orders.Order_ID = Order_details.Order_ID WHERE Orders.User_ID=:user_ID AND order_details.Status ="ACCEPT"');
+            $this->db->bind(':user_ID', $_SESSION['user_ID']);
+
+            return $this->db->resultSet();
+    }
     public function getPendingOrders(){
         // $this->db->query('SELECT * FROM orders WHERE User_ID=:user_ID AND Status ="PENDING"'); 
         // $this->db->query('SELECT orders.*, order_details.*, item.Item_name FROM orders O INNER JOIN order_details D on O.Order_ID = D.Order_ID INNER JOIN item I on O.Item_ID = I.Item_Id WHERE O.User_ID=:user_ID AND D.Status ="PENDING"');
@@ -98,9 +104,27 @@ class M_orders{
         
     }
 
-    public function getPendingBookings(){
+    // public function getPendingBookings(){
+    //     // $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="PENDING"'); 
+    //     $this->db->query('SELECT DISTINCT v_orders.Order_ID, v_orders.name, v_orders.location, v_orders.Vechile_ID FROM v_orders INNER JOIN order_calander on order_calander.0rder_ID = v_orders.Order_ID WHERE v_orders.Buyer_ID = :user_ID AND order_calander.status = "Pending"');
+    //     $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    //     $result = $this->db->resultSet();
+    //     // print_r($result);
+
+    //     return $result;   
+    // }
+
+    // public function getAcceptBookings(){
+    //     $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="ACCEPT"'); 
+    //     $this->db->bind(':user_ID', $_SESSION['user_ID']);
+    //     $result = $this->db->resultSet();
+    //     // print_r($result);
+
+    //     return $result;   
+    // }
+public function getPendingBookings(){
         // $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="PENDING"'); 
-        $this->db->query('SELECT DISTINCT v_orders.Order_ID, v_orders.name, v_orders.location, v_orders.Vechile_ID FROM v_orders INNER JOIN order_calander on order_calander.0rder_ID = v_orders.Order_ID WHERE v_orders.Buyer_ID = :user_ID AND order_calander.status = "Pending"');
+        $this->db->query('SELECT DISTINCT v_orders.Order_ID, v_orders.name, v_orders.location, v_orders.placed_Date, v_orders.Vechile_ID FROM v_orders INNER JOIN order_calander on order_calander.0rder_ID = v_orders.Order_ID WHERE v_orders.Buyer_ID = :user_ID AND order_calander.status = "success"');
         $this->db->bind(':user_ID', $_SESSION['user_ID']);
         $result = $this->db->resultSet();
         // print_r($result);
@@ -109,14 +133,15 @@ class M_orders{
     }
 
     public function getAcceptBookings(){
-        $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="success"'); 
+        // $this->db->query('SELECT * FROM v_orders WHERE Buyer_ID=:user_ID AND Status ="ACCEPT"'); 
+        $this->db->query('SELECT DISTINCT v_orders.Order_ID, v_orders.name, v_orders.location, v_orders.Vechile_ID FROM v_orders INNER JOIN order_calander on order_calander.0rder_ID = v_orders.Order_ID WHERE v_orders.Buyer_ID = :user_ID AND order_calander.status = "Pending"');
+        // AND v_orders.status = "ACCEPT"
         $this->db->bind(':user_ID', $_SESSION['user_ID']);
         $result = $this->db->resultSet();
         // print_r($result);
 
         return $result;   
     }
-
     
 
     public function getVehicleDetailsOfBooking($vehicle_ID){
@@ -135,11 +160,20 @@ class M_orders{
         return $result;
     }
 
-    public function getAcceptOrders(){
-        $this->db->query('SELECT * FROM orders INNER JOIN order_details on orders.Order_ID = Order_details.Order_ID WHERE Orders.User_ID=:user_ID AND order_details.Status ="ACCEPT"');
-        $this->db->bind(':user_ID', $_SESSION['user_ID']);
 
-        return $this->db->resultSet();
-    }
+
+// public function getAcceptOrders(){
+//         $this->db->query('SELECT * FROM orders INNER JOIN order_details on orders.Order_ID = Order_details.Order_ID WHERE Orders.User_ID=:user_ID AND order_details.Status ="ACCEPT"');
+//         $this->db->bind(':user_ID', $_SESSION['user_ID']);
+
+//         return $this->db->resultSet();
+        
+//     }
+
+
+
+
+
+
 
 }

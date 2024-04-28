@@ -4,8 +4,8 @@
 
 
 <div>
-        <?php require APPROOT . '/views/inc/header.php'; ?>
-        <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
+    <?php require APPROOT . '/views/inc/header.php'; ?>
+    <?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 </div>
 <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
 <script src="<?php echo URLROOT ?>\public\js\jquery.min.js"></script>
@@ -77,10 +77,10 @@
             <div class="saddress">
                 <b>Address</b><br>
                 <br>
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line1" value="<?php if ($data) {echo $data['Address'];}?>" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" value="<?php if ($data) {echo $data['Address'];}?>" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address" value="<?php if ($data) {echo $data['Address'];}?>" required>
+                <!-- <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line2" value="<?php if ($data) {echo $data['Address'];}?>" >
                 <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line3" value="<?php if ($data) {echo $data['Address'];}?>" >
-                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" value="<?php if ($data) {echo $data['Address'];}?>" >
+                <input id="sAddress" name ="address" type="textbox" placeholder="Enter the Address Line4" value="<?php if ($data) {echo $data['Address'];}?>" > -->
 
 
             </div>
@@ -97,17 +97,17 @@
                     <br>
 
                         <select name="Charging_Unit" id="stype">
-                            <option disabled selected>Per Day </option>
+                            <!-- <option disabled selected>Per Day </option> -->
                             <!-- <option value="Per Hour">Per Hour</option> -->
                             <option value="Per Day">Per Day</option>
                             <!-- <option value="Per Week">Per Week</option>
                             <option value="Per month">Per month</option> -->
 
-                            <?php if (!isset($_POST['Charging_Unit']) || empty($_POST['Charging_Unit'])) : ?>
+                            <!-- <?php if (!isset($_POST['Charging_Unit']) || empty($_POST['Charging_Unit'])) : ?>
                                 <option selected><?php echo $data['Charging_Unit']; ?></option>
                             <?php else : ?>
                                 <option selected><?php echo $_POST['Charging_Unit']; ?></option>
-                            <?php endif; ?>
+                            <?php endif; ?> -->
                             
                         </select>
                     <span class="invalid"><?php if ($data) {echo $data['Charging_Unit_err'];}?></span>
@@ -159,9 +159,9 @@
             <br>
 
             <div class="sDescription">
-                <b>Descripition</b><br>
+                <b>Descripition</b>
                 <br>
-                <textarea id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" ></textarea>
+                <textarea id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required ><?php echo $data['Description']; ?></textarea>
                 <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
             </div>
 

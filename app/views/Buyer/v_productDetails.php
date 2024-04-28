@@ -261,6 +261,8 @@ endforeach;
             <div class="price-tag">
                 <h3 id="unit-price" >Unit Price :<?php echo $productDetails->Unit_price ?> LKR / <?php echo $productDetails->Unit_size ?> <?php echo $productDetails->Unit_type ?> </h3>
                 <br>
+<?php if (!empty($_SESSION['user_ID']) && ($_SESSION['user_type'] == 'Buyer') ): ?>
+                
                 <label for="quantity">Amount:</label>
                 <input type="number" id="quantity" name="quantity" min="<?php echo $productDetails->Unit_size ?>" step="<?php echo $productDetails->Unit_size ?>" oninput="updateHiddenField()"> <?php echo $productDetails->Unit_type ?>
 
@@ -354,6 +356,11 @@ endforeach;
 
 
             </div>
+        <?php else: ?>
+            <h4 style="color: #2de139; font-family: Arial, sans-serif;">Please log in using your Buyer credentials. Happy shopping! 🛍️</h4><br>
+        <?php endif; ?>
+
+            <p></p>
             </div>
 </div>
 
@@ -374,7 +381,7 @@ endforeach;
 </div>
 
 
-
+</div>
 
 
 
