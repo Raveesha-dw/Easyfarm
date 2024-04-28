@@ -150,7 +150,7 @@ class Blog extends Controller{
         public function askQuestion(){
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-print_r("c");
+
                 $data = [
                     'user_id' => trim($_POST['user_id']),
                     'post_id' => trim($_POST['post_id']),
@@ -159,16 +159,13 @@ print_r("c");
 
                     'question_err' => ''
                 ];
-print_r("c");
+
                 if(empty($data['question'])){
                     $data['question_err'] = 'Question should not be empty.';
                 }
-                print_r("c");
 
                 if(empty($data['question_err'])){
-                    print_r("c");
                     if($this->blogModel->addQuestion($data)){
-                        print_r("c");
                         flash('question_publish_success', 'Your question has been published successfully!');
                         redirect('/Blog/post?id=' . $data['post_id']);
                     }else{
@@ -288,6 +285,16 @@ print_r("c");
             }else{
                 redirect('/Blog/post?id=' . $_POST['post_id']);
             }
+        }
+    }
+
+    public function agriQnA(){
+        if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] != 'AgricultureExpert'){
+            $answers = $this->blogModel->getAnsweredQuestionsByUser($_SESSION['user_ID']);
+            // print_r($answers);
+            $this->view('Blog/v_blogNotification', $answers);
+        }else{
+            redirect('Users/login');
         }
     }
 }
