@@ -41,7 +41,7 @@
 
 
                 <div class="listing">
-                    <h2 class="list__label">REMAINING LISTING :</h2>
+                    <h2 class="list__label">REMAING LISTING :</h2>
                     <h2 class="list__value"><?php echo $data['list_count'] ?></h2>
                 </div>
                 <!-- <div class="ee">

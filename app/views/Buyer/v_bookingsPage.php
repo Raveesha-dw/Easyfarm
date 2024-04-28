@@ -32,8 +32,7 @@ $currentDate = date("Y-m-d");
 
 foreach ($requests as $request): 
  $booking = $request['request'];
-// if($booking->placed_Date < $currentDate)
-{
+if($booking->placed_Date < $currentDate){
 
 ?>
 
@@ -44,7 +43,6 @@ foreach ($requests as $request):
        
         // print_r($booking);
         // echo $booking->Order_ID;
-        $dates = $request['dates'];
         $vehicle = $request['vehicle'][0];
 
         // print_r($vehicle);
@@ -53,22 +51,11 @@ foreach ($requests as $request):
         // endforeach;
         ?>
 
-        <!-- <h3>Requested Vehicle Details on <medium style="color: darkblue;"><?php echo $booking->placed_Date?></medium> </h3> -->
-        <p><b>Vehicle Number</b> : <?php echo $vehicle->V_number; ?></p>
-        <p><b>Vehicle Name</b> : <?php echo $vehicle->V_name; ?></p>
-        <p><b>Category </b> : <?php echo $vehicle->V_category; ?></p>
-        <p><b>Rental Fee </b> : <?php echo $vehicle->Rental_Fee; ?>  <?php echo $vehicle->Charging_Unit;?> </p>
-
-        <h3>Booked Dates</h3>
-        <div style="align-items:center;">
-        <?php for($i=0; $i<count($dates); $i++){ ?>
-                <ul>
-                 <li><?php echo $dates[$i]->date; ?> </li>
-                </ul>
-        <?php }
-        ?>
-        </div>
-        
+        <h3>Requested Vehicle Details on <medium style="color: darkblue;"><?php echo $booking->placed_Date?></medium> </h3><br>
+        <p><b>Vehicle Number</b> : <?php echo $vehicle->V_number; ?></p><br>
+        <p><b>Vehicle Name</b> : <?php echo $vehicle->V_name; ?></p><br>
+        <p><b>Category </b> : <?php echo $vehicle->V_category; ?></p><br>
+        <p><b>Rental Fee </b> : <?php echo $vehicle->Rental_Fee; ?>  <?php echo $vehicle->Charging_Unit;?> </p><br>
         <p><b>Owner Info </b> : <?php echo $booking->name ?>, <?php echo $booking->location ?></p>
       
 </div>
@@ -89,3 +76,5 @@ endforeach; ?>
 
 
 <?php require APPROOT . '/views/inc/footer.php';?>
+
+

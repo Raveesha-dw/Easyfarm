@@ -912,7 +912,7 @@ public function createUserSession($user){
     }
 
     public function resetPassword(){
-print_r(";jj");
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
@@ -945,12 +945,10 @@ print_r(";jj");
                     $data['confirm-password_err'] = 'Does not match with the password';
                 }
             }
-            // print_r("d");
 
         }
-// print("x");
+
         if (empty($data['password_err']) && (empty($data['confirm-password_err']))) {
-            print_r("jj");
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
             // print_r("kjbaux");
             // print_r($data);
