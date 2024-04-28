@@ -64,7 +64,7 @@
 
         $data3 = $this->vechile_ordersmodel->getplandata($owner_id);
         $data7= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
-        // print_r($data3);
+        // print_r($data7);
 
         $plan_id = $data3[0]->plan_id;
         $registed_date = $data3[0]->Register_date;
@@ -189,7 +189,7 @@
                 $registed_date = $data3[0]->Register_date;
                 
                 $timestamp = strtotime($registed_date);
-        $data7= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
+$data7= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
 
 
                 $data4 = $this->vechile_ordersmodel->getplandmonth($plan_id);
@@ -199,8 +199,8 @@
                 $new_date = date('Y-m-d', strtotime("+$month months", $timestamp));
                 $data['lastday'] = $new_date;
 
-                $data = array_merge($data1, $data2, $data,$data5,$data6,$data7,$data8);
-                print_r($data8);
+                $data = array_merge($data1, $data2, $data,$data5,$data6,$data8,$data7);
+                print_r($data);
                 ($this->view('renter/v_vechiledetail', $data));
                 
             }
