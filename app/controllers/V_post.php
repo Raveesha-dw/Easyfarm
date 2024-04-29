@@ -250,7 +250,7 @@ class V_post extends Controller
     {
         unset($_SESSION['unavailable_datess']);
         $data = $this->v_postModel->get_data($_SESSION['user_ID']);
-        
+
         foreach ($data as $item) {
         
             $item->is_there_booking_requests = $this->v_postModel->is_there_booking_requests($item->V_Id);
@@ -534,7 +534,7 @@ class V_post extends Controller
             $this->v_postModel->delete_data($data);
 
             redirect("V_post/created_post");
-
+ 
         }
     }
 }
