@@ -58,8 +58,8 @@ print_r("qqqqqqqq");
         // Extract the Order_ID from the fetched result
         $order_id = $order_result->Order_ID;
         
-        print_r($order_id);
-        print_r("ddddddd");
+        // print_r($order_id);
+        // print_r("ddddddd");
 
         $this->db->query('INSERT INTO order_details(Order_ID, quantity, Unit_price, Unit_size, Unit_type, DeliveryMethod,Payment_Id) VALUES (:Order_ID, :quantity, :Unit_price, :Unit_size, :Unit_type, :DeliveryMethod , :Payment_Id)');
         $this->db->bind(':Payment_Id', $data['Payment_Id']);
@@ -69,6 +69,12 @@ print_r("qqqqqqqq");
         $this->db->bind(':Unit_type', $data['Unit_type']);
         $this->db->bind(':DeliveryMethod', $data['selectedDeliveryMethod']);
         $this->db->bind(':Order_ID', $order_id);
+        $this->db->execute();
+
+      
+        $this->db->query('DELETE FROM cart WHERE U_Id = :uId AND Item_Id = :itmId');
+        $this->db->bind(':uId', $data['uId']);
+        $this->db->bind(':itmId', $data['Item_Id']);
         $this->db->execute();
 
 

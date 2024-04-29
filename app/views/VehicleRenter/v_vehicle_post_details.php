@@ -6,7 +6,11 @@
 
 <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/components/fullcalendar.min.css">
 
+
         <div class="wrapper_v_product_details">
+            <form action="<?php echo $_SERVER['HTTP_REFERER']; ?>" method="get">
+                <button type="submit">Go Back</button>
+            </form>
 
             <div class="column4" >
                 <?php $vehicle_data = $data['vehicle_data'];?>

@@ -29,8 +29,7 @@
 
         <form class ="ddd" action="<?php echo URLROOT ?>/V_post/create_post" enctype="multipart/form-data" method="POST">
 
-            <?php $v_Categories = $data['v_Categories'];
-            print_r($data['v_Categories']) ?>   
+            <?php $v_Categories = $data['v_Categories'];?>   
             <br>
             <div class ="sitem">
                 <label for="Category"  class = "scdropdown1" name="V_category"><b>   Vehicle Category:</b></label>

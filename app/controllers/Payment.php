@@ -4,10 +4,12 @@ require_once APPROOT . '/config/config.php';
 class Payment extends Controller
 {
     private $paymentModel;
+    private $cartModel;
 
     public function __construct()
     {
         $this->paymentModel = $this->model('M_payment');
+        $this->cartModel = $this->model('M_cart');
 
     }
 
@@ -153,6 +155,7 @@ class Payment extends Controller
 
 
             $this->paymentModel->saveOrder($data);
+             $_SESSION['n_cart_items'] = $this->cartModel->get_number_of_cart_items($_SESSION['user_ID']);
 
             // Assuming count of any of the arrays can represent the total number of iterations needed
             $count = count($data_carging_details['sellerIds']);
