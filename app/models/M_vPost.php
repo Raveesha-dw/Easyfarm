@@ -352,4 +352,19 @@ public function get_dataplan3(){
         
     }
 
+    public function is_there_booking_requests($data){
+    
+    $this->db->query("SELECT * FROM v_orders WHERE Vechile_ID = :Vechile_ID");
+    $this->db->bind(':Vechile_ID',$data);
+    $result=$this->db->resultSet();
+    return $result;
+    
+    }
+
+
+
+
+
+
+
 }

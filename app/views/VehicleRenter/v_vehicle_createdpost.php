@@ -20,6 +20,7 @@
             <div class="product-container" id="product-vehicle-container">
 
                 <?php $products = $data;?>
+                <?php print_r( $products )?>
                 
                 <?php foreach ($products as $product): ?>
 
@@ -36,18 +37,20 @@
                     </a>
 
                         <div class="button-n">
-                            <input  type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
-                            
-                            <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">
+                            <?php if (empty($product->is_there_booking_requests)) { ?>
+                                <input  type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
+                                
+                                <a   href="http://localhost/Easyfarm/V_post/update_Product?V_Id=<?php echo $product->V_Id; ?>">
 
-                            <button class ="btn2">update</button></a>
-                
+                                <button class ="btn2">update</button></a>
+                    
 
-                                <form onsubmit="return showRemoveConfirmation();" method="post" action="<?php echo URLROOT ?>/V_post/delete_product">
-                                    
-                                    <input type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
-                                    <button type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
-                                </form>
+                                    <form onsubmit="return showRemoveConfirmation();" method="post" action="<?php echo URLROOT ?>/V_post/delete_product">
+                                        
+                                        <input type="hidden" name="V_Id" value="<?php echo $product->V_Id; ?>">
+                                        <button type="submit" class="buttonn" id="btnv3" name="delete_item">Delete</button>
+                                    </form>
+                                <?php } ?>
                         </div>
                     </div>
                 <?php endforeach?>

@@ -250,6 +250,12 @@ class V_post extends Controller
     {
         unset($_SESSION['unavailable_datess']);
         $data = $this->v_postModel->get_data($_SESSION['user_ID']);
+        
+        foreach ($data as $item) {
+        
+            $item->is_there_booking_requests = $this->v_postModel->is_there_booking_requests($item->V_Id);
+        }
+
         $this->view('VehicleRenter/v_vehicle_createdpost', $data);
 
     }
@@ -516,19 +522,22 @@ class V_post extends Controller
     
 
     public function delete_product()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $data = [
                 'V_Id' => trim($_POST['V_Id']),
-            ];
+ 
+        ];
 
+        if (empty($can_update)) {
             $this->v_postModel->delete_data($data);
 
             redirect("V_post/created_post");
 
         }
     }
+}
 
 
 
