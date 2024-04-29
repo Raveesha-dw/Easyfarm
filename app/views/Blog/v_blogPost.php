@@ -111,12 +111,13 @@
 
         <div class="container">
             <div class="comment-section bg-light p-4 mt-5">
-            <h3>Ask Questions About This Article</h3>
+            <h3>Questions About This Article</h3>
             <hr>
 
             <!-- Editor -->
             <?php 
                 if(isset($_SESSION['user_ID'])){ 
+                    if($_SESSION['user_type'] != 'AgricultureExpert'){
             ?>
 
                     <div class="question-card">
@@ -130,7 +131,10 @@
                         </form>
                     </div>
 
-            <?php            
+            <?php 
+                    }else{
+                        echo "<br>";
+                    }           
                 }else{
                     echo "<br><span>Please login to ask questions.</span><br><br><br>";
                 }
@@ -151,15 +155,17 @@
 
                     <!-- Answer -->
                     <?php
+                        // Show answer if exists
                         if($inquiry->answer){
                     ?>
                         <div class="comment-card">
                             <b><?php echo $sellerDetails->Name;?></b> answers, <br><br>
-                            <!-- <span><b>Agri Instructor</b> replies,<br></span> -->
                             <?php echo $inquiry->answer;?> <br><br>
                             <i>on <?php echo $inquiry->answer_datetime_edited;?></i>
                             <?php
-                                if(isset($_SESSION['user_ID']) && $_SESSION['user_type'] == 'AgricultureExpert'){
+
+                                //Author can edit/delete answers
+                                if(isset($_SESSION['user_ID']) && $_SESSION['user_ID'] == $post->author_id){
                             ?>
                                     <!-- Edit Answer -->
                                     <button class="comment-edit-btn display-0 display-1">Edit</button>
@@ -187,10 +193,13 @@
                     <?php
                         }
 
-                        if(isset($_SESSION['user_ID'])){
 
-                            //If the logged in user is the person who has asked the question he/she can edit/delete it if author hasn't answered
-                            if($_SESSION['user_ID'] == $inquiry->user_id && empty($inquiry->answer)){
+
+                        //User edits/deletes question
+                        if(isset($_SESSION['user_ID']) && $_SESSION['user_ID'] == $inquiry->user_id){
+
+                            // User can only edit question if it's not answered
+                            if(empty($inquiry->answer)){
                     ?>
                                 <!-- Edit Question -->
                                 <button class="comment-edit-btn display-0 display-1">Edit</button>
@@ -204,35 +213,39 @@
                                     </form>
                                     <button class="btn btn-cancel display-1">Cancel</button>
                                 </div>
-
-                                <!-- Delete Question -->
-                                <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteQuestion'?>" onclick='confirmDeleteQestion()' method="POST">
-                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
-                                    <input type="submit" name="questionDelete" value="Delete">
-                                </form>
-                    <?php            
+                        <?php
                             }
+                        ?>
 
-                            // Author can reply, but there is no reply option for comments posted by agri instructors
-                            if($_SESSION['user_ID'] == $post->author_id && $inquiry->userType != 'AgricultureExpert' && empty($inquiry->answer)){
+                            <!-- Delete Question -->
+                            <form class="delete-form" action="<?php echo URLROOT . '/Blog/deleteQuestion'?>" onclick='confirmDeleteQestion()' method="POST">
+                                <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                <input type="hidden" name="product_id" value="<?php echo $productDetails->post_id;?>">
+                                <input type="submit" name="questionDelete" value="Delete">
+                            </form>
+                    <?php            
+                        }
+
+
+
+                        // Author can reply. But there is no reply option for comments posted by agri instructors (optional)
+                        if(isset($_SESSION['user_ID']) && $_SESSION['user_ID'] == $post->author_id  && empty($inquiry->answer) && $inquiry->userType != 'AgricultureExpert'){
                     ?>
-                                <!-- Answer Question -->
-                                <div class="display-answer-form">
-                                    <button class="btn btn-answer display-answer-0 display-answer-1">Answer</button>
-                                    <div class="edit-form display-answer-0" style="display:none;">
-                                        <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
-                                            <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
-                                            <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
-                                            <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
-                                            <textarea name="answer" cols="100" rows="4" placeholder="Write answer..."></textarea><br><br><br>
-                                            <button class="btn btn-save" type="submit">Answer</button>
-                                        </form>
-                                        <button class="btn btn-cancel display-answer-1">Cancel</button>
-                                    </div>
+                            <!-- Answer Question -->
+                            <div class="display-answer-form">
+                                <button class="btn btn-answer display-answer-0 display-answer-1">Answer</button>
+                                <div class="edit-form display-answer-0" style="display:none;">
+                                    <form action="<?php echo URLROOT . '/Blog/answerQuestion'?>" method="POST">
+                                        <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id;?>">
+                                        <input type="hidden" name="post_id" value="<?php echo $productDetails->post_id;?>">
+                                        <input type="hidden" name="answer_datetime" value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <textarea name="answer" cols="100" rows="4" placeholder="Write answer..."></textarea><br><br><br>
+                                        <button class="btn btn-save" type="submit">Answer</button>
+                                    </form>
+                                    <button class="btn btn-cancel display-answer-1">Cancel</button>
                                 </div>
+                            </div>
                     <?php            
-                            }
                         }
                     ?>
                 </div>
@@ -241,9 +254,8 @@
                 endforeach;
             ?>
         </div>
-        </div>
-        <
-    </div>
+    </div>      
+</div>
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>  
