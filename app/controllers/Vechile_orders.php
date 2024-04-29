@@ -92,7 +92,7 @@
 
         $data = array_merge($data1, $data2, $data,$data5,$data6,$data7);
 
-       print_r($new_date);
+    //    print_r($new_date);
         // $data = $this->sellerModel->get_data($data['seller_ID']);
         $this->view('renter/v_vechiledetail', $data);
     }
@@ -200,7 +200,7 @@ $data7= $this->vechile_ordersmodel->getbuyerdetails($_SESSION['user_ID']);
                 $data['lastday'] = $new_date;
 
                 $data = array_merge($data1, $data2, $data,$data5,$data6,$data8,$data7);
-                print_r($data);
+                // print_r($data);
                 ($this->view('renter/v_vechiledetail', $data));
                 
             }

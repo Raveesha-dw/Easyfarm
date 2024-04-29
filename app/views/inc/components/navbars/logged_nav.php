@@ -28,7 +28,7 @@
             </div> -->
 
             <div class="nav-parts">
-                <a href="<?php echo URLROOT?>/Pages/index">AutoDrive</a>
+                <a href="<?php echo URLROOT?>/Pages/index">Rent</a>
             </div>
 
            <?php

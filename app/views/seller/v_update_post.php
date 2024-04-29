@@ -86,6 +86,17 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                             <span class="invalid"><?php if ($data) {
                                                         echo $data['Unit_size_err'];
                                                     }  ?></span>
+
+                            <script>
+                                document.getElementById('size').addEventListener('input', function() {
+                                    var sInput = document.getElementById('size');
+                                    if (sInput.value < 0) {
+                                        sInput.value = 0; // Corrected variable name
+                                        // Alternatively, you can display a message to the user
+                                        alert('Unit Size cannot be negative');
+                                    }
+                                });
+                            </script>
                         </div>
                         <div class="sdropdown2">
                             <label for="stype"><b>Type<span class="requiredd"></span></b></label>
@@ -121,6 +132,17 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                                     echo $data['Unit_price_err'];
                                                 }  ?></span>
 
+                        <script>
+                            document.getElementById('sprice').addEventListener('input', function() {
+                                var sInput = document.getElementById('sprice');
+                                if (sInput.value < 0) {
+                                    sInput.value = 0; // Corrected variable name
+                                    // Alternatively, you can display a message to the user
+                                    alert('price cannot be negative');
+                                }
+                            });
+                        </script>
+
                     </div>
 
                     <br>
@@ -135,15 +157,25 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                                 }  ?></span>
 
                     </div>
+                    <script>
+                        document.getElementById('Stock').addEventListener('input', function() {
+                            var sInput = document.getElementById('Stock');
+                            if (sInput.value < 0) {
+                                sInput.value = 0; // Corrected variable name
+                                // Alternatively, you can display a message to the user
+                                alert('price cannot be negative');
+                            }
+                        });
+                    </script>
 
                     <br>
                     <div class="saddress">
-                        
+
 
                         <br>
                         <b>Location<span class="requiredd"></span></b>
                         <br>
-                        <input id="address" name="saddress"  placeholder="Enter the address" required value="<?php echo $data['saddress']; ?>">
+                        <input id="address" name="saddress" placeholder="Enter the address" required value="<?php echo $data['saddress']; ?>">
 
 
 
@@ -267,7 +299,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                             <?php
                             // Assuming $data['DeliveryMethod'] contains "Home Delivery, Insto Pickup"
                             $deliveryMethods = explode(', ', $data['DeliveryMethod']);
-                        //   print_r($deliveryMethods) ;
+                            //   print_r($deliveryMethods) ;
 
                             // in_array('Home Delivery', $deliveryMethods): This function checks if the value 'Home Delivery' exists in the array $deliveryMethods. If it does, it returns true; otherwise, it returns false
                             $homeDeliveryChecked = in_array('Home-Delivery', $deliveryMethods) ? 'checked' : '';
@@ -309,7 +341,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                             // Show home delivery option
                                             $('#Insto_Pickup').hide().find(':checkbox').prop('checked', false);
                                             $('#Home_Delivery').show();
-                                            
+
 
                                         } else if (deliveryMethod === 'insto_pickup') {
                                             // Show in-store pickup option

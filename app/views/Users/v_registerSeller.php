@@ -98,7 +98,7 @@
             <i class='bx bxs-edit-location'></i>
         </div>
 
-        <button type="submit" class="btn" name="seller_reg" id="seller_reg"><a href="#"></a>NEXT PAGE</button>
+        <button type="submit" class="btn" name="seller_reg" id="seller_reg"><a href="#"></a>Login</button>
         
         <div>
             <input type="hidden" name="user_type" value="Seller">

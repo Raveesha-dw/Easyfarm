@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/headerAdmin.php';?>
+<?php require APPROOT . '/views/inc/components/navbars/home_nav.php'; ?>
 
 <div class="body-container">
     <!--Sidebar-->
@@ -30,7 +31,13 @@
                 <th>Payment ID</th>
                 <th>Amount</th>
                 <th>Status</th>
-                <th>Action</th>
+                <?php
+                    if($_GET['status'] == 'Unsettled'){
+                ?>
+                        <th>Action</th>
+                <?php
+                    }
+                ?>
             </tr>
 
             <?php
@@ -43,15 +50,21 @@
                         <td><?php echo $deliveryPayment->DeliveryPaymentStatus?></td>
                         <td>
                             <div class="btn-container">
-                                <form action="<?php echo URLROOT?>/Admin/delivery" method="POST">
-                                    <?php
-                                        $status = ($deliveryPayment->DeliveryPaymentStatus == 'Unsettled') ? ('Settled') : ('Unsettled');
-                                    ?>
-                                    <input type="hidden" name="paymentID" value="<?php echo $deliveryPayment->Payment_Id?>">
-                                    <input type="hidden" name="sellerID" value="<?php echo $deliveryPayment->seller_ID?>">
-                                    <input type="hidden" name="status" value="<?php echo $status?>">
-                                    <button class="admin-table" type="submit">Mark As <?php echo $status?></button>
-                                </form>
+                                <?php
+                                    if($_GET['status'] == 'Unsettled'){
+                                ?>
+                                    <form action="<?php echo URLROOT?>/Admin/delivery" method="POST">
+                                        <?php
+                                            $status = ($deliveryPayment->DeliveryPaymentStatus == 'Unsettled') ? ('Settled') : ('Unsettled');
+                                        ?>
+                                        <input type="hidden" name="paymentID" value="<?php echo $deliveryPayment->Payment_Id?>">
+                                        <input type="hidden" name="sellerID" value="<?php echo $deliveryPayment->seller_ID?>">
+                                        <input type="hidden" name="status" value="<?php echo $status?>">
+                                        <button class="admin-table" type="submit">Mark As <?php echo $status?></button>
+                                    </form>
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </td>
                     </tr>

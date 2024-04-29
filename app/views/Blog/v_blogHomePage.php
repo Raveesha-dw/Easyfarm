@@ -73,7 +73,8 @@
 
                     <form action="<?php echo URLROOT . '/Blog/post' ?>" method="GET">
                         <input type="hidden" name="id" value="<?php echo $post->post_id;?>">
-                        <input type="submit" class="btn-read-more" value="Read More">
+                        <!-- <input type="submit" class="btn-read-more" value="Read More"> -->
+                        <button class="btn" type="submit">Read More</button>
                     </form>
                 </div>
             </div>
@@ -121,3 +122,5 @@
     </div>
 
 </section>
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>  

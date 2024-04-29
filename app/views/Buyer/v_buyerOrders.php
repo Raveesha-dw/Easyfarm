@@ -27,9 +27,9 @@ if($accept != NULL){ ?>
         $item = $order['item'];
         $seller = $order['seller'];
         ?>
-                <div class="text-top-right" style="margin-left:85%; margin-top:0%;">
-                <large><b>Status: </b>&nbsp;<span style="color: red;">RECEIVED</span></large>
-                </div>
+                <!-- <div class="text-top-right" style="margin-left:85%; margin-top:0%;"> -->
+                <!-- <large><b>Status: </b>&nbsp;<span style="color: red;">RECEIVED</span></large> -->
+                <!-- </div> -->
                 <h2 class="order-id">Order ID: <?php echo $orderInfo->Order_ID ?></h2>
                 <span><medium>Placed Date: <?php echo $orderInfo->placed_Date?> </medium></span><br>
 

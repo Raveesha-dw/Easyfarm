@@ -273,10 +273,22 @@ $jsonData1 = json_encode($pending_dates);
                                 </tr>
                                 <tr>
                                     <td><label for="number"><b>Your Contact Number</b></label></td>
-                                    <td><span class="invalid"><?php if ($data) {
+                                   <td>
+    <span class="invalid">
+        <?php 
+        if ($data) {
+            echo $data['number_err'];
+        } 
+        ?>
+    </span>
+    <input id="number" name="number" type="text" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" size="40" style="height: 40px; width: 300px" maxlength="10">
+</td>
+<script>
+    document.getElementById('number').addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    });
+</script>
 
-                                                                    echo $data['number_err'];
-                                                                } ?></span><input id="number" name="number" type="number" placeholder="Your Contact Number" required value="<?php echo isset(end($data)->Contact_num) ? end($data)->Contact_num : ''; ?>" min="0" size="40" style="height: 40px; width: 300px" ;></td>
 
 
 

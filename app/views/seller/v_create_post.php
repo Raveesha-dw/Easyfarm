@@ -67,7 +67,16 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
 
                             <input id="size" name="Unit_size" type="number" step="1" min=0 placeholder="Enter unit size" required value="<?php echo $data['Unit_size']; ?>">
                             <span class="invalid"><?php echo isset($data['Unit_size_err']) ? $data['Unit_size_err'] : ''; ?></span>
-
+                            <script>
+                                document.getElementById('size').addEventListener('input', function() {
+                                    var sInput = document.getElementById('size');
+                                    if (sInput.value < 0) {
+                                        sInput.value = 0; // Corrected variable name
+                                        // Alternatively, you can display a message to the user
+                                        alert('Unit Size cannot be negative');
+                                    }
+                                });
+                            </script>
                         </div>
                         <div class="sdropdown2">
                             <label for="Category2"><b>Type<span class="requiredd"></span></b></label>
@@ -108,7 +117,16 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <input id="sprice" name="Unit_price" type="number" min=0 placeholder="Enter the Unit Price" required value="<?php echo $data['Unit_price']; ?>">
                         <span class="invalid"><?php echo isset($data['Unit_price_err']) ? $data['Unit_price_err'] : ''; ?></span>
 
-
+                        <script>
+                            document.getElementById('sprice').addEventListener('input', function() {
+                                var sInput = document.getElementById('sprice');
+                                if (sInput.value < 0) {
+                                    sInput.value = 0; // Corrected variable name
+                                    // Alternatively, you can display a message to the user
+                                    alert('price cannot be negative');
+                                }
+                            });
+                        </script>
                     </div>
                     <br>
 
@@ -118,21 +136,31 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <br>
                         <b>Stock Size<span class="requiredd"></span></b>
                         <br>
-                        <input id="Stock" name="Stock_size" type="number" step="1" min=0 placeholder="Enter the Stock Size" required value="<?php echo $data['Stock_size']; ?>">
+                        <input id="Stock" name="Stock_size" type="number" step="1" min="0" placeholder="Enter the Stock Size" required value="<?php echo $data['Stock_size']; ?>">
 
+                        <script>
+                            document.getElementById('Stock').addEventListener('input', function() {
+                                var sInput = document.getElementById('Stock');
+                                if (sInput.value < 0) {
+                                    sInput.value = 0; // Corrected variable name
+                                    // Alternatively, you can display a message to the user
+                                    alert('Stock size cannot be negative');
+                                }
+                            });
+                        </script>
 
 
                     </div>
 
                     <br>
-                    
+
                     <div class="saddress">
-                        
+
 
                         <br>
                         <b>Location<span class="requiredd"></span></b>
                         <br>
-                        <input id="address" name="saddress"  placeholder="Enter the address" required value="<?php echo $data['saddress']; ?>">
+                        <input id="address" name="saddress" placeholder="Enter the address" required value="<?php echo $data['saddress']; ?>">
 
 
 
@@ -149,27 +177,27 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                         <span class="invalid"><?php echo isset($data['Expiry_date_err']) ? $data['Expiry_date_err'] : ''; ?></span>
                         <br>
                         <b>Expiry Date</b>
-                        
+
                         <br>
                         <!-- Input field for selecting the expiry date -->
                         <input id="se_date" name="Expiry_date" type="date" placeholder="Enter expiry date" value="<?php echo htmlspecialchars($selectedExpiryDate); ?>">
                     </div>
                     <script>
-                            var date = new Date();
-                            var tdate = date.getDate();
-                            var month = date.getMonth() + 1; //4
-                            if (tdate < 10) {
-                                tdate = '0' + tdate;
-                            }
-                            if (month < 10) {
-                                month = '0' + month; //0 + 4=4
-                            }
-                            var year = date.getFullYear();
-                            var minDate = year + "-" + month + "-" + tdate;
-                            document.getElementById("s_date").setAttribute('min', minDate);
-                            // console.log(minDate);
-                        </script>
-                      
+                        var date = new Date();
+                        var tdate = date.getDate();
+                        var month = date.getMonth() + 1; //4
+                        if (tdate < 10) {
+                            tdate = '0' + tdate;
+                        }
+                        if (month < 10) {
+                            month = '0' + month; //0 + 4=4
+                        }
+                        var year = date.getFullYear();
+                        var minDate = year + "-" + month + "-" + tdate;
+                        document.getElementById("s_date").setAttribute('min', minDate);
+                        // console.log(minDate);
+                    </script>
+
 
                     <!-- Your JavaScript -->
                     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
@@ -195,7 +223,7 @@ $selectedExpiryDate = isset($_SESSION['selectedExpiryDate']) ? $_SESSION['select
                                     } else {
                                         // Hide expiry date input
                                         $('#datt').hide();
-                                       
+
                                     }
                                 }
                             }

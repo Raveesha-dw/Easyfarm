@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="nav-parts">
-                    <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Vehicle Booking</a>
+                    <a href="<?php echo URLROOT ?>/Vehicle_item/gethomepage">Rent</a>
                 </div>
 
             <?php

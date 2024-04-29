@@ -14,14 +14,26 @@ class M_product{
         return $result;
     }
 
-  public function getAllFromCategory($category){
+//   public function getAllFromCategory($category){
+//     $this->db->query('SELECT * FROM item  
+//         INNER JOIN reg_seller ON item.seller_ID = reg_seller.U_Id  
+//         WHERE reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH) AND item.Category = :category');
+//     $this->db->bind(':category', $category);
+
+//     return $this->db->resultSet();
+// }
+public function getAllFromCategory($category){
     $this->db->query('SELECT * FROM item  
         INNER JOIN reg_seller ON item.seller_ID = reg_seller.U_Id  
-        WHERE reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH) AND item.Category = :category');
+        WHERE 
+            reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH) 
+            AND (item.Category = :category) 
+            AND (item.Expiry_date >= NOW() OR item.Expiry_date = "0000-00-00")');
     $this->db->bind(':category', $category);
 
     return $this->db->resultSet();
 }
+
 
 
     public function getAllVegetables(){
@@ -98,18 +110,21 @@ class M_product{
     }
 
 
-   public function getAllProducts(){
+public function getAllProducts(){
     $this->db->query('
         SELECT * 
         FROM item 
         INNER JOIN reg_seller ON item.seller_ID = reg_seller.U_Id  
-        WHERE reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+        WHERE 
+            reg_seller.Register_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH) 
+            AND (item.Expiry_date >= NOW() OR item.Expiry_date = "0000-00-00")
         ORDER BY Item_Id DESC
     ');
    
     $all = $this->db->resultSet();
     return $all;
 }
+
 
 
     public function searchForProduct($string){

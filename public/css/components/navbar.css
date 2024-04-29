@@ -9,7 +9,7 @@
     overflow: hidden;
     cursor: pointer;
     height: var(--btn-height);
-    padding: 0 var(--btn-padding);
+    /* padding: 0 var(--btn-padding); */
     background-color: var(--btn-color);
     border-radius: 9999999px;
     z-index: 10000;
