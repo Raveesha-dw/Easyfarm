@@ -182,7 +182,7 @@
             <div class="sDescription">
                 <b>Descripition</b>
                 <br>
-                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" >>
+                <input id="sdes" name="Description" type="text" placeholder="Enter Descripitiion" required value="<?php if ($data) {echo $data['Description'];}?>" >
                 <span class="invalid"><?php if ($data) {echo $data['Description_err'];}?></span>
             </div>
 
