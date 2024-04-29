@@ -112,6 +112,8 @@ $inquiries = $data['inquiries'];
     </div>
 </section>
 
+
+
 <!-- Product Inquries -->
 <section id ="questionSection" class="section-p4">
     <div class="comment-section bg-light p-4 mt-5">
@@ -136,10 +138,10 @@ $inquiries = $data['inquiries'];
                 </div>
 
         <?php
-} else {
-    echo "<br><span>Please login as a buyer to ask questions.</span><br><br><br>";
-}
-?>
+            } else {
+                echo "<br><span>Please log in using your Buyer credentials to ask questions.</span><br><br><br>";
+            }
+        ?>
 
         <!-- Display Questions -->
         <?php
@@ -156,44 +158,52 @@ $inquiries = $data['inquiries'];
 
                 <!-- Answer -->
                 <?php
+                    // Show Answer if exists
                     if ($inquiry->answer) {
                  ?>
-                    <div class="comment-card">
-                        <b><?php echo $sellerDetails->Name; ?></b> replies, <br><br>
-                        <?php echo $inquiry->answer; ?> <br><br>
-                        <i><?php echo $inquiry->answer_datetime_edited; ?></i>
-                        <?php
-                            if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID']) {
-                        ?>
-                                <!-- Edit Answer -->
-                                <button class="comment-edit-btn display-0 display-1">Edit</button>
-                                <div class="edit-form display-0" style="display:none;">
-                                    <form action="<?php echo URLROOT . '/Inquiry/editAnswer' ?>" method="POST">
+                        <div class="comment-card">
+                            <b><?php echo $sellerDetails->Name; ?></b> replies, <br><br>
+                            <?php echo $inquiry->answer; ?> <br><br>
+                            <i><?php echo $inquiry->answer_datetime_edited; ?></i>
+                            <?php
+
+                                // Seller can edit/delete answer
+                                if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID']) {
+                            ?>
+                                    <!-- Edit Answer -->
+                                    <button class="comment-edit-btn display-0 display-1">Edit</button>
+                                    <div class="edit-form display-0" style="display:none;">
+                                        <form action="<?php echo URLROOT . '/Inquiry/editAnswer' ?>" method="POST">
+                                            <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
+                                            <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
+                                            <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s'); ?>">
+                                            <textarea name="edited_answer" cols="100" rows="4"><?php echo $inquiry->answer; ?></textarea><br><br><br>
+                                            <button class="btn btn-save" type="submit">Save</button>
+                                        </form>
+                                        <button class="btn btn-cancel display-1">Cancel</button>
+                                    </div>
+
+                                    <!-- Delete Answer -->
+                                    <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteAnswer' ?>" onclick='confirmDeleteAnswer()' method="POST">
                                         <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
                                         <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
-                                        <input type="hidden" name="datetime" value="<?php echo date('Y-m-d H:i:s'); ?>">
-                                        <textarea name="edited_answer" cols="100" rows="4"><?php echo $inquiry->answer; ?></textarea><br><br><br>
-                                        <button class="btn btn-save" type="submit">Save</button>
+                                        <input type="submit" name="answerDelete" value="Delete">
                                     </form>
-                                    <button class="btn btn-cancel display-1">Cancel</button>
-                                </div>
-
-                                <!-- Delete Answer -->
-                                <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteAnswer' ?>" onclick='confirmDeleteAnswer()' method="POST">
-                                    <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
-                                    <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
-                                    <input type="submit" name="answerDelete" value="Delete">
-                                </form>
+                            <?php
+                                }
+                            ?>
+                        </div>
                 <?php
                     }
-                ?>
-                    </div>
-                <?php
-}
 
-if (isset($_SESSION['user_ID'])) {
-    if ($inquiry->user_id == $_SESSION['user_ID']) {
-        ?>
+
+
+                    // Buyer can edit/delete question
+                    if (isset($_SESSION['user_ID']) && $inquiry->user_id == $_SESSION['user_ID']) {
+
+                        //Buyer can only edit question if it's not answered
+                        if(empty($inquiry->answer)){
+                ?>
                             <!-- Edit Question -->
                             <button class="comment-edit-btn display-0 display-1">Edit</button>
                             <div class="edit-form display-0" style="display:none;">
@@ -206,19 +216,24 @@ if (isset($_SESSION['user_ID'])) {
                                 </form>
                                 <button class="btn btn-cancel display-1">Cancel</button>
                             </div>
+                <?php 
+                    } 
+                ?>
 
-                            <!-- Delete Question -->
-                            <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion' ?>" onclick='confirmDeleteQuestion()' method="POST">
-                                <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
-                                <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
-                                <input type="submit" name="questionDelete" value="Delete">
-                            </form>
+                        <!-- Delete Question -->
+                        <form class="delete-form" action="<?php echo URLROOT . '/Inquiry/deleteQuestion' ?>" onclick='confirmDeleteQuestion()' method="POST">
+                            <input type="hidden" name="question_id" value="<?php echo $inquiry->question_id; ?>">
+                            <input type="hidden" name="product_id" value="<?php echo $productDetails->Item_Id; ?>">
+                            <input type="submit" name="questionDelete" value="Delete">
+                        </form>
                 <?php
-}
+                    }
 
-    // If the logged in user is the seller who posted the ad, he/she can reply
-    if ($sellerDetails->U_Id == $_SESSION['user_ID'] && empty($inquiry->answer)) {
-        ?>
+
+
+                // The seller who posted the ad, he/she can reply
+                if (isset($_SESSION['user_ID']) && $sellerDetails->U_Id == $_SESSION['user_ID'] && empty($inquiry->answer)) {
+                    ?>
                             <!-- Answer Question -->
                             <button class="btn btn-answer display-0 display-1">Answer</button>
                             <div class="edit-form display-0" style="display:none;">
@@ -232,14 +247,13 @@ if (isset($_SESSION['user_ID'])) {
                                 <button class="btn btn-cancel display-1">Cancel</button>
                             </div>
                 <?php
-}
-}
-?>
+                }
+                ?>
             </div>
 
         <?php
-endforeach;
-?>
+            endforeach;
+        ?>
     </div>
 </section>
 
